@@ -13,6 +13,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+/**
+ * class Operatore
+ * @author Federico
+ *
+ */
+
 @Entity
 public class Operatore {
 
@@ -21,7 +27,7 @@ public class Operatore {
 	private Long id;
 
 	@Column(nullable = false)
-	private String codice;
+	private String codice; 
 
 	@Column(nullable = false)
 	private String password;
