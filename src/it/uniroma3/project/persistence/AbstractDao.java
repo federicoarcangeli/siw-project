@@ -61,7 +61,7 @@ public abstract class AbstractDao<T> {
 	}
 
 	/**
-	 * resituisce l'oggetto T con identificativo id
+	 * resituisce l'oggetto di tipo T con identificativo id
 	 * 
 	 * @param id
 	 * @return un oggetto T
