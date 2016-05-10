@@ -32,7 +32,7 @@ public class Action {
 		request.setAttribute("prenotazione", prenotazione);
 		//		session.setAttribute("PRENOTAZIONE", prenotazione);
 
-		return "/Conferma.jsp";
+		return "/conferma.jsp";
 	}
 
 }

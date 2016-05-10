@@ -6,7 +6,6 @@ import it.uniroma3.validator.Time24HoursValidator;
 public class Helper {
 
 	public Helper() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public boolean validate(HttpServletRequest request){

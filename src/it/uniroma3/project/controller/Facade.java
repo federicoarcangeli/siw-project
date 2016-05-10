@@ -14,7 +14,7 @@ public class Facade {
 
 	public void inserisciPrenotazione(Prenotazione prenotazione){
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("products-unit");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
 		
 		AbstractDao<Prenotazione> prenotazioneDao = new PrenotazioneDao(emf);
 		prenotazioneDao.save(prenotazione);

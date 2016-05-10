@@ -23,7 +23,7 @@ public class Time24HoursValidator{
 	/**
 	 * Convalida dell'orario in formato 24 ore
 	 * @param l'orario da convalidare
-	 * @return true se l'orario è in formato 24 ore, false altrimenti
+	 * @return l'ora nel formato 24 ore
 	 */
 	public Date validate(String time){
 		Date hour=null;

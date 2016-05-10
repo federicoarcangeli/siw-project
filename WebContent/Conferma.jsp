@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <title>Grazie</title>
-    <meta name="author" content="Surjith S M">
 
     <!-- SEO -->
     <meta name="description" content="Tomato is a Responsive HTML5 Template for Restaurants and food related services.">
