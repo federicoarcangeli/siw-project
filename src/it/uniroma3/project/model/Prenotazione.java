@@ -24,8 +24,12 @@ public class Prenotazione {
 	private String nome;
 	
 	@Column(nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataOra;
+	@Temporal(TemporalType.DATE)
+	private Date data;
+	
+	@Column(nullable = false)
+	@Temporal(TemporalType.TIME)
+	private Date Ora;
 	
 	@Column(nullable = false)
 	private String email;
@@ -60,12 +64,20 @@ public class Prenotazione {
 		this.nome = nome;
 	}
 
-	public Date getDataOra() {
-		return dataOra;
+	public Date getData() {
+		return data;
 	}
 
-	public void setDataOra(Date dataOra) {
-		this.dataOra = dataOra;
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public Date getOra() {
+		return Ora;
+	}
+
+	public void setOra(Date ora) {
+		Ora = ora;
 	}
 
 	public String getEmail() {
@@ -88,7 +100,8 @@ public class Prenotazione {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dataOra == null) ? 0 : dataOra.hashCode());
+		result = prime * result + ((Ora == null) ? 0 : Ora.hashCode());
+		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
@@ -106,10 +119,15 @@ public class Prenotazione {
 		if (getClass() != obj.getClass())
 			return false;
 		Prenotazione other = (Prenotazione) obj;
-		if (dataOra == null) {
-			if (other.dataOra != null)
+		if (Ora == null) {
+			if (other.Ora != null)
 				return false;
-		} else if (!dataOra.equals(other.dataOra))
+		} else if (!Ora.equals(other.Ora))
+			return false;
+		if (data == null) {
+			if (other.data != null)
+				return false;
+		} else if (!data.equals(other.data))
 			return false;
 		if (email == null) {
 			if (other.email != null)
@@ -135,7 +153,5 @@ public class Prenotazione {
 			return false;
 		return true;
 	}
-
-	
 	
 }
