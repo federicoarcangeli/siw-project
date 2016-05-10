@@ -189,7 +189,8 @@
                 </div>
             </section> -->
             
-            <section class='page_header vertical-padding'></section>
+            <section class='page_header vertical-padding'>
+            </section>
 
             <!-- Reservations page-->
             <section class="reservation">
@@ -298,26 +299,6 @@
                     <div class="reservation-footer">
                         <p>Puoi contattarci anche al: <strong>+1 224 6787 004</strong> Per effettuare una prenotazione.</p>
                         <span></span>
-                    </div>
-                </div>
-            </section>
-            <!-- subscribe -->
-            <section class="subscribe">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1>Subscribe</h1>
-                            <p>Get updates about new dishes and upcoming events</p>
-                            <form class="form-inline" action="php/subscribe.php" id="invite" method="POST">
-                                <div class="form-group">
-                                    <input class="e-mail form-control" name="email" id="address" type="email" placeholder="Your Email Address" required>
-                                </div>
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-angle-right"></i>
-                                </button>
-                            </form>
-
-                        </div>
                     </div>
                 </div>
             </section>
