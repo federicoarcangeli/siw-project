@@ -1,6 +1,7 @@
 package it.uniroma3.controller;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,10 +23,16 @@ public class Action {
 		
 		
 //		HttpSession session = request.getSession();
-//		
-//		prenotazione.setData(data.parse(request.getParameter("data"))); 
+//	
+		try {
+			prenotazione.setData(data.parse(request.getParameter("data")));
+		} catch (ParseException e) {
+		} 
 		prenotazione.setNome(request.getParameter("nome"));
-//		prenotazione.setOra(ora.parse(request.getParameter("ora")));
+		try {
+			prenotazione.setOra(ora.parse(request.getParameter("ora")));
+		} catch (ParseException e) {
+		}
 		prenotazione.setEmail(request.getParameter("email"));
 		prenotazione.setNumeroCoperti(Integer.parseInt(request.getParameter("ospiti")));
 		prenotazione.setTelefono(request.getParameter("telefono"));
