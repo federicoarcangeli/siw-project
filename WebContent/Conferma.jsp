@@ -78,7 +78,7 @@
                                     <li><a href="./menu_all.html">Menu All</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./reservation.html">Prenotazioni</a></li>
+                            <li><a href="./prenotazione.jsp">Prenotazioni</a></li>
                             <li class="dropdown">
                                 <a href="./about.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages<span class="caret"></span></a>
                                 <ul class="dropdown-menu">

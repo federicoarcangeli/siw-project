@@ -78,7 +78,7 @@
                                     <li><a href="./menu_all.html">Menu All</a></li>
                                 </ul>
                             </li>
-                            <li><a href="./reservation.html">Prenotazioni</a></li>
+                            <li><a href="./prenotazione.jsp">Prenotazioni</a></li>
                             <li class="dropdown">
                                 <a href="./about.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
@@ -209,7 +209,9 @@
                         </div>
                     </div>
                     <div class="reservation-form">
-                        <form action="ProcessaPrenotazione" method="post">
+                        <form action="processaPrenotazione" method="post">
+                                  <div id="OT_searchWrapper">
+                                <div id="OT_defList" class="row">
                             <div class="row">
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
@@ -238,23 +240,49 @@
                                       	</div>
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="email">Email Address</label>
-                                        <div <%if (request.getAttribute("emailError") != null) {%> class="animated shake" <%}%>>
-                                       	   <input type="email" class="form-control" id="email" name="email" placeholder="Email" title="Inserisci una tua mail" value='${param["email"]}'>
-                                     	   <!--<i class="fa fa-envelope-o"></i> -->
+                                </div>
+                                </div>
+                                                                 <div id="OT_searchWrapper">
+                                <div id="OT_defList" class="row">
+                                	<div class="col-md-4 col-sm-6">
+                                    	<div class="form-group">
+                                        	<label for="email">Email Address</label>
+                                        	<div <%if (request.getAttribute("emailError") != null) {%> class="animated shake" <%}%>>
+                                       		   <input type="email" class="form-control" id="email" name="email" placeholder="Email" title="Inserisci una tua mail" value='${param["email"]}'>
+                                     	   	   <!--<i class="fa fa-envelope-o"></i> -->
                                      	</div>
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-6">
+
+                                <div id="OT_partySize" class="col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label for="guests">Numero di Ospiti</label>
-                                        <div <%if (request.getAttribute("ospitiError") != null) {%> class="animated shake" <%}%>>
-                                    	    <input class="form-control" type="number" id="guests" name="ospiti" placeholder="Quanti siete?" title="inserisci il numero di ospiti" value='${param["ospiti"]}'>
-                                    	    <!--<i class="fa fa-user"></i> -->
-                                    	</div>
-                                    </div>
+                                    	<label for="ospiti">Numero di Ospiti</label>	
+                                  	    <select name="ospiti" class="feedFormField" >
+                                   			<option selected disabled>Numero di ospiti?</option>
+	                                    	<option value="1">1 Persona</option>
+    	                            	    <option value="2">2 Persone</option>
+        	                    	        <option value="3">3 Persone</option>
+            	            	            <option value="4">4 Persone</option>
+                	    	                <option value="5">5 Persone</option>
+                		                    <option value="6">6 Persone</option>
+            	        	                <option value="7">7 Persone</option>
+        	                	            <option value="8">8 Persone</option>
+    	                   	            	<option value="9">9 Persone</option>
+ 	                        	            <option value="10">10 Persone</option>
+                                	    	<option value="11">11 Persone</option>
+                                		    <option value="12">12 Persone</option>
+                            	        	<option value="13">13 Persone</option>
+   	    	                 	            <option value="14">14 Persone</option>
+    	                	                <option value="15">15 Persone</option>
+            	    	                    <option value="16">16 Persone</option>
+            		                        <option value="17">17 Persone</option>
+        	        	                    <option value="18">18 Persone</option>
+    	                	                <option value="19">19 Persone</option>
+	                        	            <option value="20">20 Persone</option>
+                            	        </select> 
+                            	        </div>
+                            	                              
+                                    
                                 </div>
                                 <div class="col-md-4 col-sm-6">
                                     <div class="form-group">
@@ -265,10 +293,16 @@
                                         </div>
                                     </div>
                                 </div>
+                                       </div> 
+                                       </div>
+                                                 <div id="OT_searchWrapper">
+                                <div id="OT_defList" class="row">
                                 <div class="col-md-12 col-sm-12">
                                     <div class="reservation-btn">
                                         <button type="submit" class="btn btn-default btn-lg" id="js-reservation-btn">Effetua Prenotazione</button>
                                         <div id="js-reservation-result" data-success-msg="Form submitted successfully." data-error-msg="Oops. Something went wrong."></div>
+                                    </div>
+                                    </div>
                                     </div>
                                 </div>
                             </div>

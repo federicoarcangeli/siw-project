@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet("/ProcessaPrenotazione")
+@WebServlet("/processaPrenotazione")
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -40,7 +40,7 @@ public class Controller extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Helper helper = new Helper();
 		Action action = new Action();
-		String nextPage = "/FormInserimento.jsp";
+		String nextPage = "/prenotazione.jsp";
 		if(helper.validate(request)){
 			nextPage=action.execute(request);
 		}

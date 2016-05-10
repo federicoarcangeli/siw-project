@@ -2,6 +2,9 @@ package it.uniroma3.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.validator.routines.DateValidator;
+import org.apache.commons.validator.routines.TimeValidator;
+
+import it.uniroma3.validator.Time24HoursValidator;
 public class Helper {
 
 	public Helper() {
@@ -19,8 +22,8 @@ public class Helper {
 		telefono = request.getParameter("telefono");
 		
 		DateValidator validator = new DateValidator();
-		
-		
+		Time24HoursValidator validatorTime = new Time24HoursValidator();
+
 		if(validator.validate(data)==null){
 			corretto=false;
 			request.setAttribute("dataError", "Formato data non valido");
@@ -32,6 +35,10 @@ public class Helper {
 		if(nome.equals("")){
 			corretto=false;
 			request.setAttribute("nomeError", "Nome Obbligatorio");
+		}
+		if(validatorTime.validate(ora)==null){
+			corretto=false;
+			request.setAttribute("oraError","formato non valido" );
 		}
 		if(ora.equals("")){
 			corretto=false;

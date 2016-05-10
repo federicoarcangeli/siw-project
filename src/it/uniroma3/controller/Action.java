@@ -1,13 +1,10 @@
 package it.uniroma3.controller;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.validator.routines.DateValidator;
 import it.uniroma3.project.model.Prenotazione;
+import it.uniroma3.validator.Time24HoursValidator;
 
 public class Action {
 
@@ -19,17 +16,13 @@ public class Action {
 		Prenotazione prenotazione = new Prenotazione();
 		Facade facade= new Facade();
 		DateValidator validator = new DateValidator();
-		DateFormat formatter = new SimpleDateFormat("hh:mm");
+		Time24HoursValidator validatorTime = new Time24HoursValidator();
 
 		//		HttpSession session = request.getSession();
 
 		prenotazione.setData(validator.validate(request.getParameter("data")));
 		prenotazione.setNome(request.getParameter("nome"));
-		try {
-			prenotazione.setOra(formatter.parse(request.getParameter("ora")));
-		} catch (ParseException e) {
-			prenotazione.setOra(null);
-		}
+		prenotazione.setOra(validatorTime.validate(request.getParameter("ora")));
 		prenotazione.setEmail(request.getParameter("email"));
 		prenotazione.setNumeroCoperti(Integer.parseInt(request.getParameter("ospiti")));
 		prenotazione.setTelefono(request.getParameter("telefono"));
