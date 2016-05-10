@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@NamedQuery(name = "Presentazione.findAll", query = "select p from presentazione p")
+@NamedQuery(name = "Prenotazione.findAll", query = "select p from Prenotazione p")
 public class Prenotazione {
 	
 	@Id

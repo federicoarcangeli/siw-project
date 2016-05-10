@@ -21,22 +21,22 @@ public class Time24HoursValidator{
 	}
 
 	/**
-	 * Validate time in 24 hours format with regular expression
-	 * @param time time address for validation
-	 * @return true valid time fromat, false invalid time format
+	 * Convalida dell'orario in formato 24 ore
+	 * @param l'orario da convalidare
+	 * @return true se l'orario è in formato 24 ore, false altrimenti
 	 */
 	public Date validate(String time){
-		Date ora=null;
+		Date hour=null;
 		if(time!=null){
 			matcher = pattern.matcher(time);
 			if (matcher.matches())
 				try {
-					ora= formatter.parse(time);
+					hour= formatter.parse(time);
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
 		}
-		return ora;
+		return hour;
 
 
 
