@@ -31,8 +31,13 @@ public class Ordine {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Operatore operatore;
 	
+<<<<<<< HEAD
 //	@ManyToMany(mappedBy = "ordini", fetch = FetchType.LAZY)
 //	private List<Tavolo> tavoli;
+=======
+	@ManyToMany(mappedBy = "ordini", fetch = FetchType.LAZY)
+	private List<Tavolo> tavoli;
+>>>>>>> branch 'master' of https://github.com/1federico1/siw-project.git
 	
 	
 	public Ordine() {
