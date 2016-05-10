@@ -1,15 +1,16 @@
 package it.uniroma3.project.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.validator.routines.DateValidator;
 
 import it.uniroma3.project.entity.Prenotazione;
 import it.uniroma3.validator.Time24HoursValidator;
 
-public class Action {
+public class PrenotazioneAction {
 
-	public Action() {
+	public PrenotazioneAction() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -19,7 +20,7 @@ public class Action {
 		DateValidator validator = new DateValidator();
 		Time24HoursValidator validatorTime = new Time24HoursValidator();
 
-		//		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 
 		prenotazione.setData(validator.validate(request.getParameter("data")));
 		prenotazione.setNome(request.getParameter("nome"));
@@ -29,8 +30,8 @@ public class Action {
 		prenotazione.setTelefono(request.getParameter("telefono"));
 
 		facade.inserisciPrenotazione(prenotazione);
-		request.setAttribute("prenotazione", prenotazione);
-		//		session.setAttribute("PRENOTAZIONE", prenotazione);
+
+		session.setAttribute("PRENOTAZIONE", prenotazione);
 
 		return "/conferma.jsp";
 	}

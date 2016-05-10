@@ -3,9 +3,9 @@ package it.uniroma3.project.controller;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.validator.routines.DateValidator;
 import it.uniroma3.validator.Time24HoursValidator;
-public class Helper {
+public class PrenotazioneHelper {
 
-	public Helper() {
+	public PrenotazioneHelper() {
 	}
 	
 	public boolean validate(HttpServletRequest request){

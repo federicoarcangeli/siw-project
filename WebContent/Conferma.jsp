@@ -198,7 +198,7 @@
                    			<p> <img class='animated zoomIn' src='img/check.png' alt='Tick' /> </p>
                    			<h2 class='animated fadeInUp'>Grazie!</h2>
                    			<p class='wow fadeInUp'>I tuoi dati sono stati  memorizzati all'interno del sistema,<br> riceverai presto una email riepilogativa! </p>
-               				<%--<%session.invalidate();%> --%>
+               				<%session.invalidate();%>
             			</div>
            			 </div>
        			 </div>

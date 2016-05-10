@@ -14,14 +14,14 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class Controller
  */
 @WebServlet("/processaPrenotazione")
-public class Controller extends HttpServlet {
+public class PrenotazioneController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public Controller() {
+	public PrenotazioneController() {
 		super();
 	}
 
@@ -30,8 +30,8 @@ public class Controller extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Helper helper = new Helper();
-		Action action = new Action();
+		PrenotazioneHelper helper = new PrenotazioneHelper();
+		PrenotazioneAction action = new PrenotazioneAction();
 		String nextPage = "/prenotazione.jsp";
 		if(helper.validate(request)){
 			nextPage=action.execute(request);
