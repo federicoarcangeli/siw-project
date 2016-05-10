@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name = "Descrizione.findAll", query = "select d from descrizione d")
+@NamedQuery(name = "DescrizionePiattofindAll", query = "select d from DescrizionePiatto d")
 public class DescrizionePiatto {
 	
 	@Id

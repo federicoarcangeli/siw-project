@@ -313,8 +313,7 @@ html {
 }
 
 .form-group input,
-.form-group textarea,
-.form-group select {
+.form-group textarea {
     border-radius: 0px;
     border: none !important;
     -webkit-box-shadow: none !important;

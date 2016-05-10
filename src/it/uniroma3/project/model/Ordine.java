@@ -31,8 +31,8 @@ public class Ordine {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Operatore operatore;
 	
-	@ManyToMany(mappedBy = "ordini", fetch = FetchType.LAZY)
-	private List<Tavolo> tavoli;
+//	@ManyToMany(mappedBy = "ordini", fetch = FetchType.LAZY)
+//	private List<Tavolo> tavoli;
 	
 	
 	public Ordine() {

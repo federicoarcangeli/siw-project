@@ -401,10 +401,10 @@ $(function() {
     //Datepicker
     if ($('#datepicker').length) {
         $("#datepicker").datepicker({
-            dateFormat: 'dd/mm/yy',
-            startDate: '',
+            dateFormat: 'mm/dd/yy',
+            startDate: '0',
             autoclose: true,
-            todayHighlight: false
+            todayHighlight: true
 
         });
     }

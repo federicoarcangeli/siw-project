@@ -22,5 +22,6 @@
 	<classpathentry kind="lib" path="C:/Program Files/Java/javax.servlet-3.0.0.v201112011016.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/postgresql-9.4.1208.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/apache-log4j-1.2.17/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/commons-validator-1.5.0/commons-validator-1.5.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

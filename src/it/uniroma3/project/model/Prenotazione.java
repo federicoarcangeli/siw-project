@@ -23,12 +23,18 @@ public class Prenotazione {
 	@Column(nullable = false)
 	private String nome;
 	
-	@Column(nullable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date timestamp;
+//	@Column(nullable = false)
+	@Temporal(TemporalType.DATE)
+	private Date data;
 	
+//	@Column(nullable = false)
+	@Temporal(TemporalType.TIME)
+	private Date ora;
+	
+	@Column(nullable = false)
 	private String email;
 	
+	@Column(nullable = false)
 	private String telefono;
 	
 	public Prenotazione() {
@@ -58,12 +64,20 @@ public class Prenotazione {
 		this.nome = nome;
 	}
 
-	public Date getTimestamp() {
-		return timestamp;
+	public Date getData() {
+		return data;
 	}
 
-	public void setTimestamp(Date timestamp) {
-		this.timestamp = timestamp;
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public Date getOra() {
+		return ora;
+	}
+
+	public void setOra(Date ora) {
+		this.ora = ora;
 	}
 
 	public String getEmail() {
@@ -91,7 +105,7 @@ public class Prenotazione {
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + numeroCoperti;
 		result = prime * result + ((telefono == null) ? 0 : telefono.hashCode());
-		result = prime * result + ((timestamp == null) ? 0 : timestamp.hashCode());
+		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		return result;
 	}
 
@@ -126,10 +140,10 @@ public class Prenotazione {
 				return false;
 		} else if (!telefono.equals(other.telefono))
 			return false;
-		if (timestamp == null) {
-			if (other.timestamp != null)
+		if (data == null) {
+			if (other.data != null)
 				return false;
-		} else if (!timestamp.equals(other.timestamp))
+		} else if (!data.equals(other.data))
 			return false;
 		return true;
 	}
