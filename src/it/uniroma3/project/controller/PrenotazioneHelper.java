@@ -27,15 +27,15 @@ public class PrenotazioneHelper {
 		}	
 		if(data.equals("")){
 			corretto=false;
-			request.setAttribute("dataError", "data obbigatoria");
+			request.setAttribute("dataError", "Data obbigatoria");
 		}
 		if(nome.equals("")){
 			corretto=false;
-			request.setAttribute("nomeError", "Nome Obbligatorio");
+			request.setAttribute("nomeError", "Nome obbligatorio");
 		}
 		if(validatorTime.validate(ora)==null){
 			corretto=false;
-			request.setAttribute("oraError","formato non valido" );
+			request.setAttribute("oraError","Formato ora non valido" );
 		}
 		if(ora.equals("")){
 			corretto=false;
@@ -43,15 +43,19 @@ public class PrenotazioneHelper {
 		}
 		if(email.equals("")){ // verifica email con @ 
 			corretto=false;
-			request.setAttribute("emailError", "email Obbligatorio");
+			request.setAttribute("emailError", "Email obbligatorio");
 		}
 		if(ospiti.equals("vuoto")){
 			corretto=false;
-			request.setAttribute("ospitiError", "Numero opsiti obbligatorio");
+			request.setAttribute("ospitiError", "Numero ospiti obbligatorio");
 		}
 		if(telefono.equals("")){
 			corretto=false;
 			request.setAttribute("telefonoError", "Telefono obbligatorio");
+			
+		if(corretto==false){
+			request.setAttribute("ERROR", "error");
+		}
 		}
 		return corretto;
 	}

@@ -228,34 +228,25 @@
 										<div class="col-md-4 col-sm-6">
 											<div class="form-group">
 												<label for="datepicker">Data</label>
-												<div <%if (request.getAttribute("dataError") != null) {%>
-													class="animated shake" <%}%>>
 													<input type="text" name="data" class="form-control"
 														id="datepicker" placeholder="Seleziona una data"
 														title="seleziona una data" value='${param["data"]}'>
-												</div>
 											</div>
 										</div>
 										<div class="col-md-4 col-sm-6">
 											<div class="form-group">
 												<label for="name">Nome</label>
-												<div <%if (request.getAttribute("nomeError") != null) {%>
-													class="animated shake" <%}%>>
 													<input type="text" class="form-control" id="nome"
 														name="nome" placeholder="Inserisci il tuo nome"
 														title="Inserisci il tuo nome" value='${param["nome"]}'>
-												</div>
 											</div>
 										</div>
 										<div class="col-md-4 col-sm-6">
 											<div class="form-group">
 												<label for="timepicker">Orario di arrivo</label>
-												<div <%if (request.getAttribute("oraError") != null) {%>
-													class="animated shake" <%}%>>
 													<input type="text" class="form-control" id="timepicker"
 														name="ora" placeholder="Seleziona l'orario di arrivo"
 														title="Seleziona un'ora di arrivo" value='${param["ora"]}'>
-												</div>
 											</div>
 										</div>
 									</div>
@@ -265,19 +256,14 @@
 										<div class="col-md-4 col-sm-6">
 											<div class="form-group">
 												<label for="email">Email</label>
-												<div <%if (request.getAttribute("emailError") != null) {%>
-													class="animated shake" <%}%>>
 													<input type="email" class="form-control" id="email"
 														name="email" placeholder="Email"
 														title="Inserisci la tua mail" value='${param["email"]}'>
-												</div>
 											</div>
 										</div>
 										<div id="OT_partySize" class="col-md-4 col-sm-6">
 											<div class="form-group">
 												<label for="ospiti">Numero di ospiti</label>
-												<div <%if (request.getAttribute("ospitiError") != null) {%>
-													class="animated shake" <%}%>>
 													<select name="ospiti" id="ospiti" class="feedFormField">
 														<option selected value="vuoto">Inserisci il
 															numero di Ospiti</option>
@@ -297,21 +283,16 @@
 														<option value="14">14 Persone</option>
 														<option value="15">15 Persone</option>
 													</select>
-												</div>
 											</div>
 										</div>
 										<div class="col-md-4 col-sm-6">
 											<div class="form-group">
 												<label for="phone">Cellulare</label>
-												<div
-													<%if (request.getAttribute("telefonoError") != null) {%>
-													class="animated shake" <%}%>>
 													<input type="text" class="form-control" id="phone"
 														name="telefono"
 														placeholder="Inserisci il tuo numero di telefono"
 														title="Inserisci il tuo numero di telefono"
 														value='${param["telefono"]}'>
-												</div>
 											</div>
 										</div>
 									</div>
@@ -320,11 +301,12 @@
 									<div id="OT_defList" class="row">
 										<div class="col-md-12 col-sm-12">
 											<div class="reservation-btn">
-												<button type="submit" class="btn btn-default btn-lg"
-													id="js-reservation-btn">Effetua Prenotazione</button>
-												<div id="js-reservation-result"
-													data-success-msg="Form submitted successfully."
-													data-error-msg="Oops. Something went wrong."></div>
+												<button type="submit" class="btn btn-default btn-lg" id="">Effetua Prenotazione</button>
+												<% if(request.getAttribute("ERROR") !=null) { %>
+													<div class="animated fadeInDown">
+														<div class="alert alert-error"> <span> ERROR: </span>${dataError} ${nomeError} ${oraError} ${emailError} ${telefonoError} ${ospitiError} </div>
+													</div>
+												<%} %>
 											</div>
 										</div>
 									</div>
