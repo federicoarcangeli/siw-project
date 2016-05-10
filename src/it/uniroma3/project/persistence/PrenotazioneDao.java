@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-import it.uniroma3.project.model.Prenotazione;
+import it.uniroma3.project.entity.Prenotazione;
 
 public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 

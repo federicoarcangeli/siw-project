@@ -1,4 +1,4 @@
-package it.uniroma3.project.model;
+package it.uniroma3.project.entity;
 
 import java.util.Date;
 import java.util.List;
