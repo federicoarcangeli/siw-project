@@ -58,16 +58,7 @@
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="./index.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="./index.html">Home - Image</a></li>
-                                    <li><a href="./index_slider.html">Home - Header Slider</a></li>
-                                    <li><a href="./index_video.html">Home - Video Background</a></li>
-                                    <li><a href="./index_parallax.html">Home - Parallax</a></li>
-                                    <li><a href="./index_animation.html">Home - Scroll Animation</a></li>
-                                </ul>
-                            </li>
+                           <li><a href="./index_parallax.html">Home</a></li>
                             <li class="dropdown">
                                 <a href="./menu_all.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
                                 <ul class="dropdown-menu">

@@ -27,16 +27,17 @@ public class Time24HoursValidator{
 	 */
 	public Date validate(String time){
 		Date ora=null;
-
-		matcher = pattern.matcher(time);
-		if (matcher.matches())
-			try {
-				ora= formatter.parse(time);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
+		if(time!=null){
+			matcher = pattern.matcher(time);
+			if (matcher.matches())
+				try {
+					ora= formatter.parse(time);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+		}
 		return ora;
-			
+
 
 
 	}

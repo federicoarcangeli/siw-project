@@ -58,16 +58,7 @@
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="./index.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="./index.html">Home - Image</a></li>
-                                    <li><a href="./index_slider.html">Home - Header Slider</a></li>
-                                    <li><a href="./index_video.html">Home - Video Background</a></li>
-                                    <li><a href="./index_parallax.html">Home - Parallax</a></li>
-                                    <li><a href="./index_animation.html">Home - Scroll Animation</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="./index_parallax.html">Home</a></li>
                             <li class="dropdown">
                                 <a href="./menu_all.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
@@ -187,7 +178,7 @@
             </nav>
 
             <!-- Page Header -->
-            <section class="page_header">
+<!--             <section class="page_header">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-center">
@@ -196,7 +187,9 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
+            
+            <section class='page_header vertical-padding'></section>
 
             <!-- Reservations page-->
             <section class="reservation">
@@ -210,99 +203,93 @@
                     </div>
                     <div class="reservation-form">
                         <form action="processaPrenotazione" method="post">
-                                  <div id="OT_searchWrapper">
-                                <div id="OT_defList" class="row">
-                            <div class="row">
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="datepicker">Data</label>
-                                        	 <div <%if (request.getAttribute("dataError") != null) {%> class="animated shake" <%}%>>
-                                       			 <input type="text" name="data" class="form-control" id="datepicker" placeholder="seleziona una data" title="seleziona una data" value='${param["data"]}'>
-                                      			 <!--  <i class="fa fa-calendar-o"></i>-->  <!-- -->
-                                      	     </div>
-                                    </div>
+                        	<div id="OT_searchWrapper">
+                            	<div id="OT_defList" class="row">
+                            		<div class="row">
+                                		<div class="col-md-4 col-sm-6">
+                                    		<div class="form-group">
+                                       			<label for="datepicker">Data</label>
+                                        	 	<div <%if (request.getAttribute("dataError") != null) {%> class="animated shake" <%}%>>
+                                       				<input type="text" name="data" class="form-control" id="datepicker" placeholder="Seleziona una data" title="seleziona una data" value='${param["data"]}'>
+                                      				 <!--  <i class="fa fa-calendar-o"></i>-->  <!-- -->
+                                      	     	</div>
+                                   			 </div>
+                                		</div>
+                                		<div class="col-md-4 col-sm-6">
+                                    		<div class="form-group">
+                                        		<label for="name">Nome</label>
+                                            	<div <%if (request.getAttribute("nomeError") != null) {%> class="animated shake" <%}%>>
+                                    		   		<input type="text" class="form-control" id="nome" name="nome" placeholder="Inserisci il tuo nome" title="Inserisci il tuo nome" value='${param["nome"]}'>
+                                        			<!--i class="fa fa-pencil-square-o"></i> -->
+                                        		</div>	
+                                    		</div>
+                                		</div>
+                                		<div class="col-md-4 col-sm-6">
+                                    		<div class="form-group">
+                                        		<label for="timepicker">Orario di Arrivo</label>
+                                        		<div <%if (request.getAttribute("oraError") != null) {%> class="animated shake" <%}%>>
+                                        			<input type="text" class="form-control" id="timepicker" name="ora" placeholder="Seleziona l'orario di arrivo" title="Seleziona un'ora di arrivo" value='${param["ora"]}'>
+                                        			<!--<i class="fa fa-clock-o"></i> -->
+                                      			</div>
+                                    		</div>
+                                		</div>
+                                	</div>
                                 </div>
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="name">Nome</label>
-                                            <div <%if (request.getAttribute("nomeError") != null) {%> class="animated shake" <%}%>>
-                                    		    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" title="inserisci il tuo nome" value='${param["nome"]}'>
-                                        		<!--i class="fa fa-pencil-square-o"></i> -->
-                                        	</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="timepicker">Ora di Arrivo</label>
-                                        <div <%if (request.getAttribute("oraError") != null) {%> class="animated shake" <%}%>>
-                                        	<input type="text" class="form-control" id="timepicker" name="ora" placeholder="Seleziona un'ora di arrivo" title="Seleziona un'ora di arrivo" value='${param["ora"]}'>
-                                        	<!--<i class="fa fa-clock-o"></i> -->
-                                      	</div>
-                                    </div>
-                                </div>
-                                </div>
-                                </div>
-                                                                 <div id="OT_searchWrapper">
-                                <div id="OT_defList" class="row">
-                                	<div class="col-md-4 col-sm-6">
-                                    	<div class="form-group">
-                                        	<label for="email">Email Address</label>
-                                        	<div <%if (request.getAttribute("emailError") != null) {%> class="animated shake" <%}%>>
-                                       		   <input type="email" class="form-control" id="email" name="email" placeholder="Email" title="Inserisci una tua mail" value='${param["email"]}'>
-                                     	   	   <!--<i class="fa fa-envelope-o"></i> -->
-                                     	</div>
-                                    </div>
-                                </div>
-
-                                <div id="OT_partySize" class="col-md-4 col-sm-6">
-                                    <div class="form-group">
-                                    	<label for="ospiti">Numero di Ospiti</label>	
-                                  	    <select name="ospiti" class="feedFormField" >
-                                   			<option selected disabled>Numero di ospiti?</option>
-	                                    	<option value="1">1 Persona</option>
-    	                            	    <option value="2">2 Persone</option>
-        	                    	        <option value="3">3 Persone</option>
-            	            	            <option value="4">4 Persone</option>
-                	    	                <option value="5">5 Persone</option>
-                		                    <option value="6">6 Persone</option>
-            	        	                <option value="7">7 Persone</option>
-        	                	            <option value="8">8 Persone</option>
-    	                   	            	<option value="9">9 Persone</option>
- 	                        	            <option value="10">10 Persone</option>
-                                	    	<option value="11">11 Persone</option>
-                                		    <option value="12">12 Persone</option>
-                            	        	<option value="13">13 Persone</option>
-   	    	                 	            <option value="14">14 Persone</option>
-    	                	                <option value="15">15 Persone</option>
-            	    	                    <option value="16">16 Persone</option>
-            		                        <option value="17">17 Persone</option>
-        	        	                    <option value="18">18 Persone</option>
-    	                	                <option value="19">19 Persone</option>
-	                        	            <option value="20">20 Persone</option>
-                            	        </select> 
-                            	        </div>
-                            	                              
-                                    
-                                </div>
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="form-group">
-                                        <label for="phone">Cellulare</label>
-                                        <div <%if (request.getAttribute("telefonoError") != null) {%> class="animated shake" <%}%>>
-                                      		<input type="text" class="form-control" id="phone" name="telefono" placeholder="Inserisci il tuo numero di telefono" title="Inserisci il tuo numero di telefono" value='${param["telefono"]}'>
-                                        	<!--<i class="fa fa-phone"></i> -->
-                                        </div>
-                                    </div>
-                                </div>
-                                       </div> 
-                                       </div>
-                                                 <div id="OT_searchWrapper">
-                                <div id="OT_defList" class="row">
-                                <div class="col-md-12 col-sm-12">
-                                    <div class="reservation-btn">
-                                        <button type="submit" class="btn btn-default btn-lg" id="js-reservation-btn">Effetua Prenotazione</button>
-                                        <div id="js-reservation-result" data-success-msg="Form submitted successfully." data-error-msg="Oops. Something went wrong."></div>
-                                    </div>
-                                    </div>
+                                <div id="OT_searchWrapper">
+                                	<div id="OT_defList" class="row">
+                                		<div class="col-md-4 col-sm-6">
+                                    		<div class="form-group">
+                                        		<label for="email">Email</label>
+                                        		<div <%if (request.getAttribute("emailError") != null) {%> class="animated shake" <%}%>>
+                                       		  		<input type="email" class="form-control" id="email" name="email" placeholder="Email" title="Inserisci la tua mail" value='${param["email"]}'>
+                                     	   	   		<!--<i class="fa fa-envelope-o"></i> -->
+                                     			</div>
+                                    		</div>
+                                		</div>
+                                		<div id="OT_partySize" class="col-md-4 col-sm-6">
+                                    		<div class="form-group">
+                                    			<label for="ospiti">Numero di Ospiti</label>
+												<div <%if (request.getAttribute("ospitiError") != null) {%> class="animated shake" <%}%>>	
+    	                              	   			<select name="ospiti" id="ospiti" class="feedFormField" >	
+    	                              	   				<option selected value="vuoto">Inserisci il numero di Ospiti</option>
+	        	                        		    	<option value="1">1 Persona</option>
+    	        	                   	    			<option value="2">2 Persone</option>
+        	        	                    			<option value="3">3 Persone</option>
+            	        	              				<option value="4">4 Persone</option>
+ 				               	    	                <option value="5">5 Persone</option>
+                					                    <option value="6">6 Persone</option>
+            	       					                <option value="7">7 Persone</option>
+        	               	        				    <option value="8">8 Persone</option>
+   			 	                  	    	        	<option value="9">9 Persone</option>
+ 	            		            	    	        <option value="10">10 Persone</option>
+                           			    	    		<option value="11">11 Persone</option>
+                       		       					    <option value="12">12 Persone</option>
+                   					       	        	<option value="13">13 Persone</option>
+   	   	                 	    				        <option value="14">14 Persone</option>
+                    	            	    			<option value="15">15 Persone</option>
+                            	        			</select> 
+                            	        		</div>
+                            	        	</div>
+                            	     	</div>
+                                		<div class="col-md-4 col-sm-6">
+                                    		<div class="form-group">
+                                        		<label for="phone">Cellulare</label>
+                                        		<div <%if (request.getAttribute("telefonoError") != null) {%> class="animated shake" <%}%>>
+                                      				<input type="text" class="form-control" id="phone" name="telefono" placeholder="Inserisci il tuo numero di cellulare" title="Inserisci il tuo numero di telefono" value='${param["telefono"]}'>
+                                        			<!--<i class="fa fa-phone"></i> -->
+                                       			</div>
+                                    		</div>
+                                		</div>
+									</div> 
+								</div>
+                                <div id="OT_searchWrapper">
+                                	<div id="OT_defList" class="row">
+                               			<div class="col-md-12 col-sm-12">
+                                    		<div class="reservation-btn">
+                                        		<button type="submit" class="btn btn-default btn-lg" id="js-reservation-btn">Effetua Prenotazione</button>
+                                        		<div id="js-reservation-result" data-success-msg="Form submitted successfully." data-error-msg="Oops. Something went wrong."></div>
+                                    		</div>
+                                    	</div>
                                     </div>
                                 </div>
                             </div>
@@ -314,7 +301,6 @@
                     </div>
                 </div>
             </section>
-
             <!-- subscribe -->
             <section class="subscribe">
                 <div class="container">

@@ -2,8 +2,6 @@ package it.uniroma3.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.validator.routines.DateValidator;
-import org.apache.commons.validator.routines.TimeValidator;
-
 import it.uniroma3.validator.Time24HoursValidator;
 public class Helper {
 
@@ -48,7 +46,7 @@ public class Helper {
 			corretto=false;
 			request.setAttribute("emailError", "email Obbligatorio");
 		}
-		if(ospiti.equals("")){
+		if(ospiti.equals("vuoto")){
 			corretto=false;
 			request.setAttribute("ospitiError", "Numero opsiti obbligatorio");
 		}
