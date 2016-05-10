@@ -43,10 +43,10 @@ public class Controller extends HttpServlet {
 		String nextPage = "/FormInserimento.jsp";
 		if(helper.validate(request)){
 			nextPage=action.execute(request);
-			nextPage=response.encodeURL(nextPage);
-			ServletContext application  = getServletContext();
-			RequestDispatcher rd = application.getRequestDispatcher(nextPage);
-			rd.forward(request, response);
 		}
+		nextPage=response.encodeURL(nextPage);
+		ServletContext application  = getServletContext();
+		RequestDispatcher rd = application.getRequestDispatcher(nextPage);
+		rd.forward(request, response);
 	}
 }

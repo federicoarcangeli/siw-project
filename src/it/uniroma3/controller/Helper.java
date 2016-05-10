@@ -18,13 +18,13 @@ public class Helper {
 		ospiti = request.getParameter("ospiti");
 		telefono = request.getParameter("telefono");
 		
-//		DateValidator validator = new DateValidator();
+		DateValidator validator = new DateValidator();
 		
 		
-//		if(validator.validate(data)==null){
-//			corretto=false;
-//			request.setAttribute("dataError", "Formato data non valido");
-//		}	
+		if(validator.validate(data)==null){
+			corretto=false;
+			request.setAttribute("dataError", "Formato data non valido");
+		}	
 		if(data.equals("")){
 			corretto=false;
 			request.setAttribute("dataError", "data obbigatoria");
@@ -39,7 +39,7 @@ public class Helper {
 		}
 		if(email.equals("")){ // verifica email con @ 
 			corretto=false;
-			request.setAttribute("emailError", "Cognome Obbligatorio");
+			request.setAttribute("emailError", "email Obbligatorio");
 		}
 		if(ospiti.equals("")){
 			corretto=false;
@@ -49,7 +49,6 @@ public class Helper {
 			corretto=false;
 			request.setAttribute("telefonoError", "Telefono obbligatorio");
 		}
-		
 		return corretto;
 	}
 
