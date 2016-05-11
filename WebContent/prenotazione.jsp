@@ -270,6 +270,7 @@
 												<% if(request.getAttribute("ERROR") !=null) { %>
 													<div class="animated fadeInDown">
 														<div class="alert alert-error"> <span> ERRORE: </span>${dataError} ${nomeError} ${oraError} ${emailError} ${telefonoError} ${ospitiError} </div>
+
 													</div>
 												<%} %>
 											</div>
