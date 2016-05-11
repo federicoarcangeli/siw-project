@@ -1,4 +1,4 @@
-package it.uniroma3.project.controller;
+package it.uniroma3.project.controller.helper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
