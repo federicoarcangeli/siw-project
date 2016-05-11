@@ -9,10 +9,10 @@ import javax.servlet.http.HttpSession;
 import it.uniroma3.project.controller.facade.Facade;
 import it.uniroma3.project.entity.DescrizionePiatto;
 
-public class DescrizionePiattoAction {
+public class PiattoAction {
 	private List<DescrizionePiatto> descrizioni;
 	
-	public DescrizionePiattoAction() {
+	public PiattoAction() {
 		this.descrizioni = new ArrayList<DescrizionePiatto>();
 	}
 

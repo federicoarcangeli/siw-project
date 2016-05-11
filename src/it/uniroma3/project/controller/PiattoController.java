@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class DescrizionePiattoController
  */
 @WebServlet("/ProcessaDescrizionePiatto")
-public class DescrizionePiattoController extends HttpServlet {
+public class PiattoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public DescrizionePiattoController() {
+    public PiattoController() {
         
     }
 
@@ -29,8 +29,9 @@ public class DescrizionePiattoController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DescrizionePiattoHelper helper = new DescrizionePiattoHelper();
-		DescrizionePiattoAction action = new DescrizionePiattoAction();
+		PiattoHelper helper = new PiattoHelper();
+		PiattoAction action = new PiattoAction();
+		
 		String nextPage = "/inserimentoPiatti.jsp";
 		if(helper.validate(request)) {
 			nextPage = action.execute(request);
