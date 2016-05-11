@@ -3,6 +3,7 @@ package it.uniroma3.project.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,9 @@ public class Piatto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@Column(nullable = false)
+	private String nome;
 
 	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, fetch = FetchType.EAGER)
 	private DescrizionePiatto descrizionePiatto;
@@ -63,6 +67,10 @@ public class Piatto {
 
 	public void setPortata(Portata portata) {
 		this.portata = portata;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	@Override

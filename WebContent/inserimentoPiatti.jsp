@@ -76,7 +76,7 @@
 						</div>
 					</div>
 					<div class="reservation-form">
-						<form action="processaPrenotazione" method="post">
+						<form action="processaPiatto" method="post">
 									<div class="row">
 
 										<div class="col-md-6 col-sm-6">
