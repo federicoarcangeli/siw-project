@@ -1,4 +1,4 @@
-package it.uniroma3.project.controller;
+package it.uniroma3.project.controller.facade;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
