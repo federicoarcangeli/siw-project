@@ -65,7 +65,7 @@
 
 			<section class='page_header vertical-padding'></section>
 
-			<!-- Reservations page-->
+			<!-- Inserimento Piatti page-->
 			<section class="reservation">
 				<div class="container">
 					<div class="row">
@@ -76,153 +76,228 @@
 						</div>
 					</div>
 					<div class="reservation-form">
-						<form action="processaPiatto" method="post">
-									<div class="row">
+						<form action="processaPrenotazione" method="post">
+							<!-- Tabs -->
+							<div class="element-tab">
+								<!-- Nav tabs -->
+								<ul class="nav nav-tabs" role="tablist">
+									<li class="active"><a href="#categoria" role="tab"
+										data-toggle="tab"> Categoria piatto </a></li>
+									<li><a href="#allergeni" role="tab" data-toggle="tab">
+											Allergeni </a></li>
+									<li><a href="#descrizione" role="tab" data-toggle="tab">
+											Descrizione </a></li>
+								</ul>
+								<!-- Tab panes -->
+								<div class="tab-content">
+									<div class="tab-pane fade active in" id="categoria">
+										<div class="col-md-12">
+											<div id="OT_searchWrapper">
+												<div id="OT_defList" class="">
+													<div id="OT_partySize" class="">
+														<div class="form-group">
+															<select name="categoria" id="tipologia"
+																class="feedFormField">
+																<option selected value="vuoto">Inserisci la
+																	categoria</option>
+																<option value="1">Prova</option>
+																<option value="2">Prova</option>
+															</select>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="allergeni">
+										<div class="col-md-12">
+											<div id="OT_searchWrapper">
+												<div id="OT_defList" class="">
+													<div id="OT_partySize" class="">
+														<div class="form-group">
+															<div id="OT_partySize" class="col-md-4 col-sm-6">
+																<label> funghi</label> <INPUT TYPE=CHECKBOX
+																	NAME="mushrooms">
+															</div>
+															<div id="OT_partySize" class="col-md-4 col-sm-6">
+																<label> funghi</label> <INPUT TYPE=CHECKBOX
+																	NAME="mushrooms">
+															</div>
+															<div id="OT_partySize" class="col-md-4 col-sm-6">
+																<label> funghi</label> <INPUT TYPE=CHECKBOX
+																	NAME="mushrooms">
+															</div>
+															<div id="OT_partySize" class="col-md-4 col-sm-6">
+																<label> funghi</label> <INPUT TYPE=CHECKBOX
+																	NAME="mushrooms">
+															</div>
+															<div id="OT_partySize" class="col-md-4 col-sm-6">
+																<label> funghi</label> <INPUT TYPE=CHECKBOX
+																	NAME="mushrooms">
+															</div>
+															<div id="OT_partySize" class="col-md-4 col-sm-6">
+																<label> funghi</label> <INPUT TYPE=CHECKBOX
+																	NAME="mushrooms">
+															</div>
+														</div>
+														<div id="OT_partySize" class="col-md-4 col-sm-6">
+															<div class="form-group">
+																<div class="checkbox">
+																	<label> Prodotti surgelati</label> <input
+																		type="checkbox" name="surgelati">
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="descrizione">
+										<div class="row">
+											<div class="col-md-6 col-sm-6">
+												<div class="form-group">
+													<label for="name">Nome</label> <input type="text"
+														class="form-control" id="nome" name="nome"
+														placeholder="Inserisci il tuo nome"
+														title="Inserisci il tuo nome" value='${param["nome"]}'>
+												</div>
+											</div>
+											<div class="col-md-6 col-sm-6">
+												<div class="form-group">
+													<label for="url">immagine</label> <input type="file"
+														name="immagine">
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6 col-sm-6">
+												<div class="form-group">
+													<label for="descrizione">Descrizione</label>
+													<textarea class="form-control" id="descrizione"
+														placeholder="Inserisci la descrizione del piatto " rows=""
+														name="descrizione">${param["descrizione"]}</textarea>
 
-										<div class="col-md-6 col-sm-6">
-											<div class="form-group">
-												<label for="name">Nome</label> <input type="text"
-													class="form-control" id="nome" name="nome"
-													placeholder="Inserisci il tuo nome"
-													title="Inserisci il tuo nome" value='${param["nome"]}'>
+												</div>
 											</div>
-										</div>
-										<div class="col-md-6 col-sm-6">
-											<div class="form-group">
-												<label for="url">Url immagine</label> <input type="text"
-													class="form-control" id="url" name="url"
-													placeholder="Inserisci un indirizzo web per l'immagine"
-													title="Inserisci url per l'immagine"
-													value='${param["url"]}'>
+											<div class="col-md-6 col-sm-6">
+												<div class="form-group">
+													<label for="prezzo">Prezzo</label> <input type="text"
+														class="form-control" id="prezzo" name="prezzo"
+														placeholder="Inserisci il prezzo"
+														title="Inserisci il prezzo del piatto"
+														value='${param["prezzo"]}'>
+												</div>
 											</div>
-										</div>
-									</div>
-								<div class="row">
-									<div class="col-md-6 col-sm-6">
-										<div class="form-group">
-											<label for="descrizione">Descrizione</label> <input
-												type="descrizione" class="form-control" id="descrizione"
-												name="descrizione" placeholder="Descrizione del piatto"
-												title="Inserisci la descrizione"
-												value='${param["descrizione"]}'>
-										</div>
-									</div>
-									<div class="col-md-6 col-sm-6">
-										<div class="form-group">
-											<label for="prezzo">Prezzo</label> <input type="text"
-												class="form-control" id="prezzo" name="prezzo"
-												placeholder="Inserisci il prezzo"
-												title="Inserisci il prezzo del piatto"
-												value='${param["prezzo"]}'>
+
 										</div>
 									</div>
 								</div>
-							
+							</div>
+
 							<div id="OT_searchWrapper">
 								<div id="OT_defList" class="row">
 									<div class="col-md-12 col-sm-12">
 										<div class="reservation-btn">
-											<button type="submit" class="btn btn-default btn-lg" id="">Inserisci
+											<button type="submit" class="btn btn-default btn-lg">Inserisci
 												il piatto</button>
-											<% if(request.getAttribute("ERROR") !=null) { %>
+											<%
+												if (request.getAttribute("ERROR") != null) {
+											%>
 											<div class="animated fadeInDown">
 												<div class="alert alert-error">
 													<span> ERRORE: </span>
 												</div>
 											</div>
-											<%} %>
+											<%
+												}
+											%>
 										</div>
 									</div>
 								</div>
 							</div>
-					</form>
+						</form>
+					</div>
 				</div>
-				<div class="reservation-footer">
-					<p>
-						Puoi contattarci anche al: <strong>+1 224 6787 004</strong> per
-						effettuare una prenotazione.
-					</p>
-					<span></span>
-				</div>
-		
-		</section>
+			</section>
 
-		<!-- Footer-->
-		<section class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 col-sm-12">
-						<h1>Dicono di noi</h1>
-						<p></p>
-						<a href="./about.html">Read more &rarr;</a>
-					</div>
-					<div class="col-md-4  col-sm-6">
-						<h1>Recent post</h1>
-						<div class="footer-blog clearfix">
-							<a href="./blog_right_sidebar.html"> <img
-								src="img/thumb8.png" class="img-responsive footer-photo"
-								alt="blog photos">
-								<p class="footer-blog-text">Hand picked ingredients for our
-									best customers</p>
-								<p class="footer-blog-date">29 may 2015</p>
-							</a>
-						</div>
-						<div class="footer-blog clearfix last">
-							<a href="./blog_right_sidebar.html"> <img
-								src="img/thumb9.png" class="img-responsive footer-photo"
-								alt="blog photos">
-								<p class="footer-blog-text">Daily special foods that you
-									will going to love</p>
-								<p class="footer-blog-date">29 may 2015</p>
-							</a>
-						</div>
-					</div>
-					<div class="col-md-4  col-sm-6">
-						<h1>Seguici sui social!</h1>
-						<div class="footer-social-icons">
-							<a href="http://www.facebook.com"> <i
-								class="fa fa-facebook-square"></i>
-							</a> <a href="http://www.twitter.com"> <i class="fa fa-twitter"></i>
-							</a> <a href="http://plus.google.com"> <i class="fa fa-google"></i>
-							</a> <a href="http://www.youtube.com"> <i
-								class="fa fa-youtube-play"></i>
-							</a> <a href="http://www.vimeo.com"> <i class="fa fa-vimeo"></i>
-							</a> <a href="http://www.pinterest.com"> <i
-								class="fa fa-pinterest-p"></i>
-							</a> <a href="http://www.linkedin.com"> <i class="fa fa-linkedin"></i>
-							</a>
-						</div>
-						<div class="footer-address">
-							<p>
-								<i class="fa fa-map-marker"></i>28 Seventh Avenue, Neew York,
-								10014
-							</p>
-							<p>
-								<i class="fa fa-phone"></i>Phone: (415) 124-5678
-							</p>
-							<p>
-								<i class="fa fa-envelope-o"></i>support@restaurant.com
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Footer - Copyright -->
-			<div class="footer-copyrights">
+			<!-- Footer-->
+			<section class="footer">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-12">
-							<p>
-								<i class="fa fa-copyright"></i> 2016. Copyright. Designed with <i
-									class="fa fa-heart primary-color"></i>
-							</p>
+						<div class="col-md-4 col-sm-12">
+							<h1>Dicono di noi</h1>
+							<p></p>
+							<a href="./about.html">Read more &rarr;</a>
+						</div>
+						<div class="col-md-4  col-sm-6">
+							<h1>Recent post</h1>
+							<div class="footer-blog clearfix">
+								<a href="./blog_right_sidebar.html"> <img
+									src="img/thumb8.png" class="img-responsive footer-photo"
+									alt="blog photos">
+									<p class="footer-blog-text">Hand picked ingredients for our
+										best customers</p>
+									<p class="footer-blog-date">29 may 2015</p>
+								</a>
+							</div>
+							<div class="footer-blog clearfix last">
+								<a href="./blog_right_sidebar.html"> <img
+									src="img/thumb9.png" class="img-responsive footer-photo"
+									alt="blog photos">
+									<p class="footer-blog-text">Daily special foods that you
+										will going to love</p>
+									<p class="footer-blog-date">29 may 2015</p>
+								</a>
+							</div>
+						</div>
+						<div class="col-md-4  col-sm-6">
+							<h1>Seguici sui social!</h1>
+							<div class="footer-social-icons">
+								<a href="http://www.facebook.com"> <i
+									class="fa fa-facebook-square"></i>
+								</a> <a href="http://www.twitter.com"> <i class="fa fa-twitter"></i>
+								</a> <a href="http://plus.google.com"> <i class="fa fa-google"></i>
+								</a> <a href="http://www.youtube.com"> <i
+									class="fa fa-youtube-play"></i>
+								</a> <a href="http://www.vimeo.com"> <i class="fa fa-vimeo"></i>
+								</a> <a href="http://www.pinterest.com"> <i
+									class="fa fa-pinterest-p"></i>
+								</a> <a href="http://www.linkedin.com"> <i
+									class="fa fa-linkedin"></i>
+								</a>
+							</div>
+							<div class="footer-address">
+								<p>
+									<i class="fa fa-map-marker"></i>28 Seventh Avenue, Neew York,
+									10014
+								</p>
+								<p>
+									<i class="fa fa-phone"></i>Phone: (415) 124-5678
+								</p>
+								<p>
+									<i class="fa fa-envelope-o"></i>support@restaurant.com
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
-	</div>
+
+				<!-- Footer - Copyright -->
+				<div class="footer-copyrights">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<p>
+									<i class="fa fa-copyright"></i> 2016. Copyright. Designed with
+									<i class="fa fa-heart primary-color"></i>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
 
 	</div>
 
