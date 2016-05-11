@@ -76,7 +76,7 @@
 						</div>
 					</div>
 					<div class="reservation-form">
-						<form action="processaPrenotazione" method="post">
+						<form action=processaPiatto method="post">
 							<!-- Tabs -->
 							<div class="element-tab">
 								<!-- Nav tabs -->

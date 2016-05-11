@@ -23,6 +23,7 @@ public class PiattoHelper {
 			session.setAttribute("descrizioneError", descrizioneError);
 		}
 		
+		/*da mettere in metodo validator per double */
 		try {
 			Double.parseDouble(prezzo);
 		} catch(NumberFormatException e) {
