@@ -304,7 +304,7 @@
 												<button type="submit" class="btn btn-default btn-lg" id="">Effetua Prenotazione</button>
 												<% if(request.getAttribute("ERROR") !=null) { %>
 													<div class="animated fadeInDown">
-														<div class="alert alert-error"> <span> ERROR: </span>${dataError} ${nomeError} ${oraError} ${emailError} ${telefonoError} ${ospitiError} </div>
+														<div class="alert alert-error"> <span> ERROR: </span> ${dataError} ${nomeError} ${oraError} ${emailError} ${telefonoError} ${ospitiError} </div>
 													</div>
 												<%} %>
 											</div>
