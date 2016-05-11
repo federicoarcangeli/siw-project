@@ -11,34 +11,34 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Controller
+ * Servlet implementation class DescrizionePiattoController
  */
-@WebServlet("/processaPrenotazione")
-public class PrenotazioneController extends HttpServlet {
+@WebServlet("/ProcessaDescrizionePiatto")
+public class DescrizionePiattoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public PrenotazioneController() {
-
-	}
+    /**
+     * Default constructor. 
+     */
+    public DescrizionePiattoController() {
+        
+    }
 
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrenotazioneHelper helper = new PrenotazioneHelper();
-		PrenotazioneAction action = new PrenotazioneAction();
-		String nextPage = "/prenotazione.jsp";
-		if(helper.validate(request)){
-			nextPage=action.execute(request);
+		DescrizionePiattoHelper helper = new DescrizionePiattoHelper();
+		DescrizionePiattoAction action = new DescrizionePiattoAction();
+		String nextPage = "/inserimentoPiatti.jsp";
+		if(helper.validate(request)) {
+			nextPage = action.execute(request);
 		}
-		nextPage=response.encodeURL(nextPage);
-		ServletContext application  = getServletContext();
+		nextPage = response.encodeURL(nextPage);
+		ServletContext application = getServletContext();
 		RequestDispatcher rd = application.getRequestDispatcher(nextPage);
 		rd.forward(request, response);
 	}
+
 }

@@ -3,8 +3,10 @@ package it.uniroma3.project.controller.facade;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import it.uniroma3.project.entity.DescrizionePiatto;
 import it.uniroma3.project.entity.Prenotazione;
 import it.uniroma3.project.persistence.AbstractDao;
+import it.uniroma3.project.persistence.DescrizionePiattoDao;
 import it.uniroma3.project.persistence.PrenotazioneDao;
 
 public class Facade {
@@ -20,6 +22,14 @@ public class Facade {
 		prenotazioneDao.save(prenotazione);
 	
 		emf.close();
+	}
+	
+	public void inserisciDescrizione(DescrizionePiatto descrizione) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
+		DescrizionePiattoDao descrizionePiattoDao = new DescrizionePiattoDao(emf);
+		descrizionePiattoDao.save(descrizione);
+		emf.close();
+		
 	}
 
 }

@@ -63,14 +63,7 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="./index_parallax.html">Home</a></li>
 							<li class="dropdown">
-								<!--                                 <a href="./menu_all.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a> -->
-								<!--                                 <ul class="dropdown-menu"> -->
-								<!--                                     <li><a href="./menu_list.html">Menu - List</a></li> -->
-								<!--                                     <li><a href="./menu_overlay.html">Menu - Overlay</a></li> -->
-								<!--                                     <li><a href="./menu_tile.html">Menu - Tile</a></li> -->
-								<!--                                     <li><a href="./menu_grid.html">Menu - Grid</a></li> -->
-								<!--                                     <li><a href="./menu_all.html">Menu All</a></li> -->
-								<!--                                 </ul> --> <!--                             </li> -->
+					                            
 							<li><a href="./prenotazione.jsp">Prenotazioni</a></li>
 							<li class="dropdown"><a href="./about.html"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -83,23 +76,7 @@
 									<li><a href="./shop_account.html">Login / Signup</a></li>
 									<li><a href="./404.html">404 Page</a></li>
 								</ul></li>
-							<!--                             <li class="dropdown"> -->
-							<!--                                 <a href="./recipe.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recipe<span class="caret"></span></a> -->
-							<!--                                 <ul class="dropdown-menu"> -->
-							<!--                                     <li><a href="./recipe.html">Recipe - 2Col</a></li> -->
-							<!--                                     <li><a href="./recipe_3col.html">Recipe - 3Col</a></li> -->
-							<!--                                     <li><a href="./recipe_4col.html">Recipe - 4Col</a></li> -->
-							<!--                                     <li><a href="./recipe_masonry.html">Recipe - Masonry</a></li> -->
-							<!--                                     <li> -->
-							<!--                                         <a href="./recipe_detail-image.html">Recipe - Single <span class="caret-right"></span></a> -->
-							<!--                                         <ul class="dropdown-menu"> -->
-							<!--                                             <li><a href="./recipe_detail-image.html">Recipe - Image</a></li> -->
-							<!--                                             <li><a href="./recipe_detail-slider.html">Recipe - Gallery</a></li> -->
-							<!--                                             <li><a href="./recipe_detail-video.html">Recipe - Video</a></li> -->
-							<!--                                         </ul> -->
-							<!--                                     </li> -->
-							<!--                                 </ul> -->
-							<!--                             </li> -->
+	
 							<li class="dropdown"><a href="./blog_right_sidebar.html"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Blog<span
@@ -192,18 +169,6 @@
 					<!--/.navbar-collapse -->
 				</div>
 			</nav>
-
-			<!-- Page Header -->
-			<!--             <section class="page_header">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <h2 class="text-uppercase">Reservation</h2>
-                            <p>Tomato is a delicious restaurant website template</p>
-                        </div>
-                    </div>
-                </div>
-            </section> -->
 
 			<section class='page_header vertical-padding'></section>
 
@@ -304,7 +269,7 @@
 												<button type="submit" class="btn btn-default btn-lg" id="">Effetua Prenotazione</button>
 												<% if(request.getAttribute("ERROR") !=null) { %>
 													<div class="animated fadeInDown">
-														<div class="alert alert-error"> <span> ERROR: </span>${dataError} ${nomeError} ${oraError} ${emailError} ${telefonoError} ${ospitiError} </div>
+														<div class="alert alert-error"> <span> ERRORE: </span>${dataError} ${nomeError} ${oraError} ${emailError} ${telefonoError} ${ospitiError} </div>
 													</div>
 												<%} %>
 											</div>
