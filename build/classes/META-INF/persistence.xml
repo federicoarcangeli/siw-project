@@ -14,14 +14,14 @@
 		<class>it.uniroma3.db.project.model.Tavolo</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-			<property name="javax.persistence.jdbc.user" value="postgres" />
-			<property name="javax.persistence.jdbc.password" value="postgres" /> 
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/restaurant" />
+			<property name="javax.persistence.jdbc.user" value="progettosiw" />
+			<property name="javax.persistence.jdbc.password" value="789456123Ale" /> 
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://amazon.cfzltjvqdbxy.us-west-2.rds.amazonaws.com:5432/restaurant" />
 			<!-- Hibernate properties -->
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+<!-- 			<property name="hibernate.hbm2ddl.auto" value="create" /> -->
 		</properties>
 	</persistence-unit>
 </persistence>
