@@ -42,14 +42,6 @@ public class CategoriaPiatto {
 		this.nome = nome;
 	}
 
-	public int getType() {
-		return type;
-	}
-
-	public void setType(int type) {
-		this.type = type;
-	}
-
 	public List<Piatto> getPiatti() {
 		return piatti;
 	}
@@ -67,7 +59,6 @@ public class CategoriaPiatto {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((piatti == null) ? 0 : piatti.hashCode());
-		result = prime * result + type;
 		return result;
 	}
 
@@ -94,8 +85,6 @@ public class CategoriaPiatto {
 			if (other.piatti != null)
 				return false;
 		} else if (!piatti.equals(other.piatti))
-			return false;
-		if (type != other.type)
 			return false;
 		return true;
 	}
