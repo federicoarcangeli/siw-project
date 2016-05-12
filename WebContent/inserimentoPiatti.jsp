@@ -100,8 +100,11 @@
 																class="feedFormField">
 																<option selected value="vuoto">Inserisci la
 																	categoria</option>
-																<option value="1">Prova</option>
-																<option value="2">Prova</option>
+																<option value="1">Antipasto</option>
+																<option value="2">Primo</option>
+																<option value="3">Secondo</option>
+																<option value="4">Contorno</option>
+																<option value="5">Dessert</option>
 															</select>
 														</div>
 													</div>

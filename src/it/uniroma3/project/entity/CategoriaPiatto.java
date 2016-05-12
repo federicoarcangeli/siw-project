@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Portata {
+public class CategoriaPiatto {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,15 +21,6 @@ public class Portata {
 	
 	@Column(nullable = false)
 	private String nome;
-	
-	/**
-	 * definisce il tipo corrispondente di portata
-	 * 0: antipasti
-	 * 1: primi
-	 * 2: secondi
-	 */
-	@Column(nullable = false)
-	private int type;
 	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "portata_id")
@@ -88,7 +79,7 @@ public class Portata {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Portata other = (Portata) obj;
+		CategoriaPiatto other = (CategoriaPiatto) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

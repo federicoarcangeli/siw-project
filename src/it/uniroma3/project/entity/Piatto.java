@@ -28,7 +28,7 @@ public class Piatto {
 	private DescrizionePiatto descrizionePiatto;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	private Portata portata;
+	private CategoriaPiatto portata;
 	
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
 	@JoinColumn(name = "piatto_id")
@@ -36,7 +36,7 @@ public class Piatto {
 	
 	
 
-	public Piatto(DescrizionePiatto descrizionePiatto, Portata portata) {
+	public Piatto(DescrizionePiatto descrizionePiatto, CategoriaPiatto portata) {
 		super();
 		this.descrizionePiatto = descrizionePiatto;
 		this.portata = portata;
@@ -61,11 +61,11 @@ public class Piatto {
 		this.descrizionePiatto = descrizionePiatto;
 	}
 
-	public Portata getPortata() {
+	public CategoriaPiatto getPortata() {
 		return portata;
 	}
 
-	public void setPortata(Portata portata) {
+	public void setPortata(CategoriaPiatto portata) {
 		this.portata = portata;
 	}
 	

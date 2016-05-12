@@ -4,23 +4,23 @@ import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
 
-import it.uniroma3.project.entity.Portata;
+import it.uniroma3.project.entity.CategoriaPiatto;
 
-public class PortataDao extends AbstractDao<Portata> {
+public class CategoriaPiattoDao extends AbstractDao<CategoriaPiatto> {
 
-	public PortataDao(EntityManagerFactory emf) {
+	public CategoriaPiattoDao(EntityManagerFactory emf) {
 		super(emf);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public Portata findById(long id) {
+	public CategoriaPiatto findById(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Portata> findAll() {
+	public List<CategoriaPiatto> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
