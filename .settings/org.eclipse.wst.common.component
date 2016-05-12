@@ -2,6 +2,7 @@
     <wb-module deploy-name="siw-project">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resources"/>
         <property name="context-root" value="siw-project"/>
         <property name="java-output-path" value="/siw-project/build/classes"/>
     </wb-module>
