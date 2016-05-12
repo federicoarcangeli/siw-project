@@ -6,13 +6,19 @@ import javax.servlet.http.HttpSession;
 public class PiattoHelper {
 
 	public boolean validate(HttpServletRequest request) {
-		String nome = request.getParameter("nome");
+		String nomePiatto = request.getParameter("nome");
 		String descrizione = request.getParameter("descrizione");
 		String prezzo = request.getParameter("prezzo");
 		String url = request.getParameter("url");
+		String nomeCategoria = request.getParameter("nomeCategoria");
 		boolean isValid = true;
 		HttpSession session = request.getSession();
-		if(nome.equals("")) {
+		if(nomeCategoria.equals("")) {
+			isValid = false;
+			String nomeCategoriaError = "Categoria obbligatoria";
+			session.setAttribute(nomeCategoria, nomeCategoriaError);
+		}
+		if(nomePiatto.equals("")) {
 			isValid = false;
 			String nomeError = "Nome obbligatorio";
 			session.setAttribute("nomeError", nomeError);
