@@ -17,21 +17,11 @@
 			<property name="javax.persistence.jdbc.user" value="progettosiw" />
 			<property name="javax.persistence.jdbc.password" value="789456123Ale" /> 
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://amazon.cfzltjvqdbxy.us-west-2.rds.amazonaws.com:5432/restaurant" />
-<<<<<<< HEAD
 			<!-- Hibernate properties-->
-=======
-			<!-- Hibernate properties -->
-<<<<<<< HEAD
-<!-- 			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="true" /> -->
-			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
- 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" /> 
-=======
->>>>>>> cfc33989b665996fe9d207c33593600e461a1f9d
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
->>>>>>> branch 'master' of https://github.com/1federico1/siw-project.git
 <!-- 			<property name="hibernate.hbm2ddl.auto" value="create" /> -->
 		</properties>
 	</persistence-unit>

@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
 
-import it.uniroma3.project.entity.Ordine;
+import it.uniroma3.project.entity.Comanda;
 
-public class OrdineDao extends AbstractDao<Ordine> {
+public class OrdineDao extends AbstractDao<Comanda> {
 
 	public OrdineDao(EntityManagerFactory emf) {
 		super(emf);
@@ -14,13 +14,13 @@ public class OrdineDao extends AbstractDao<Ordine> {
 	}
 
 	@Override
-	public Ordine findById(long id) {
+	public Comanda findById(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Ordine> findAll() {
+	public List<Comanda> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

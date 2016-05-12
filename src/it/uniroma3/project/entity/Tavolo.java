@@ -27,7 +27,7 @@ public class Tavolo {
 	
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "tavolo_id")
-	private List<Ordine> ordini;
+	private List<Comanda> ordini;
 	
 	public Tavolo(int coperti) {
 		this.coperti = coperti;

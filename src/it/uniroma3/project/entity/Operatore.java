@@ -34,13 +34,13 @@ public class Operatore {
 
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch =FetchType.EAGER)
 	@JoinColumn(name = "operatore_id")
-	private List<Ordine> orders;
+	private List<Comanda> orders;
 
 	public Operatore() {
 		this.orders = new ArrayList<>();
 	}
 	
-	public void addOrder(Ordine o) {
+	public void addOrder(Comanda o) {
 		this.orders.add(o);
 	}
 
@@ -68,11 +68,11 @@ public class Operatore {
 		this.password = password;
 	}
 
-	public List<Ordine> getOrders() {
+	public List<Comanda> getOrders() {
 		return orders;
 	}
 
-	public void setOrders(List<Ordine> orders) {
+	public void setOrders(List<Comanda> orders) {
 		this.orders = orders;
 	}
 

@@ -15,7 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Ordine {
+public class Comanda {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,28 +23,25 @@ public class Ordine {
 	
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date timestamp;
+	private Date dataOraEmissione;
 	
 	@Column(nullable = false)
-	private double priceTotal;
+	private double prezzoTotale;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Operatore operatore;
-	
-//	@ManyToMany(mappedBy = "ordini", fetch = FetchType.LAZY)
-//	private List<Tavolo> tavoli;
 
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},fetch = FetchType.LAZY)
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},fetch = FetchType.LAZY)
 	private Tavolo tavolo;
 	
 	
-	public Ordine() {
+	public Comanda() {
 	}
 
-	public Ordine(Date timestamp, double priceTotal) {
+	public Comanda(Date timestamp, double priceTotal) {
 		super();
-		this.timestamp = timestamp;
-		this.priceTotal = priceTotal;
+		this.dataOraEmissione = timestamp;
+		this.prezzoTotale = priceTotal;
 	}
 
 	public long getId() {
@@ -56,19 +53,19 @@ public class Ordine {
 	}
 
 	public Date getTimestamp() {
-		return timestamp;
+		return dataOraEmissione;
 	}
 
 	public void setTimestamp(Date timestamp) {
-		this.timestamp = timestamp;
+		this.dataOraEmissione = timestamp;
 	}
 
 	public double getPriceTotal() {
-		return priceTotal;
+		return prezzoTotale;
 	}
 
 	public void setPriceTotal(double priceTotal) {
-		this.priceTotal = priceTotal;
+		this.prezzoTotale = priceTotal;
 	}
 
 	public Operatore getOperatore() {
@@ -86,9 +83,9 @@ public class Ordine {
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((operatore == null) ? 0 : operatore.hashCode());
 		long temp;
-		temp = Double.doubleToLongBits(priceTotal);
+		temp = Double.doubleToLongBits(prezzoTotale);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((timestamp == null) ? 0 : timestamp.hashCode());
+		result = prime * result + ((dataOraEmissione == null) ? 0 : dataOraEmissione.hashCode());
 		return result;
 	}
 
@@ -100,7 +97,7 @@ public class Ordine {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Ordine other = (Ordine) obj;
+		Comanda other = (Comanda) obj;
 		if (id != other.id)
 			return false;
 		if (operatore == null) {
@@ -108,12 +105,12 @@ public class Ordine {
 				return false;
 		} else if (!operatore.equals(other.operatore))
 			return false;
-		if (Double.doubleToLongBits(priceTotal) != Double.doubleToLongBits(other.priceTotal))
+		if (Double.doubleToLongBits(prezzoTotale) != Double.doubleToLongBits(other.prezzoTotale))
 			return false;
-		if (timestamp == null) {
-			if (other.timestamp != null)
+		if (dataOraEmissione == null) {
+			if (other.dataOraEmissione != null)
 				return false;
-		} else if (!timestamp.equals(other.timestamp))
+		} else if (!dataOraEmissione.equals(other.dataOraEmissione))
 			return false;
 		return true;
 	}
