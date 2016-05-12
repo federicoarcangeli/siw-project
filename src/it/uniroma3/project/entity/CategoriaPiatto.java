@@ -1,15 +1,11 @@
 package it.uniroma3.project.entity;
 
 import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -22,17 +18,9 @@ public class CategoriaPiatto {
 	@Column(nullable = false)
 	private String nome;
 	
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
-	@JoinColumn(name = "portata_id")
+	@OneToMany(mappedBy="categoriaPiatto")
 	private List<Piatto> piatti;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getNome() {
 		return nome;
@@ -49,8 +37,6 @@ public class CategoriaPiatto {
 	public void setPiatti(List<Piatto> piatti) {
 		this.piatti = piatti;
 	}
-	
-	
 
 	@Override
 	public int hashCode() {
@@ -88,7 +74,4 @@ public class CategoriaPiatto {
 			return false;
 		return true;
 	}
-	
-	
-
 }

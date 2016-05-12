@@ -1,6 +1,7 @@
 package it.uniroma3.project.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -10,31 +11,34 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 public class Comanda {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataOraEmissione;
-	
+
 	@Column(nullable = false)
 	private double prezzoTotale;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Operatore operatore;
 
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},fetch = FetchType.LAZY)
 	private Tavolo tavolo;
 	
-	
+	@OneToMany(mappedBy="comanda")
+	private List<LineaComanda> lineeComanda;
+
+
 	public Comanda() {
 	}
 
@@ -44,28 +48,20 @@ public class Comanda {
 		this.prezzoTotale = priceTotal;
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public Date getTimestamp() {
+	public Date getDataOraEmissione() {
 		return dataOraEmissione;
 	}
 
-	public void setTimestamp(Date timestamp) {
-		this.dataOraEmissione = timestamp;
+	public void setDataOraEmissione(Date dataOraEmissione) {
+		this.dataOraEmissione = dataOraEmissione;
 	}
 
-	public double getPriceTotal() {
+	public double getPrezzoTotale() {
 		return prezzoTotale;
 	}
 
-	public void setPriceTotal(double priceTotal) {
-		this.prezzoTotale = priceTotal;
+	public void setPrezzoTotale(double prezzoTotale) {
+		this.prezzoTotale = prezzoTotale;
 	}
 
 	public Operatore getOperatore() {
@@ -74,6 +70,14 @@ public class Comanda {
 
 	public void setOperatore(Operatore operatore) {
 		this.operatore = operatore;
+	}
+
+	public Tavolo getTavolo() {
+		return tavolo;
+	}
+
+	public void setTavolo(Tavolo tavolo) {
+		this.tavolo = tavolo;
 	}
 
 	@Override
@@ -114,7 +118,4 @@ public class Comanda {
 			return false;
 		return true;
 	}
-	
-	
-
 }

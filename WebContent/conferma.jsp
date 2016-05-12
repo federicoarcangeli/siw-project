@@ -51,13 +51,13 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="./index_parallax.html">
+                        <a class="navbar-brand" href="./index_parallax.jsp">
                             <img src="img/nav-logo.png" alt="nav-logo">
                         </a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-                           <li><a href="./index_parallax.html">Home</a></li>
+                           <li><a href="./index_parallax.jsp">Home</a></li>
                             <li class="dropdown">
                                 <a href="./menu_all.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
                                 <ul class="dropdown-menu">

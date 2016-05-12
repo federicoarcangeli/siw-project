@@ -15,30 +15,22 @@ public class DescrizionePiatto {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
+	@Column
 	private String descrizione;
 	
-	@Column(nullable = false)
-	private double price;
+	@Column
+	private boolean prodottiSurgelati;
 	
+	@Column 
+	private boolean prodottiAllergizzanti;
+	
+	@Column
 	private String urlImmagine;
-
-	public DescrizionePiatto(String descrizione, double price, String urlImmagine) {
-		super();
-		this.descrizione = descrizione;
-		this.price = price;
-		this.urlImmagine = urlImmagine;
-	}
 	
-	public DescrizionePiatto() {
-		
-	}
+	@Column(nullable = false)
+	private double prezzo;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+	public DescrizionePiatto(){
 	}
 
 	public String getDescrizione() {
@@ -49,12 +41,20 @@ public class DescrizionePiatto {
 		this.descrizione = descrizione;
 	}
 
-	public double getPrice() {
-		return price;
+	public boolean isProdottiSurgelati() {
+		return prodottiSurgelati;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
+	public void setProdottiSurgelati(boolean prodottiSurgelati) {
+		this.prodottiSurgelati = prodottiSurgelati;
+	}
+
+	public boolean isProdottiAllergizzanti() {
+		return prodottiAllergizzanti;
+	}
+
+	public void setProdottiAllergizzanti(boolean prodottiAllergizzanti) {
+		this.prodottiAllergizzanti = prodottiAllergizzanti;
 	}
 
 	public String getUrlImmagine() {
@@ -65,6 +65,14 @@ public class DescrizionePiatto {
 		this.urlImmagine = urlImmagine;
 	}
 
+	public double getPrezzo() {
+		return prezzo;
+	}
+
+	public void setPrezzo(double prezzo) {
+		this.prezzo = prezzo;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -72,8 +80,10 @@ public class DescrizionePiatto {
 		result = prime * result + ((descrizione == null) ? 0 : descrizione.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		long temp;
-		temp = Double.doubleToLongBits(price);
+		temp = Double.doubleToLongBits(prezzo);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + (prodottiAllergizzanti ? 1231 : 1237);
+		result = prime * result + (prodottiSurgelati ? 1231 : 1237);
 		result = prime * result + ((urlImmagine == null) ? 0 : urlImmagine.hashCode());
 		return result;
 	}
@@ -97,7 +107,11 @@ public class DescrizionePiatto {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (Double.doubleToLongBits(price) != Double.doubleToLongBits(other.price))
+		if (Double.doubleToLongBits(prezzo) != Double.doubleToLongBits(other.prezzo))
+			return false;
+		if (prodottiAllergizzanti != other.prodottiAllergizzanti)
+			return false;
+		if (prodottiSurgelati != other.prodottiSurgelati)
 			return false;
 		if (urlImmagine == null) {
 			if (other.urlImmagine != null)
@@ -106,11 +120,4 @@ public class DescrizionePiatto {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
-	
-
 }

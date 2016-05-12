@@ -6,10 +6,12 @@ import javax.persistence.Persistence;
 import it.uniroma3.project.entity.DescrizionePiatto;
 import it.uniroma3.project.entity.Piatto;
 import it.uniroma3.project.entity.Prenotazione;
+import it.uniroma3.project.entity.Utente;
 import it.uniroma3.project.persistence.AbstractDao;
 import it.uniroma3.project.persistence.DescrizionePiattoDao;
 import it.uniroma3.project.persistence.PiattoDao;
 import it.uniroma3.project.persistence.PrenotazioneDao;
+import it.uniroma3.project.persistence.UtenteDao;
 
 public class Facade {
 
@@ -39,6 +41,13 @@ public class Facade {
 		descrizionePiattoDao.save(descrizione);
 		emf.close();
 		
+	}
+	
+	public void inserisciUtente(Utente utente){
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
+		UtenteDao utenteDao = new UtenteDao(emf);
+		utenteDao.save(utente);
+		emf.close();
 	}
 
 }

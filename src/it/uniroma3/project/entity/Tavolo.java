@@ -8,37 +8,40 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Tavolo {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	/**
-	 * numero del tavolo univoco? 
-	 */
-	
+
+	@Column(nullable = false)
+	private String CodiceTavolo;
+
 	@Column(nullable = false)
 	private int coperti;
-	
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "tavolo_id")
-	private List<Comanda> ordini;
+
+	@OneToMany(mappedBy="tavolo",fetch = FetchType.EAGER)
+	private List<Comanda> comande;
+
+	@OneToMany(mappedBy="tavoloPrenotato")
+	private List<Prenotazione> prenotazioni;
+
+	public Tavolo(){
+	}
 	
 	public Tavolo(int coperti) {
 		this.coperti = coperti;
 	}
 
-	public Long getId() {
-		return id;
+	public String getCodiceTavolo() {
+		return CodiceTavolo;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setCodiceTavolo(String codiceTavolo) {
+		CodiceTavolo = codiceTavolo;
 	}
 
 	public int getCoperti() {
@@ -53,6 +56,8 @@ public class Tavolo {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((CodiceTavolo == null) ? 0 : CodiceTavolo.hashCode());
+		result = prime * result + ((comande == null) ? 0 : comande.hashCode());
 		result = prime * result + coperti;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
@@ -67,6 +72,16 @@ public class Tavolo {
 		if (getClass() != obj.getClass())
 			return false;
 		Tavolo other = (Tavolo) obj;
+		if (CodiceTavolo == null) {
+			if (other.CodiceTavolo != null)
+				return false;
+		} else if (!CodiceTavolo.equals(other.CodiceTavolo))
+			return false;
+		if (comande == null) {
+			if (other.comande != null)
+				return false;
+		} else if (!comande.equals(other.comande))
+			return false;
 		if (coperti != other.coperti)
 			return false;
 		if (id == null) {
@@ -76,7 +91,4 @@ public class Tavolo {
 			return false;
 		return true;
 	}
-	
-	
-
 }

@@ -30,7 +30,6 @@
 	</div>
 
 	<div class="body">
-
 		<div class="main-wrapper">
 			<!-- Navigation-->
 			<nav class="navbar navbar-fixed-top">
@@ -43,13 +42,13 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="./index_parallax.html"> <img
+						<a class="navbar-brand" href="./index_parallax.jsp"> <img
 							src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="./index_parallax.html">Home</a></li>
+							<li><a href="./index_parallax.jsp">Home</a></li>
 							<li class="dropdown">
 							<li><a href="./prenotazione.jsp">Prenotazioni</a></li>
 							<li class="dropdown"><a href="./about.html"
@@ -83,8 +82,6 @@
 								<ul class="nav nav-tabs" role="tablist">
 									<li class="active"><a href="#categoria" role="tab"
 										data-toggle="tab"> Categoria piatto </a></li>
-									<li><a href="#allergeni" role="tab" data-toggle="tab">
-											Allergeni </a></li>
 									<li><a href="#descrizione" role="tab" data-toggle="tab">
 											Descrizione </a></li>
 								</ul>
@@ -106,50 +103,6 @@
 																<option value="4">Contorno</option>
 																<option value="5">Dessert</option>
 															</select>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="tab-pane fade" id="allergeni">
-										<div class="col-md-12">
-											<div id="OT_searchWrapper">
-												<div id="OT_defList" class="">
-													<div id="OT_partySize" class="">
-														<div class="form-group">
-															<div id="OT_partySize" class="col-md-4 col-sm-6">
-																<label> funghi</label> <INPUT TYPE=CHECKBOX
-																	NAME="mushrooms">
-															</div>
-															<div id="OT_partySize" class="col-md-4 col-sm-6">
-																<label> funghi</label> <INPUT TYPE=CHECKBOX
-																	NAME="mushrooms">
-															</div>
-															<div id="OT_partySize" class="col-md-4 col-sm-6">
-																<label> funghi</label> <INPUT TYPE=CHECKBOX
-																	NAME="mushrooms">
-															</div>
-															<div id="OT_partySize" class="col-md-4 col-sm-6">
-																<label> funghi</label> <INPUT TYPE=CHECKBOX
-																	NAME="mushrooms">
-															</div>
-															<div id="OT_partySize" class="col-md-4 col-sm-6">
-																<label> funghi</label> <INPUT TYPE=CHECKBOX
-																	NAME="mushrooms">
-															</div>
-															<div id="OT_partySize" class="col-md-4 col-sm-6">
-																<label> funghi</label> <INPUT TYPE=CHECKBOX
-																	NAME="mushrooms">
-															</div>
-														</div>
-														<div id="OT_partySize" class="col-md-4 col-sm-6">
-															<div class="form-group">
-																<div class="checkbox">
-																	<label> Prodotti surgelati</label> <input
-																		type="checkbox" name="surgelati">
-																</div>
-															</div>
 														</div>
 													</div>
 												</div>
@@ -190,6 +143,18 @@
 														placeholder="Inserisci il prezzo"
 														title="Inserisci il prezzo del piatto"
 														value='${param["prezzo"]}'>
+												</div>
+											</div>
+											<div id="OT_partySize" class="col-md-6 col-sm-6">
+												<div class="form-group">
+													<label for="surgelati">Contiene prodotti surgelati?</label>
+													<INPUT TYPE=CHECKBOX NAME="surgelati" value="true">
+												</div>
+											</div>
+											<div id="OT_partySize" class="col-md-6 col-sm-6">
+												<div class="form-group">
+													<label for="allergeni">Contiene allergeni?</label> <INPUT
+														TYPE=CHECKBOX NAME="allergeni" value="true">
 												</div>
 											</div>
 

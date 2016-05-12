@@ -23,7 +23,7 @@ public class PiattoAction {
 
 		DescrizionePiatto descrizionePiatto = new DescrizionePiatto();
 		descrizionePiatto.setDescrizione(request.getParameter("descrizione"));
-		descrizionePiatto.setPrice(Double.parseDouble(request.getParameter("prezzo")));
+		descrizionePiatto.setPrezzo(Double.parseDouble(request.getParameter("prezzo")));
 		descrizionePiatto.setUrlImmagine(request.getParameter("url"));
 		piatto.setDescrizionePiatto(descrizionePiatto);
 		Facade facade = new Facade();

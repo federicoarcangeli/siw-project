@@ -402,9 +402,9 @@ $(function() {
     if ($('#datepicker').length) {
         $("#datepicker").datepicker({
             dateFormat: 'dd/mm/yy',
-            startDate: '',
+            startDate: '0',
             autoclose: true,
-            todayHighlight: false
+            todayHighlight: true
 
         });
     }

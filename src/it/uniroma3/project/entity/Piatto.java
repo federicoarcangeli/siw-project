@@ -28,18 +28,15 @@ public class Piatto {
 	private DescrizionePiatto descrizionePiatto;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	private CategoriaPiatto portata;
+	private CategoriaPiatto categoriaPiatto;
 	
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.EAGER)
-	@JoinColumn(name = "piatto_id")
-	private List<LineaOrdine> orderLines;
-	
-	
+	@OneToMany(mappedBy="piatto",cascade = {CascadeType.PERSIST}, fetch = FetchType.EAGER)
+	private List<LineaComanda> orderLines;
 
 	public Piatto(DescrizionePiatto descrizionePiatto, CategoriaPiatto portata) {
 		super();
 		this.descrizionePiatto = descrizionePiatto;
-		this.portata = portata;
+		this.categoriaPiatto = portata;
 	}
 
 	public Piatto() {
@@ -62,11 +59,11 @@ public class Piatto {
 	}
 
 	public CategoriaPiatto getPortata() {
-		return portata;
+		return categoriaPiatto;
 	}
 
 	public void setPortata(CategoriaPiatto portata) {
-		this.portata = portata;
+		this.categoriaPiatto = portata;
 	}
 	
 	public void setNome(String nome) {
@@ -79,7 +76,7 @@ public class Piatto {
 		int result = 1;
 		result = prime * result + ((descrizionePiatto == null) ? 0 : descrizionePiatto.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((portata == null) ? 0 : portata.hashCode());
+		result = prime * result + ((categoriaPiatto == null) ? 0 : categoriaPiatto.hashCode());
 		return result;
 	}
 
@@ -102,10 +99,10 @@ public class Piatto {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (portata == null) {
-			if (other.portata != null)
+		if (categoriaPiatto == null) {
+			if (other.categoriaPiatto != null)
 				return false;
-		} else if (!portata.equals(other.portata))
+		} else if (!categoriaPiatto.equals(other.categoriaPiatto))
 			return false;
 		return true;
 	}

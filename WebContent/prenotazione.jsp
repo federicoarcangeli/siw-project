@@ -55,317 +55,200 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="./index_parallax.html"> <img
+						<a class="navbar-brand" href="./index_parallax.jsp"> <img
 							src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="./index_parallax.html">Home</a></li>
-							<li class="dropdown">
-					                            
+							<li><a href="./index_parallax.jsp">Home</a></li>
 							<li><a href="./prenotazione.jsp">Prenotazioni</a></li>
-							<li class="dropdown"><a href="./about.html"
-								class="dropdown-toggle" data-toggle="dropdown" role="button"
-								aria-haspopup="true" aria-expanded="false">Pages<span
-									class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="./about.html">About</a></li>
-									<li><a href="./gallery.html">Gallery</a></li>
-									<li><a href="./elements.html">Shortcodes</a></li>
-									<li><a href="./shop_account.html">Login / Signup</a></li>
-									<li><a href="./404.html">404 Page</a></li>
-								</ul></li>
-	
-							<li class="dropdown"><a href="./blog_right_sidebar.html"
-								class="dropdown-toggle" data-toggle="dropdown" role="button"
-								aria-haspopup="true" aria-expanded="false">Blog<span
-									class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="./blog_right_sidebar.html">Blog - Right
-											Sidebar</a></li>
-									<li><a href="./blog_left_sidebar.html">Blog - Left
-											Sidebar</a></li>
-									<li><a href="./blog_fullwidth.html">Blog - Fullwidth</a></li>
-									<li><a href="./blog_masonry.html">Blog - Masonry</a></li>
-									<li><a href="./blog_single_image.html">Blog - Single <span
-											class="caret-right"></span></a>
-										<ul class="dropdown-menu">
-											<li><a href="./blog_single_image.html">Blog - Image</a></li>
-											<li><a href="./blog_single_slider.html">Blog -
-													Gallery</a></li>
-											<li><a href="./blog_single_video.html">Blog - Video</a></li>
-										</ul></li>
-								</ul></li>
-							<li class="dropdown"><a href="./shop_fullwidth.html"
-								class="dropdown-toggle" data-toggle="dropdown" role="button"
-								aria-haspopup="true" aria-expanded="false">Shop<span
-									class="caret"></span></a>
-								<ul class="dropdown-menu">
-									<li><a href="./shop_fullwidth.html">Shop - Full</a></li>
-									<li><a href="./shop_left_sidebar.html">Shop - Left
-											Sidebar</a></li>
-									<li><a href="./shop_right_sidebar.html">Shop - Right
-											Sidebar</a></li>
-									<li><a href="./shop_single_full.html">Shop - Single <span
-											class="caret-right"></span></a>
-										<ul class="dropdown-menu">
-											<li><a href="./shop_single_full.html">Shop - Full</a></li>
-											<li><a href="./shop_single_left.html">Shop - Left
-													Sidebar</a></li>
-											<li><a href="./shop_single_right.html">Shop - Right
-													Sidebar</a></li>
-										</ul></li>
-									<li><a href="./shop_cart.html">Shop - Cart</a></li>
-									<li><a href="./shop_checkout.html">Shop - Checkout</a></li>
-									<li><a href="./shop_account.html">Shop - Account</a></li>
-									<li><a href="./shop_account_detail.html">Shop -
-											Account Detail</a></li>
-								</ul></li>
-							<li><a href="./contact.html">Contattaci</a></li>
-							<li class="dropdown"><a class="css-pointer dropdown-toggle"
-								data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false"><i
-									class="fa fa-shopping-cart fsc pull-left"></i><span
-									class="cart-number">3</span><span class="caret"></span></a>
-								<div class="cart-content dropdown-menu">
-									<div class="cart-title">
-										<h4>Shopping Cart</h4>
-									</div>
-									<div class="cart-items">
-										<div class="cart-item clearfix">
-											<div class="cart-item-image">
-												<a href="./shop_single_full.html"><img
-													src="img/cart-img1.jpg" alt="Breakfast with coffee"></a>
-											</div>
-											<div class="cart-item-desc">
-												<a href="./shop_single_full.html">Breakfast with coffee</a>
-												<span class="cart-item-price">$19.99</span> <span
-													class="cart-item-quantity">x 2</span> <i
-													class="fa fa-times ci-close"></i>
-											</div>
-										</div>
-										<div class="cart-item clearfix">
-											<div class="cart-item-image">
-												<a href="./shop_single_full.html"><img
-													src="img/cart-img2.jpg" alt="Chicken stew"></a>
-											</div>
-											<div class="cart-item-desc">
-												<a href="./shop_single_full.html">Chicken stew</a> <span
-													class="cart-item-price">$24.99</span> <span
-													class="cart-item-quantity">x 3</span> <i
-													class="fa fa-times ci-close"></i>
-											</div>
-										</div>
-									</div>
-									<div class="cart-action clearfix">
-										<span class="pull-left checkout-price">$ 114.95</span> <a
-											class="btn btn-default pull-right" href="./shop_cart.html">View
-											Cart</a>
-									</div>
-								</div></li>
+							<li><a href="./comanda.jsp">Nuova comanda</a></li>
+							<li><a href="./inserimentoPiatti.jsp">Inserisci nuovi
+									piatti</a></li>
+							<li><a href="./contact.html">Contact</a></li>
 						</ul>
 					</div>
 					<!--/.navbar-collapse -->
 				</div>
 			</nav>
 
-			<section class='page_header vertical-padding'></section>
+		<section class='page_header vertical-padding'></section>
 
-			<!-- Reservations page-->
-			<section class="reservation">
+		<!-- Reservations page-->
+		<section class="reservation">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="page-header">
+							<h1>
+								Prenotazione<small>Prenota un tavolo online. Ti sarà
+									inviata una email di conferma.</small>
+							</h1>
+						</div>
+					</div>
+				</div>
+				<div class="reservation-form">
+					<form action="processaPrenotazione" method="post">
+						<div id="OT_searchWrapper">
+							<div id="OT_defList" class="row">
+								<div class="row">
+									<div class="col-md-4 col-sm-6">
+										<div class="form-group">
+											<label for="datepicker">Data</label> <input type="text"
+												name="data" class="form-control" id="datepicker"
+												placeholder="Seleziona una data" title="seleziona una data"
+												value='${param["data"]}'> <i
+												class="fa fa-calendar-o"></i>
+										</div>
+									</div>
+									<div class="col-md-4 col-sm-6">
+										<div class="form-group">
+											<label for="timepicker">Orario di arrivo</label> <input
+												type="text" class="form-control" id="timepicker" name="ora"
+												placeholder="Seleziona l'orario di arrivo"
+												title="Seleziona un'ora di arrivo" value='${param["ora"]}'>
+											<i class="fa fa-clock-o"></i>
+										</div>
+									</div>
+									<div id="OT_partySize" class="col-md-4 col-sm-6">
+										<div class="form-group">
+											<label for="ospiti">Numero di ospiti</label> <select
+												name="ospiti" id="ospiti" class="feedFormField">
+												<option selected value="vuoto">Inserisci il numero
+													di Ospiti</option>
+												<option value="1">1 Persona</option>
+												<option value="2">2 Persone</option>
+												<option value="3">3 Persone</option>
+												<option value="4">4 Persone</option>
+												<option value="5">5 Persone</option>
+												<option value="6">6 Persone</option>
+												<option value="7">7 Persone</option>
+												<option value="8">8 Persone</option>
+												<option value="9">9 Persone</option>
+												<option value="10">10 Persone</option>
+												<option value="11">11 Persone</option>
+												<option value="12">12 Persone</option>
+												<option value="13">13 Persone</option>
+												<option value="14">14 Persone</option>
+												<option value="15">15 Persone</option>
+											</select> <i class="fa fa-user"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="OT_searchWrapper">
+								<div id="OT_defList" class="row">
+									<div class="col-md-12 col-sm-12">
+										<div class="reservation-btn">
+											<button type="submit" class="btn btn-default btn-lg" id="">Effettua
+												Prenotazione</button>
+											<%
+												if (request.getAttribute("ERROR") != null) {
+											%>
+											<div class="animated fadeInDown">
+												<div class="alert alert-error">
+													<span> ERRORE: </span>${dataError} ${nomeError} ${oraError}
+													${emailError} ${telefonoError} ${ospitiError}
+												</div>
+
+											</div>
+											<%
+												}
+											%>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="reservation-footer">
+					<p>
+						Puoi contattarci anche al: <strong>+1 224 6787 004</strong> per
+						effettuare una prenotazione.
+					</p>
+					<span></span>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer-->
+		<section class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 col-sm-12">
+						<h1>Dicono di noi</h1>
+						<p></p>
+						<a href="./about.html">Read more &rarr;</a>
+					</div>
+					<div class="col-md-4  col-sm-6">
+						<h1>Recent post</h1>
+						<div class="footer-blog clearfix">
+							<a href="./blog_right_sidebar.html"> <img
+								src="img/thumb8.png" class="img-responsive footer-photo"
+								alt="blog photos">
+								<p class="footer-blog-text">Hand picked ingredients for our
+									best customers</p>
+								<p class="footer-blog-date">29 may 2015</p>
+							</a>
+						</div>
+						<div class="footer-blog clearfix last">
+							<a href="./blog_right_sidebar.html"> <img
+								src="img/thumb9.png" class="img-responsive footer-photo"
+								alt="blog photos">
+								<p class="footer-blog-text">Daily special foods that you
+									will going to love</p>
+								<p class="footer-blog-date">29 may 2015</p>
+							</a>
+						</div>
+					</div>
+					<div class="col-md-4  col-sm-6">
+						<h1>Reach us</h1>
+						<div class="footer-social-icons">
+							<a href="http://www.facebook.com"> <i
+								class="fa fa-facebook-square"></i>
+							</a> <a href="http://www.twitter.com"> <i class="fa fa-twitter"></i>
+							</a> <a href="http://plus.google.com"> <i class="fa fa-google"></i>
+							</a> <a href="http://www.youtube.com"> <i
+								class="fa fa-youtube-play"></i>
+							</a> <a href="http://www.vimeo.com"> <i class="fa fa-vimeo"></i>
+							</a> <a href="http://www.pinterest.com"> <i
+								class="fa fa-pinterest-p"></i>
+							</a> <a href="http://www.linkedin.com"> <i class="fa fa-linkedin"></i>
+							</a>
+						</div>
+						<div class="footer-address">
+							<p>
+								<i class="fa fa-map-marker"></i>28 Seventh Avenue, Neew York,
+								10014
+							</p>
+							<p>
+								<i class="fa fa-phone"></i>Phone: (415) 124-5678
+							</p>
+							<p>
+								<i class="fa fa-envelope-o"></i>support@restaurant.com
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Footer - Copyright -->
+			<div class="footer-copyrights">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="page-header">
-								<h1>
-									Prenotazione<small>Prenota un tavolo online. Ti sarà
-										inviata una email di conferma.</small>
-								</h1>
-							</div>
-						</div>
-					</div>
-					<div class="reservation-form">
-						<form action="processaPrenotazione" method="post">
-							<div id="OT_searchWrapper">
-								<div id="OT_defList" class="row">
-									<div class="row">
-										<div class="col-md-4 col-sm-6">
-											<div class="form-group">
-												<label for="datepicker">Data</label>
-													<input type="text" name="data" class="form-control"
-														id="datepicker" placeholder="Seleziona una data"
-														title="seleziona una data" value='${param["data"]}'>
-											</div>
-										</div>
-										<div class="col-md-4 col-sm-6">
-											<div class="form-group">
-												<label for="name">Nome</label>
-													<input type="text" class="form-control" id="nome"
-														name="nome" placeholder="Inserisci il tuo nome"
-														title="Inserisci il tuo nome" value='${param["nome"]}'>
-											</div>
-										</div>
-										<div class="col-md-4 col-sm-6">
-											<div class="form-group">
-												<label for="timepicker">Orario di arrivo</label>
-													<input type="text" class="form-control" id="timepicker"
-														name="ora" placeholder="Seleziona l'orario di arrivo"
-														title="Seleziona un'ora di arrivo" value='${param["ora"]}'>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div id="OT_searchWrapper">
-									<div id="OT_defList" class="row">
-										<div class="col-md-4 col-sm-6">
-											<div class="form-group">
-												<label for="email">Email</label>
-													<input type="email" class="form-control" id="email"
-														name="email" placeholder="Email"
-														title="Inserisci la tua mail" value='${param["email"]}'>
-											</div>
-										</div>
-										<div id="OT_partySize" class="col-md-4 col-sm-6">
-											<div class="form-group">
-												<label for="ospiti">Numero di ospiti</label>
-													<select name="ospiti" id="ospiti" class="feedFormField">
-														<option selected value="vuoto">Inserisci il
-															numero di Ospiti</option>
-														<option value="1">1 Persona</option>
-														<option value="2">2 Persone</option>
-														<option value="3">3 Persone</option>
-														<option value="4">4 Persone</option>
-														<option value="5">5 Persone</option>
-														<option value="6">6 Persone</option>
-														<option value="7">7 Persone</option>
-														<option value="8">8 Persone</option>
-														<option value="9">9 Persone</option>
-														<option value="10">10 Persone</option>
-														<option value="11">11 Persone</option>
-														<option value="12">12 Persone</option>
-														<option value="13">13 Persone</option>
-														<option value="14">14 Persone</option>
-														<option value="15">15 Persone</option>
-													</select>
-											</div>
-										</div>
-										<div class="col-md-4 col-sm-6">
-											<div class="form-group">
-												<label for="phone">Cellulare</label>
-													<input type="text" class="form-control" id="phone"
-														name="telefono"
-														placeholder="Inserisci il tuo numero di telefono"
-														title="Inserisci il tuo numero di telefono"
-														value='${param["telefono"]}'>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div id="OT_searchWrapper">
-									<div id="OT_defList" class="row">
-										<div class="col-md-12 col-sm-12">
-											<div class="reservation-btn">
-												<button type="submit" class="btn btn-default btn-lg" id="">Effetua Prenotazione</button>
-												<% if(request.getAttribute("ERROR") !=null) { %>
-													<div class="animated fadeInDown">
-														<div class="alert alert-error"> <span> ERRORE: </span>${dataError} ${nomeError} ${oraError} ${emailError} ${telefonoError} ${ospitiError} </div>
-
-													</div>
-												<%} %>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div class="reservation-footer">
-						<p>
-							Puoi contattarci anche al: <strong>+1 224 6787 004</strong> per
-							effettuare una prenotazione.
-						</p>
-						<span></span>
-					</div>
-				</div>
-			</section>
-
-			<!-- Footer-->
-			<section class="footer">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-4 col-sm-12">
-							<h1>Dicono di noi</h1>
-							<p></p>
-							<a href="./about.html">Read more &rarr;</a>
-						</div>
-						<div class="col-md-4  col-sm-6">
-							<h1>Recent post</h1>
-							<div class="footer-blog clearfix">
-								<a href="./blog_right_sidebar.html"> <img
-									src="img/thumb8.png" class="img-responsive footer-photo"
-									alt="blog photos">
-									<p class="footer-blog-text">Hand picked ingredients for our
-										best customers</p>
-									<p class="footer-blog-date">29 may 2015</p>
-								</a>
-							</div>
-							<div class="footer-blog clearfix last">
-								<a href="./blog_right_sidebar.html"> <img
-									src="img/thumb9.png" class="img-responsive footer-photo"
-									alt="blog photos">
-									<p class="footer-blog-text">Daily special foods that you
-										will going to love</p>
-									<p class="footer-blog-date">29 may 2015</p>
-								</a>
-							</div>
-						</div>
-						<div class="col-md-4  col-sm-6">
-							<h1>Reach us</h1>
-							<div class="footer-social-icons">
-								<a href="http://www.facebook.com"> <i
-									class="fa fa-facebook-square"></i>
-								</a> <a href="http://www.twitter.com"> <i class="fa fa-twitter"></i>
-								</a> <a href="http://plus.google.com"> <i class="fa fa-google"></i>
-								</a> <a href="http://www.youtube.com"> <i
-									class="fa fa-youtube-play"></i>
-								</a> <a href="http://www.vimeo.com"> <i class="fa fa-vimeo"></i>
-								</a> <a href="http://www.pinterest.com"> <i
-									class="fa fa-pinterest-p"></i>
-								</a> <a href="http://www.linkedin.com"> <i
-									class="fa fa-linkedin"></i>
-								</a>
-							</div>
-							<div class="footer-address">
-								<p>
-									<i class="fa fa-map-marker"></i>28 Seventh Avenue, Neew York,
-									10014
-								</p>
-								<p>
-									<i class="fa fa-phone"></i>Phone: (415) 124-5678
-								</p>
-								<p>
-									<i class="fa fa-envelope-o"></i>support@restaurant.com
-								</p>
-							</div>
+							<p>
+								<i class="fa fa-copyright"></i> 2016. Copyright. Designed with <i
+									class="fa fa-heart primary-color"></i>
+							</p>
 						</div>
 					</div>
 				</div>
-
-				<!-- Footer - Copyright -->
-				<div class="footer-copyrights">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-								<p>
-									<i class="fa fa-copyright"></i> 2016. Copyright. Designed with <i class="fa fa-heart primary-color"></i>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-		</div>
+			</div>
+		</section>
+	</div>
 
 	</div>
 
