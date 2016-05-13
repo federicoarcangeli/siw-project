@@ -62,4 +62,11 @@ public class Facade {
 		return categorie;
 	}
 
+	public List<Piatto> findAllPiatti(){
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
+		PiattoDao piattoDao = new PiattoDao(emf);
+		List<Piatto> piatti = piattoDao.findAll();
+		emf.close();
+		return piatti;
+	}
 }

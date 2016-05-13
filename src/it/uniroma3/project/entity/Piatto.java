@@ -10,16 +10,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
+@NamedQuery(name = "PiattoFindAll", query = "select p from Piatto p")
 public class Piatto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private String nome;
 
@@ -28,12 +30,15 @@ public class Piatto {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	private CategoriaPiatto categoriaPiatto;
-	
+
 	@OneToMany(mappedBy="piatto",cascade = {CascadeType.PERSIST},fetch = FetchType.EAGER)
 	private List<LineaComanda> orderLines;
 
-	public Piatto(DescrizionePiatto descrizionePiatto, CategoriaPiatto portata) {
-		super();
+	public Piatto(){
+	}
+
+	public Piatto(String nome , DescrizionePiatto descrizionePiatto, CategoriaPiatto portata) {
+		this.nome=nome;
 		this.descrizionePiatto = descrizionePiatto;
 		this.categoriaPiatto = portata;
 	}
@@ -64,6 +69,10 @@ public class Piatto {
 
 	public void setPortata(CategoriaPiatto portata) {
 		this.categoriaPiatto = portata;
+	}
+
+	public String getNome() {
+		return this.nome;
 	}
 	
 	public void setNome(String nome) {

@@ -25,7 +25,7 @@
 <%
 	Facade facade = new Facade();
 	List<CategoriaPiatto> categorie = facade.findAllCategorie();
-	request.setAttribute("categorie",categorie);
+	request.setAttribute("categorie", categorie);
 %>
 
 </head>

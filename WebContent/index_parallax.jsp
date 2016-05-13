@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
 <meta charset="utf-8">
-<title>Tomato Responsive Restaurant HTML5 Template</title>
+<title>Ristorante da Peppe</title>
 <meta name="author" content="Surjith S M">
 
 <!-- SEO -->
@@ -56,6 +56,7 @@
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="./index_parallax.jsp">Home</a></li>
+						<li><a href="./menu.jsp">Menù</a></li>
 						<li><a href="./prenotazione.jsp">Prenotazioni</a></li>
 						<li><a href="./comanda.jsp">Nuova comanda</a></li>
 						<li><a href="./inserimentoPiatti.jsp">Inserisci nuovi
