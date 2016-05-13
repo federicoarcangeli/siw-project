@@ -1,7 +1,8 @@
 package it.uniroma3.project.controller.helper;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+
+import it.uniroma3.validator.DoubleValidator;
 
 public class PiattoHelper {
 
@@ -9,50 +10,49 @@ public class PiattoHelper {
 		String nomePiatto = request.getParameter("nome");
 		String descrizione = request.getParameter("descrizione");
 		String prezzo = request.getParameter("prezzo");
-		String url = request.getParameter("url");
-		String nomeCategoria = request.getParameter("nomeCategoria");
-		boolean isValid = true;
-		HttpSession session = request.getSession();
-		if(nomeCategoria.equals("")) {
-			isValid = false;
+		String url = request.getParameter("immagine");
+		String nomeCategoria = request.getParameter("categoria");
+		DoubleValidator validator = new DoubleValidator();
+		boolean corretto = true;
+		
+		if(nomeCategoria.equals("empty")) {
+			corretto = false;
 			String nomeCategoriaError = "Categoria obbligatoria";
-			session.setAttribute(nomeCategoria, nomeCategoriaError);
+			request.setAttribute("nomeCategoria", nomeCategoriaError);
 		}
 		if(nomePiatto.equals("")) {
-			isValid = false;
+			corretto = false;
 			String nomeError = "Nome obbligatorio";
-			session.setAttribute("nomeError", nomeError);
+			request.setAttribute("nomeError", nomeError);
 		}
 		if(descrizione.equals("")) {
-			isValid = false;
+			corretto = false;
 			String descrizioneError = "Descrizione obbligatoria";
-			session.setAttribute("descrizioneError", descrizioneError);
+			request.setAttribute("descrizioneError", descrizioneError);
 		}
 		
 		/*da mettere in metodo validator per double */
-		try {
-			Double.parseDouble(prezzo);
-		} catch(NumberFormatException e) {
-			isValid = false;
+		if(validator.doubleValidator(prezzo)==0.0){
+			corretto = false;
 			String prezzoError = "Prezzo obbligatorio";
-			session.setAttribute("prezzoError", prezzoError);
+			request.setAttribute("prezzoError", prezzoError);
 		}
 		
 		if(prezzo.equals("")) {
-			isValid = false;
+			corretto = false;
 			String prezzoError = "Prezzo obbligatorio";
-			session.setAttribute("prezzoError", prezzoError);
+			request.setAttribute("prezzoError", prezzoError);
 		}
-		if(url.equals("")) {
-			isValid = false;
-			String urlError = "Url dell'immagine obbligatorio";
-			session.setAttribute("urlError", urlError);
-		}
-		if(isValid == false) {
+//		if(url.equals("")) {		// per ora non gestiamo le foto
+//			corretto = false;
+//			String urlError = "Url dell'immagine obbligatorio";
+//			request.setAttribute("urlError", urlError);
+//		}
+		if(corretto == false) {
 			String error = "ERRORE";
-			session.setAttribute("Errore", error);
-		}
-		return isValid;
+			request.setAttribute("ERRORE", error);
+		}		
+		return corretto;
 	}
 
 }

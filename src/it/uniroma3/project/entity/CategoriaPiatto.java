@@ -1,6 +1,9 @@
 package it.uniroma3.project.entity;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,16 +13,20 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class CategoriaPiatto {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private String nome;
-	
-	@OneToMany(mappedBy="categoriaPiatto")
+
+	@OneToMany(mappedBy="categoriaPiatto",cascade = {CascadeType.PERSIST})
 	private List<Piatto> piatti;
+	
+	public CategoriaPiatto(){
+		this.piatti = new ArrayList<>();
+	}
 
 
 	public String getNome() {
@@ -33,7 +40,11 @@ public class CategoriaPiatto {
 	public List<Piatto> getPiatti() {
 		return piatti;
 	}
-
+	
+	public void addPiatto(Piatto piatto){
+		this.piatti.add(piatto);
+	}
+	
 	public void setPiatti(List<Piatto> piatti) {
 		this.piatti = piatti;
 	}

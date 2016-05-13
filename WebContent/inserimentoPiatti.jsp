@@ -95,13 +95,13 @@
 														<div class="form-group">
 															<select name="categoria" id="tipologia"
 																class="feedFormField">
-																<option selected value="vuoto">Inserisci la
+																<option selected value="empty">Inserisci la
 																	categoria</option>
-																<option value="1">Antipasto</option>
-																<option value="2">Primo</option>
-																<option value="3">Secondo</option>
-																<option value="4">Contorno</option>
-																<option value="5">Dessert</option>
+																<option value="antipasto">Antipasto</option>
+																<option value="primo">Primo</option>
+																<option value="secondo">Secondo</option>
+																<option value="contorno">Contorno</option>
+																<option value="dessert">Dessert</option>
 															</select>
 														</div>
 													</div>
@@ -148,13 +148,13 @@
 											<div id="OT_partySize" class="col-md-6 col-sm-6">
 												<div class="form-group">
 													<label for="surgelati">Contiene prodotti surgelati?</label>
-													<INPUT TYPE=CHECKBOX NAME="surgelati" value="true">
+													<input type="checkbox" name="surgelati" value="True">
 												</div>
 											</div>
 											<div id="OT_partySize" class="col-md-6 col-sm-6">
 												<div class="form-group">
-													<label for="allergeni">Contiene allergeni?</label> <INPUT
-														TYPE=CHECKBOX NAME="allergeni" value="true">
+													<label for="allergeni">Contiene allergeni?</label> <input
+														type="checkbox" name="allergeni" value="True">
 												</div>
 											</div>
 
@@ -167,15 +167,17 @@
 								<div id="OT_defList" class="row">
 									<div class="col-md-12 col-sm-12">
 										<div class="reservation-btn">
-											<button type="submit" class="btn btn-default btn-lg">Inserisci
-												il piatto</button>
+											<button type="submit" class="btn btn-default btn-lg" id="">Inserisci
+												piatto nel menù</button>
 											<%
-												if (request.getAttribute("ERROR") != null) {
+												if (request.getAttribute("ERRORE") != null) {
 											%>
 											<div class="animated fadeInDown">
 												<div class="alert alert-error">
-													<span> ERRORE: </span>
+													<span> ERRORE: </span>${nomeCategoria} ${nomeError}
+													${descrizioneError} ${prezzoError} ${urlError}
 												</div>
+
 											</div>
 											<%
 												}

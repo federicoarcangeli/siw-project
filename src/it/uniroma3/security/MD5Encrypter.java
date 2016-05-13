@@ -1,4 +1,4 @@
-package it.uniroma3.validator;
+package it.uniroma3.security;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

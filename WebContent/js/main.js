@@ -401,7 +401,7 @@ $(function() {
     //Datepicker
     if ($('#datepicker').length) {
         $("#datepicker").datepicker({
-            dateFormat: 'dd/mm/yy',
+            format: 'dd/mm/yyyy',
             startDate: '0',
             autoclose: true,
             todayHighlight: true

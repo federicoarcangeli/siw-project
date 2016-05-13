@@ -9,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -30,7 +29,7 @@ public class Piatto {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private CategoriaPiatto categoriaPiatto;
 	
-	@OneToMany(mappedBy="piatto",cascade = {CascadeType.PERSIST}, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="piatto",cascade = {CascadeType.PERSIST},fetch = FetchType.EAGER)
 	private List<LineaComanda> orderLines;
 
 	public Piatto(DescrizionePiatto descrizionePiatto, CategoriaPiatto portata) {
@@ -39,7 +38,8 @@ public class Piatto {
 		this.categoriaPiatto = portata;
 	}
 
-	public Piatto() {
+	public Piatto(DescrizionePiatto descrizionePiatto) {
+		this.descrizionePiatto=descrizionePiatto;
 	}
 
 	public Long getId() {

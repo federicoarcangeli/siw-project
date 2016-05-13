@@ -23,11 +23,8 @@ public class PrenotazioneAction {
 		HttpSession session = request.getSession();
 
 		prenotazione.setData(validator.validate(request.getParameter("data")));
-//		prenotazione.setNome(request.getParameter("nome"));
 		prenotazione.setOra(validatorTime.validate(request.getParameter("ora")));
-//		prenotazione.setEmail(request.getParameter("email"));
 		prenotazione.setNumeroOspiti(Integer.parseInt(request.getParameter("ospiti")));
-//		prenotazione.setTelefono(request.getParameter("telefono"));
 
 		facade.inserisciPrenotazione(prenotazione);
 
