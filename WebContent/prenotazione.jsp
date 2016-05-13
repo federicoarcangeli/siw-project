@@ -62,10 +62,6 @@
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="./index_parallax.jsp">Home</a></li>
-							<li><a href="./prenotazione.jsp">Prenotazioni</a></li>
-							<li><a href="./comanda.jsp">Nuova comanda</a></li>
-							<li><a href="./inserimentoPiatti.jsp">Inserisci nuovi
-									piatti</a></li>
 							<li><a href="./contact.html">Contact</a></li>
 						</ul>
 					</div>

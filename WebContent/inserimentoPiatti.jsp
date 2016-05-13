@@ -1,3 +1,7 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="it.uniroma3.project.controller.facade.Facade"%>
+<%@page import="it.uniroma3.project.entity.CategoriaPiatto"%>
+<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="it">
 
@@ -17,6 +21,12 @@
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
 <link rel="stylesheet" href="css/plugin.css">
 <link rel="stylesheet" href="css/main.css">
+
+<%
+	Facade facade = new Facade();
+	List<CategoriaPiatto> categorie = facade.findAllCategorie();
+	request.setAttribute("categorie",categorie);
+%>
 
 </head>
 
@@ -97,11 +107,9 @@
 																class="feedFormField">
 																<option selected value="empty">Inserisci la
 																	categoria</option>
-																<option value="antipasto">Antipasto</option>
-																<option value="primo">Primo</option>
-																<option value="secondo">Secondo</option>
-																<option value="contorno">Contorno</option>
-																<option value="dessert">Dessert</option>
+																<c:forEach var="categoria" items="${categorie}">
+																	<option value="${categoria.nome}">${categoria.nome}</option>
+																</c:forEach>
 															</select>
 														</div>
 													</div>

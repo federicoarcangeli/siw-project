@@ -2,9 +2,9 @@ package it.uniroma3.project.persistence;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-
-import it.uniroma3.project.entity.CategoriaPiatto;
+import it.uniroma3.project.entity.CategoriaPiatto;;
 
 public class CategoriaPiattoDao extends AbstractDao<CategoriaPiatto> {
 
@@ -20,9 +20,12 @@ public class CategoriaPiattoDao extends AbstractDao<CategoriaPiatto> {
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<CategoriaPiatto> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = this.emf.createEntityManager();
+		List<CategoriaPiatto> result = em.createNamedQuery("CategoriaPiattoFindAll").getResultList();
+		em.close();
+		return result;
 	}
 
 }
