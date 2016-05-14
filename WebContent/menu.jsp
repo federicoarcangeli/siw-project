@@ -155,7 +155,7 @@
 								method="POST">
 								<div class="form-group">
 									<input class="e-mail form-control" name="email" id="address"
-										type="email" placeholder="Your Email Address" required>
+										type="email" placeholder="Your Email Address" required>  
 								</div>
 								<button type="submit" class="btn btn-default">
 									<i class="fa fa-angle-right"></i>
