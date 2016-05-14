@@ -84,8 +84,9 @@
 							</div>
 						</div>
 					</div>
+					
 					<div class="reservation-form">
-						<form action=processaPiatto method="post">
+						<form action=processaPiatto method="post" >
 							<!-- Tabs -->
 							<div class="element-tab">
 								<!-- Nav tabs -->
@@ -117,6 +118,8 @@
 											</div>
 										</div>
 									</div>
+
+
 									<div class="tab-pane fade" id="descrizione">
 										<div class="row">
 											<div class="col-md-6 col-sm-6">
@@ -124,7 +127,8 @@
 													<label for="name">Nome</label> <input type="text"
 														class="form-control" id="nome" name="nome"
 														placeholder="Inserisci il nome del piatto"
-														title="Inserisci il nome del piatto" value='${param["nome"]}'>
+														title="Inserisci il nome del piatto"
+														value='${param["nome"]}'>
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-6">
@@ -175,7 +179,7 @@
 								<div id="OT_defList" class="row">
 									<div class="col-md-12 col-sm-12">
 										<div class="reservation-btn">
-											<button type="submit" class="btn btn-default btn-lg" id="">Inserisci
+											<button type="submit" class="btn btn-default btn-lg" onClick = "return show_alert();" id="">Inserisci
 												piatto nel menù</button>
 											<%
 												if (request.getAttribute("ERRORE") != null) {
@@ -302,6 +306,10 @@
 	<script src="js/vendor/validate.js"></script>
 	<script src="js/reservation.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
+	
+	<script src = "js/confermaInserimentoPiatti.js"></script>
+
+
 
 </body>
 
