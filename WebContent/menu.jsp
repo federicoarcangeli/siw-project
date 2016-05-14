@@ -8,7 +8,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Il nostro menu</title>
+<title>Tomato Responsive Restaurant HTML5 Template</title>
 <meta name="author" content="Surjith S M">
 
 <!-- SEO -->
@@ -37,9 +37,16 @@
 	List<Piatto> piatti = facade.findAllPiatti();
 	request.setAttribute("piatti", piatti);
 %>
+
+<!--[if lt IE 9]>
+            <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
+        <![endif]-->
 </head>
 
 <body>
+	<!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
 
 	<!-- Preloder-->
 	<div class="preloder animated">
@@ -69,26 +76,26 @@
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="./index_parallax.jsp">Home</a></li>
-							<li class="dropdown"><li><a href="./prenotazione.jsp">Prenotazioni</a></li>
-									<li class="dropdown"><a href="./about.html"
+							<li class="dropdown">
+							<li><a href="./prenotazione.jsp">Prenotazioni</a></li>
+							<li class="dropdown"><a href="./about.html"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Pages<span
 									class="caret"></span></a>
-									
 							<li><a href="./contact.html">Contattaci</a></li>
 
-								</ul>
-							</div>
-						</div>
-					</nav>
-			
-								<!-- Page Header -->
-								<section class="page_header">
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+			<!-- Page Header -->
+			<section class="page_header">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12 text-center">
-							<h2 class="text-uppercase">Il nostro Menu</h2>
-							<p>Piatti tipici</p>
+							<h2 class="text-uppercase">Menu</h2>
+							<p>Tomato is a delicious restaurant website template</p>
 						</div>
 					</div>
 				</div>
@@ -121,15 +128,14 @@
 						<div class="row menu-items3">
 							<c:forEach var="piatto" items="${piatti}">
 								<div
-														class="menu-item3 col-sm-6 col-xs-12 <%-- ${piatto.categoriapiatto_id.nome} --%>">
+									class="menu-item3 col-sm-6 col-xs-12 ${piatto.getPortata()}">
 									<img src="img/menu/2/2.jpg" class="img-responsive" alt="" />
 									<div class="menu-wrapper">
 										<h4>${piatto.nome}</h4>
-										<span class="price"> 0.00 &euro;<%-- ${piatto.descrizionepiatto_id.prezzo} --%>
-										</span>
+										<span class="price">
+											${piatto.getDescrizionePiatto().getPrezzo() } &euro; </span>
 										<div class="dotted-bg"></div>
-										<p>	Asparagus, hens egg, toasted sunflower seeds <%-- ${piatto.descrizionepiatto_id.descrizione} --%>
-															</p>
+										<p>${piatto.getDescrizionePiatto().getDescrizione()}</p>
 									</div>
 								</div>
 							</c:forEach>
@@ -146,10 +152,10 @@
 							<h1>Subscribe</h1>
 							<p>Get updates about new dishes and upcoming events</p>
 							<form class="form-inline" action="php/subscribe.php" id="invite"
-													method="POST">
+								method="POST">
 								<div class="form-group">
 									<input class="e-mail form-control" name="email" id="address"
-															type="email" placeholder="Your Email Address" required>
+										type="email" placeholder="Your Email Address" required>
 								</div>
 								<button type="submit" class="btn btn-default">
 									<i class="fa fa-angle-right"></i>
@@ -177,8 +183,8 @@
 							<h1>Recent post</h1>
 							<div class="footer-blog clearfix">
 								<a href="./blog_right_sidebar.html"> <img
-														src="img/thumb8.png" class="img-responsive footer-photo"
-														alt="blog photos">
+									src="img/thumb8.png" class="img-responsive footer-photo"
+									alt="blog photos">
 									<p class="footer-blog-text">Hand picked ingredients for our
 										best customers</p>
 									<p class="footer-blog-date">29 may 2015</p>
@@ -186,8 +192,8 @@
 							</div>
 							<div class="footer-blog clearfix last">
 								<a href="./blog_right_sidebar.html"> <img
-														src="img/thumb9.png" class="img-responsive footer-photo"
-														alt="blog photos">
+									src="img/thumb9.png" class="img-responsive footer-photo"
+									alt="blog photos">
 									<p class="footer-blog-text">Daily special foods that you
 										will going to love</p>
 									<p class="footer-blog-date">29 may 2015</p>
@@ -198,16 +204,16 @@
 							<h1>Reach us</h1>
 							<div class="footer-social-icons">
 								<a href="http://www.facebook.com"> <i
-														class="fa fa-facebook-square"></i>
+									class="fa fa-facebook-square"></i>
 								</a> <a href="http://www.twitter.com"> <i class="fa fa-twitter"></i>
 								</a> <a href="http://plus.google.com"> <i class="fa fa-google"></i>
 								</a> <a href="http://www.youtube.com"> <i
-														class="fa fa-youtube-play"></i>
+									class="fa fa-youtube-play"></i>
 								</a> <a href="http://www.vimeo.com"> <i class="fa fa-vimeo"></i>
 								</a> <a href="http://www.pinterest.com"> <i
-														class="fa fa-pinterest-p"></i>
+									class="fa fa-pinterest-p"></i>
 								</a> <a href="http://www.linkedin.com"> <i
-														class="fa fa-linkedin"></i>
+									class="fa fa-linkedin"></i>
 								</a>
 							</div>
 							<div class="footer-address">
@@ -241,8 +247,8 @@
 					</div>
 				</div>
 			</section>
-		
-							</div>
+
+		</div>
 
 	</div>
 
@@ -270,4 +276,4 @@
 
 </body>
 
-</html>
+</html> 	
