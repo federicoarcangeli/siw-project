@@ -63,12 +63,12 @@ public class Piatto {
 		this.descrizionePiatto = descrizionePiatto;
 	}
 
-	public CategoriaPiatto getPortata() {
+	public CategoriaPiatto getCategoriaPiatto() {
 		return categoriaPiatto;
 	}
 
-	public void setPortata(CategoriaPiatto portata) {
-		this.categoriaPiatto = portata;
+	public void setCategoriaPiatto(CategoriaPiatto categoriaPiatto) {
+		this.categoriaPiatto = categoriaPiatto;
 	}
 
 	public String getNome() {
