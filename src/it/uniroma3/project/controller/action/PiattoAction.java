@@ -1,6 +1,5 @@
 package it.uniroma3.project.controller.action;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,17 +14,14 @@ import it.uniroma3.validator.DoubleValidator;
 
 public class PiattoAction {
 	private List<Piatto> piatti;
-	
+
 	public PiattoAction() {
 		this.piatti = new ArrayList<Piatto>();
 	}
 
 	public String execute(HttpServletRequest request) {
-		Facade facade= new Facade();
-		
-		Piatto piatto = new Piatto();
-		piatto.setNome(request.getParameter("nome"));
-		
+		Facade facade = new Facade();
+
 		DoubleValidator validator = new DoubleValidator();
 		DescrizionePiatto descrizionePiatto = new DescrizionePiatto();
 		descrizionePiatto.setDescrizione(request.getParameter("descrizione"));
@@ -33,30 +29,14 @@ public class PiattoAction {
 		descrizionePiatto.setUrlImmagine(request.getParameter("immagine"));
 		descrizionePiatto.setProdottiAllergizzanti(Boolean.parseBoolean(request.getParameter("allergeni")));
 		descrizionePiatto.setProdottiSurgelati(Boolean.parseBoolean(request.getParameter("surgelati")));
-		
-		CategoriaPiatto categoria = new CategoriaPiatto();
-		categoria.setNome(request.getParameter("categoria"));   // sarà una interrogazione
-		
-		piatto.setDescrizionePiatto(descrizionePiatto);					
-		categoria.addPiatto(piatto);
-		
-		
-//		HttpSession session = request.getSession();
-//		this.getDescrizioniPiatti(session).add(piatto);
-//		session.setAttribute("piatto", piatto);
-//		session.setAttribute("piatti", this.piatti);
-		
+
+		CategoriaPiatto categoria = facade.findCategoria(request.getParameter("categoria"));
+
+		Piatto piatto = new Piatto(request.getParameter("nome"), descrizionePiatto, categoria);
+
 		facade.inserisciPiatto(piatto);
-		
+
 		return "/conferma.jsp";
-	}
-	
-	@SuppressWarnings("unchecked")
-	private List<Piatto> getDescrizioniPiatti(HttpSession session) {
-		this.piatti = (List<Piatto>) session.getAttribute("piatti");
-		if(this.piatti == null)
-			this.piatti = new ArrayList<>();
-		return this.piatti;
 	}
 
 }

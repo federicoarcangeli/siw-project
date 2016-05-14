@@ -6,8 +6,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -17,7 +15,6 @@ import javax.persistence.OneToMany;
 public class CategoriaPiatto {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	@Column(nullable = false)
@@ -25,11 +22,18 @@ public class CategoriaPiatto {
 
 	@OneToMany(mappedBy="categoriaPiatto",cascade = {CascadeType.PERSIST})
 	private List<Piatto> piatti;
-	
+
 	public CategoriaPiatto(){
 		this.piatti = new ArrayList<>();
+	}	
+
+	public Long getId() {
+		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getNome() {
 		return nome;
@@ -42,11 +46,11 @@ public class CategoriaPiatto {
 	public List<Piatto> getPiatti() {
 		return piatti;
 	}
-	
+
 	public void addPiatto(Piatto piatto){
 		this.piatti.add(piatto);
 	}
-	
+
 	public void setPiatti(List<Piatto> piatti) {
 		this.piatti = piatti;
 	}

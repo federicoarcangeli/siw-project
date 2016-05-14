@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-@NamedQuery(name = "PiattoFindAll", query = "select p from Piatto p")
+@NamedQuery(name = "PiattoFindAll", query = "select p from Piatto p order by categoriapiatto_id")
 public class Piatto {
 
 	@Id
@@ -37,10 +37,10 @@ public class Piatto {
 	public Piatto(){
 	}
 
-	public Piatto(String nome , DescrizionePiatto descrizionePiatto, CategoriaPiatto portata) {
+	public Piatto(String nome , DescrizionePiatto descrizionePiatto, CategoriaPiatto categoria) {
 		this.nome=nome;
 		this.descrizionePiatto = descrizionePiatto;
-		this.categoriaPiatto = portata;
+		this.categoriaPiatto = categoria;
 	}
 
 	public Piatto(DescrizionePiatto descrizionePiatto) {
@@ -63,18 +63,18 @@ public class Piatto {
 		this.descrizionePiatto = descrizionePiatto;
 	}
 
-	public CategoriaPiatto getCategoriaPiatto() {
+	public CategoriaPiatto getPortata() {
 		return categoriaPiatto;
 	}
 
-	public void setCategoriaPiatto(CategoriaPiatto categoriaPiatto) {
-		this.categoriaPiatto = categoriaPiatto;
+	public void setPortata(CategoriaPiatto portata) {
+		this.categoriaPiatto = portata;
 	}
 
 	public String getNome() {
 		return this.nome;
 	}
-	
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}

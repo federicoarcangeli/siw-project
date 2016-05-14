@@ -15,8 +15,10 @@ public class CategoriaPiattoDao extends AbstractDao<CategoriaPiatto> {
 
 	@Override
 	public CategoriaPiatto findById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = this.emf.createEntityManager();
+		CategoriaPiatto result = em.find(CategoriaPiatto.class,id);
+		em.close();
+		return result;
 	}
 
 	@Override

@@ -108,7 +108,7 @@
 																<option selected value="empty">Inserisci la
 																	categoria</option>
 																<c:forEach var="categoria" items="${categorie}">
-																	<option value="${categoria.nome}">${categoria.nome}</option>
+																	<option value="${categoria.id}">${categoria.nome}</option>
 																</c:forEach>
 															</select>
 														</div>
@@ -123,13 +123,13 @@
 												<div class="form-group">
 													<label for="name">Nome</label> <input type="text"
 														class="form-control" id="nome" name="nome"
-														placeholder="Inserisci il tuo nome"
-														title="Inserisci il tuo nome" value='${param["nome"]}'>
+														placeholder="Inserisci il nome del piatto"
+														title="Inserisci il nome del piatto" value='${param["nome"]}'>
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-6">
 												<div class="form-group">
-													<label for="url">immagine</label> <input type="file"
+													<label for="url">Immagine</label> <input type="file"
 														name="immagine">
 												</div>
 											</div>
@@ -139,7 +139,7 @@
 												<div class="form-group">
 													<label for="descrizione">Descrizione</label>
 													<textarea class="form-control" id="descrizione"
-														placeholder="Inserisci la descrizione del piatto " rows=""
+														placeholder="Inserisci la descrizione" rows=""
 														name="descrizione">${param["descrizione"]}</textarea>
 
 												</div>

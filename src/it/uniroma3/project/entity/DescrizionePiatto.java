@@ -21,7 +21,7 @@ public class DescrizionePiatto {
 	@Column
 	private boolean prodottiSurgelati;
 	
-	@Column
+	@Column 
 	private boolean prodottiAllergizzanti;
 	
 	@Column

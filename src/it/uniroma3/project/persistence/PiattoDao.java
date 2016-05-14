@@ -29,4 +29,9 @@ public class PiattoDao extends AbstractDao<Piatto> {
 		return result;
 	}
 
+	public void setCategoria(Long idPiatto, String idCategoria) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
