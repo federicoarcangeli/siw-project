@@ -41,10 +41,10 @@ public class PiattoAction {
 		categoria.addPiatto(piatto);
 		
 		
-		HttpSession session = request.getSession();
-		this.getDescrizioniPiatti(session).add(piatto);
-		session.setAttribute("piatto", piatto);
-		session.setAttribute("piatti", this.piatti);
+//		HttpSession session = request.getSession();
+//		this.getDescrizioniPiatti(session).add(piatto);
+//		session.setAttribute("piatto", piatto);
+//		session.setAttribute("piatti", this.piatti);
 		
 		facade.inserisciPiatto(piatto);
 		
