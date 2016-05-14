@@ -271,91 +271,20 @@
 						</div>
 						<div class="row menu-items3">
 							<c:forEach var="piatto" items="${piatti}">
-
-								<div
-									class="menu-item3 col-sm-6 col-xs-12 <%-- ${piatto.categoriapiatto_id.nome} --%>">
+								<div class="menu-item3 col-sm-6 col-xs-12 <%-- ${piatto.categoriapiatto_id.nome} --%>">
 									<img src="img/menu/2/2.jpg" class="img-responsive" alt="" />
 									<div class="menu-wrapper">
 										<h4>${piatto.nome}</h4>
-										<span class="price"> <%-- ${piatto.descrizionepiatto_id.prezzo} --%>
+										<span class="price"> 0.00 &euro;<%-- ${piatto.descrizionepiatto_id.prezzo} --%>
 										</span>
 										<div class="dotted-bg"></div>
-										<p>
-											Asparagus, hens egg, toasted sunflower seeds
-											<%-- ${piatto.descrizionepiatto_id.descrizione} --%>
-										</p>
+										<p>	Asparagus, hens egg, toasted sunflower seeds <%-- ${piatto.descrizionepiatto_id.descrizione} --%></p>
 									</div>
 								</div>
 							</c:forEach>
 						</div>
-						<div class="row menu-items">
-							<div class="menu-item3 col-sm-6 col-xs-12 pizza">
-								<img src="img/menu/2/2.jpg" class="img-responsive" alt="" />
-								<div class="menu-wrapper">
-									<h4>English asparagus</h4>
-									<span class="price">$14.95</span>
-									<div class="dotted-bg"></div>
-									<p>Asparagus, hens egg, toasted sunflower seeds</p>
-								</div>
-							</div>
-							<div
-								class="menu-item3 col-sm-6 col-xs-12 breakfast desserts starter">
-								<img src="img/menu/2/3.jpg" class="img-responsive" alt="" />
-								<div class="menu-wrapper">
-									<h4>English asparagus</h4>
-									<span class="price">$14.95</span>
-									<div class="dotted-bg"></div>
-									<p>Asparagus, hens egg, toasted sunflower seeds</p>
-								</div>
-							</div>
-							<div class="menu-item3 col-sm-6 col-xs-12 breakfast">
-								<img src="img/menu/2/4.jpg" class="img-responsive" alt="" />
-								<div class="menu-wrapper">
-									<h4>English asparagus</h4>
-									<span class="price">$14.95</span>
-									<div class="dotted-bg"></div>
-									<p>Asparagus, hens egg, toasted sunflower seeds</p>
-								</div>
-							</div>
-							<div
-								class="menu-item3 col-sm-6 col-xs-12 lunch starter breakfast">
-								<img src="img/menu/2/5.jpg" class="img-responsive" alt="" />
-								<div class="menu-wrapper">
-									<h4>English asparagus</h4>
-									<span class="price">$14.95</span>
-									<div class="dotted-bg"></div>
-									<p>Asparagus, hens egg, toasted sunflower seeds</p>
-								</div>
-							</div>
-							<div class="menu-item3 col-sm-6 col-xs-12 lunch">
-								<img src="img/menu/2/6.jpg" class="img-responsive" alt="" />
-								<div class="menu-wrapper">
-									<h4>English asparagus</h4>
-									<span class="price">$14.95</span>
-									<div class="dotted-bg"></div>
-									<p>Asparagus, hens egg, toasted sunflower seeds</p>
-								</div>
-							</div>
-							<div class="menu-item3 col-sm-6 col-xs-12 dinner breakfast lunch">
-								<img src="img/menu/2/7.jpg" class="img-responsive" alt="" />
-								<div class="menu-wrapper">
-									<h4>English asparagus</h4>
-									<span class="price">$14.95</span>
-									<div class="dotted-bg"></div>
-									<p>Asparagus, hens egg, toasted sunflower seeds</p>
-								</div>
-							</div>
-							<div class="menu-item3 col-sm-6 col-xs-12 dinner">
-								<img src="img/menu/2/8.jpg" class="img-responsive" alt="" />
-								<div class="menu-wrapper">
-									<h4>English asparagus</h4>
-									<span class="price">$14.95</span>
-									<div class="dotted-bg"></div>
-									<p>Asparagus, hens egg, toasted sunflower seeds</p>
-								</div>
-							</div>
-						</div>
 					</div>
+				</div>
 			</section>
 
 			<!-- subscribe -->
