@@ -38,15 +38,9 @@
 	request.setAttribute("piatti", piatti);
 %>
 
-<!--[if lt IE 9]>
-            <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
-        <![endif]-->
 </head>
 
 <body>
-	<!--[if lt IE 8]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
 
 	<!-- Preloder-->
 	<div class="preloder animated">

@@ -36,7 +36,7 @@ public class PiattoAction {
 
 		facade.inserisciPiatto(piatto);
 
-		return "/conferma.jsp";
+		return "/piattoInserito.jsp";
 	}
 
 }
