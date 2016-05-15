@@ -86,7 +86,7 @@
 					</div>
 					
 					<div class="reservation-form">
-						<form action=processaPiatto method="post" >
+						<form action=processaPiatto method="post" enctype="multipart/form-data">
 							<!-- Tabs -->
 							<div class="element-tab">
 								<!-- Nav tabs -->
@@ -133,8 +133,8 @@
 											</div>
 											<div class="col-md-6 col-sm-6">
 												<div class="form-group">
-													<label for="url">Immagine</label> <input type="file"
-														name="immagine">
+													<label for="immagine">Immagine</label> <input type=file
+														name="fileName">
 												</div>
 											</div>
 										</div>
@@ -307,7 +307,7 @@
 	<script src="js/reservation.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
 	
-	<script src = "js/confermaInserimentoPiatti.js"></script>
+	<script src = "js/confermaInserimentoPiatti.js"> </script>
 
 
 
