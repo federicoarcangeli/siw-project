@@ -121,8 +121,7 @@
 													<div class="row">
 														<div class="form-group">
 															<div class="col-md-12">
-																<a class="pull-right" href="./index.html">(Lost
-																	Password?)</a> <label>Password</label> <input
+																<a class="pull-right" href="./index.html">(Password dimenticata?)</a> <label>Password</label> <input
 																	type="password" value="" class="form-control">
 															</div>
 														</div>
