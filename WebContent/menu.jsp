@@ -121,8 +121,7 @@
 						</div>
 						<div class="row menu-items3">
 							<c:forEach var="piatto" items="${piatti}">
-								<div
-									class="menu-item3 col-sm-6 col-xs-12 ${piatto.getPortata()}">
+								<div class="menu-item3 col-sm-6 col-xs-12 ${piatto.getPortata().nome}">
 									<img src="img/menu/2/2.jpg" class="img-responsive" alt="" />
 									<div class="menu-wrapper">
 										<h4>${piatto.nome}</h4>
