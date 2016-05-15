@@ -2,6 +2,7 @@
 <%@page import="it.uniroma3.project.controller.facade.Facade"%>
 <%@page import="it.uniroma3.project.entity.CategoriaPiatto"%>
 <%@page import="it.uniroma3.project.entity.Piatto"%>
+<%@page import="it.uniroma3.project.entity.Comanda" %>
 <%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="it">
@@ -100,29 +101,27 @@
 								</div>
 							</aside>
 							<div class="col-md-9">
-
+							<form name="comandaForm" method="post" action="processaComanda">
 								<div class="row menu-items3">
 									<div class="shop-products">
 										<c:forEach var="piatto" items="${piatti}">
 											<div
 												class="menu-item3 col-md-4 col-sm-6 ${piatto.getPortata().nome}">
 												<div class="product-info">
-													<div class="product-img">
-														<img src="img/shop/1.png" alt="" />
-													</div>
+													
 													<h4>
 														<a href="./recipe_detail-image.html">${piatto.nome}</a>
 													</h4>
 													<div class="product-price">${piatto.getDescrizionePiatto().getPrezzo()}&euro;</div>
 													<div class="shop-meta">
-														<a href="./shop_single_left.html" class="pull-left"><i
-															class="fa fa-shopping-cart"></i> Aggiungi alla comanda</a>
+														<input type="submit" value="aggiungi alla comanda"class="pull-left"/>
 													</div>
 												</div>
 											</div>
 										</c:forEach>
 									</div>
 								</div>
+								</form>
 							</div>
 						</div>
 					</div>

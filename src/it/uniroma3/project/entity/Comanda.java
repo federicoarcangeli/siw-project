@@ -1,5 +1,6 @@
 package it.uniroma3.project.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,16 +31,17 @@ public class Comanda {
 	private double prezzoTotale;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	private Operatore operatore;
+	private String codiceOperatore;
 
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},fetch = FetchType.LAZY)
-	private Tavolo tavolo;
+	private String numeroTavolo;
 	
 	@OneToMany(mappedBy="comanda")
 	private List<LineaComanda> lineeComanda;
 
 
 	public Comanda() {
+		this.lineeComanda = new ArrayList<>();
 	}
 
 	public Comanda(Date timestamp, double priceTotal) {
@@ -64,20 +66,20 @@ public class Comanda {
 		this.prezzoTotale = prezzoTotale;
 	}
 
-	public Operatore getOperatore() {
-		return operatore;
+	public String getOperatore() {
+		return codiceOperatore;
 	}
 
-	public void setOperatore(Operatore operatore) {
-		this.operatore = operatore;
+	public void setOperatore(String operatore) {
+		this.codiceOperatore = operatore;
 	}
 
-	public Tavolo getTavolo() {
-		return tavolo;
+	public String getTavolo() {
+		return numeroTavolo;
 	}
 
-	public void setTavolo(Tavolo tavolo) {
-		this.tavolo = tavolo;
+	public void setTavolo(String tavolo) {
+		this.numeroTavolo = tavolo;
 	}
 
 	@Override
@@ -85,7 +87,7 @@ public class Comanda {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((operatore == null) ? 0 : operatore.hashCode());
+		result = prime * result + ((codiceOperatore == null) ? 0 : codiceOperatore.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(prezzoTotale);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -104,10 +106,10 @@ public class Comanda {
 		Comanda other = (Comanda) obj;
 		if (id != other.id)
 			return false;
-		if (operatore == null) {
-			if (other.operatore != null)
+		if (codiceOperatore == null) {
+			if (other.codiceOperatore != null)
 				return false;
-		} else if (!operatore.equals(other.operatore))
+		} else if (!codiceOperatore.equals(other.codiceOperatore))
 			return false;
 		if (Double.doubleToLongBits(prezzoTotale) != Double.doubleToLongBits(other.prezzoTotale))
 			return false;
