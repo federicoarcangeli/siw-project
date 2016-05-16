@@ -62,7 +62,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="./index_parallax.jsp">Home</a></li>
 						<li><a href="${pageContext.request.contextPath}/ProcessaMenu">Men&ugrave;</a></li>
-						<li><a href="./galleria.jsp">Galleria</a></li>
+						<li><a href="./gallery.jsp">Galleria</a></li>
 						<li><a href="./loginSignup.jsp">Login / Signup</a></li>
 						<li><a href="./contact.html">Contact</a></li>
 					</ul>
