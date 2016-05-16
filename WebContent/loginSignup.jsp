@@ -58,19 +58,18 @@
 							src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>
+
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="./index_parallax.jsp">Home</a></li>
-							<li class="dropdown">
-							<li><a href="./prenotazione.jsp">Prenotazioni</a></li>
-							<li class="dropdown"><a href="./about.html"
-								class="dropdown-toggle" data-toggle="dropdown" role="button"
-								aria-haspopup="true" aria-expanded="false">Pages<span
-									class="caret"></span></a>
-							<li><a href="./contact.html">Contattaci</a></li>
-
+							<li><a
+								href="${pageContext.request.contextPath}/ProcessaMenu">Men&ugrave;</a></li>
+							<li><a href="./loginSignup.jsp">Login / Signup</a></li>
+							<li><a href="./contact.html">Contact</a></li>
 						</ul>
 					</div>
+
+					<!--/.navbar-collapse -->
 				</div>
 			</nav>
 
@@ -97,34 +96,27 @@
 									<div class="box-content">
 										<h3 class="text-center">Utente registrato</h3>
 										<br>
-										<form class="logregform" action="processaLogin" method="post">
+										<form class="logregform" action="processaUtente" method="post">
 											<div class="row">
 												<div class="form-group">
 													<div class="col-md-12">
-														<label>Indirizzo email</label> <input type="text" value=""
+														<label>Indirizzo email</label> <input type="text"
+															name="email" placeholder="email" class="form-control">
+													</div>
+												</div>
+											</div>
+											<div class="clearfix"></div>
+											<div class="row">
+												<div class="form-group">
+													<div class="col-md-12">
+														<label>Password</label> <input type="password"
+															name="password" placeholder="password"
 															class="form-control">
 													</div>
 												</div>
 											</div>
 											<div class="clearfix"></div>
 											<div class="row">
-												<div class="form-group">
-													<div class="col-md-12">
-														<a class="pull-right" href="./index.html">(Password
-															dimenticata?)</a> <label>Password</label> <input
-															type="password" value="" class="form-control">
-													</div>
-												</div>
-											</div>
-											<div class="clearfix"></div>
-											<div class="row">
-												<div class="col-md-6">
-													<span class="remember-box checkbox"> <label
-														for="rememberme"> <input type="checkbox"
-															id="rememberme" name="rememberme">Ricordami
-													</label>
-													</span>
-												</div>
 												<div class="col-md-6">
 													<button type="submit" class="btn btn-default pull-right">Login</button>
 												</div>
@@ -137,9 +129,8 @@
 									%>
 									<div class="animated fadeInRight">
 										<div class="alert alert-error">
-											<span> ERRORE: </span>${nomeError} ${cognomeError}
-											${emailError} ${telefonoError} ${passwordError}
-											${confermaPasswordError} ${passwordConfError}
+											<span> ERRORE: </span>${emailError} ${passwordError}
+											${loginError}
 										</div>
 
 									</div>

@@ -25,10 +25,6 @@
 <link rel="stylesheet" href="js/vendor/vegas/vegas.min.css">
 <link rel="stylesheet" href="css/main.css">
 
-<%
-	session.invalidate();
-%>
-
 </head>
 
 <body id="intro4">
@@ -62,8 +58,15 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="./index_parallax.jsp">Home</a></li>
 						<li><a href="${pageContext.request.contextPath}/ProcessaMenu">Men&ugrave;</a></li>
-						<li><a href="./loginSignup.jsp">Login / Signup</a></li>
-						<li><a href="./contact.html">Contact</a></li>
+						<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
+						<li class="dropdown"><a href="./home_Utente.jsp"
+							class="dropdown-toggle" data-toggle="dropdown" role="button"
+							aria-haspopup="true" aria-expanded="false">Benvenuto
+								${utenteCorrente.nome}<span class="caret"></span>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a href="./index_parallax.jsp">Logout</a></li>
+							</ul></li>
 					</ul>
 				</div>
 
