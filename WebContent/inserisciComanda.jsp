@@ -88,7 +88,7 @@
 						</div>
 					</div>
 					<div class="reservation-form">
-						<form action="processaPrenotazione" method="post">
+						<form action="processaComanda" method="post">
 							<div id="OT_searchWrapper">
 								<div id="OT_defList" class="row">
 									<div class="row">

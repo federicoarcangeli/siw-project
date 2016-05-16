@@ -12,6 +12,7 @@ import it.uniroma3.project.entity.CategoriaPiatto;
 import it.uniroma3.project.entity.Comanda;
 import it.uniroma3.project.entity.Piatto;
 import it.uniroma3.project.entity.Prenotazione;
+import it.uniroma3.project.entity.Tavolo;
 import it.uniroma3.project.entity.Utente;
 import it.uniroma3.project.persistence.AbstractDao;
 import it.uniroma3.project.persistence.AmministratoreDao;
@@ -21,6 +22,7 @@ import it.uniroma3.project.persistence.DescrizionePiattoDao;
 import it.uniroma3.project.persistence.OperatoreDao;
 import it.uniroma3.project.persistence.PiattoDao;
 import it.uniroma3.project.persistence.PrenotazioneDao;
+import it.uniroma3.project.persistence.TavoloDao;
 import it.uniroma3.project.persistence.UtenteDao;
 
 public class Facade {
@@ -122,4 +124,14 @@ public class Facade {
 		emf.close();
 		return operatore;
 	}
+
+	public Tavolo findTavoloByNumero(String parameter) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
+		TavoloDao dao = new TavoloDao(emf);
+		Tavolo tavolo = dao.findByNumero(parameter);
+		emf.close();
+		return tavolo;
+	}
+
+
 }

@@ -1,5 +1,6 @@
 package it.uniroma3.project.persistence;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -33,8 +34,10 @@ public class OperatoreDao extends AbstractDao<Operatore> {
 		tx.begin();
 		Query q = (Query) em.createNativeQuery("select id from operatore where codice = ?1");
 		q.setParameter(1,codice);
-		Long id = (Long) q.getSingleResult();
-		return this.findById(id);
+		BigInteger id = (BigInteger) q.getSingleResult();
+		tx.commit();
+		em.close();
+		return this.findById(id.longValue());
 	}
 
 	@Override
