@@ -6,6 +6,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import it.uniroma3.project.entity.DescrizionePiatto;
+import it.uniroma3.project.entity.Operatore;
 import it.uniroma3.project.entity.Amministratore;
 import it.uniroma3.project.entity.CategoriaPiatto;
 import it.uniroma3.project.entity.Comanda;
@@ -17,6 +18,7 @@ import it.uniroma3.project.persistence.AmministratoreDao;
 import it.uniroma3.project.persistence.CategoriaPiattoDao;
 import it.uniroma3.project.persistence.ComandaDao;
 import it.uniroma3.project.persistence.DescrizionePiattoDao;
+import it.uniroma3.project.persistence.OperatoreDao;
 import it.uniroma3.project.persistence.PiattoDao;
 import it.uniroma3.project.persistence.PrenotazioneDao;
 import it.uniroma3.project.persistence.UtenteDao;
@@ -111,5 +113,13 @@ public class Facade {
 		Utente utente = utenteDao.findUtente(email);
 		emf.close();
 		return utente;
+	}
+	
+	public Operatore findOperatoreByCodice(String codice) {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
+		OperatoreDao dao = new OperatoreDao(emf);
+		Operatore operatore = dao.findByCodice(codice);
+		emf.close();
+		return operatore;
 	}
 }

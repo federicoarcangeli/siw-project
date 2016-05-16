@@ -1,14 +1,16 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="it.uniroma3.project.controller.facade.Facade"%>
-<%@page import="it.uniroma3.project.entity.CategoriaPiatto"%>
-<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="it">
 
 <head>
 <meta charset="utf-8">
-<title>Inserimento nuova comanda</title>
+<title>Inserimento comanda</title>
+<meta name="author" content="Surjith S M">
 
+<!-- SEO -->
+<meta name="description"
+	content="Tomato is a Responsive HTML5 Template for Restaurants and food related services.">
+<meta name="keywords"
+	content="tomato, responsive, html5, restaurant, template, food, reservation">
 
 <!-- Favicons -->
 <link rel="shortcut icon" href="img/favicon.ico">
@@ -22,9 +24,15 @@
 <link rel="stylesheet" href="css/plugin.css">
 <link rel="stylesheet" href="css/main.css">
 
+<!--[if lt IE 9]>
+            <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
+        <![endif]-->
 </head>
 
 <body data-scroll-animation="true">
+	<!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
 
 	<!-- Preloder-->
 	<div class="preloder animated">
@@ -34,6 +42,7 @@
 	</div>
 
 	<div class="body">
+
 		<div class="main-wrapper">
 			<!-- Navigation-->
 			<nav class="navbar navbar-fixed-top">
@@ -53,146 +62,85 @@
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="./index_parallax.jsp">Home</a></li>
-							<li class="dropdown">
-							<li><a href="./prenotazione.jsp">Prenotazioni</a></li>
-							<li class="dropdown"><a href="./about.html"
-								class="dropdown-toggle" data-toggle="dropdown" role="button"
-								aria-haspopup="true" aria-expanded="false">Pages<span
-									class="caret"></span></a>
-							<li><a href="./contact.html">Contattaci</a></li>
-
+							<li><a href="./menu.jsp">Menù</a></li>
+							<li><a href="./gallery.html">Galleria</a></li>
+							<li><a href="./loginSignup.jsp">Login / Signup</a></li>
+							<li><a href="./contact.html">Contatti</a></li>
 						</ul>
 					</div>
+
+					<!--/.navbar-collapse -->
 				</div>
 			</nav>
 
 			<section class='page_header vertical-padding'></section>
 
-			<!-- Inserimento Piatti page-->
+			<!-- Reservations page-->
 			<section class="reservation">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="page-header">
-								<h1>Inserisci un nuovo piatto</h1>
+								<h1>
+									Ordine<small>inserisci numero tavolo e codice operatore</small>
+								</h1>
 							</div>
 						</div>
 					</div>
-					
 					<div class="reservation-form">
-						<form action=processaPiatto method="post" enctype="multipart/form-data">
-							<!-- Tabs -->
-							<div class="element-tab">
-								<!-- Nav tabs -->
-								<ul class="nav nav-tabs" role="tablist">
-									<li class="active"><a href="#categoria" role="tab"
-										data-toggle="tab"> Categoria piatto </a></li>
-									<li><a href="#descrizione" role="tab" data-toggle="tab">
-											Descrizione </a></li>
-								</ul>
-								<!-- Tab panes -->
-								<div class="tab-content">
-									<div class="tab-pane fade active in" id="categoria">
-										<div class="col-md-12">
-											<div id="OT_searchWrapper">
-												<div id="OT_defList" class="">
-													<div id="OT_partySize" class="">
-														<div class="form-group">
-															<select name="categoria" id="tipologia"
-																class="feedFormField">
-																<option selected value="empty">Inserisci la
-																	categoria</option>
-																<c:forEach var="categoria" items="${categorie}">
-																	<option value="${categoria.id}">${categoria.nome}</option>
-																</c:forEach>
-															</select>
-														</div>
-													</div>
-												</div>
+						<form action="processaPrenotazione" method="post">
+							<div id="OT_searchWrapper">
+								<div id="OT_defList" class="row">
+									<div class="row">
+										<div class="col-md-4 col-sm-6">
+											<div class="form-group">
+												<label for="tavolo">Numero tavolo</label> <input type="text"
+													name="tavolo" class="form-control" id="tavolo"
+													placeholder="Inserisci numero tavolo" title="numero tavolo"
+													value='${param["tavolo"]}'>
 											</div>
 										</div>
-									</div>
-
-
-									<div class="tab-pane fade" id="descrizione">
-										<div class="row">
-											<div class="col-md-6 col-sm-6">
-												<div class="form-group">
-													<label for="name">Nome</label> <input type="text"
-														class="form-control" id="nome" name="nome"
-														placeholder="Inserisci il nome del piatto"
-														title="Inserisci il nome del piatto"
-														value='${param["nome"]}'>
-												</div>
+										<div class="col-md-4 col-sm-6">
+											<div class="form-group">
+												<label for="operatore">Codice operatore</label> <input
+													type="text" class="form-control" id="operatore" name="operatore"
+													placeholder="Inserisci codice operatore"
+													title="Inserisci codice operatore" value='${param["operatore"]}'>
 											</div>
-											<div class="col-md-6 col-sm-6">
-												<div class="form-group">
-													<label for="immagine">Immagine</label> <input type=file
-														name="fileName">
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-6 col-sm-6">
-												<div class="form-group">
-													<label for="descrizione">Descrizione</label>
-													<textarea class="form-control" id="descrizione"
-														placeholder="Inserisci la descrizione" rows="4" cols="5"
-														name="descrizione">${param["descrizione"]}</textarea>
-
-												</div>
-											</div>
-											<div class="col-md-6 col-sm-6">
-												<div class="form-group">
-													<label for="prezzo">Prezzo</label> <input type="text"
-														class="form-control" id="prezzo" name="prezzo"
-														placeholder="Inserisci il prezzo"
-														title="Inserisci il prezzo del piatto"
-														value='${param["prezzo"]}'>
-												</div>
-											</div>
-											<div id="OT_partySize" class="col-md-6 col-sm-6">
-												<div class="form-group">
-													<label for="surgelati">Contiene prodotti surgelati?</label>
-													<input type="checkbox" name="surgelati" value="True">
-												</div>
-											</div>
-											<div id="OT_partySize" class="col-md-6 col-sm-6">
-												<div class="form-group">
-													<label for="allergeni">Contiene allergeni?</label> <input
-														type="checkbox" name="allergeni" value="True">
-												</div>
-											</div>
-
 										</div>
 									</div>
 								</div>
-							</div>
+								<div id="OT_searchWrapper">
+									<div id="OT_defList" class="row">
+										<div class="col-md-12 col-sm-12">
+											<div class="reservation-btn">
+												<button type="submit" class="btn btn-default btn-lg" id="">Crea comanda</button>
+												<%
+													if (request.getAttribute("ERROR") != null) {
+												%>
+												<div class="animated fadeInDown">
+													<div class="alert alert-error">
+														<span> ERRORE: </span>${dataError} ${nomeError}
+														${oraError} ${emailError} ${telefonoError} ${ospitiError}
+													</div>
 
-							<div id="OT_searchWrapper">
-								<div id="OT_defList" class="row">
-									<div class="col-md-12 col-sm-12">
-										<div class="reservation-btn">
-											<button type="submit" class="btn btn-default btn-lg" onClick = "return show_alert();" id="">Inserisci
-												piatto nel menù</button>
-											<%
-												if (request.getAttribute("ERRORE") != null) {
-											%>
-											<div class="animated fadeInDown">
-												<div class="alert alert-error">
-													<span> ERRORE: </span>${nomeCategoria} ${nomeError}
-													${descrizioneError} ${prezzoError} ${urlError}
 												</div>
-
+												<%
+													}
+												%>
 											</div>
-											<%
-												}
-											%>
 										</div>
 									</div>
 								</div>
 							</div>
 						</form>
+					</div>
+					<div class="reservation-footer">
+						<p>
+							Puoi contattarci anche al: <strong>+1 224 6787 004</strong> per
+							effettuare una prenotazione.
+						</p>
+						<span></span>
 					</div>
 				</div>
 			</section>
@@ -228,7 +176,7 @@
 							</div>
 						</div>
 						<div class="col-md-4  col-sm-6">
-							<h1>Seguici sui social!</h1>
+							<h1>Reach us</h1>
 							<div class="footer-social-icons">
 								<a href="http://www.facebook.com"> <i
 									class="fa fa-facebook-square"></i>
@@ -300,10 +248,6 @@
 	<script src="js/vendor/validate.js"></script>
 	<script src="js/reservation.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
-	
-	<script src = "js/confermaInserimentoPiatti.js"> </script>
-
-
 
 </body>
 
