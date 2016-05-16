@@ -15,17 +15,13 @@ import javax.persistence.OneToMany;
 public class Utente {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private String email;
 	
 	@Column(nullable = false)
 	private String nome;
 	
 	@Column(nullable = false)
 	private String cognome;
-	
-	@Column(nullable = false)
-	private String email;
 	
 	@Column(nullable = false)
 	private String password;
@@ -93,7 +89,6 @@ public class Utente {
 		int result = 1;
 		result = prime * result + ((cognome == null) ? 0 : cognome.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((prenotazioni == null) ? 0 : prenotazioni.hashCode());
@@ -120,11 +115,6 @@ public class Utente {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
 		if (nome == null) {
 			if (other.nome != null)
 				return false;
@@ -147,7 +137,5 @@ public class Utente {
 			return false;
 		return true;
 	}
-	
-	
 
 }

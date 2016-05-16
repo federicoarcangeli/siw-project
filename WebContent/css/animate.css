@@ -1732,6 +1732,7 @@
   animation-name: fadeOutUp;
 }
 
+
 @-webkit-keyframes fadeOutUpBig {
   from {
     opacity: 1;

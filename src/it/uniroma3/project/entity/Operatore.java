@@ -10,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 /**
@@ -32,16 +31,15 @@ public class Operatore {
 	@Column(nullable = false)
 	private String password;
 
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch =FetchType.EAGER)
-	@JoinColumn(name = "operatore_id")
-	private List<Comanda> orders;
+	@OneToMany(mappedBy="operatore",cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch =FetchType.EAGER)
+	private List<Comanda> comanda;
 
 	public Operatore() {
-		this.orders = new ArrayList<>();
+		this.comanda = new ArrayList<>();
 	}
-	
+
 	public void addOrder(Comanda o) {
-		this.orders.add(o);
+		this.comanda.add(o);
 	}
 
 	public Long getId() {
@@ -69,11 +67,11 @@ public class Operatore {
 	}
 
 	public List<Comanda> getOrders() {
-		return orders;
+		return comanda;
 	}
 
 	public void setOrders(List<Comanda> orders) {
-		this.orders = orders;
+		this.comanda = orders;
 	}
 
 	@Override
@@ -82,7 +80,7 @@ public class Operatore {
 		int result = 1;
 		result = prime * result + ((codice == null) ? 0 : codice.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((orders == null) ? 0 : orders.hashCode());
+		result = prime * result + ((comanda == null) ? 0 : comanda.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
 	}
@@ -106,10 +104,10 @@ public class Operatore {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (orders == null) {
-			if (other.orders != null)
+		if (comanda == null) {
+			if (other.comanda != null)
 				return false;
-		} else if (!orders.equals(other.orders))
+		} else if (!comanda.equals(other.comanda))
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -118,7 +116,7 @@ public class Operatore {
 			return false;
 		return true;
 	}
-	
-	
+
+
 
 }

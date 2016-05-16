@@ -51,7 +51,7 @@ public class RegistrazioneAction {
 
 		session.setAttribute("utenteCorrente", utente);
 
-		return "/conferma.jsp";
+		return "home_User/.jsp";
 	}
 
 	/**

@@ -48,24 +48,27 @@ public class PiattoController extends HttpServlet {
 		PiattoAction action = new PiattoAction();
 		String nextPage = "/inserimentoPiatti.jsp";
 		
-		String applicationPath = request.getServletContext().getRealPath("");
-        // constructs path of the directory to save uploaded file
-        String uploadFilePath = applicationPath + File.separator + UPLOAD_DIR;
-          
-        // creates the save directory if it does not exists
-        File fileSaveDir = new File(uploadFilePath);
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdirs();
-        }
-        System.out.println("Upload File Directory="+fileSaveDir.getAbsolutePath());
-         
-        String fileName = null;
-        //Get all the parts from request and write it to the file on server
-        for (Part part : request.getParts()) {
-            fileName = getFileName(part);
-            
-            part.write(uploadFilePath + File.separator + fileName);
-        }
+		/**
+		 * Un giorno funzionerà!
+		 */
+//		String applicationPath = request.getServletContext().getRealPath("");
+//        // constructs path of the directory to save uploaded file
+//        String uploadFilePath = applicationPath + File.separator + UPLOAD_DIR;
+//          
+//        // creates the save directory if it does not exists
+//        File fileSaveDir = new File(uploadFilePath);
+//        if (!fileSaveDir.exists()) {
+//            fileSaveDir.mkdirs();
+//        }
+//        System.out.println("Upload File Directory="+fileSaveDir.getAbsolutePath());
+//         
+//        String fileName = null;
+//        //Get all the parts from request and write it to the file on server
+//        for (Part part : request.getParts()) {
+//            fileName = getFileName(part);
+//            
+//            part.write(uploadFilePath + File.separator + fileName);
+//        }
         
        
 
@@ -73,7 +76,7 @@ public class PiattoController extends HttpServlet {
 		if (helper.validate(request)) {
 			nextPage = action.execute(request);
 		}
-		request.setAttribute("message", fileName + " File uploaded successfully!");
+//		request.setAttribute("message", fileName + " File uploaded successfully!");
 		nextPage = response.encodeURL(nextPage);
 		ServletContext application = getServletContext();
 		RequestDispatcher rd = application.getRequestDispatcher(nextPage);

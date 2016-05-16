@@ -143,7 +143,7 @@
 												<div class="form-group">
 													<label for="descrizione">Descrizione</label>
 													<textarea class="form-control" id="descrizione"
-														placeholder="Inserisci la descrizione" rows=""
+														placeholder="Inserisci la descrizione" rows="4" cols="5"
 														name="descrizione">${param["descrizione"]}</textarea>
 
 												</div>

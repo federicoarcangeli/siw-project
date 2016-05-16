@@ -31,10 +31,10 @@ public class Comanda {
 	private double prezzoTotale;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	private String codiceOperatore;
+	private Operatore operatore;
 
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},fetch = FetchType.LAZY)
-	private String numeroTavolo;
+	private Tavolo tavolo;
 	
 	@OneToMany(mappedBy="comanda")
 	private List<LineaComanda> lineeComanda;
@@ -66,20 +66,20 @@ public class Comanda {
 		this.prezzoTotale = prezzoTotale;
 	}
 
-	public String getOperatore() {
-		return codiceOperatore;
+	public Operatore getOperatore() {
+		return operatore;
 	}
 
-	public void setOperatore(String operatore) {
-		this.codiceOperatore = operatore;
+	public void setOperatore(Operatore operatore) {
+		this.operatore = operatore;
 	}
 
-	public String getTavolo() {
-		return numeroTavolo;
+	public Tavolo getTavolo() {
+		return tavolo;
 	}
 
-	public void setTavolo(String tavolo) {
-		this.numeroTavolo = tavolo;
+	public void setTavolo(Tavolo tavolo) {
+		this.tavolo = tavolo;
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class Comanda {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((codiceOperatore == null) ? 0 : codiceOperatore.hashCode());
+		result = prime * result + ((operatore == null) ? 0 : operatore.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(prezzoTotale);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -106,10 +106,10 @@ public class Comanda {
 		Comanda other = (Comanda) obj;
 		if (id != other.id)
 			return false;
-		if (codiceOperatore == null) {
-			if (other.codiceOperatore != null)
+		if (operatore == null) {
+			if (other.operatore != null)
 				return false;
-		} else if (!codiceOperatore.equals(other.codiceOperatore))
+		} else if (!operatore.equals(other.operatore))
 			return false;
 		if (Double.doubleToLongBits(prezzoTotale) != Double.doubleToLongBits(other.prezzoTotale))
 			return false;

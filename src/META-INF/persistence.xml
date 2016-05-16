@@ -14,6 +14,7 @@
 		<class>it.uniroma3.db.project.entity.Tavolo</class>
 		<class>it.uniroma3.db.project.entity.Amministratore</class>
 		<class>it.uniroma3.db.project.entity.Utente</class>
+		<class>it.uniroma3.db.project.entity.Administrator</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="javax.persistence.jdbc.user" value="progettosiw" />

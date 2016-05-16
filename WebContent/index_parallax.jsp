@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <title>Ristorante da Peppe</title>
-<meta name="author" content="Surjith S M">
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!-- SEO -->
 <meta name="description"
@@ -53,18 +53,20 @@
 						src="img/nav-logo.png" alt="nav-logo">
 					</a>
 				</div>
-				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="./index_parallax.jsp">Home</a></li>
-						<li><a href="./menu.jsp">Menù</a></li>
-						<li><a href="./prenotazione.jsp">Prenotazioni</a></li>
-						<li><a href="./comanda.jsp">Nuova comanda</a></li>
-						<li><a href="./inserimentoPiatti.jsp">Inserisci nuovi
-								piatti</a></li>
-						<li><a href="./loginSignup.jsp">Login / Signup</a></li>
-						<li><a href="./contact.html">Contact</a></li>
-					</ul>
-				</div>
+				
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="./index_parallax.jsp">Home</a></li>
+							<li><a href="${pageContext.request.contextPath}/ProcessaMenu">Men&ugrave</a></li>
+							<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
+							<li><a href="./comanda.jsp">Nuova comanda</a></li>
+							<li><a href="./inserimentoPiatti.jsp">Inserisci nuovi
+									piatti</a></li>
+							<li><a href="./loginSignup.jsp">Login / Signup</a></li>
+							<li><a href="./contact.html">Contact</a></li>
+						</ul>
+					</div>
+				
 				<!--/.navbar-collapse -->
 			</div>
 		</nav>
