@@ -99,7 +99,7 @@ public class Facade {
 	public Amministratore findAdministrator(String username){
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
 		AmministratoreDao amministratoreDao = new AmministratoreDao(emf);
-		Amministratore amministratore = amministratoreDao.findAdmin(username);
+		Amministratore amministratore = amministratoreDao.findAmministratore(username);
 		emf.close();
 		return amministratore;
 		
