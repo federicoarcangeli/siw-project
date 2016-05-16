@@ -57,8 +57,8 @@
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
-						<li><a href="./comanda.jsp">Nuova comanda</a></li>
-						<li><a href="./inserimentoPiatti.jsp">Inserisci nuovi
+						<li><a href="./inserisciComanda.jsp">Nuova comanda</a></li>
+						<li><a href="/siw-project/ProcessaCategoria">Inserisci nuovi
 								piatti</a></li>
 						<li><a href="./contact.html">Contact</a></li>
 						<li class="dropdown"><a href="./index.html"

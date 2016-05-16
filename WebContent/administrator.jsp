@@ -3,8 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Tomato Responsive Restaurant HTML5 Template</title>
-<meta name="author" content="Surjith S M">
+<title>Autenticazione admin</title>
 
 <!-- SEO -->
 <meta name="description"
