@@ -123,11 +123,11 @@ public class Facade {
 		return operatore;
 	}
 
-	public List<Prenotazione> findAllPrenotazioni() {
+	public List<Prenotazione> findAllPrenotazioniUtente(String email) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
 		PrenotazioneDao prenotazioneDao = new PrenotazioneDao(emf);
-		List<Prenotazione> categorie = prenotazioneDao.findAll();
+		List<Prenotazione> prenotazioni = prenotazioneDao.findAllPrenotazioneUtente(email);
 		emf.close();
-		return categorie;
+		return prenotazioni;
 	}
 }

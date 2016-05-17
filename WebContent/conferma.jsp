@@ -10,7 +10,7 @@
 	content="Tomato is a Responsive HTML5 Template for Restaurants and food related services.">
 <meta name="keywords"
 	content="tomato, responsive, html5, restaurant, template, food, reservation">
-
+<meta http-equiv="refresh" content="3;URL=${pageContext.request.contextPath}/processaProfilo">
 <!-- Favicons -->
 <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -87,6 +87,7 @@
 			<!-- Pagina di conferma-->
 
 			<section class='page_header vertical-padding'></section>
+			
 			<div class='container'>
 				<div class='row'>
 					<div class='col-md-12 text-center'>
@@ -99,7 +100,6 @@
 								I tuoi dati sono stati memorizzati all'interno del sistema,<br>
 								riceverai presto una email riepilogativa!
 							</p>
-							<%session.invalidate();%>
 						</div>
 					</div>
 				</div>

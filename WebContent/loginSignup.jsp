@@ -118,7 +118,7 @@
 											<div class="clearfix"></div>
 											<div class="row">
 												<div class="col-md-6">
-													<button type="submit" class="btn btn-default pull-right">Login</button>
+													<button type="submit" class="btn btn-default pull-left">Login</button>
 												</div>
 											</div>
 										</form>
