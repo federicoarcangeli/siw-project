@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 
 <head>
 <meta charset="utf-8">
-<title>Ristorante da Peppe</title>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<title>Tomato Responsive Restaurant HTML5 Template</title>
+<meta name="author" content="Surjith S M">
 
 <!-- SEO -->
 <meta name="description"
@@ -22,12 +22,17 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
 <link rel="stylesheet" href="css/plugin.css">
-<link rel="stylesheet" href="js/vendor/vegas/vegas.min.css">
 <link rel="stylesheet" href="css/main.css">
 
+<!--[if lt IE 9]>
+            <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
+        <![endif]-->
 </head>
 
-<body id="intro4">
+<body>
+	<!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
 
 	<!-- Preloder-->
 	<div class="preloder animated">
@@ -37,7 +42,6 @@
 	</div>
 
 	<div class="body">
-
 		<div class="main-wrapper">
 			<%
 				if (session.getAttribute("amministratoreCorrente") == null) {
@@ -84,48 +88,53 @@
 				</div>
 			</nav>
 
+
 			<!-- Page Header -->
 			<section class='page_header vertical-padding'></section>
 
-			<!-- Shop Content -->
-			<div class="shop-content">
+			<!-- Account Content -->
+			<section class="reservation">
 				<div class="container">
-
-
 					<div class="row">
-
-						<aside class="col-md-3">
-							<div class="side-widget">
-								<h5>Operazione di sistema</h5>
-								<ul class="shop-cat">
-
-									<li><a href="./registraOperatore.jsp">Nuovo operatore
-											di sala <i class="fa fa-caret-right"></i>
-									</a></li>
-									<li><a href="./shop_single_full.html">Almonds <i
-											class="fa fa-caret-right"></i></a></li>
-									<li><a href="./shop_single_full.html">Furniture <i
-											class="fa fa-caret-right"></i></a></li>
-									<li><a href="./shop_single_full.html">Amaranth <i
-											class="fa fa-caret-right"></i></a></li>
-									<li><a href="./shop_single_full.html">Broad Beans <i
-											class="fa fa-caret-right"></i></a></li>
-									<li><a href="./shop_single_full.html">Coriander <i
-											class="fa fa-caret-right"></i></a></li>
-								</ul>
-
+					
+						<div class="col-md-12">
+							<div class="row shop-login">
+								<div class="box-content">
+									<h3 class="text-center">Registra nuovo operatore di
+										sala</h3>
+									<br>
+									<form class="logregform" action="processaOperatore"
+										method="post">
+										<div class="clearfix space20"></div>
+										<div class="row">
+											<div class="form-group">
+												<div class="col-md-12">
+													<label>Codice operatore</label> <input type="text"
+														name="codice" placeholder="Codice" class="form-control">
+												</div>
+												<div class="col-md-12">
+													<label>Password</label> <input type="password"
+														name="password" placeholder="Password"
+														class="form-control">
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="space20"></div>
+												<div class="reservation-btn">
+													<button type="submit" class="btn btn-default " id="">Registra
+														Operatore</button>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
 							</div>
-						</aside>
-					</div>
-
-					<div class="col-md-9">
-						<!-- da implementare  -->
+						</div>
 					</div>
 				</div>
-				<
-			</div>
-
-
+			</section>
 			<%
 				}
 			%>

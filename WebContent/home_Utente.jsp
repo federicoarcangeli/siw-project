@@ -57,7 +57,7 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="./menu_Utente.jsp"> <img
+					<a class="navbar-brand" href="./home_Utente.jsp"> <img
 						src="img/nav-logo.png" alt="nav-logo">
 					</a>
 				</div>

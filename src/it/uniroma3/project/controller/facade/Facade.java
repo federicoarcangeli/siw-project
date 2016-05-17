@@ -115,7 +115,7 @@ public class Facade {
 		return utente;
 	}
 	
-	public Operatore findOperatoreByCodice(String codice) {
+	public Operatore findOperatore(String codice) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
 		OperatoreDao dao = new OperatoreDao(emf);
 		Operatore operatore = dao.findByCodice(codice);
@@ -129,5 +129,13 @@ public class Facade {
 		List<Prenotazione> prenotazioni = prenotazioneDao.findAllPrenotazioneUtente(email);
 		emf.close();
 		return prenotazioni;
+	}
+
+	public void inserisciOperatore(Operatore operatore) {
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
+			OperatoreDao operatoreDao = new OperatoreDao(emf);
+			operatoreDao.save(operatore);
+			emf.close();
+		
 	}
 }
