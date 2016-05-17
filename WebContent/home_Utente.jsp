@@ -66,7 +66,9 @@
 								${utenteCorrente.nome}<span class="caret"></span>
 						</a>
 							<ul class="dropdown-menu">
+								<li><a href="${pageContext.request.contextPath}/processaProfilo">Profilo</a></li>
 								<li><a href="./index_parallax.jsp">Logout</a></li>
+
 							</ul></li>
 					</ul>
 				</div>

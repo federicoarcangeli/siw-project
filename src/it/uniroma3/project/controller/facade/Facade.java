@@ -125,6 +125,7 @@ public class Facade {
 		return operatore;
 	}
 
+<<<<<<< HEAD
 	public Tavolo findTavoloByNumero(String parameter) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
 		TavoloDao dao = new TavoloDao(emf);
@@ -134,4 +135,13 @@ public class Facade {
 	}
 
 
+=======
+	public List<Prenotazione> findAllPrenotazioni() {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
+		PrenotazioneDao prenotazioneDao = new PrenotazioneDao(emf);
+		List<Prenotazione> categorie = prenotazioneDao.findAll();
+		emf.close();
+		return categorie;
+	}
+>>>>>>> dd4af2c754fc19b5fadf486b3949972a259ddaf9
 }

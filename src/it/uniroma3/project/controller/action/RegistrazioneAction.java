@@ -45,13 +45,13 @@ public class RegistrazioneAction {
 		utente.setEmail(request.getParameter("email"));
 		utente.setTelefono(request.getParameter("telefono"));
 		utente.setPassword(encrypter.cryptWithMD5(request.getParameter("password")));
-		this.sendMail(request.getParameter("email"));
+//		this.sendMail(request.getParameter("email"));
 
 		facade.inserisciUtente(utente);
 
 		session.setAttribute("utenteCorrente", utente);
 
-		return "home_User/.jsp";
+		return "/home_Utente.jsp";
 	}
 
 	/**
