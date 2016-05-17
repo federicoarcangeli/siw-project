@@ -1,5 +1,6 @@
 package it.uniroma3.project.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -33,6 +34,7 @@ public class Utente {
 	List<Prenotazione> prenotazioni;
 	
 	public Utente() {
+		prenotazioni = new ArrayList<>();
 	}
 
 	public String getNome() {
@@ -74,7 +76,9 @@ public class Utente {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-
+	public void addPrenotazione(Prenotazione prenotazione){
+		this.prenotazioni.add(prenotazione);
+	}
 	public List<Prenotazione> getPrenotazioni() {
 		return prenotazioni;
 	}

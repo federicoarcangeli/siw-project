@@ -7,6 +7,7 @@ import org.apache.commons.validator.routines.DateValidator;
 
 import it.uniroma3.project.controller.facade.Facade;
 import it.uniroma3.project.entity.Prenotazione;
+import it.uniroma3.project.entity.Utente;
 import it.uniroma3.validator.Time24HoursValidator;
 
 public class PrenotazioneAction {
@@ -15,17 +16,15 @@ public class PrenotazioneAction {
 	}
 
 	public String execute(HttpServletRequest request){
-		Prenotazione prenotazione = new Prenotazione();
+		
 		Facade facade= new Facade();
 		DateValidator validator = new DateValidator();
 		Time24HoursValidator validatorTime = new Time24HoursValidator();
-
+		
 		HttpSession session = request.getSession();
-
-		prenotazione.setData(validator.validate(request.getParameter("data")));
-		prenotazione.setOra(validatorTime.validate(request.getParameter("ora")));
-		prenotazione.setNumeroOspiti(Integer.parseInt(request.getParameter("ospiti")));
-
+		Utente utente = (Utente) session.getAttribute("utenteCorrente");
+		Prenotazione prenotazione = new Prenotazione(validator.validate(request.getParameter("data")),validatorTime.validate(request.getParameter("ora")),Integer.parseInt(request.getParameter("ospiti")),utente);
+		
 		facade.inserisciPrenotazione(prenotazione);
 
 		session.setAttribute("PRENOTAZIONE", prenotazione);

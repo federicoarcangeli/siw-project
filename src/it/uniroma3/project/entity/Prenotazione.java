@@ -30,14 +30,21 @@ public class Prenotazione {
 
 	@Column(nullable = false)
 	private int numeroOspiti;
-	
+
 	@ManyToOne
 	private Utente utente;
-	
+
 	@ManyToOne
 	private Tavolo tavoloPrenotato;
 
-	public Prenotazione() {
+	public Prenotazione(){
+	}
+
+	public Prenotazione(Date data,Date ora, int ospiti,Utente utente) {
+		this.data=data;
+		this.Ora=ora;
+		this.numeroOspiti=ospiti;
+		this.utente=utente;
 	}
 
 	public Long getId() {
@@ -66,6 +73,26 @@ public class Prenotazione {
 
 	public void setNumeroOspiti(int numeroOspiti) {
 		this.numeroOspiti = numeroOspiti;
+	}
+
+	public Utente getUtente() {
+		return utente;
+	}
+
+	public void setUtente(Utente utente) {
+		this.utente = utente;
+	}
+
+	public Tavolo getTavoloPrenotato() {
+		return tavoloPrenotato;
+	}
+
+	public void setTavoloPrenotato(Tavolo tavoloPrenotato) {
+		this.tavoloPrenotato = tavoloPrenotato;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	@Override
