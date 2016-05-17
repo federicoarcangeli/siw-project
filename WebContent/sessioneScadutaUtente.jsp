@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 
 <head>
 <meta charset="utf-8">
-<title>Ristorante da Peppe</title>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<title>Ristorante tomato</title>
 
 <!-- SEO -->
 <meta name="description"
 	content="Tomato is a Responsive HTML5 Template for Restaurants and food related services.">
 <meta name="keywords"
 	content="tomato, responsive, html5, restaurant, template, food, reservation">
-
+<meta http-equiv="refresh" content="3;URL=./loginSignup.jsp">
 <!-- Favicons -->
 <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -22,12 +21,17 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
 <link rel="stylesheet" href="css/plugin.css">
-<link rel="stylesheet" href="js/vendor/vegas/vegas.min.css">
 <link rel="stylesheet" href="css/main.css">
 
+<!--[if lt IE 9]>
+            <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
+        <![endif]-->
 </head>
 
-<body id="intro4">
+<body>
+	<!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
 
 	<!-- Preloder-->
 	<div class="preloder animated">
@@ -37,58 +41,40 @@
 	</div>
 
 	<div class="body">
-		<%
-			if (session.getAttribute("amministratoreCorrente") == null) {
-				String redirectURL = "./sessioneScadutaAdmin.jsp";
-				response.sendRedirect(redirectURL);
+		<div class="main-wrapper">
+			<!-- Navigation-->
 
-			} else {
-		%>
 
-		<!-- Navigation-->
-		<nav class="navbar navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-						aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="./index_parallax.jsp"> <img
-						src="img/nav-logo.png" alt="nav-logo">
-					</a>
+			<!-- Page Header -->
+
+
+			<!-- Session error -->
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<section class="reservation">
+				<div class="container">
+					<div class="col-md-12">
+						<div class="box-content">
+							<div class="animated fadeInDown">
+								<div class="alert alert-error">
+									<span> ERRORE: </span> Sessione scaduta, effettua nuovamente il
+									login!
+								</div>
+
+							</div>
+						</div>
+						<br>
+
+					</div>
+
 				</div>
 
-				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
-						<li><a href="./inserisciComanda.jsp">Nuova comanda</a></li>
-						<li><a href="/siw-project/ProcessaCategoria">Inserisci
-								nuovi piatti</a></li>
-						<li class="dropdown"><a href="./index.html"
-							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-haspopup="true" aria-expanded="false">Benvenuto
-								${amministratoreCorrente.username}<span class="caret"></span>
-						</a>
-							<ul class="dropdown-menu">
-								<li><a href="./index_parallax.jsp">Logout</a></li>
-							</ul></li>
-					</ul>
-				</div>
+			</section>
+		</div>
 
-				<!--/.navbar-collapse -->
-			</div>
-		</nav>
-
-		<!-- Page Header -->
-		<section class='page_header vertical-padding'></section>
-
-		<!-- Home page-->
-
-
-		<% } %>
 	</div>
 
 	<!-- Javascript -->

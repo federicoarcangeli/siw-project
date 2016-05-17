@@ -121,7 +121,7 @@
 														<th>Data</th>
 														<th>Ora</th>
 														<th>Numero ospiti</th>
-
+														<th>Tavolo</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -131,6 +131,7 @@
 															<td>${prenotazione.data}</td>
 															<td>${prenotazione.ora}</td>
 															<td>${prenotazione.numeroOspiti}</td>
+															<td>${prenotazione.tavoloPrenotato}</td>
 														</tr>
 													</c:forEach>
 												</tbody>
