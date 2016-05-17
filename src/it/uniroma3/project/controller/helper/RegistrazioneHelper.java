@@ -53,7 +53,7 @@ public class RegistrazioneHelper {
 		}
 
 		if(corretto==false){
-			request.setAttribute("ERROR", "error");
+			request.setAttribute("ERRORE", "error");
 		}
 		return corretto;
 	}

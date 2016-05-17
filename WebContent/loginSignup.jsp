@@ -128,10 +128,23 @@
 									<%
 										if (request.getAttribute("ERROR") != null) {
 									%>
-									<div class="animated fadeInRight">
+									<div class="animated fadeInDown">
 										<div class="alert alert-error">
 											<span> ERRORE: </span>${emailError} ${passwordError}
 											${loginError}
+										</div>
+
+									</div>
+									<%
+										}
+									%>
+									<%
+										if (request.getAttribute("ERRORE") != null) {
+									%>
+									<div class="animated fadeInRight">
+										<div class="alert alert-error">
+											<span> ERRORE: </span> ${nomeError} ${cognomeError} ${emailError} ${telefonoError} ${passwordError}
+											${confermaPasswordError} ${confermaPasswordError} ${passwordConfError} ${utenteError}
 										</div>
 
 									</div>
@@ -197,19 +210,7 @@
 										</form>
 									</div>
 									<br>
-									<%
-										if (request.getAttribute("ERROR") != null) {
-									%>
-									<div class="animated fadeInRight">
-										<div class="alert alert-error">
-											<span> ERRORE: </span> ${nomeError} ${cognomeError} ${emailError} ${telefonoError} ${passwordError}
-											${confermaPasswordError} ${confermaPasswordError} ${passwordConfError} ${utenteError}
-										</div>
-
-									</div>
-									<%
-										}
-									%>
+									
 								</div>
 							</div>
 						</div>
