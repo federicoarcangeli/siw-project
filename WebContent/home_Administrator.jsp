@@ -60,7 +60,6 @@
 						<li><a href="./inserisciComanda.jsp">Nuova comanda</a></li>
 						<li><a href="/siw-project/ProcessaCategoria">Inserisci
 								nuovi piatti</a></li>
-						<li><a href="./contact.html">Contact</a></li>
 						<li class="dropdown"><a href="./index.html"
 							class="dropdown-toggle" data-toggle="dropdown" role="button"
 							aria-haspopup="true" aria-expanded="false">Benvenuto
