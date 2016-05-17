@@ -1,6 +1,8 @@
 package it.uniroma3.project.controller.helper;
 
 import javax.servlet.http.HttpServletRequest;
+
+import it.uniroma3.project.controller.facade.Facade;
 public class RegistrazioneHelper {
 
 	public RegistrazioneHelper() {
@@ -9,6 +11,7 @@ public class RegistrazioneHelper {
 	public boolean validate(HttpServletRequest request){
 		String nome,cognome,email,telefono,password,confermaPassword;
 		boolean corretto=true;
+		Facade facade = new Facade();
 		nome=request.getParameter("nome");
 		cognome=request.getParameter("cognome");
 		email = request.getParameter("email");
@@ -16,6 +19,10 @@ public class RegistrazioneHelper {
 		password = request.getParameter("password");
 		confermaPassword = request.getParameter("confermaPassword");
 
+		if(facade.findUtente(email)!=null){
+			corretto=false;
+			request.setAttribute("utenteError", "Utente esistente");
+		}
 		if(nome.equals("")){
 			corretto=false;
 			request.setAttribute("nomeError", "Nome obbigatorio");

@@ -130,6 +130,20 @@
 										</div>
 									</form>
 								</div>
+								<br>
+									<%
+										if (request.getAttribute("ERROR") != null) {
+									%>
+									<div class="animated fadeInDown">
+										<div class="alert alert-error">
+											<span> ERRORE: </span>${codiceError} ${passwordError}
+											${operatoreError}
+										</div>
+
+									</div>
+									<%
+										}
+									%>
 							</div>
 						</div>
 					</div>

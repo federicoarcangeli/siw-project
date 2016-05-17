@@ -196,6 +196,20 @@
 											</div>
 										</form>
 									</div>
+									<br>
+									<%
+										if (request.getAttribute("ERROR") != null) {
+									%>
+									<div class="animated fadeInRight">
+										<div class="alert alert-error">
+											<span> ERRORE: </span> ${nomeError} ${cognomeError} ${emailError} ${telefonoError} ${passwordError}
+											${confermaPasswordError} ${confermaPasswordError} ${passwordConfError} ${utenteError}
+										</div>
+
+									</div>
+									<%
+										}
+									%>
 								</div>
 							</div>
 						</div>
