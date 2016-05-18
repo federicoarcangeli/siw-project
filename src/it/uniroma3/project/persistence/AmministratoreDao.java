@@ -4,13 +4,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 
 import it.uniroma3.project.entity.Amministratore;
 
 public class AmministratoreDao extends AbstractDao<Amministratore> {
 
-	public AmministratoreDao(EntityManagerFactory emf) {
-		super(emf);
+	public AmministratoreDao() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -27,8 +27,11 @@ public class AmministratoreDao extends AbstractDao<Amministratore> {
 	}
 
 	public Amministratore findAmministratore(String username) {
-		EntityManager em = this.emf.createEntityManager();
+		EntityManager em = super.getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
 		Amministratore amministratore = em.find(Amministratore.class,username);
+		tx.commit();
 		em.close();
 		return amministratore;
 	}

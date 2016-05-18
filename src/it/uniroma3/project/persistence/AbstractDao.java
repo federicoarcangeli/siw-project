@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 /**
  * classe astratta per DAO
@@ -14,31 +15,34 @@ import javax.persistence.EntityTransaction;
  * @param <T>
  */
 public abstract class AbstractDao<T> {
-	public EntityManagerFactory emf;
+	private static final String PERSISTENCE_UNIT_NAME = "restaurant-unit";
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 
-	public AbstractDao(EntityManagerFactory emf) {
-		this.emf = emf;
+	public AbstractDao() {
+
 	}
-	
+
 	/**
-	 * persiste l'entità 
+	 * persiste l'entità
+	 * 
 	 * @param entity
 	 */
 	public void save(T entity) {
-		EntityManager em = this.emf.createEntityManager();
+		EntityManager em = this.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		em.persist(entity);
 		tx.commit();
 		em.close();
 	}
-	
+
 	/**
-	 * elimina l'entità 
+	 * elimina l'entità
+	 * 
 	 * @param entity
 	 */
 	public void delete(T entity) {
-		EntityManager em = this.emf.createEntityManager();
+		EntityManager em = this.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		T toRemove = em.merge(entity);
@@ -46,18 +50,29 @@ public abstract class AbstractDao<T> {
 		tx.commit();
 		em.close();
 	}
-	
+
 	/**
 	 * aggiorna il riferimento all'entità
+	 * 
 	 * @param entity
 	 */
 	public void update(T entity) {
-		EntityManager em = this.emf.createEntityManager();
+		EntityManager em = this.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		em.merge(entity);
 		tx.commit();
 		em.close();
+	}
+
+	public EntityManager getEntityManager() {
+		return emf.createEntityManager();
+	}
+	
+	public void closeEnityManagerFactory() {
+		if(emf.isOpen()) {
+			emf.close();
+		}
 	}
 
 	/**

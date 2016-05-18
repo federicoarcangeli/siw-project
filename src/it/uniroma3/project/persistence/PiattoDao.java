@@ -4,15 +4,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 
 import it.uniroma3.project.entity.Piatto;
 
 public class PiattoDao extends AbstractDao<Piatto> {
-
-	public PiattoDao(EntityManagerFactory emf) {
-		super(emf);
-
-	}
 
 	@Override
 	public Piatto findById(long id) {
@@ -23,8 +19,11 @@ public class PiattoDao extends AbstractDao<Piatto> {
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Piatto> findAll() {
-		EntityManager em = this.emf.createEntityManager();
+		EntityManager em = super.getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
 		List<Piatto> result = em.createNamedQuery("PiattoFindAll").getResultList();
+		tx.commit();
 		em.close();
 		return result;
 	}

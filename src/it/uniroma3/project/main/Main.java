@@ -8,9 +8,9 @@ import it.uniroma3.project.persistence.PrenotazioneDao;
 public class Main {
 	
 	public static void main(String[] args) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
-		PrenotazioneDao dao = new PrenotazioneDao(emf);
-		emf.close();
+		
+		PrenotazioneDao dao = new PrenotazioneDao();
+		
 	}
 
 }

@@ -8,11 +8,6 @@ import it.uniroma3.project.entity.Utente;
 
 public class UtenteDao extends AbstractDao<Utente> {
 
-	public UtenteDao(EntityManagerFactory emf) {
-		super(emf);
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public Utente findById(long id) {
 		// TODO Auto-generated method stub

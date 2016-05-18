@@ -10,18 +10,13 @@ import it.uniroma3.project.entity.Operatore;
 
 public class OperatoreDao extends AbstractDao<Operatore> {
 
-	public OperatoreDao(EntityManagerFactory emf) {
-		super(emf);
-		// TODO Auto-generated constructor stub
-	}
-
 	@Override
 	public Operatore findById(long codice) {
 		return null;
 	}
 	
 	public Operatore findByCodice(String codice) {
-		EntityManager em = super.emf.createEntityManager();
+		EntityManager em = super.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		Operatore o = em.find(Operatore.class, codice);

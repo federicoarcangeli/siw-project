@@ -32,121 +32,91 @@ public class Facade {
 
 	public void inserisciPrenotazione(Prenotazione prenotazione){
 
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
-
-		AbstractDao<Prenotazione> prenotazioneDao = new PrenotazioneDao(emf);
+		AbstractDao<Prenotazione> prenotazioneDao = new PrenotazioneDao();
 		prenotazioneDao.save(prenotazione);
 
-		emf.close();
+
 	}
 
 	public void inserisciPiatto(Piatto piatto) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
-		PiattoDao piattoDao = new PiattoDao(emf);
+		PiattoDao piattoDao = new PiattoDao();
 		piattoDao.save(piatto);
-		emf.close();
 	}
 
 	public void inserisciDescrizione(DescrizionePiatto descrizione) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
-		DescrizionePiattoDao descrizionePiattoDao = new DescrizionePiattoDao(emf);
+		DescrizionePiattoDao descrizionePiattoDao = new DescrizionePiattoDao();
 		descrizionePiattoDao.save(descrizione);
-		emf.close();
 
 	}
 
 	public void inserisciUtente(Utente utente){
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
-		UtenteDao utenteDao = new UtenteDao(emf);
+		UtenteDao utenteDao = new UtenteDao();
 		utenteDao.save(utente);
-		emf.close();
 	}
 	
 	public void inserisciComanda(Comanda comanda) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
-		ComandaDao dao = new ComandaDao(emf);
+		ComandaDao dao = new ComandaDao();
 		dao.save(comanda);
-		emf.close();
 	}
 
 	public List<CategoriaPiatto> findAllCategorie(){
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
-		CategoriaPiattoDao categoriaPiattoDao = new CategoriaPiattoDao(emf);
+		CategoriaPiattoDao categoriaPiattoDao = new CategoriaPiattoDao();
 		List<CategoriaPiatto> categorie = categoriaPiattoDao.findAll();
-		emf.close();
 		return categorie;
 	}
 	
 	public CategoriaPiatto findCategoria(String id){
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
-		CategoriaPiattoDao categoriaPiattoDao = new CategoriaPiattoDao(emf);
+		CategoriaPiattoDao categoriaPiattoDao = new CategoriaPiattoDao();
 		CategoriaPiatto categoria = categoriaPiattoDao.findById(Long.parseLong(id));
-		emf.close();
 		return categoria;
 	}
 	
 	public void setCategoriaPiatto(Long idPiatto, String idCategoria) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
-		PiattoDao PiattoDao = new PiattoDao(emf);
+		PiattoDao PiattoDao = new PiattoDao();
 		PiattoDao.setCategoria(idPiatto , idCategoria);
-		emf.close();	
 	}
 
 	public List<Piatto> findAllPiatti(){
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
-		PiattoDao piattoDao = new PiattoDao(emf);
+		PiattoDao piattoDao = new PiattoDao();
 		List<Piatto> piatti = piattoDao.findAll();
-		emf.close();
 		return piatti;
 	}
 	
 	public Amministratore findAdministrator(String username){
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
-		AmministratoreDao amministratoreDao = new AmministratoreDao(emf);
+		AmministratoreDao amministratoreDao = new AmministratoreDao();
 		Amministratore amministratore = amministratoreDao.findAmministratore(username);
-		emf.close();
 		return amministratore;
 		
 	}
 
 	public Utente findUtente(String email) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
-		UtenteDao utenteDao = new UtenteDao(emf);
+		UtenteDao utenteDao = new UtenteDao();
 		Utente utente = utenteDao.findUtente(email);
-		emf.close();
 		return utente;
 	}
 	
 	public Operatore findOperatore(String codice) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
-		OperatoreDao dao = new OperatoreDao(emf);
+		OperatoreDao dao = new OperatoreDao();
 		Operatore operatore = dao.findByCodice(codice);
-		emf.close();
 		return operatore;
 	}
 
 
 	public Tavolo findTavoloByNumero(String parameter) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
-		TavoloDao dao = new TavoloDao(emf);
+		TavoloDao dao = new TavoloDao();
 		Tavolo tavolo = dao.findByNumero(parameter);
-		emf.close();
 		return tavolo;
 	}
 
 	public List<Prenotazione> findAllPrenotazioniUtente(String email) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
-		PrenotazioneDao prenotazioneDao = new PrenotazioneDao(emf);
+		PrenotazioneDao prenotazioneDao = new PrenotazioneDao();
 		List<Prenotazione> prenotazioni = prenotazioneDao.findAllPrenotazioneUtente(email);
-		emf.close();
 		return prenotazioni;
 	}
 
 	public void inserisciOperatore(Operatore operatore) {
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
-			OperatoreDao operatoreDao = new OperatoreDao(emf);
+			OperatoreDao operatoreDao = new OperatoreDao();
 			operatoreDao.save(operatore);
-			emf.close();
 		
 	}
 

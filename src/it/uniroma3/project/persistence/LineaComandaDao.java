@@ -8,10 +8,7 @@ import it.uniroma3.project.entity.LineaComanda;
 
 public class LineaComandaDao extends AbstractDao<LineaComanda> {
 
-	public LineaComandaDao(EntityManagerFactory emf) {
-		super(emf);
-		// TODO Auto-generated constructor stub
-	}
+
 
 	@Override
 	public LineaComanda findById(long id) {

@@ -13,13 +13,10 @@ import it.uniroma3.project.entity.Utente;
 
 public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 
-	public PrenotazioneDao(EntityManagerFactory emf ) {
-		super(emf);
-	}
 
 	@Override
 	public Prenotazione findById(long id) {
-		EntityManager em = this.emf.createEntityManager();
+		EntityManager em = super.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		Prenotazione p = em.find(Prenotazione.class, id);
@@ -35,7 +32,7 @@ public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 
 	@SuppressWarnings("unchecked")
 	public List<Prenotazione> findAllPrenotazioneUtente(String email) {
-		EntityManager em = this.emf.createEntityManager();
+		EntityManager em = super.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();	
 		Query query = em.createNativeQuery("select p.id,p.data,p.ora,p.numeroospiti,p.utente_email,p.tavoloprenotato_id from prenotazione p where p.utente_email= ?1",Prenotazione.class);

@@ -8,10 +8,6 @@ import it.uniroma3.project.entity.Comanda;
 
 public class ComandaDao extends AbstractDao<Comanda> {
 
-	public ComandaDao(EntityManagerFactory emf) {
-		super(emf);
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public Comanda findById(long id) {

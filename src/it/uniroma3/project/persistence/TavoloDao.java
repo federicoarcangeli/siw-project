@@ -13,10 +13,6 @@ import it.uniroma3.project.entity.Tavolo;
 
 public class TavoloDao extends AbstractDao<Tavolo> {
 
-	public TavoloDao(EntityManagerFactory emf) {
-		super(emf);
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public Tavolo findById(long id) {
