@@ -2,9 +2,6 @@ package it.uniroma3.project.controller.facade;
 
 import java.util.List;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import it.uniroma3.project.entity.DescrizionePiatto;
 import it.uniroma3.project.entity.Operatore;
 import it.uniroma3.project.entity.Amministratore;
@@ -27,14 +24,13 @@ import it.uniroma3.project.persistence.UtenteDao;
 
 public class Facade {
 
-	public Facade() {	
+	public Facade() {
 	}
 
-	public void inserisciPrenotazione(Prenotazione prenotazione){
+	public void inserisciPrenotazione(Prenotazione prenotazione) {
 
 		AbstractDao<Prenotazione> prenotazioneDao = new PrenotazioneDao();
 		prenotazioneDao.save(prenotazione);
-
 
 	}
 
@@ -49,44 +45,44 @@ public class Facade {
 
 	}
 
-	public void inserisciUtente(Utente utente){
+	public void inserisciUtente(Utente utente) {
 		UtenteDao utenteDao = new UtenteDao();
 		utenteDao.save(utente);
 	}
-	
+
 	public void inserisciComanda(Comanda comanda) {
 		ComandaDao dao = new ComandaDao();
 		dao.save(comanda);
 	}
 
-	public List<CategoriaPiatto> findAllCategorie(){
+	public List<CategoriaPiatto> findAllCategorie() {
 		CategoriaPiattoDao categoriaPiattoDao = new CategoriaPiattoDao();
 		List<CategoriaPiatto> categorie = categoriaPiattoDao.findAll();
 		return categorie;
 	}
-	
-	public CategoriaPiatto findCategoria(String id){
+
+	public CategoriaPiatto findCategoria(String id) {
 		CategoriaPiattoDao categoriaPiattoDao = new CategoriaPiattoDao();
 		CategoriaPiatto categoria = categoriaPiattoDao.findById(Long.parseLong(id));
 		return categoria;
 	}
-	
+
 	public void setCategoriaPiatto(Long idPiatto, String idCategoria) {
 		PiattoDao PiattoDao = new PiattoDao();
-		PiattoDao.setCategoria(idPiatto , idCategoria);
+		PiattoDao.setCategoria(idPiatto, idCategoria);
 	}
 
-	public List<Piatto> findAllPiatti(){
+	public List<Piatto> findAllPiatti() {
 		PiattoDao piattoDao = new PiattoDao();
 		List<Piatto> piatti = piattoDao.findAll();
 		return piatti;
 	}
-	
-	public Amministratore findAdministrator(String username){
+
+	public Amministratore findAdministrator(String username) {
 		AmministratoreDao amministratoreDao = new AmministratoreDao();
 		Amministratore amministratore = amministratoreDao.findAmministratore(username);
 		return amministratore;
-		
+
 	}
 
 	public Utente findUtente(String email) {
@@ -94,13 +90,12 @@ public class Facade {
 		Utente utente = utenteDao.findUtente(email);
 		return utente;
 	}
-	
+
 	public Operatore findOperatore(String codice) {
 		OperatoreDao dao = new OperatoreDao();
 		Operatore operatore = dao.findByCodice(codice);
 		return operatore;
 	}
-
 
 	public Tavolo findTavoloByNumero(String parameter) {
 		TavoloDao dao = new TavoloDao();
@@ -115,10 +110,9 @@ public class Facade {
 	}
 
 	public void inserisciOperatore(Operatore operatore) {
-			OperatoreDao operatoreDao = new OperatoreDao();
-			operatoreDao.save(operatore);
-		
+		OperatoreDao operatoreDao = new OperatoreDao();
+		operatoreDao.save(operatore);
+
 	}
 
-	
 }
