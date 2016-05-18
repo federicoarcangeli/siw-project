@@ -1,16 +1,20 @@
 package it.uniroma3.project.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
+@NamedQuery(name = "Tavolo.findAll", query = "select t from Tavolo t")
 public class Tavolo {
 
 	@Id
@@ -18,7 +22,7 @@ public class Tavolo {
 	private Long id;
 
 	@Column(nullable = false)
-	private String CodiceTavolo;
+	private String codiceTavolo;
 
 	@Column(nullable = false)
 	private int coperti;
@@ -30,6 +34,8 @@ public class Tavolo {
 	private List<Prenotazione> prenotazioni;
 
 	public Tavolo(){
+		this.prenotazioni = new ArrayList<>();
+		this.comande = new ArrayList<>();
 	}
 	
 	public Tavolo(int coperti) {
@@ -37,11 +43,11 @@ public class Tavolo {
 	}
 
 	public String getCodiceTavolo() {
-		return CodiceTavolo;
+		return codiceTavolo;
 	}
 
 	public void setCodiceTavolo(String codiceTavolo) {
-		CodiceTavolo = codiceTavolo;
+		codiceTavolo = codiceTavolo;
 	}
 
 	public int getCoperti() {
@@ -51,12 +57,17 @@ public class Tavolo {
 	public void setCoperti(int coperti) {
 		this.coperti = coperti;
 	}
+	
+	public void addPrenotazione(Prenotazione prenotazione) {
+		if(prenotazione != null)
+			this.prenotazioni.add(prenotazione);
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((CodiceTavolo == null) ? 0 : CodiceTavolo.hashCode());
+		result = prime * result + ((codiceTavolo == null) ? 0 : codiceTavolo.hashCode());
 		result = prime * result + ((comande == null) ? 0 : comande.hashCode());
 		result = prime * result + coperti;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
@@ -72,10 +83,10 @@ public class Tavolo {
 		if (getClass() != obj.getClass())
 			return false;
 		Tavolo other = (Tavolo) obj;
-		if (CodiceTavolo == null) {
-			if (other.CodiceTavolo != null)
+		if (codiceTavolo == null) {
+			if (other.codiceTavolo != null)
 				return false;
-		} else if (!CodiceTavolo.equals(other.CodiceTavolo))
+		} else if (!codiceTavolo.equals(other.codiceTavolo))
 			return false;
 		if (comande == null) {
 			if (other.comande != null)

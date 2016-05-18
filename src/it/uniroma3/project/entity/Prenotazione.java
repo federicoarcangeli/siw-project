@@ -2,6 +2,7 @@ package it.uniroma3.project.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 
 @Entity
 @NamedQuery(name = "Prenotazione.findAll", query = "select p from Prenotazione p")
@@ -54,6 +56,15 @@ public class Prenotazione {
 		this.Ora=ora;
 		this.numeroOspiti=ospiti;
 		this.utente=utente;
+	}
+
+	public Prenotazione(Date validate, Date validate2, int parseInt, Utente utente2, Tavolo tavolo) {
+		// TODO Auto-generated constructor stub
+		this.data=validate;
+		this.Ora=validate2;
+		this.numeroOspiti=parseInt;
+		this.utente=utente2;
+		this.tavoloPrenotato = tavolo;
 	}
 
 	public Long getId() {

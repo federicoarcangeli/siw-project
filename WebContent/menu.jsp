@@ -120,8 +120,9 @@
 									<div class="menu-wrapper">
 										<h4>${piatto.nome}</h4>
 										<span class="price">
-											${piatto.getDescrizionePiatto().getPrezzo() } &euro; </span>
+											${piatto.getDescrizionePiatto().getPrezzo() }0 &euro; </span>
 										<div class="dotted-bg"></div>
+										<br/>
 										<p>${piatto.getDescrizionePiatto().getDescrizione()}</p>
 									</div>
 								</div>

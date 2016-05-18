@@ -25,14 +25,20 @@ public class TavoloDao extends AbstractDao<Tavolo> {
 		return o;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Tavolo> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = super.getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		List<Tavolo> result = em.createNamedQuery("Tavolo.findAll").getResultList();
+		tx.commit();
+		em.close();
+		return result;
 	}
 
 	public Tavolo findByNumero(String parameter) {
-		EntityManager em = super.emf.createEntityManager();
+		EntityManager em = super.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		Query q = (Query) em.createNativeQuery("select id from tavolo where codicetavolo = ?1");

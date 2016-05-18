@@ -4,7 +4,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Ristorante da Peppe</title>
+<title>${utenteCorrente.nome}${utenteCorrente.cognome}</title>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!-- SEO -->
@@ -94,14 +94,17 @@
 								<h3 class="text-left no-margin-top">Riepilogo dati utente</h3>
 								<div class="footer-address contact-info">
 									<p>
-										<i class="fa fa-user"></i> <span><i class="fa fa-angle-right"></i>${utenteCorrente.nome}</span>
+										<i class="fa fa-user"></i> <span><i
+											class="fa fa-angle-right"></i>${utenteCorrente.nome}</span>
 										${utenteCorrente.cognome}
 									</p>
 									<p>
-										<i class="fa fa-phone"></i> <span><i class="fa fa-angle-right"></i>${utenteCorrente.telefono}</span>
+										<i class="fa fa-phone"></i> <span><i
+											class="fa fa-angle-right"></i>${utenteCorrente.telefono}</span>
 									</p>
 									<p>
-										<i class="fa fa-envelope-o"></i> <span><i class="fa fa-angle-right"></i>${utenteCorrente.email}</span>
+										<i class="fa fa-envelope-o"></i> <span><i
+											class="fa fa-angle-right"></i>${utenteCorrente.email}</span>
 									</p>
 								</div>
 							</div>
@@ -131,7 +134,7 @@
 															<td>${prenotazione.data}</td>
 															<td>${prenotazione.ora}</td>
 															<td>${prenotazione.numeroOspiti}</td>
-															<td>${prenotazione.tavoloPrenotato}</td>
+															<td>${prenotazione.tavoloPrenotato.codiceTavolo}</td>
 														</tr>
 													</c:forEach>
 												</tbody>

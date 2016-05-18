@@ -115,4 +115,9 @@ public class Facade {
 
 	}
 
+	public List<Tavolo> findAllTavolo() {
+		TavoloDao dao = new TavoloDao();
+		return dao.findAll();
+	}
+
 }

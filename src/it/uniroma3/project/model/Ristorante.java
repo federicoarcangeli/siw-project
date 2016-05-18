@@ -1,18 +1,27 @@
 package it.uniroma3.project.model;
 
+import java.util.List;
+
+import it.uniroma3.project.entity.Prenotazione;
+import it.uniroma3.project.entity.Tavolo;
+
 public class Ristorante {
-	private int numeroPosti;
+	private int numeroOspiti;
 
-	public Ristorante(int numeroPosti) {
-		this.numeroPosti = numeroPosti;
+	public Ristorante(int numeroOspiti) {
+		this.numeroOspiti = numeroOspiti;
 	}
-
-	public int getNumeroPosti() {
-		return numeroPosti;
-	}
-
-	public void setNumeroPosti(int numeroPosti) {
-		this.numeroPosti = numeroPosti;
+	
+	public Tavolo setTavoloPrenotazione(List<Tavolo> tavoli) {
+		int posti = this.numeroOspiti;
+		for(Tavolo t : tavoli) {
+			if(posti == t.getCoperti()) {
+				return t;
+			} else {
+				posti++;
+			}
+		}
+		return null;
 	}
 
 }
