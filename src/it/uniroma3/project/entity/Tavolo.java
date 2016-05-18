@@ -3,7 +3,6 @@ package it.uniroma3.project.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,6 +26,8 @@ public class Tavolo {
 	@Column(nullable = false)
 	private int coperti;
 
+	private boolean occupato;
+
 	@OneToMany(mappedBy="tavolo",fetch = FetchType.EAGER)
 	private List<Comanda> comande;
 
@@ -37,7 +38,7 @@ public class Tavolo {
 		this.prenotazioni = new ArrayList<>();
 		this.comande = new ArrayList<>();
 	}
-	
+
 	public Tavolo(int coperti) {
 		this.coperti = coperti;
 	}
@@ -47,7 +48,7 @@ public class Tavolo {
 	}
 
 	public void setCodiceTavolo(String codiceTavolo) {
-		codiceTavolo = codiceTavolo;
+		this.codiceTavolo = codiceTavolo;
 	}
 
 	public int getCoperti() {
@@ -57,7 +58,15 @@ public class Tavolo {
 	public void setCoperti(int coperti) {
 		this.coperti = coperti;
 	}
-	
+
+	public boolean isOccupato() {
+		return occupato;
+	}
+
+	public void setOccupato(boolean occupato) {
+		this.occupato = occupato;
+	}
+
 	public void addPrenotazione(Prenotazione prenotazione) {
 		if(prenotazione != null)
 			this.prenotazioni.add(prenotazione);
@@ -71,6 +80,8 @@ public class Tavolo {
 		result = prime * result + ((comande == null) ? 0 : comande.hashCode());
 		result = prime * result + coperti;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + (occupato ? 1231 : 1237);
+		result = prime * result + ((prenotazioni == null) ? 0 : prenotazioni.hashCode());
 		return result;
 	}
 
@@ -99,6 +110,13 @@ public class Tavolo {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
+			return false;
+		if (occupato != other.occupato)
+			return false;
+		if (prenotazioni == null) {
+			if (other.prenotazioni != null)
+				return false;
+		} else if (!prenotazioni.equals(other.prenotazioni))
 			return false;
 		return true;
 	}
