@@ -15,6 +15,7 @@ public class UtenteAction {
 		Facade facade = new Facade();
 		Utente utente = facade.findUtente(request.getParameter("email"));
 		HttpSession session = request.getSession();
+		session.setMaxInactiveInterval(-1); // la sessione non viene mai terminata
 		session.setAttribute("utenteCorrente", utente);
 		return "/home_Utente.jsp";
 	}

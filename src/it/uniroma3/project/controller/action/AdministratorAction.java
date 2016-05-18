@@ -15,6 +15,7 @@ public class AdministratorAction {
 		Facade facade = new Facade();
 		Amministratore amministratore = facade.findAdministrator(request.getParameter("username"));
 		HttpSession session = request.getSession();
+		session.setMaxInactiveInterval(-1); //la sessione non scade mai
 		session.setAttribute("amministratoreCorrente", amministratore);
 
 		return "/home_Administrator.jsp";
