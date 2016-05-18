@@ -14,7 +14,6 @@ import javax.persistence.OneToMany;
 public class Utente {
 
 	@Id
-	@Column(nullable = false)
 	private String email;
 
 	@Column(nullable = false)
@@ -33,6 +32,14 @@ public class Utente {
 	List<Prenotazione> prenotazioni;
 
 	public Utente() {
+		prenotazioni = new ArrayList<>();
+	}
+	
+	public Utente(String nome, String cognome, String email, String telefono ){
+		this.nome=nome;
+		this.cognome=cognome;
+		this.email=email;
+		this.telefono=telefono;
 		prenotazioni = new ArrayList<>();
 	}
 

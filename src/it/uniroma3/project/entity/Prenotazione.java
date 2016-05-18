@@ -30,6 +30,9 @@ public class Prenotazione {
 
 	@Column(nullable = false)
 	private int numeroOspiti;
+	
+	private String nominativo;
+
 
 	@ManyToOne
 	private Utente utente;
@@ -40,6 +43,12 @@ public class Prenotazione {
 	public Prenotazione(){
 	}
 
+	public Prenotazione(Date data,Date ora, int ospiti,String nominativo) {
+		this.data=data;
+		this.Ora=ora;
+		this.numeroOspiti=ospiti;
+		this.nominativo=nominativo;
+	}
 	public Prenotazione(Date data,Date ora, int ospiti,Utente utente) {
 		this.data=data;
 		this.Ora=ora;
@@ -69,6 +78,14 @@ public class Prenotazione {
 
 	public int getNumeroOspiti() {
 		return numeroOspiti;
+	}
+
+	public String getNominativo() {
+		return nominativo;
+	}
+
+	public void setNominativo(String nominativo) {
+		this.nominativo = nominativo;
 	}
 
 	public void setNumeroOspiti(int numeroOspiti) {
@@ -102,7 +119,10 @@ public class Prenotazione {
 		result = prime * result + ((Ora == null) ? 0 : Ora.hashCode());
 		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((nominativo == null) ? 0 : nominativo.hashCode());
 		result = prime * result + numeroOspiti;
+		result = prime * result + ((tavoloPrenotato == null) ? 0 : tavoloPrenotato.hashCode());
+		result = prime * result + ((utente == null) ? 0 : utente.hashCode());
 		return result;
 	}
 
@@ -130,11 +150,23 @@ public class Prenotazione {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (nominativo == null) {
+			if (other.nominativo != null)
+				return false;
+		} else if (!nominativo.equals(other.nominativo))
+			return false;
 		if (numeroOspiti != other.numeroOspiti)
+			return false;
+		if (tavoloPrenotato == null) {
+			if (other.tavoloPrenotato != null)
+				return false;
+		} else if (!tavoloPrenotato.equals(other.tavoloPrenotato))
+			return false;
+		if (utente == null) {
+			if (other.utente != null)
+				return false;
+		} else if (!utente.equals(other.utente))
 			return false;
 		return true;
 	}
-
-
-
 }

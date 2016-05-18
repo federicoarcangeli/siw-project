@@ -41,7 +41,7 @@
 		<div class="main-wrapper">
 			<%
 				if (session.getAttribute("amministratoreCorrente") == null) {
-					String redirectURL = "./sessioneScadutaAdmin.jsp";
+					String redirectURL = "./404.html";
 					response.sendRedirect(redirectURL);
 
 				} else {
@@ -65,7 +65,7 @@
 
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
+							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
 							<li><a href="./inserisciComanda.jsp">Nuova comanda</a></li>
 							<li><a href="/siw-project/ProcessaCategoria">Inserisci
 									nuovi piatti</a></li>
