@@ -120,4 +120,11 @@ public class Facade {
 		return dao.findAll();
 	}
 
+	public void setTavoloOccupato(Tavolo tavolo) {
+		TavoloDao dao = new TavoloDao();
+		tavolo.setOccupato(1);
+		dao.update(tavolo);
+		
+	}
+
 }

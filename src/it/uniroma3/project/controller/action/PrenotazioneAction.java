@@ -31,6 +31,7 @@ public class PrenotazioneAction {
 				utente);
 		Tavolo tavolo = prenotazioneModel.setTavoloPrenotazione(facade.findAllTavolo());
 		prenotazione.setTavoloPrenotato(tavolo);
+		facade.setTavoloOccupato(tavolo);
 		facade.inserisciPrenotazione(prenotazione);
 
 		session.setAttribute("PRENOTAZIONE", prenotazione);

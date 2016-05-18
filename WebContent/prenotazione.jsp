@@ -150,6 +150,7 @@
 													<div class="alert alert-error">
 														<span> ERRORE: </span>${dataError} ${nomeError}
 														${oraError} ${emailError} ${telefonoError} ${ospitiError}
+														${tavoliError }
 													</div>
 
 												</div>

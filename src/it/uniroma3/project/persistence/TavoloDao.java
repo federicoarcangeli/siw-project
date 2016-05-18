@@ -32,6 +32,7 @@ public class TavoloDao extends AbstractDao<Tavolo> {
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		List<Tavolo> result = em.createNamedQuery("Tavolo.findAll").getResultList();
+		System.out.println(result.toString());
 		tx.commit();
 		em.close();
 		return result;

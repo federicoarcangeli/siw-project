@@ -26,7 +26,12 @@ public class Tavolo {
 	@Column(nullable = false)
 	private int coperti;
 
-	private boolean occupato;
+	/**
+	 * tavolo libero = 0;
+	 * tavolo occupato = 1;
+	 * inizialmente un tavolo è libero;
+	 */
+	private int occupato;
 
 	@OneToMany(mappedBy="tavolo",fetch = FetchType.EAGER)
 	private List<Comanda> comande;
@@ -37,10 +42,12 @@ public class Tavolo {
 	public Tavolo(){
 		this.prenotazioni = new ArrayList<>();
 		this.comande = new ArrayList<>();
+		this.occupato = 0;
 	}
 
 	public Tavolo(int coperti) {
 		this.coperti = coperti;
+		this.occupato = 0;
 	}
 
 	public String getCodiceTavolo() {
@@ -59,11 +66,11 @@ public class Tavolo {
 		this.coperti = coperti;
 	}
 
-	public boolean isOccupato() {
-		return occupato;
+	public int getOccupato() {
+		return this.occupato;
 	}
 
-	public void setOccupato(boolean occupato) {
+	public void setOccupato(int occupato) {
 		this.occupato = occupato;
 	}
 
@@ -80,9 +87,15 @@ public class Tavolo {
 		result = prime * result + ((comande == null) ? 0 : comande.hashCode());
 		result = prime * result + coperti;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + (occupato ? 1231 : 1237);
+		result = prime * result + occupato;
 		result = prime * result + ((prenotazioni == null) ? 0 : prenotazioni.hashCode());
 		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "Tavolo [id=" + id + ", codiceTavolo=" + codiceTavolo + ", coperti=" + coperti + ", occupato=" + occupato
+				+ ", comande=" + comande + ", prenotazioni=" + prenotazioni + "]";
 	}
 
 	@Override

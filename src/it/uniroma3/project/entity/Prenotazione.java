@@ -58,15 +58,6 @@ public class Prenotazione {
 		this.utente=utente;
 	}
 
-	public Prenotazione(Date validate, Date validate2, int parseInt, Utente utente2, Tavolo tavolo) {
-		// TODO Auto-generated constructor stub
-		this.data=validate;
-		this.Ora=validate2;
-		this.numeroOspiti=parseInt;
-		this.utente=utente2;
-		this.tavoloPrenotato = tavolo;
-	}
-
 	public Long getId() {
 		return id;
 	}
