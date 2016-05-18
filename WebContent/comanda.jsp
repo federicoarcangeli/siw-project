@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Ristorante da Peppe</title>
+<title>Inserimento comanda</title>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!-- SEO -->

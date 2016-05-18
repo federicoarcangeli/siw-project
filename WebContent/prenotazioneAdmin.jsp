@@ -161,7 +161,7 @@
 												<div class="animated fadeInDown">
 													<div class="alert alert-error">
 														<span> ERRORE: </span> ${nominativoError} ${dataError} 
-														${oraError} ${ospitiError}
+														${oraError} ${ospitiError} ${tavoliError}
 													</div>
 
 												</div>

@@ -43,7 +43,7 @@
 				String redirectURL = "./sessioneScadutaUtente.jsp";
 				response.sendRedirect(redirectURL);
 
-			} else {
+			} else {	
 		%>
 
 		<!-- Navigation-->
