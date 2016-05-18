@@ -64,6 +64,7 @@
 							<li><a href="./index_parallax.jsp">Home</a></li>
 							<li><a
 								href="${pageContext.request.contextPath}/ProcessaMenu">Men&ugrave;</a></li>
+							<li><a href="./galleria.jsp">Galleria</a></li>
 							<li><a href="./loginSignup.jsp">Login / Signup</a></li>
 							<li><a href="./contact.html">Contact</a></li>
 						</ul>
@@ -118,7 +119,7 @@
 											<div class="clearfix"></div>
 											<div class="row">
 												<div class="col-md-6">
-													<button type="submit" class="btn btn-default pull-right">Login</button>
+													<button type="submit" class="btn btn-default pull-left">Login</button>
 												</div>
 											</div>
 										</form>
@@ -127,10 +128,23 @@
 									<%
 										if (request.getAttribute("ERROR") != null) {
 									%>
-									<div class="animated fadeInRight">
+									<div class="animated fadeInDown">
 										<div class="alert alert-error">
 											<span> ERRORE: </span>${emailError} ${passwordError}
 											${loginError}
+										</div>
+
+									</div>
+									<%
+										}
+									%>
+									<%
+										if (request.getAttribute("ERRORE") != null) {
+									%>
+									<div class="animated fadeInRight">
+										<div class="alert alert-error">
+											<span> ERRORE: </span> ${nomeError} ${cognomeError} ${emailError} ${telefonoError} ${passwordError}
+											${confermaPasswordError} ${confermaPasswordError} ${passwordConfError} ${utenteError}
 										</div>
 
 									</div>
@@ -195,6 +209,8 @@
 											</div>
 										</form>
 									</div>
+									<br>
+									
 								</div>
 							</div>
 						</div>

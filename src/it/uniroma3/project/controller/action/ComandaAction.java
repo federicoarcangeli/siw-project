@@ -17,7 +17,7 @@ public class ComandaAction implements Action {
 		Comanda comanda = new Comanda();
 		comanda.setDataOraEmissione(new Date());
 		comanda.setPrezzoTotale(0.0);
-		Operatore operatore = facade.findOperatoreByCodice(request.getParameter("operatore"));
+		Operatore operatore = facade.findOperatore(request.getParameter("operatore"));
 		comanda.setOperatore(operatore);
 		Tavolo tavolo = facade.findTavoloByNumero(request.getParameter("tavolo"));
 		comanda.setTavolo(tavolo);

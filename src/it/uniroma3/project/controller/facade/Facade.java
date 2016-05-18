@@ -117,13 +117,14 @@ public class Facade {
 		return utente;
 	}
 	
-	public Operatore findOperatoreByCodice(String codice) {
+	public Operatore findOperatore(String codice) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
 		OperatoreDao dao = new OperatoreDao(emf);
 		Operatore operatore = dao.findByCodice(codice);
 		emf.close();
 		return operatore;
 	}
+
 
 	public Tavolo findTavoloByNumero(String parameter) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
@@ -133,14 +134,20 @@ public class Facade {
 		return tavolo;
 	}
 
-
-
-	public List<Prenotazione> findAllPrenotazioni() {
+	public List<Prenotazione> findAllPrenotazioniUtente(String email) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
 		PrenotazioneDao prenotazioneDao = new PrenotazioneDao(emf);
-		List<Prenotazione> categorie = prenotazioneDao.findAll();
+		List<Prenotazione> prenotazioni = prenotazioneDao.findAllPrenotazioneUtente(email);
 		emf.close();
-		return categorie;
+		return prenotazioni;
+	}
+
+	public void inserisciOperatore(Operatore operatore) {
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("restaurant-unit");
+			OperatoreDao operatoreDao = new OperatoreDao(emf);
+			operatoreDao.save(operatore);
+			emf.close();
+		
 	}
 
 	

@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -14,25 +12,26 @@ import javax.persistence.OneToMany;
 @Entity
 @NamedQuery(name = "utente.findAll", query = "select u from Utente u")
 public class Utente {
-	
+
 	@Id
+	@Column(nullable = false)
 	private String email;
-	
+
 	@Column(nullable = false)
 	private String nome;
-	
+
 	@Column(nullable = false)
 	private String cognome;
-	
+
 	@Column(nullable = false)
 	private String password;
-		
+
 	@Column(nullable = false)
 	private String telefono;
-	
+
 	@OneToMany(mappedBy="utente")
 	List<Prenotazione> prenotazioni;
-	
+
 	public Utente() {
 		prenotazioni = new ArrayList<>();
 	}
@@ -141,5 +140,13 @@ public class Utente {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Utente [email=" + email + ", nome=" + nome + ", cognome=" + cognome + ", password=" + password
+				+ ", telefono=" + telefono + ", prenotazioni=" + prenotazioni + "]";
+	}
+
+
 
 }
