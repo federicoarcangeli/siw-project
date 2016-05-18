@@ -95,244 +95,247 @@
 							<div class="side-widget">
 								<h5>Our Food</h5>
 								<ul class="shop-cat">
-									<li><a href="./registraOperatore.jsp">Registra nuovo operatore <i
-											class="fa fa-caret-right"></i></a></li>
-									
+									<li><a href="./registraOperatore.jsp">Registra nuovo
+											operatore <i class="fa fa-caret-right"></i>
+									</a></li>
+
 								</ul>
 							</div>
-							
+
 						</aside>
 
 						<div class="col-md-9">
 							<div class="shop-grid">
 								<h1>PANNELLO DI CONTROLLO</h1>
-								
-								
-							<div class="shop-products">
-								<div class="row">
-									<div class="col-md-4 col-sm-6">
-										<div class="product-info">
-											<div class="product-img">
-												<img src="img/shop/1.png" alt="" />
-											</div>
-											<h4>
-												<a href="./recipe_detail-image.html">Food Name</a>
-											</h4>
-											<div class="rc-ratings">
-												<span class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-											</div>
-											<div class="product-price">$100</div>
-											<div class="shop-meta">
-												<a href="./shop_single_left.html" class="pull-left"><i
-													class="fa fa-shopping-cart"></i> Add to cart</a> <a
-													href="./shop_right_sidebar.html" class="pull-right"><i
-													class="fa fa-heart-o"></i> Wishlist</a>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-4 col-sm-6">
-										<div class="product-info">
-											<div class="product-img">
-												<img src="img/shop/2.png" alt="" />
-											</div>
-											<h4>
-												<a href="./recipe_detail-image.html">Food Name</a>
-											</h4>
-											<div class="rc-ratings">
-												<span class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-											</div>
-											<div class="product-price">$100</div>
-											<div class="shop-meta">
-												<a href="./shop_single_left.html" class="pull-left"><i
-													class="fa fa-shopping-cart"></i> Add to cart</a> <a
-													href="./shop_right_sidebar.html" class="pull-right"><i
-													class="fa fa-heart-o"></i> Wishlist</a>
+
+
+								<div class="shop-products">
+									<div class="row">
+										<div class="col-md-4 col-sm-6">
+											<div class="product-info">
+												<div class="product-img">
+													<img src="img/shop/1.png" alt="" />
+												</div>
+												<h4>
+													<a href="./recipe_detail-image.html">Food Name</a>
+												</h4>
+												<div class="rc-ratings">
+													<span class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span class="fa fa-star"></span>
+													<span class="fa fa-star"></span>
+												</div>
+												<div class="product-price">$100</div>
+												<div class="shop-meta">
+													<a href="./shop_single_left.html" class="pull-left"><i
+														class="fa fa-shopping-cart"></i> Add to cart</a> <a
+														href="./shop_right_sidebar.html" class="pull-right"><i
+														class="fa fa-heart-o"></i> Wishlist</a>
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="col-md-4 col-sm-6">
-										<div class="product-info">
-											<div class="product-img">
-												<img src="img/shop/3.png" alt="" />
-											</div>
-											<h4>
-												<a href="./recipe_detail-image.html">Food Name</a>
-											</h4>
-											<div class="rc-ratings">
-												<span class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-											</div>
-											<div class="product-price">$100</div>
-											<div class="shop-meta">
-												<a href="./shop_single_left.html" class="pull-left"><i
-													class="fa fa-shopping-cart"></i> Add to cart</a> <a
-													href="./shop_right_sidebar.html" class="pull-right"><i
-													class="fa fa-heart-o"></i> Wishlist</a>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-4 col-sm-6">
-										<div class="product-info">
-											<div class="product-img">
-												<img src="img/shop/4.png" alt="" />
-											</div>
-											<h4>
-												<a href="./recipe_detail-image.html">Food Name</a>
-											</h4>
-											<div class="rc-ratings">
-												<span class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-											</div>
-											<div class="product-price">$100</div>
-											<div class="shop-meta">
-												<a href="./shop_single_left.html" class="pull-left"><i
-													class="fa fa-shopping-cart"></i> Add to cart</a> <a
-													href="./shop_right_sidebar.html" class="pull-right"><i
-													class="fa fa-heart-o"></i> Wishlist</a>
+										<div class="col-md-4 col-sm-6">
+											<div class="product-info">
+												<div class="product-img">
+													<img src="img/shop/2.png" alt="" />
+												</div>
+												<h4>
+													<a href="./recipe_detail-image.html">Food Name</a>
+												</h4>
+												<div class="rc-ratings">
+													<span class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span class="fa fa-star"></span>
+													<span class="fa fa-star"></span>
+												</div>
+												<div class="product-price">$100</div>
+												<div class="shop-meta">
+													<a href="./shop_single_left.html" class="pull-left"><i
+														class="fa fa-shopping-cart"></i> Add to cart</a> <a
+														href="./shop_right_sidebar.html" class="pull-right"><i
+														class="fa fa-heart-o"></i> Wishlist</a>
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="col-md-4 col-sm-6">
-										<div class="product-info">
-											<div class="product-img">
-												<img src="img/shop/5.png" alt="" />
-											</div>
-											<h4>
-												<a href="./recipe_detail-image.html">Food Name</a>
-											</h4>
-											<div class="rc-ratings">
-												<span class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-											</div>
-											<div class="product-price">$100</div>
-											<div class="shop-meta">
-												<a href="./shop_single_left.html" class="pull-left"><i
-													class="fa fa-shopping-cart"></i> Add to cart</a> <a
-													href="./shop_right_sidebar.html" class="pull-right"><i
-													class="fa fa-heart-o"></i> Wishlist</a>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-4 col-sm-6">
-										<div class="product-info">
-											<div class="product-img">
-												<img src="img/shop/6.png" alt="" />
-											</div>
-											<h4>
-												<a href="./recipe_detail-image.html">Food Name</a>
-											</h4>
-											<div class="rc-ratings">
-												<span class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-											</div>
-											<div class="product-price">$100</div>
-											<div class="shop-meta">
-												<a href="./shop_single_left.html" class="pull-left"><i
-													class="fa fa-shopping-cart"></i> Add to cart</a> <a
-													href="./shop_right_sidebar.html" class="pull-right"><i
-													class="fa fa-heart-o"></i> Wishlist</a>
+										<div class="col-md-4 col-sm-6">
+											<div class="product-info">
+												<div class="product-img">
+													<img src="img/shop/3.png" alt="" />
+												</div>
+												<h4>
+													<a href="./recipe_detail-image.html">Food Name</a>
+												</h4>
+												<div class="rc-ratings">
+													<span class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span class="fa fa-star"></span>
+													<span class="fa fa-star"></span>
+												</div>
+												<div class="product-price">$100</div>
+												<div class="shop-meta">
+													<a href="./shop_single_left.html" class="pull-left"><i
+														class="fa fa-shopping-cart"></i> Add to cart</a> <a
+														href="./shop_right_sidebar.html" class="pull-right"><i
+														class="fa fa-heart-o"></i> Wishlist</a>
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="col-md-4 col-sm-6">
-										<div class="product-info">
-											<div class="product-img">
-												<img src="img/shop/7.png" alt="" />
-											</div>
-											<h4>
-												<a href="./recipe_detail-image.html">Food Name</a>
-											</h4>
-											<div class="rc-ratings">
-												<span class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-											</div>
-											<div class="product-price">$100</div>
-											<div class="shop-meta">
-												<a href="./shop_single_left.html" class="pull-left"><i
-													class="fa fa-shopping-cart"></i> Add to cart</a> <a
-													href="./shop_right_sidebar.html" class="pull-right"><i
-													class="fa fa-heart-o"></i> Wishlist</a>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-4 col-sm-6">
-										<div class="product-info">
-											<div class="product-img">
-												<img src="img/shop/8.png" alt="" />
-											</div>
-											<h4>
-												<a href="./recipe_detail-image.html">Food Name</a>
-											</h4>
-											<div class="rc-ratings">
-												<span class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
-											</div>
-											<div class="product-price">$100</div>
-											<div class="shop-meta">
-												<a href="./shop_single_left.html" class="pull-left"><i
-													class="fa fa-shopping-cart"></i> Add to cart</a> <a
-													href="./shop_right_sidebar.html" class="pull-right"><i
-													class="fa fa-heart-o"></i> Wishlist</a>
+										<div class="col-md-4 col-sm-6">
+											<div class="product-info">
+												<div class="product-img">
+													<img src="img/shop/4.png" alt="" />
+												</div>
+												<h4>
+													<a href="./recipe_detail-image.html">Food Name</a>
+												</h4>
+												<div class="rc-ratings">
+													<span class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span class="fa fa-star"></span>
+													<span class="fa fa-star"></span>
+												</div>
+												<div class="product-price">$100</div>
+												<div class="shop-meta">
+													<a href="./shop_single_left.html" class="pull-left"><i
+														class="fa fa-shopping-cart"></i> Add to cart</a> <a
+														href="./shop_right_sidebar.html" class="pull-right"><i
+														class="fa fa-heart-o"></i> Wishlist</a>
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="col-md-4 col-sm-6">
-										<div class="product-info">
-											<div class="product-img">
-												<img src="img/shop/9.png" alt="" />
+										<div class="col-md-4 col-sm-6">
+											<div class="product-info">
+												<div class="product-img">
+													<img src="img/shop/5.png" alt="" />
+												</div>
+												<h4>
+													<a href="./recipe_detail-image.html">Food Name</a>
+												</h4>
+												<div class="rc-ratings">
+													<span class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span class="fa fa-star"></span>
+													<span class="fa fa-star"></span>
+												</div>
+												<div class="product-price">$100</div>
+												<div class="shop-meta">
+													<a href="./shop_single_left.html" class="pull-left"><i
+														class="fa fa-shopping-cart"></i> Add to cart</a> <a
+														href="./shop_right_sidebar.html" class="pull-right"><i
+														class="fa fa-heart-o"></i> Wishlist</a>
+												</div>
 											</div>
-											<h4>
-												<a href="./recipe_detail-image.html">Food Name</a>
-											</h4>
-											<div class="rc-ratings">
-												<span class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span
-													class="fa fa-star active"></span> <span class="fa fa-star"></span>
-												<span class="fa fa-star"></span>
+										</div>
+										<div class="col-md-4 col-sm-6">
+											<div class="product-info">
+												<div class="product-img">
+													<img src="img/shop/6.png" alt="" />
+												</div>
+												<h4>
+													<a href="./recipe_detail-image.html">Food Name</a>
+												</h4>
+												<div class="rc-ratings">
+													<span class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span class="fa fa-star"></span>
+													<span class="fa fa-star"></span>
+												</div>
+												<div class="product-price">$100</div>
+												<div class="shop-meta">
+													<a href="./shop_single_left.html" class="pull-left"><i
+														class="fa fa-shopping-cart"></i> Add to cart</a> <a
+														href="./shop_right_sidebar.html" class="pull-right"><i
+														class="fa fa-heart-o"></i> Wishlist</a>
+												</div>
 											</div>
-											<div class="product-price">$100</div>
-											<div class="shop-meta">
-												<a href="./shop_single_left.html" class="pull-left"><i
-													class="fa fa-shopping-cart"></i> Add to cart</a> <a
-													href="./shop_right_sidebar.html" class="pull-right"><i
-													class="fa fa-heart-o"></i> Wishlist</a>
+										</div>
+										<div class="col-md-4 col-sm-6">
+											<div class="product-info">
+												<div class="product-img">
+													<img src="img/shop/7.png" alt="" />
+												</div>
+												<h4>
+													<a href="./recipe_detail-image.html">Food Name</a>
+												</h4>
+												<div class="rc-ratings">
+													<span class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span class="fa fa-star"></span>
+													<span class="fa fa-star"></span>
+												</div>
+												<div class="product-price">$100</div>
+												<div class="shop-meta">
+													<a href="./shop_single_left.html" class="pull-left"><i
+														class="fa fa-shopping-cart"></i> Add to cart</a> <a
+														href="./shop_right_sidebar.html" class="pull-right"><i
+														class="fa fa-heart-o"></i> Wishlist</a>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-6">
+											<div class="product-info">
+												<div class="product-img">
+													<img src="img/shop/8.png" alt="" />
+												</div>
+												<h4>
+													<a href="./recipe_detail-image.html">Food Name</a>
+												</h4>
+												<div class="rc-ratings">
+													<span class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span class="fa fa-star"></span>
+													<span class="fa fa-star"></span>
+												</div>
+												<div class="product-price">$100</div>
+												<div class="shop-meta">
+													<a href="./shop_single_left.html" class="pull-left"><i
+														class="fa fa-shopping-cart"></i> Add to cart</a> <a
+														href="./shop_right_sidebar.html" class="pull-right"><i
+														class="fa fa-heart-o"></i> Wishlist</a>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4 col-sm-6">
+											<div class="product-info">
+												<div class="product-img">
+													<img src="img/shop/9.png" alt="" />
+												</div>
+												<h4>
+													<a href="./recipe_detail-image.html">Food Name</a>
+												</h4>
+												<div class="rc-ratings">
+													<span class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span
+														class="fa fa-star active"></span> <span class="fa fa-star"></span>
+													<span class="fa fa-star"></span>
+												</div>
+												<div class="product-price">$100</div>
+												<div class="shop-meta">
+													<a href="./shop_single_left.html" class="pull-left"><i
+														class="fa fa-shopping-cart"></i> Add to cart</a> <a
+														href="./shop_right_sidebar.html" class="pull-right"><i
+														class="fa fa-heart-o"></i> Wishlist</a>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
+								<a href="./index.html" class="btn btn-default load-more">Load
+									more</a>
 							</div>
-							<a href="./index.html" class="btn btn-default load-more">Load
-								more</a>
 						</div>
 					</div>
 				</div>
+
+
+
+
 			</div>
-
-			
-
+			<%
+				}
+			%>
 
 		</div>
-		<%
-        } %>
-
 	</div>
 
 	<!-- Javascript -->
