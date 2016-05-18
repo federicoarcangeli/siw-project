@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.boot.model.source.internal.hbm.Helper;
 
 import it.uniroma3.project.controller.action.ComandaAction;
+import it.uniroma3.project.controller.action.ProfiloAction;
 import it.uniroma3.project.controller.helper.ComandaHelper;
 
 /**
@@ -33,13 +34,9 @@ public class ComandaController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ComandaHelper helper = new ComandaHelper();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ComandaAction action = new ComandaAction();
-		String nextPage = "/creaComanda.jsp";
-		if(helper.validate(request)) {
-			nextPage = action.execute(request);
-		}
+		String nextPage = action.execute(request);
 		ServletContext application = getServletContext();
 		RequestDispatcher rd = application.getRequestDispatcher(nextPage);
 		rd.forward(request, response);

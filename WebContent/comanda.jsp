@@ -94,20 +94,10 @@
 								<div class="menu-tags3">
 									<div class="side-widget">
 										<ul class="shop-cat">
-											<li><span data-filter=".starter"><i
-													class="fa fa-angle-right"></i>starters</span></li>
-
-											<li><span data-filter=".breakfast"><i
-													class="fa fa-angle-right"></i>breakfast</span></li>
-
-											<li><span data-filter=".lunch"><i
-													class="fa fa-angle-right"></i>lunch</span></li>
-
-											<li><span data-filter=".dinner"><i
-													class="fa fa-angle-right"></i>dinner</span></li>
-
-											<li><span data-filter=".desserts"><i
-													class="fa fa-angle-right"></i>desserts</span></li>
+											<c:forEach var="categoria" items="${categorie}">
+												<li><span data-filter=".${categoria.nome}"><i
+														class="fa fa-angle-right"></i>${categoria.nome}</span></li>
+											</c:forEach>
 										</ul>
 									</div>
 								</div>
@@ -118,47 +108,23 @@
 									<div class="shop-products">
 										<div class="row">
 											<div class="row menu-items3">
-												<div class="menu-item3 col-sm-4 starter dinner desserts">
-													<div class="product-info">
-														<h4>
-															<a href="./recipe_detail-image.html">Food Name</a>
-														</h4>
-														<div class="shop-meta">
-															<button type="button" class="btn btn-success">
-																<i class="fa fa-shopping-cart"></i> Aggiungi
-															</button>
+												<c:forEach var="piatto" items="${piatti}">
+													<div
+														class="menu-item3 col-sm-4 ${piatto.getPortata().nome}">
+														<div class="product-info">
+															<h4>
+																<a href="./recipe_detail-image.html">${piatto.nome}</a>
+															</h4>
+															<div class="shop-meta">
+																<button type="button" class="btn btn-success">
+																	<i class="fa fa-shopping-cart"></i> Aggiungi
+																</button>
+															</div>
+
 														</div>
 													</div>
-												</div>
+												</c:forEach>
 
-												<div class="menu-item3 col-sm-4 starter dinner desserts">
-													<div class="product-info">
-
-														<h4>
-															<a href="./recipe_detail-image.html">Food Name</a>
-														</h4>
-														<div class="shop-meta">
-															<button type="button" class="btn btn-success">
-																<i class="fa fa-shopping-cart"></i> Aggiungi
-															</button>
-														</div>
-
-													</div>
-												</div>
-												<div class="menu-item3 col-sm-4 starter dinner desserts">
-													<div class="product-info">
-
-														<h4>
-															<a href="./recipe_detail-image.html">Food Name</a>
-														</h4>
-														<div class="shop-meta">
-															<button type="button" class="btn btn-success">
-																<i class="fa fa-shopping-cart"></i> Aggiungi
-															</button>
-														</div>
-
-													</div>
-												</div>
 
 											</div>
 										</div>
