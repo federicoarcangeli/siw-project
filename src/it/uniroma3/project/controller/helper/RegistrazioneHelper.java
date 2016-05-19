@@ -9,15 +9,14 @@ public class RegistrazioneHelper {
 	}
 	
 	public boolean validate(HttpServletRequest request){
-		String nome,cognome,email,telefono,password,confermaPassword;
 		boolean corretto=true;
 		Facade facade = new Facade();
-		nome=request.getParameter("nome");
-		cognome=request.getParameter("cognome");
-		email = request.getParameter("email");
-		telefono = request.getParameter("telefono");
-		password = request.getParameter("password");
-		confermaPassword = request.getParameter("confermaPassword");
+		String nome=request.getParameter("nome");
+		String cognome=request.getParameter("cognome");
+		String email = request.getParameter("email");
+		String telefono = request.getParameter("telefono");
+		String password = request.getParameter("password");
+		String confermaPassword = request.getParameter("confermaPassword");
 
 		if(facade.findUtente(email)!=null){
 			corretto=false;

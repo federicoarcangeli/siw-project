@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Tomato Responsive Restaurant HTML5 Template</title>
+<title>Inserimento personale</title>
 <meta name="author" content="Surjith S M">
 
 <!-- SEO -->
