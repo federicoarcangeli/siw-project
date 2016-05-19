@@ -31,7 +31,7 @@ public class Comanda {
 	private double prezzoTotale;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	private Operatore operatore;
+	private Utente operatore;
 
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},fetch = FetchType.LAZY)
 	private Tavolo tavolo;
@@ -66,11 +66,11 @@ public class Comanda {
 		this.prezzoTotale = prezzoTotale;
 	}
 
-	public Operatore getOperatore() {
+	public Utente getOperatore() {
 		return operatore;
 	}
 
-	public void setOperatore(Operatore operatore) {
+	public void setOperatore(Utente operatore) {
 		this.operatore = operatore;
 	}
 

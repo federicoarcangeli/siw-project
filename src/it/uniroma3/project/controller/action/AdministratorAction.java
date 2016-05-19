@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import it.uniroma3.project.controller.facade.Facade;
-import it.uniroma3.project.entity.Amministratore;
+import it.uniroma3.project.entity.Utente;
 
 
 public class AdministratorAction {
@@ -13,7 +13,7 @@ public class AdministratorAction {
 
 	public String execute(HttpServletRequest request) {
 		Facade facade = new Facade();
-		Amministratore amministratore = facade.findAdministrator(request.getParameter("username"));
+		Utente amministratore = facade.findUtente(request.getParameter("username"));
 		HttpSession session = request.getSession();
 		session.setMaxInactiveInterval(-1); //la sessione non scade mai
 		session.setAttribute("amministratoreCorrente", amministratore);

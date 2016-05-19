@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
+
 import it.uniroma3.project.entity.Utente;
 
 public class UtenteDao extends AbstractDao<Utente> {
@@ -21,10 +23,16 @@ public class UtenteDao extends AbstractDao<Utente> {
 	}
 
 	public Utente findUtente(String email) {
-		EntityManager em = this.emf.createEntityManager();
+		EntityManager em = super.getEntityManager();
 		Utente utente = em.find(Utente.class,email);
 		em.close();
 		return utente;
+	}
+	
+	public Utente findUtenteByUserName(String username) {
+		EntityManager em = super.getEntityManager();
+		TypedQuery<Utente> query = em.createQuery("select u from Utente u where u.username = :username", Utente.class);
+		return query.setParameter("username", username).getSingleResult();
 	}
 
 }

@@ -14,7 +14,7 @@ public class OperatoreHelper {
 		Facade facade = new Facade();
 		codice=request.getParameter("codice");
 		password = request.getParameter("password");
-		if(facade.findOperatore(codice)!=null){
+		if(facade.findUtente(codice)!=null){
 			corretto=false;
 			request.setAttribute("operatoreError", "Operatore esistente");
 		}

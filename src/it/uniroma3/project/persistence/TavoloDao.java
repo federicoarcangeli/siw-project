@@ -4,11 +4,9 @@ import java.math.BigInteger;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import it.uniroma3.project.entity.Operatore;
 import it.uniroma3.project.entity.Tavolo;
 
 public class TavoloDao extends AbstractDao<Tavolo> {

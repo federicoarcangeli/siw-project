@@ -22,7 +22,7 @@ public class LineaComanda {
 	private String nota;
 	
 	@Column(nullable = false)
-	private int quantità;
+	private int quantita;
 	
 	@ManyToOne
 	private Comanda comanda;
@@ -41,12 +41,12 @@ public class LineaComanda {
 		this.nota = nota;
 	}
 
-	public int getQuantità() {
-		return quantità;
+	public int getQuantita() {
+		return quantita;
 	}
 
-	public void setQuantità(int quantità) {
-		this.quantità = quantità;
+	public void setQuantita(int quantita) {
+		this.quantita = quantita;
 	}
 
 	public Comanda getComanda() {
@@ -74,7 +74,7 @@ public class LineaComanda {
 		result = prime * result + ((nota == null) ? 0 : nota.hashCode());
 		result = prime * result + numeroLinea;
 		result = prime * result + ((piatto == null) ? 0 : piatto.hashCode());
-		result = prime * result + quantità;
+		result = prime * result + quantita;
 		return result;
 	}
 
@@ -109,7 +109,7 @@ public class LineaComanda {
 				return false;
 		} else if (!piatto.equals(other.piatto))
 			return false;
-		if (quantità != other.quantità)
+		if (quantita != other.quantita)
 			return false;
 		return true;
 	}

@@ -2,21 +2,17 @@ package it.uniroma3.project.controller.facade;
 
 import java.util.List;
 
-import it.uniroma3.project.entity.DescrizionePiatto;
-import it.uniroma3.project.entity.Operatore;
-import it.uniroma3.project.entity.Amministratore;
 import it.uniroma3.project.entity.CategoriaPiatto;
 import it.uniroma3.project.entity.Comanda;
+import it.uniroma3.project.entity.DescrizionePiatto;
 import it.uniroma3.project.entity.Piatto;
 import it.uniroma3.project.entity.Prenotazione;
 import it.uniroma3.project.entity.Tavolo;
 import it.uniroma3.project.entity.Utente;
 import it.uniroma3.project.persistence.AbstractDao;
-import it.uniroma3.project.persistence.AmministratoreDao;
 import it.uniroma3.project.persistence.CategoriaPiattoDao;
 import it.uniroma3.project.persistence.ComandaDao;
 import it.uniroma3.project.persistence.DescrizionePiattoDao;
-import it.uniroma3.project.persistence.OperatoreDao;
 import it.uniroma3.project.persistence.PiattoDao;
 import it.uniroma3.project.persistence.PrenotazioneDao;
 import it.uniroma3.project.persistence.TavoloDao;
@@ -78,23 +74,11 @@ public class Facade {
 		return piatti;
 	}
 
-	public Amministratore findAdministrator(String username) {
-		AmministratoreDao amministratoreDao = new AmministratoreDao();
-		Amministratore amministratore = amministratoreDao.findAmministratore(username);
-		return amministratore;
 
-	}
-
-	public Utente findUtente(String email) {
+	public Utente findUtente(String username) {
 		UtenteDao utenteDao = new UtenteDao();
-		Utente utente = utenteDao.findUtente(email);
+		Utente utente = utenteDao.findUtenteByUserName(username);
 		return utente;
-	}
-
-	public Operatore findOperatore(String codice) {
-		OperatoreDao dao = new OperatoreDao();
-		Operatore operatore = dao.findByCodice(codice);
-		return operatore;
 	}
 
 	public Tavolo findTavoloByNumero(String parameter) {
@@ -109,11 +93,6 @@ public class Facade {
 		return prenotazioni;
 	}
 
-	public void inserisciOperatore(Operatore operatore) {
-		OperatoreDao operatoreDao = new OperatoreDao();
-		operatoreDao.save(operatore);
-
-	}
 
 	public List<Tavolo> findAllTavolo() {
 		TavoloDao dao = new TavoloDao();

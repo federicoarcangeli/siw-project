@@ -143,7 +143,7 @@
 														<div class="shop-products">
 															<div class="row">
 																<div class="col-md-12">
-																	<h4>Prenotazione effettuate</h4>
+																	<h4>Ordine in corso</h4>
 																	<br>
 																	<table
 																		class="cart-table account-table table table-bordered">
@@ -156,7 +156,7 @@
 																			</tr>
 																		</thead>
 																		<tbody>
-
+		
 																			<tr>
 																				<td>Lasagna de cristo</td>
 																				<td><input type="number" placeholder="qta"
