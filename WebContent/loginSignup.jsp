@@ -101,8 +101,8 @@
 											<div class="row">
 												<div class="form-group">
 													<div class="col-md-12">
-														<label>Indirizzo email</label> <input type="text"
-															name="email" placeholder="email" class="form-control">
+														<label>Username</label> <input type="text" name="username"
+															placeholder="username" class="form-control">
 													</div>
 												</div>
 											</div>
@@ -130,7 +130,7 @@
 									%>
 									<div class="animated fadeInDown">
 										<div class="alert alert-error">
-											<span> ERRORE: </span>${emailError} ${passwordError}
+											<span> ERRORE: </span>${usernameError} ${passwordError}
 											${loginError}
 										</div>
 
@@ -143,8 +143,10 @@
 									%>
 									<div class="animated fadeInRight">
 										<div class="alert alert-error">
-											<span> ERRORE: </span> ${nomeError} ${cognomeError} ${emailError} ${telefonoError} ${passwordError}
-											${confermaPasswordError} ${confermaPasswordError} ${passwordConfError} ${utenteError}
+											<span> ERRORE: </span> ${nomeError} ${cognomeError}
+											${emailError} ${telefonoError} ${passwordError}
+											${confermaPasswordError} ${confermaPasswordError}
+											${passwordConfError} ${utenteError}
 										</div>
 
 									</div>
@@ -177,9 +179,17 @@
 														<label>Email</label> <input type="text" name="email"
 															placeholder="email" class="form-control">
 													</div>
-													<div class="col-md-12">
-														<label>Telefono</label> <input type="text" name="telefono"
-															placeholder="telefono" class="form-control">
+													<div class="form-group">
+														<div class="col-md-6">
+															<label>Username</label> <input type="text"
+																name="username" placeholder="username"
+																class="form-control">
+														</div>
+														<div class="col-md-6">
+															<label>Telefono</label> <input type="text"
+																name="telefono" placeholder="telefono"
+																class="form-control">
+														</div>
 													</div>
 												</div>
 											</div>
@@ -210,7 +220,7 @@
 										</form>
 									</div>
 									<br>
-									
+
 								</div>
 							</div>
 						</div>

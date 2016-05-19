@@ -90,7 +90,7 @@
 
 			<!-- Shop Content -->
 			<div class="shop-content">
-				<div class="container">
+				<div class="container-fluid">
 					<div class="row">
 						<aside class="col-md-3">
 							<div class="side-widget">
