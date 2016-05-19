@@ -30,6 +30,7 @@
 <link rel="stylesheet" href="css/main.css">
 
 <%
+	
 %>
 
 </head>
@@ -115,14 +116,15 @@
 						</div>
 						<div class="row menu-items3">
 							<c:forEach var="piatto" items="${piatti}">
-								<div class="menu-item3 col-sm-6 col-xs-12 ${piatto.getPortata().nome}">
+								<div
+									class="menu-item3 col-sm-6 col-xs-12 ${piatto.getPortata().nome}">
 									<img src="img/menu/2/2.jpg" class="img-responsive" alt="" />
 									<div class="menu-wrapper">
 										<h4>${piatto.nome}</h4>
 										<span class="price">
 											${piatto.getDescrizionePiatto().getPrezzo() }0 &euro; </span>
 										<div class="dotted-bg"></div>
-										<br/>
+										<br />
 										<p>${piatto.getDescrizionePiatto().getDescrizione()}</p>
 									</div>
 								</div>
@@ -143,7 +145,7 @@
 								method="POST">
 								<div class="form-group">
 									<input class="e-mail form-control" name="email" id="address"
-										type="email" placeholder="Your Email Address" required>  
+										type="email" placeholder="Your Email Address" required>
 								</div>
 								<button type="submit" class="btn btn-default">
 									<i class="fa fa-angle-right"></i>
@@ -264,4 +266,4 @@
 
 </body>
 
-</html> 	
+</html>

@@ -23,15 +23,10 @@
 <link rel="stylesheet" href="css/plugin.css">
 <link rel="stylesheet" href="css/main.css">
 
-<!--[if lt IE 9]>
-            <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
-        <![endif]-->
 </head>
 
 <body>
-	<!--[if lt IE 8]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
+
 
 	<!-- Preloder-->
 	<div class="preloder animated">
@@ -54,7 +49,6 @@
 			<br>
 			<br>
 			<br>
-			<div class="animated fadeInDownBig">
 				<section class="reservation">
 					<div class="container">
 						<div class="col-md-12">
@@ -90,7 +84,7 @@
 							<%
 								if (request.getAttribute("ERROR") != null) {
 							%>
-							<div class="animated fadeInRight">
+							<div class="animated fadeInUp">
 								<div class="alert alert-error">
 									<span> ERRORE: </span>${usernameError} ${passwordError}
 									${loginError}
@@ -106,8 +100,6 @@
 				</section>
 			</div>
 		</div>
-
-	</div>
 
 	<!-- Javascript -->
 	<script src="js/vendor/jquery-1.11.2.min.js"></script>

@@ -5,7 +5,6 @@
 <head>
 <meta charset="utf-8">
 <title>${utenteCorrente.nome}${utenteCorrente.cognome}</title>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!-- SEO -->
 <meta name="description"
@@ -109,7 +108,6 @@
 								</div>
 							</div>
 						</aside>
-
 						<div class="col-md-9">
 							<div class="shop-grid">
 								<div class="shop-products">
