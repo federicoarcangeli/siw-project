@@ -28,8 +28,6 @@ public class AdministratorHelper {
 			request.setAttribute("loginError", "Utente non esistente");
 		}else {
 			if(!(amministratore.getPassword().equals(encrypter.cryptWithMD5(password)))){
-				System.out.println("password if: "+encrypter.cryptWithMD5(password));
-				System.out.println("crypt admin "+encrypter.cryptWithMD5("admin"));
 				corretto=false;
 				request.setAttribute("loginError", "Username e/o Password errata");
 			}
