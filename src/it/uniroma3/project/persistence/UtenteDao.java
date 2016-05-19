@@ -22,26 +22,30 @@ public class UtenteDao extends AbstractDao<Utente> {
 		return null;
 	}
 
-	/*da controllare*/
+	/* da controllare */
 	public Utente findUtente(String email) {
 		EntityManager em = null;
 		try {
-		em = super.getEntityManager();
-		Utente utente = em.find(Utente.class,email);
-		em.close();
-		return utente;
-		} catch(Exception e) {
+			em = super.getEntityManager();
+			Utente utente = em.find(Utente.class, email);
+			em.close();
+			return utente;
+			/*
+			 * IMPORTANTE: trovare il modo di gestire l'eccezione nel caso in
+			 * cui non sia presente l'utente ricercato, altrimenti viene
+			 * restituito errore 500 da tomcat.
+			 */
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
-		}
-		finally {
-			if(em.isOpen())
+		} finally {
+			if (em.isOpen())
 				em.close();
 		}
 	}
-	
+
 	public Utente findUtenteByUserName(String username) {
-		
+
 		EntityManager em = super.getEntityManager();
 		TypedQuery<Utente> query = em.createQuery("select u from Utente u where u.username = :username", Utente.class);
 		return query.setParameter("username", username).getSingleResult();
