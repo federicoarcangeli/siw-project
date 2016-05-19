@@ -5,9 +5,9 @@ import javax.servlet.http.HttpServletRequest;
 import it.uniroma3.project.controller.facade.Facade;
 import it.uniroma3.project.entity.Utente;
 import it.uniroma3.security.MD5Encrypter;
-public class UtenteHelper {
+public class LoginUtenteHelper {
 
-	public UtenteHelper() {
+	public LoginUtenteHelper() {
 	}
 
 	public boolean validate(HttpServletRequest request){

@@ -106,4 +106,10 @@ public class Facade {
 		
 	}
 
+	public List<Prenotazione> findAllPrenotazioni() {
+		PrenotazioneDao prenotazioneDao = new PrenotazioneDao();
+		List<Prenotazione> prenotazioni = prenotazioneDao.findAll();
+		return null;
+	}
+
 }

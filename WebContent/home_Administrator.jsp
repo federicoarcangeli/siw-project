@@ -66,14 +66,17 @@
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
-							<li><a href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
-							<li><a href="${pageContext.request.contextPath}/processaComanda">Comanda</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/processaComanda">Comanda</a></li>
 							<li><a href="/siw-project/ProcessaCategoria">Inserisci
 									nuovi piatti</a></li>
 							<li class="dropdown"><a href="./index.html"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Benvenuto
-									${amministratoreCorrente.username}<span class="caret"></span>
+									${amministratoreCorrente.username} -
+									${amministratoreCorrente.role}<span class="caret"></span>
 							</a>
 								<ul class="dropdown-menu">
 									<li><a href="./index_parallax.jsp">Logout</a></li>
@@ -96,7 +99,8 @@
 							<div class="side-widget">
 								<h5>Our Food</h5>
 								<ul class="shop-cat">
-									<li><a href="./registraPersonale.jsp">Registra nuovo Personale <i class="fa fa-caret-right"></i>
+									<li><a href="./registraPersonale.jsp">Registra nuovo
+											Personale <i class="fa fa-caret-right"></i>
 									</a></li>
 
 								</ul>

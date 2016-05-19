@@ -1,10 +1,12 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="it">
 
 <head>
 <meta charset="utf-8">
 <title>Ristorante da Peppe</title>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 
 <!-- SEO -->
 <meta name="description"
@@ -58,7 +60,7 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="./home_Administrator.jsp"> <img
+						<a class="navbar-brand" href="./home_Operatore.jsp"> <img
 							src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>
@@ -73,7 +75,8 @@
 							<li class="dropdown"><a href="./index.html"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Benvenuto
-									${amministratoreCorrente.username}<span class="caret"></span>
+									${amministratoreCorrente.username} -
+									${amministratoreCorrente.role} <span class="caret"></span>
 							</a>
 								<ul class="dropdown-menu">
 									<li><a href="./index_parallax.jsp">Logout</a></li>
@@ -94,8 +97,6 @@
 					<div class="row"></div>
 
 
-
-
 				</div>
 				<%
 					}
@@ -103,28 +104,30 @@
 
 			</div>
 		</div>
+	</div>
 
-		<!-- Javascript -->
-		<script src="js/vendor/jquery-1.11.2.min.js"></script>
-		<script src="js/vendor/bootstrap.min.js"></script>
-		<script src="js/vendor/jquery.flexslider-min.js"></script>
-		<script src="js/vendor/spectragram.js"></script>
-		<script src="js/vendor/owl.carousel.min.js"></script>
-		<script src="js/vendor/velocity.min.js"></script>
-		<script src="js/vendor/velocity.ui.min.js"></script>
-		<script src="js/vendor/bootstrap-datepicker.min.js"></script>
-		<script src="js/vendor/bootstrap-clockpicker.min.js"></script>
-		<script src="js/vendor/jquery.magnific-popup.min.js"></script>
-		<script src="js/vendor/isotope.pkgd.min.js"></script>
-		<script src="js/vendor/slick.min.js"></script>
-		<script src="js/vendor/wow.min.js"></script>
-		<script src="js/animation.js"></script>
-		<script src="js/vendor/vegas/vegas.min.js"></script>
-		<script src="js/vendor/jquery.mb.YTPlayer.js"></script>
-		<script src="js/vendor/jquery.stellar.js"></script>
-		<script src="js/main.js"></script>
-		<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
-		<script src="js/vendor/mc/main.js"></script>
+	<!-- Javascript -->
+	
+	<script src="js/vendor/jquery-1.11.2.min.js"></script>
+	<script src="js/vendor/bootstrap.min.js"></script>
+	<script src="js/vendor/jquery.flexslider-min.js"></script>
+	<script src="js/vendor/spectragram.js"></script>
+	<script src="js/vendor/owl.carousel.min.js"></script>
+	<script src="js/vendor/velocity.min.js"></script>
+	<script src="js/vendor/velocity.ui.min.js"></script>
+	<script src="js/vendor/bootstrap-datepicker.min.js"></script>
+	<script src="js/vendor/bootstrap-clockpicker.min.js"></script>
+	<script src="js/vendor/jquery.magnific-popup.min.js"></script>
+	<script src="js/vendor/isotope.pkgd.min.js"></script>
+	<script src="js/vendor/slick.min.js"></script>
+	<script src="js/vendor/wow.min.js"></script>
+	<script src="js/animation.js"></script>
+	<script src="js/vendor/vegas/vegas.min.js"></script>
+	<script src="js/vendor/jquery.mb.YTPlayer.js"></script>
+	<script src="js/vendor/jquery.stellar.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
+	<script src="js/vendor/mc/main.js"></script>
 </body>
 
 </html>

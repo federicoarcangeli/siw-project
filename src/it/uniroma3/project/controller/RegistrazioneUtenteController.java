@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.uniroma3.project.controller.action.RegistrazioneAction;
-import it.uniroma3.project.controller.helper.RegistrazioneHelper;
+import it.uniroma3.project.controller.action.RegistrazioneUtenteAction;
+import it.uniroma3.project.controller.helper.RegistrazioneUtenteHelper;
 
 /**
  * Controller per la registrazione di operatori di sala e nuovi amministratori
@@ -21,13 +21,13 @@ import it.uniroma3.project.controller.helper.RegistrazioneHelper;
  */
 
 @WebServlet("/processaRegistrazione")
-public class RegistrazioneController extends HttpServlet {
+public class RegistrazioneUtenteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public RegistrazioneController() {
+	public RegistrazioneUtenteController() {
 	}
 
 	/**
@@ -36,8 +36,8 @@ public class RegistrazioneController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RegistrazioneHelper helper = new RegistrazioneHelper();
-		RegistrazioneAction action = new RegistrazioneAction();
+		RegistrazioneUtenteHelper helper = new RegistrazioneUtenteHelper();
+		RegistrazioneUtenteAction action = new RegistrazioneUtenteAction();
 		String nextPage = "/loginSignup.jsp";
 		if (helper.validate(request)) {
 			nextPage = action.execute(request);

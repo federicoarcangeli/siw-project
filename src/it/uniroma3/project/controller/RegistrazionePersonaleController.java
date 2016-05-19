@@ -10,26 +10,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.uniroma3.project.controller.action.PersonaleAction;
-import it.uniroma3.project.controller.helper.PersonaleHelper;
+import it.uniroma3.project.controller.action.RegistrazionePersonaleAction;
+import it.uniroma3.project.controller.helper.RegistrazionePersonaleHelper;
 
 
 @WebServlet("/processaPersonale")
-public class PersonaleController extends HttpServlet{
+public class RegistrazionePersonaleController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public PersonaleController() {
+	public RegistrazionePersonaleController() {
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PersonaleHelper helper = new PersonaleHelper();
-		PersonaleAction action = new PersonaleAction();
+		RegistrazionePersonaleHelper helper = new RegistrazionePersonaleHelper();
+		RegistrazionePersonaleAction action = new RegistrazionePersonaleAction();
 		String nextPage = "/registraPersonale.jsp";
 		if(helper.validate(request)){
 			nextPage=action.execute(request);

@@ -10,28 +10,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.uniroma3.project.controller.action.UtenteAction;
-import it.uniroma3.project.controller.helper.UtenteHelper;
+import it.uniroma3.project.controller.action.LoginPersonaleAction;
+import it.uniroma3.project.controller.helper.LoginPersonaleHelper;
 
 
 
-@WebServlet("/processaUtente")
-public class UtenteController extends HttpServlet{
+@WebServlet("/processaAmministratore")
+public class LoginPersonaleController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public UtenteController() {
+	public LoginPersonaleController() {
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UtenteHelper helper = new UtenteHelper();
-		UtenteAction action = new UtenteAction();
-		String nextPage = "/loginSignup.jsp";
+		LoginPersonaleHelper helper = new LoginPersonaleHelper();
+		LoginPersonaleAction action = new LoginPersonaleAction();
+		String nextPage = "/administrator.jsp";
 		if(helper.validate(request)){
 			nextPage=action.execute(request);
 		}

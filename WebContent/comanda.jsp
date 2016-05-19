@@ -66,7 +66,8 @@
 							<li class="dropdown"><a href="./index.html"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Benvenuto
-									${amministratoreCorrente.username}<span class="caret"></span>
+									${amministratoreCorrente.username} -
+									${amministratoreCorrente.role}<span class="caret"></span>
 							</a>
 								<ul class="dropdown-menu">
 									<li><a href="./index_parallax.jsp">Logout</a></li>
@@ -156,7 +157,7 @@
 																			</tr>
 																		</thead>
 																		<tbody>
-		
+
 																			<tr>
 																				<td>Lasagna de cristo</td>
 																				<td><input type="number" placeholder="qta"
