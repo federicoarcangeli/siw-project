@@ -117,8 +117,8 @@
 														</div>
 														<div id="OT_partySize" class="col-md-12">
 															<div class="form-group">
-																<label for="ospiti">Tipologia personale</label> <select
-																	name="ospiti" id="ospiti" class="feedFormField">
+																<label for="role">Tipologia personale</label> <select
+																	name="role" id="role" class="feedFormField">
 																	<option selected value="vuoto">Seleziona una
 																		tipologia di personale</option>
 																	<option value="amministratore">Amministratore</option>

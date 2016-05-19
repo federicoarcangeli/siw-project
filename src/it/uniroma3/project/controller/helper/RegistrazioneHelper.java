@@ -9,52 +9,65 @@ public class RegistrazioneHelper {
 	}
 	
 	public boolean validate(HttpServletRequest request){
-		boolean corretto=true;
+		boolean check=true;
 		Facade facade = new Facade();
 		String nome=request.getParameter("nome");
 		String cognome=request.getParameter("cognome");
 		String email = request.getParameter("email");
 		String telefono = request.getParameter("telefono");
 		String password = request.getParameter("password");
+		String role = request.getParameter("role");
+		String codiceOperatore = request.getParameter("codice");
 		String confermaPassword = request.getParameter("confermaPassword");
 
 		if(facade.findUtente(email)!=null){
-			corretto=false;
+			check=false;
 			request.setAttribute("utenteError", "Utente esistente");
 		}
+		
+		if(role.equals("")) {
+			check = false;
+			request.setAttribute("roleError", "Ruolo obbligatorio");
+		}
+		
+		if(codiceOperatore.equals("")) {
+			check = false;
+			request.setAttribute("codiceOperatoreError", "Codice operatore obbligatorio");
+		}
+		
 		if(nome.equals("")){
-			corretto=false;
+			check=false;
 			request.setAttribute("nomeError", "Nome obbigatorio");
 		}
 		if(cognome.equals("")){
-			corretto=false;
+			check=false;
 			request.setAttribute("cognomeError","Cognome obbligatorio" );
 		}
 		if(email.equals("")){
-			corretto=false;
+			check=false;
 			request.setAttribute("emailError", "Email obbligatoria");
 		}
 		if(telefono.equals("")){
-			corretto=false;
+			check=false;
 			request.setAttribute("telefonoError", "Telefono obbligatorio");
 		}
 		if(password.equals("")){
-			corretto=false;
+			check=false;
 			request.setAttribute("passwordError", "Password obbligatoria");
 		}
 		if(confermaPassword.equals("")){
-			corretto=false;
+			check=false;
 			request.setAttribute("confermaPasswordError", "Conferma Password obbligatoria");
 		}		
 		if(!password.equals(confermaPassword)){
-			corretto=false;
+			check=false;
 			request.setAttribute("passwordConfError", " Le password non coincidono");
 		}
 
-		if(corretto==false){
+		if(check==false){
 			request.setAttribute("ERRORE", "error");
 		}
-		return corretto;
+		return check;
 	}
 
 }
