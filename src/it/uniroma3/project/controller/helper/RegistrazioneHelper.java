@@ -19,7 +19,7 @@ public class RegistrazioneHelper {
 		String role = request.getParameter("role");
 		String codiceOperatore = request.getParameter("codice");
 		String confermaPassword = request.getParameter("confermaPassword");
-
+		
 		if(facade.findUtente(email)!=null){
 			check=false;
 			request.setAttribute("utenteError", "Utente esistente");

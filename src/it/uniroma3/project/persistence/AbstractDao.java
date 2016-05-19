@@ -7,6 +7,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import org.apache.log4j.Logger;
+
 /**
  * classe astratta per DAO
  * 
@@ -17,7 +19,7 @@ import javax.persistence.Persistence;
 public abstract class AbstractDao<T> {
 	private static final String PERSISTENCE_UNIT_NAME = "restaurant-unit";
 	EntityManagerFactory emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-
+	
 	public AbstractDao() {
 
 	}

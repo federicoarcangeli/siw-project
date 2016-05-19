@@ -22,11 +22,22 @@ public class UtenteDao extends AbstractDao<Utente> {
 		return null;
 	}
 
+	/*da controllare*/
 	public Utente findUtente(String email) {
-		EntityManager em = super.getEntityManager();
+		EntityManager em = null;
+		try {
+		em = super.getEntityManager();
 		Utente utente = em.find(Utente.class,email);
 		em.close();
 		return utente;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		finally {
+			if(em.isOpen())
+				em.close();
+		}
 	}
 	
 	public Utente findUtenteByUserName(String username) {
