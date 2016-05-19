@@ -98,7 +98,7 @@
 									<h3 class="text-center">Registra nuovo personale</h3>
 									<br>
 									<div class="reservation-form">
-										<form class="logregform" action="processaOperatore"
+										<form class="logregform" action="processaPersonale"
 											method="post">
 											<div id="OT_searchWrapper">
 												<div id="OT_defList" class="row">
@@ -106,8 +106,8 @@
 													<div class="row">
 														<div class="form-group">
 															<div class="col-md-12">
-																<label>Codice operatore</label> <input type="text"
-																	name="codice" placeholder="Codice" class="form-control">
+																<label>Username</label> <input type="text"
+																	name="username" placeholder="username" class="form-control">
 															</div>
 															<div class="col-md-12">
 																<label>Password</label> <input type="password"
@@ -148,8 +148,8 @@
 								%>
 								<div class="animated fadeInDown">
 									<div class="alert alert-error">
-										<span> ERRORE: </span>${codiceError} ${passwordError}
-										${operatoreError}
+										<span> ERRORE: </span>${personaleError} ${passwordError}
+										${usernameError} ${roleError}
 									</div>
 
 								</div>

@@ -10,27 +10,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.uniroma3.project.controller.action.OperatoreAction;
-import it.uniroma3.project.controller.helper.OperatoreHelper;
+import it.uniroma3.project.controller.action.PersonaleAction;
+import it.uniroma3.project.controller.helper.PersonaleHelper;
 
 
-@WebServlet("/processaOperatore")
-public class OperatoreController extends HttpServlet{
+@WebServlet("/processaPersonale")
+public class PersonaleController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public OperatoreController() {
+	public PersonaleController() {
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		OperatoreHelper helper = new OperatoreHelper();
-		OperatoreAction action = new OperatoreAction();
-		String nextPage = "/registraOperatore.jsp";
+		PersonaleHelper helper = new PersonaleHelper();
+		PersonaleAction action = new PersonaleAction();
+		String nextPage = "/registraPersonale.jsp";
 		if(helper.validate(request)){
 			nextPage=action.execute(request);
 		}

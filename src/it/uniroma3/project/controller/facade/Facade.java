@@ -87,9 +87,9 @@ public class Facade {
 		return tavolo;
 	}
 
-	public List<Prenotazione> findAllPrenotazioniUtente(String email) {
+	public List<Prenotazione> findAllPrenotazioniUtente(Long id_utente) {
 		PrenotazioneDao prenotazioneDao = new PrenotazioneDao();
-		List<Prenotazione> prenotazioni = prenotazioneDao.findAllPrenotazioneUtente(email);
+		List<Prenotazione> prenotazioni = prenotazioneDao.findAllPrenotazioneUtente(id_utente);
 		return prenotazioni;
 	}
 

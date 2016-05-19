@@ -3,24 +3,25 @@ package it.uniroma3.project.controller.helper;
 import javax.servlet.http.HttpServletRequest;
 
 import it.uniroma3.project.controller.facade.Facade;
-public class OperatoreHelper {
+public class PersonaleHelper {
 
-	public OperatoreHelper() {
+	public PersonaleHelper() {
 	}
-	
+
 	public boolean validate(HttpServletRequest request){
-		String codice,password;
 		boolean corretto=true;
 		Facade facade = new Facade();
-		codice=request.getParameter("codice");
-		password = request.getParameter("password");
+		String codice=request.getParameter("username");
+		String password = request.getParameter("password");
+		String role = request.getParameter("role");
+
 		if(facade.findUtente(codice)!=null){
 			corretto=false;
-			request.setAttribute("operatoreError", "Operatore esistente");
+			request.setAttribute("personaleError", "Personale esistente");
 		}
-		if(codice.equals("")){
+		if(role.equals("vuoto")){
 			corretto=false;
-			request.setAttribute("codiceError", "Codice obbigatorio");
+			request.setAttribute("roleError","Ruolo personale obbligatorio");
 		}
 		if(password.equals("")){
 			corretto=false;

@@ -21,7 +21,7 @@ public class UtenteHelper {
 		username= request.getParameter("username");
 		password = request.getParameter("password");
 
-		if(utente==null){
+		if(utente==null || !utente.getRole().equals("utente")){
 			corretto=false;
 			request.setAttribute("loginError", "Utente non esistente");
 		}else {
@@ -30,6 +30,7 @@ public class UtenteHelper {
 				request.setAttribute("loginError", "Username e/o Password errata");
 			}
 		}
+		
 		if(username.equals("")){
 			corretto=false;
 			request.setAttribute("usernameError", "Username obbigatoria");

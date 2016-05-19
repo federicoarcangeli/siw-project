@@ -17,17 +17,17 @@ public class AdministratorHelper {
 		String password;
 		boolean corretto=true;
 
-		Utente amministratore = facade.findUtente(request.getParameter("username"));
+		Utente personale = facade.findUtente(request.getParameter("username"));
 
 		username = request.getParameter("username");
 		password = request.getParameter("password");
 		
 
-		if(amministratore==null){
+		if(personale==null){
 			corretto=false;
 			request.setAttribute("loginError", "Utente non esistente");
 		}else {
-			if(!(amministratore.getPassword().equals(encrypter.cryptWithMD5(password)))){
+			if(!(personale.getPassword().equals(encrypter.cryptWithMD5(password)))){
 				corretto=false;
 				request.setAttribute("loginError", "Username e/o Password errata");
 			}
@@ -43,7 +43,7 @@ public class AdministratorHelper {
 		if(corretto==false){
 			request.setAttribute("ERROR", "error");
 		}
-		System.out.println("username:"+amministratore.getUsername() + "\npassword="+amministratore.getPassword());
+		System.out.println("username:"+personale.getUsername() + "\npassword="+personale.getPassword());
 
 		return corretto;
 	}
