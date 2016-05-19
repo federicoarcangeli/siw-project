@@ -97,8 +97,8 @@
 								<c:choose>
 									<c:when test="${tavolo.occupato=='1'}">
 										<span>Coperti: ${tavolo.coperti} - </span>
-										<button type="button" class="btn btn-danger"
-											style="width: 100%; height: 150px;">
+										<button id="occupato" type="button" class="btn btn-danger"
+											style="width: 100%; height: 150px;" onclick="getComanda();">
 											<h3>${tavolo.codiceTavolo}</h3>
 										</button>
 										<div class="col-md-12" style="height: 25px;"></div>
@@ -106,8 +106,8 @@
 
 									<c:when test="${tavolo.occupato=='0'}">
 										<span>Coperti: ${tavolo.coperti} - </span>
-										<button type="button" class="btn btn-success"
-											style="width: 100%; height: 150px;">
+										<button id="libero" type="button" class="btn btn-success"
+											style="width: 100%; height: 150px;" onclick="getComanda();">
 											<h3>${tavolo.codiceTavolo}</h3>
 										</button>
 										<div class="col-md-12" style="height: 25px;"></div>
@@ -148,6 +148,9 @@
 	<script src="js/main.js"></script>
 	<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
+
+	<!-- 	scripts -->
+	<script src="js/scripts/getComanda.js"></script>
 
 </body>
 
