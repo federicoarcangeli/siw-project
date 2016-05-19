@@ -13,12 +13,16 @@ public class AdministratorAction {
 
 	public String execute(HttpServletRequest request) {
 		Facade facade = new Facade();
-		Utente amministratore = facade.findUtente(request.getParameter("username"));
+		Utente personale = facade.findUtente(request.getParameter("username"));
 		HttpSession session = request.getSession();
 		session.setMaxInactiveInterval(-1); //la sessione non scade mai
-		session.setAttribute("amministratoreCorrente", amministratore);
+		session.setAttribute("amministratoreCorrente", personale);
+		if(personale.getRole().equals("amministratore")){
+			return "/home_Administrator.jsp";
+		}else{
+			return "/home_Operatore.jsp";
 
-		return "/home_Administrator.jsp";
+		}
 	}
 
 }
