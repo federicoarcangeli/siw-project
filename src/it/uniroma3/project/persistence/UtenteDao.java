@@ -37,7 +37,6 @@ public class UtenteDao extends AbstractDao<Utente> {
 			 * restituito errore 500 da tomcat.
 			 */
 		} catch (Exception e) {
-			e.printStackTrace();
 			return null;
 		} finally {
 			if (em.isOpen())
