@@ -37,6 +37,13 @@
 
 	<div class="body">
 		<div class="main-wrapper">
+			<%
+				if (session.getAttribute("amministratoreCorrente") == null) {
+					String redirectURL = "./404.html";
+					response.sendRedirect(redirectURL);
+
+				} else {
+			%>
 			<!-- Navigation-->
 			<nav class="navbar navbar-fixed-top">
 				<div class="container">
@@ -80,9 +87,10 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="reservation-form">
-						<form action=processaPiatto method="post" enctype="multipart/form-data">
+						<form action=processaPiatto method="post"
+							enctype="multipart/form-data">
 							<!-- Tabs -->
 							<div class="element-tab">
 								<!-- Nav tabs -->
@@ -175,7 +183,8 @@
 								<div id="OT_defList" class="row">
 									<div class="col-md-12 col-sm-12">
 										<div class="reservation-btn">
-											<button type="submit" class="btn btn-default btn-lg" onClick = "return show_alert();" id="">Inserisci
+											<button type="submit" class="btn btn-default btn-lg"
+												onClick="return show_alert();" id="">Inserisci
 												piatto nel menù</button>
 											<%
 												if (request.getAttribute("ERRORE") != null) {
@@ -276,6 +285,9 @@
 				</div>
 			</section>
 		</div>
+		<%
+			}
+		%>
 
 	</div>
 
@@ -302,8 +314,10 @@
 	<script src="js/vendor/validate.js"></script>
 	<script src="js/reservation.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
-	
-	<script src = "js/confermaInserimentoPiatti.js"> </script>
+
+	<script src="js/confermaInserimentoPiatti.js">
+		
+	</script>
 
 
 
