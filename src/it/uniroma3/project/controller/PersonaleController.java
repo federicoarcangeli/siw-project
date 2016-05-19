@@ -14,7 +14,7 @@ import it.uniroma3.project.controller.action.PersonaleAction;
 import it.uniroma3.project.controller.helper.PersonaleHelper;
 
 
-@WebServlet("/processaOperatore")
+@WebServlet("/processaPersonale")
 public class PersonaleController extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 

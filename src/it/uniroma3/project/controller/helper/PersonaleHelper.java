@@ -11,13 +11,13 @@ public class PersonaleHelper {
 	public boolean validate(HttpServletRequest request){
 		boolean corretto=true;
 		Facade facade = new Facade();
-		String codice=request.getParameter("codice");
+		String codice=request.getParameter("username");
 		String password = request.getParameter("password");
 		String role = request.getParameter("role");
 
 		if(facade.findUtente(codice)!=null){
 			corretto=false;
-			request.setAttribute("personaleeError", "Personale esistente");
+			request.setAttribute("personaleError", "Personale esistente");
 		}
 		if(role.equals("vuoto")){
 			corretto=false;

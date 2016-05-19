@@ -98,7 +98,7 @@
 									<h3 class="text-center">Registra nuovo personale</h3>
 									<br>
 									<div class="reservation-form">
-										<form class="logregform" action="processaOperatore"
+										<form class="logregform" action="processaPersonale"
 											method="post">
 											<div id="OT_searchWrapper">
 												<div id="OT_defList" class="row">
