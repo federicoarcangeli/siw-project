@@ -31,12 +31,12 @@ public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Prenotazione> findAllPrenotazioneUtente(String email) {
+	public List<Prenotazione> findAllPrenotazioneUtente(Long id_utente) {
 		EntityManager em = super.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();	
-		Query query = em.createNativeQuery("select p.* from prenotazione p where p.utente_email= ?1",Prenotazione.class);
-		query.setParameter(1,email);
+		Query query = em.createNativeQuery("select p.* from Prenotazione p where p.utente_id= ?1",Prenotazione.class);
+		query.setParameter(1,id_utente);
 		List<Prenotazione> result = query.getResultList();
 		tx.commit();
 		em.close();

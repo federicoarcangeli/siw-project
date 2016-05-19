@@ -17,7 +17,7 @@ public class ProfiloAction implements Action {
 		Facade facade = new Facade();
 		HttpSession session = request.getSession(true);
 		Utente utente = (Utente)session.getAttribute("utenteCorrente");
-		List<Prenotazione> prenotazioni = facade.findAllPrenotazioniUtente(utente.getEmail());
+		List<Prenotazione> prenotazioni = facade.findAllPrenotazioniUtente(utente.getId());
 		request.setAttribute("prenotazioni", prenotazioni);
 		return "/profilo.jsp";
 	}
