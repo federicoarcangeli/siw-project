@@ -38,13 +38,13 @@
 
 	<div class="body">
 		<div class="main-wrapper">
-			<%
+			<%-- 			<%
 				if (session.getAttribute("amministratoreCorrente") == null) {
 					String redirectURL = "./sessioneScadutaAdmin.jsp";
 					response.sendRedirect(redirectURL);
 
 				} else {
-			%>
+			%> --%>
 
 			<!-- Navigation-->
 			<nav class="navbar navbar-fixed-top">
@@ -91,62 +91,79 @@
 			<section class="reservation">
 				<div class="container">
 					<div class="row">
-					
+
 						<div class="col-md-12">
 							<div class="row shop-login">
 								<div class="box-content">
-									<h3 class="text-center">Registra nuovo operatore di
-										sala</h3>
+									<h3 class="text-center">Registra nuovo personale</h3>
 									<br>
-									<form class="logregform" action="processaOperatore"
-										method="post">
-										<div class="clearfix space20"></div>
-										<div class="row">
-											<div class="form-group">
-												<div class="col-md-12">
-													<label>Codice operatore</label> <input type="text"
-														name="codice" placeholder="Codice" class="form-control">
-												</div>
-												<div class="col-md-12">
-													<label>Password</label> <input type="password"
-														name="password" placeholder="Password"
-														class="form-control">
+									<div class="reservation-form">
+										<form class="logregform" action="processaOperatore"
+											method="post">
+											<div id="OT_searchWrapper">
+												<div id="OT_defList" class="row">
+													<div class="clearfix space20"></div>
+													<div class="row">
+														<div class="form-group">
+															<div class="col-md-12">
+																<label>Codice operatore</label> <input type="text"
+																	name="codice" placeholder="Codice" class="form-control">
+															</div>
+															<div class="col-md-12">
+																<label>Password</label> <input type="password"
+																	name="password" placeholder="Password"
+																	class="form-control">
+															</div>
+														</div>
+														<div id="OT_partySize" class="col-md-12">
+															<div class="form-group">
+																<label for="ospiti">Tipologia personale</label> <select
+																	name="ospiti" id="ospiti" class="feedFormField">
+																	<option selected value="vuoto">Seleziona una
+																		tipologia di personale</option>
+																	<option value="amministratore">Amministratore</option>
+																	<option value="operatore">Operatore</option>
+																</select> 
+															</div>
+														</div>
+
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+															<div class="space20"></div>
+															<div class="reservation-btn">
+																<button type="submit" class="btn btn-default " id="">Registra
+																	Operatore</button>
+															</div>
+														</div>
+													</div>
 												</div>
 											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-12">
-												<div class="space20"></div>
-												<div class="reservation-btn">
-													<button type="submit" class="btn btn-default " id="">Registra
-														Operatore</button>
-												</div>
-											</div>
-										</div>
-									</form>
+										</form>
+									</div>
 								</div>
 								<br>
-									<%
-										if (request.getAttribute("ERROR") != null) {
-									%>
-									<div class="animated fadeInDown">
-										<div class="alert alert-error">
-											<span> ERRORE: </span>${codiceError} ${passwordError}
-											${operatoreError}
-										</div>
-
+								<%
+									if (request.getAttribute("ERROR") != null) {
+								%>
+								<div class="animated fadeInDown">
+									<div class="alert alert-error">
+										<span> ERRORE: </span>${codiceError} ${passwordError}
+										${operatoreError}
 									</div>
-									<%
-										}
-									%>
+
+								</div>
+								<%
+									}
+								%>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
-			<%
+			<%-- 			<%
 				}
-			%>
+			%> --%>
 		</div>
 
 	</div>
