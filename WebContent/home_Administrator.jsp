@@ -96,8 +96,7 @@
 							<div class="side-widget">
 								<h5>Our Food</h5>
 								<ul class="shop-cat">
-									<li><a href="./registraOperatore.jsp">Registra nuovo
-											operatore <i class="fa fa-caret-right"></i>
+									<li><a href="./registraPersonale.jsp">Registra nuovo Personale <i class="fa fa-caret-right"></i>
 									</a></li>
 
 								</ul>
