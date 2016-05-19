@@ -84,34 +84,35 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="page-header wow fadeInDown">
-								<h1>
-									Gestione sala
-								</h1>
+								<h1>Gestione sala</h1>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
-			
-			<div class="container">
+
+			<div class="container-fluid">
 				<div class="row">
-					<c:forEach var="tavolo" items="${tavoli}">
-						<div class="col-xs-6 col-sm-2">
-							<c:choose>
-								<c:when test="${tavolo.occupato=='1'}">
-									<button type="button" class="btn btn-danger"
-										style="width: 150px; height: 150px;">${tavolo.codiceTavolo}</button>
+					<div class="col-sm-12 centered">
+						<c:forEach var="tavolo" items="${tavoli}">
+							<div class="col-xs-6 col-sm-2">
+								<c:choose>
+									<c:when test="${tavolo.occupato=='1'}">
+										<button type="button" class="btn btn-danger"
+											style="width: 100%; height: 150px;"><h3>${tavolo.codiceTavolo}</h3></button>
 									<div class="col-md-12" style="height: 25px;"></div>
 								</c:when>
 
-								<c:when test="${tavolo.occupato=='0'}">
-									<button type="button" class="btn btn-success"
-										style="width: 150px; height: 150px;">${tavolo.codiceTavolo}</button>
+									<c:when test="${tavolo.occupato=='0'}">
+									${tavolo.coperti} - ${tavolo}
+										<button type="button" class="btn btn-success"
+											style="width: 100%; height: 150px;"><h3>${tavolo.codiceTavolo}</h3></button>
 									<div class="col-md-12" style="height: 25px;"></div>
 								</c:when>
-							</c:choose>
-						</div>
-					</c:forEach>
+								</c:choose>
+							</div>
+						</c:forEach>
+					</div>
 				</div>
 
 
