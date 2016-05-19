@@ -25,9 +25,7 @@
 <link rel="stylesheet" href="css/plugin.css">
 <link rel="stylesheet" href="css/main.css">
 
-<%
-	
-%>
+
 
 </head>
 
@@ -98,17 +96,22 @@
 							<div class="col-xs-6 col-sm-2">
 								<c:choose>
 									<c:when test="${tavolo.occupato=='1'}">
+										<span>Coperti: ${tavolo.coperti} - </span>
 										<button type="button" class="btn btn-danger"
-											style="width: 100%; height: 150px;"><h3>${tavolo.codiceTavolo}</h3></button>
-									<div class="col-md-12" style="height: 25px;"></div>
-								</c:when>
+											style="width: 100%; height: 150px;">
+											<h3>${tavolo.codiceTavolo}</h3>
+										</button>
+										<div class="col-md-12" style="height: 25px;"></div>
+									</c:when>
 
 									<c:when test="${tavolo.occupato=='0'}">
-									${tavolo.coperti} - ${tavolo}
+										<span>Coperti: ${tavolo.coperti} - </span>
 										<button type="button" class="btn btn-success"
-											style="width: 100%; height: 150px;"><h3>${tavolo.codiceTavolo}</h3></button>
-									<div class="col-md-12" style="height: 25px;"></div>
-								</c:when>
+											style="width: 100%; height: 150px;">
+											<h3>${tavolo.codiceTavolo}</h3>
+										</button>
+										<div class="col-md-12" style="height: 25px;"></div>
+									</c:when>
 								</c:choose>
 							</div>
 						</c:forEach>

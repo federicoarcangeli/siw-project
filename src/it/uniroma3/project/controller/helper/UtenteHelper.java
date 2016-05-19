@@ -13,13 +13,12 @@ public class UtenteHelper {
 	public boolean validate(HttpServletRequest request){
 		Facade facade = new Facade();
 		MD5Encrypter encrypter = new MD5Encrypter();
-		String email;
+		String username;
 		String password;
 		boolean corretto=true;
 
-		Utente utente = facade.findUtente(request.getParameter("email"));
-
-		email = request.getParameter("email");
+		Utente utente = facade.findUtente(request.getParameter("username"));
+		username= request.getParameter("username");
 		password = request.getParameter("password");
 
 		if(utente==null){
@@ -28,12 +27,12 @@ public class UtenteHelper {
 		}else {
 			if(!(utente.getPassword().equals(encrypter.cryptWithMD5(password)))){
 				corretto=false;
-				request.setAttribute("loginError", "Email e/o Password errata");
+				request.setAttribute("loginError", "Username e/o Password errata");
 			}
 		}
-		if(email.equals("")){
+		if(username.equals("")){
 			corretto=false;
-			request.setAttribute("emailError", "Email obbigatoria");
+			request.setAttribute("usernameError", "Username obbigatoria");
 		}
 		if(password.equals("")){
 			corretto=false;

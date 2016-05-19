@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import it.uniroma3.project.entity.Utente;
@@ -45,10 +46,14 @@ public class UtenteDao extends AbstractDao<Utente> {
 	}
 
 	public Utente findUtenteByUserName(String username) {
-
 		EntityManager em = super.getEntityManager();
 		TypedQuery<Utente> query = em.createQuery("select u from Utente u where u.username = :username", Utente.class);
-		return query.setParameter("username", username).getSingleResult();
+		try{
+			return query.setParameter("username", username).getSingleResult();
+		}catch(NoResultException nre){ return null;}
+
+
+
 	}
 
 }

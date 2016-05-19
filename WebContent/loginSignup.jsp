@@ -143,7 +143,7 @@
 									%>
 									<div class="animated fadeInRight">
 										<div class="alert alert-error">
-											<span> ERRORE: </span> ${nomeError} ${cognomeError}
+											<span> ERRORE: </span>  ${userError} ${usernameError} ${nomeError} ${cognomeError}
 											${emailError} ${telefonoError} ${passwordError}
 											${confermaPasswordError} ${confermaPasswordError}
 											${passwordConfError} ${utenteError}
