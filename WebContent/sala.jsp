@@ -52,23 +52,31 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="./index_parallax.jsp"> <img
+						<a class="navbar-brand" href="./home_Operatore.jsp"> <img
 							src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>
+
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="./index_parallax.jsp">Home</a></li>
-							<li class="dropdown">
-							<li><a href="./prenotazione.jsp">Prenotazioni</a></li>
-							<li class="dropdown"><a href="./about.html"
+							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/processaComanda">Comanda</a></li>
+							<li class="dropdown"><a href="./index.html"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
-								aria-haspopup="true" aria-expanded="false">Pages<span
-									class="caret"></span></a>
-							<li><a href="./contact.html">Contattaci</a></li>
-
+								aria-haspopup="true" aria-expanded="false">Benvenuto
+									${amministratoreCorrente.username} -
+									${amministratoreCorrente.role} <span class="caret"></span>
+							</a>
+								<ul class="dropdown-menu">
+									<li><a href="./index_parallax.jsp">Logout</a></li>
+								</ul></li>
 						</ul>
 					</div>
+
+					<!--/.navbar-collapse -->
 				</div>
 			</nav>
 

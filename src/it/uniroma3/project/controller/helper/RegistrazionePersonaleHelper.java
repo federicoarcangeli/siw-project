@@ -3,9 +3,9 @@ package it.uniroma3.project.controller.helper;
 import javax.servlet.http.HttpServletRequest;
 
 import it.uniroma3.project.controller.facade.Facade;
-public class PersonaleHelper {
+public class RegistrazionePersonaleHelper {
 
-	public PersonaleHelper() {
+	public RegistrazionePersonaleHelper() {
 	}
 
 	public boolean validate(HttpServletRequest request){

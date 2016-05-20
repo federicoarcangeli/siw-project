@@ -6,10 +6,10 @@ import it.uniroma3.project.controller.facade.Facade;
 import it.uniroma3.project.entity.Utente;
 import it.uniroma3.security.MD5Encrypter;
 
-public class PersonaleAction {
+public class RegistrazionePersonaleAction {
 
 
-	public PersonaleAction() {
+	public RegistrazionePersonaleAction() {
 	}
 
 	public String execute(HttpServletRequest request) {

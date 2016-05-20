@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
+import it.uniroma3.project.entity.CategoriaPiatto;
 import it.uniroma3.project.entity.Piatto;
 import it.uniroma3.project.entity.Prenotazione;
 import it.uniroma3.project.entity.Utente;
@@ -26,8 +27,16 @@ public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<Prenotazione> findAll() {
-		return null;
+		EntityManager em = super.getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		List<Prenotazione> result = em.createNamedQuery("Prenotazione.findAll",Prenotazione.class).getResultList();
+		tx.commit();
+		em.close();
+		return result;
+
 	}
 
 	@SuppressWarnings("unchecked")

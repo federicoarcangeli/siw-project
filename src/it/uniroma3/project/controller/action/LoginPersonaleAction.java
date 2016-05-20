@@ -7,8 +7,8 @@ import it.uniroma3.project.controller.facade.Facade;
 import it.uniroma3.project.entity.Utente;
 
 
-public class AdministratorAction {
-	public AdministratorAction() {
+public class LoginPersonaleAction {
+	public LoginPersonaleAction() {
 	}
 
 	public String execute(HttpServletRequest request) {

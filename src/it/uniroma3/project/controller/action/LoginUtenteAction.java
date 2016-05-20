@@ -7,8 +7,8 @@ import it.uniroma3.project.controller.facade.Facade;
 import it.uniroma3.project.entity.Utente;
 
 
-public class UtenteAction {
-	public UtenteAction() {
+public class LoginUtenteAction {
+	public LoginUtenteAction() {
 	}
 
 	public String execute(HttpServletRequest request) {
