@@ -1,5 +1,6 @@
 package it.uniroma3.project.controller.facade;
 
+import java.util.Date;
 import java.util.List;
 
 import it.uniroma3.project.entity.CategoriaPiatto;
@@ -98,6 +99,16 @@ public class Facade {
 		TavoloDao dao = new TavoloDao();
 		return dao.findAll();
 	}
+	
+	public List<Tavolo> findAllTavoliToday(Date today) {
+		TavoloDao dao = new TavoloDao();
+		return dao.findAllToday(today);
+	}
+	
+	public List<Tavolo> findAllTavoliLiberiToday() {
+		TavoloDao dao = new TavoloDao();
+		return dao.findAllTodayLiberi();
+	}
 
 	public void setTavoloOccupato(Tavolo tavolo) {
 		TavoloDao dao = new TavoloDao();
@@ -109,7 +120,7 @@ public class Facade {
 	public List<Prenotazione> findAllPrenotazioni() {
 		PrenotazioneDao prenotazioneDao = new PrenotazioneDao();
 		List<Prenotazione> prenotazioni = prenotazioneDao.findAll();
-		return null;
+		return prenotazioni;
 	}
 
 }
