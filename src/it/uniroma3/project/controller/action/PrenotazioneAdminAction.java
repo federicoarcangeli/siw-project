@@ -30,7 +30,7 @@ public class PrenotazioneAdminAction {
 				request.getParameter("nominativo"));
 		Tavolo tavolo = prenotazioneModel.setTavoloPrenotazione(facade.findAllTavolo());
 		prenotazione.setTavoloPrenotato(tavolo);
-		facade.setTavoloOccupato(tavolo);
+		facade.setTavoloPrenotato(tavolo);
 		facade.inserisciPrenotazione(prenotazione);
 
 		session.setAttribute("PRENOTAZIONE", prenotazione);

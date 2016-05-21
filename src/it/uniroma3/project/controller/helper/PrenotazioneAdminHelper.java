@@ -17,13 +17,12 @@ public class PrenotazioneAdminHelper {
 	}
 
 	public boolean validate(HttpServletRequest request) {
-		String data, ora, ospiti, nominativo;
+		String data = request.getParameter("data");
+		String ora = request.getParameter("ora");
+		String ospiti = request.getParameter("ospiti");
+		String nominativo = request.getParameter("nominativo");
 		boolean corretto = true;
-		nominativo = request.getParameter("nominativo");
-		data = request.getParameter("data");
-		ora = request.getParameter("ora");
-		ospiti = request.getParameter("ospiti");
-
+		
 		DateValidator validator = new DateValidator();
 		Time24HoursValidator validatorTime = new Time24HoursValidator();
 
@@ -38,8 +37,7 @@ public class PrenotazioneAdminHelper {
 		 */
 		String reservationDate = data.substring(0, 2);
 		System.out.println("reservationDate:" + reservationDate);
-		Integer resDate = Integer.parseInt(reservationDate);
-		/*controllo prima se esiste un tavolo che rispetta il numero di posti scelto*/
+		
 		Tavolo t = checkTavoli.setTavoloPrenotazione(tavoli);
 
 		if (t == null) {
@@ -49,7 +47,7 @@ public class PrenotazioneAdminHelper {
 		
 		/*controllo se è libero per il giorno scelto*/
 		if (t != null) {
-			if (!checkTavoli.checkTavoloLiberoToday(prenotazioni, t, resDate)) {
+			if (!checkTavoli.checkTavoloLiberoToday(prenotazioni, t, validator.validate(data))) {
 				corretto = false;
 				request.setAttribute("prenotazioniError", "Non ci sono tavoli disponibili per oggi");
 			}

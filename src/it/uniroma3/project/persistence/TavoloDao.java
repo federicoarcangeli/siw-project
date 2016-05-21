@@ -62,31 +62,14 @@ public class TavoloDao extends AbstractDao<Tavolo> {
 		tx.begin();
 		TypedQuery<Tavolo> query = em.createQuery(
 				"select t "
-				+ "from Tavolo t left join Prenotazione on tavoloprenotato_id = t.id "
-				+ "where data = :today or tavoloprenotato_id is null "
-				+ "order by t.id",
-				Tavolo.class);
+						+ "from Tavolo t left join Prenotazione on tavoloprenotato_id = t.id "
+						+ "and data = :today "
+						+ "order by t.id",
+						Tavolo.class);
 		query.setParameter("today", today,TemporalType.DATE);
 		List<Tavolo> result = query.getResultList();
 		tx.commit();
 		em.close();
 		return result;
-
 	}
-	
-	public List<Tavolo> findAllTodayLiberi() {
-		EntityManager em = super.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		TypedQuery<Tavolo> query = em.createQuery("select t "
-				+ "from Tavolo t left join Prenotazione on tavoloprenotato_id = t.id "
-				+ "where tavoloprenotato_id is null "
-				+ "order by t.id", Tavolo.class);
-		List<Tavolo> result = query.getResultList();
-		tx.commit();
-		em.clear();
-		return result;
-		
-	}
-
 }

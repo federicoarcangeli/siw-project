@@ -11,6 +11,10 @@
 <meta name="keywords"
 	content="tomato, responsive, html5, restaurant, template, food, reservation">
 <meta http-equiv="refresh" content="3;URL=${pageContext.request.contextPath}/processaProfilo">
+<%
+	String site = "${pageContext.request.contextPath}/processaProfilo";
+	response.setHeader("Location", site);
+%>
 <!-- Favicons -->
 <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -43,50 +47,51 @@
 	<div class="body">
 
 		<div class="main-wrapper">
-				<!-- Navigation-->
-		<nav class="navbar navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-						aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="./menu_Utente.jsp"> <img
-						src="img/nav-logo.png" alt="nav-logo">
-					</a>
-				</div>
-
-				<div id="navbar" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="./index_parallax.jsp">Home</a></li>
-						<li><a href="${pageContext.request.contextPath}/ProcessaMenu">Men&ugrave;</a></li>
-						<li><a href="./galleria.jsp">Galleria</a></li>
-						<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
-						<li><a href="./contact.html">Contact</a></li>
-						<li class="dropdown"><a href="./home_Utente.jsp"
-							class="dropdown-toggle" data-toggle="dropdown" role="button"
-							aria-haspopup="true" aria-expanded="false">Benvenuto
-								${utenteCorrente.nome}<span class="caret"></span>
+			<!-- Navigation-->
+			<nav class="navbar navbar-fixed-top">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed"
+							data-toggle="collapse" data-target="#navbar"
+							aria-expanded="false" aria-controls="navbar">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="./home_Utente.jsp"> <img
+							src="img/nav-logo.png" alt="nav-logo">
 						</a>
-							<ul class="dropdown-menu">
-								<li><a
-									href="${pageContext.request.contextPath}/processaProfilo">Profilo</a></li>
-								<li><a href="./index_parallax.jsp">Logout</a></li>
+					</div>
 
-							</ul></li>
-					</ul>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="./index_parallax.jsp">Home</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/ProcessaMenu">Men&ugrave;</a></li>
+							<li><a href="./galleria.jsp">Galleria</a></li>
+							<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
+							<li><a href="./contact.html">Contact</a></li>
+							<li class="dropdown"><a href="./home_Utente.jsp"
+								class="dropdown-toggle" data-toggle="dropdown" role="button"
+								aria-haspopup="true" aria-expanded="false">Benvenuto
+									${utenteCorrente.nome}<span class="caret"></span>
+							</a>
+								<ul class="dropdown-menu">
+									<li><a
+										href="${pageContext.request.contextPath}/processaProfilo">Profilo</a></li>
+									<li><a href="./index_parallax.jsp">Logout</a></li>
+
+								</ul></li>
+						</ul>
+					</div>
+
+					<!--/.navbar-collapse -->
 				</div>
-
-				<!--/.navbar-collapse -->
-			</div>
-		</nav>
+			</nav>
 			<!-- Pagina di conferma-->
 
 			<section class='page_header vertical-padding'></section>
-			
+
 			<div class='container'>
 				<div class='row'>
 					<div class='col-md-12 text-center'>

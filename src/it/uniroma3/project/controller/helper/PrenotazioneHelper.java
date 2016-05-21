@@ -3,6 +3,8 @@ package it.uniroma3.project.controller.helper;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.validator.routines.DateValidator;
 
 import it.uniroma3.project.controller.facade.Facade;
@@ -17,32 +19,40 @@ public class PrenotazioneHelper {
 	}
 
 	public boolean validate(HttpServletRequest request) {
-		String data, ora, ospiti;
 		boolean corretto = true;
-		data = request.getParameter("data");
-		ora = request.getParameter("ora");
-		ospiti = request.getParameter("ospiti");
-
 		Facade facade = new Facade();
-		List<Tavolo> tavoli = facade.findAllTavolo();
-		List<Prenotazione> prenotazioni = facade.findAllPrenotazioni();
-		Ristorante checkTavoli = new Ristorante(Integer.parseInt(ospiti));
-		Tavolo t = checkTavoli.setTavoloPrenotazione(tavoli);
-
-		if (t == null) {
-			corretto = false;
-			request.setAttribute("tavoliError", "Non ci sono tavoli disponibili per il numero di ospiti selezionato");
-		}
-		
-//		if(!checkTavoli.checkTavoloLiberoToday(prenotazioni, t,0)) {
-//			corretto = false;
-//			request.setAttribute("prenotazioneError", "Non ci sono tavoli liberi oggi");
-//		}
-		
-
 		DateValidator validator = new DateValidator();
 		Time24HoursValidator validatorTime = new Time24HoursValidator();
 
+
+		HttpSession session = request.getSession(true);
+
+		String data = request.getParameter("data");
+		String ora = request.getParameter("ora");
+		String ospiti = request.getParameter("ospiti");
+
+		List<Tavolo> tavoli = facade.findAllTavolo();
+
+		List<Prenotazione> prenotazioni = facade.findAllPrenotazioni();
+
+		Ristorante checkTavoli = new Ristorante(Integer.parseInt(ospiti));
+		Tavolo t = checkTavoli.setTavoloPrenotazione(tavoli);
+
+
+
+		if (t == null) {
+			corretto = false;
+			request.setAttribute("tavoliError", "Non ci sono tavoli disponibili per questo numero di ospiti");
+		}
+		else{
+			session.setAttribute("tavoloAssegnato", t);
+		}
+		if (t != null) {
+			if (!checkTavoli.checkTavoloLiberoToday(prenotazioni, t, validator.validate(data))) {
+				corretto = false;
+				request.setAttribute("prenotazioniError", "Non ci sono tavoli disponibili per oggi");
+			}
+		}
 		if (validator.validate(data) == null) {
 			corretto = false;
 			request.setAttribute("dataError", "Formato data non valido");

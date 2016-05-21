@@ -37,8 +37,13 @@ public class Time24HoursValidator{
 				}
 		}
 		return hour;
-
-
-
+	}
+	
+	public boolean isToday(Date data){
+		Date today = new Date();
+		if(data.compareTo(today)==0)
+			return true;
+		else
+			return false;
 	}
 }

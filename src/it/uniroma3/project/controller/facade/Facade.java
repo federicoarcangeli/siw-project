@@ -99,22 +99,22 @@ public class Facade {
 		TavoloDao dao = new TavoloDao();
 		return dao.findAll();
 	}
-	
+
 	public List<Tavolo> findAllTavoliToday(Date today) {
 		TavoloDao dao = new TavoloDao();
 		return dao.findAllToday(today);
 	}
-	
-	public List<Tavolo> findAllTavoliLiberiToday() {
+
+	public void setTavoloPrenotato(Tavolo tavolo) {
 		TavoloDao dao = new TavoloDao();
-		return dao.findAllTodayLiberi();
+		tavolo.setOccupato(1);
+		dao.update(tavolo);	
 	}
 
 	public void setTavoloOccupato(Tavolo tavolo) {
 		TavoloDao dao = new TavoloDao();
-		tavolo.setOccupato(1);
-		dao.update(tavolo);
-		
+		tavolo.setOccupato(2);
+		dao.update(tavolo);	
 	}
 
 	public List<Prenotazione> findAllPrenotazioni() {

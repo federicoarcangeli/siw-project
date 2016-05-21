@@ -3,14 +3,10 @@ package it.uniroma3.project.persistence;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import it.uniroma3.project.entity.CategoriaPiatto;
-import it.uniroma3.project.entity.Piatto;
-import it.uniroma3.project.entity.Prenotazione;
-import it.uniroma3.project.entity.Utente;
+import it.uniroma3.project.entity.Prenotazione;;
 
 public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 
