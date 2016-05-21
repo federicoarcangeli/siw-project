@@ -21,7 +21,6 @@ public class LoginPersonaleAction {
 			return "/home_Administrator.jsp";
 		}else{
 			return "/home_Operatore.jsp";
-
 		}
 	}
 

@@ -97,7 +97,7 @@
 					<div class="row">
 						<aside class="col-md-3">
 							<div class="side-widget">
-								<h5>Our Food</h5>
+								<h5>Operazioni di sistema</h5>
 								<ul class="shop-cat">
 									<li><a href="./registraPersonale.jsp">Registra nuovo
 											Personale <i class="fa fa-caret-right"></i>
@@ -110,222 +110,76 @@
 
 						<div class="col-md-9">
 							<div class="shop-grid">
-								<h1>PANNELLO DI CONTROLLO</h1>
-
-
+								<h2>PANNELLO DI CONTROLLO</h2>
 								<div class="shop-products">
 									<div class="row">
+
 										<div class="col-md-4 col-sm-6">
-											<div class="product-info">
-												<div class="product-img">
-													<img src="img/shop/1.png" alt="" />
-												</div>
-												<h4>
-													<a href="./recipe_detail-image.html">Food Name</a>
-												</h4>
-												<div class="rc-ratings">
-													<span class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span class="fa fa-star"></span>
-													<span class="fa fa-star"></span>
-												</div>
-												<div class="product-price">$100</div>
-												<div class="shop-meta">
-													<a href="./shop_single_left.html" class="pull-left"><i
-														class="fa fa-shopping-cart"></i> Add to cart</a> <a
-														href="./shop_right_sidebar.html" class="pull-right"><i
-														class="fa fa-heart-o"></i> Wishlist</a>
-												</div>
-											</div>
+											<h4>Panoramica tavoli</h4>
+											<table class="table">
+												<thead>
+													<tr>
+														<th>Tavoli liberi</th>
+														<th>Tavoli prenotati</th>
+														<th>Tavoli occupati</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>prova</td>
+														<td>prova</td>
+														<td>prova</td>
+													</tr>
+												</tbody>
+											</table>
 										</div>
+
 										<div class="col-md-4 col-sm-6">
-											<div class="product-info">
-												<div class="product-img">
-													<img src="img/shop/2.png" alt="" />
-												</div>
-												<h4>
-													<a href="./recipe_detail-image.html">Food Name</a>
-												</h4>
-												<div class="rc-ratings">
-													<span class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span class="fa fa-star"></span>
-													<span class="fa fa-star"></span>
-												</div>
-												<div class="product-price">$100</div>
-												<div class="shop-meta">
-													<a href="./shop_single_left.html" class="pull-left"><i
-														class="fa fa-shopping-cart"></i> Add to cart</a> <a
-														href="./shop_right_sidebar.html" class="pull-right"><i
-														class="fa fa-heart-o"></i> Wishlist</a>
-												</div>
-											</div>
+											<h4>Operatori in servizio</h4>
+											<table class="table">
+												<thead>
+													<tr>
+														<th>Codice</th>
+														<th>Nome</th>
+														<th>Tavoli serviti</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>prova</td>
+														<td>prova</td>
+														<td>prova</td>
+													</tr>
+												</tbody>
+											</table>
 										</div>
+
 										<div class="col-md-4 col-sm-6">
-											<div class="product-info">
-												<div class="product-img">
-													<img src="img/shop/3.png" alt="" />
-												</div>
-												<h4>
-													<a href="./recipe_detail-image.html">Food Name</a>
-												</h4>
-												<div class="rc-ratings">
-													<span class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span class="fa fa-star"></span>
-													<span class="fa fa-star"></span>
-												</div>
-												<div class="product-price">$100</div>
-												<div class="shop-meta">
-													<a href="./shop_single_left.html" class="pull-left"><i
-														class="fa fa-shopping-cart"></i> Add to cart</a> <a
-														href="./shop_right_sidebar.html" class="pull-right"><i
-														class="fa fa-heart-o"></i> Wishlist</a>
-												</div>
-											</div>
+											<h4>Comande in corso</h4>
+											<table class="table">
+												<thead>
+													<tr>
+														<th>Codice</th>
+														<th>Tavolo</th>
+														<th>Stato</th>
+														<th>Totale</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>prova</td>
+														<td>prova</td>
+														<td>prova</td>
+														<td>prova</td>
+													</tr>
+												</tbody>
+											</table>
+
 										</div>
-										<div class="col-md-4 col-sm-6">
-											<div class="product-info">
-												<div class="product-img">
-													<img src="img/shop/4.png" alt="" />
-												</div>
-												<h4>
-													<a href="./recipe_detail-image.html">Food Name</a>
-												</h4>
-												<div class="rc-ratings">
-													<span class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span class="fa fa-star"></span>
-													<span class="fa fa-star"></span>
-												</div>
-												<div class="product-price">$100</div>
-												<div class="shop-meta">
-													<a href="./shop_single_left.html" class="pull-left"><i
-														class="fa fa-shopping-cart"></i> Add to cart</a> <a
-														href="./shop_right_sidebar.html" class="pull-right"><i
-														class="fa fa-heart-o"></i> Wishlist</a>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-4 col-sm-6">
-											<div class="product-info">
-												<div class="product-img">
-													<img src="img/shop/5.png" alt="" />
-												</div>
-												<h4>
-													<a href="./recipe_detail-image.html">Food Name</a>
-												</h4>
-												<div class="rc-ratings">
-													<span class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span class="fa fa-star"></span>
-													<span class="fa fa-star"></span>
-												</div>
-												<div class="product-price">$100</div>
-												<div class="shop-meta">
-													<a href="./shop_single_left.html" class="pull-left"><i
-														class="fa fa-shopping-cart"></i> Add to cart</a> <a
-														href="./shop_right_sidebar.html" class="pull-right"><i
-														class="fa fa-heart-o"></i> Wishlist</a>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-4 col-sm-6">
-											<div class="product-info">
-												<div class="product-img">
-													<img src="img/shop/6.png" alt="" />
-												</div>
-												<h4>
-													<a href="./recipe_detail-image.html">Food Name</a>
-												</h4>
-												<div class="rc-ratings">
-													<span class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span class="fa fa-star"></span>
-													<span class="fa fa-star"></span>
-												</div>
-												<div class="product-price">$100</div>
-												<div class="shop-meta">
-													<a href="./shop_single_left.html" class="pull-left"><i
-														class="fa fa-shopping-cart"></i> Add to cart</a> <a
-														href="./shop_right_sidebar.html" class="pull-right"><i
-														class="fa fa-heart-o"></i> Wishlist</a>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-4 col-sm-6">
-											<div class="product-info">
-												<div class="product-img">
-													<img src="img/shop/7.png" alt="" />
-												</div>
-												<h4>
-													<a href="./recipe_detail-image.html">Food Name</a>
-												</h4>
-												<div class="rc-ratings">
-													<span class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span class="fa fa-star"></span>
-													<span class="fa fa-star"></span>
-												</div>
-												<div class="product-price">$100</div>
-												<div class="shop-meta">
-													<a href="./shop_single_left.html" class="pull-left"><i
-														class="fa fa-shopping-cart"></i> Add to cart</a> <a
-														href="./shop_right_sidebar.html" class="pull-right"><i
-														class="fa fa-heart-o"></i> Wishlist</a>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-4 col-sm-6">
-											<div class="product-info">
-												<div class="product-img">
-													<img src="img/shop/8.png" alt="" />
-												</div>
-												<h4>
-													<a href="./recipe_detail-image.html">Food Name</a>
-												</h4>
-												<div class="rc-ratings">
-													<span class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span class="fa fa-star"></span>
-													<span class="fa fa-star"></span>
-												</div>
-												<div class="product-price">$100</div>
-												<div class="shop-meta">
-													<a href="./shop_single_left.html" class="pull-left"><i
-														class="fa fa-shopping-cart"></i> Add to cart</a> <a
-														href="./shop_right_sidebar.html" class="pull-right"><i
-														class="fa fa-heart-o"></i> Wishlist</a>
-												</div>
-											</div>
-										</div>
-										<div class="col-md-4 col-sm-6">
-											<div class="product-info">
-												<div class="product-img">
-													<img src="img/shop/9.png" alt="" />
-												</div>
-												<h4>
-													<a href="./recipe_detail-image.html">Food Name</a>
-												</h4>
-												<div class="rc-ratings">
-													<span class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span
-														class="fa fa-star active"></span> <span class="fa fa-star"></span>
-													<span class="fa fa-star"></span>
-												</div>
-												<div class="product-price">$100</div>
-												<div class="shop-meta">
-													<a href="./shop_single_left.html" class="pull-left"><i
-														class="fa fa-shopping-cart"></i> Add to cart</a> <a
-														href="./shop_right_sidebar.html" class="pull-right"><i
-														class="fa fa-heart-o"></i> Wishlist</a>
-												</div>
-											</div>
-										</div>
+
 									</div>
 								</div>
-								<a href="./index.html" class="btn btn-default load-more">Load
-									more</a>
+
 							</div>
 						</div>
 					</div>
