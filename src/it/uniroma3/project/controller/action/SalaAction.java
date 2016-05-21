@@ -6,7 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import it.uniroma3.project.controller.facade.Facade;
-import it.uniroma3.project.entity.Prenotazione;
 import it.uniroma3.project.entity.Tavolo;
 
 public class SalaAction implements Action {
@@ -16,6 +15,12 @@ public class SalaAction implements Action {
 		Facade facade = new Facade();
 		Date today = new Date();
 		List<Tavolo> tavoli = facade.findAllTavoliToday(today);
+		for(Tavolo t : tavoli){
+			if(!facade.findPrenotazione(t, today).isEmpty())
+				t.setOccupato(1);
+			else
+				t.setOccupato(0);
+		}
 		request.setAttribute("tavoli", tavoli);
 		return "/sala.jsp";
 	}

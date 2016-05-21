@@ -13,6 +13,8 @@ public class Time24HoursValidator{
 	private Matcher matcher;
 	private  DateFormat formatter;
 
+	
+	// gestione orario di lavolo ristorante
 	private static final String TIME24HOURS_PATTERN = "([01]?[0-9]|2[0-3]):[0-5][0-9]";
 
 	public Time24HoursValidator(){

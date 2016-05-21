@@ -123,4 +123,10 @@ public class Facade {
 		return prenotazioni;
 	}
 
+	public List<Prenotazione> findPrenotazione(Tavolo t, Date today) {
+		PrenotazioneDao prenotazioneDao = new PrenotazioneDao();
+		List<Prenotazione> prenotazione = prenotazioneDao.findPrenotazioneTavolo(t, today);
+		return prenotazione;
+	}
+
 }

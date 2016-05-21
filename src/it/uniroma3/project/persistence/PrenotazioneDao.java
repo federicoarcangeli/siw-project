@@ -1,12 +1,15 @@
 package it.uniroma3.project.persistence;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
 
-import it.uniroma3.project.entity.Prenotazione;;
+import it.uniroma3.project.entity.Prenotazione;
+import it.uniroma3.project.entity.Tavolo;;
 
 public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 
@@ -42,6 +45,20 @@ public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 		tx.begin();	
 		Query query = em.createNativeQuery("select p.* from Prenotazione p where p.utente_id= ?1",Prenotazione.class);
 		query.setParameter(1,id_utente);
+		List<Prenotazione> result = query.getResultList();
+		tx.commit();
+		em.close();
+		return result;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Prenotazione> findPrenotazioneTavolo(Tavolo t, Date today) {
+		EntityManager em = super.getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();	
+		Query query = em.createNativeQuery("select p.* from Prenotazione p where p.tavoloprenotato_id= ?1 and p.data= ?2",Prenotazione.class);
+		query.setParameter(1,t.getId());
+		query.setParameter(2,today,TemporalType.DATE);
 		List<Prenotazione> result = query.getResultList();
 		tx.commit();
 		em.close();

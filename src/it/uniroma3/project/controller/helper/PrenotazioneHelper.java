@@ -39,12 +39,10 @@ public class PrenotazioneHelper {
 		List<Tavolo> t = checkTavoli.setTavoloPrenotazione(tavoli);
 		Tavolo tav = checkTavoli.checkTavoliLiberoToday(prenotazioni, t, validator.validate(data));
 
-
 		if (t == null) {
 			corretto = false;
 			request.setAttribute("tavoliError", "Non ci sono tavoli disponibili per questo numero di ospiti");
 		}
-
 		if (t != null) {
 			if (tav==null) {
 				corretto = false;

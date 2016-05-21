@@ -8,6 +8,10 @@ var getComanda = function() {
 		alert('libero');
 	});
 	
+	document.getElementById("prenotato").addEventListener('click',function() {
+		alert('prenotato');
+	});
+	
 	document.getElementById("occupato").addEventListener('click', function() {
 		alert('occupato');
 	});
