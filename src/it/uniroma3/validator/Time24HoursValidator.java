@@ -46,4 +46,11 @@ public class Time24HoursValidator{
 		else
 			return false;
 	}
+	
+	public boolean SameDate(Date data1 , Date data2){
+		if(data1.compareTo(data2)==0)
+			return true;
+		else
+			return false;
+	}
 }

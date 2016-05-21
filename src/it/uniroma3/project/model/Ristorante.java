@@ -1,5 +1,6 @@
 package it.uniroma3.project.model;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -22,17 +23,18 @@ public class Ristorante {
 	 * @param tavoli
 	 * @return
 	 */
-	public Tavolo setTavoloPrenotazione(List<Tavolo> tavoli) {
+	public List<Tavolo> setTavoloPrenotazione(List<Tavolo> tavoli) {
+		List<Tavolo> tavoliCompatibili = new ArrayList<>();
 		int posti = this.numeroOspiti;
 		while (posti <= MAX) {
 			for (Tavolo t : tavoli) {
-				if (posti == t.getCoperti()) {
-					return t;
+				if (posti == t.getCoperti() ) {
+					tavoliCompatibili.add(t);
 				}	
 			}
 			posti++;
 		}
-		return null;
+		return tavoliCompatibili;
 	}
 
 	/**
@@ -40,18 +42,16 @@ public class Ristorante {
 	 * 
 	 * @return
 	 */
-	public boolean checkTavoloLiberoToday(List<Prenotazione> prenotazioni, Tavolo t, Date data) {
-		boolean tavoloLibero = true;
+	public Tavolo checkTavoliLiberoToday(List<Prenotazione> prenotazioni, List<Tavolo> tavDisp, Date data) {
 		Time24HoursValidator validatorD = new Time24HoursValidator();
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
-		for (Prenotazione prenotazione : prenotazioni) {
-			if (validatorD.isToday(data)&& prenotazione.getTavoloPrenotato().getCodiceTavolo().equals(t.getCodiceTavolo())) {
-				/* il tavolo scelto in questo giorno è occupato */
-				return false;
-			} 
+		for(Tavolo t : tavDisp){
+			for (Prenotazione prenotazione : prenotazioni) {
+				if (validatorD.SameDate(data, prenotazione.getData())&& !prenotazione.getTavoloPrenotato().getCodiceTavolo().equals(t.getCodiceTavolo())) 
+					return t;
+			}
 		}
-		return tavoloLibero;
+		return null;
 	}
-
 }

@@ -36,21 +36,22 @@ public class PrenotazioneHelper {
 		List<Prenotazione> prenotazioni = facade.findAllPrenotazioni();
 
 		Ristorante checkTavoli = new Ristorante(Integer.parseInt(ospiti));
-		Tavolo t = checkTavoli.setTavoloPrenotazione(tavoli);
-
+		List<Tavolo> t = checkTavoli.setTavoloPrenotazione(tavoli);
+		Tavolo tav = checkTavoli.checkTavoliLiberoToday(prenotazioni, t, validator.validate(data));
 
 
 		if (t == null) {
 			corretto = false;
 			request.setAttribute("tavoliError", "Non ci sono tavoli disponibili per questo numero di ospiti");
 		}
-		else{
-			session.setAttribute("tavoloAssegnato", t);
-		}
+
 		if (t != null) {
-			if (!checkTavoli.checkTavoloLiberoToday(prenotazioni, t, validator.validate(data))) {
+			if (tav==null) {
 				corretto = false;
-				request.setAttribute("prenotazioniError", "Non ci sono tavoli disponibili per oggi");
+				request.setAttribute("prenotazioniError", "Non ci sono tavoli disponibili per il" + data);
+			}
+			else{
+				session.setAttribute("tavoloAssegnato", tav);
 			}
 		}
 		if (validator.validate(data) == null) {
