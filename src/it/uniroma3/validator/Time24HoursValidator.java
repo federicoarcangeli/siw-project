@@ -41,18 +41,23 @@ public class Time24HoursValidator{
 		return hour;
 	}
 	
+	/**
+	 * Confronta la data passata come parametro con quella di oggi
+	 * @param data
+	 * @return true se coincidono, false altrimenti
+	 */
+	
 	public boolean isToday(Date data){
-		Date today = new Date();
-		if(data.compareTo(today)==0)
-			return true;
-		else
-			return false;
+		return data.compareTo(new Date()) == 0;
 	}
 	
+	/**
+	 * Confronta tra loro due date
+	 * @param data1
+	 * @param data2
+	 * @return true se data1 e data2 coincidono, false altrimenti
+	 */
 	public boolean SameDate(Date data1 , Date data2){
-		if(data1.compareTo(data2)==0)
-			return true;
-		else
-			return false;
+		return data1.compareTo(data2) == 0;
 	}
 }

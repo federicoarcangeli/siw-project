@@ -28,9 +28,9 @@ public class Ristorante {
 		int posti = this.numeroOspiti;
 		while (posti <= MAX) {
 			for (Tavolo t : tavoli) {
-				if (posti == t.getCoperti() ) {
+				if (posti == t.getCoperti()) {
 					tavoliCompatibili.add(t);
-				}	
+				}
 			}
 			posti++;
 		}
@@ -46,9 +46,10 @@ public class Ristorante {
 		Time24HoursValidator validatorD = new Time24HoursValidator();
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
-		for(Tavolo t : tavDisp){
+		for (Tavolo t : tavDisp) {
 			for (Prenotazione prenotazione : prenotazioni) {
-				if (validatorD.SameDate(data, prenotazione.getData())&& !prenotazione.getTavoloPrenotato().getCodiceTavolo().equals(t.getCodiceTavolo())) 
+				if (validatorD.SameDate(data, prenotazione.getData())
+						&& !prenotazione.getTavoloPrenotato().getCodiceTavolo().equals(t.getCodiceTavolo()))
 					return t;
 			}
 		}
