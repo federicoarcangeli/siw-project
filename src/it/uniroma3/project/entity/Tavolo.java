@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
 @NamedQuery(name = "Tavolo.findAll", query = "select t from Tavolo t")
 public class Tavolo {
@@ -38,6 +41,7 @@ public class Tavolo {
 	private List<Comanda> comande;
 
 	@OneToMany(mappedBy="tavoloPrenotato", fetch=FetchType.EAGER)
+	@Fetch(value=FetchMode.SELECT)
 	private List<Prenotazione> prenotazioni;
 
 	public Tavolo(){

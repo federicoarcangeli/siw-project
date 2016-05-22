@@ -13,7 +13,7 @@ public class Time24HoursValidator{
 	private Matcher matcher;
 	private  DateFormat formatter;
 
-	
+
 	// gestione orario di lavolo ristorante
 	private static final String TIME24HOURS_PATTERN = "([01]?[0-9]|2[0-3]):[0-5][0-9]";
 
@@ -40,17 +40,17 @@ public class Time24HoursValidator{
 		}
 		return hour;
 	}
-	
+
 	/**
 	 * Confronta la data passata come parametro con quella di oggi
 	 * @param data
 	 * @return true se coincidono, false altrimenti
 	 */
-	
+
 	public boolean isToday(Date data){
 		return data.compareTo(new Date()) == 0;
 	}
-	
+
 	/**
 	 * Confronta tra loro due date
 	 * @param data1
@@ -58,6 +58,9 @@ public class Time24HoursValidator{
 	 * @return true se data1 e data2 coincidono, false altrimenti
 	 */
 	public boolean SameDate(Date data1 , Date data2){
-		return data1.compareTo(data2) == 0;
+		if(data1!=null && data2!=null)
+			return data1.compareTo(data2)==0;
+		else 
+			return false;
 	}
 }

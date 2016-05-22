@@ -115,7 +115,7 @@
 									<div class="form-group">
 										<label for="ospiti">Numero di ospiti</label> <select
 											name="ospiti" id="ospiti" class="feedFormField">
-											<option selected value="empty">Inserisci il numero
+											<option selected value="0">Inserisci il numero
 												di Ospiti</option>
 											<option value="1">1 Persona</option>
 											<option value="2">2 Persone</option>
@@ -153,17 +153,7 @@
 											</div>
 
 										</div>
-										<%
-													}else {
-												%>
-										<!-- 	
-												<div class="animated fadeInDown">
-											<div class="alert alert-success">
-												<span> ERRORE: </span> Dati inseriti correttamente!
-											</div>
-
-										</div> -->
-										<% }%>
+										<% } %>
 									</div>
 								</div>
 							</div>

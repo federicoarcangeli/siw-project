@@ -1,7 +1,6 @@
 package it.uniroma3.project.model;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -10,11 +9,25 @@ import it.uniroma3.project.entity.Tavolo;
 import it.uniroma3.validator.Time24HoursValidator;
 
 public class Ristorante {
-	private int numeroOspiti;
 	private static int MAX = 15;
 
-	public Ristorante(int numeroOspiti) {
-		this.numeroOspiti = numeroOspiti;
+	public Ristorante() {
+	}
+
+
+	/**
+	 * 
+	 * @param prenotazioni
+	 * @param data
+	 * @return true se lista prenotazioni contiene la data altrimenti false
+	 */
+	public boolean containsDate(List<Prenotazione> prenotazioni, Date data) {
+		Time24HoursValidator validatorD = new Time24HoursValidator();
+		for (Prenotazione p : prenotazioni) {
+			if (validatorD.SameDate(data, p.getData())==true)
+				return true;
+		}
+		return false;
 	}
 
 	/**
@@ -23,9 +36,9 @@ public class Ristorante {
 	 * @param tavoli
 	 * @return
 	 */
-	public List<Tavolo> setTavoloPrenotazione(List<Tavolo> tavoli) {
+	public List<Tavolo> setTavoloPrenotazione(List<Tavolo> tavoli, int numeroOspiti) {
 		List<Tavolo> tavoliCompatibili = new ArrayList<>();
-		int posti = this.numeroOspiti;
+		int posti = numeroOspiti;
 		while (posti <= MAX) {
 			for (Tavolo t : tavoli) {
 				if (posti == t.getCoperti()) {
@@ -43,16 +56,16 @@ public class Ristorante {
 	 * @return
 	 */
 	public Tavolo checkTavoliLiberiForDate(List<Tavolo> tavoliDisponibili, Date data) {
-		Time24HoursValidator validatorD = new Time24HoursValidator();
+
 		for (Tavolo t : tavoliDisponibili) {
 			if (t.getPrenotazioni().isEmpty())
 				return t;
 			else
-				for (Prenotazione p : t.getPrenotazioni()) {
-					if (!validatorD.SameDate(data, p.getData()))
-						return t;
-				}
+				if (!this.containsDate(t.getPrenotazioni(), data))
+					return t;
 		}
 		return null;
 	}
+	
 }
+

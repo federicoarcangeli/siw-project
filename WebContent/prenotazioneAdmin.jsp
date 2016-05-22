@@ -45,6 +45,7 @@
 	<div class="body">
 
 		<div class="main-wrapper">
+
 			<!-- Navigation-->
 			<nav class="navbar navbar-fixed-top">
 				<div class="container">
@@ -56,23 +57,36 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="./index_parallax.jsp"> <img
+						<a class="navbar-brand" href="./home_Administrator.jsp"> <img
 							src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>
+
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="./index_parallax.jsp">Home</a></li>
-							<li><a href="./menu.jsp">Menù</a></li>
-							<li><a href="./gallery.html">Galleria</a></li>
-							<li><a href="./loginSignup.jsp">Login / Signup</a></li>
-							<li><a href="./contact.html">Contatti</a></li>
+							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/processaComanda">Comanda</a></li>
+							<li><a href="/siw-project/ProcessaCategoria">Inserisci
+									nuovi piatti</a></li>
+							<li class="dropdown"><a href="./index.html"
+								class="dropdown-toggle" data-toggle="dropdown" role="button"
+								aria-haspopup="true" aria-expanded="false">Benvenuto
+									${amministratoreCorrente.username} -
+									${amministratoreCorrente.role}<span class="caret"></span>
+							</a>
+								<ul class="dropdown-menu">
+									<li><a href="./index_parallax.jsp">Logout</a></li>
+								</ul></li>
 						</ul>
 					</div>
 
 					<!--/.navbar-collapse -->
 				</div>
 			</nav>
+
 
 			<section class='page_header vertical-padding'></section>
 
@@ -83,8 +97,7 @@
 						<div class="col-md-12">
 							<div class="page-header">
 								<h1>
-									Prenotazione<small>Prenota un tavolo online. Ti sarà
-										inviata una email di conferma.</small>
+									Prenotazione<small>Prenota un tavolo per un cliente</small>
 								</h1>
 							</div>
 						</div>
@@ -93,16 +106,18 @@
 						<form action="processaPrenotazioneAdmin" method="post">
 
 
-			
+
 							<div id="OT_searchWrapper">
 								<div id="OT_defList" class="row">
 									<div class="row">
-									<div class="col-md-3">
+										<div class="col-md-3">
 											<div class="form-group">
-												<label for="nominativo">Nominativo</label> <input type="text"
-													name="nominativo" class="form-control"
-													placeholder="Nominativo del cliente" title="Nominativo del cliente"
-													value='${param["nominativo"]}'> <i class="fa fa-user"></i>
+												<label for="nominativo">Nominativo</label> <input
+													type="text" name="nominativo" class="form-control"
+													placeholder="Nominativo del cliente"
+													title="Nominativo del cliente"
+													value='${param["nominativo"]}'> <i
+													class="fa fa-user"></i>
 											</div>
 										</div>
 										<div class="col-md-3">
@@ -127,8 +142,8 @@
 											<div class="form-group">
 												<label for="ospiti">Numero di ospiti</label> <select
 													name="ospiti" id="ospiti" class="feedFormField">
-													<option selected value="vuoto">Inserisci il numero
-														di Ospiti</option>
+													<option selected value="0">Inserisci il numero di
+														Ospiti</option>
 													<option value="1">1 Persona</option>
 													<option value="2">2 Persone</option>
 													<option value="3">3 Persone</option>
@@ -158,10 +173,12 @@
 												<%
 													if (request.getAttribute("ERROR") != null) {
 												%>
+												<br>
 												<div class="animated fadeInDown">
 													<div class="alert alert-error">
-														<span> ERRORE: </span> ${nominativoError} ${dataError} 
-														${oraError} ${ospitiError} ${tavoliError} ${prenotazioniError }
+														<span> ERRORE: </span> ${nominativoError} ${dataError}
+														${oraError} ${ospitiError} ${tavoliError}
+														${prenotazioniError }
 													</div>
 
 												</div>
@@ -175,94 +192,11 @@
 							</div>
 						</form>
 					</div>
-					<div class="reservation-footer">
-						<p>
-							Puoi contattarci anche al: <strong>+1 224 6787 004</strong> per
-							effettuare una prenotazione.
-						</p>
-						<span></span>
-					</div>
 				</div>
 			</section>
 
-			<!-- Footer-->
-			<section class="footer">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-4 col-sm-12">
-							<h1>Dicono di noi</h1>
-							<p></p>
-							<a href="./about.html">Read more &rarr;</a>
-						</div>
-						<div class="col-md-4  col-sm-6">
-							<h1>Recent post</h1>
-							<div class="footer-blog clearfix">
-								<a href="./blog_right_sidebar.html"> <img
-									src="img/thumb8.png" class="img-responsive footer-photo"
-									alt="blog photos">
-									<p class="footer-blog-text">Hand picked ingredients for our
-										best customers</p>
-									<p class="footer-blog-date">29 may 2015</p>
-								</a>
-							</div>
-							<div class="footer-blog clearfix last">
-								<a href="./blog_right_sidebar.html"> <img
-									src="img/thumb9.png" class="img-responsive footer-photo"
-									alt="blog photos">
-									<p class="footer-blog-text">Daily special foods that you
-										will going to love</p>
-									<p class="footer-blog-date">29 may 2015</p>
-								</a>
-							</div>
-						</div>
-						<div class="col-md-4  col-sm-6">
-							<h1>Reach us</h1>
-							<div class="footer-social-icons">
-								<a href="http://www.facebook.com"> <i
-									class="fa fa-facebook-square"></i>
-								</a> <a href="http://www.twitter.com"> <i class="fa fa-twitter"></i>
-								</a> <a href="http://plus.google.com"> <i class="fa fa-google"></i>
-								</a> <a href="http://www.youtube.com"> <i
-									class="fa fa-youtube-play"></i>
-								</a> <a href="http://www.vimeo.com"> <i class="fa fa-vimeo"></i>
-								</a> <a href="http://www.pinterest.com"> <i
-									class="fa fa-pinterest-p"></i>
-								</a> <a href="http://www.linkedin.com"> <i
-									class="fa fa-linkedin"></i>
-								</a>
-							</div>
-							<div class="footer-address">
-								<p>
-									<i class="fa fa-map-marker"></i>28 Seventh Avenue, Neew York,
-									10014
-								</p>
-								<p>
-									<i class="fa fa-phone"></i>Phone: (415) 124-5678
-								</p>
-								<p>
-									<i class="fa fa-envelope-o"></i>support@restaurant.com
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
 
-				<!-- Footer - Copyright -->
-				<div class="footer-copyrights">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-								<p>
-									<i class="fa fa-copyright"></i> 2016. Copyright. Designed with
-									<i class="fa fa-heart primary-color"></i>
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
 		</div>
-
 	</div>
 
 	<!-- Javascript -->

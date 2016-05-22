@@ -16,14 +16,12 @@ public class LoginPersonaleHelper {
 		String username;
 		String password;
 		boolean corretto=true;
-
 		Utente personale = facade.findUtente(request.getParameter("username"));
 
 		username = request.getParameter("username");
 		password = request.getParameter("password");
-		
 
-		if(personale==null){
+		if(personale==null || personale.getRole().equals("utente") ){
 			corretto=false;
 			request.setAttribute("loginError", "Utente non esistente");
 		}else {
@@ -43,7 +41,7 @@ public class LoginPersonaleHelper {
 		if(corretto==false){
 			request.setAttribute("ERROR", "error");
 		}
-		
+
 		return corretto;
 	}
 
