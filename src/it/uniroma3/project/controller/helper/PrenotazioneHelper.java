@@ -57,11 +57,11 @@ public class PrenotazioneHelper {
 			List<Tavolo> tavoliDisponibili = checkTavoli.setTavoloPrenotazione(tavoli);
 			Tavolo tavoloDaPrenotare = checkTavoli.checkTavoliLiberiForDate(tavoliDisponibili, validator.validate(data));
 
-			if (tavoliDisponibili == null) {
+			if (tavoliDisponibili.isEmpty()) {
 				corretto = false;
 				request.setAttribute("tavoliError", "Non ci sono tavoli disponibili per questo numero di ospiti");
 			}
-			if (tavoliDisponibili != null) {
+			if (!tavoliDisponibili.isEmpty()) {
 				if (tavoloDaPrenotare == null) {
 					corretto = false;
 					request.setAttribute("prenotazioniError", "Non ci sono tavoli disponibili per il " + data);
