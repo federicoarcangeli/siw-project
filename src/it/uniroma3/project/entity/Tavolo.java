@@ -27,9 +27,9 @@ public class Tavolo {
 	private int coperti;
 
 	/**
-	 * tavolo libero = 0;
-	 * tavolo prenotato = 1;
-	 * tavolo occupato = 2;
+	 * tavolo libero = 0; (verde)
+	 * tavolo prenotato = 1; (giallo)
+	 * tavolo occupato = 2; (rosso)
 	 * inizialmente un tavolo è libero;
 	 */
 	private int occupato;

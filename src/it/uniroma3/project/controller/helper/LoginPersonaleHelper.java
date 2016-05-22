@@ -43,8 +43,7 @@ public class LoginPersonaleHelper {
 		if(corretto==false){
 			request.setAttribute("ERROR", "error");
 		}
-		System.out.println("username:"+personale.getUsername() + "\npassword="+personale.getPassword());
-
+		
 		return corretto;
 	}
 
