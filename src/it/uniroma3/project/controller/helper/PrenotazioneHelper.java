@@ -46,7 +46,7 @@ public class PrenotazioneHelper {
 		if (t != null) {
 			if (tav==null) {
 				corretto = false;
-				request.setAttribute("prenotazioniError", "Non ci sono tavoli disponibili per il" + data);
+				request.setAttribute("prenotazioniError", "Non ci sono tavoli disponibili per il " + data);
 			}
 			else{
 				session.setAttribute("tavoloAssegnato", tav);

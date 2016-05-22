@@ -42,13 +42,11 @@ public class Ristorante {
 	 * 
 	 * @return
 	 */
-	public Tavolo checkTavoliLiberoToday(List<Prenotazione> prenotazioni, List<Tavolo> tavDisp, Date data) {
-		Time24HoursValidator validatorD = new Time24HoursValidator();
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(new Date());
-		for (Tavolo t : tavDisp) {
+	public Tavolo checkTavoliLiberoToday(List<Prenotazione> prenotazioni, List<Tavolo> tavoliDisponibili, Date data) {
+		Time24HoursValidator validatorDate = new Time24HoursValidator();
+		for (Tavolo t : tavoliDisponibili) {
 			for (Prenotazione prenotazione : prenotazioni) {
-				if (validatorD.SameDate(data, prenotazione.getData())
+				if (validatorDate.SameDate(data, prenotazione.getData())
 						&& !prenotazione.getTavoloPrenotato().getCodiceTavolo().equals(t.getCodiceTavolo()))
 					return t;
 			}
