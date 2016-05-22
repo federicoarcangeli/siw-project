@@ -24,34 +24,12 @@ public class PrenotazioneHelper {
 		DateValidator validator = new DateValidator();
 		Time24HoursValidator validatorTime = new Time24HoursValidator();
 
-
 		HttpSession session = request.getSession(true);
 
 		String data = request.getParameter("data");
 		String ora = request.getParameter("ora");
 		String ospiti = request.getParameter("ospiti");
 
-		List<Tavolo> tavoli = facade.findAllTavolo();
-
-		List<Prenotazione> prenotazioni = facade.findAllPrenotazioni();
-
-		Ristorante checkTavoli = new Ristorante(Integer.parseInt(ospiti));
-		List<Tavolo> t = checkTavoli.setTavoloPrenotazione(tavoli);
-		Tavolo tav = checkTavoli.checkTavoliLiberoToday(prenotazioni, t, validator.validate(data));
-
-		if (t == null) {
-			corretto = false;
-			request.setAttribute("tavoliError", "Non ci sono tavoli disponibili per questo numero di ospiti");
-		}
-		if (t != null) {
-			if (tav==null) {
-				corretto = false;
-				request.setAttribute("prenotazioniError", "Non ci sono tavoli disponibili per il " + data);
-			}
-			else{
-				session.setAttribute("tavoloAssegnato", tav);
-			}
-		}
 		if (validator.validate(data) == null) {
 			corretto = false;
 			request.setAttribute("dataError", "Formato data non valido");
@@ -68,9 +46,29 @@ public class PrenotazioneHelper {
 			corretto = false;
 			request.setAttribute("oraError", "Ora obbligatoria");
 		}
-		if (ospiti.equals("vuoto")) {
+		if (ospiti.equals("empty")) {
 			corretto = false;
 			request.setAttribute("ospitiError", "Numero ospiti obbligatorio");
+		}
+
+		if (corretto) {
+			List<Tavolo> tavoli = facade.findAllTavolo();
+			Ristorante checkTavoli = new Ristorante(Integer.parseInt(ospiti));
+			List<Tavolo> tavoliDisponibili = checkTavoli.setTavoloPrenotazione(tavoli);
+			Tavolo tavoloDaPrenotare = checkTavoli.checkTavoliLiberiForDate(tavoliDisponibili, validator.validate(data));
+
+			if (tavoliDisponibili == null) {
+				corretto = false;
+				request.setAttribute("tavoliError", "Non ci sono tavoli disponibili per questo numero di ospiti");
+			}
+			if (tavoliDisponibili != null) {
+				if (tavoloDaPrenotare == null) {
+					corretto = false;
+					request.setAttribute("prenotazioniError", "Non ci sono tavoli disponibili per il " + data);
+				} else {
+					session.setAttribute("tavoloAssegnato", tavoloDaPrenotare);
+				}
+			}
 		}
 		if (corretto == false) {
 			request.setAttribute("ERROR", "error");

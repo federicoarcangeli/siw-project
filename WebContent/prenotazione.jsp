@@ -115,7 +115,7 @@
 									<div class="form-group">
 										<label for="ospiti">Numero di ospiti</label> <select
 											name="ospiti" id="ospiti" class="feedFormField">
-											<option selected value="vuoto">Inserisci il numero
+											<option selected value="empty">Inserisci il numero
 												di Ospiti</option>
 											<option value="1">1 Persona</option>
 											<option value="2">2 Persone</option>

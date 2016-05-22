@@ -30,7 +30,7 @@ public class ProfiloController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProfiloAction action = new ProfiloAction();
 		String nextPage = action.execute(request);
 		ServletContext application = getServletContext();

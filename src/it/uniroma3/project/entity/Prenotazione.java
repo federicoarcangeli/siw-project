@@ -107,6 +107,7 @@ public class Prenotazione {
 
 	public void setTavoloPrenotato(Tavolo tavoloPrenotato) {
 		this.tavoloPrenotato = tavoloPrenotato;
+		this.tavoloPrenotato.getPrenotazioni().add(this);
 	}
 
 	public void setId(Long id) {

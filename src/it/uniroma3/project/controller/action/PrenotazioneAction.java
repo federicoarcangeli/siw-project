@@ -27,7 +27,7 @@ public class PrenotazioneAction {
 		int ospiti = Integer.parseInt(request.getParameter("ospiti"));
 		Date ora = validatorD.validate(request.getParameter("ora"));
 
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession();
 
 		Utente utente = (Utente) session.getAttribute("utenteCorrente");
 		Tavolo tavolo = (Tavolo) session.getAttribute("tavoloAssegnato");

@@ -15,7 +15,8 @@ public class ProfiloAction implements Action {
 	public String execute(HttpServletRequest request) {
 
 		Facade facade = new Facade();
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession();
+		session.setMaxInactiveInterval(-1);
 		Utente utente = (Utente)session.getAttribute("utenteCorrente");
 		List<Prenotazione> prenotazioni = facade.findAllPrenotazioniUtente(utente.getId());
 		request.setAttribute("prenotazioni", prenotazioni);

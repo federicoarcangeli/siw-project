@@ -2,6 +2,7 @@ package it.uniroma3.model;
 
 import static org.junit.Assert.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -62,15 +63,17 @@ public class RistoranteTest {
 	@Test
 	public void testCheckTavoliLiberoTodayNessunTavoloLibero() {
 		this.ristorante = new Ristorante(6);
-		assertNull(this.ristorante.checkTavoliLiberoToday(this.prenotazioni,
+		assertNull(this.ristorante.checkTavoliLiberiForDate(
 				this.ristorante.setTavoloPrenotazione(this.tavoli), new Date()));
 	}
 
 	@Test
 	public void testCheckTavoloLiberoTodayUnTavoloLibero() {
 		this.ristorante = new Ristorante(2);
-		assertEquals(this.t2, this.ristorante.checkTavoliLiberoToday(this.prenotazioni,
-				this.ristorante.setTavoloPrenotazione(this.tavoli), new Date()));
+		List<Tavolo> tavoliDisponibili = this.ristorante.setTavoloPrenotazione(this.tavoli);
+		assertEquals(2,tavoliDisponibili.size());
+		assertEquals(this.t2,
+				this.ristorante.checkTavoliLiberiForDate(tavoliDisponibili, new Date()));
 
 	}
 
@@ -78,9 +81,25 @@ public class RistoranteTest {
 	public void testCheckTavoloLiberoTodayTavoliGi‡Prenotati() {
 		this.ristorante = new Ristorante(2);
 		this.p2.setTavoloPrenotato(this.t2);
+		this.prenotazioni.add(this.p2);
+		assertEquals(2, this.prenotazioni.size());
 		List<Tavolo> tavoliDisponibili = this.ristorante.setTavoloPrenotazione(this.tavoli);
-		assertEquals(2,tavoliDisponibili.size());
-		assertNull(this.ristorante.checkTavoliLiberoToday(this.prenotazioni,tavoliDisponibili, new Date()));
+		assertEquals(2, tavoliDisponibili.size());
+		assertEquals(this.t1.getCodiceTavolo(), this.p1.getTavoloPrenotato().getCodiceTavolo());
+		assertEquals(this.t2.getCodiceTavolo(), this.p2.getTavoloPrenotato().getCodiceTavolo());
+		assertNull("Non dovrebbero esserci tavoli disponibili per la prenotazione",
+				this.ristorante.checkTavoliLiberiForDate( tavoliDisponibili, new Date()));
+	}
+	
+	@Test
+	public void testCheckTavoloLiberoTomorrow() {
+		this.ristorante = new Ristorante(2);
+		this.p2.setTavoloPrenotato(this.t2);
+		this.prenotazioni.add(this.p2);
+		List<Tavolo> tavoliDisponibili = this.ristorante.setTavoloPrenotazione(this.tavoli);
+		Date dt = new Date();
+		LocalDateTime.from(dt.toInstant());
+		System.out.println(dt);
 	}
 
 }
