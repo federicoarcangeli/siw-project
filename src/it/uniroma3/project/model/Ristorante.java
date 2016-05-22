@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import it.uniroma3.project.controller.facade.Facade;
 import it.uniroma3.project.entity.Prenotazione;
 import it.uniroma3.project.entity.Tavolo;
 import it.uniroma3.validator.Time24HoursValidator;
@@ -65,6 +66,18 @@ public class Ristorante {
 					return t;
 		}
 		return null;
+	}
+	
+	public void setUpGiornaliero(){
+		Facade facade = new Facade();
+		Date today = new Date();
+		List<Tavolo> tavoli = facade.findAllTavoliToday(today);
+		for(Tavolo t : tavoli){
+			if(!facade.findPrenotazione(t, today).isEmpty())
+				facade.setTavoloPrenotato(t);
+			else
+				facade.setTavoloLibero(t);
+		}
 	}
 	
 }

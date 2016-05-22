@@ -14,7 +14,7 @@ public class PropertiesTestTest {
 
 	@Before
 	public void setUp() throws Exception {
-		this.ristorante = new Ristorante(5);
+		this.ristorante = new Ristorante();
 		this.tavolo = new Tavolo();
 	}
 

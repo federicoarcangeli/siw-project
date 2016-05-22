@@ -116,6 +116,13 @@ public class Facade {
 		tavolo.setOccupato(2);
 		dao.update(tavolo);	
 	}
+	
+	public void setTavoloLibero(Tavolo tavolo) {
+		TavoloDao dao = new TavoloDao();
+		tavolo.setOccupato(0);
+		dao.update(tavolo);	
+		
+	}
 
 	public List<Prenotazione> findAllPrenotazioni() {
 		PrenotazioneDao prenotazioneDao = new PrenotazioneDao();
@@ -128,5 +135,7 @@ public class Facade {
 		List<Prenotazione> prenotazione = prenotazioneDao.findPrenotazioneTavolo(t, today);
 		return prenotazione;
 	}
+
+
 
 }

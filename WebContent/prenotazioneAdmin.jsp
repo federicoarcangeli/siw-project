@@ -57,7 +57,7 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="./home_Administrator.jsp"> <img
+						<a class="navbar-brand" href="${pageContext.request.contextPath}/processaPannelloControllo"> <img
 							src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>

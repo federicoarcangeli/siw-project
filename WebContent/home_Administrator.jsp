@@ -58,8 +58,9 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="./home_Administrator.jsp"> <img
-							src="img/nav-logo.png" alt="nav-logo">
+						<a class="navbar-brand"
+							href="${pageContext.request.contextPath}/processaPannelloControllo">
+							<img src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>
 
@@ -125,11 +126,13 @@
 													</tr>
 												</thead>
 												<tbody>
+
 													<tr>
-														<td>prova</td>
-														<td>prova</td>
-														<td>prova</td>
+														<td>${liberi}</td>
+														<td>${prenotati}</td>
+														<td>${occupati}</td>
 													</tr>
+
 												</tbody>
 											</table>
 										</div>
