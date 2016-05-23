@@ -103,6 +103,9 @@
 									<li><a href="./registraPersonale.jsp">Registra nuovo
 											Personale <i class="fa fa-caret-right"></i>
 									</a></li>
+									<li><a href="./registraTavolo.jsp">Registra nuovo
+											Tavolo <i class="fa fa-caret-right"></i>
+									</a></li>
 
 								</ul>
 							</div>

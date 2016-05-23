@@ -38,16 +38,23 @@ public class TavoloDao extends AbstractDao<Tavolo> {
 	}
 
 	public Tavolo findByNumero(String parameter) {
+
 		EntityManager em = super.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		Query q = (Query) em.createNativeQuery("select id from tavolo where codicetavolo = ?1");
-		q.setParameter(1, parameter);
-		BigInteger id = (BigInteger) q.getSingleResult();
-		Tavolo t = this.findById(id.longValue());
-		tx.commit();
-		em.close();
-		return t;
+		try{
+			Query q = (Query) em.createNativeQuery("select id from tavolo where codicetavolo = ?1");
+			q.setParameter(1, parameter);
+			BigInteger id = (BigInteger) q.getSingleResult();
+			Tavolo t = this.findById(id.longValue());
+			em.close();
+			return t;
+		} catch (Exception e) {
+			return null;
+		} finally {
+			if (em.isOpen())
+				em.close();
+		}
 	}
 
 	/**
