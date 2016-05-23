@@ -108,8 +108,8 @@
 									<c:when test="${tavolo.occupato=='0'}">
 										<span>Coperti: ${tavolo.coperti}</span>
 										<button id="libero" type="button" class="btn btn-success"
-											style="width: 100%; height: 150px;" onclick="getComanda();">
-											<h3>${tavolo.codiceTavolo}</h3>
+											style="width: 100%; height: 150px;" name="libero" onclick="getComanda();">
+											<h3 id="codiceTavolo">${tavolo.codiceTavolo}</h3>
 										</button>
 										<div class="col-md-12" style="height: 25px;"></div>
 									</c:when>

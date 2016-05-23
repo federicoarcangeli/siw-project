@@ -194,7 +194,7 @@
 									<div class="col-md-12 col-sm-12">
 										<div class="reservation-btn">
 											<button type="submit" class="btn btn-default btn-lg"
-												onClick="return show_alert();" id="">Inserisci
+												onClick="return show_alert();" id="z">Inserisci
 												piatto nel menù</button>
 											<%
 												if (request.getAttribute("ERRORE") != null) {
@@ -325,7 +325,7 @@
 	<script src="js/reservation.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
 
-	<script src="js/confermaInserimentoPiatti.js">
+	<script src="js/scripts/confermaInserimentoPiatti.js">
 		
 	</script>
 

@@ -35,7 +35,7 @@ public class Comanda {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Utente operatore;
 
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE},fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Tavolo tavolo;
 	
 	@OneToMany(mappedBy="comanda")
@@ -122,4 +122,12 @@ public class Comanda {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Comanda [id=" + id + ", dataOraEmissione=" + dataOraEmissione + ", prezzoTotale=" + prezzoTotale
+				+ ", operatore=" + operatore + ", tavolo=" + tavolo + ", lineeComanda=" + lineeComanda + "]";
+	}
+	
+	
 }

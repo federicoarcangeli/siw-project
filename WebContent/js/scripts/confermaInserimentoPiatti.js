@@ -1,3 +1,4 @@
+
 function show_alert() {
 	var check = confirm("Stai per inserire:\n"
 			+ document.getElementById("nome").value + "\n"

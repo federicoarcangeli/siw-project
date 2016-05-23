@@ -37,10 +37,10 @@ public class Tavolo {
 	 */
 	private int occupato;
 
-	@OneToMany(mappedBy="tavolo",fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="tavolo",fetch = FetchType.EAGER)
 	private List<Comanda> comande;
 
-	@OneToMany(mappedBy="tavoloPrenotato", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="tavoloPrenotato", fetch=FetchType.EAGER)
 	@Fetch(value=FetchMode.SELECT)
 	private List<Prenotazione> prenotazioni;
 
@@ -52,6 +52,7 @@ public class Tavolo {
 
 	public Tavolo(int coperti) {
 		this.prenotazioni = new ArrayList<>();
+		this.comande = new ArrayList<>();
 		this.coperti = coperti;
 		this.occupato = 0;
 	}
@@ -95,6 +96,11 @@ public class Tavolo {
 	public void addPrenotazione(Prenotazione prenotazione) {
 		if(prenotazione != null)
 			this.prenotazioni.add(prenotazione);
+	}
+	
+	public void addComanda(Comanda comanda) {
+		if(comanda!=null)
+			this.comande.add(comanda);
 	}
 
 	@Override
