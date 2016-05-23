@@ -100,19 +100,21 @@
 								<div class="box-content">
 									<h3 class="text-center">Registra nuovo tavolo</h3>
 									<br>
+									<div class="reservation-form">
+										<form action="processaTavolo" method="post" id="formfield">
+											<input type="hidden" name="action" value="add_form" />
+											<div id="OT_searchWrapper">
+												<div id="OT_defList" class="row">
+													<div class="clearfix space20"></div>
+													<div class="row">
 
-									<form class="logregform" action="processaTavolo" method="post"
-										id="formfield">
-										<input type="hidden" name="action" value="add_form" />
-										<div id="OT_searchWrapper">
-											<div id="OT_defList" class="row">
-												<div class="clearfix space20"></div>
-												<div class="row">
-													<div class="form-group">
 														<div class="col-md-12">
-															<label>Numero tavolo</label> <input type="text"
-																name="codiceTavolo" placeholder="numero del tavolo"
-																class="form-control" id="codiceTavolo">
+															<div class="form-group">
+																<label>Numero tavolo</label> <input type="text"
+																	name="codiceTavolo" placeholder="numero del tavolo"
+																	class="form-control" id="codiceTavolo"> <i
+																	class="fa fa-barcode" aria-hidden="true"></i>
+															</div>
 														</div>
 														<div id="OT_partySize" class="col-md-12">
 															<div class="form-group">
@@ -135,25 +137,25 @@
 																	<option value="13">13 Persone</option>
 																	<option value="14">14 Persone</option>
 																	<option value="15">15 Persone</option>
-																</select>
+																</select> <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
 															</div>
 														</div>
-													</div>
 
-												</div>
-												<div class="row">
-													<div class="col-md-12">
-														<div class="space20"></div>
-														<div class="reservation-btn">
-															<input type="button" name="btn" value="Registra tavolo"
-																id="submitBtn" data-toggle="modal"
-																data-target="#confirm-submit" class="btn btn-default" />
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+															<div class="space20"></div>
+															<div class="reservation-btn">
+																<input type="button" name="btn" value="Registra tavolo"
+																	id="submitBtn" data-toggle="modal"
+																	data-target="#confirm-submit" class="btn btn-default" />
+															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-										</div>
-									</form>
+										</form>
+									</div>
 									<%
 										if (request.getAttribute("ERROR") != null) {
 									%>
@@ -185,11 +187,13 @@
 							<h4>Confermare inserimento?</h4>
 							<table class="table">
 								<tr>
-									<th>Codice tavolo:</th>
+									<th><span class="fa fa-barcode" aria-hidden="true"></span>
+										Codice tavolo:</th>
 									<td id="cod"></td>
 								</tr>
 								<tr>
-									<th>Numero di coperti:</th>
+									<th><span class="fa fa-users" aria-hidden="true"></span>
+										Numero di coperti:</th>
 									<td id="cop"></td>
 								</tr>
 							</table>

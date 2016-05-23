@@ -101,43 +101,44 @@
 
 			<div class="container-fluid">
 				<div class="row">
-				<form action="processaComanda" method="post">
-					<div class="col-sm-12 centered">
-						<c:forEach var="tavolo" items="${tavoli}">
-							<div class="col-xs-6 col-sm-2">
-								<c:choose>
-									<c:when test="${tavolo.occupato=='0'}">
-										<span>Coperti: ${tavolo.coperti}</span>
-										<button id="libero" type="submit" class="btn btn-success"
-											style="width: 100%; height: 150px;" name="libero" value='${tavolo.codiceTavolo}'>
-											<h3>${tavolo.codiceTavolo}</h3>
-										</button>
-										<div class="col-md-12" style="height: 25px;"></div>
-									</c:when>
+					<form action="processaComanda" method="post">
+						<div class="col-sm-12 centered">
+							<c:forEach var="tavolo" items="${tavoli}">
+								<div class="col-xs-6 col-sm-2">
+									<c:choose>
+										<c:when test="${tavolo.occupato=='0'}">
+											<span>Coperti: ${tavolo.coperti}</span>
+											<button id="libero" type="submit" class="btn btn-success"
+												style="width: 100%; height: 150px;" name="libero"
+												value='${tavolo.codiceTavolo}'>
+												<h3>${tavolo.codiceTavolo}</h3>
+											</button>
+											<div class="col-md-12" style="height: 25px;"></div>
+										</c:when>
 
-									<c:when test="${tavolo.occupato=='1'}">
-										<span>Coperti: ${tavolo.coperti}</span>
-										<button id="prenotato" type="button" class="btn btn-warning"
-											style="width: 100%; height: 150px;"
-											onclick="${pageContext.request.contextPath}/processaComanda">
-											<h3>${tavolo.codiceTavolo}</h3>
-										</button>
-										<div class="col-md-12" style="height: 25px;"></div>
-									</c:when>
+										<c:when test="${tavolo.occupato=='1'}">
+											<span>Coperti: ${tavolo.coperti}</span>
+											<button id="prenotato" type="button" class="btn btn-warning"
+												style="width: 100%; height: 150px;"
+												onclick="${pageContext.request.contextPath}/processaComanda">
+												<h3>${tavolo.codiceTavolo}</h3>
+											</button>
+											<div class="col-md-12" style="height: 25px;"></div>
+										</c:when>
 
-									<c:when test="${tavolo.occupato=='2'}">
-										<span>Coperti: ${tavolo.coperti}</span>
-										<button id="occupato" type="button" class="btn btn-danger"
-											style="width: 100%; height: 150px;">
-											<h3>${tavolo.codiceTavolo}</h3>
-										</button>
-										<div class="col-md-12" style="height: 25px;"></div>
-									</c:when>
-								</c:choose>
-							</div>
-						</c:forEach>
-						
-					</div>
+										<c:when test="${tavolo.occupato=='2'}">
+											<span>Coperti: ${tavolo.coperti}</span>
+											<button id="occupato" type="button" class="btn btn-danger"
+												style="width: 100%; height: 150px;">
+												<h3>${tavolo.codiceTavolo}</h3>
+											</button>
+											<div class="col-md-12" style="height: 25px;"></div>
+										</c:when>
+									</c:choose>
+								</div>
+							</c:forEach>
+
+						</div>
 					</form>
 				</div>
 

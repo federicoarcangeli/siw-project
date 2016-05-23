@@ -89,11 +89,11 @@
 			<div class="shop-content">
 
 				<div class="food-menu wow fadeInUp">
-					<div class="container">
+					<div class="container-fluid">
 						<div class="row">
 
 
-							<aside class="col-md-3">
+							<aside class="col-md-2">
 								<h4>Categoria</h4>
 								<div class="menu-tags3">
 									<div class="side-widget">
@@ -107,62 +107,61 @@
 								</div>
 							</aside>
 							<form action="UpdateComanda" method="post">
-							<div class="col-md-6">
-								<h4>Piatti</h4>
-								<div class="shop-grid">
-									<div class="shop-products">
-										<div class="row">
-											<div class="row menu-items3">
-												<c:forEach var="piatto" items="${piatti}">
-													<div
-														class="menu-item3 col-sm-4 ${piatto.getPortata().nome}">
-														<div class="product-info">
-															<h4>
-																<a href="./recipe_detail-image.html">${piatto.nome}</a>
-															</h4>
-															<div class="shop-meta">
-																<button type="button" class="btn btn-success" value='${piatto.id}'>
-																	<i class="fa fa-pencil-square-o"></i> Aggiungi
-																</button>
+								<div class="col-md-6">
+									<h4>Piatti</h4>
+
+									<div class="shop-grid">
+										<div class="shop-products">
+											<div class="row">
+												<div class="row menu-items3">
+													<c:forEach var="piatto" items="${piatti}">
+														<div
+															class="menu-item3 col-sm-4 ${piatto.getPortata().nome}">
+															<div class="product-info">
+																<h4>
+																	<a href="">${piatto.nome}</a>
+																</h4>
+																<div class="shop-meta centered">
+																	<button type="button"
+																		class="btn btn-success center-block"
+																		value='${piatto.id}'>
+																		<i class="fa fa-pencil-square-o"></i> Aggiungi
+																	</button>
+																</div>
 															</div>
-
 														</div>
-													</div>
-												</c:forEach>
-
-
+													</c:forEach>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
 							</form>
-							<aside class="col-md-3">
+
+							<aside class="col-md-4">
 								<div class="side-widget">
-
 									<form>
-
 										<div class="row">
 											<div class="form-group">
-												<div class="col-md-9">
-													<div class="shop-grid">
-														<div class="shop-products">
-															<div class="row">
-																<div class="col-md-12">
-																	<h4>Ordine in corso</h4>
-																	<br>
-																	<table
-																		class="cart-table account-table table table-bordered">
-																		<thead>
-																			<tr>
-																				<th>Piatto</th>
-																				<th>Quantità</th>
-																				<th>Aggiungi</th>
+												<div class="shop-grid">
+													<div class="shop-products">
+														<div class="row">
+															<div class="col-md-12">
+																<h4>Ordine in corso</h4>
+																<br>
+																<table
+																	class="cart-table account-table table table-bordered">
+																	<thead>
+																		<tr>
+																			<th>Piatto</th>
+																			<th>Quantità</th>
+																			<th>Aggiungi</th>
 
-																			</tr>
-																		</thead>
-																		<tbody>
-																			<c:forEach var="linea" items="${comanda.getLineeComanda()}">
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<c:forEach var="linea"
+																			items="${comanda.getLineeComanda()}">
 																			<tr>
 																				<td>${linea.piatto}</td>
 																				<td><input type="number" placeholder="qta"
@@ -171,10 +170,9 @@
 																					type="button" value="Input"></td>
 
 																			</tr>
-																			</c:forEach>
-																		</tbody>
-																	</table>
-																</div>
+																		</c:forEach>
+																	</tbody>
+																</table>
 															</div>
 														</div>
 													</div>

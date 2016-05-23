@@ -99,7 +99,7 @@
 					</div>
 
 					<div class="reservation-form">
-						<form action=processaPiatto method="post"
+						<form action="processaPiatto" method="post"
 							enctype="multipart/form-data" id="formfield">
 							<input type="hidden" name="action" value="add_form" />
 							<!-- Tabs -->
@@ -143,13 +143,15 @@
 														class="form-control" id="nome" name="nome"
 														placeholder="Inserisci il nome del piatto"
 														title="Inserisci il nome del piatto"
-														value='${param["nome"]}'>
+														value='${param["nome"]}'> <i class="fa fa-cutlery"
+														aria-hidden="true"></i>
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-6">
 												<div class="form-group">
 													<label for="immagine">Immagine</label> <input type=file
-														name="fileName">
+														name="fileName" style="length: 100%;"> <i
+														class="fa fa-picture-o" aria-hidden="true"></i>
 												</div>
 											</div>
 										</div>
@@ -160,7 +162,7 @@
 													<textarea class="form-control" id="descrizione"
 														placeholder="Inserisci la descrizione" rows="4" cols="5"
 														name="descrizione">${param["descrizione"]}</textarea>
-
+													<i class="fa fa-comment-o" aria-hidden="true"></i>
 												</div>
 											</div>
 											<div class="col-md-6 col-sm-6">
@@ -169,7 +171,8 @@
 														class="form-control" id="prezzo" name="prezzo"
 														placeholder="Inserisci il prezzo"
 														title="Inserisci il prezzo del piatto"
-														value='${param["prezzo"]}'>
+														value='${param["prezzo"]}'> <i class="fa fa-eur"
+														aria-hidden="true"></i>
 												</div>
 											</div>
 											<div id="OT_partySize" class="col-md-6 col-sm-6">
@@ -232,11 +235,13 @@
 										<h4>Confermare inserimento?</h4>
 										<table class="table">
 											<tr>
-												<th>Nome:</th>
+												<th><span class="fa fa-cutlery" aria-hidden="true"></span>
+													Nome:</th>
 												<td id="nom"></td>
 											</tr>
 											<tr>
-												<th>Prezzo:</th>
+												<th><span class="fa fa-eur" aria-hidden="true"></span>
+													Prezzo:</th>
 												<td id="pre"></td>
 											</tr>
 										</table>

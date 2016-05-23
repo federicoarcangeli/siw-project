@@ -144,7 +144,7 @@
 													<option value="13">13 Persone</option>
 													<option value="14">14 Persone</option>
 													<option value="15">15 Persone</option>
-												</select> <i class="fa fa-user"></i>
+												</select> <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
 											</div>
 										</div>
 									</div>

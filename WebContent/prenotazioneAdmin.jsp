@@ -115,7 +115,7 @@
 													id="nominativo" placeholder="Nominativo del cliente"
 													title="Nominativo del cliente"
 													value='${param["nominativo"]}'> <i
-													class="fa fa-user"></i>
+													class="fa fa-user" aria-hidden="true"></i>
 											</div>
 										</div>
 										<div class="col-md-3">
@@ -124,7 +124,7 @@
 													name="data" class="form-control" id="datepicker"
 													placeholder="Seleziona una data" title="seleziona una data"
 													value='${param["data"]}'> <i
-													class="fa fa-calendar-o"></i>
+													class="fa fa-calendar-o" aria-hidden="true"></i>
 											</div>
 										</div>
 										<div class="col-md-3">
@@ -133,7 +133,7 @@
 													type="text" class="form-control" id="timepicker" name="ora"
 													placeholder="Seleziona l'orario di arrivo"
 													title="Seleziona un'ora di arrivo" value='${param["ora"]}'>
-												<i class="fa fa-clock-o"></i>
+												<i class="fa fa-clock-o" aria-hidden="true"></i>
 											</div>
 										</div>
 										<div id="OT_partySize" class="col-md-3">
@@ -157,7 +157,7 @@
 													<option value="13">13 Persone</option>
 													<option value="14">14 Persone</option>
 													<option value="15">15 Persone</option>
-												</select> <i class="fa fa-user"></i>
+												</select> <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
 											</div>
 										</div>
 									</div>
@@ -169,7 +169,7 @@
 												<input type="button" name="btn"
 													value="Effettua prenotazione" id="submitBtn"
 													data-toggle="modal" data-target="#confirm-submit"
-													class="btn btn-success" />
+													class="btn btn-default" />
 												<%
 													if (request.getAttribute("ERROR") != null) {
 												%>
@@ -208,19 +208,23 @@
 							<h4>Confermare prenotazione?</h4>
 							<table class="table">
 								<tr>
-									<th>Nominativo:</th>
+									<th><span class="fa fa-user" aria-hidden="true"></span>
+										Nominativo:</th>
 									<td id="nom"></td>
 								</tr>
 								<tr>
-									<th>Data:</th>
+									<th><span class="fa fa-calendar-o" aria-hidden="true"></span>
+										Data:</th>
 									<td id="date"></td>
 								</tr>
 								<tr>
-									<th>Ora:</th>
+									<th><span class="fa fa-clock-o" aria-hidden="true"></span>
+										Ora:</th>
 									<td id="time"></td>
 								</tr>
 								<tr>
-									<th>Ospiti:</th>
+									<th><span class="fa fa-users" aria-hidden="true"></span>
+										Ospiti:</th>
 									<td id="osp"></td>
 								</tr>
 							</table>

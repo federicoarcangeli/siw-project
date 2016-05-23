@@ -97,32 +97,38 @@
 									<div class="box-content">
 										<h3 class="text-center">Utente registrato</h3>
 										<br>
-										<form class="logregform" action="processaUtente" method="post">
-											<div class="row">
-												<div class="form-group">
+										<div class="reservation-form">
+											<form action="processaUtente" method="post">
+												<div class="row">
 													<div class="col-md-12">
-														<label>Username</label> <input type="text" name="username"
-															placeholder="username" class="form-control">
+														<div class="form-group">
+															<label>Username</label> <input type="text"
+																name="username" placeholder="username"
+																class="form-control"> <i class="fa fa-user"
+																aria-hidden="true"></i>
+														</div>
 													</div>
 												</div>
-											</div>
-											<div class="clearfix"></div>
-											<div class="row">
-												<div class="form-group">
+												<div class="clearfix"></div>
+												<div class="row">
 													<div class="col-md-12">
-														<label>Password</label> <input type="password"
-															name="password" placeholder="password"
-															class="form-control">
+														<div class="form-group">
+															<label>Password</label> <input type="password"
+																name="password" placeholder="password"
+																class="form-control"> <i class="fa fa-lock"
+																aria-hidden="true"></i>
+														</div>
 													</div>
 												</div>
-											</div>
-											<div class="clearfix"></div>
-											<div class="row">
-												<div class="col-md-6">
-													<button type="submit" class="btn btn-default pull-left">Login</button>
+												<div class="clearfix"></div>
+												<div class="row">
+													<div class="col-md-6">
+														<button type="submit" class="btn btn-default pull-left">
+															Login</button>
+													</div>
 												</div>
-											</div>
-										</form>
+											</form>
+										</div>
 									</div>
 									<br>
 									<%
@@ -164,67 +170,85 @@
 									<div class="box-content">
 										<h3 class="text-center">Registra un account</h3>
 										<br>
-										<form class="logregform" action="processaRegistrazione"
-											method="post" id="formfield">
-											<input type="hidden" name="action" value="add_form" />
-											<div class="clearfix space20"></div>
-											<div class="row">
-												<div class="form-group">
+										<div class="reservation-form">
+											<form action="processaRegistrazione" method="post"
+												id="formfield">
+												<input type="hidden" name="action" value="add_form" />
+												<div class="clearfix space20"></div>
+												<div class="row">
+
 													<div class="col-md-6">
-														<label>Nome</label> <input type="text" name="nome"
-															id="nome" placeholder="nome" class="form-control">
+														<div class="form-group">
+															<label>Nome</label> <input type="text" name="nome"
+																id="nome" placeholder="nome" class="form-control">
+															<i class="fa fa-user" aria-hidden="true"></i>
+														</div>
 													</div>
 													<div class="col-md-6">
-														<label>Cognome</label> <input type="text" name="cognome"
-															id="cognome" placeholder="cognome" class="form-control">
+														<div class="form-group">
+															<label>Cognome</label> <input type="text" name="cognome"
+																id="cognome" placeholder="cognome" class="form-control">
+															<i class="fa fa-user" aria-hidden="true"></i>
+
+														</div>
 													</div>
-
-
 													<div class="col-md-12">
-														<label>Email</label> <input type="text" name="email"
-															id="email" placeholder="email" class="form-control">
+														<div class="form-group">
+															<label>Email</label> <input type="text" name="email"
+																id="email" placeholder="email" class="form-control">
+															<i class="fa fa-envelope" aria-hidden="true"></i>
+														</div>
 													</div>
-													<div class="form-group">
-														<div class="col-md-6">
+													<div class="col-md-6">
+														<div class="form-group">
 															<label>Username</label> <input type="text"
 																name="username" id="username" placeholder="username"
-																class="form-control">
+																class="form-control"> <i class="fa fa-barcode"
+																aria-hidden="true"></i>
 														</div>
-														<div class="col-md-6">
+													</div>
+													<div class="col-md-6">
+														<div class="form-group">
 															<label>Telefono</label> <input type="text"
 																name="telefono" id="telefono" placeholder="telefono"
-																class="form-control">
+																class="form-control"> <i class="fa fa-phone"
+																aria-hidden="true"></i>
 														</div>
 													</div>
 												</div>
-											</div>
-											<div class="clearfix space20"></div>
-											<div class="row">
-												<div class="form-group">
+												<div class="clearfix space20"></div>
+												<div class="row">
 													<div class="col-md-6">
-														<label>Password</label> <input type="password"
-															name="password" placeholder="password"
-															class="form-control">
+														<div class="form-group">
+															<label>Password</label> <input type="password"
+																name="password" placeholder="password"
+																class="form-control"> <i class="fa fa-lock"
+																aria-hidden="true"></i>
+														</div>
 													</div>
 													<div class="col-md-6">
-														<label>Conferma Password</label> <input type="password"
-															name="confermaPassword" placeholder="conferma password"
-															value="" class="form-control">
+														<div class="form-group">
+															<label>Conferma Password</label> <input type="password"
+																name="confermaPassword" placeholder="conferma password"
+																value="" class="form-control"> <i
+																class="fa fa-lock" aria-hidden="true"></i>
+														</div>
+													</div>
+
+												</div>
+												<div class="row">
+													<div class="col-md-12">
+														<div class="space20"></div>
+														<div class="reservation-btn">
+															<input type="button" name="btn" value="Registrami"
+																id="submitBtn" data-toggle="modal"
+																data-target="#confirm-submit"
+																class="btn btn-default pull-right" />
+														</div>
 													</div>
 												</div>
-											</div>
-											<div class="row">
-												<div class="col-md-12">
-													<div class="space20"></div>
-													<div class="reservation-btn">
-														<input type="button" name="btn" value="Registrami"
-															id="submitBtn" data-toggle="modal"
-															data-target="#confirm-submit"
-															class="btn btn-default pull-right" />
-													</div>
-												</div>
-											</div>
-										</form>
+											</form>
+										</div>
 
 
 
@@ -238,23 +262,28 @@
 														<h4>Confermare Registrazione?</h4>
 														<table class="table">
 															<tr>
-																<th>Nome:</th>
+																<th><span class="fa fa-user" aria-hidden="true"></span>
+																	Nome:</th>
 																<td id="nom"></td>
 															</tr>
 															<tr>
-																<th>Cognome:</th>
+																<th><span class="fa fa-user" aria-hidden="true"></span>
+																	Cognome:</th>
 																<td id="cog"></td>
 															</tr>
 															<tr>
-																<th>Email:</th>
+																<th><span class="fa fa-envelope" aria-hidden="true"></span>
+																	Email:</th>
 																<td id="ema"></td>
 															</tr>
 															<tr>
-																<th>Username:</th>
+																<th><span class="fa fa-barcode" aria-hidden="true"></span>
+																	Username:</th>
 																<td id="use"></td>
 															</tr>
 															<tr>
-																<th>Telefono:</th>
+																<th><span class="fa fa-phone" aria-hidden="true"></span>
+																	Telefono:</th>
 																<td id="tel"></td>
 															</tr>
 														</table>
@@ -263,7 +292,9 @@
 														<button type="button" class="btn btn-default"
 															data-dismiss="modal">Annulla</button>
 														<a href="#" id="submit" class="btn btn-success success">Effettua
-															registrazione</a>
+															registrazione <span class="fa fa-user-plus"
+															aria-hidden="true"></span>
+														</a>
 													</div>
 												</div>
 											</div>
