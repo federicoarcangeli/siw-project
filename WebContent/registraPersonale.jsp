@@ -101,49 +101,78 @@
 								<div class="box-content">
 									<h3 class="text-center">Registra nuovo personale</h3>
 									<br>
-									<div class="reservation-form">
-										<form class="logregform" action="processaPersonale"
-											method="post">
-											<div id="OT_searchWrapper">
-												<div id="OT_defList" class="row">
-													<div class="clearfix space20"></div>
-													<div class="row">
-														<div class="form-group">
-															<div class="col-md-12">
-																<label>Username</label> <input type="text"
-																	name="username" placeholder="username" class="form-control">
-															</div>
-															<div class="col-md-12">
-																<label>Password</label> <input type="password"
-																	name="password" placeholder="Password"
-																	class="form-control">
-															</div>
-														</div>
-														<div id="OT_partySize" class="col-md-12">
-															<div class="form-group">
-																<label for="role">Tipologia personale</label> <select
-																	name="role" id="role" class="feedFormField">
-																	<option selected value="vuoto">Seleziona una
-																		tipologia di personale</option>
-																	<option value="amministratore">Amministratore</option>
-																	<option value="operatore">Operatore</option>
-																</select> 
-															</div>
-														</div>
-
-													</div>
-													<div class="row">
+									<form class="logregform" action="processaPersonale"
+										method="post" id="formfield">
+										<input type="hidden" name="action" value="add_form" />
+										<div id="OT_searchWrapper">
+											<div id="OT_defList" class="row">
+												<div class="clearfix space20"></div>
+												<div class="row">
+													<div class="form-group">
 														<div class="col-md-12">
-															<div class="space20"></div>
-															<div class="reservation-btn">
-																<button type="submit" class="btn btn-default " id="">Registra
-																	Operatore</button>
-															</div>
+															<label>Username</label> <input type="text"
+																name="username" placeholder="username" id="username"
+																class="form-control">
+														</div>
+														<div class="col-md-12">
+															<label>Password</label> <input type="password"
+																name="password" placeholder="Password"
+																class="form-control">
+														</div>
+													</div>
+													<div id="OT_partySize" class="col-md-12">
+														<div class="form-group">
+															<label for="role">Tipologia personale</label> <select
+																name="role" id="role" class="feedFormField">
+																<option selected value="vuoto">Seleziona una
+																	tipologia di personale</option>
+																<option value="amministratore">Amministratore</option>
+																<option value="operatore">Operatore</option>
+															</select>
+														</div>
+													</div>
+
+												</div>
+												<div class="row">
+													<div class="col-md-12">
+														<div class="space20"></div>
+														<div class="reservation-btn">
+															<input type="button" name="btn"
+																value="Registra operatore" id="submitBtn"
+																data-toggle="modal" data-target="#confirm-submit"
+																class="btn btn-default" />
 														</div>
 													</div>
 												</div>
 											</div>
-										</form>
+										</div>
+									</form>
+									<div class="modal fade" id="confirm-submit" tabindex="-1"
+										role="dialog" aria-labelledby="myModalLabel"
+										aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-body">
+													<h4>Confermare inserimento?</h4>
+													<table class="table">
+														<tr>
+															<th>Username:</th>
+															<td id="use"></td>
+														</tr>
+														<tr>
+															<th>Ruolo account:</th>
+															<td id="rol"></td>
+														</tr>
+													</table>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-default"
+														data-dismiss="modal">Annulla</button>
+													<a href="#" id="submit" class="btn btn-success success">Registra
+														operatore</a>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 								<br>
@@ -151,7 +180,10 @@
 									if (request.getAttribute("ERROR") != null) {
 								%>
 								<div class="animated fadeInDown">
-									<div class="alert alert-error">
+									<div class="alert alert-error alert-dismissable">
+										<button type="button" class="close" data-dismiss="alert">
+											<span class="fa fa-close"></span>
+										</button>
 										<span> ERRORE: </span>${personaleError} ${passwordError}
 										${usernameError} ${roleError}
 									</div>
@@ -193,6 +225,7 @@
 	<script src="js/main.js"></script>
 	<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
+	<script src="js/scripts/confermaRegistrazioneOperatore.js"></script>
 </body>
 
 </html>

@@ -102,10 +102,9 @@
 						</div>
 					</div>
 					<div class="reservation-form">
-						<form action="processaPrenotazioneAdmin" method="post">
-
-
-
+						<form action="processaPrenotazioneAdmin" method="post"
+							id="formfield">
+							<input type="hidden" name="action" value="add_form" />
 							<div id="OT_searchWrapper">
 								<div id="OT_defList" class="row">
 									<div class="row">
@@ -113,7 +112,7 @@
 											<div class="form-group">
 												<label for="nominativo">Nominativo</label> <input
 													type="text" name="nominativo" class="form-control"
-													placeholder="Nominativo del cliente"
+													id="nominativo" placeholder="Nominativo del cliente"
 													title="Nominativo del cliente"
 													value='${param["nominativo"]}'> <i
 													class="fa fa-user"></i>
@@ -167,14 +166,19 @@
 									<div id="OT_defList" class="row">
 										<div class="col-md-12 col-sm-12">
 											<div class="reservation-btn">
-												<button type="submit" class="btn btn-default btn-lg" id="">Effettua
-													Prenotazione</button>
+												<input type="button" name="btn"
+													value="Effettua prenotazione" id="submitBtn"
+													data-toggle="modal" data-target="#confirm-submit"
+													class="btn btn-success" />
 												<%
 													if (request.getAttribute("ERROR") != null) {
 												%>
 												<br>
 												<div class="animated fadeInDown">
-													<div class="alert alert-error">
+													<div class="alert alert-error alert-dismissable">
+														<button type="button" class="close" data-dismiss="alert">
+															<span class="fa fa-close"></span>
+														</button>
 														<span> ERRORE: </span> ${nominativoError} ${dataError}
 														${oraError} ${ospitiError} ${tavoliError}
 														${prenotazioniError }
@@ -193,6 +197,43 @@
 					</div>
 				</div>
 			</section>
+
+
+
+			<div class="modal fade" id="confirm-submit" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-body">
+							<h4>Confermare prenotazione?</h4>
+							<table class="table">
+								<tr>
+									<th>Nominativo:</th>
+									<td id="nom"></td>
+								</tr>
+								<tr>
+									<th>Data:</th>
+									<td id="date"></td>
+								</tr>
+								<tr>
+									<th>Ora:</th>
+									<td id="time"></td>
+								</tr>
+								<tr>
+									<th>Ospiti:</th>
+									<td id="osp"></td>
+								</tr>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Annulla</button>
+							<a href="#" id="submit" class="btn btn-success success">Effettua
+								prenotazione</a>
+						</div>
+					</div>
+				</div>
+			</div>
 
 
 		</div>
@@ -221,6 +262,7 @@
 	<script src="js/vendor/validate.js"></script>
 	<script src="js/reservation.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
+	<script src="js/scripts/confermaInserimentoPrenotazioneAdmin.js"></script>
 
 </body>
 
