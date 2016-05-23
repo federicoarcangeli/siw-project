@@ -15,7 +15,7 @@ public class SalaAction implements Action {
 	public String execute(HttpServletRequest request) {
 		Facade facade = new Facade();
 
-		ristorante.setUpGiornaliero();
+		// ristorante.setUpGiornaliero();
 
 		List<Tavolo> tavoli = facade.findAllTavolo();
 		request.setAttribute("tavoli", tavoli);

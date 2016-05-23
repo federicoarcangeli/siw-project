@@ -15,7 +15,7 @@ import it.uniroma3.project.controller.action.ComandaAction;
 /**
  * Servlet implementation class ComandaController
  */
-@WebServlet("/processaComanda")
+@WebServlet(urlPatterns ={"/processaComanda"})
 public class ComandaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
