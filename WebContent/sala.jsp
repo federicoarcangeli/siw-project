@@ -52,8 +52,9 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="./home_Operatore.jsp"> <img
-							src="img/nav-logo.png" alt="nav-logo">
+						<a class="navbar-brand"
+							href="${pageContext.request.contextPath}/processaPannelloControllo">
+							<img src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>
 
@@ -68,7 +69,7 @@
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Benvenuto
 									${amministratoreCorrente.username} -
-									${amministratoreCorrente.role} <span class="caret"></span>
+									${amministratoreCorrente.role}<span class="caret"></span>
 							</a>
 								<ul class="dropdown-menu">
 									<li><a href="./index_parallax.jsp">Logout</a></li>
@@ -79,6 +80,7 @@
 					<!--/.navbar-collapse -->
 				</div>
 			</nav>
+
 
 			<!-- Page Header -->
 			<section class='page_header vertical-padding'></section>

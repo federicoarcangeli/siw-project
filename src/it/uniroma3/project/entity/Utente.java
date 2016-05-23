@@ -78,10 +78,10 @@ public class Utente {
 		this.comanda = comanda;
 	}
 	
-	@OneToMany(mappedBy="operatore",cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch =FetchType.EAGER)
+	@OneToMany(mappedBy="operatore",cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch =FetchType.LAZY)
 	private List<Comanda> comanda;
 
-	@OneToMany(mappedBy="utente")
+	@OneToMany(mappedBy="utente" , fetch= FetchType.LAZY)
 	List<Prenotazione> prenotazioni;
 
 	public Utente() {
