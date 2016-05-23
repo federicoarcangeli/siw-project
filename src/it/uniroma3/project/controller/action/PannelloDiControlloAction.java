@@ -1,6 +1,5 @@
 package it.uniroma3.project.controller.action;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,9 +12,10 @@ public class PannelloDiControlloAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request) {
-		int liberi = 0;
-		int prenotati = 0;
-		int occupati = 0;
+		float liberi = 0;
+		float prenotati = 0;
+		float occupati = 0;
+		float totali = 0;
 
 		Facade facade = new Facade();
 		HttpSession session = request.getSession();
@@ -28,11 +28,16 @@ public class PannelloDiControlloAction implements Action {
 				prenotati++;
 			if(t.getOccupato()==2)
 				occupati++;
+			totali++;
 		}
-		request.setAttribute("liberi", liberi);
-		request.setAttribute("prenotati", prenotati);
-		request.setAttribute("occupati", occupati);
-		
+		request.setAttribute("liberi", (int)liberi);
+		request.setAttribute("prenotati", (int)prenotati);
+		request.setAttribute("occupati", (int)occupati);
+		request.setAttribute("liberiP", (liberi/totali)*100);
+		request.setAttribute("prenotatiP", (prenotati/totali)*100);
+		request.setAttribute("occupatiP", (occupati/totali)*100);
+		request.setAttribute("totali", totali);
+
 		return "/home_Administrator.jsp";
 	}
 }

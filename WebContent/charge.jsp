@@ -39,13 +39,13 @@
 
 	<div class="body">
 		<div class="main-wrapper">
-			<%
+			<%-- 			<%
 				if (session.getAttribute("amministratoreCorrente") == null) {
 					String redirectURL = "./404.html";
 					response.sendRedirect(redirectURL);
 
 				} else {
-			%>
+			%> --%>
 			<section class="reservation">
 				<div class="container">
 					<div class="row">
@@ -57,16 +57,20 @@
 							</div>
 						</div>
 					</div>
-						<img src="img/preloader.svg" alt="" />
 
 				</div>
+				<div class="clearfix"></div>
+				<div class="clearfix"></div>
+				<img src="img/preloader.svg" alt=""
+					class="img-responsive center-block" />
 			</section>
-			<%
-				}
-			%>
-
 		</div>
+		<%-- 			<%
+				}
+			%> --%>
+
 	</div>
+
 
 	<!-- Javascript -->
 
