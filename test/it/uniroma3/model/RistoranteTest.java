@@ -41,13 +41,13 @@ public class RistoranteTest {
 
 	@Test
 	public void testSetTavoloPrenotazioneNessunTavoloDisponibile() {
-		this.ristorante = new Ristorante(8);
+		this.ristorante = new Ristorante();
 		assertEquals(0, this.ristorante.setTavoloPrenotazione(tavoli).size());
 	}
 
 	@Test
 	public void testSetTavoloPrenotazioneUnTavoloDisponibile() {
-		this.ristorante = new Ristorante(3);
+		this.ristorante = new Ristorante();
 		List<Tavolo> tavoliDisponibili = this.ristorante.setTavoloPrenotazione(tavoli);
 		assertEquals(1, tavoliDisponibili.size());
 		assertTrue(tavoliDisponibili.get(0).equals(this.t2));
@@ -55,7 +55,7 @@ public class RistoranteTest {
 
 	@Test
 	public void testSetTavoloPrenotazionePiuTavoliDisponibili() {
-		this.ristorante = new Ristorante(2);
+		this.ristorante = new Ristorante();
 		List<Tavolo> tavoliDisponibili = this.ristorante.setTavoloPrenotazione(this.tavoli);
 		assertEquals(2, tavoliDisponibili.size());
 	}

@@ -22,7 +22,7 @@ public class PropertiesTest {
 
 	@Test
 	public void testFindPathAndMail() throws IOException {
-		InputStream input = PropertiesTest.class.getResourceAsStream("/accountProperties.prop");
+		InputStream input = PropertiesTest.class.getResourceAsStream("/resources//accountProperties.prop");
 		this.senderAccountProp.load(input);
 		assertNotNull(senderAccountProp.getProperty("mail"));
 	}

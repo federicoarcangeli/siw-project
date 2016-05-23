@@ -14,7 +14,6 @@ public class Ristorante {
 	public Ristorante() {
 	}
 
-
 	/**
 	 * 
 	 * @param prenotazioni
@@ -23,10 +22,9 @@ public class Ristorante {
 	 */
 	public boolean containsDate(List<Prenotazione> prenotazioni, Date data) {
 		Time24HoursValidator validatorD = new Time24HoursValidator();
-		for (Prenotazione p : prenotazioni) {
-			if (validatorD.SameDate(data, p.getData())==true)
+		for (Prenotazione p : prenotazioni) 
+			if (validatorD.SameDate(data, p.getData()))
 				return true;
-		}
 		return false;
 	}
 
@@ -60,12 +58,10 @@ public class Ristorante {
 		for (Tavolo t : tavoliDisponibili) {
 			if (t.getPrenotazioni().isEmpty())
 				return t;
-			else
-				if (!this.containsDate(t.getPrenotazioni(), data))
-					return t;
+			else if (!this.containsDate(t.getPrenotazioni(), data))
+				return t;
 		}
 		return null;
 	}
-	
-}
 
+}

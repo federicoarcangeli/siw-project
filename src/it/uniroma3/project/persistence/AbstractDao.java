@@ -18,9 +18,10 @@ import org.apache.log4j.Logger;
  */
 public abstract class AbstractDao<T> {
 	private static final String PERSISTENCE_UNIT_NAME = "restaurant-unit";
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+	private static EntityManagerFactory emf;
 	
 	public AbstractDao() {
+		emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 
 	}
 
@@ -30,7 +31,7 @@ public abstract class AbstractDao<T> {
 	 * @param entity
 	 */
 	public void save(T entity) {
-		EntityManager em = this.getEntityManager();
+		EntityManager em = getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		em.persist(entity);
@@ -44,7 +45,7 @@ public abstract class AbstractDao<T> {
 	 * @param entity
 	 */
 	public void delete(T entity) {
-		EntityManager em = this.getEntityManager();
+		EntityManager em = getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		T toRemove = em.merge(entity);
@@ -59,7 +60,7 @@ public abstract class AbstractDao<T> {
 	 * @param entity
 	 */
 	public void update(T entity) {
-		EntityManager em = this.getEntityManager();
+		EntityManager em = getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		em.merge(entity);
@@ -67,8 +68,9 @@ public abstract class AbstractDao<T> {
 		em.close();
 	}
 
-	public EntityManager getEntityManager() {
-		return emf.createEntityManager();
+	public static EntityManager getEntityManager() {
+		EntityManager em =  emf.createEntityManager();
+		return em;
 	}
 	
 	public void closeEnityManagerFactory() {

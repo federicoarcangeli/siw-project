@@ -52,7 +52,7 @@ public class EmailManager {
 			Transport transport;
 			transport = getMailSession.getTransport("smtp");
 
-			InputStream input = EmailManager.class.getResourceAsStream("/accountProperties.prop");
+			InputStream input = EmailManager.class.getResourceAsStream("./accountProperties.prop");
 			senderAccountProp.load(input);
 
 			transport.connect("smtp.gmail.com", senderAccountProp.getProperty("mail"),

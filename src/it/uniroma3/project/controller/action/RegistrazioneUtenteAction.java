@@ -30,7 +30,7 @@ public class RegistrazioneUtenteAction {
 		utente.setTelefono(request.getParameter("telefono"));
 		utente.setPassword(encrypter.cryptWithMD5(request.getParameter("password")));
 		utente.setRole("utente");
-		mail.sendMail(request.getParameter("email"));
+		//mail.sendMail(request.getParameter("email"));
 
 		facade.inserisciUtente(utente);
 
