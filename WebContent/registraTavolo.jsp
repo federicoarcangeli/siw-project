@@ -147,7 +147,7 @@
 														<div class="reservation-btn">
 															<input type="button" name="btn" value="Registra tavolo"
 																id="submitBtn" data-toggle="modal"
-																data-target="#confirm-submit" class="btn btn-success" />
+																data-target="#confirm-submit" class="btn btn-default" />
 														</div>
 													</div>
 												</div>
@@ -158,7 +158,10 @@
 										if (request.getAttribute("ERROR") != null) {
 									%>
 									<div class="animated fadeInDown">
-										<div class="alert alert-error">
+										<div class="alert alert-error alert-dismissable">
+											<button type="button" class="close" data-dismiss="alert">
+												<span class="fa fa-close"></span>
+											</button>
 											<span> ERRORE: </span>${tavoloError} ${codiceError}
 											${copertiError}
 										</div>

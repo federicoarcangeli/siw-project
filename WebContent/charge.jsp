@@ -51,9 +51,9 @@
 					<div class="row">
 						<div class="animated fadeInDown">
 							<div class="alert alert-success">
-								<span> SUCCESS: </span> benvenuto:
-								${amministratoreCorrente.username} ruolo:
-								${amministratoreCorrente.role}
+								<span> SUCCESS: </span> benvenuto:<strong>
+									${amministratoreCorrente.username}</strong> ruolo:<strong>
+									${amministratoreCorrente.role}</strong>
 							</div>
 						</div>
 					</div>

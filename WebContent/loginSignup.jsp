@@ -129,7 +129,10 @@
 										if (request.getAttribute("ERROR") != null) {
 									%>
 									<div class="animated fadeInDown">
-										<div class="alert alert-error">
+										<div class="alert alert-error alert-dismissable">
+											<button type="button" class="close" data-dismiss="alert">
+												<span class="fa fa-close"></span>
+											</button>
 											<span> ERRORE: </span>${usernameError} ${passwordError}
 											${loginError}
 										</div>
@@ -142,11 +145,14 @@
 										if (request.getAttribute("ERRORE") != null) {
 									%>
 									<div class="animated fadeInRight">
-										<div class="alert alert-error">
-											<span> ERRORE: </span>  ${userError} ${usernameError} ${nomeError} ${cognomeError}
-											${emailError} ${telefonoError} ${passwordError}
-											${confermaPasswordError} ${confermaPasswordError}
-											${passwordConfError} ${utenteError}
+										<div class="alert alert-error alert-dismissable">
+											<button type="button" class="close" data-dismiss="alert">
+												<span class="fa fa-close"></span>
+											</button>
+											<span> ERRORE: </span> ${userError} ${usernameError}
+											${nomeError} ${cognomeError} ${emailError} ${telefonoError}
+											${passwordError} ${confermaPasswordError}
+											${confermaPasswordError} ${passwordConfError} ${utenteError}
 										</div>
 
 									</div>
@@ -159,35 +165,34 @@
 										<h3 class="text-center">Registra un account</h3>
 										<br>
 										<form class="logregform" action="processaRegistrazione"
-											method="post">
+											method="post" id="formfield">
+											<input type="hidden" name="action" value="add_form" />
 											<div class="clearfix space20"></div>
 											<div class="row">
 												<div class="form-group">
 													<div class="col-md-6">
 														<label>Nome</label> <input type="text" name="nome"
-															placeholder="nome" class="form-control">
+															id="nome" placeholder="nome" class="form-control">
 													</div>
 													<div class="col-md-6">
 														<label>Cognome</label> <input type="text" name="cognome"
-															placeholder="cognome" class="form-control">
+															id="cognome" placeholder="cognome" class="form-control">
 													</div>
-												</div>
-											</div>
-											<div class="row">
-												<div class="form-group">
+
+
 													<div class="col-md-12">
 														<label>Email</label> <input type="text" name="email"
-															placeholder="email" class="form-control">
+															id="email" placeholder="email" class="form-control">
 													</div>
 													<div class="form-group">
 														<div class="col-md-6">
 															<label>Username</label> <input type="text"
-																name="username" placeholder="username"
+																name="username" id="username" placeholder="username"
 																class="form-control">
 														</div>
 														<div class="col-md-6">
 															<label>Telefono</label> <input type="text"
-																name="telefono" placeholder="telefono"
+																name="telefono" id="telefono" placeholder="telefono"
 																class="form-control">
 														</div>
 													</div>
@@ -212,12 +217,63 @@
 												<div class="col-md-12">
 													<div class="space20"></div>
 													<div class="reservation-btn">
-														<button type="submit" class="btn btn-default pull-right"
-															id="">Registrami</button>
+														<input type="button" name="btn" value="Registrami"
+															id="submitBtn" data-toggle="modal"
+															data-target="#confirm-submit"
+															class="btn btn-default pull-right" />
 													</div>
 												</div>
 											</div>
 										</form>
+
+
+
+
+										<div class="modal fade" id="confirm-submit" tabindex="-1"
+											role="dialog" aria-labelledby="myModalLabel"
+											aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-body">
+														<h4>Confermare Registrazione?</h4>
+														<table class="table">
+															<tr>
+																<th>Nome:</th>
+																<td id="nom"></td>
+															</tr>
+															<tr>
+																<th>Cognome:</th>
+																<td id="cog"></td>
+															</tr>
+															<tr>
+																<th>Email:</th>
+																<td id="ema"></td>
+															</tr>
+															<tr>
+																<th>Username:</th>
+																<td id="use"></td>
+															</tr>
+															<tr>
+																<th>Telefono:</th>
+																<td id="tel"></td>
+															</tr>
+														</table>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default"
+															data-dismiss="modal">Annulla</button>
+														<a href="#" id="submit" class="btn btn-success success">Effettua
+															registrazione</a>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+
+
+
+
 									</div>
 									<br>
 
@@ -356,6 +412,7 @@
 	<script src="js/main.js"></script>
 	<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
+	<script src="js/scripts/confermaRegistrazioneUtente.js"></script>
 </body>
 
 </html>

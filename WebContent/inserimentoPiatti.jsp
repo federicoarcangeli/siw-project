@@ -100,7 +100,8 @@
 
 					<div class="reservation-form">
 						<form action=processaPiatto method="post"
-							enctype="multipart/form-data">
+							enctype="multipart/form-data" id="formfield">
+							<input type="hidden" name="action" value="add_form" />
 							<!-- Tabs -->
 							<div class="element-tab">
 								<!-- Nav tabs -->
@@ -118,7 +119,7 @@
 												<div id="OT_defList" class="">
 													<div id="OT_partySize" class="">
 														<div class="form-group">
-															<select name="categoria" id="tipologia"
+															<select id="categoria" name="categoria" id="categoria"
 																class="feedFormField">
 																<option selected value="empty">Inserisci la
 																	categoria</option>
@@ -174,13 +175,15 @@
 											<div id="OT_partySize" class="col-md-6 col-sm-6">
 												<div class="form-group">
 													<label for="surgelati">Contiene prodotti surgelati?</label>
-													<input type="checkbox" name="surgelati" value="True">
+													<input type="checkbox" name="surgelati" value="True"
+														id="surgelato">
 												</div>
 											</div>
 											<div id="OT_partySize" class="col-md-6 col-sm-6">
 												<div class="form-group">
 													<label for="allergeni">Contiene allergeni?</label> <input
-														type="checkbox" name="allergeni" value="True">
+														type="checkbox" name="allergeni" value="True"
+														id="allergeni">
 												</div>
 											</div>
 
@@ -193,16 +196,21 @@
 								<div id="OT_defList" class="row">
 									<div class="col-md-12 col-sm-12">
 										<div class="reservation-btn">
-											<button type="submit" class="btn btn-default btn-lg"
-												onClick="return show_alert();" id="">Inserisci
-												piatto nel menù</button>
+											<input type="button" name="btn" value="Inserisci piatto"
+												id="submitBtn" data-toggle="modal"
+												data-target="#confirm-submit" class="btn btn-default" />
 											<%
 												if (request.getAttribute("ERRORE") != null) {
 											%>
 											<div class="animated fadeInDown">
-												<div class="alert alert-error">
-													<span> ERRORE: </span>${nomeCategoria} ${nomeError}
-													${descrizioneError} ${prezzoError} ${urlError}
+												<div class="form-group">
+													<div class="alert alert-error alert-dismissable">
+														<button type="button" class="close" data-dismiss="alert">
+															<span class="fa fa-close"></span>
+														</button>
+														<span> ERRORE: </span>${nomeCategoria} ${nomeError}
+														${descrizioneError} ${prezzoError} ${urlError}
+													</div>
 												</div>
 
 											</div>
@@ -214,6 +222,34 @@
 								</div>
 							</div>
 						</form>
+
+						<div class="modal fade" id="confirm-submit" tabindex="-1"
+							role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-body">
+										<h4>Confermare inserimento?</h4>
+										<table class="table">
+											<tr>
+												<th>Nome:</th>
+												<td id="nom"></td>
+											</tr>
+											<tr>
+												<th>Prezzo:</th>
+												<td id="pre"></td>
+											</tr>
+										</table>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">Annulla</button>
+										<a href="#" id="submit" class="btn btn-success success">Inserisci
+											piatto</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</section>
@@ -324,8 +360,7 @@
 	<script src="js/vendor/validate.js"></script>
 	<script src="js/reservation.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
-
-	<script src="js/confermaInserimentoPiatti.js">
+	<script src="js/scripts/confermaInserimentoPiatto.js">
 		
 	</script>
 
