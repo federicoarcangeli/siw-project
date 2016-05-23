@@ -162,9 +162,9 @@
 																			</tr>
 																		</thead>
 																		<tbody>
-																			<c:forEach var="" items="${comanda}">
+																			<c:forEach var="linea" items="${comanda.getLineeComanda()}">
 																			<tr>
-																				<td></td>
+																				<td>${linea.piatto}</td>
 																				<td><input type="number" placeholder="qta"
 																					style="width: 65px;"></td>
 																				<td><input class="btn btn-default"

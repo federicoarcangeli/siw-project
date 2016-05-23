@@ -50,6 +50,15 @@ public class Comanda {
 		super();
 		this.dataOraEmissione = timestamp;
 		this.prezzoTotale = priceTotal;
+		this.lineeComanda = new ArrayList<>();
+	}
+
+	public List<LineaComanda> getLineeComanda() {
+		return lineeComanda;
+	}
+
+	public void setLineeComanda(List<LineaComanda> lineeComanda) {
+		this.lineeComanda = lineeComanda;
 	}
 
 	public Date getDataOraEmissione() {
