@@ -106,6 +106,7 @@
 									</div>
 								</div>
 							</aside>
+							<form action="UpdateComanda" method="post">
 							<div class="col-md-6">
 								<h4>Piatti</h4>
 								<div class="shop-grid">
@@ -120,8 +121,8 @@
 																<a href="./recipe_detail-image.html">${piatto.nome}</a>
 															</h4>
 															<div class="shop-meta">
-																<button type="button" class="btn btn-success">
-																	<i class="fa fa-shopping-cart"></i> Aggiungi
+																<button type="button" class="btn btn-success" value='${piatto.id}'>
+																	<i class="fa fa-pencil-square-o"></i> Aggiungi
 																</button>
 															</div>
 
@@ -135,6 +136,7 @@
 									</div>
 								</div>
 							</div>
+							</form>
 							<aside class="col-md-3">
 								<div class="side-widget">
 
@@ -160,16 +162,16 @@
 																			</tr>
 																		</thead>
 																		<tbody>
-
+																			<c:forEach var="" items="${comanda}">
 																			<tr>
-																				<td>Lasagna de cristo</td>
+																				<td></td>
 																				<td><input type="number" placeholder="qta"
 																					style="width: 65px;"></td>
 																				<td><input class="btn btn-default"
 																					type="button" value="Input"></td>
 
 																			</tr>
-
+																			</c:forEach>
 																		</tbody>
 																	</table>
 																</div>

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import it.uniroma3.project.controller.facade.Facade;
 import it.uniroma3.project.entity.Comanda;
+import it.uniroma3.project.entity.Tavolo;
 import it.uniroma3.project.entity.Utente;
 //import it.uniroma3.project.entity.Comanda;
 
@@ -19,28 +20,29 @@ public class ComandaAction implements Action {
 		Facade facade = new Facade();
 		Comanda comanda = new Comanda();
 		HttpSession session = request.getSession();
-		
+
 		comanda.setDataOraEmissione(new Date());
 		Utente operatore = (Utente) session.getAttribute("amministratoreCorrente");
 		String numeroTavolo = request.getParameter("libero");
-		System.out.println("ComandaAction - numeroTavolo: "+numeroTavolo);
-//		comanda.setPrezzoTotale(0.0);
-//		Operatore operatore = facade.findOperatore(request.getParameter("operatore"));
-//		comanda.setOperatore(operatore);
-//		Tavolo tavolo = facade.findTavoloByNumero(request.getParameter("tavolo"));
-//		comanda.setTavolo(tavolo);
-//		facade.inserisciComanda(comanda);
-//		return "/inserisciLineaComanda.jsp";
+		comanda.setOperatore(operatore);
+		Tavolo tavolo = facade.findTavoloByNumero(numeroTavolo);
 		
+		/*
+		 * Qualcuno si è andato a sedere: aggiorno lo stato del tavolo, da
+		 * libero ad occupato
+		 */
+		facade.setTavoloOccupato(tavolo);
+		comanda.setTavolo(tavolo);
+		comanda.setDataOraEmissione(new Date());
+		comanda.setPrezzoTotale(0.0);
+		facade.inserisciComanda(comanda);
 		
-		
+		session.setAttribute("comanda", comanda);
 		session.setAttribute("categorie", facade.findAllCategorie());
 		session.setAttribute("piatti", facade.findAllPiatti());
-		
 
 		return "/comanda.jsp";
 
-		
 	}
 
 }

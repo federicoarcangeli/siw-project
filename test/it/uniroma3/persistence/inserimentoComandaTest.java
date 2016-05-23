@@ -22,7 +22,6 @@ public class inserimentoComandaTest {
 		comanda.setPrezzoTotale(0.0);
 		System.out.println(comanda);
 		facade.inserisciComanda(comanda);
-		System.out.println("comanda inserita");
 	}
 
 }

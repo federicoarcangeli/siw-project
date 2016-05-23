@@ -5,7 +5,7 @@
 var getComanda = function() {
 		
 	document.getElementById("libero").addEventListener('click',function() {
-		var codiceTavolo = document.getElementById("codiceTavolo");
+		var codiceTavolo = "${codiceTavolo}"
 		alert(codiceTavolo);
 		window.location.href = './processaComanda';
 	});

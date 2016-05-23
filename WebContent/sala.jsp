@@ -101,15 +101,16 @@
 
 			<div class="container-fluid">
 				<div class="row">
+				<form action="processaComanda" method="post">
 					<div class="col-sm-12 centered">
 						<c:forEach var="tavolo" items="${tavoli}">
 							<div class="col-xs-6 col-sm-2">
 								<c:choose>
 									<c:when test="${tavolo.occupato=='0'}">
 										<span>Coperti: ${tavolo.coperti}</span>
-										<button id="libero" type="button" class="btn btn-success"
-											style="width: 100%; height: 150px;" name="libero" onclick="getComanda();">
-											<h3 id="codiceTavolo">${tavolo.codiceTavolo}</h3>
+										<button id="libero" type="submit" class="btn btn-success"
+											style="width: 100%; height: 150px;" name="libero" value='${tavolo.codiceTavolo}'>
+											<h3>${tavolo.codiceTavolo}</h3>
 										</button>
 										<div class="col-md-12" style="height: 25px;"></div>
 									</c:when>
@@ -135,7 +136,9 @@
 								</c:choose>
 							</div>
 						</c:forEach>
+						
 					</div>
+					</form>
 				</div>
 
 
@@ -171,6 +174,7 @@
 
 	<!-- 	scripts -->
 	<script src="js/scripts/getComanda.js"></script>
+	<script src="js/scripts/formAction.js"></script>
 
 </body>
 

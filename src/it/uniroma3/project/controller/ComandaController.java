@@ -30,7 +30,7 @@ public class ComandaController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ComandaAction action = new ComandaAction();
 		String nextPage = action.execute(request);
 		ServletContext application = getServletContext();
