@@ -16,7 +16,7 @@ public class TavoloDao extends AbstractDao<Tavolo> {
 
 	@Override
 	public Tavolo findById(long id) {
-		EntityManager em = getEntityManager();
+		EntityManager em = super.emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		Tavolo o = em.find(Tavolo.class, id);
@@ -28,7 +28,7 @@ public class TavoloDao extends AbstractDao<Tavolo> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Tavolo> findAll() {
-		EntityManager em = getEntityManager();
+		EntityManager em = super.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		List<Tavolo> result = em.createNamedQuery("Tavolo.findAll").getResultList();
@@ -38,16 +38,23 @@ public class TavoloDao extends AbstractDao<Tavolo> {
 	}
 
 	public Tavolo findByNumero(String parameter) {
-		EntityManager em = getEntityManager();
+
+		EntityManager em = super.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		Query q = (Query) em.createNativeQuery("select id from tavolo where codicetavolo = ?1");
-		q.setParameter(1, parameter);
-		BigInteger id = (BigInteger) q.getSingleResult();
-		Tavolo t = this.findById(id.longValue());
-		tx.commit();
-		em.close();
-		return t;
+		try{
+			Query q = (Query) em.createNativeQuery("select id from tavolo where codicetavolo = ?1");
+			q.setParameter(1, parameter);
+			BigInteger id = (BigInteger) q.getSingleResult();
+			Tavolo t = this.findById(id.longValue());
+			em.close();
+			return t;
+		} catch (Exception e) {
+			return null;
+		} finally {
+			if (em.isOpen())
+				em.close();
+		}
 	}
 
 	/**
@@ -56,7 +63,7 @@ public class TavoloDao extends AbstractDao<Tavolo> {
 	 * @return
 	 */
 	public List<Tavolo> findAllToday(Date today) {
-		EntityManager em = getEntityManager();
+		EntityManager em = super.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 		TypedQuery<Tavolo> query = em.createQuery(

@@ -42,13 +42,13 @@ public class RistoranteTest {
 	@Test
 	public void testSetTavoloPrenotazioneNessunTavoloDisponibile() {
 		this.ristorante = new Ristorante();
-		assertEquals(0, this.ristorante.setTavoloPrenotazione(tavoli).size());
+		assertEquals(0, this.ristorante.setTavoloPrenotazione(tavoli,8).size());
 	}
 
 	@Test
 	public void testSetTavoloPrenotazioneUnTavoloDisponibile() {
 		this.ristorante = new Ristorante();
-		List<Tavolo> tavoliDisponibili = this.ristorante.setTavoloPrenotazione(tavoli);
+		List<Tavolo> tavoliDisponibili = this.ristorante.setTavoloPrenotazione(tavoli,3);
 		assertEquals(1, tavoliDisponibili.size());
 		assertTrue(tavoliDisponibili.get(0).equals(this.t2));
 	}
@@ -56,21 +56,21 @@ public class RistoranteTest {
 	@Test
 	public void testSetTavoloPrenotazionePiuTavoliDisponibili() {
 		this.ristorante = new Ristorante();
-		List<Tavolo> tavoliDisponibili = this.ristorante.setTavoloPrenotazione(this.tavoli);
+		List<Tavolo> tavoliDisponibili = this.ristorante.setTavoloPrenotazione(this.tavoli,2);
 		assertEquals(2, tavoliDisponibili.size());
 	}
 
 	@Test
 	public void testCheckTavoliLiberoTodayNessunTavoloLibero() {
-		this.ristorante = new Ristorante(6);
+		this.ristorante = new Ristorante();
 		assertNull(this.ristorante.checkTavoliLiberiForDate(
-				this.ristorante.setTavoloPrenotazione(this.tavoli), new Date()));
+				this.ristorante.setTavoloPrenotazione(this.tavoli,6), new Date()));
 	}
 
 	@Test
 	public void testCheckTavoloLiberoTodayUnTavoloLibero() {
-		this.ristorante = new Ristorante(2);
-		List<Tavolo> tavoliDisponibili = this.ristorante.setTavoloPrenotazione(this.tavoli);
+		this.ristorante = new Ristorante();
+		List<Tavolo> tavoliDisponibili = this.ristorante.setTavoloPrenotazione(this.tavoli,2);
 		assertEquals(2,tavoliDisponibili.size());
 		assertEquals(this.t2,
 				this.ristorante.checkTavoliLiberiForDate(tavoliDisponibili, new Date()));
@@ -79,11 +79,11 @@ public class RistoranteTest {
 
 	@Test
 	public void testCheckTavoloLiberoTodayTavoliGi‡Prenotati() {
-		this.ristorante = new Ristorante(2);
+		this.ristorante = new Ristorante();
 		this.p2.setTavoloPrenotato(this.t2);
 		this.prenotazioni.add(this.p2);
 		assertEquals(2, this.prenotazioni.size());
-		List<Tavolo> tavoliDisponibili = this.ristorante.setTavoloPrenotazione(this.tavoli);
+		List<Tavolo> tavoliDisponibili = this.ristorante.setTavoloPrenotazione(this.tavoli,2);
 		assertEquals(2, tavoliDisponibili.size());
 		assertEquals(this.t1.getCodiceTavolo(), this.p1.getTavoloPrenotato().getCodiceTavolo());
 		assertEquals(this.t2.getCodiceTavolo(), this.p2.getTavoloPrenotato().getCodiceTavolo());
@@ -93,10 +93,10 @@ public class RistoranteTest {
 	
 	@Test
 	public void testCheckTavoloLiberoTomorrow() {
-		this.ristorante = new Ristorante(2);
+		this.ristorante = new Ristorante();
 		this.p2.setTavoloPrenotato(this.t2);
 		this.prenotazioni.add(this.p2);
-		List<Tavolo> tavoliDisponibili = this.ristorante.setTavoloPrenotazione(this.tavoli);
+		List<Tavolo> tavoliDisponibili = this.ristorante.setTavoloPrenotazione(this.tavoli,2);
 		Date dt = new Date();
 		LocalDateTime.from(dt.toInstant());
 		System.out.println(dt);

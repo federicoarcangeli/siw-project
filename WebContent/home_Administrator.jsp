@@ -58,8 +58,9 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="./home_Administrator.jsp"> <img
-							src="img/nav-logo.png" alt="nav-logo">
+						<a class="navbar-brand"
+							href="${pageContext.request.contextPath}/processaPannelloControllo">
+							<img src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>
 
@@ -102,6 +103,9 @@
 									<li><a href="./registraPersonale.jsp">Registra nuovo
 											Personale <i class="fa fa-caret-right"></i>
 									</a></li>
+									<li><a href="./registraTavolo.jsp">Registra nuovo
+											Tavolo <i class="fa fa-caret-right"></i>
+									</a></li>
 
 								</ul>
 							</div>
@@ -125,11 +129,13 @@
 													</tr>
 												</thead>
 												<tbody>
+
 													<tr>
-														<td>prova</td>
-														<td>prova</td>
-														<td>prova</td>
+														<td>${liberi}</td>
+														<td>${prenotati}</td>
+														<td>${occupati}</td>
 													</tr>
+
 												</tbody>
 											</table>
 										</div>
