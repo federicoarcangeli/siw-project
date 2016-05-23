@@ -196,9 +196,15 @@
 								<div id="OT_defList" class="row">
 									<div class="col-md-12 col-sm-12">
 										<div class="reservation-btn">
+<<<<<<< HEAD
 											<input type="button" name="btn" value="Inserisci piatto"
 												id="submitBtn" data-toggle="modal"
 												data-target="#confirm-submit" class="btn btn-default" />
+=======
+											<button type="submit" class="btn btn-default btn-lg"
+												onClick="return show_alert();" id="z">Inserisci
+												piatto nel menù</button>
+>>>>>>> branch 'master' of https://github.com/1federico1/siw-project.git
 											<%
 												if (request.getAttribute("ERRORE") != null) {
 											%>
@@ -360,7 +366,12 @@
 	<script src="js/vendor/validate.js"></script>
 	<script src="js/reservation.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
+<<<<<<< HEAD
 	<script src="js/scripts/confermaInserimentoPiatto.js">
+=======
+
+	<script src="js/scripts/confermaInserimentoPiatti.js">
+>>>>>>> branch 'master' of https://github.com/1federico1/siw-project.git
 		
 	</script>
 

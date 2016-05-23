@@ -227,8 +227,9 @@ public class Utente {
 
 	@Override
 	public String toString() {
-		return "Utente [email=" + email + ", nome=" + nome + ", cognome=" + cognome + ", password=" + password
-				+ ", telefono=" + telefono + ", prenotazioni=" + prenotazioni + "]";
+		return "Utente [id=" + id + ", email=" + email + ", nome=" + nome + ", cognome=" + cognome + ", password="
+				+ password + ", telefono=" + telefono + ", role=" + role + ", username=" + username + ", comanda="
+				+ comanda + ", prenotazioni=" + prenotazioni + "]";
 	}
 
 
