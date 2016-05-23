@@ -40,7 +40,7 @@ public class Tavolo {
 	@OneToMany(mappedBy="tavolo",fetch = FetchType.LAZY)
 	private List<Comanda> comande;
 
-	@OneToMany(mappedBy="tavoloPrenotato", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="tavoloPrenotato", fetch=FetchType.EAGER)
 	@Fetch(value=FetchMode.SELECT)
 	private List<Prenotazione> prenotazioni;
 

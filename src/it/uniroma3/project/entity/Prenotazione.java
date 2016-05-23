@@ -40,7 +40,6 @@ public class Prenotazione {
 	private Utente utente;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	
 	private Tavolo tavoloPrenotato;
 
 	public Prenotazione(){
