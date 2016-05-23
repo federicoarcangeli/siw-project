@@ -38,13 +38,13 @@
 
 	<div class="body">
 		<div class="main-wrapper">
-			<%-- 			<%
+			<%
 				if (session.getAttribute("amministratoreCorrente") == null) {
 					String redirectURL = "./sessioneScadutaAdmin.jsp";
 					response.sendRedirect(redirectURL);
 
 				} else {
-			%> --%>
+			%>
 
 			<!-- Navigation-->
 			<nav class="navbar navbar-fixed-top">
@@ -100,84 +100,112 @@
 								<div class="box-content">
 									<h3 class="text-center">Registra nuovo tavolo</h3>
 									<br>
-									<div class="reservation-form">
-										<form class="logregform" action="processaTavolo" method="post">
-											<div id="OT_searchWrapper">
-												<div id="OT_defList" class="row">
-													<div class="clearfix space20"></div>
-													<div class="row">
-														<div class="form-group">
-															<div class="col-md-12">
-																<label>Numero tavolo</label> <input type="text"
-																	name="codiceTavolo" placeholder="numero del tavolo"
-																	class="form-control">
-															</div>
-															<div id="OT_partySize" class="col-md-12">
-																<div class="form-group">
-																	<label for="ospiti">Coperti</label> <select
-																		name="coperti" id="coperti" class="feedFormField">
-																		<option selected value="0">Inserisci il
-																			numero di Coperti</option>
-																		<option value="1">1 Persona</option>
-																		<option value="2">2 Persone</option>
-																		<option value="3">3 Persone</option>
-																		<option value="4">4 Persone</option>
-																		<option value="5">5 Persone</option>
-																		<option value="6">6 Persone</option>
-																		<option value="7">7 Persone</option>
-																		<option value="8">8 Persone</option>
-																		<option value="9">9 Persone</option>
-																		<option value="10">10 Persone</option>
-																		<option value="11">11 Persone</option>
-																		<option value="12">12 Persone</option>
-																		<option value="13">13 Persone</option>
-																		<option value="14">14 Persone</option>
-																		<option value="15">15 Persone</option>
-																	</select> <i class="fa fa-user"></i>
-																</div>
+
+									<form class="logregform" action="processaTavolo" method="post"
+										id="formfield">
+										<input type="hidden" name="action" value="add_form" />
+										<div id="OT_searchWrapper">
+											<div id="OT_defList" class="row">
+												<div class="clearfix space20"></div>
+												<div class="row">
+													<div class="form-group">
+														<div class="col-md-12">
+															<label>Numero tavolo</label> <input type="text"
+																name="codiceTavolo" placeholder="numero del tavolo"
+																class="form-control" id="codiceTavolo">
+														</div>
+														<div id="OT_partySize" class="col-md-12">
+															<div class="form-group">
+																<label for="ospiti">Coperti</label> <select
+																	name="coperti" id="coperti" class="feedFormField">
+																	<option selected value="0">Inserisci il numero
+																		di Coperti</option>
+																	<option value="1">1 Persona</option>
+																	<option value="2">2 Persone</option>
+																	<option value="3">3 Persone</option>
+																	<option value="4">4 Persone</option>
+																	<option value="5">5 Persone</option>
+																	<option value="6">6 Persone</option>
+																	<option value="7">7 Persone</option>
+																	<option value="8">8 Persone</option>
+																	<option value="9">9 Persone</option>
+																	<option value="10">10 Persone</option>
+																	<option value="11">11 Persone</option>
+																	<option value="12">12 Persone</option>
+																	<option value="13">13 Persone</option>
+																	<option value="14">14 Persone</option>
+																	<option value="15">15 Persone</option>
+																</select>
 															</div>
 														</div>
-
 													</div>
-													<div class="row">
-														<div class="col-md-12">
-															<div class="space20"></div>
-															<div class="reservation-btn">
-																<button type="submit" class="btn btn-default " id="">Registra
-																	tavolo</button>
-															</div>
+
+												</div>
+												<div class="row">
+													<div class="col-md-12">
+														<div class="space20"></div>
+														<div class="reservation-btn">
+															<input type="button" name="btn" value="Registra tavolo"
+																id="submitBtn" data-toggle="modal"
+																data-target="#confirm-submit" class="btn btn-success" />
 														</div>
 													</div>
 												</div>
 											</div>
-										</form>
-									</div>
-								</div>
-								<br>
-								<%
-									if (request.getAttribute("ERROR") != null) {
-								%>
-								<div class="animated fadeInDown">
-									<div class="alert alert-error">
-										<span> ERRORE: </span>${tavoloError} ${codiceError}
-										${copertiError}
-									</div>
+										</div>
+									</form>
+									<%
+										if (request.getAttribute("ERROR") != null) {
+									%>
+									<div class="animated fadeInDown">
+										<div class="alert alert-error">
+											<span> ERRORE: </span>${tavoloError} ${codiceError}
+											${copertiError}
+										</div>
 
+									</div>
+									<%
+										}
+									%>
 								</div>
-								<%
-									}
-								%>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
-			<%-- 			<%
-				}
-			%> --%>
-		</div>
 
+			<div class="modal fade" id="confirm-submit" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-body">
+							<h4>Confermare inserimento?</h4>
+							<table class="table">
+								<tr>
+									<th>Codice tavolo:</th>
+									<td id="cod"></td>
+								</tr>
+								<tr>
+									<th>Numero di coperti:</th>
+									<td id="cop"></td>
+								</tr>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Annulla</button>
+							<a href="#" id="submit" class="btn btn-success success">Registra
+								tavolo</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+	<br>
+	<%
+		}
+	%>
 
 	<!-- Javascript -->
 	<script src="js/vendor/jquery-1.11.2.min.js"></script>
@@ -200,6 +228,7 @@
 	<script src="js/main.js"></script>
 	<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
+	<script src="js/scripts/confermaRegistrazioneTavoli.js"></script>
 </body>
 
 </html>

@@ -88,14 +88,14 @@ public class Tavolo {
 	public void setOccupato(int occupato) {
 		this.occupato = occupato;
 	}
-	
+
 	public List<Prenotazione> getPrenotazioni() {
 		return this.prenotazioni;
 	}
 
 	public void addPrenotazione(Prenotazione prenotazione) {
 		if(prenotazione != null)
-			this.prenotazioni.add(prenotazione);
+			this.getPrenotazioni().add(prenotazione);
 	}
 	
 	public void addComanda(Comanda comanda) {

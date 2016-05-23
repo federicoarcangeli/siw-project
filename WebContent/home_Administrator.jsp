@@ -121,24 +121,19 @@
 
 										<div class="col-md-4 col-sm-6">
 											<h4>Panoramica tavoli</h4>
-											<table class="table">
-												<thead>
-													<tr>
-														<th>Tavoli liberi</th>
-														<th>Tavoli prenotati</th>
-														<th>Tavoli occupati</th>
-													</tr>
-												</thead>
-												<tbody>
+											<div class="progress">
+												<div class="progress-bar progress-bar-success"
+													role="progressbar" style="width: ${liberiP}%">Liberi:
+													${liberi}</div>
+												<div class="progress-bar progress-bar-warning"
+													role="progressbar" style="width: ${prenotatiP}%">
+													Prenotati: ${prenotati}</div>
+												<div class="progress-bar progress-bar-danger"
+													role="progressbar" style="width: ${occupatiP}%">
+													Occupati: ${occupati}</div>
 
-													<tr>
-														<td>${liberi}</td>
-														<td>${prenotati}</td>
-														<td>${occupati}</td>
-													</tr>
 
-												</tbody>
-											</table>
+											</div>
 										</div>
 
 										<div class="col-md-4 col-sm-6">
@@ -183,7 +178,6 @@
 											</table>
 
 										</div>
-
 									</div>
 								</div>
 
