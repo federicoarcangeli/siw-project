@@ -1,6 +1,5 @@
 package it.uniroma3.project.controller.action;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;

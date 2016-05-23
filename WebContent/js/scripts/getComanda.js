@@ -3,9 +3,9 @@
  */
 
 var getComanda = function() {
-	
+		
 	document.getElementById("libero").addEventListener('click',function() {
-		alert('libero');
+		window.location.href = './processaComanda';
 	});
 	
 	document.getElementById("prenotato").addEventListener('click',function() {
