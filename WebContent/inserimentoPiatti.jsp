@@ -200,9 +200,6 @@
 											<input type="button" name="btn" value="Inserisci piatto"
 												id="submitBtn" data-toggle="modal"
 												data-target="#confirm-submit" class="btn btn-default" />
-											<button type="submit" class="btn btn-default btn-lg"
-												onClick="return show_alert();" id="z">Inserisci
-												piatto nel menù</button>
 											<%
 												if (request.getAttribute("ERRORE") != null) {
 											%>
@@ -366,11 +363,10 @@
 	<script src="js/vendor/mc/main.js"></script>
 	<<<<<<< HEAD
 	<script src="js/scripts/confermaInserimentoPiatto.js">
-=======
+		=======
 
 	<script src="js/scripts/confermaInserimentoPiatti.js">
 >>>>>>> branch 'master' of https://github.com/1federico1/siw-project.git
-		
 	</script>
 
 
