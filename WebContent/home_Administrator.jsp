@@ -178,7 +178,6 @@
 											</table>
 
 										</div>
-
 									</div>
 								</div>
 
