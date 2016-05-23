@@ -10,7 +10,7 @@
 	content="Tomato is a Responsive HTML5 Template for Restaurants and food related services.">
 <meta name="keywords"
 	content="tomato, responsive, html5, restaurant, template, food, reservation">
-<meta http-equiv="refresh" content="3;URL=${pageContext.request.contextPath}/processaProfilo">
+<meta http-equiv="refresh" content="10;URL=${pageContext.request.contextPath}/processaProfilo">
 <%
 	String site = "${pageContext.request.contextPath}/processaProfilo";
 	response.setHeader("Location", site);

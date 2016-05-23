@@ -57,8 +57,9 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="${pageContext.request.contextPath}/processaPannelloControllo"> <img
-							src="img/nav-logo.png" alt="nav-logo">
+						<a class="navbar-brand"
+							href="${pageContext.request.contextPath}/processaPannelloControllo">
+							<img src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>
 
@@ -69,8 +70,6 @@
 								href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
 							<li><a
 								href="${pageContext.request.contextPath}/processaComanda">Comanda</a></li>
-							<li><a href="/siw-project/ProcessaCategoria">Inserisci
-									nuovi piatti</a></li>
 							<li class="dropdown"><a href="./index.html"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Benvenuto

@@ -11,7 +11,6 @@
 	content="Tomato is a Responsive HTML5 Template for Restaurants and food related services.">
 <meta name="keywords"
 	content="tomato, responsive, html5, restaurant, template, food, reservation">
-
 <!-- Favicons -->
 <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -71,8 +70,6 @@
 								href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
 							<li><a
 								href="${pageContext.request.contextPath}/processaComanda">Comanda</a></li>
-							<li><a href="/siw-project/ProcessaCategoria">Inserisci
-									nuovi piatti</a></li>
 							<li class="dropdown"><a href="./index.html"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Benvenuto
@@ -105,6 +102,10 @@
 									</a></li>
 									<li><a href="./registraTavolo.jsp">Registra nuovo
 											Tavolo <i class="fa fa-caret-right"></i>
+									</a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/ProcessaCategoria">Registra
+											nuovo Piatto <i class="fa fa-caret-right"></i>
 									</a></li>
 
 								</ul>
@@ -203,6 +204,7 @@
 	</div>
 
 	<!-- Javascript -->
+
 	<script src="js/vendor/jquery-1.11.2.min.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
 	<script src="js/vendor/jquery.flexslider-min.js"></script>

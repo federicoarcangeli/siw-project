@@ -57,21 +57,24 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="./home_Administrator.jsp"> <img
-							src="img/nav-logo.png" alt="nav-logo">
+						<a class="navbar-brand"
+							href="${pageContext.request.contextPath}/processaPannelloControllo">
+							<img src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>
 
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
-							<li><a href="./inserisciComanda.jsp">Nuova comanda</a></li>
-							<li><a href="/siw-project/ProcessaCategoria">Inserisci
-									nuovi piatti</a></li>
+							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/processaComanda">Comanda</a></li>
 							<li class="dropdown"><a href="./index.html"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Benvenuto
-									${amministratoreCorrente.username}<span class="caret"></span>
+									${amministratoreCorrente.username} -
+									${amministratoreCorrente.role}<span class="caret"></span>
 							</a>
 								<ul class="dropdown-menu">
 									<li><a href="./index_parallax.jsp">Logout</a></li>
@@ -98,8 +101,7 @@
 									<h3 class="text-center">Registra nuovo tavolo</h3>
 									<br>
 									<div class="reservation-form">
-										<form class="logregform" action="processaTavolo"
-											method="post">
+										<form class="logregform" action="processaTavolo" method="post">
 											<div id="OT_searchWrapper">
 												<div id="OT_defList" class="row">
 													<div class="clearfix space20"></div>

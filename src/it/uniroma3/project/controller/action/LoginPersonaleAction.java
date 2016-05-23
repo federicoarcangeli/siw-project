@@ -18,7 +18,7 @@ public class LoginPersonaleAction {
 		session.setMaxInactiveInterval(-1); //la sessione non scade mai
 		session.setAttribute("amministratoreCorrente", personale);
 		if(personale.getRole().equals("amministratore")){
-			return "/home_Administrator.jsp";
+			return "/charge.jsp";
 		}else{
 			return "/home_Operatore.jsp";
 		}
