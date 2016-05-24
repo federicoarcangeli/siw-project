@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 
 
 import it.uniroma3.project.controller.facade.Facade;
-import it.uniroma3.project.mail.EmailManager;
+import it.uniroma3.project.services.mail.*;
 import it.uniroma3.project.persistence.entity.Utente;
 import it.uniroma3.security.MD5Encrypter;
 

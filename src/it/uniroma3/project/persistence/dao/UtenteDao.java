@@ -44,7 +44,7 @@ public class UtenteDao extends AbstractDao<Utente> {
 	}
 
 	public Utente findUtenteByUserName(String username) {
-		EntityManager em = super.getEntityManager();
+		EntityManager em = getEntityManager();
 		TypedQuery<Utente> query = em.createQuery("select u from Utente u where u.username = :username", Utente.class);
 		try{
 			return query.setParameter("username", username).getSingleResult();

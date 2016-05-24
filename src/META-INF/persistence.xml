@@ -4,17 +4,17 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	<persistence-unit name="restaurant-unit"
 		transaction-type="RESOURCE_LOCAL">
-		<class>it.uniroma3.db.project.entity.DescrizionePiatto</class>
-		<class>it.uniroma3.db.project.entity.LineaComanda</class>
-		<class>it.uniroma3.db.project.entity.Operatore</class>
-		<class>it.uniroma3.db.project.entity.Comanda</class>
-		<class>it.uniroma3.db.project.entity.Piatto</class>
-		<class>it.uniroma3.db.project.entity.CategoriaPiatto</class>
-		<class>it.uniroma3.db.project.entity.Prenotazione</class>
-		<class>it.uniroma3.db.project.entity.Tavolo</class>
-		<class>it.uniroma3.db.project.entity.Amministratore</class>
-		<class>it.uniroma3.db.project.entity.Utente</class>
-		<class>it.uniroma3.db.project.entity.Administrator</class>
+		<class>it.uniroma3.db.project.persistence.entity.DescrizionePiatto</class>
+		<class>it.uniroma3.db.project.persistence.entity.LineaComanda</class>
+		<class>it.uniroma3.db.project.persistence.entity.Operatore</class>
+		<class>it.uniroma3.db.project.persistence.entity.Comanda</class>
+		<class>it.uniroma3.db.project.persistence.entity.Piatto</class>
+		<class>it.uniroma3.db.project.persistence.entity.CategoriaPiatto</class>
+		<class>it.uniroma3.db.project.persistence.entity.Prenotazione</class>
+		<class>it.uniroma3.db.project.persistence.entity.Tavolo</class>
+		<class>it.uniroma3.db.project.persistence.entity.Amministratore</class>
+		<class>it.uniroma3.db.project.persistence.entity.Utente</class>
+		<class>it.uniroma3.db.project.persistence.entity.Administrator</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="javax.persistence.jdbc.user" value="progettosiw" />
