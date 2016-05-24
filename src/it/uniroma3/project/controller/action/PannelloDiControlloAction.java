@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import it.uniroma3.project.facade.Facade;
 import it.uniroma3.project.persistence.entity.Comanda;
+import it.uniroma3.project.persistence.entity.Prenotazione;
 import it.uniroma3.project.persistence.entity.Tavolo;
 
 public class PannelloDiControlloAction implements Action {
@@ -43,9 +44,14 @@ public class PannelloDiControlloAction implements Action {
 		request.setAttribute("occupatiP", (occupati/totali)*100);
 		request.setAttribute("totali", totali);
 
+		// gestione comande di oggi
 		List<Comanda> comande = facade.findallComandaToday(new Date());
 		request.setAttribute("comandePannello", comande);
 
+		// gestione prenotazioni di oggi
+		List<Prenotazione> prenotazioni = facade.findAllPrenotazioniToday(new Date());
+		request.setAttribute("prenotazioni", prenotazioni);
+		
 		return "/home_Administrator.jsp";
 	}
 }

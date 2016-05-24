@@ -105,6 +105,11 @@
 										href="${pageContext.request.contextPath}/ProcessaCategoria">Registra
 											nuovo Piatto <i class="fa fa-caret-right"></i>
 									</a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/processaStorico">Storico
+											Comande <span class="label label-danger">hot</span><i
+											class="fa fa-caret-right"></i>
+									</a></li>
 
 								</ul>
 							</div>
@@ -118,6 +123,54 @@
 									<div class="row">
 
 										<div class="col-md-4 col-sm-6">
+											<h4>Prenotazioni</h4>
+											<table class="table">
+												<thead>
+													<tr>
+														<th>Nominativo</th>
+														<th>Data - Ora</th>
+														<th>Tavolo</th>
+														<th>Ospiti</th>
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach var="prenotazione" items="${prenotazioni}">
+														<tr>
+															<td>${prenotazione.nominativo}
+																${prenotazione.getUtente().getNome()}<br>
+																${prenotazione.getUtente().getCognome()}
+															</td>
+															<td>${prenotazione.data}<br>
+																${prenotazione.ora}
+															</td>
+															<td>${prenotazione.tavoloPrenotato.getCodiceTavolo()}</td>
+															<td>${prenotazione.numeroOspiti}</td>
+														</tr>
+													</c:forEach>
+												</tbody>
+											</table>
+										</div>
+
+										<div class="col-md-4 col-sm-6">
+											<h4>Operatori in servizio</h4>
+											<table class="table">
+												<thead>
+													<tr>
+														<th>Codice operatore</th>
+														<th>Username</th>
+														<th>Tavolo servito</th>
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach var="comanda" items="${comandePannello}">
+														<tr>
+															<td>${comanda.operatore.getId()}</td>
+															<td>${comanda.operatore.getUsername()}</td>
+															<td>${comanda.tavolo.getCodiceTavolo()}</td>
+														</tr>
+													</c:forEach>
+												</tbody>
+											</table>
 											<h4>Panoramica tavoli</h4>
 											<div class="progress">
 												<div class="progress-bar progress-bar-success"
@@ -129,29 +182,7 @@
 												<div class="progress-bar progress-bar-danger"
 													role="progressbar" style="width: ${occupatiP}%">
 													Occupati: ${occupati}</div>
-
-
 											</div>
-										</div>
-
-										<div class="col-md-4 col-sm-6">
-											<h4>Operatori in servizio</h4>
-											<table class="table">
-												<thead>
-													<tr>
-														<th>Codice</th>
-														<th>Nome</th>
-														<th>Tavoli serviti</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>prova</td>
-														<td>prova</td>
-														<td>prova</td>
-													</tr>
-												</tbody>
-											</table>
 										</div>
 
 										<div class="col-md-4 col-sm-6">
@@ -161,8 +192,10 @@
 													<tr>
 														<th>Codice</th>
 														<th>Tavolo</th>
-														<!-- 	<th>Stato</th> -->
 														<th>Totale</th>
+														<th>Dettagli</th>
+														<th>Concludi</th>
+														<th>Elimina</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -171,12 +204,16 @@
 															<td>${comanda.id}</td>
 															<td>${comanda.tavolo.getCodiceTavolo()}</td>
 															<td>${comanda.prezzoTotale}</td>
-															<!-- 	<td>prova</td> -->
+															<td><a class="fa fa-info"
+																onclick="$(this).closest('form').submit()"></a></td>
+															<td><a class="fa fa-check"
+																onclick="$(this).closest('form').submit()"></a></td>
+															<td><a class="fa fa-trash-o"
+																onclick="$(this).closest('form').submit()"></a></td>
 														</tr>
 													</c:forEach>
 												</tbody>
 											</table>
-
 										</div>
 									</div>
 								</div>

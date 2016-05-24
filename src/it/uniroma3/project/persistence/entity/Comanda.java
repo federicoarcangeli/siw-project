@@ -31,7 +31,7 @@ public class Comanda {
 	@Column(nullable = false)
 	private double prezzoTotale;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Utente operatore;
 
 	@ManyToOne(fetch = FetchType.EAGER)

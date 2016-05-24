@@ -127,6 +127,12 @@ public class Facade {
 		return dao.findAllToday(today);
 	}
 
+	public List<Prenotazione> findAllPrenotazioniToday(Date today){
+		PrenotazioneDao dao = new PrenotazioneDao();
+		List<Prenotazione> prenotazione = dao.findAllPrenotazioniToday(today);
+		return prenotazione;
+	}
+
 	public List<LineaComanda> findallLineeComanda(Long idComanda) {
 		LineaComandaDao dao = new LineaComandaDao();
 		List<LineaComanda> linee = dao.findAllLineaComandaOfComanda(idComanda);
@@ -180,8 +186,10 @@ public class Facade {
 		return comandeToday;
 	}
 
-
-
-
+	public List<Comanda> findallComanda() {
+		ComandaDao dao = new ComandaDao();
+		List<Comanda> comande= dao.findAll();
+		return comande;
+	}
 
 }

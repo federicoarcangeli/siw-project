@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Inserimento comanda</title>
+<title>Pannello di controllo</title>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!-- SEO -->
@@ -11,7 +11,6 @@
 	content="Tomato is a Responsive HTML5 Template for Restaurants and food related services.">
 <meta name="keywords"
 	content="tomato, responsive, html5, restaurant, template, food, reservation">
-
 <!-- Favicons -->
 <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -39,7 +38,13 @@
 	<div class="body">
 
 		<div class="main-wrapper">
+			<%
+				if (session.getAttribute("amministratoreCorrente") == null) {
+					String redirectURL = "./404.html";
+					response.sendRedirect(redirectURL);
 
+				} else {
+			%>
 
 			<!-- Navigation-->
 			<nav class="navbar navbar-fixed-top">
@@ -57,6 +62,7 @@
 							<img src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>
+
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
@@ -78,120 +84,55 @@
 				</div>
 			</nav>
 
-
 			<!-- Page Header -->
 			<section class='page_header vertical-padding'></section>
 
-			<!-- Shop Content -->
-			<div class="shop-content">
-				<div class="col-md-12">
-					<h1>Tavolo: ${comanda.tavolo.codiceTavolo} Comanda:
-						${comanda.id}</h1>
-				</div>
-				<div class="food-menu wow fadeInUp">
-					<div class="container-fluid">
-						<div class="row">
-							<aside class="col-md-1">
-								<h4>Categoria</h4>
-								<div class="menu-tags3">
-									<div class="side-widget">
-										<ul class="shop-cat">
-											<c:forEach var="categoria" items="${categorie}">
-												<li><span data-filter=".${categoria.nome}"><i
-														class="fa fa-angle-right"></i>${categoria.nome}</span></li>
-											</c:forEach>
-										</ul>
-									</div>
-								</div>
-							</aside>
-							<form action="UpdateComanda" method="post">
-								<div class="col-md-8">
-									<h4>Piatti</h4>
-									<div class="shop-grid">
-										<div class="shop-products">
-											<div class="row">
-												<div class="row menu-items3">
-													<c:forEach var="piatto" items="${piatti}">
-														<div
-															class="menu-item3 col-sm-4 ${piatto.getPortata().nome}">
-															<div class="product-info">
-																<h4>
-																	<a href="">${piatto.nome}</a>
-																</h4>
-																<div class="shop-meta centered">
-																	<button type="submit" name="piatto"
-																		onSubmit='setTimeout(function () { window.location.reload(); }, 10)'
-																		class="btn btn-success center-block"
-																		value='${piatto.id}'>
-																		<i class="fa fa-pencil-square-o"></i> Aggiungi
-																	</button>
-																</div>
-															</div>
-														</div>
-													</c:forEach>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</form>
 
-							<aside class="col-md-3">
-								<div class="side-widget">
-									<form>
-										<div class="row">
-											<div class="form-group">
-												<div class="shop-grid">
-													<div class="shop-products">
-														<div class="row">
-															<div class="col-md-12">
-																<h4>Ordine in corso</h4>
-																<br>
-																<table
-																	class="cart-table account-table table table-bordered">
-																	<thead>
-																		<tr>
-																			<th>Piatto</th>
-																			<th>Quantità</th>
-																			<th>Aggiungi</th>
+			<div class="shop-grid">
+				<h2>Storico comande</h2>
+				<div class="shop-products">
+					<div class="row">
 
-																		</tr>
-																	</thead>
-																	<tbody>
-																		<c:forEach var="linea" items="${linee}">
-																			<tr>
-																				<td>${linea.piatto.nome}</td>
-																				<td><input type="number" placeholder="qta"
-																					value="${linea.quantita}" style="width: 65px;"></td>
-																				<td><a class="fa fa-plus"
-																					onclick="$(this).closest('form').submit()"></a></td>
-																			</tr>
-																		</c:forEach>
-																		<tr>
-																			<td></td>
-																			<td><strong>Totale:</strong></td>
-																			<td>${comanda.prezzoTotale}&euro;</td>
-																		</tr>
-																	</tbody>
-																</table>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</form>
-								</div>
-							</aside>
+						<div class="col-md-12">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Data - Ora</th>
+										<th>Prezzo</th>
+										<th>Operatore</th>
+										<th>Tavolo</th>
+										<th>Dettagli ordine</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="comanda" items="${comandeStorico}">
+										<tr>
+											<td>${comanda.id}</td>
+											<td>${comanda.dataOraEmissione}</td>
+											<td>${comanda.prezzoTotale}</td>
+											<td>${comanda.operatore.getUsername()}</td>
+											<td>${comanda.tavolo.getCodiceTavolo()}</td>
+											<td><a class="fa fa-info"
+												onclick="$(this).closest('form').submit()"></a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
 						</div>
+
 					</div>
 				</div>
+
 			</div>
 		</div>
+		<%
+			}
+		%>
+
 	</div>
-
-
 	<!-- Javascript -->
+
 	<script src="js/vendor/jquery-1.11.2.min.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
 	<script src="js/vendor/jquery.flexslider-min.js"></script>
@@ -212,6 +153,7 @@
 	<script src="js/main.js"></script>
 	<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
+
 </body>
 
 </html>
