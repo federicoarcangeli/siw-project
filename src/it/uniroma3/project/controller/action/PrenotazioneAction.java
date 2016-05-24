@@ -37,10 +37,10 @@ public class PrenotazioneAction {
 
 		if(validatorD.isToday(data))
 			facade.setTavoloPrenotato(tavolo);
-		
+
 		facade.inserisciPrenotazione(prenotazione);
 
-		return "/conferma.jsp";
+		return "/prenotazione.jsp";
 	}
 
 }

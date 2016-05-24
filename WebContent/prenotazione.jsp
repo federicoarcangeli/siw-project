@@ -157,26 +157,41 @@
 													value="Effettua prenotazione" id="submitBtn"
 													data-toggle="modal" data-target="#confirm-submit"
 													class="btn btn-default" />
-												<%
-													if (request.getAttribute("ERROR") != null) {
-												%>
-												<div class="animated fadeInDown">
-													<div class="alert alert-error alert-dismissable">
-														<button type="button" class="close" data-dismiss="alert">
-															<span class="fa fa-close"></span>
-														</button>
-														<span> ERRORE: </span>${dataError} ${oraError}
-														${ospitiError} ${tavoliError } ${prenotazioniError}
-													</div>
-
-												</div>
-												<%
-													}
-												%>
 											</div>
 										</div>
 									</div>
 								</div>
+								<%
+									if (request.getAttribute("ERROR") != null) {
+								%>
+								<div class="animated fadeInDown">
+									<div class="alert alert-error alert-dismissable">
+										<button type="button" class="close" data-dismiss="alert">
+											<span class="fa fa-close"></span>
+										</button>
+										<span> ERRORE: </span>${dataError} ${oraError} ${ospitiError}
+										${tavoliError } ${prenotazioniError}
+									</div>
+
+								</div>
+								<%
+									}
+								%>
+								<%
+									if (request.getAttribute("OK") != null) {
+								%>
+								<div class="animated fadeInDown">
+									<div class="alert alert-success alert-dismissable">
+										<button type="button" class="close" data-dismiss="alert">
+											<span class="fa fa-close"></span>
+										</button>
+										<span> SUCCESS: </span>${OK}
+									</div>
+
+								</div>
+								<%
+									}
+								%>
 							</div>
 						</form>
 					</div>
