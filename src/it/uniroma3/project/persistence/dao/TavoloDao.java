@@ -1,4 +1,4 @@
-package it.uniroma3.project.persistence;
+package it.uniroma3.project.persistence.dao;
 
 import java.math.BigInteger;
 import java.util.Date;
@@ -10,7 +10,7 @@ import javax.persistence.Query;
 import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
 
-import it.uniroma3.project.entity.Tavolo;
+import it.uniroma3.project.persistence.entity.Tavolo;
 
 public class TavoloDao extends AbstractDao<Tavolo> {
 

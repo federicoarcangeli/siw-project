@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
 import it.uniroma3.project.controller.facade.Facade;
-import it.uniroma3.project.entity.Comanda;
+import it.uniroma3.project.persistence.entity.Comanda;
 
 public class NewComandaAction implements Action {
 

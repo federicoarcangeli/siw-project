@@ -8,8 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.validator.routines.DateValidator;
 
 import it.uniroma3.project.controller.facade.Facade;
-import it.uniroma3.project.entity.Prenotazione;
-import it.uniroma3.project.entity.Tavolo;
+import it.uniroma3.project.persistence.entity.Prenotazione;
+import it.uniroma3.project.persistence.entity.Tavolo;
 import it.uniroma3.validator.Time24HoursValidator;
 
 public class PrenotazioneAdminAction {

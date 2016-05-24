@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import it.uniroma3.project.controller.facade.Facade;
-import it.uniroma3.project.entity.Utente;
+import it.uniroma3.project.persistence.entity.Utente;
 
 
 public class LoginPersonaleAction {

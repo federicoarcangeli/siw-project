@@ -1,14 +1,14 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="it.uniroma3.project.controller.facade.Facade"%>
-<%@page import="it.uniroma3.project.entity.CategoriaPiatto"%>
-<%@page import="it.uniroma3.project.entity.Piatto"%>
+<%@page import="it.uniroma3.project.persistence.entity.CategoriaPiatto"%>
+<%@page import="it.uniroma3.project.persistence.entity.Piatto"%>
 <%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="it">
 
 <head>
 <meta charset="utf-8">
-<title>Tomato Responsive Restaurant HTML5 Template</title>
+<title>Il nostro men&ugrave</title>
 <meta name="author" content="Surjith S M">
 
 <!-- SEO -->

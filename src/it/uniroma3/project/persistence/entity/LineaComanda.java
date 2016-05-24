@@ -1,4 +1,4 @@
-package it.uniroma3.project.entity;
+package it.uniroma3.project.persistence.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
