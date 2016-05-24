@@ -87,17 +87,15 @@
 
 
 			<!-- menu-->
-			<section class="menu space60">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="page-header wow fadeInDown">
-								<h1>Gestione sala</h1>
-							</div>
-						</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="page-header wow fadeInDown">
+						<h1>Gestione sala</h1>
 					</div>
 				</div>
-			</section>
+			</div>
+
 
 			<div class="container-fluid">
 				<div class="row">

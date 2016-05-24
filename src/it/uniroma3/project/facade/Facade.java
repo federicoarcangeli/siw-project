@@ -174,6 +174,12 @@ public class Facade {
 		dao.update(linea);
 	}
 
+	public List<Comanda> findallComandaToday(Date date) {
+		ComandaDao dao = new ComandaDao();
+		List<Comanda> comandeToday= dao.findAllToday(date);
+		return comandeToday;
+	}
+
 
 
 

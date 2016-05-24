@@ -7,11 +7,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
 
 import it.uniroma3.project.persistence.entity.Comanda;
-import it.uniroma3.project.persistence.entity.Tavolo;
 
 public class ComandaDao extends AbstractDao<Comanda> {
 
