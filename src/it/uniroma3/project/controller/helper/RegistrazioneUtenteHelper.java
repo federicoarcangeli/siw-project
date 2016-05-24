@@ -2,7 +2,7 @@ package it.uniroma3.project.controller.helper;
 
 import javax.servlet.http.HttpServletRequest;
 
-import it.uniroma3.project.controller.facade.Facade;
+import it.uniroma3.project.facade.Facade;
 public class RegistrazioneUtenteHelper {
 
 	public RegistrazioneUtenteHelper() {
