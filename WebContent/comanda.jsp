@@ -57,14 +57,11 @@
 							<img src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>
-
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
 							<li><a
 								href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
-							<li><a
-								href="${pageContext.request.contextPath}/processaComanda">Comanda</a></li>
 							<li class="dropdown"><a href="./index.html"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Benvenuto
@@ -123,6 +120,7 @@
 																</h4>
 																<div class="shop-meta centered">
 																	<button type="submit" name="piatto"
+																		onsubmit="setTimeout(function () { window.location.reload(); }, 10)"
 																		class="btn btn-success center-block"
 																		value='${piatto.id}'>
 																		<i class="fa fa-pencil-square-o"></i> Aggiungi
