@@ -2,7 +2,7 @@ package it.uniroma3.persistence;
 
 import java.util.Date;
 
-import it.uniroma3.project.controller.facade.Facade;
+import it.uniroma3.project.facade.Facade;
 import it.uniroma3.project.persistence.entity.Comanda;
 import it.uniroma3.project.persistence.entity.Tavolo;
 import it.uniroma3.project.persistence.entity.Utente;

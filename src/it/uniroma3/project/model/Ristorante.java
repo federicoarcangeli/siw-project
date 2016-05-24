@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import it.uniroma3.project.controller.facade.Facade;
+import it.uniroma3.project.facade.Facade;
 import it.uniroma3.project.persistence.entity.Prenotazione;
 import it.uniroma3.project.persistence.entity.Tavolo;
 import it.uniroma3.validator.Time24HoursValidator;

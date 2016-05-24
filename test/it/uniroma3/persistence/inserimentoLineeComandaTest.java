@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import it.uniroma3.project.controller.facade.Facade;
+import it.uniroma3.project.facade.Facade;
 import it.uniroma3.project.persistence.entity.Comanda;
 import it.uniroma3.project.persistence.entity.LineaComanda;
 import it.uniroma3.project.persistence.entity.Piatto;
@@ -20,8 +20,8 @@ public class inserimentoLineeComandaTest {
 	@Before
 	public void setUp() throws Exception {
 		this.facade = new Facade();
-		this.comanda = facade.findComandaById(219L);
-		this.piatto = facade.findPiattoById(1L);
+//		this.comanda = facade.findComandaById(219L);
+//		this.piatto = facade.findPiattoById(1L);
 		this.linea = new LineaComanda();
 	}
 	
@@ -40,7 +40,7 @@ public class inserimentoLineeComandaTest {
 		this.linea.setComanda(this.comanda);
 		this.linea.setPiatto(this.piatto);
 		this.linea.setQuantita(1);
-		facade.updateComanda(comanda);
+//		facade.updateComanda(comanda);
 		
 	}
 
