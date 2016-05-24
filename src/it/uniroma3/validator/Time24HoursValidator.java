@@ -3,6 +3,7 @@ package it.uniroma3.validator;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -48,7 +49,11 @@ public class Time24HoursValidator{
 	 */
 
 	public boolean isToday(Date data){
-		return data.compareTo(new Date()) == 0;
+		Calendar cal1 = Calendar.getInstance();
+		Calendar cal2 = Calendar.getInstance();
+		cal1.setTime(data);
+		cal2.setTime(new Date());
+		return (cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) && cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR));
 	}
 
 	/**
