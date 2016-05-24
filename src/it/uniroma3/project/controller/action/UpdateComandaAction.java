@@ -37,6 +37,7 @@ public class UpdateComandaAction implements Action {
 			linea.setComanda(comandaInCorso);
 			linea.setPiatto(piatto);
 			linea.setQuantita(1);
+			comandaInCorso.setPrezzoTotale(piatto.getDescrizionePiatto().getPrezzo());
 			facade.inserisciLinea(linea);
 		}
 		
