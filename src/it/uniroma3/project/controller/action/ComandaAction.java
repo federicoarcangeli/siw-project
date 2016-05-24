@@ -8,10 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import it.uniroma3.project.controller.facade.Facade;
-import it.uniroma3.project.entity.Comanda;
-import it.uniroma3.project.entity.Tavolo;
-import it.uniroma3.project.entity.Utente;
-//import it.uniroma3.project.entity.Comanda;
+import it.uniroma3.project.persistence.entity.Comanda;
+import it.uniroma3.project.persistence.entity.Tavolo;
+import it.uniroma3.project.persistence.entity.Utente;
 
 public class ComandaAction implements Action {
 

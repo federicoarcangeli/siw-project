@@ -5,7 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import it.uniroma3.project.controller.facade.Facade;
-import it.uniroma3.project.entity.CategoriaPiatto;
+import it.uniroma3.project.persistence.entity.CategoriaPiatto;
 
 public class CategoriaAction implements Action {
 

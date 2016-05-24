@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import it.uniroma3.project.controller.facade.Facade;
-import it.uniroma3.project.entity.Comanda;
-import it.uniroma3.project.entity.LineaComanda;
+import it.uniroma3.project.persistence.entity.Comanda;
+import it.uniroma3.project.persistence.entity.LineaComanda;
 
 public class UpdateComandaAction implements Action {
 

@@ -3,21 +3,21 @@ package it.uniroma3.project.controller.facade;
 import java.util.Date;
 import java.util.List;
 
-import it.uniroma3.project.entity.CategoriaPiatto;
-import it.uniroma3.project.entity.Comanda;
-import it.uniroma3.project.entity.DescrizionePiatto;
-import it.uniroma3.project.entity.Piatto;
-import it.uniroma3.project.entity.Prenotazione;
-import it.uniroma3.project.entity.Tavolo;
-import it.uniroma3.project.entity.Utente;
-import it.uniroma3.project.persistence.AbstractDao;
-import it.uniroma3.project.persistence.CategoriaPiattoDao;
-import it.uniroma3.project.persistence.ComandaDao;
-import it.uniroma3.project.persistence.DescrizionePiattoDao;
-import it.uniroma3.project.persistence.PiattoDao;
-import it.uniroma3.project.persistence.PrenotazioneDao;
-import it.uniroma3.project.persistence.TavoloDao;
-import it.uniroma3.project.persistence.UtenteDao;
+import it.uniroma3.project.persistence.dao.AbstractDao;
+import it.uniroma3.project.persistence.dao.CategoriaPiattoDao;
+import it.uniroma3.project.persistence.dao.ComandaDao;
+import it.uniroma3.project.persistence.dao.DescrizionePiattoDao;
+import it.uniroma3.project.persistence.dao.PiattoDao;
+import it.uniroma3.project.persistence.dao.PrenotazioneDao;
+import it.uniroma3.project.persistence.dao.TavoloDao;
+import it.uniroma3.project.persistence.dao.UtenteDao;
+import it.uniroma3.project.persistence.entity.CategoriaPiatto;
+import it.uniroma3.project.persistence.entity.Comanda;
+import it.uniroma3.project.persistence.entity.DescrizionePiatto;
+import it.uniroma3.project.persistence.entity.Piatto;
+import it.uniroma3.project.persistence.entity.Prenotazione;
+import it.uniroma3.project.persistence.entity.Tavolo;
+import it.uniroma3.project.persistence.entity.Utente;
 
 public class Facade {
 

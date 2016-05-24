@@ -6,9 +6,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import it.uniroma3.project.controller.facade.Facade;
-import it.uniroma3.project.entity.CategoriaPiatto;
-import it.uniroma3.project.entity.DescrizionePiatto;
-import it.uniroma3.project.entity.Piatto;
+import it.uniroma3.project.persistence.entity.CategoriaPiatto;
+import it.uniroma3.project.persistence.entity.DescrizionePiatto;
+import it.uniroma3.project.persistence.entity.Piatto;
 import it.uniroma3.validator.DoubleValidator;
 
 public class PiattoAction {

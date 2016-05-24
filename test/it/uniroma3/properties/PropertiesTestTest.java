@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import it.uniroma3.project.entity.Tavolo;
 import it.uniroma3.project.model.Ristorante;
+import it.uniroma3.project.persistence.entity.Tavolo;
 
 public class PropertiesTestTest {
 	private Ristorante ristorante;

@@ -5,8 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import it.uniroma3.project.controller.facade.Facade;
-import it.uniroma3.project.entity.CategoriaPiatto;
-import it.uniroma3.project.entity.Piatto;
+import it.uniroma3.project.persistence.entity.CategoriaPiatto;
+import it.uniroma3.project.persistence.entity.Piatto;
 
 public class MenuAction implements Action {
 
