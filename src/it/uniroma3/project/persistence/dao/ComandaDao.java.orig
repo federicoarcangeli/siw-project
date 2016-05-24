@@ -1,7 +1,6 @@
+<<<<<<< HEAD:src/it/uniroma3/project/persistence/dao/ComandaDao.java
 package it.uniroma3.project.persistence.dao;
 
-import java.math.BigInteger;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -18,6 +17,44 @@ public class ComandaDao extends AbstractDao<Comanda> {
 	public Comanda findById(long id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Comanda> findAll() {
+		EntityManager em = super.getEntityManager();
+		Query query = em.createNamedQuery("Comanda.findAll");
+		List<Comanda> result = query.getResultList();
+		em.close();
+		return result;
+	}
+
+}
+=======
+package it.uniroma3.project.persistence;
+
+import java.math.BigInteger;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+
+import it.uniroma3.project.entity.Comanda;
+
+public class ComandaDao extends AbstractDao<Comanda> {
+
+
+	@Override
+	public Comanda findById(long id) {
+		EntityManager em = getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		Comanda c = em.find(Comanda.class, id);
+		tx.commit();
+		em.close();
+		return c;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -51,3 +88,4 @@ public class ComandaDao extends AbstractDao<Comanda> {
 	}
 
 }
+>>>>>>> 3d503020cabb06aa18f90bcee925fef53427fa44:src/it/uniroma3/project/persistence/ComandaDao.java

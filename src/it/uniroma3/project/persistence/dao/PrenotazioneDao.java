@@ -1,4 +1,4 @@
-package it.uniroma3.project.persistence;
+package it.uniroma3.project.persistence.dao;
 
 import java.util.Date;
 import java.util.List;
@@ -8,8 +8,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.TemporalType;
 
-import it.uniroma3.project.entity.Prenotazione;
-import it.uniroma3.project.entity.Tavolo;;
+import it.uniroma3.project.persistence.entity.Prenotazione;
+import it.uniroma3.project.persistence.entity.Tavolo;
 
 public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 

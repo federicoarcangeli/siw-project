@@ -25,7 +25,6 @@ public class ComandaAction implements Action {
 
 		if(tavolo.getOccupato()==2){
 			Comanda comanda=facade.findComandaByTavoloAndDay(tavolo.getId(),new Date());
-			System.out.println("Dio porco qui "+comanda.getId());
 			session.setAttribute("comanda", comanda);
 		}
 		if(tavolo.getOccupato()==0 || tavolo.getOccupato()==1){

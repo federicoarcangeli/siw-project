@@ -26,9 +26,15 @@ public class Facade {
 
 	public void inserisciPrenotazione(Prenotazione prenotazione) {
 
-		AbstractDao<Prenotazione> prenotazioneDao = new PrenotazioneDao();
+		PrenotazioneDao prenotazioneDao = new PrenotazioneDao();
 		prenotazioneDao.save(prenotazione);
 
+	}
+	
+	public Comanda findComandaByTavoloAndDay(Long id, Date data) {
+		ComandaDao dao = new ComandaDao();
+		Comanda comanda = dao.findComandaByTavoloAndDay(id,data);
+		return comanda;
 	}
 
 	public void inserisciPiatto(Piatto piatto) {

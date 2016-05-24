@@ -1,11 +1,13 @@
-package it.uniroma3.project.persistence;
+package it.uniroma3.project.persistence.dao;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import it.uniroma3.project.entity.Piatto;
+import it.uniroma3.project.persistence.entity.Piatto;
+
+
 
 public class PiattoDao extends AbstractDao<Piatto> {
 

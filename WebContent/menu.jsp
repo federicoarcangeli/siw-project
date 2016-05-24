@@ -1,7 +1,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="it.uniroma3.project.controller.facade.Facade"%>
-<%@page import="it.uniroma3.project.entity.CategoriaPiatto"%>
-<%@page import="it.uniroma3.project.entity.Piatto"%>
+<%@page import="it.uniroma3.project.persistence.entity.CategoriaPiatto"%>
+<%@page import="it.uniroma3.project.persistence.entity.Piatto"%>
 <%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="it">
