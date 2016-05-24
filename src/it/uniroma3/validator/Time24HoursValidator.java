@@ -65,7 +65,7 @@ public class Time24HoursValidator{
 	public boolean SameDate(Date data1 , Date data2){
 		if(data1!=null && data2!=null)
 			return data1.compareTo(data2)==0;
-		else 
-			return false;
+		else
+		return false;
 	}
 }
