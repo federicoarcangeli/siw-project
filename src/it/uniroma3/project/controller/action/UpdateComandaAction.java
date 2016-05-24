@@ -15,16 +15,22 @@ public class UpdateComandaAction implements Action {
 
 	@Override
 	public String execute(HttpServletRequest request) {
+		
 		Long idPiatto = Long.parseLong(request.getParameter("piatto"));
 		Facade facade = new Facade();
-		HttpSession session = request.getSession(true);
+		
+		HttpSession session = request.getSession();
+		
 		Comanda comandaInCorso = (Comanda) session.getAttribute("comanda");
+		
 		LineaComanda linea = facade.findLineaByIdPiattoAndComanda(idPiatto,comandaInCorso.getId());
 
+		/*è già presente il piatto nell'ordine*/
 		if(linea!=null){
 			linea.setQuantita(linea.getQuantita()+1);
 			facade.updateLinea(linea);
 		}
+		/*nuovo piatto da aggiungere all'ordine*/
 		else{
 			Piatto piatto = facade.findPiatto(idPiatto);
 			linea = new LineaComanda();
@@ -33,6 +39,7 @@ public class UpdateComandaAction implements Action {
 			linea.setQuantita(1);
 			facade.inserisciLinea(linea);
 		}
+		
 		List<LineaComanda> linee = facade.findallLineeComanda(comandaInCorso.getId());
 		session.setAttribute("linee", linee);
 
