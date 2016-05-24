@@ -19,13 +19,20 @@ public class UpdateComandaAction implements Action {
 		Facade facade = new Facade();
 		HttpSession session = request.getSession(true);
 		Comanda comandaInCorso = (Comanda) session.getAttribute("comanda");
+		LineaComanda linea = facade.findLineaByIdPiattoAndComanda(idPiatto,comandaInCorso.getId());
 
-		Piatto piatto = facade.findPiatto(idPiatto);
-		LineaComanda linea = new LineaComanda();
-		linea.setComanda(comandaInCorso);
-		linea.setPiatto(piatto);
-		linea.setQuantita(1);
-		facade.inserisciLinea(linea);
+		if(linea!=null){
+			linea.setQuantita(linea.getQuantita()+1);
+			facade.updateLinea(linea);
+		}
+		else{
+			Piatto piatto = facade.findPiatto(idPiatto);
+			linea = new LineaComanda();
+			linea.setComanda(comandaInCorso);
+			linea.setPiatto(piatto);
+			linea.setQuantita(1);
+			facade.inserisciLinea(linea);
+		}
 		List<LineaComanda> linee = facade.findallLineeComanda(comandaInCorso.getId());
 		session.setAttribute("linee", linee);
 

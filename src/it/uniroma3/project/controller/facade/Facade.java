@@ -99,6 +99,12 @@ public class Facade {
 		return tavolo;
 	}
 
+	public LineaComanda findLineaByIdPiattoAndComanda(Long idPiatto , Long idComanda) {
+		LineaComandaDao dao = new LineaComandaDao();
+		LineaComanda linea = dao.findByIdPiattoAndComanda(idPiatto , idComanda);
+		return linea;
+	}
+
 	public List<Prenotazione> findAllPrenotazioniUtente(Long id_utente) {
 		PrenotazioneDao prenotazioneDao = new PrenotazioneDao();
 		List<Prenotazione> prenotazioni = prenotazioneDao.findAllPrenotazioneUtente(id_utente);
@@ -162,6 +168,13 @@ public class Facade {
 		TavoloDao dao = new TavoloDao();
 		dao.save(tavolo);
 	}
+
+	public void updateLinea(LineaComanda linea) {
+		LineaComandaDao dao = new LineaComandaDao();
+		dao.update(linea);
+	}
+
+
 
 
 
