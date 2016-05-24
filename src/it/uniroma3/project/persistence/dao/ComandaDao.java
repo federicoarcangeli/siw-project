@@ -7,8 +7,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
+import javax.persistence.TypedQuery;
 
 import it.uniroma3.project.persistence.entity.Comanda;
+import it.uniroma3.project.persistence.entity.Tavolo;
 
 public class ComandaDao extends AbstractDao<Comanda> {
 
@@ -50,6 +53,18 @@ public class ComandaDao extends AbstractDao<Comanda> {
 			if (em.isOpen())
 				em.close();
 		}
+	}
+
+	public List<Comanda> findAllToday(Date today) {
+		EntityManager em = getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		TypedQuery<Comanda> query = em.createQuery( "select c from Comanda c where date(c.dataOraEmissione) = :today",Comanda.class);
+		query.setParameter("today", today);
+		List<Comanda> result = query.getResultList();
+		tx.commit();
+		em.close();
+		return result;
 	}
 
 }

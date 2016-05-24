@@ -168,6 +168,11 @@
 
 																			</tr>
 																		</c:forEach>
+																		<tr>
+																			<td></td>
+																			<td>Totale:</td>
+																			<td>${comanda.prezzoTotale}</td>
+																		</tr>
 																	</tbody>
 																</table>
 															</div>

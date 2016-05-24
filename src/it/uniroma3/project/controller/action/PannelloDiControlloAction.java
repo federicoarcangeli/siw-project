@@ -1,11 +1,13 @@
 package it.uniroma3.project.controller.action;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import it.uniroma3.project.controller.facade.Facade;
+import it.uniroma3.project.persistence.entity.Comanda;
 import it.uniroma3.project.persistence.entity.Tavolo;
 
 public class PannelloDiControlloAction implements Action {
@@ -21,6 +23,7 @@ public class PannelloDiControlloAction implements Action {
 		HttpSession session = request.getSession();
 		session.setMaxInactiveInterval(-1);
 		List<Tavolo> tavoli = facade.findAllTavolo();
+		//		calcolo numero tavoli liberi occupati e prenotati
 		for(Tavolo t : tavoli){
 			if(t.getOccupato()==0)
 				liberi++;
@@ -30,6 +33,8 @@ public class PannelloDiControlloAction implements Action {
 				occupati++;
 			totali++;
 		}
+
+		//		preparazione dati occupazione tavoli
 		request.setAttribute("liberi", (int)liberi);
 		request.setAttribute("prenotati", (int)prenotati);
 		request.setAttribute("occupati", (int)occupati);
@@ -37,6 +42,9 @@ public class PannelloDiControlloAction implements Action {
 		request.setAttribute("prenotatiP", (prenotati/totali)*100);
 		request.setAttribute("occupatiP", (occupati/totali)*100);
 		request.setAttribute("totali", totali);
+
+		List<Comanda> comande = facade.findallComandaToday(new Date());
+		request.setAttribute("comandePannello", comande);
 
 		return "/home_Administrator.jsp";
 	}

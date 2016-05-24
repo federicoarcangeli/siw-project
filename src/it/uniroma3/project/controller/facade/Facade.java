@@ -29,7 +29,6 @@ public class Facade {
 
 		PrenotazioneDao prenotazioneDao = new PrenotazioneDao();
 		prenotazioneDao.save(prenotazione);
-
 	}
 
 	public void inserisciPiatto(Piatto piatto) {
@@ -127,6 +126,12 @@ public class Facade {
 		return dao.findAllToday(today);
 	}
 
+	public List<Comanda> findallComandaToday(Date today) {
+		ComandaDao dao = new ComandaDao();
+		return dao.findAllToday(today);
+	}
+
+
 	public List<LineaComanda> findallLineeComanda(Long idComanda) {
 		LineaComandaDao dao = new LineaComandaDao();
 		List<LineaComanda> linee = dao.findAllLineaComandaOfComanda(idComanda);
@@ -174,8 +179,10 @@ public class Facade {
 		dao.update(linea);
 	}
 
+	public void updateComanda(Comanda comandaInCorso) {
+		ComandaDao dao = new ComandaDao();
+		dao.update(comandaInCorso);
 
-
-
+	}
 
 }

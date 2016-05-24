@@ -161,17 +161,19 @@
 													<tr>
 														<th>Codice</th>
 														<th>Tavolo</th>
-														<th>Stato</th>
+														<!-- 	<th>Stato</th> -->
 														<th>Totale</th>
 													</tr>
 												</thead>
 												<tbody>
-													<tr>
-														<td>prova</td>
-														<td>prova</td>
-														<td>prova</td>
-														<td>prova</td>
-													</tr>
+													<c:forEach var="comanda" items="${comandePannello}">
+														<tr>
+															<td>${comanda.id}</td>
+															<td>${comanda.tavolo.getCodiceTavolo()}</td>
+															<td>${comanda.prezzoTotale}</td>
+															<!-- 	<td>prova</td> -->
+														</tr>
+													</c:forEach>
 												</tbody>
 											</table>
 
@@ -183,10 +185,6 @@
 						</div>
 					</div>
 				</div>
-
-
-
-
 			</div>
 			<%
 				}
