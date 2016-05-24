@@ -1,4 +1,4 @@
-package it.uniroma3.project.persistence.dao;
+package it.uniroma3.project.persistence;
 
 import java.util.Date;
 import java.util.List;
@@ -8,8 +8,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.TemporalType;
 
-import it.uniroma3.project.persistence.entity.Prenotazione;
-import it.uniroma3.project.persistence.entity.Tavolo;;
+import it.uniroma3.project.entity.Prenotazione;
+import it.uniroma3.project.entity.Tavolo;;
 
 public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 
@@ -26,7 +26,6 @@ public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public List<Prenotazione> findAll() {
 		EntityManager em = super.getEntityManager();
 		EntityTransaction tx = em.getTransaction();

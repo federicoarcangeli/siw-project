@@ -38,7 +38,6 @@ public class TavoloDao extends AbstractDao<Tavolo> {
 	}
 
 	public Tavolo findByNumero(String parameter) {
-
 		EntityManager em = super.getEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();

@@ -107,7 +107,7 @@
 									</div>
 								</div>
 							</aside>
-							<form action="UpdateComanda" method="post">
+							<form action="UpdateComanda" method="get">
 								<div class="col-md-8">
 									<h4>Piatti</h4>
 									<div class="shop-grid">
@@ -122,7 +122,7 @@
 																	<a href="">${piatto.nome}</a>
 																</h4>
 																<div class="shop-meta centered">
-																	<button type="button"
+																	<button type="submit" name="piatto"
 																		class="btn btn-success center-block"
 																		value='${piatto.id}'>
 																		<i class="fa fa-pencil-square-o"></i> Aggiungi
@@ -163,11 +163,11 @@
 																		<c:forEach var="linea"
 																			items="${comanda.getLineeComanda()}">
 																			<tr>
-																				<td>${linea.piatto}</td>
+																				<td>${linea.piatto.nome}</td>
 																				<td><input type="number" placeholder="qta"
-																					style="width: 65px;"></td>
+																					value="${linea.quantita}" style="width: 65px;"></td>
 																				<td><input class="btn btn-default"
-																					type="button" value="Input"></td>
+																					type="submit"></td>
 
 																			</tr>
 																		</c:forEach>
