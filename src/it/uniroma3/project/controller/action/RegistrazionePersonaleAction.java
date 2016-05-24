@@ -23,7 +23,7 @@ public class RegistrazionePersonaleAction {
 		personale.setRole(request.getParameter("role"));
 		facade.inserisciUtente(personale);
 
-		return "/home_Administrator.jsp";
+		return "/registraPersonale.jsp";
 	}
 
 

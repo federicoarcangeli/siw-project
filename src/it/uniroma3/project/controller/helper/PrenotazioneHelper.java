@@ -69,8 +69,7 @@ public class PrenotazioneHelper {
 			request.setAttribute("ERROR", "error");
 		}
 		else
-			request.setAttribute("OK", "La prenotazione è stata registrata all'interno dei nostri sistemi");
-
+			request.setAttribute("OK", "La prenotazione è stata registrata correttamente alle "+ ora + " del " + data + " per "+ ospiti + " ospiti");
 		return corretto;
 	}
 

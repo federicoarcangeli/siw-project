@@ -31,6 +31,8 @@ public class RegistrazioneTavoloHelper {
 		if(corretto==false){
 			request.setAttribute("ERROR", "error");
 		}
+		else
+			request.setAttribute("OK", "Il tavolo numero " +codiceTavolo+ " con " +coperti+ " coperti è stato inserito correttamente nel sistema");
 		return corretto;
 	}
 
