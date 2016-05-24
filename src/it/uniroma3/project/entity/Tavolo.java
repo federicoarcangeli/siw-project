@@ -97,7 +97,7 @@ public class Tavolo {
 		if(prenotazione != null)
 			this.getPrenotazioni().add(prenotazione);
 	}
-	
+
 	public void addComanda(Comanda comanda) {
 		if(comanda!=null)
 			this.comande.add(comanda);
@@ -114,12 +114,6 @@ public class Tavolo {
 		result = prime * result + occupato;
 		result = prime * result + ((prenotazioni == null) ? 0 : prenotazioni.hashCode());
 		return result;
-	}
-
-	@Override
-	public String toString() {
-		return "Tavolo [id=" + id + ", codiceTavolo=" + codiceTavolo + ", coperti=" + coperti + ", occupato=" + occupato
-				+ ", comande=" + comande + ", prenotazioni=" + prenotazioni + "]";
 	}
 
 	@Override

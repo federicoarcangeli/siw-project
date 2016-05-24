@@ -87,13 +87,14 @@
 
 			<!-- Shop Content -->
 			<div class="shop-content">
-
+				<div class="col-md-12">
+					<h1>Tavolo: ${comanda.tavolo.codiceTavolo} Comanda:
+						${comanda.id}</h1>
+				</div>
 				<div class="food-menu wow fadeInUp">
 					<div class="container-fluid">
 						<div class="row">
-
-
-							<aside class="col-md-2">
+							<aside class="col-md-1">
 								<h4>Categoria</h4>
 								<div class="menu-tags3">
 									<div class="side-widget">
@@ -107,9 +108,8 @@
 								</div>
 							</aside>
 							<form action="UpdateComanda" method="post">
-								<div class="col-md-6">
+								<div class="col-md-8">
 									<h4>Piatti</h4>
-
 									<div class="shop-grid">
 										<div class="shop-products">
 											<div class="row">
@@ -138,7 +138,7 @@
 								</div>
 							</form>
 
-							<aside class="col-md-4">
+							<aside class="col-md-3">
 								<div class="side-widget">
 									<form>
 										<div class="row">

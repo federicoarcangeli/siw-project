@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -37,7 +36,7 @@ public class Comanda {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Tavolo tavolo;
-	
+
 	@OneToMany(mappedBy="comanda")
 	private List<LineaComanda> lineeComanda;
 
@@ -55,6 +54,14 @@ public class Comanda {
 
 	public List<LineaComanda> getLineeComanda() {
 		return lineeComanda;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public void setLineeComanda(List<LineaComanda> lineeComanda) {
@@ -131,12 +138,4 @@ public class Comanda {
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return "Comanda [id=" + id + ", dataOraEmissione=" + dataOraEmissione + ", prezzoTotale=" + prezzoTotale
-				+ ", operatore=" + operatore + ", tavolo=" + tavolo + ", lineeComanda=" + lineeComanda + "]";
-	}
-	
-	
 }

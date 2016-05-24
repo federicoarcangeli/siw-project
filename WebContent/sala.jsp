@@ -107,7 +107,10 @@
 								<div class="col-xs-6 col-sm-2">
 									<c:choose>
 										<c:when test="${tavolo.occupato=='0'}">
-											<span>Coperti: ${tavolo.coperti}</span>
+											<span class="label label-success">COPERTI :
+												${tavolo.coperti}</span>
+
+
 											<button id="libero" type="submit" class="btn btn-success"
 												style="width: 100%; height: 150px;" name="libero"
 												value='${tavolo.codiceTavolo}'>
@@ -117,7 +120,9 @@
 										</c:when>
 
 										<c:when test="${tavolo.occupato=='1'}">
-											<span>Coperti: ${tavolo.coperti}</span>
+											<span class="label label-warning">COPERTI :
+												${tavolo.coperti}</span>
+											<span> </span>
 											<button id="prenotato" type="button" class="btn btn-warning"
 												style="width: 100%; height: 150px;"
 												onclick="${pageContext.request.contextPath}/processaComanda">
@@ -127,7 +132,8 @@
 										</c:when>
 
 										<c:when test="${tavolo.occupato=='2'}">
-											<span>Coperti: ${tavolo.coperti}</span>
+											<span class="label label-danger">COPERTI :
+												${tavolo.coperti}</span>
 											<button id="occupato" type="button" class="btn btn-danger"
 												style="width: 100%; height: 150px;">
 												<h3>${tavolo.codiceTavolo}</h3>

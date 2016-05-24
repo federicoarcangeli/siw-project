@@ -117,17 +117,37 @@
 									<img src="img/menu/2/2.jpg" class="img-responsive" alt="" />
 									<div class="menu-wrapper">
 										<h4>${piatto.nome}</h4>
-										<span class="price">
-											${piatto.getDescrizionePiatto().getPrezzo() }0 &euro; </span>
+										&nbsp; <span class="price">
+											${piatto.getDescrizionePiatto().getPrezzo() }0 &euro; <c:if
+												test="${piatto.getDescrizionePiatto().prodottiSurgelati=='true'}">
+												<img src="img/snow.png" style="height: 16px; width: 16px;" />
+											</c:if> <c:if
+												test="${piatto.getDescrizionePiatto().prodottiAllergizzanti=='true'}">
+												<img src="img/grano.png" style="height: 22px; width: 16px;" />
+											</c:if>
+										</span>
 										<div class="dotted-bg"></div>
-										<br />
 										<p>${piatto.getDescrizionePiatto().getDescrizione()}</p>
 									</div>
 								</div>
 							</c:forEach>
 						</div>
+						<h4>
+							<small> <img src="img/snow.png"
+								style="height: 16px; width: 16px;" />: Pu&ograve; contenere
+								prodotti surgelati.
+							</small>
+						</h4>
+						<h4>
+							<small> <img src="img/grano.png"
+								style="height: 22px; width: 16px;" />: Pu&ograve; contenere
+								allergeni.
+							</small>
+						</h4>
+
 					</div>
 				</div>
+
 			</section>
 
 			<!-- subscribe -->
