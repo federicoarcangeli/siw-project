@@ -36,11 +36,11 @@ public class PrenotazioneAdminAction {
 		prenotazione.setTavoloPrenotato(tavolo);
 
 		facade.inserisciPrenotazione(prenotazione);
-		
+
 		if(validatorD.isToday(data))
 			facade.setTavoloPrenotato(tavolo);
 
-		return "/home_Administrator.jsp";
+		return "/prenotazioneAdmin.jsp";
 	}
 
 }

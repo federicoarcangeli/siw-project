@@ -69,9 +69,10 @@ public class PrenotazioneAdminHelper {
 			} else 
 				session.setAttribute("tavoloAssegnato", tavoloDaPrenotare);
 		}
-		if (corretto == false) {
+		if (corretto == false) 
 			request.setAttribute("ERROR", "error");
-		}
+		else
+			request.setAttribute("OK", "prenotazione effettuata correttamente a nome di " + nominativo + " per il " + data + " alle " + ora + " per " + ospiti + " ospiti");
 		return corretto;
 	}
 

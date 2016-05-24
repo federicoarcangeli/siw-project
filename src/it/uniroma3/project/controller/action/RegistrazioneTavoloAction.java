@@ -19,7 +19,7 @@ public class RegistrazioneTavoloAction {
 		tavolo.setCoperti(Integer.parseInt(request.getParameter("coperti")));
 		facade.inserisciTavolo(tavolo);
 
-		return "/home_Administrator.jsp";
+		return "/registraTavolo.jsp";
 	}
 
 

@@ -193,6 +193,20 @@
 										<span> ERRORE: </span>${personaleError} ${passwordError}
 										${usernameError} ${roleError}
 									</div>
+								</div>
+								<%
+									}
+								%>
+								<%
+									if (request.getAttribute("OK") != null) {
+								%>
+								<div class="animated fadeInDown">
+									<div class="alert alert-success alert-dismissable">
+										<button type="button" class="close" data-dismiss="alert">
+											<span class="fa fa-close"></span>
+										</button>
+										<span> SUCCESS: </span>${OK}
+									</div>
 
 								</div>
 								<%

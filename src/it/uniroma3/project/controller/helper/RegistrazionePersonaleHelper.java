@@ -30,6 +30,8 @@ public class RegistrazionePersonaleHelper {
 		if(corretto==false){
 			request.setAttribute("ERROR", "error");
 		}
+		else
+			request.setAttribute("OK", "L'utente "+ codice + " è stato inserito nel sistema con il ruolo di "+ role);
 		return corretto;
 	}
 

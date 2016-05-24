@@ -187,7 +187,6 @@
 														id="allergeni">
 												</div>
 											</div>
-
 										</div>
 									</div>
 								</div>
@@ -201,26 +200,42 @@
 											<input type="button" name="btn" value="Inserisci piatto"
 												id="submitBtn" data-toggle="modal"
 												data-target="#confirm-submit" class="btn btn-default" />
-											<%
+										</div>
+										<%
 												if (request.getAttribute("ERRORE") != null) {
 											%>
-											<div class="animated fadeInDown">
-												<div class="form-group">
-													<div class="alert alert-error alert-dismissable">
-														<button type="button" class="close" data-dismiss="alert">
-															<span class="fa fa-close"></span>
-														</button>
-														<span> ERRORE: </span>${nomeCategoria} ${nomeError}
-														${descrizioneError} ${prezzoError} ${urlError}
-													</div>
+										<div class="animated fadeInDown">
+											<div class="form-group">
+												<div class="alert alert-error alert-dismissable">
+													<button type="button" class="close" data-dismiss="alert">
+														<span class="fa fa-close"></span>
+													</button>
+													<span> ERRORE: </span>${nomeCategoria} ${nomeError}
+													${descrizioneError} ${prezzoError} ${urlError}
 												</div>
-
 											</div>
-											<%
+
+										</div>
+										<%
 												}
 											%>
+										<%
+												if (request.getAttribute("OK") != null) {
+											%>
+										<div class="animated fadeInDown">
+											<div class="alert alert-success alert-dismissable">
+												<button type="button" class="close" data-dismiss="alert">
+													<span class="fa fa-close"></span>
+												</button>
+												<span> SUCCESS: </span>${OK}
+											</div>
+
 										</div>
+										<%
+												}
+											%>
 									</div>
+
 								</div>
 							</div>
 						</form>
@@ -251,6 +266,7 @@
 											piatto</a>
 									</div>
 								</div>
+
 							</div>
 						</div>
 
@@ -365,8 +381,12 @@
 	<script src="js/reservation.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
 
-	<script src="js/scripts/confermaInserimentoPiatto.js"> </script>
-	<script src="js/scripts/confermaInserimentoPiatti.js"> </script>
+	<script src="js/scripts/confermaInserimentoPiatto.js">
+		
+	</script>
+	<script src="js/scripts/confermaInserimentoPiatti.js">
+		
+	</script>
 
 
 
