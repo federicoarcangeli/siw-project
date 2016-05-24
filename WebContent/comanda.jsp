@@ -104,7 +104,7 @@
 									</div>
 								</div>
 							</aside>
-							<form action="UpdateComanda" method="get">
+							<form action="UpdateComanda" method="post">
 								<div class="col-md-8">
 									<h4>Piatti</h4>
 									<div class="shop-grid">
@@ -120,7 +120,7 @@
 																</h4>
 																<div class="shop-meta centered">
 																	<button type="submit" name="piatto"
-																		onsubmit="setTimeout(function () { window.location.reload(); }, 10)"
+																		onSubmit='setTimeout(function () { window.location.reload(); }, 10)'
 																		class="btn btn-success center-block"
 																		value='${piatto.id}'>
 																		<i class="fa fa-pencil-square-o"></i> Aggiungi
@@ -158,8 +158,7 @@
 																		</tr>
 																	</thead>
 																	<tbody>
-																		<c:forEach var="linea"
-																			items="${comanda.getLineeComanda()}">
+																		<c:forEach var="linea" items="${linee}">
 																			<tr>
 																				<td>${linea.piatto.nome}</td>
 																				<td><input type="number" placeholder="qta"

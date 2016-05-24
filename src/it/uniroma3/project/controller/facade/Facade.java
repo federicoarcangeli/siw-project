@@ -3,7 +3,6 @@ package it.uniroma3.project.controller.facade;
 import java.util.Date;
 import java.util.List;
 
-import it.uniroma3.project.persistence.dao.AbstractDao;
 import it.uniroma3.project.persistence.dao.CategoriaPiattoDao;
 import it.uniroma3.project.persistence.dao.ComandaDao;
 import it.uniroma3.project.persistence.dao.DescrizionePiattoDao;

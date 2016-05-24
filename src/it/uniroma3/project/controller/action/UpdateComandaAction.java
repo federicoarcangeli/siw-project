@@ -1,5 +1,7 @@
 package it.uniroma3.project.controller.action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -24,10 +26,10 @@ public class UpdateComandaAction implements Action {
 		linea.setPiatto(piatto);
 		linea.setQuantita(1);
 		facade.inserisciLinea(linea);
+		List<LineaComanda> linee = facade.findallLineeComanda(comandaInCorso.getId());
+		session.setAttribute("linee", linee);
 
-		request.setAttribute("piatti", facade.findallLineeComanda(comandaInCorso.getId()));
-
-		return "./processaComanda";
+		return "/comanda.jsp";
 	}
 
 }

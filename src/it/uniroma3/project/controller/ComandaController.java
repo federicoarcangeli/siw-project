@@ -18,14 +18,14 @@ import it.uniroma3.project.controller.action.ComandaAction;
 @WebServlet(urlPatterns ={"/processaComanda"})
 public class ComandaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ComandaController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ComandaController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -33,6 +33,7 @@ public class ComandaController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ComandaAction action = new ComandaAction();
 		String nextPage = action.execute(request);
+		nextPage = response.encodeURL(nextPage);
 		ServletContext application = getServletContext();
 		RequestDispatcher rd = application.getRequestDispatcher(nextPage);
 		rd.forward(request, response);
