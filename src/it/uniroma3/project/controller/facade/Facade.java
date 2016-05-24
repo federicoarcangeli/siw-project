@@ -3,10 +3,10 @@ package it.uniroma3.project.controller.facade;
 import java.util.Date;
 import java.util.List;
 
-import it.uniroma3.project.persistence.dao.AbstractDao;
 import it.uniroma3.project.persistence.dao.CategoriaPiattoDao;
 import it.uniroma3.project.persistence.dao.ComandaDao;
 import it.uniroma3.project.persistence.dao.DescrizionePiattoDao;
+import it.uniroma3.project.persistence.dao.LineaComandaDao;
 import it.uniroma3.project.persistence.dao.PiattoDao;
 import it.uniroma3.project.persistence.dao.PrenotazioneDao;
 import it.uniroma3.project.persistence.dao.TavoloDao;
@@ -14,6 +14,7 @@ import it.uniroma3.project.persistence.dao.UtenteDao;
 import it.uniroma3.project.persistence.entity.CategoriaPiatto;
 import it.uniroma3.project.persistence.entity.Comanda;
 import it.uniroma3.project.persistence.entity.DescrizionePiatto;
+import it.uniroma3.project.persistence.entity.LineaComanda;
 import it.uniroma3.project.persistence.entity.Piatto;
 import it.uniroma3.project.persistence.entity.Prenotazione;
 import it.uniroma3.project.persistence.entity.Tavolo;
@@ -29,12 +30,6 @@ public class Facade {
 		PrenotazioneDao prenotazioneDao = new PrenotazioneDao();
 		prenotazioneDao.save(prenotazione);
 
-	}
-	
-	public Comanda findComandaByTavoloAndDay(Long id, Date data) {
-		ComandaDao dao = new ComandaDao();
-		Comanda comanda = dao.findComandaByTavoloAndDay(id,data);
-		return comanda;
 	}
 
 	public void inserisciPiatto(Piatto piatto) {
@@ -58,6 +53,11 @@ public class Facade {
 		dao.save(comanda);
 	}
 
+	public void inserisciLinea(LineaComanda linea) {
+		LineaComandaDao dao = new LineaComandaDao();
+		dao.save(linea);
+	}
+
 	public List<CategoriaPiatto> findAllCategorie() {
 		CategoriaPiattoDao categoriaPiattoDao = new CategoriaPiattoDao();
 		List<CategoriaPiatto> categorie = categoriaPiattoDao.findAll();
@@ -75,17 +75,22 @@ public class Facade {
 		PiattoDao.setCategoria(idPiatto, idCategoria);
 	}
 
-	public List<Piatto> findAllPiatti() {
-		PiattoDao piattoDao = new PiattoDao();
-		List<Piatto> piatti = piattoDao.findAll();
-		return piatti;
-	}
-
-
 	public Utente findUtente(String username) {
 		UtenteDao utenteDao = new UtenteDao();
 		Utente utente = utenteDao.findUtenteByUserName(username);
 		return utente;
+	}
+
+	public Piatto findPiatto(Long id) {
+		PiattoDao piattoDao = new PiattoDao();
+		Piatto piatto = piattoDao.findById(id);
+		return piatto;
+	}
+
+	public Comanda findComandaByTavoloAndDay(Long id, Date data) {
+		ComandaDao dao = new ComandaDao();
+		Comanda comanda = dao.findComandaByTavoloAndDay(id,data);
+		return comanda;
 	}
 
 	public Tavolo findTavoloByNumero(String parameter) {
@@ -94,12 +99,23 @@ public class Facade {
 		return tavolo;
 	}
 
+	public LineaComanda findLineaByIdPiattoAndComanda(Long idPiatto , Long idComanda) {
+		LineaComandaDao dao = new LineaComandaDao();
+		LineaComanda linea = dao.findByIdPiattoAndComanda(idPiatto , idComanda);
+		return linea;
+	}
+
 	public List<Prenotazione> findAllPrenotazioniUtente(Long id_utente) {
 		PrenotazioneDao prenotazioneDao = new PrenotazioneDao();
 		List<Prenotazione> prenotazioni = prenotazioneDao.findAllPrenotazioneUtente(id_utente);
 		return prenotazioni;
 	}
 
+	public List<Piatto> findAllPiatti() {
+		PiattoDao piattoDao = new PiattoDao();
+		List<Piatto> piatti = piattoDao.findAll();
+		return piatti;
+	}
 
 	public List<Tavolo> findAllTavolo() {
 		TavoloDao dao = new TavoloDao();
@@ -109,6 +125,12 @@ public class Facade {
 	public List<Tavolo> findAllTavoliToday(Date today) {
 		TavoloDao dao = new TavoloDao();
 		return dao.findAllToday(today);
+	}
+
+	public List<LineaComanda> findallLineeComanda(Long idComanda) {
+		LineaComandaDao dao = new LineaComandaDao();
+		List<LineaComanda> linee = dao.findAllLineaComandaOfComanda(idComanda);
+		return linee;
 	}
 
 	public void setTavoloPrenotato(Tavolo tavolo) {
@@ -146,6 +168,13 @@ public class Facade {
 		TavoloDao dao = new TavoloDao();
 		dao.save(tavolo);
 	}
+
+	public void updateLinea(LineaComanda linea) {
+		LineaComandaDao dao = new LineaComandaDao();
+		dao.update(linea);
+	}
+
+
 
 
 

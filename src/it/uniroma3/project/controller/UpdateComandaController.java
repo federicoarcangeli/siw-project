@@ -30,11 +30,12 @@ public class UpdateComandaController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UpdateComandaAction updateComandaAction = new UpdateComandaAction();
 		String nextPage = updateComandaAction.execute(request);
+		nextPage = response.encodeURL(nextPage);
 		ServletContext application = getServletContext();
-		RequestDispatcher rd = application.getNamedDispatcher(nextPage);
+		RequestDispatcher rd = application.getRequestDispatcher(nextPage);
 		rd.forward(request, response);
 	}
 

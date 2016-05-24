@@ -66,8 +66,6 @@
 							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
 							<li><a
 								href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
-							<li><a
-								href="${pageContext.request.contextPath}/processaComanda">Comanda</a></li>
 							<li class="dropdown"><a href="./index.html"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Benvenuto
@@ -366,7 +364,7 @@
 	<script src="js/vendor/validate.js"></script>
 	<script src="js/reservation.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
-	
+
 	<script src="js/scripts/confermaInserimentoPiatto.js"> </script>
 	<script src="js/scripts/confermaInserimentoPiatti.js"> </script>
 

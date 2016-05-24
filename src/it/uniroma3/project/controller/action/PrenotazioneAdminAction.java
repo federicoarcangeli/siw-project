@@ -35,10 +35,10 @@ public class PrenotazioneAdminAction {
 		Prenotazione prenotazione = new Prenotazione(data, ora, ospiti,	nominativo);
 		prenotazione.setTavoloPrenotato(tavolo);
 
+		facade.inserisciPrenotazione(prenotazione);
+		
 		if(validatorD.isToday(data))
 			facade.setTavoloPrenotato(tavolo);
-
-		facade.inserisciPrenotazione(prenotazione);
 
 		return "/home_Administrator.jsp";
 	}

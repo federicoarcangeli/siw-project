@@ -6,8 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedNativeQuery;
-import javax.persistence.NamedQuery;
 
 @Entity
 public class LineaComanda {
@@ -15,25 +13,43 @@ public class LineaComanda {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column
 	@GeneratedValue
 	private int numeroLinea;
-	
+
 	@Column
 	private String nota;
-	
+
 	@Column(nullable = false)
 	private int quantita;
-	
+
 	@ManyToOne
 	private Comanda comanda;
-	
+
 	@ManyToOne
 	private Piatto piatto;
 
 	public LineaComanda(){
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public int getNumeroLinea() {
+		return numeroLinea;
+	}
+
+	public void setNumeroLinea(int numeroLinea) {
+		this.numeroLinea = numeroLinea;
+	}
+
+
 
 	public String getNota() {
 		return nota;

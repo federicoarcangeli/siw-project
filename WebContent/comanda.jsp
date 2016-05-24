@@ -57,14 +57,11 @@
 							<img src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>
-
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
 							<li><a
 								href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
-							<li><a
-								href="${pageContext.request.contextPath}/processaComanda">Comanda</a></li>
 							<li class="dropdown"><a href="./index.html"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Benvenuto
@@ -107,7 +104,7 @@
 									</div>
 								</div>
 							</aside>
-							<form action="UpdateComanda" method="get">
+							<form action="UpdateComanda" method="post">
 								<div class="col-md-8">
 									<h4>Piatti</h4>
 									<div class="shop-grid">
@@ -123,6 +120,7 @@
 																</h4>
 																<div class="shop-meta centered">
 																	<button type="submit" name="piatto"
+																		onSubmit='setTimeout(function () { window.location.reload(); }, 10)'
 																		class="btn btn-success center-block"
 																		value='${piatto.id}'>
 																		<i class="fa fa-pencil-square-o"></i> Aggiungi
@@ -160,8 +158,7 @@
 																		</tr>
 																	</thead>
 																	<tbody>
-																		<c:forEach var="linea"
-																			items="${comanda.getLineeComanda()}">
+																		<c:forEach var="linea" items="${linee}">
 																			<tr>
 																				<td>${linea.piatto.nome}</td>
 																				<td><input type="number" placeholder="qta"
