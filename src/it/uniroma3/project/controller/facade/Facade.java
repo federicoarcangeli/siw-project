@@ -6,6 +6,7 @@ import java.util.List;
 import it.uniroma3.project.entity.CategoriaPiatto;
 import it.uniroma3.project.entity.Comanda;
 import it.uniroma3.project.entity.DescrizionePiatto;
+import it.uniroma3.project.entity.LineaComanda;
 import it.uniroma3.project.entity.Piatto;
 import it.uniroma3.project.entity.Prenotazione;
 import it.uniroma3.project.entity.Tavolo;
@@ -14,6 +15,7 @@ import it.uniroma3.project.persistence.AbstractDao;
 import it.uniroma3.project.persistence.CategoriaPiattoDao;
 import it.uniroma3.project.persistence.ComandaDao;
 import it.uniroma3.project.persistence.DescrizionePiattoDao;
+import it.uniroma3.project.persistence.LineaComandaDao;
 import it.uniroma3.project.persistence.PiattoDao;
 import it.uniroma3.project.persistence.PrenotazioneDao;
 import it.uniroma3.project.persistence.TavoloDao;
@@ -139,6 +141,30 @@ public class Facade {
 	public void inserisciTavolo(Tavolo tavolo) {
 		TavoloDao dao = new TavoloDao();
 		dao.save(tavolo);
+	}
+
+	public Comanda findComandaByTavoloAndDay(Long id, Date data) {
+		ComandaDao dao = new ComandaDao();
+		Comanda comanda = dao.findComandaByTavoloAndDay(id,data);
+		return comanda;
+	}
+
+	public Piatto findPiatto(Long id){
+		PiattoDao dao = new PiattoDao();
+		Piatto piatto = dao.findById(id);
+		return piatto;
+	}
+
+	public void inserisciLinea(LineaComanda linea) {
+		LineaComandaDao dao = new LineaComandaDao();
+		dao.save(linea);
+
+	}
+
+	public List<LineaComanda> findallLineeComanda(long id) {
+		LineaComandaDao dao = new LineaComandaDao();
+		List<LineaComanda> linee = dao.findAllLineaComandaOfComanda(id);
+		return linee;
 	}
 
 

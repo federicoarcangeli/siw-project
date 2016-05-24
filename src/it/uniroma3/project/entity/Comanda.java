@@ -37,12 +37,13 @@ public class Comanda {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Tavolo tavolo;
 
-	@OneToMany(mappedBy="comanda")
+	@OneToMany(mappedBy="comanda", fetch=FetchType.EAGER)
 	private List<LineaComanda> lineeComanda;
 
 
 	public Comanda() {
 		this.lineeComanda = new ArrayList<>();
+		this.prezzoTotale=0.0;
 	}
 
 	public Comanda(Date timestamp, double priceTotal) {

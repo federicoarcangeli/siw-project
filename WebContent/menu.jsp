@@ -93,8 +93,8 @@
 						<div class="col-md-12">
 							<div class="page-header wow fadeInDown">
 								<h1>
-									Tile Style<small>These fine folks trusted the award
-										winning restaurant.</small>
+									Il nostro men&ugrave;<small>deliziati con le nostre
+										pietanze casarecce.</small>
 								</h1>
 							</div>
 						</div>

@@ -26,7 +26,6 @@ public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public List<Prenotazione> findAll() {
 		EntityManager em = super.getEntityManager();
 		EntityTransaction tx = em.getTransaction();

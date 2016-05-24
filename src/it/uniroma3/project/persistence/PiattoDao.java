@@ -3,7 +3,6 @@ package it.uniroma3.project.persistence;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
 import it.uniroma3.project.entity.Piatto;
@@ -12,8 +11,13 @@ public class PiattoDao extends AbstractDao<Piatto> {
 
 	@Override
 	public Piatto findById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		EntityManager em = getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		Piatto p = em.find(Piatto.class, id);
+		tx.commit();
+		em.close();
+		return p;
 	}
 
 	@Override
@@ -30,7 +34,7 @@ public class PiattoDao extends AbstractDao<Piatto> {
 
 	public void setCategoria(Long idPiatto, String idCategoria) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

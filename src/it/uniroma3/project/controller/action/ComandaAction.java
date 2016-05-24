@@ -18,27 +18,29 @@ public class ComandaAction implements Action {
 	@Override
 	public String execute(HttpServletRequest request) {
 		Facade facade = new Facade();
-		Comanda comanda = new Comanda();
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(true);
 
-		comanda.setDataOraEmissione(new Date());
 		Utente operatore = (Utente) session.getAttribute("amministratoreCorrente");
-		String numeroTavolo = request.getParameter("libero");
-		comanda.setOperatore(operatore);
+		String numeroTavolo = request.getParameter("tavolo");
 		Tavolo tavolo = facade.findTavoloByNumero(numeroTavolo);
-		
-		/*
-		 * Qualcuno si è andato a sedere: aggiorno lo stato del tavolo, da
-		 * libero ad occupato
-		 */
-		facade.setTavoloOccupato(tavolo);
-		comanda.setTavolo(tavolo);
-		comanda.setDataOraEmissione(new Date());
-		comanda.setPrezzoTotale(0.0);
-		facade.inserisciComanda(comanda);
-		
-		session.setAttribute("comanda", comanda);
-		session.setAttribute("categorie", facade.findAllCategorie());
+
+		if(tavolo.getOccupato()==2){
+			Comanda comanda=facade.findComandaByTavoloAndDay(tavolo.getId(),new Date());
+			System.out.println("Dio porco qui "+comanda.getId());
+			session.setAttribute("comanda", comanda);
+		}
+		if(tavolo.getOccupato()==0 || tavolo.getOccupato()==1){
+			Comanda comanda = new Comanda();
+			facade.setTavoloOccupato(tavolo);
+			comanda.setOperatore(operatore);
+			comanda.setTavolo(tavolo);
+			comanda.setDataOraEmissione(new Date());
+			facade.inserisciComanda(comanda);
+			session.setAttribute("comanda", comanda);
+		}
+
+
+		request.setAttribute("categorie", facade.findAllCategorie());
 		session.setAttribute("piatti", facade.findAllPiatti());
 
 		return "/comanda.jsp";

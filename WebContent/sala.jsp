@@ -109,10 +109,8 @@
 										<c:when test="${tavolo.occupato=='0'}">
 											<span class="label label-success">COPERTI :
 												${tavolo.coperti}</span>
-
-
 											<button id="libero" type="submit" class="btn btn-success"
-												style="width: 100%; height: 150px;" name="libero"
+												style="width: 100%; height: 150px;" name="tavolo"
 												value='${tavolo.codiceTavolo}'>
 												<h3>${tavolo.codiceTavolo}</h3>
 											</button>
@@ -123,9 +121,9 @@
 											<span class="label label-warning">COPERTI :
 												${tavolo.coperti}</span>
 											<span> </span>
-											<button id="prenotato" type="button" class="btn btn-warning"
-												style="width: 100%; height: 150px;"
-												onclick="${pageContext.request.contextPath}/processaComanda">
+											<button id="prenotato" type="submit" class="btn btn-warning"
+												name="tavolo" style="width: 100%; height: 150px;"
+												value='${tavolo.codiceTavolo}'>
 												<h3>${tavolo.codiceTavolo}</h3>
 											</button>
 											<div class="col-md-12" style="height: 25px;"></div>
@@ -134,8 +132,9 @@
 										<c:when test="${tavolo.occupato=='2'}">
 											<span class="label label-danger">COPERTI :
 												${tavolo.coperti}</span>
-											<button id="occupato" type="button" class="btn btn-danger"
-												style="width: 100%; height: 150px;">
+											<button id="occupato" type="submit" class="btn btn-danger"
+												name="tavolo" style="width: 100%; height: 150px;"
+												value='${tavolo.codiceTavolo}'>
 												<h3>${tavolo.codiceTavolo}</h3>
 											</button>
 											<div class="col-md-12" style="height: 25px;"></div>
