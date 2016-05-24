@@ -17,11 +17,8 @@ import org.apache.log4j.Logger;
  * @param <T>
  */
 public abstract class AbstractDao<T> {
-	private static final String PERSISTENCE_UNIT_NAME = "restaurant-unit";
-	private static EntityManagerFactory emf;
 	
 	public AbstractDao() {
-		emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 
 	}
 
@@ -69,15 +66,11 @@ public abstract class AbstractDao<T> {
 	}
 
 	public static EntityManager getEntityManager() {
-		EntityManager em =  emf.createEntityManager();
+		EntityManager em =  EntityManagerFactorySingleton.getInstance().createEntityManager();
 		return em;
 	}
 	
-	public void closeEnityManagerFactory() {
-		if(emf.isOpen()) {
-			emf.close();
-		}
-	}
+
 
 	/**
 	 * resituisce l'oggetto di tipo T con identificativo id

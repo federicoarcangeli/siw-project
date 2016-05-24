@@ -1,6 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="it.uniroma3.project.controller.facade.Facade"%>
-<%@page import="it.uniroma3.project.entity.CategoriaPiatto"%>
+<%@page import="it.uniroma3.project.persistence.entity.CategoriaPiatto"%>
 <%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="it">
@@ -366,13 +366,9 @@
 	<script src="js/vendor/validate.js"></script>
 	<script src="js/reservation.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
-	<<<<<<< HEAD
-	<script src="js/scripts/confermaInserimentoPiatto.js">
-		=======
-
-	<script src="js/scripts/confermaInserimentoPiatti.js">
->>>>>>> branch 'master' of https://github.com/1federico1/siw-project.git
-	</script>
+	
+	<script src="js/scripts/confermaInserimentoPiatto.js"> </script>
+	<script src="js/scripts/confermaInserimentoPiatti.js"> </script>
 
 
 
