@@ -28,7 +28,10 @@ public class UpdateComandaAction implements Action {
 		/*è già presente il piatto nell'ordine*/
 		if(lineaComanda!=null){
 			lineaComanda.updateQuantity();
-			facade.updateLinea(lineaComanda);
+			lineaComanda.setComanda(comandaInCorso);
+			comandaInCorso.setTotal();
+			comandaInCorso.addLineeComanda(lineaComanda);
+			facade.updateComanda(comandaInCorso);
 		}
 		/*nuovo piatto da aggiungere all'ordine*/
 		else{
@@ -38,6 +41,7 @@ public class UpdateComandaAction implements Action {
 			lineaComanda.setPiatto(piatto);
 			lineaComanda.setQuantita(1);
 			comandaInCorso.updatePrice(piatto.getDescrizionePiatto().getPrezzo());
+			comandaInCorso.setTotal();
 			comandaInCorso.addLineeComanda(lineaComanda);
 			facade.updateComanda(comandaInCorso);
 		}
