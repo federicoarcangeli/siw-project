@@ -10,7 +10,7 @@ import org.apache.commons.validator.routines.DateValidator;
 import it.uniroma3.project.facade.Facade;
 import it.uniroma3.project.model.Ristorante;
 import it.uniroma3.project.persistence.entity.Tavolo;
-import it.uniroma3.validator.Time24HoursValidator;
+import it.uniroma3.project.services.validator.Time24HoursValidator;;
 
 public class PrenotazioneAdminHelper {
 

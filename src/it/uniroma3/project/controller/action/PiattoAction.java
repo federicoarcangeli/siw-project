@@ -6,7 +6,7 @@ import it.uniroma3.project.facade.Facade;
 import it.uniroma3.project.persistence.entity.CategoriaPiatto;
 import it.uniroma3.project.persistence.entity.DescrizionePiatto;
 import it.uniroma3.project.persistence.entity.Piatto;
-import it.uniroma3.validator.DoubleValidator;
+import it.uniroma3.project.services.validator.DoubleValidator;
 
 public class PiattoAction {
 

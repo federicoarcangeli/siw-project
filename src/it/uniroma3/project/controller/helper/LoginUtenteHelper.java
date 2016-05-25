@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import it.uniroma3.project.facade.Facade;
 import it.uniroma3.project.persistence.entity.Utente;
-import it.uniroma3.security.MD5Encrypter;
+import it.uniroma3.project.services.security.MD5Encrypter;
 public class LoginUtenteHelper {
 
 	public LoginUtenteHelper() {

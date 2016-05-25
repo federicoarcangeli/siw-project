@@ -5,7 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-import it.uniroma3.validator.DoubleValidator;
+import it.uniroma3.project.services.validator.DoubleValidator;
 
 public class PiattoHelper {
 

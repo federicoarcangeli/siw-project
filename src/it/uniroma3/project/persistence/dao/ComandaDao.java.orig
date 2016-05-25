@@ -13,7 +13,6 @@ import it.uniroma3.project.persistence.entity.Comanda;
 
 public class ComandaDao extends AbstractDao<Comanda> {
 
-
 	public ComandaDao(EntityManager em) {
 		super(em);
 		// TODO Auto-generated constructor stub
@@ -30,23 +29,33 @@ public class ComandaDao extends AbstractDao<Comanda> {
 		return getEntityManager().createNamedQuery("Comanda.findAll").getResultList();
 	}
 
-	public Comanda findComandaByTavoloAndDay(Long param , Date data) {
-		try{
-			Query q = (Query) getEntityManager().createNativeQuery("select c.id from comanda c where c.tavolo_id = ?1 and date(dataoraemissione) = ?2");
+	public Comanda findComandaByTavoloAndDay(Long param, Date data) {
+		try {
+			Query q = (Query) getEntityManager().createNativeQuery(
+					"select c.id from comanda c where c.tavolo_id = ?1 and date(dataoraemissione) = ?2");
 			q.setParameter(1, param);
 			q.setParameter(2, data);
 			BigInteger id = (BigInteger) q.getSingleResult();
-			return this.findById(id.longValue());
+			Comanda c = this.findById(id.longValue());
+			return c;
 		} catch (Exception e) {
 			return null;
 		}
-		}
-	
+	}
+<<<<<<< HEAD
+=======
 
 	public List<Comanda> findAllToday(Date today) {
-		TypedQuery<Comanda> query = getEntityManager().createQuery( "select c from Comanda c where date(c.dataOraEmissione) = :today",Comanda.class);
+		EntityManager em = getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		TypedQuery<Comanda> query = em.createQuery( "select c from Comanda c where date(c.dataOraEmissione) = :today",Comanda.class);
 		query.setParameter("today", today);
-		return query.getResultList();
+		List<Comanda> result = query.getResultList();
+		tx.commit();
+		em.close();
+		return result;
 	}
 
+>>>>>>> 0cd921174efd8999c37ac82307516e6461e43540
 }
