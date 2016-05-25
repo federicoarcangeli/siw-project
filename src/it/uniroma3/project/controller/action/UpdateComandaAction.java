@@ -23,25 +23,24 @@ public class UpdateComandaAction implements Action {
 		Comanda comandaInCorso = (Comanda) session.getAttribute("comanda");
 		
 		LineaComanda lineaComanda = facade.findLineaByIdPiattoAndComanda(idPiatto,comandaInCorso.getId());
-		
+		Piatto piatto = facade.findPiatto(idPiatto);
 
 		/*è già presente il piatto nell'ordine*/
 		if(lineaComanda!=null){
 			lineaComanda.updateQuantity();
+			comandaInCorso.updatePrice(piatto.getDescrizionePiatto().getPrezzo());
 			lineaComanda.setComanda(comandaInCorso);
-			comandaInCorso.setTotal();
 			comandaInCorso.addLineeComanda(lineaComanda);
 			facade.updateComanda(comandaInCorso);
 		}
 		/*nuovo piatto da aggiungere all'ordine*/
 		else{
-			Piatto piatto = facade.findPiatto(idPiatto);
+			
 			lineaComanda = new LineaComanda();
 			lineaComanda.setComanda(comandaInCorso);
 			lineaComanda.setPiatto(piatto);
 			lineaComanda.setQuantita(1);
 			comandaInCorso.updatePrice(piatto.getDescrizionePiatto().getPrezzo());
-			comandaInCorso.setTotal();
 			comandaInCorso.addLineeComanda(lineaComanda);
 			facade.updateComanda(comandaInCorso);
 		}
