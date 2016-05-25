@@ -14,67 +14,44 @@ import it.uniroma3.project.persistence.entity.Tavolo;
 
 public class TavoloDao extends AbstractDao<Tavolo> {
 
+	public TavoloDao(EntityManager em) {
+		super(em);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public Tavolo findById(long id) {
-		EntityManager em = getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		Tavolo o = em.find(Tavolo.class, id);
-		tx.commit();
-		em.close();
-		return o;
+		return getEntityManager().find(Tavolo.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Tavolo> findAll() {
-		EntityManager em = getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		List<Tavolo> result = em.createNamedQuery("Tavolo.findAll").getResultList();
-		tx.commit();
-		em.close();
-		return result;
+		return getEntityManager().createNamedQuery("Tavolo.findAll").getResultList();
 	}
 
 	public Tavolo findByNumero(String parameter) {
-		EntityManager em = super.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		try{
-			Query q = (Query) em.createNativeQuery("select id from tavolo where codicetavolo = ?1");
+		try {
+			Query q = (Query) getEntityManager().createNativeQuery("select id from tavolo where codicetavolo = ?1");
 			q.setParameter(1, parameter);
 			BigInteger id = (BigInteger) q.getSingleResult();
-			Tavolo t = this.findById(id.longValue());
-			em.close();
-			return t;
+			return this.findById(id.longValue());
 		} catch (Exception e) {
 			return null;
-		} finally {
-			if (em.isOpen())
-				em.close();
 		}
 	}
 
 	/**
 	 * Restituisce tutti i tavoli prenotati oggi
+	 * 
 	 * @param today
 	 * @return
 	 */
 	public List<Tavolo> findAllToday(Date today) {
-		EntityManager em = getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		TypedQuery<Tavolo> query = em.createQuery(
-				"select t "
-						+ "from Tavolo t left join Prenotazione on tavoloprenotato_id = t.id "
-						+ "and data = :today "
-						+ "order by t.id",
-						Tavolo.class);
-		query.setParameter("today", today,TemporalType.DATE);
-		List<Tavolo> result = query.getResultList();
-		tx.commit();
-		em.close();
-		return result;
+		TypedQuery<Tavolo> query = getEntityManager()
+				.createQuery("select t " + "from Tavolo t left join Prenotazione on tavoloprenotato_id = t.id "
+						+ "and data = :today " + "order by t.id", Tavolo.class);
+		query.setParameter("today", today, TemporalType.DATE);
+		return query.getResultList();
 	}
 }

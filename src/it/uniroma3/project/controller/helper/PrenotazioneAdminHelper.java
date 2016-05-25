@@ -31,6 +31,7 @@ public class PrenotazioneAdminHelper {
 		String nominativo = request.getParameter("nominativo");
 
 		List<Tavolo> tavoli = facade.findAllTavolo();
+		facade.closeEntityManager();
 		Ristorante checkTavoli = new Ristorante();
 		List<Tavolo> tavoliDisponibili = checkTavoli.setTavoloPrenotazione(tavoli,Integer.parseInt(ospiti));
 		Tavolo tavoloDaPrenotare = checkTavoli.checkTavoliLiberiForDate(tavoliDisponibili, validator.validate(data));

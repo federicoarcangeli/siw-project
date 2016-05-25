@@ -22,6 +22,7 @@ public class RegistrazionePersonaleAction {
 		personale.setPassword(encrypter.cryptWithMD5(request.getParameter("password")));
 		personale.setRole(request.getParameter("role"));
 		facade.inserisciUtente(personale);
+		facade.closeEntityManager();
 
 		return "/registraPersonale.jsp";
 	}

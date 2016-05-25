@@ -27,8 +27,9 @@ public class PiattoAction {
 		CategoriaPiatto categoria = facade.findCategoria(request.getParameter("categoria"));
 
 		Piatto piatto = new Piatto(request.getParameter("nome"), descrizionePiatto, categoria);
-
+		
 		facade.inserisciPiatto(piatto);
+		facade.closeEntityManager();
 
 		return "/inserimentoPiatti.jsp";
 	}

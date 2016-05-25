@@ -1,5 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page import="it.uniroma3.project.controller.facade.Facade"%>
+<%@page import="it.uniroma3.project.facade.*"%>
 <%@page import="it.uniroma3.project.persistence.entity.CategoriaPiatto"%>
 <%@page import="it.uniroma3.project.persistence.entity.Piatto"%>
 <%@ page import="java.util.List"%>
@@ -93,8 +93,8 @@
 						<div class="col-md-12">
 							<div class="page-header wow fadeInDown">
 								<h1>
-									Il nostro men&ugrave;<small>deliziati con le nostre
-										pietanze casarecce.</small>
+									Il nostro men&ugrave;<small>Deliziati con le nostre
+										pietanze casarecce</small>
 								</h1>
 							</div>
 						</div>

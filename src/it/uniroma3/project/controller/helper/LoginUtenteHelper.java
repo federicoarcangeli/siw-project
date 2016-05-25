@@ -18,6 +18,7 @@ public class LoginUtenteHelper {
 		boolean corretto=true;
 
 		Utente utente = facade.findUtente(request.getParameter("username"));
+		facade.closeEntityManager();
 		username= request.getParameter("username");
 		password = request.getParameter("password");
 

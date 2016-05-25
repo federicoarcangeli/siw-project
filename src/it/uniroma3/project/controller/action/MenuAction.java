@@ -16,6 +16,7 @@ public class MenuAction implements Action {
 		List<CategoriaPiatto> categorie = facade.findAllCategorie();
 		request.setAttribute("categorie", categorie);
 		List<Piatto> piatti = facade.findAllPiatti();
+		facade.closeEntityManager();
 		request.setAttribute("piatti", piatti);
 		return "/menu.jsp";
 	}

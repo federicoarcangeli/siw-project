@@ -39,6 +39,7 @@ public class PrenotazioneAction {
 			facade.setTavoloPrenotato(tavolo);
 
 		facade.inserisciPrenotazione(prenotazione);
+		facade.closeEntityManager();
 
 		return "/prenotazione.jsp";
 	}

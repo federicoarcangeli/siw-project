@@ -19,6 +19,7 @@ public class ProfiloAction implements Action {
 		session.setMaxInactiveInterval(-1);
 		Utente utente = (Utente)session.getAttribute("utenteCorrente");
 		List<Prenotazione> prenotazioni = facade.findAllPrenotazioniUtente(utente.getId());
+		facade.closeEntityManager();
 		request.setAttribute("prenotazioni", prenotazioni);
 		return "/profilo.jsp";
 	}

@@ -10,28 +10,20 @@ import it.uniroma3.project.persistence.entity.CategoriaPiatto;;
 
 public class CategoriaPiattoDao extends AbstractDao<CategoriaPiatto> {
 
+	public CategoriaPiattoDao(EntityManager em) {
+		super(em);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public CategoriaPiatto findById(long id) {
-		EntityManager em = super.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		CategoriaPiatto result = em.find(CategoriaPiatto.class,id);
-		tx.commit();
-		em.close();
-		return result;
+		return getEntityManager().find(CategoriaPiatto.class, id);
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<CategoriaPiatto> findAll() {
-		EntityManager em = super.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		List<CategoriaPiatto> result = em.createNamedQuery("CategoriaPiattoFindAll").getResultList();
-		tx.commit();
-		em.close();
-		return result;
+		return getEntityManager().createNamedQuery("CategoriaPiattoFindAll").getResultList();
 	}
 
 }

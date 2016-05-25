@@ -20,6 +20,7 @@ public class RegistrazioneUtenteHelper {
 		String confermaPassword = request.getParameter("confermaPassword");
 
 		if(facade.findUtente(username)!=null){
+			facade.closeEntityManager();
 			check=false;
 			request.setAttribute("userError", "Utente esistente");
 		}else{

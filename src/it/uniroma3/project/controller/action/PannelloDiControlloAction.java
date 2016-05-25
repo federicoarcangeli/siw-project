@@ -21,6 +21,7 @@ public class PannelloDiControlloAction implements Action {
 		HttpSession session = request.getSession();
 		session.setMaxInactiveInterval(-1);
 		List<Tavolo> tavoli = facade.findAllTavolo();
+		facade.closeEntityManager();
 		for(Tavolo t : tavoli){
 			if(t.getOccupato()==0)
 				liberi++;

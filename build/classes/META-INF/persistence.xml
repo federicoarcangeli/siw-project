@@ -21,7 +21,7 @@
 			<property name="javax.persistence.jdbc.password" value="789456123Ale" /> 
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://52.27.50.13:5432/restaurant" />
 			<!-- Hibernate properties-->
-			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />

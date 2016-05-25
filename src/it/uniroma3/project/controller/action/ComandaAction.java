@@ -43,10 +43,13 @@ public class ComandaAction implements Action {
 				session.setAttribute("comanda", comanda);
 			}
 
+		facade.closeEntityManager();
 
 		session.setAttribute("categorie", facade.findAllCategorie());
 		session.setAttribute("piatti", facade.findAllPiatti());
 
+	
+		
 		return "/comanda.jsp";
 
 	}

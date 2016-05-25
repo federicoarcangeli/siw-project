@@ -43,6 +43,7 @@ public class Comanda {
 
 	public Comanda() {
 		this.lineeComanda = new ArrayList<>();
+		this.dataOraEmissione = new Date();
 		this.prezzoTotale=0.0;
 	}
 
@@ -68,6 +69,11 @@ public class Comanda {
 	public void setLineeComanda(List<LineaComanda> lineeComanda) {
 		this.lineeComanda = lineeComanda;
 	}
+	
+	public void addLineeComanda(LineaComanda lineaComanda) {
+		this.lineeComanda.add(lineaComanda);
+	}
+	
 
 	public Date getDataOraEmissione() {
 		return dataOraEmissione;

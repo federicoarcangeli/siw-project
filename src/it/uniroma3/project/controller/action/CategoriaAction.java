@@ -13,6 +13,7 @@ public class CategoriaAction implements Action {
 	public String execute(HttpServletRequest request) {
 		Facade facade = new Facade();
 		List<CategoriaPiatto> categorie = facade.findAllCategorie();
+		facade.closeEntityManager();
 		request.setAttribute("categorie", categorie);
 		return "/inserimentoPiatti.jsp";
 	}

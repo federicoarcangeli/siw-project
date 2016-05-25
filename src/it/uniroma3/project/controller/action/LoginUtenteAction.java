@@ -14,6 +14,7 @@ public class LoginUtenteAction {
 	public String execute(HttpServletRequest request) {
 		Facade facade = new Facade();
 		Utente utente = facade.findUtente(request.getParameter("username"));
+		facade.closeEntityManager();
 		HttpSession session = request.getSession();
 		session.setMaxInactiveInterval(-1); // la sessione non viene mai terminata
 		session.setAttribute("utenteCorrente", utente);

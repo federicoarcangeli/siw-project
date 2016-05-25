@@ -1,5 +1,6 @@
 package it.uniroma3.project.controller.action;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,8 @@ public class SalaAction implements Action {
 
 		// ristorante.setUpGiornaliero();
 
-		List<Tavolo> tavoli = facade.findAllTavolo();
+		List<Tavolo> tavoli = facade.findAllTavoliToday(new Date()) ;
+		facade.closeEntityManager();
 		request.setAttribute("tavoli", tavoli);
 		return "/sala.jsp";
 	}

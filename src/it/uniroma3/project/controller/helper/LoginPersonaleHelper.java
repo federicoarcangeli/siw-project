@@ -17,6 +17,7 @@ public class LoginPersonaleHelper {
 		String password;
 		boolean corretto=true;
 		Utente personale = facade.findUtente(request.getParameter("username"));
+		facade.closeEntityManager();
 
 		username = request.getParameter("username");
 		password = request.getParameter("password");

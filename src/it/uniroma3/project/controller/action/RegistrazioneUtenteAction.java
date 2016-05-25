@@ -32,7 +32,7 @@ public class RegistrazioneUtenteAction {
 		//mail.sendMail(request.getParameter("email"));
 
 		facade.inserisciUtente(utente);
-
+		facade.closeEntityManager();
 		session.setAttribute("utenteCorrente", utente);
 
 		return "/home_Utente.jsp";

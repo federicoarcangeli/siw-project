@@ -18,8 +18,9 @@ public class ComandaModel {
 		this.comanda = comanda;
 	}
 	
-	public void updatePrice(double price) {
+	public Comanda updatePrice(double price) {
 		this.comanda.setPrezzoTotale(this.comanda.getPrezzoTotale()+price);
+		return this.comanda;
 	}
 	
 	

@@ -13,54 +13,37 @@ import it.uniroma3.project.persistence.entity.Tavolo;
 
 public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 
+	public PrenotazioneDao(EntityManager em) {
+		super(em);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public Prenotazione findById(long id) {
-		EntityManager em = super.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		Prenotazione p = em.find(Prenotazione.class, id);
-		tx.commit();
-		em.close();
-		return p;
+		return getEntityManager().find(Prenotazione.class, id);
 	}
 
 	@Override
 	public List<Prenotazione> findAll() {
-		EntityManager em = super.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		List<Prenotazione> result = em.createNamedQuery("Prenotazione.findAll",Prenotazione.class).getResultList();
-		tx.commit();
-		em.close();
-		return result;
+		return getEntityManager().createNamedQuery("Prenotazione.findAll", Prenotazione.class).getResultList();
 
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Prenotazione> findAllPrenotazioneUtente(Long id_utente) {
-		EntityManager em = super.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();	
-		Query query = em.createNativeQuery("select p.* from Prenotazione p where p.utente_id= ?1",Prenotazione.class);
-		query.setParameter(1,id_utente);
-		List<Prenotazione> result = query.getResultList();
-		tx.commit();
-		em.close();
-		return result;
+		Query query = getEntityManager().createNativeQuery("select p.* from Prenotazione p where p.utente_id= ?1",
+				Prenotazione.class);
+		query.setParameter(1, id_utente);
+		return query.getResultList();
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Prenotazione> findPrenotazioneTavolo(Tavolo t, Date today) {
-		EntityManager em = super.getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();	
-		Query query = em.createNativeQuery("select p.* from Prenotazione p where p.tavoloprenotato_id= ?1 and p.data= ?2",Prenotazione.class);
-		query.setParameter(1,t.getId());
-		query.setParameter(2,today,TemporalType.DATE);
-		List<Prenotazione> result = query.getResultList();
-		tx.commit();
-		em.close();
-		return result;
+		Query query = getEntityManager().createNativeQuery(
+				"select p.* from Prenotazione p where p.tavoloprenotato_id= ?1 and p.data= ?2", Prenotazione.class);
+		query.setParameter(1, t.getId());
+		query.setParameter(2, today, TemporalType.DATE);
+		return query.getResultList();
+
 	}
 }

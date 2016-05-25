@@ -39,6 +39,7 @@ public class PrenotazioneAdminAction {
 
 		if(validatorD.isToday(data))
 			facade.setTavoloPrenotato(tavolo);
+		facade.closeEntityManager();
 
 		return "/prenotazioneAdmin.jsp";
 	}

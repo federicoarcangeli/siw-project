@@ -28,8 +28,9 @@ public class PrenotazioneHelper {
 		String data = request.getParameter("data");
 		String ora = request.getParameter("ora");
 		String ospiti = request.getParameter("ospiti");
-
+		
 		List<Tavolo> tavoli = facade.findAllTavolo();
+		facade.closeEntityManager();
 		Ristorante checkTavoli = new Ristorante();
 		List<Tavolo> tavoliDisponibili = checkTavoli.setTavoloPrenotazione(tavoli,Integer.parseInt(ospiti));
 		Tavolo tavoloDaPrenotare = checkTavoli.checkTavoliLiberiForDate(tavoliDisponibili, validator.validate(data));

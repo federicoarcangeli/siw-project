@@ -17,9 +17,10 @@ import org.apache.log4j.Logger;
  * @param <T>
  */
 public abstract class AbstractDao<T> {
+	private EntityManager em;
 	
-	public AbstractDao() {
-
+	public AbstractDao(EntityManager em) {
+		this.em = em;
 	}
 
 	/**
@@ -28,12 +29,7 @@ public abstract class AbstractDao<T> {
 	 * @param entity
 	 */
 	public void save(T entity) {
-		EntityManager em = getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
 		em.persist(entity);
-		tx.commit();
-		em.close();
 	}
 
 	/**
@@ -42,13 +38,8 @@ public abstract class AbstractDao<T> {
 	 * @param entity
 	 */
 	public void delete(T entity) {
-		EntityManager em = getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
 		T toRemove = em.merge(entity);
 		em.remove(toRemove);
-		tx.commit();
-		em.close();
 	}
 
 	/**
@@ -57,12 +48,7 @@ public abstract class AbstractDao<T> {
 	 * @param entity
 	 */
 	public void update(T entity) {
-		EntityManager em = getEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
 		em.merge(entity);
-		tx.commit();
-		em.close();
 	}
 
 	public static EntityManager getEntityManager() {
