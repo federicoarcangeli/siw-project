@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -37,7 +38,7 @@ public class Comanda {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Tavolo tavolo;
 
-	@OneToMany(mappedBy="comanda", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="comanda", cascade = CascadeType.MERGE, fetch=FetchType.EAGER)
 	private List<LineaComanda> lineeComanda;
 
 
@@ -71,9 +72,16 @@ public class Comanda {
 	}
 	
 	public void addLineeComanda(LineaComanda lineaComanda) {
+		lineaComanda = this.updateNumberLine(lineaComanda);
 		this.lineeComanda.add(lineaComanda);
 	}
 	
+	public LineaComanda updateNumberLine(LineaComanda lineaComanda) {
+		for(int i = 0; i<this.lineeComanda.size(); i++) {
+				lineaComanda.updateNumeroLinea();
+		}
+		return lineaComanda;
+	}
 
 	public Date getDataOraEmissione() {
 		return dataOraEmissione;
@@ -105,6 +113,10 @@ public class Comanda {
 
 	public void setTavolo(Tavolo tavolo) {
 		this.tavolo = tavolo;
+	}
+	
+	public void updatePrice(double price) {
+		this.setPrezzoTotale(this.getPrezzoTotale() + price);
 	}
 
 	@Override

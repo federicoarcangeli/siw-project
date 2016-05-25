@@ -258,5 +258,21 @@ public class Facade {
 		this.em.getTransaction().commit();
 		return comande;
 	}
+	
+	public Comanda findComandaById(Long id) {
+		ComandaDao dao = new ComandaDao(this.em);
+		this.em.getTransaction().begin();
+		Comanda comanda = dao.findById(id);
+		this.em.getTransaction().commit();
+		return comanda;
+	}
+	
+	public Piatto findPiattoById(Long id) {
+		PiattoDao dao = new PiattoDao(this.em);
+		this.em.getTransaction().begin();
+		Piatto piatto = dao.findById(id);
+		this.em.getTransaction().commit();
+		return piatto;
+	}
 
 }
