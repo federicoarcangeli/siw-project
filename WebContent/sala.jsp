@@ -57,12 +57,12 @@
 							<img src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>
-
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
 							<li><a
-								href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
+								href="${pageContext.request.contextPath}/processaSala"><span
+									style="color: #F9C56A;">SALA</span></a></li>
 							<li><a
 								href="${pageContext.request.contextPath}/processaComanda">Comanda</a></li>
 							<li class="dropdown"><a href="./index.html"
@@ -85,18 +85,10 @@
 			<!-- Page Header -->
 			<section class='page_header vertical-padding'></section>
 
-
 			<!-- menu-->
-
-			<div class="row">
-				<div class="col-md-12">
-					<div class="page-header wow fadeInDown">
-						<h1>Gestione sala</h1>
-					</div>
-				</div>
+			<div class="col-md-12">
+				<br> <br>
 			</div>
-
-
 			<div class="container-fluid">
 				<div class="row">
 					<form action="processaComanda" method="post">
@@ -140,18 +132,11 @@
 									</c:choose>
 								</div>
 							</c:forEach>
-
 						</div>
 					</form>
 				</div>
-
-
 			</div>
-
-
-
 		</div>
-
 	</div>
 
 	<!-- Javascript -->

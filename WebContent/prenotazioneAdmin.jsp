@@ -65,7 +65,8 @@
 
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
+							<li><a href="./prenotazioneAdmin.jsp"><span
+									style="color: #F9C56A;">Riserva un tavolo</span></a></li>
 							<li><a
 								href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
 							<li class="dropdown"><a href="./index.html"
@@ -91,13 +92,7 @@
 			<section class="reservation">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-12">
-							<div class="page-header">
-								<h1>
-									Prenotazione<small>Prenota un tavolo per un cliente</small>
-								</h1>
-							</div>
-						</div>
+						<div class="col-md-12"></div>
 					</div>
 					<div class="reservation-form">
 						<form action="processaPrenotazioneAdmin" method="post"
@@ -170,8 +165,8 @@
 													class="btn btn-default" />
 											</div>
 											<%
-													if (request.getAttribute("ERROR") != null) {
-												%>
+												if (request.getAttribute("ERROR") != null) {
+											%>
 											<br>
 											<div class="animated fadeInDown">
 												<div class="alert alert-error alert-dismissable">
@@ -185,11 +180,11 @@
 
 											</div>
 											<%
-													}
-												%>
+												}
+											%>
 											<%
-													if (request.getAttribute("ERRORE") != null) {
-												%>
+												if (request.getAttribute("ERRORE") != null) {
+											%>
 											<div class="animated fadeInDown">
 												<div class="form-group">
 													<div class="alert alert-error alert-dismissable">
@@ -203,11 +198,11 @@
 
 											</div>
 											<%
-													}
-												%>
+												}
+											%>
 											<%
-													if (request.getAttribute("OK") != null) {
-												%>
+												if (request.getAttribute("OK") != null) {
+											%>
 											<div class="animated fadeInDown">
 												<div class="alert alert-success alert-dismissable">
 													<button type="button" class="close" data-dismiss="alert">
@@ -218,8 +213,8 @@
 
 											</div>
 											<%
-													}
-												%>
+												}
+											%>
 										</div>
 									</div>
 								</div>

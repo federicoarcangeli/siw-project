@@ -127,24 +127,24 @@
 											<table class="table">
 												<thead>
 													<tr>
-														<th>Nominativo</th>
-														<th>Data - Ora</th>
-														<th>Tavolo</th>
-														<th>Ospiti</th>
+														<th class="text-center">Nominativo</th>
+														<th class="text-center">Data - Ora</th>
+														<th class="text-center">Tavolo</th>
+														<th class="text-center">Ospiti</th>
 													</tr>
 												</thead>
 												<tbody>
 													<c:forEach var="prenotazione" items="${prenotazioni}">
 														<tr>
-															<td>${prenotazione.nominativo}
+															<td class="text-center">${prenotazione.nominativo}
 																${prenotazione.getUtente().getNome()}<br>
 																${prenotazione.getUtente().getCognome()}
 															</td>
-															<td>${prenotazione.data}<br>
+															<td class="text-center">${prenotazione.data}<br>
 																${prenotazione.ora}
 															</td>
-															<td>${prenotazione.tavoloPrenotato.getCodiceTavolo()}</td>
-															<td>${prenotazione.numeroOspiti}</td>
+															<td class="text-center">${prenotazione.tavoloPrenotato.getCodiceTavolo()}</td>
+															<td class="text-center">${prenotazione.numeroOspiti}</td>
 														</tr>
 													</c:forEach>
 												</tbody>
@@ -156,17 +156,17 @@
 											<table class="table">
 												<thead>
 													<tr>
-														<th>Codice operatore</th>
-														<th>Username</th>
-														<th>Tavolo servito</th>
+														<th class="text-center">Codice operatore</th>
+														<th class="text-center">Username</th>
+														<th class="text-center">Tavolo servito</th>
 													</tr>
 												</thead>
 												<tbody>
 													<c:forEach var="comanda" items="${comandePannello}">
 														<tr>
-															<td>${comanda.operatore.getId()}</td>
-															<td>${comanda.operatore.getUsername()}</td>
-															<td>${comanda.tavolo.getCodiceTavolo()}</td>
+															<td class="text-center">${comanda.operatore.getId()}</td>
+															<td class="text-center">${comanda.operatore.getUsername()}</td>
+															<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
 														</tr>
 													</c:forEach>
 												</tbody>
@@ -174,14 +174,14 @@
 											<h4>Panoramica tavoli</h4>
 											<div class="progress">
 												<div class="progress-bar progress-bar-success"
-													role="progressbar" style="width: ${liberiP}%">Liberi:
+													role="progressbar" style="width: ${liberiP}%">
 													${liberi}</div>
 												<div class="progress-bar progress-bar-warning"
 													role="progressbar" style="width: ${prenotatiP}%">
-													Prenotati: ${prenotati}</div>
+													${prenotati}</div>
 												<div class="progress-bar progress-bar-danger"
 													role="progressbar" style="width: ${occupatiP}%">
-													Occupati: ${occupati}</div>
+													${occupati}</div>
 											</div>
 										</div>
 
@@ -190,25 +190,25 @@
 											<table class="table">
 												<thead>
 													<tr>
-														<th>Codice</th>
-														<th>Tavolo</th>
-														<th>Totale</th>
-														<th>Dettagli</th>
-														<th>Concludi</th>
-														<th>Elimina</th>
+														<th class="text-center">Codice</th>
+														<th class="text-center">Tavolo</th>
+														<th class="text-center">Totale</th>
+														<th class="text-center">Dettagli</th>
+														<th class="text-center">Concludi</th>
+														<th class="text-center">Elimina</th>
 													</tr>
 												</thead>
 												<tbody>
 													<c:forEach var="comanda" items="${comandePannello}">
 														<tr>
-															<td>${comanda.id}</td>
-															<td>${comanda.tavolo.getCodiceTavolo()}</td>
-															<td>${comanda.prezzoTotale}</td>
-															<td><a class="fa fa-info"
+															<td class="text-center">${comanda.id}</td>
+															<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
+															<td class="text-center">${comanda.prezzoTotale}</td>
+															<td class="text-center"><a class="fa fa-info"
 																onclick="$(this).closest('form').submit()"></a></td>
-															<td><a class="fa fa-check"
+															<td class="text-center"><a class="fa fa-check"
 																onclick="$(this).closest('form').submit()"></a></td>
-															<td><a class="fa fa-trash-o"
+															<td class="text-center"><a class="fa fa-trash-o"
 																onclick="$(this).closest('form').submit()"></a></td>
 														</tr>
 													</c:forEach>
