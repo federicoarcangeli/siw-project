@@ -187,42 +187,92 @@
 
 										<div class="col-md-4 col-sm-6">
 											<h4>Comande in corso</h4>
-											<table class="table">
-												<thead>
-													<tr>
-														<th class="text-center">Codice</th>
-														<th class="text-center">Tavolo</th>
-														<th class="text-center">Totale</th>
-														<th class="text-center">Dettagli</th>
-														<th class="text-center">Concludi</th>
-														<th class="text-center">Elimina</th>
-													</tr>
-												</thead>
-												<tbody>
-													<c:forEach var="comanda" items="${comandePannello}">
+											<form action="" method="post">
+												<table class="table">
+													<thead>
 														<tr>
-															<td class="text-center">${comanda.id}</td>
-															<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
-															<td class="text-center">${comanda.prezzoTotale}</td>
-															<td class="text-center"><a class="fa fa-info"
-																onclick="$(this).closest('form').submit()"></a></td>
-															<td class="text-center"><a class="fa fa-check"
-																onclick="$(this).closest('form').submit()"></a></td>
-															<td class="text-center"><a class="fa fa-trash-o"
-																onclick="$(this).closest('form').submit()"></a></td>
+															<th class="text-center">Codice</th>
+															<th class="text-center">Tavolo</th>
+															<th class="text-center">Totale</th>
+															<th class="text-center">Operazioni</th>
+
 														</tr>
-													</c:forEach>
-												</tbody>
-											</table>
+													</thead>
+													<tbody>
+
+														<c:forEach var="comanda" items="${comandePannello}">
+															<tr>
+																<td class="text-center">${comanda.id}</td>
+																<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
+																<td class="text-center">${comanda.prezzoTotale}</td>
+																<td class="text-center"><a href="#"
+																	data-toggle="modal" data-target='#${comanda.id}'
+																	class="fa fa-wrench"></a></td>
+
+															</tr>
+														</c:forEach>
+													</tbody>
+												</table>
+											</form>
 										</div>
 									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
+					<c:forEach var="comanda" items="${comandePannello}">
+						<div id="${comanda.id}" class="modal fade">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title">Tavolo:
+											${comanda.tavolo.getCodiceTavolo()} - Comanda: ${comanda.id}</h4>
+									</div>
+									<div class="modal-body">
+										<table class="table">
+											<thead>
+												<tr>
+													<th class="text-center">Linea N°</th>
+													<th class="text-center">Piatto</th>
+													<th class="text-center">Quantità</th>
+
+												</tr>
+											</thead>
+											<tbody>
+
+												<c:forEach var="linea" items="${comanda.getLineeComanda()}">
+													<tr>
+														<td class="text-center">${linea.numeroLinea}</td>
+														<td class="text-center">${linea.piatto.nome}</td>
+														<td class="text-center">${linea.quantita}</td>
+
+													</tr>
+												</c:forEach>
+
+											</tbody>
+										</table>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-danger">
+											<i class="fa fa-trash-o"></i>
+										</button>
+										<button type="button" class="btn btn-warning"
+											data-dismiss="modal">
+											<i class="fa fa-times"></i>
+										</button>
+										<button type="button" class="btn btn-success">
+											<i class="fa fa-check"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+
 				</div>
 			</div>
+
 			<%
 				}
 			%>

@@ -25,15 +25,9 @@
 <link rel="stylesheet" href="css/plugin.css">
 <link rel="stylesheet" href="css/main.css">
 
-<!--[if lt IE 9]>
-            <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
-        <![endif]-->
 </head>
 
 <body data-scroll-animation="true">
-	<!--[if lt IE 8]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
 
 	<!-- Preloder-->
 	<div class="preloder animated">
@@ -45,6 +39,14 @@
 	<div class="body">
 
 		<div class="main-wrapper">
+
+			<%
+				if (session.getAttribute("amministratoreCorrente") == null) {
+					String redirectURL = "./404.html";
+					response.sendRedirect(redirectURL);
+
+				} else {
+			%>
 
 			<!-- Navigation-->
 			<nav class="navbar navbar-fixed-top">
@@ -89,6 +91,9 @@
 			<section class='page_header vertical-padding'></section>
 
 			<!-- Reservations page-->
+			<div class="col-md-12">
+				<br> <br> <br>
+			</div>
 			<section class="reservation">
 				<div class="container">
 					<div class="row">
@@ -264,7 +269,9 @@
 					</div>
 				</div>
 			</div>
-
+			<%
+				}
+			%>
 
 		</div>
 	</div>
