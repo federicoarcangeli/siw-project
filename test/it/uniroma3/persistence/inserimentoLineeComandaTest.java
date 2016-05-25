@@ -1,4 +1,5 @@
-
+/*Da sistemare nei package corretti
+ * test mischiati comanda e lineacomanda*/
 package it.uniroma3.persistence;
 
 import static org.junit.Assert.*;
@@ -44,6 +45,11 @@ public class inserimentoLineeComandaTest {
 	@Test
 	public void testUpdateNumeroLineaComanda() {
 		LineaComanda l = new LineaComanda();
+	}
+	
+	@Test
+	public void testControlloQuantitaLineaComanda() {
+		
 	}
 
 	@Test

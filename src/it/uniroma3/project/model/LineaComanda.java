@@ -33,7 +33,7 @@ public class LineaComanda {
 	private Piatto piatto;
 
 	public LineaComanda(){
-		this.quantita = 0;
+		this.quantita = 0;	
 		this.numeroLinea = 0;
 	}
 
@@ -55,6 +55,10 @@ public class LineaComanda {
 	
 	public void updateNumeroLinea() {
 		this.numeroLinea++;
+	}
+	
+	public void updateQuantity() {
+		this.quantita++;
 	}
 
 

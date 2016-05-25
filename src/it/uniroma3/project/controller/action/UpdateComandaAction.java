@@ -27,6 +27,7 @@ public class UpdateComandaAction implements Action {
 
 		/*è già presente il piatto nell'ordine*/
 		if(lineaComanda!=null){
+			lineaComanda.updateQuantity();
 			facade.updateLinea(lineaComanda);
 		}
 		/*nuovo piatto da aggiungere all'ordine*/
@@ -36,13 +37,13 @@ public class UpdateComandaAction implements Action {
 			lineaComanda.setComanda(comandaInCorso);
 			lineaComanda.setPiatto(piatto);
 			lineaComanda.setQuantita(1);
-			comandaInCorso.setPrezzoTotale(comandaInCorso.getPrezzoTotale()+piatto.getDescrizionePiatto().getPrezzo());
-			System.out.println("Totale comanda:" + comandaInCorso.getPrezzoTotale());
+			comandaInCorso.updatePrice(piatto.getDescrizionePiatto().getPrezzo());
 			comandaInCorso.addLineeComanda(lineaComanda);
 			facade.updateComanda(comandaInCorso);
 		}
-		facade.closeEntityManager();
+		
 		List<LineaComanda> linee = facade.findallLineeComanda(comandaInCorso.getId());
+		facade.closeEntityManager();
 		session.setAttribute("linee", linee);
 
 		return "/comanda.jsp";
