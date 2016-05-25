@@ -1,52 +1,5 @@
-<<<<<<< HEAD
-//package it.uniroma3.persistence;
-//
-//import static org.junit.Assert.*;
-//
-//import org.junit.Before;
-//import org.junit.Test;
-//
-//import it.uniroma3.project.controller.facade.Facade;
-//import it.uniroma3.project.persistence.entity.Comanda;
-//import it.uniroma3.project.persistence.entity.LineaComanda;
-//import it.uniroma3.project.persistence.entity.Piatto;
-//
-//public class inserimentoLineeComandaTest {
-//	
-//	private Facade facade;
-//	private Comanda comanda;
-//	private Piatto piatto;
-//	private LineaComanda linea;
-//
-//	@Before
-//	public void setUp() throws Exception {
-//		this.facade = new Facade();
-//		this.comanda = facade.findComandaById(219L);
-//		this.piatto = facade.findPiattoById(1L);
-//		this.linea = new LineaComanda();
-//	}
-//	
-//	@Test
-//	public void testComandaEsistente() {
-//		assertNotNull(this.comanda);
-//	}
-//	
-//	@Test
-//	public void testPiattoEsistente() {
-//		assertNotNull(this.piatto);
-//	}
-//
-//	@Test
-//	public void testInserisciLinea() {
-//		this.linea.setComanda(this.comanda);
-//		this.linea.setPiatto(this.piatto);
-//		this.linea.setQuantita(1);
-//		facade.updateComanda(comanda);
-//		
-//	}
-//
-//}
-=======
+/*Da sistemare nei package corretti
+ * test mischiati comanda e lineacomanda*/
 package it.uniroma3.persistence;
 
 import static org.junit.Assert.*;
@@ -55,9 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import it.uniroma3.project.facade.Facade;
-import it.uniroma3.project.persistence.entity.Comanda;
-import it.uniroma3.project.persistence.entity.LineaComanda;
-import it.uniroma3.project.persistence.entity.Piatto;
+import it.uniroma3.project.model.Comanda;
+import it.uniroma3.project.model.LineaComanda;
+import it.uniroma3.project.model.Piatto;
 
 public class inserimentoLineeComandaTest {
 	
@@ -69,8 +22,8 @@ public class inserimentoLineeComandaTest {
 	@Before
 	public void setUp() throws Exception {
 		this.facade = new Facade();
-//		this.comanda = facade.findComandaById(219L);
-//		this.piatto = facade.findPiattoById(1L);
+		this.comanda = facade.findComandaById(270L);
+		this.piatto = facade.findPiattoById(1L);
 		this.linea = new LineaComanda();
 	}
 	
@@ -83,15 +36,32 @@ public class inserimentoLineeComandaTest {
 	public void testPiattoEsistente() {
 		assertNotNull(this.piatto);
 	}
+	
+	@Test
+	public void testSizeLineeComanda() {
+		assertNotEquals(1, this.comanda.getLineeComanda().size());
+	}
+	
+	@Test
+	public void testUpdateNumeroLineaComanda() {
+		LineaComanda l = new LineaComanda();
+	}
+	
+	@Test
+	public void testControlloQuantitaLineaComanda() {
+		
+	}
 
 	@Test
 	public void testInserisciLinea() {
-		this.linea.setComanda(this.comanda);
+		this.linea.setComanda(comanda);
 		this.linea.setPiatto(this.piatto);
 		this.linea.setQuantita(1);
-//		facade.updateComanda(comanda);
+		this.comanda.updatePrice(this.piatto.getDescrizionePiatto().getPrezzo());
+		this.comanda.addLineeComanda(this.linea);
+		facade.updateComanda(comanda);
 		
 	}
 
 }
->>>>>>> branch 'master' of https://github.com/1federico1/siw-project.git
+

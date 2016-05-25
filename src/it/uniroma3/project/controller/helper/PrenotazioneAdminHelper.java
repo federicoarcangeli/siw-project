@@ -9,8 +9,8 @@ import org.apache.commons.validator.routines.DateValidator;
 
 import it.uniroma3.project.facade.Facade;
 import it.uniroma3.project.model.Ristorante;
-import it.uniroma3.project.persistence.entity.Tavolo;
-import it.uniroma3.validator.Time24HoursValidator;
+import it.uniroma3.project.model.Tavolo;
+import it.uniroma3.project.services.validator.Time24HoursValidator;;
 
 public class PrenotazioneAdminHelper {
 
@@ -31,9 +31,10 @@ public class PrenotazioneAdminHelper {
 		String nominativo = request.getParameter("nominativo");
 
 		List<Tavolo> tavoli = facade.findAllTavolo();
-		Ristorante checkTavoli = new Ristorante();
-		List<Tavolo> tavoliDisponibili = checkTavoli.setTavoloPrenotazione(tavoli,Integer.parseInt(ospiti));
-		Tavolo tavoloDaPrenotare = checkTavoli.checkTavoliLiberiForDate(tavoliDisponibili, validator.validate(data));
+		facade.closeEntityManager();
+		Ristorante ristorante = new Ristorante();
+		List<Tavolo> tavoliDisponibili = ristorante.setTavoloPrenotazione(tavoli,Integer.parseInt(ospiti));
+		Tavolo tavoloDaPrenotare = ristorante.checkTavoliLiberiForDate(tavoliDisponibili, validator.validate(data));
 
 		if (nominativo.equals("")) {
 			corretto = false;

@@ -3,8 +3,8 @@ package it.uniroma3.project.controller.helper;
 import javax.servlet.http.HttpServletRequest;
 
 import it.uniroma3.project.facade.Facade;
-import it.uniroma3.project.persistence.entity.Utente;
-import it.uniroma3.security.MD5Encrypter;
+import it.uniroma3.project.model.Utente;
+import it.uniroma3.project.services.security.MD5Encrypter;
 public class LoginPersonaleHelper {
 
 	public LoginPersonaleHelper() {
@@ -17,6 +17,7 @@ public class LoginPersonaleHelper {
 		String password;
 		boolean corretto=true;
 		Utente personale = facade.findUtente(request.getParameter("username"));
+		facade.closeEntityManager();
 
 		username = request.getParameter("username");
 		password = request.getParameter("password");

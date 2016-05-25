@@ -20,6 +20,7 @@ public class RegistrazioneTavoloHelper {
 		}else{
 			if(facade.findTavoloByNumero(codiceTavolo)!=null){
 				corretto=false;
+				facade.closeEntityManager();
 				request.setAttribute("tavoloError", "Tavolo già presente nel sistema");
 			}
 		}

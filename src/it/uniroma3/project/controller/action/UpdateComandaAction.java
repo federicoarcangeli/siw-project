@@ -6,9 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import it.uniroma3.project.facade.Facade;
-import it.uniroma3.project.persistence.entity.Comanda;
-import it.uniroma3.project.persistence.entity.LineaComanda;
-import it.uniroma3.project.persistence.entity.Piatto;
+import it.uniroma3.project.model.Comanda;
+import it.uniroma3.project.model.LineaComanda;
+import it.uniroma3.project.model.Piatto;
 
 public class UpdateComandaAction implements Action {
 
@@ -22,25 +22,28 @@ public class UpdateComandaAction implements Action {
 		
 		Comanda comandaInCorso = (Comanda) session.getAttribute("comanda");
 		
-		LineaComanda linea = facade.findLineaByIdPiattoAndComanda(idPiatto,comandaInCorso.getId());
+		LineaComanda lineaComanda = facade.findLineaByIdPiattoAndComanda(idPiatto,comandaInCorso.getId());
+		
 
 		/*è già presente il piatto nell'ordine*/
-		if(linea!=null){
-			linea.setQuantita(linea.getQuantita()+1);
-			facade.updateLinea(linea);
+		if(lineaComanda!=null){
+			lineaComanda.updateQuantity();
+			facade.updateLinea(lineaComanda);
 		}
 		/*nuovo piatto da aggiungere all'ordine*/
 		else{
 			Piatto piatto = facade.findPiatto(idPiatto);
-			linea = new LineaComanda();
-			linea.setComanda(comandaInCorso);
-			linea.setPiatto(piatto);
-			linea.setQuantita(1);
-			comandaInCorso.setPrezzoTotale(piatto.getDescrizionePiatto().getPrezzo());
-			facade.inserisciLinea(linea);
+			lineaComanda = new LineaComanda();
+			lineaComanda.setComanda(comandaInCorso);
+			lineaComanda.setPiatto(piatto);
+			lineaComanda.setQuantita(1);
+			comandaInCorso.updatePrice(piatto.getDescrizionePiatto().getPrezzo());
+			comandaInCorso.addLineeComanda(lineaComanda);
+			facade.updateComanda(comandaInCorso);
 		}
 		
 		List<LineaComanda> linee = facade.findallLineeComanda(comandaInCorso.getId());
+		facade.closeEntityManager();
 		session.setAttribute("linee", linee);
 
 		return "/comanda.jsp";

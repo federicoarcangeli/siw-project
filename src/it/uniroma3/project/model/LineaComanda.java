@@ -1,7 +1,9 @@
-package it.uniroma3.project.persistence.entity;
+package it.uniroma3.project.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,6 +33,8 @@ public class LineaComanda {
 	private Piatto piatto;
 
 	public LineaComanda(){
+		this.quantita = 0;	
+		this.numeroLinea = 0;
 	}
 
 	public Long getId() {
@@ -47,6 +51,14 @@ public class LineaComanda {
 
 	public void setNumeroLinea(int numeroLinea) {
 		this.numeroLinea = numeroLinea;
+	}
+	
+	public void updateNumeroLinea() {
+		this.numeroLinea++;
+	}
+	
+	public void updateQuantity() {
+		this.quantita++;
 	}
 
 

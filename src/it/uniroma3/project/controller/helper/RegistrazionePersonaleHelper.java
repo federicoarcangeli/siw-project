@@ -17,6 +17,7 @@ public class RegistrazionePersonaleHelper {
 
 		if(facade.findUtente(codice)!=null){
 			corretto=false;
+			facade.closeEntityManager();
 			request.setAttribute("personaleError", "Personale esistente");
 		}
 		if(role.equals("vuoto")){

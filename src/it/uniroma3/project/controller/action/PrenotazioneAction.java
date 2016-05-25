@@ -8,10 +8,10 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.validator.routines.DateValidator;
 
 import it.uniroma3.project.facade.Facade;
-import it.uniroma3.project.persistence.entity.Prenotazione;
-import it.uniroma3.project.persistence.entity.Tavolo;
-import it.uniroma3.project.persistence.entity.Utente;
-import it.uniroma3.validator.Time24HoursValidator;
+import it.uniroma3.project.model.Prenotazione;
+import it.uniroma3.project.model.Tavolo;
+import it.uniroma3.project.model.Utente;
+import it.uniroma3.project.services.validator.*;
 
 public class PrenotazioneAction {
 
@@ -39,6 +39,7 @@ public class PrenotazioneAction {
 			facade.setTavoloPrenotato(tavolo);
 
 		facade.inserisciPrenotazione(prenotazione);
+		facade.closeEntityManager();
 
 		return "/prenotazione.jsp";
 	}

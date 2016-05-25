@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import it.uniroma3.project.facade.Facade;
-import it.uniroma3.project.persistence.entity.Prenotazione;
-import it.uniroma3.project.persistence.entity.Utente;
+import it.uniroma3.project.model.Prenotazione;
+import it.uniroma3.project.model.Utente;
 
 public class ProfiloAction implements Action {
 
@@ -19,6 +19,7 @@ public class ProfiloAction implements Action {
 		session.setMaxInactiveInterval(-1);
 		Utente utente = (Utente)session.getAttribute("utenteCorrente");
 		List<Prenotazione> prenotazioni = facade.findAllPrenotazioniUtente(utente.getId());
+		facade.closeEntityManager();
 		request.setAttribute("prenotazioni", prenotazioni);
 		return "/profilo.jsp";
 	}
