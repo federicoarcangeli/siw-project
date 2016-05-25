@@ -105,6 +105,11 @@
 										href="${pageContext.request.contextPath}/ProcessaCategoria">Registra
 											nuovo Piatto <i class="fa fa-caret-right"></i>
 									</a></li>
+									<li><a
+										href="${pageContext.request.contextPath}/processaStorico">Storico
+											Comande <span class="label label-danger">hot</span><i
+											class="fa fa-caret-right"></i>
+									</a></li>
 
 								</ul>
 							</div>
@@ -118,20 +123,32 @@
 									<div class="row">
 
 										<div class="col-md-4 col-sm-6">
-											<h4>Panoramica tavoli</h4>
-											<div class="progress">
-												<div class="progress-bar progress-bar-success"
-													role="progressbar" style="width: ${liberiP}%">Liberi:
-													${liberi}</div>
-												<div class="progress-bar progress-bar-warning"
-													role="progressbar" style="width: ${prenotatiP}%">
-													Prenotati: ${prenotati}</div>
-												<div class="progress-bar progress-bar-danger"
-													role="progressbar" style="width: ${occupatiP}%">
-													Occupati: ${occupati}</div>
-
-
-											</div>
+											<h4>Prenotazioni</h4>
+											<table class="table">
+												<thead>
+													<tr>
+														<th class="text-center">Nominativo</th>
+														<th class="text-center">Data - Ora</th>
+														<th class="text-center">Tavolo</th>
+														<th class="text-center">Ospiti</th>
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach var="prenotazione" items="${prenotazioni}">
+														<tr>
+															<td class="text-center">${prenotazione.nominativo}
+																${prenotazione.getUtente().getNome()}<br>
+																${prenotazione.getUtente().getCognome()}
+															</td>
+															<td class="text-center">${prenotazione.data}<br>
+																${prenotazione.ora}
+															</td>
+															<td class="text-center">${prenotazione.tavoloPrenotato.getCodiceTavolo()}</td>
+															<td class="text-center">${prenotazione.numeroOspiti}</td>
+														</tr>
+													</c:forEach>
+												</tbody>
+											</table>
 										</div>
 
 										<div class="col-md-4 col-sm-6">
@@ -139,19 +156,33 @@
 											<table class="table">
 												<thead>
 													<tr>
-														<th>Codice</th>
-														<th>Nome</th>
-														<th>Tavoli serviti</th>
+														<th class="text-center">Codice operatore</th>
+														<th class="text-center">Username</th>
+														<th class="text-center">Tavolo servito</th>
 													</tr>
 												</thead>
 												<tbody>
-													<tr>
-														<td>prova</td>
-														<td>prova</td>
-														<td>prova</td>
-													</tr>
+													<c:forEach var="comanda" items="${comandePannello}">
+														<tr>
+															<td class="text-center">${comanda.operatore.getId()}</td>
+															<td class="text-center">${comanda.operatore.getUsername()}</td>
+															<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
+														</tr>
+													</c:forEach>
 												</tbody>
 											</table>
+											<h4>Panoramica tavoli</h4>
+											<div class="progress">
+												<div class="progress-bar progress-bar-success"
+													role="progressbar" style="width: ${liberiP}%">
+													${liberi}</div>
+												<div class="progress-bar progress-bar-warning"
+													role="progressbar" style="width: ${prenotatiP}%">
+													${prenotati}</div>
+												<div class="progress-bar progress-bar-danger"
+													role="progressbar" style="width: ${occupatiP}%">
+													${occupati}</div>
+											</div>
 										</div>
 
 										<div class="col-md-4 col-sm-6">
@@ -159,22 +190,30 @@
 											<table class="table">
 												<thead>
 													<tr>
-														<th>Codice</th>
-														<th>Tavolo</th>
-														<th>Stato</th>
-														<th>Totale</th>
+														<th class="text-center">Codice</th>
+														<th class="text-center">Tavolo</th>
+														<th class="text-center">Totale</th>
+														<th class="text-center">Dettagli</th>
+														<th class="text-center">Concludi</th>
+														<th class="text-center">Elimina</th>
 													</tr>
 												</thead>
 												<tbody>
-													<tr>
-														<td>prova</td>
-														<td>prova</td>
-														<td>prova</td>
-														<td>prova</td>
-													</tr>
+													<c:forEach var="comanda" items="${comandePannello}">
+														<tr>
+															<td class="text-center">${comanda.id}</td>
+															<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
+															<td class="text-center">${comanda.prezzoTotale}</td>
+															<td class="text-center"><a class="fa fa-info"
+																onclick="$(this).closest('form').submit()"></a></td>
+															<td class="text-center"><a class="fa fa-check"
+																onclick="$(this).closest('form').submit()"></a></td>
+															<td class="text-center"><a class="fa fa-trash-o"
+																onclick="$(this).closest('form').submit()"></a></td>
+														</tr>
+													</c:forEach>
 												</tbody>
 											</table>
-
 										</div>
 									</div>
 								</div>
@@ -183,10 +222,6 @@
 						</div>
 					</div>
 				</div>
-
-
-
-
 			</div>
 			<%
 				}

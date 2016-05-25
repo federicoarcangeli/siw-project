@@ -168,6 +168,12 @@ public class Facade {
 		return result;
 	}
 
+	public List<Prenotazione> findAllPrenotazioniToday(Date today){
+		PrenotazioneDao dao = new PrenotazioneDao();
+		List<Prenotazione> prenotazione = dao.findAllPrenotazioniToday(today);
+		return prenotazione;
+	}
+
 	public List<LineaComanda> findallLineeComanda(Long idComanda) {
 		LineaComandaDao dao = new LineaComandaDao(this.em);
 		this.em.getTransaction().begin();
@@ -248,8 +254,16 @@ public class Facade {
 			this.em.close();
 	}
 
+	public List<Comanda> findallComandaToday(Date date) {
+		ComandaDao dao = new ComandaDao();
+		List<Comanda> comandeToday= dao.findAllToday(date);
+		return comandeToday;
+	}
 
-
-
+	public List<Comanda> findallComanda() {
+		ComandaDao dao = new ComandaDao();
+		List<Comanda> comande= dao.findAll();
+		return comande;
+	}
 
 }

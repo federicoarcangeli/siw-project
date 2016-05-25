@@ -1,18 +1,16 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="it">
 
 <head>
 <meta charset="utf-8">
-<title>Gestione sala</title>
-<meta name="author" content="Surjith S M">
+<title>Pannello di controllo</title>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!-- SEO -->
 <meta name="description"
 	content="Tomato is a Responsive HTML5 Template for Restaurants and food related services.">
 <meta name="keywords"
 	content="tomato, responsive, html5, restaurant, template, food, reservation">
-
 <!-- Favicons -->
 <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -23,13 +21,12 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
 <link rel="stylesheet" href="css/plugin.css">
+<link rel="stylesheet" href="js/vendor/vegas/vegas.min.css">
 <link rel="stylesheet" href="css/main.css">
-
-
 
 </head>
 
-<body>
+<body id="intro4">
 
 	<!-- Preloder-->
 	<div class="preloder animated">
@@ -41,6 +38,14 @@
 	<div class="body">
 
 		<div class="main-wrapper">
+			<%
+				if (session.getAttribute("amministratoreCorrente") == null) {
+					String redirectURL = "./404.html";
+					response.sendRedirect(redirectURL);
+
+				} else {
+			%>
+
 			<!-- Navigation-->
 			<nav class="navbar navbar-fixed-top">
 				<div class="container">
@@ -57,14 +62,12 @@
 							<img src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>
+
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
 							<li><a
-								href="${pageContext.request.contextPath}/processaSala"><span
-									style="color: #F9C56A;">SALA</span></a></li>
-							<li><a
-								href="${pageContext.request.contextPath}/processaComanda">Comanda</a></li>
+								href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
 							<li class="dropdown"><a href="./index.html"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Benvenuto
@@ -81,65 +84,55 @@
 				</div>
 			</nav>
 
-
 			<!-- Page Header -->
 			<section class='page_header vertical-padding'></section>
 
-			<!-- menu-->
-			<div class="col-md-12">
-				<br> <br>
-			</div>
-			<div class="container-fluid">
-				<div class="row">
-					<form action="processaComanda" method="post">
-						<div class="col-sm-12 centered">
-							<c:forEach var="tavolo" items="${tavoli}">
-								<div class="col-xs-6 col-sm-2">
-									<c:choose>
-										<c:when test="${tavolo.occupato=='0'}">
-											<span class="label label-success">COPERTI :
-												${tavolo.coperti}</span>
-											<button id="libero" type="submit" class="btn btn-success"
-												style="width: 100%; height: 150px;" name="tavolo"
-												value='${tavolo.codiceTavolo}'>
-												<h3>${tavolo.codiceTavolo}</h3>
-											</button>
-											<div class="col-md-12" style="height: 25px;"></div>
-										</c:when>
 
-										<c:when test="${tavolo.occupato=='1'}">
-											<span class="label label-warning">COPERTI :
-												${tavolo.coperti}</span>
-											<span> </span>
-											<button id="prenotato" type="submit" class="btn btn-warning"
-												name="tavolo" style="width: 100%; height: 150px;"
-												value='${tavolo.codiceTavolo}'>
-												<h3>${tavolo.codiceTavolo}</h3>
-											</button>
-											<div class="col-md-12" style="height: 25px;"></div>
-										</c:when>
+			<div class="shop-grid">
+				<h2>Storico comande</h2>
+				<div class="shop-products">
+					<div class="row">
 
-										<c:when test="${tavolo.occupato=='2'}">
-											<span class="label label-danger">COPERTI :
-												${tavolo.coperti}</span>
-											<button id="occupato" type="submit" class="btn btn-danger"
-												name="tavolo" style="width: 100%; height: 150px;"
-												value='${tavolo.codiceTavolo}'>
-												<h3>${tavolo.codiceTavolo}</h3>
-											</button>
-											<div class="col-md-12" style="height: 25px;"></div>
-										</c:when>
-									</c:choose>
-								</div>
-							</c:forEach>
+						<div class="col-md-12">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>Data - Ora</th>
+										<th>Prezzo</th>
+										<th>Operatore</th>
+										<th>Tavolo</th>
+										<th>Dettagli ordine</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="comanda" items="${comandeStorico}">
+										<tr>
+											<td>${comanda.id}</td>
+											<td>${comanda.dataOraEmissione}</td>
+											<td>${comanda.prezzoTotale}</td>
+											<td>${comanda.operatore.getUsername()}</td>
+											<td>${comanda.tavolo.getCodiceTavolo()}</td>
+											<td><a class="fa fa-info"
+												onclick="$(this).closest('form').submit()"></a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
 						</div>
-					</form>
+
+					</div>
 				</div>
+
 			</div>
 		</div>
-	</div>
+		<%
+			}
+		%>
 
+	</div>
 	<!-- Javascript -->
+
 	<script src="js/vendor/jquery-1.11.2.min.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
 	<script src="js/vendor/jquery.flexslider-min.js"></script>
@@ -160,10 +153,6 @@
 	<script src="js/main.js"></script>
 	<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
-
-	<!-- 	scripts -->
-	<script src="js/scripts/getComanda.js"></script>
-	<script src="js/scripts/formAction.js"></script>
 
 </body>
 

@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.TemporalType;
+import javax.persistence.TypedQuery;
 
 import it.uniroma3.project.persistence.entity.Prenotazione;
 import it.uniroma3.project.persistence.entity.Tavolo;
@@ -46,4 +47,17 @@ public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 		return query.getResultList();
 
 	}
+	
+	public List<Prenotazione> findAllPrenotazioniToday(Date today) {
+		EntityManager em = getEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		TypedQuery<Prenotazione> query = em.createQuery( "select p from Prenotazione p where p.data = :today",Prenotazione.class);
+		query.setParameter("today", today);
+		List<Prenotazione> result = query.getResultList();
+		tx.commit();
+		em.close();
+		return result;
+	}
+	
 }

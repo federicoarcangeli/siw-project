@@ -163,11 +163,15 @@
 																				<td>${linea.piatto.nome}</td>
 																				<td><input type="number" placeholder="qta"
 																					value="${linea.quantita}" style="width: 65px;"></td>
-																				<td><input class="btn btn-default"
-																					type="submit"></td>
-
+																				<td><a class="fa fa-plus"
+																					onclick="$(this).closest('form').submit()"></a></td>
 																			</tr>
 																		</c:forEach>
+																		<tr>
+																			<td></td>
+																			<td><strong>Totale:</strong></td>
+																			<td>${comanda.prezzoTotale}&euro;</td>
+																		</tr>
 																	</tbody>
 																</table>
 															</div>

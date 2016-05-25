@@ -38,13 +38,13 @@
 
 	<div class="body">
 		<div class="main-wrapper">
-			<%-- 			<%
+			<%
 				if (session.getAttribute("amministratoreCorrente") == null) {
 					String redirectURL = "./sessioneScadutaAdmin.jsp";
 					response.sendRedirect(redirectURL);
 
 				} else {
-			%> --%>
+			%>
 
 			<!-- Navigation-->
 			<nav class="navbar navbar-fixed-top">
@@ -217,9 +217,9 @@
 					</div>
 				</div>
 			</section>
-			<%-- 			<%
+			<%
 				}
-			%> --%>
+			%>
 		</div>
 
 	</div>
