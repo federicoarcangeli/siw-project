@@ -43,8 +43,10 @@ public class inserimentoLineeComandaTest {
 	}
 	
 	@Test
-	public void testUpdateNumeroLineaComanda() {
-		LineaComanda l = new LineaComanda();
+	public void testUpdateNumeroLineaComandaPiattoGiaPresente() {
+		LineaComanda l1 = new LineaComanda();
+		l1.setPiatto(this.piatto);
+		
 	}
 	
 	@Test
@@ -52,16 +54,16 @@ public class inserimentoLineeComandaTest {
 		
 	}
 
-	@Test
-	public void testInserisciLinea() {
-		this.linea.setComanda(comanda);
-		this.linea.setPiatto(this.piatto);
-		this.linea.setQuantita(1);
-		this.comanda.updatePrice(this.piatto.getDescrizionePiatto().getPrezzo());
-		this.comanda.addLineeComanda(this.linea);
-		facade.updateComanda(comanda);
-		
-	}
+//	@Test
+//	public void testInserisciLinea() {
+//		this.linea.setComanda(comanda);
+//		this.linea.setPiatto(this.piatto);
+//		this.linea.setQuantita(1);
+//		this.comanda.updatePrice(this.piatto.getDescrizionePiatto().getPrezzo());
+//		this.comanda.addLineeComanda(this.linea);
+//		facade.updateComanda(comanda);
+//		
+//	}
 
 }
 

@@ -34,8 +34,7 @@ public class UpdateComandaAction implements Action {
 			facade.updateComanda(comandaInCorso);
 		}
 		/*nuovo piatto da aggiungere all'ordine*/
-		else{
-			
+		else{	
 			lineaComanda = new LineaComanda();
 			lineaComanda.setComanda(comandaInCorso);
 			lineaComanda.setPiatto(piatto);
