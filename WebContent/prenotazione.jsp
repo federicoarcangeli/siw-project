@@ -42,6 +42,13 @@
 
 	<div class="body">
 		<div class="main-wrapper">
+			<%
+				if (session.getAttribute("utenteCorrente") == null) {
+					String redirectURL = "./sessioneScadutaUtente.jsp";
+					response.sendRedirect(redirectURL);
+
+				} else {
+			%>
 
 			<!-- Navigation-->
 			<nav class="navbar navbar-fixed-top">
@@ -313,6 +320,9 @@
 				</div>
 
 			</section>
+			<%
+				}
+			%>
 		</div>
 
 	</div>

@@ -51,7 +51,9 @@ public class PannelloDiControlloAction implements Action {
 		// gestione prenotazioni di oggi
 		List<Prenotazione> prenotazioni = facade.findAllPrenotazioniToday(new Date());
 		request.setAttribute("prenotazioni", prenotazioni);
-		
+
+
+
 		return "/home_Administrator.jsp";
 	}
 }

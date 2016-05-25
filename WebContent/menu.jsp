@@ -8,7 +8,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Il nostro men&ugrave</title>
+<title>Il nostro men&ugrave;</title>
 <meta name="author" content="Surjith S M">
 
 <!-- SEO -->
@@ -89,16 +89,6 @@
 			<!-- menu-->
 			<section class="menu space60">
 				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="page-header wow fadeInDown">
-								<h1>
-									Il nostro men&ugrave;<small>deliziati con le nostre
-										pietanze casarecce.</small>
-								</h1>
-							</div>
-						</div>
-					</div>
 					<div class="food-menu wow fadeInUp">
 						<div class="row">
 							<div class="col-md-12">

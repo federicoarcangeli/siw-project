@@ -41,6 +41,14 @@
 	<div class="body">
 
 		<div class="main-wrapper">
+
+			<%
+				if (session.getAttribute("amministratoreCorrente") == null) {
+					String redirectURL = "./404.html";
+					response.sendRedirect(redirectURL);
+
+				} else {
+			%>
 			<!-- Navigation-->
 			<nav class="navbar navbar-fixed-top">
 				<div class="container">
@@ -87,7 +95,7 @@
 
 			<!-- menu-->
 			<div class="col-md-12">
-				<br> <br>
+				<br> <br> <br>
 			</div>
 			<div class="container-fluid">
 				<div class="row">
@@ -136,6 +144,9 @@
 					</form>
 				</div>
 			</div>
+			<%
+				}
+			%>
 		</div>
 	</div>
 

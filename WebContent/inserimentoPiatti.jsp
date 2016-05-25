@@ -202,8 +202,8 @@
 												data-target="#confirm-submit" class="btn btn-default" />
 										</div>
 										<%
-												if (request.getAttribute("ERRORE") != null) {
-											%>
+											if (request.getAttribute("ERRORE") != null) {
+										%>
 										<div class="animated fadeInDown">
 											<div class="form-group">
 												<div class="alert alert-error alert-dismissable">
@@ -217,11 +217,11 @@
 
 										</div>
 										<%
-												}
-											%>
+											}
+										%>
 										<%
-												if (request.getAttribute("OK") != null) {
-											%>
+											if (request.getAttribute("OK") != null) {
+										%>
 										<div class="animated fadeInDown">
 											<div class="alert alert-success alert-dismissable">
 												<button type="button" class="close" data-dismiss="alert">
@@ -232,8 +232,8 @@
 
 										</div>
 										<%
-												}
-											%>
+											}
+										%>
 									</div>
 
 								</div>
