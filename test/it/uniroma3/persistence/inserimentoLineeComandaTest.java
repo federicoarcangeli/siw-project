@@ -7,9 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import it.uniroma3.project.facade.Facade;
-import it.uniroma3.project.persistence.entity.Comanda;
-import it.uniroma3.project.persistence.entity.LineaComanda;
-import it.uniroma3.project.persistence.entity.Piatto;
+import it.uniroma3.project.persistence.model.Comanda;
+import it.uniroma3.project.persistence.model.LineaComanda;
+import it.uniroma3.project.persistence.model.Piatto;
 
 public class inserimentoLineeComandaTest {
 	

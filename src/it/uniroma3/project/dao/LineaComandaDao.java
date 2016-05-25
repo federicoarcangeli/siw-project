@@ -1,4 +1,4 @@
-package it.uniroma3.project.persistence.dao;
+package it.uniroma3.project.dao;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-import it.uniroma3.project.persistence.entity.LineaComanda;
+import it.uniroma3.project.model.LineaComanda;
 
 
 public class LineaComandaDao extends AbstractDao<LineaComanda> {

@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import it.uniroma3.project.model.ComandaModel;
-import it.uniroma3.project.persistence.entity.Comanda;
+import it.uniroma3.project.persistence.model.Comanda;
 
 public class ComandaModelTest {
 	private Comanda comanda;

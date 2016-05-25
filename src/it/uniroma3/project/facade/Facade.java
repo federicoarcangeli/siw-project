@@ -5,23 +5,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import it.uniroma3.project.persistence.dao.CategoriaPiattoDao;
-import it.uniroma3.project.persistence.dao.ComandaDao;
-import it.uniroma3.project.persistence.dao.DescrizionePiattoDao;
-import it.uniroma3.project.persistence.dao.EntityManagerFactorySingleton;
-import it.uniroma3.project.persistence.dao.LineaComandaDao;
-import it.uniroma3.project.persistence.dao.PiattoDao;
-import it.uniroma3.project.persistence.dao.PrenotazioneDao;
-import it.uniroma3.project.persistence.dao.TavoloDao;
-import it.uniroma3.project.persistence.dao.UtenteDao;
-import it.uniroma3.project.persistence.entity.CategoriaPiatto;
-import it.uniroma3.project.persistence.entity.Comanda;
-import it.uniroma3.project.persistence.entity.DescrizionePiatto;
-import it.uniroma3.project.persistence.entity.LineaComanda;
-import it.uniroma3.project.persistence.entity.Piatto;
-import it.uniroma3.project.persistence.entity.Prenotazione;
-import it.uniroma3.project.persistence.entity.Tavolo;
-import it.uniroma3.project.persistence.entity.Utente;
+import it.uniroma3.project.dao.*;
+import it.uniroma3.project.model.*;
+
+
 
 public class Facade {
 	private EntityManager em;

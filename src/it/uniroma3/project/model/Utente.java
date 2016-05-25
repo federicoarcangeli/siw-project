@@ -1,4 +1,4 @@
-package it.uniroma3.project.persistence.entity;
+package it.uniroma3.project.model;
 
 import java.util.ArrayList;
 import java.util.List;

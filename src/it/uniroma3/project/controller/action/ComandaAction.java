@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import it.uniroma3.project.facade.Facade;
-import it.uniroma3.project.persistence.entity.Comanda;
-import it.uniroma3.project.persistence.entity.LineaComanda;
-import it.uniroma3.project.persistence.entity.Tavolo;
-import it.uniroma3.project.persistence.entity.Utente;
+import it.uniroma3.project.model.Comanda;
+import it.uniroma3.project.model.LineaComanda;
+import it.uniroma3.project.model.Tavolo;
+import it.uniroma3.project.model.Utente;
 
 public class ComandaAction implements Action {
 

@@ -1,4 +1,4 @@
-package it.uniroma3.project.persistence.dao;
+package it.uniroma3.project.dao;
 
 import java.math.BigInteger;
 import java.util.Date;
@@ -9,7 +9,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import it.uniroma3.project.persistence.entity.Comanda;
+import it.uniroma3.project.model.Comanda;
 
 public class ComandaDao extends AbstractDao<Comanda> {
 

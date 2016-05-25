@@ -3,9 +3,9 @@ package it.uniroma3.persistence;
 import java.util.Date;
 
 import it.uniroma3.project.facade.Facade;
-import it.uniroma3.project.persistence.entity.Comanda;
-import it.uniroma3.project.persistence.entity.Tavolo;
-import it.uniroma3.project.persistence.entity.Utente;
+import it.uniroma3.project.persistence.model.Comanda;
+import it.uniroma3.project.persistence.model.Tavolo;
+import it.uniroma3.project.persistence.model.Utente;
 
 public class inserimentoComandaTest {
 	

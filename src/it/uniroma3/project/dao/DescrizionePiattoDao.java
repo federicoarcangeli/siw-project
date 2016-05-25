@@ -1,11 +1,11 @@
-package it.uniroma3.project.persistence.dao;
+package it.uniroma3.project.dao;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-import it.uniroma3.project.persistence.entity.DescrizionePiatto;
+import it.uniroma3.project.model.DescrizionePiatto;
 
 public class DescrizionePiattoDao extends AbstractDao<DescrizionePiatto> {
 

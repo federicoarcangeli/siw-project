@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import it.uniroma3.project.facade.Facade;
-import it.uniroma3.project.persistence.entity.Comanda;
-import it.uniroma3.project.persistence.entity.Prenotazione;
-import it.uniroma3.project.persistence.entity.Tavolo;
+import it.uniroma3.project.model.Comanda;
+import it.uniroma3.project.model.Prenotazione;
+import it.uniroma3.project.model.Tavolo;
 
 public class PannelloDiControlloAction implements Action {
 

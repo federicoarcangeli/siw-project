@@ -10,9 +10,9 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import it.uniroma3.project.model.Ristorante;
-import it.uniroma3.project.persistence.entity.Prenotazione;
-import it.uniroma3.project.persistence.entity.Tavolo;
+import it.uniroma3.project.persistence.model.Prenotazione;
+import it.uniroma3.project.persistence.model.Ristorante;
+import it.uniroma3.project.persistence.model.Tavolo;
 
 public class RistoranteTest {
 	private Tavolo t1;

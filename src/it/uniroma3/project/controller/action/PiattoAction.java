@@ -3,9 +3,9 @@ package it.uniroma3.project.controller.action;
 import javax.servlet.http.HttpServletRequest;
 
 import it.uniroma3.project.facade.Facade;
-import it.uniroma3.project.persistence.entity.CategoriaPiatto;
-import it.uniroma3.project.persistence.entity.DescrizionePiatto;
-import it.uniroma3.project.persistence.entity.Piatto;
+import it.uniroma3.project.model.CategoriaPiatto;
+import it.uniroma3.project.model.DescrizionePiatto;
+import it.uniroma3.project.model.Piatto;
 import it.uniroma3.project.services.validator.DoubleValidator;
 
 public class PiattoAction {

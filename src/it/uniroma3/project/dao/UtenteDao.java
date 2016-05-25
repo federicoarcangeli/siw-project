@@ -1,4 +1,4 @@
-package it.uniroma3.project.persistence.dao;
+package it.uniroma3.project.dao;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
-import it.uniroma3.project.persistence.entity.Utente;
+import it.uniroma3.project.model.Utente;
 
 public class UtenteDao extends AbstractDao<Utente> {
 
