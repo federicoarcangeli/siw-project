@@ -87,43 +87,79 @@
 			<!-- Page Header -->
 			<section class='page_header vertical-padding'></section>
 
-
+			<!-- Page Storico  -->
 			<div class="shop-grid">
 				<h2>Storico comande</h2>
 				<div class="shop-products">
 					<div class="row">
-
 						<div class="col-md-12">
 							<table class="table">
 								<thead>
 									<tr>
-										<th>ID</th>
-										<th>Data - Ora</th>
-										<th>Prezzo</th>
-										<th>Operatore</th>
-										<th>Tavolo</th>
-										<th>Dettagli ordine</th>
+										<th class="text-center">ID</th>
+										<th class="text-center">Data - Ora</th>
+										<th class="text-center">Prezzo</th>
+										<th class="text-center">Operatore</th>
+										<th class="text-center">Tavolo</th>
+										<th class="text-center">Dettagli ordine</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach var="comanda" items="${comandeStorico}">
 										<tr>
-											<td>${comanda.id}</td>
-											<td>${comanda.dataOraEmissione}</td>
-											<td>${comanda.prezzoTotale}</td>
-											<td>${comanda.operatore.getUsername()}</td>
-											<td>${comanda.tavolo.getCodiceTavolo()}</td>
-											<td><a class="fa fa-info"
-												onclick="$(this).closest('form').submit()"></a></td>
+											<td class="text-center">${comanda.id}</td>
+											<td class="text-center">${comanda.dataOraEmissione}</td>
+											<td class="text-center">${comanda.prezzoTotale}</td>
+											<td class="text-center">${comanda.operatore.getUsername()}</td>
+											<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
+											<td class="text-center"><a class="fa fa-info" href="#"
+												data-toggle="modal" data-target='#${comanda.id}'></a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
 						</div>
-
+						<c:forEach var="comanda" items="${comandeStorico}">
+							<div id="${comanda.id}" class="modal fade">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Tavolo:
+												${comanda.tavolo.getCodiceTavolo()} - Comanda: ${comanda.id}</h4>
+										</div>
+										<div class="modal-body">
+											<table class="table">
+												<thead>
+													<tr>
+														<th class="text-center">Linea N°</th>
+														<th class="text-center">Piatto</th>
+														<th class="text-center">Quantità</th>
+													</tr>
+												</thead>
+												<tbody>
+													<c:forEach var="linea" items="${comanda.getLineeComanda()}">
+														<tr>
+															<td class="text-center">${linea.numeroLinea}</td>
+															<td class="text-center">${linea.piatto.nome}</td>
+															<td class="text-center">${linea.quantita}</td>
+														</tr>
+													</c:forEach>
+												</tbody>
+											</table>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-warning"
+												data-dismiss="modal">
+												<i class="fa fa-times"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
 					</div>
 				</div>
-
 			</div>
 		</div>
 		<%
@@ -131,8 +167,8 @@
 		%>
 
 	</div>
-	<!-- Javascript -->
 
+	<!-- Javascript -->
 	<script src="js/vendor/jquery-1.11.2.min.js"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
 	<script src="js/vendor/jquery.flexslider-min.js"></script>

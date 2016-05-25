@@ -229,54 +229,59 @@
 										<h4 class="modal-title">Tavolo:
 											${comanda.tavolo.getCodiceTavolo()} - Comanda: ${comanda.id}</h4>
 									</div>
-									<div class="modal-body">
-										<table class="table">
-											<thead>
-												<tr>
-													<th class="text-center">Linea N°</th>
-													<th class="text-center">Piatto</th>
-													<th class="text-center">Quantità</th>
-
-												</tr>
-											</thead>
-											<tbody>
-
-												<c:forEach var="linea" items="${comanda.getLineeComanda()}">
+									<form action="processaFineComanda" method="post">
+										<div class="modal-body">
+											<table class="table">
+												<thead>
 													<tr>
-														<td class="text-center">${linea.numeroLinea}</td>
-														<td class="text-center">${linea.piatto.nome}</td>
-														<td class="text-center">${linea.quantita}</td>
+														<th class="text-center">Linea N°</th>
+														<th class="text-center">Piatto</th>
+														<th class="text-center">Quantità</th>
 
 													</tr>
-												</c:forEach>
+												</thead>
+												<tbody>
 
-											</tbody>
-										</table>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-danger">
-											<i class="fa fa-trash-o"></i>
-										</button>
-										<button type="button" class="btn btn-warning"
-											data-dismiss="modal">
-											<i class="fa fa-times"></i>
-										</button>
-										<button type="button" class="btn btn-success">
-											<i class="fa fa-check"></i>
-										</button>
-									</div>
+													<c:forEach var="linea" items="${comanda.getLineeComanda()}">
+														<tr>
+															<td class="text-center">${linea.numeroLinea}</td>
+															<td class="text-center">${linea.piatto.nome}</td>
+															<td class="text-center">${linea.quantita}</td>
+
+														</tr>
+													</c:forEach>
+
+												</tbody>
+											</table>
+
+										</div>
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-danger" name="elimina"
+												onSubmit='setTimeout(function () { window.location.reload(); }, 10)'
+												value="${comanda.id}">
+												<i class="fa fa-trash-o"></i>
+											</button>
+											<button type="button" class="btn btn-warning"
+												data-dismiss="modal">
+												<i class="fa fa-times"></i>
+											</button>
+											<button type="submit" class="btn btn-success" name="conferma"
+												onSubmit='setTimeout(function () { window.location.reload(); }, 10)'
+												value="${comanda.id}">
+												<i class="fa fa-check"></i>
+											</button>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
 					</c:forEach>
-
 				</div>
 			</div>
 
 			<%
 				}
 			%>
-
 		</div>
 	</div>
 

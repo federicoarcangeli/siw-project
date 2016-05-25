@@ -225,19 +225,19 @@ public class Facade {
 		dao.update(linea);
 		this.em.getTransaction().commit();
 	}
-	
+
 	public void updateComanda(Comanda comanda) {
 		ComandaDao dao = new ComandaDao(this.em);
 		this.em.getTransaction().begin();
 		dao.update(comanda);
 		this.em.getTransaction().commit();
 	}
-	
+
 	public static EntityManager getEntityManager() {
 		EntityManager em =  EntityManagerFactorySingleton.getInstance().createEntityManager();
 		return em;
 	}
-	
+
 	public void closeEntityManager() {
 		if(this.em != null)
 			this.em.close();
@@ -258,7 +258,7 @@ public class Facade {
 		this.em.getTransaction().commit();
 		return comande;
 	}
-	
+
 	public Comanda findComandaById(Long id) {
 		ComandaDao dao = new ComandaDao(this.em);
 		this.em.getTransaction().begin();
@@ -266,13 +266,21 @@ public class Facade {
 		this.em.getTransaction().commit();
 		return comanda;
 	}
-	
+
 	public Piatto findPiattoById(Long id) {
 		PiattoDao dao = new PiattoDao(this.em);
 		this.em.getTransaction().begin();
 		Piatto piatto = dao.findById(id);
 		this.em.getTransaction().commit();
 		return piatto;
+	}
+
+	public void eliminaComanda(Comanda comanda) {
+		ComandaDao dao = new ComandaDao(this.em);
+		this.em.getTransaction().begin();
+		dao.delete(comanda);
+		this.em.getTransaction().commit();
+
 	}
 
 }

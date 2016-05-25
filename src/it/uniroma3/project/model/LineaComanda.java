@@ -26,7 +26,7 @@ public class LineaComanda {
 	@Column(nullable = false)
 	private int quantita;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	private Comanda comanda;
 
 	@ManyToOne
@@ -52,11 +52,11 @@ public class LineaComanda {
 	public void setNumeroLinea(int numeroLinea) {
 		this.numeroLinea = numeroLinea;
 	}
-	
+
 	public void updateNumeroLinea() {
 		this.numeroLinea++;
 	}
-	
+
 	public void updateQuantity() {
 		this.quantita++;
 	}
