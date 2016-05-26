@@ -17,7 +17,7 @@ public class LineaComanda {
 	private Long id;
 
 	@Column
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int numeroLinea;
 
 	@Column
@@ -33,8 +33,7 @@ public class LineaComanda {
 	private Piatto piatto;
 
 	public LineaComanda(){
-		this.quantita = 0;	
-		this.numeroLinea = 0;
+		this.quantita = 1;	
 	}
 	
 	
@@ -42,8 +41,7 @@ public class LineaComanda {
 	public LineaComanda(Comanda comanda, Piatto piatto) {
 		this.comanda = comanda;
 		this.piatto = piatto;
-		this.quantita = 0;
-		this.numeroLinea = 0;
+		this.quantita = 1;
 	}
 
 
