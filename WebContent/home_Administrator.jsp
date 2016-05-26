@@ -229,54 +229,81 @@
 										<h4 class="modal-title">Tavolo:
 											${comanda.tavolo.getCodiceTavolo()} - Comanda: ${comanda.id}</h4>
 									</div>
-									<div class="modal-body">
-										<table class="table">
-											<thead>
-												<tr>
-													<th class="text-center">Linea N°</th>
-													<th class="text-center">Piatto</th>
-													<th class="text-center">Quantità</th>
-
-												</tr>
-											</thead>
-											<tbody>
-
-												<c:forEach var="linea" items="${comanda.getLineeComanda()}">
+									<form action="processaFineComanda" method="post" id="formfield">
+										<input type="hidden" name="action" value="add_form" />
+										<div class="modal-body">
+											<table class="table">
+												<thead>
 													<tr>
-														<td class="text-center">${linea.numeroLinea}</td>
-														<td class="text-center">${linea.piatto.nome}</td>
-														<td class="text-center">${linea.quantita}</td>
+														<th class="text-center">Linea N°</th>
+														<th class="text-center">Piatto</th>
+														<th class="text-center">Quantità</th>
 
 													</tr>
-												</c:forEach>
+												</thead>
+												<tbody>
 
-											</tbody>
-										</table>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-danger">
-											<i class="fa fa-trash-o"></i>
-										</button>
-										<button type="button" class="btn btn-warning"
-											data-dismiss="modal">
-											<i class="fa fa-times"></i>
-										</button>
-										<button type="button" class="btn btn-success">
-											<i class="fa fa-check"></i>
-										</button>
-									</div>
+													<c:forEach var="linea" items="${comanda.getLineeComanda()}">
+														<tr>
+															<td class="text-center">${linea.numeroLinea}</td>
+															<td class="text-center">${linea.piatto.nome}</td>
+															<td class="text-center">${linea.quantita}</td>
+
+														</tr>
+													</c:forEach>
+
+												</tbody>
+											</table>
+
+										</div>
+										<div class="modal-footer">
+											<button type="submit" class="btn btn-danger" name="elimina"
+												id="submitBtn" data-toggle="modal"
+												data-target="#confirm-submit"
+												onSubmit='setTimeout(function () { window.location.reload(); }, 10)'
+												value="${comanda.id}">
+												<i class="fa fa-trash-o"></i>
+											</button>
+											<button type="button" class="btn btn-warning"
+												data-dismiss="modal">
+												<i class="fa fa-times"></i>
+											</button>
+											<button type="submit" class="btn btn-success" name="conferma"
+												onSubmit='setTimeout(function () { window.location.reload(); }, 10)'
+												value="${comanda.id}">
+												<i class="fa fa-check"></i>
+											</button>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
 					</c:forEach>
 
+					<div class="modal fade" id="confirm-submit" tabindex="-1"
+						role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-body">
+									<h4>Confermare eliminazione?</h4>
+									<p>verrà eliminata la comanda e le sue corrispettive righe</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Annulla</button>
+									<a href="#" id="submit" class="btn btn-danger">elimina
+										comanda</a>
+								</div>
+							</div>
+
+						</div>
+					</div>
 				</div>
 			</div>
 
 			<%
 				}
 			%>
-
 		</div>
 	</div>
 
@@ -302,6 +329,7 @@
 	<script src="js/main.js"></script>
 	<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
+	<script src="js/scripts/confermaEliminazione.js"></script>
 
 </body>
 

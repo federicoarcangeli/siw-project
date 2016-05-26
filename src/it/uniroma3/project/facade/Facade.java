@@ -274,4 +274,12 @@ public class Facade {
 		return piatto;
 	}
 
+	public void eliminaComanda(Comanda comanda) {
+		ComandaDao dao = new ComandaDao(this.em);
+		this.em.getTransaction().begin();
+		dao.delete(comanda);
+		this.em.getTransaction().commit();
+
+	}
+
 }
