@@ -17,17 +17,15 @@
 		<class>it.uniroma3.db.project.persistence.entity.Administrator</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-			<property name="javax.persistence.jdbc.user" value="progettosiw" />
-			<property name="javax.persistence.jdbc.password" value="789456123Ale" /> 
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://52.27.50.13:5432/restaurant" />
+			<property name="javax.persistence.jdbc.user" value="postgres" />
+			<property name="javax.persistence.jdbc.password" value="postgres" /> 
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/restaurant" />
 			<!-- Hibernate properties-->
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-
-			
-<!-- 		<property name="hibernate.hbm2ddl.auto" value="create" /> -->
+	<!-- 	    <property name="hibernate.hbm2ddl.auto" value="create" />  -->
 		</properties>
 	</persistence-unit>
 </persistence>

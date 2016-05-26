@@ -15,7 +15,7 @@ public class FineComandaAction implements Action {
 		Facade facade = new Facade();
 
 		String elimina = request.getParameter("elimina");
-
+		System.out.println("Dio porco è qui ---->" + elimina);
 		if(elimina!=null){
 			Comanda comanda = facade.findComandaById(Long.parseLong(elimina));
 			facade.eliminaComanda(comanda);

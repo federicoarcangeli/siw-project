@@ -229,7 +229,8 @@
 										<h4 class="modal-title">Tavolo:
 											${comanda.tavolo.getCodiceTavolo()} - Comanda: ${comanda.id}</h4>
 									</div>
-									<form action="processaFineComanda" method="post" id="formfield">
+									<form action="processaFineComanda" method="post"
+										id='${comanda.id}'>
 										<input type="hidden" name="action" value="add_form" />
 										<div class="modal-body">
 											<table class="table">
@@ -248,20 +249,15 @@
 															<td class="text-center">${linea.numeroLinea}</td>
 															<td class="text-center">${linea.piatto.nome}</td>
 															<td class="text-center">${linea.quantita}</td>
-
 														</tr>
 													</c:forEach>
-
 												</tbody>
 											</table>
-
 										</div>
 										<div class="modal-footer">
-											<button type="submit" class="btn btn-danger" name="elimina"
-												id="submitBtn" data-toggle="modal"
-												data-target="#confirm-submit"
-												onSubmit='setTimeout(function () { window.location.reload(); }, 10)'
-												value="${comanda.id}">
+											<button type="button" class="btn btn-danger" name="elimina"
+												value='${comanda.id}' id="submitBtn" data-toggle="modal"
+												data-target="#confirm-submit">
 												<i class="fa fa-trash-o"></i>
 											</button>
 											<button type="button" class="btn btn-warning"
@@ -286,16 +282,18 @@
 							<div class="modal-content">
 								<div class="modal-body">
 									<h4>Confermare eliminazione?</h4>
-									<p>verrà eliminata la comanda e le sue corrispettive righe</p>
+									<p>verrà eliminata la comanda</p>
+									<span class="elm"></span>
+									<p>e le sue corrispettive righe</p>
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default"
 										data-dismiss="modal">Annulla</button>
-									<a href="#" id="submit" class="btn btn-danger">elimina
+									<a href="#" id="submit" class="btn btn-danger"
+										onclick='setTimeout(function () { window.location.reload(); }, 40)'>elimina
 										comanda</a>
 								</div>
 							</div>
-
 						</div>
 					</div>
 				</div>

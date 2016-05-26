@@ -17,7 +17,7 @@ public class LineaComanda {
 	private Long id;
 
 	@Column
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int numeroLinea;
 
 	@Column

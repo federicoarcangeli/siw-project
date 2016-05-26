@@ -3,5 +3,5 @@ $('#submitBtn').click(function() {
 });
 
 $('#submit').click(function(){
-	$('#formfield').submit();
+	$($('#elimina').val()).submit();
 });
