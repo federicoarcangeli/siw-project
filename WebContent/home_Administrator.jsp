@@ -42,7 +42,6 @@
 				if (session.getAttribute("amministratoreCorrente") == null) {
 					String redirectURL = "./404.html";
 					response.sendRedirect(redirectURL);
-
 				} else {
 			%>
 
@@ -68,7 +67,7 @@
 							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
 							<li><a
 								href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
-							<li class="dropdown"><a href="./index.html"
+							<li class="dropdown"><a href="./home_Administrator.jsp"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Benvenuto
 									${amministratoreCorrente.username} -
@@ -110,10 +109,8 @@
 											Comande <span class="label label-danger">hot</span><i
 											class="fa fa-caret-right"></i>
 									</a></li>
-
 								</ul>
 							</div>
-
 						</aside>
 
 						<div class="col-md-10">
@@ -148,6 +145,45 @@
 													</c:forEach>
 												</tbody>
 											</table>
+											<br>
+											<hr>
+											<h4>Comande giornaliere completate</h4>
+											<form action="" method="post">
+												<table class="table">
+													<thead>
+														<tr>
+															<th class="text-center">Codice</th>
+															<th class="text-center">Tavolo</th>
+															<th class="text-center">Totale</th>
+															<th class="text-center">Stato</th>
+															<th class="text-center">Dettagli</th>
+
+														</tr>
+													</thead>
+													<tbody>
+														<c:forEach var="comanda" items="${comandePannello}">
+															<c:if test="${comanda.completata=='true'}">
+																<tr>
+																	<td class="text-center">${comanda.id}</td>
+																	<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
+																	<td class="text-center">${comanda.prezzoTotale}</td>
+																	<c:if test="${comanda.completata=='false'}">
+																		<td class="text-center"><i class="fa fa-spinner"></i></td>
+																	</c:if>
+																	<c:if test="${comanda.completata=='true'}">
+																		<td class="text-center" class="success"><i
+																			class="fa fa-check-circle"></i></td>
+																	</c:if>
+																	<td class="text-center"><a href="#"
+																		data-toggle="modal" data-target='#${comanda.id}'
+																		class="fa fa-info-circle"></a></td>
+																</tr>
+															</c:if>
+														</c:forEach>
+													</tbody>
+												</table>
+											</form>
+
 										</div>
 
 										<div class="col-md-4 col-sm-6">
@@ -162,14 +198,18 @@
 												</thead>
 												<tbody>
 													<c:forEach var="comanda" items="${comandePannello}">
-														<tr>
-															<td class="text-center">${comanda.operatore.getId()}</td>
-															<td class="text-center">${comanda.operatore.getUsername()}</td>
-															<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
-														</tr>
+														<c:if test="${comanda.completata=='false'}">
+															<tr>
+																<td class="text-center">${comanda.operatore.getId()}</td>
+																<td class="text-center">${comanda.operatore.getUsername()}</td>
+																<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
+															</tr>
+														</c:if>
 													</c:forEach>
 												</tbody>
 											</table>
+											<br>
+											<hr>
 											<h4>Panoramica tavoli</h4>
 											<div class="progress">
 												<div class="progress-bar progress-bar-success"
@@ -185,7 +225,7 @@
 										</div>
 
 										<div class="col-md-4 col-sm-6">
-											<h4>Comande giornaliere</h4>
+											<h4>Comande giornaliere in corso</h4>
 											<form action="" method="post">
 												<table class="table">
 													<thead>
@@ -199,28 +239,30 @@
 														</tr>
 													</thead>
 													<tbody>
-
 														<c:forEach var="comanda" items="${comandePannello}">
-															<tr>
-																<td class="text-center">${comanda.id}</td>
-																<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
-																<td class="text-center">${comanda.prezzoTotale}</td>
-																<c:if test="${comanda.completata=='false'}">
-																	<td class="text-center"><i class="fa fa-spinner"></i></td>
-																</c:if>
-																<c:if test="${comanda.completata=='true'}">
-																	<td class="text-center" class="success"><i
-																		class="fa fa-check-circle"></i></td>
-																</c:if>
-																<td class="text-center"><a href="#"
-																	data-toggle="modal" data-target='#${comanda.id}'
-																	class="fa fa-wrench"></a></td>
-
-															</tr>
+															<c:if test="${comanda.completata=='false'}">
+																<tr>
+																	<td class="text-center">${comanda.id}</td>
+																	<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
+																	<td class="text-center">${comanda.prezzoTotale}</td>
+																	<c:if test="${comanda.completata=='false'}">
+																		<td class="text-center"><i class="fa fa-spinner"></i></td>
+																	</c:if>
+																	<c:if test="${comanda.completata=='true'}">
+																		<td class="text-center" class="success"><i
+																			class="fa fa-check-circle"></i></td>
+																	</c:if>
+																	<td class="text-center"><a href="#"
+																		data-toggle="modal" data-target='#${comanda.id}'
+																		class="fa fa-wrench"></a></td>
+																</tr>
+															</c:if>
 														</c:forEach>
 													</tbody>
 												</table>
 											</form>
+											<br>
+											<hr>
 										</div>
 									</div>
 								</div>
@@ -246,7 +288,6 @@
 														<th class="text-center">Linea N°</th>
 														<th class="text-center">Piatto</th>
 														<th class="text-center">Quantità</th>
-
 													</tr>
 												</thead>
 												<tbody>
@@ -273,29 +314,30 @@
 											</table>
 										</div>
 										<div class="modal-footer">
-											<button type="submit" class="btn btn-danger" name="elimina"
-												value='${comanda.id}'>
-												Elimina <i class="fa fa-trash-o"></i>
-											</button>
 											<button type="button" class="btn btn-warning"
 												data-dismiss="modal">
 												Chiudi <i class="fa fa-times"></i>
 											</button>
-											<button type="submit" class="btn btn-success" name="conferma"
-												onSubmit='function () {location.reload(true);}'
-												value='${comanda.id}'>
-												Conferma <i class="fa fa-check"></i>
-											</button>
+											<c:if test="${comanda.completata=='false'}">
+												<button type="submit" class="btn btn-danger" name="elimina"
+													value='${comanda.id}'>
+													Elimina <i class="fa fa-trash-o"></i>
+												</button>
+												<button type="submit" class="btn btn-success"
+													name="conferma"
+													onSubmit='function () {location.reload(true);}'
+													value='${comanda.id}'>
+													Conferma <i class="fa fa-check"></i>
+												</button>
+											</c:if>
 										</div>
 									</div>
 								</div>
 							</div>
 						</form>
 					</c:forEach>
-
 				</div>
 			</div>
-
 			<%
 				}
 			%>
