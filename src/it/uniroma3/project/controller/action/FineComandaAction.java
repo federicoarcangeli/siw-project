@@ -29,7 +29,7 @@ public class FineComandaAction implements Action {
 			}
 		facade.closeEntityManager();
 
-		return "/home_Administrator.jsp";
+		return "/processaPannelloControllo";
 
 	}
 

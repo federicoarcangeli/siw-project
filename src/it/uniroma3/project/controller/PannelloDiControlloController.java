@@ -18,14 +18,14 @@ import it.uniroma3.project.controller.action.PannelloDiControlloAction;
 @WebServlet(urlPatterns={"/processaPannelloControllo"})
 public class PannelloDiControlloController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PannelloDiControlloController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public PannelloDiControlloController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

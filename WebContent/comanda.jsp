@@ -139,20 +139,6 @@
 									</div>
 								</div>
 							</form>
-							<%
-								if (request.getAttribute("error") != null) {
-							%>
-							<div class="animated fadeInDown">
-								<div class="alert alert-error alert-dismissable">
-									<button type="button" class="close" data-dismiss="alert">
-										<span class="fa fa-close"></span>
-									</button>
-									<span> ERRORE: </span>${piattoError }
-								</div>
-							</div>
-							<%
-								}
-							%>
 
 							<aside class="col-md-3">
 								<div class="side-widget">

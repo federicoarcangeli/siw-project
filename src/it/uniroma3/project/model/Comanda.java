@@ -90,13 +90,13 @@ public class Comanda {
 		this.lineeComanda.add(lineaComanda);
 	}
 
-	public Map<LineaComanda, Double> prezzoLinea() {
-		Map<LineaComanda, Double> map = new HashMap<>();
-		for(LineaComanda linea : this.lineeComanda) {
-
-		}
-		return map;
-	}
+	//	public Map<LineaComanda, Double> prezzoLinea() {
+	//		Map<LineaComanda, Double> map = new HashMap<>();
+	//		for(LineaComanda linea : this.lineeComanda) {
+	//
+	//		}
+	//		return map;
+	//	}
 
 	public Map<LineaComanda, Integer> quantitaLinea() {
 		Map<LineaComanda, Integer> map = new HashMap<>();

@@ -185,7 +185,7 @@
 										</div>
 
 										<div class="col-md-4 col-sm-6">
-											<h4>Comande in corso</h4>
+											<h4>Comande giornaliere</h4>
 											<form action="" method="post">
 												<table class="table">
 													<thead>
@@ -227,8 +227,9 @@
 						</div>
 					</div>
 					<c:forEach var="comanda" items="${comandePannello}">
-						<form action="processaFineComanda" method="post">
-							<div id="${comanda.id}" class="modal fade">
+						<form action="processaFineComanda" method="get" id="formfield">
+							<div id="${comanda.id}" class="modal fade"
+								aria-labelledby="myModal">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -236,8 +237,6 @@
 											<h4 class="modal-title">Tavolo:
 												${comanda.tavolo.getCodiceTavolo()} - Comanda: ${comanda.id}</h4>
 										</div>
-
-
 										<div class="modal-body">
 											<table class="table">
 												<thead>
@@ -249,7 +248,6 @@
 													</tr>
 												</thead>
 												<tbody>
-
 													<c:forEach var="linea" items="${comanda.getLineeComanda()}">
 														<tr>
 															<td class="text-center">${linea.numeroLinea}</td>
@@ -261,9 +259,8 @@
 											</table>
 										</div>
 										<div class="modal-footer">
-											<button type="button" class="btn btn-danger" name="elimina"
-												value='${comanda.id}' data-toggle="modal"
-												data-target="#confirm-submit">
+											<button type="submit" class="btn btn-danger" name="elimina"
+												value='${comanda.id}'>
 												Elimina <i class="fa fa-trash-o"></i>
 											</button>
 											<button type="button" class="btn btn-warning"
@@ -271,31 +268,9 @@
 												Chiudi <i class="fa fa-times"></i>
 											</button>
 											<button type="submit" class="btn btn-success" name="conferma"
-												onSubmit='setTimeout(function () { window.location.reload(); }, 10)'
+												onSubmit='function () {location.reload(true);}'
 												value='${comanda.id}'>
 												Conferma <i class="fa fa-check"></i>
-											</button>
-										</div>
-
-									</div>
-								</div>
-							</div>
-							<div class="modal fade" id="confirm-submit" tabindex="-1"
-								role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-body">
-											<h4>Confermare eliminazione?</h4>
-											<p>verrà eliminata la comanda</p>
-											<span class="elm"></span>
-											<p>e le sue corrispettive righe</p>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-default"
-												data-dismiss="modal">Annulla</button>
-											<button type="submit" class="btn btn-danger" name="elimina"
-												value="${comanda.id}">
-												<i class="fa fa-trash-o"></i>
 											</button>
 										</div>
 									</div>
@@ -303,6 +278,7 @@
 							</div>
 						</form>
 					</c:forEach>
+
 				</div>
 			</div>
 
