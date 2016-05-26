@@ -31,14 +31,16 @@ public class ComandaAction implements Action {
 			List<LineaComanda> linee = facade.findallLineeComanda(comanda.getId());
 			session.setAttribute("linee", linee);
 			session.setAttribute("comanda", comanda);
-		} else if (tavolo.getOccupato() == 0 || tavolo.getOccupato() == 1) {
-			Comanda comanda = new Comanda();
-			facade.setTavoloOccupato(tavolo);
-			comanda.setOperatore(operatore);
-			comanda.setTavolo(tavolo);
-			comanda.setDataOraEmissione(new Date());
-			facade.inserisciComanda(comanda);
-			session.setAttribute("comanda", comanda);
+		} else {
+			if (tavolo.getOccupato() == 0 || tavolo.getOccupato() == 1) {
+				Comanda comanda = new Comanda();
+				facade.setTavoloOccupato(tavolo);
+				comanda.setOperatore(operatore);
+				comanda.setTavolo(tavolo);
+				comanda.setDataOraEmissione(new Date());
+				facade.inserisciComanda(comanda);
+				session.setAttribute("comanda", comanda);
+			}
 		}
 
 		session.setAttribute("categorie", facade.findAllCategorie());

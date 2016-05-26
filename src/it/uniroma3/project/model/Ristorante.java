@@ -7,8 +7,6 @@ import java.util.List;
 import it.uniroma3.project.facade.Facade;
 import it.uniroma3.project.services.validator.*;
 
-import it.uniroma3.model.*;
-
 public class Ristorante {
 	private static int MAX = 15;
 
@@ -48,6 +46,18 @@ public class Ristorante {
 		}
 		return tavoliCompatibili;
 	}
+	/**
+	 * 
+	 * @param t
+	 * @return true se il tavolo è occupato altrimenti falses
+	 */
+	public boolean comandaInCorso(Tavolo t){
+		for(Comanda c : t.getComande()){
+			if(c.isCompletata()==false)
+				return true;
+		}
+		return false;
+	}
 
 	/**
 	 * controlla se il tavolo è libero per la data scelta
@@ -64,7 +74,7 @@ public class Ristorante {
 		}
 		return null;
 	}
-	
+
 	public void setUpGiornaliero(){
 		Facade facade = new Facade();
 		Date today = new Date();

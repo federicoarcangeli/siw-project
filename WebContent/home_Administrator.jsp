@@ -118,7 +118,6 @@
 
 						<div class="col-md-10">
 							<div class="shop-grid">
-								<h2>PANNELLO DI CONTROLLO</h2>
 								<div class="shop-products">
 									<div class="row">
 
@@ -194,6 +193,7 @@
 															<th class="text-center">Codice</th>
 															<th class="text-center">Tavolo</th>
 															<th class="text-center">Totale</th>
+															<th class="text-center">Stato</th>
 															<th class="text-center">Operazioni</th>
 
 														</tr>
@@ -205,6 +205,12 @@
 																<td class="text-center">${comanda.id}</td>
 																<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
 																<td class="text-center">${comanda.prezzoTotale}</td>
+																<td class="text-center"><c:if
+																		test="${comanda.completata=='false'}">
+																		<i class="fa fa-spinner"></i>
+																	</c:if> <c:if test="${comanda.completata=='true'}">
+																		<i class="fa fa-check-circle"></i>
+																	</c:if></td>
 																<td class="text-center"><a href="#"
 																	data-toggle="modal" data-target='#${comanda.id}'
 																	class="fa fa-wrench"></a></td>
@@ -258,16 +264,16 @@
 											<button type="button" class="btn btn-danger" name="elimina"
 												value='${comanda.id}' data-toggle="modal"
 												data-target="#confirm-submit">
-												<i class="fa fa-trash-o"></i>
+												Elimina <i class="fa fa-trash-o"></i>
 											</button>
 											<button type="button" class="btn btn-warning"
 												data-dismiss="modal">
-												<i class="fa fa-times"></i>
+												Chiudi <i class="fa fa-times"></i>
 											</button>
 											<button type="submit" class="btn btn-success" name="conferma"
 												onSubmit='setTimeout(function () { window.location.reload(); }, 10)'
-												value="${comanda.id}">
-												<i class="fa fa-check"></i>
+												value='${comanda.id}'>
+												Conferma <i class="fa fa-check"></i>
 											</button>
 										</div>
 

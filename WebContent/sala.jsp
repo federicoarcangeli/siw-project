@@ -70,10 +70,8 @@
 							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
 							<li><a
 								href="${pageContext.request.contextPath}/processaSala"><span
-									style="color: #F9C56A;">SALA</span></a></li>
-							<li><a
-								href="${pageContext.request.contextPath}/processaComanda">Comanda</a></li>
-							<li class="dropdown"><a href="./index.html"
+									style="color: #F9C56A;">sala</span></a></li>
+							<li class="dropdown"><a href="./home_Administrator.html"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Benvenuto
 									${amministratoreCorrente.username} -

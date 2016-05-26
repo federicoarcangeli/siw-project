@@ -86,7 +86,7 @@ public class UpdateComandaAction implements Action {
 					comandaInCorso.getPrezzoTotale() + linea.getPiatto().getDescrizionePiatto().getPrezzo());
 			facade.updateLinea(linea);
 			facade.updateComanda(comandaInCorso);
-			
+
 		} else {
 			Piatto piatto = facade.findPiatto(idPiatto);
 			linea = new LineaComanda();

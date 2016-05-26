@@ -279,7 +279,14 @@ public class Facade {
 		this.em.getTransaction().begin();
 		dao.delete(comanda);
 		this.em.getTransaction().commit();
+	}
 
+	public void concludiComanda(Comanda comanda) {
+		ComandaDao dao = new ComandaDao(this.em);
+		this.em.getTransaction().begin();
+		comanda.setCompletata(true);
+		dao.update(comanda);
+		this.em.getTransaction().commit();
 	}
 
 }
