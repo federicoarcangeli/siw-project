@@ -125,7 +125,6 @@
 																</h4>
 																<div class="shop-meta centered">
 																	<button type="submit" name="piatto"
-																		onSubmit='setTimeout(function () { window.location.reload(); }, 10)'
 																		class="btn btn-success center-block"
 																		value='${piatto.id}'>
 																		<i class="fa fa-pencil-square-o"></i> Aggiungi
@@ -140,6 +139,20 @@
 									</div>
 								</div>
 							</form>
+							<%
+								if (request.getAttribute("error") != null) {
+							%>
+							<div class="animated fadeInDown">
+								<div class="alert alert-error alert-dismissable">
+									<button type="button" class="close" data-dismiss="alert">
+										<span class="fa fa-close"></span>
+									</button>
+									<span> ERRORE: </span>${piattoError }
+								</div>
+							</div>
+							<%
+								}
+							%>
 
 							<aside class="col-md-3">
 								<div class="side-widget">

@@ -28,9 +28,11 @@ public class UpdateComandaController extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		UpdateComandaAction updateComandaAction = new UpdateComandaAction();
 		String nextPage = updateComandaAction.execute(request);
 		nextPage = response.encodeURL(nextPage);
