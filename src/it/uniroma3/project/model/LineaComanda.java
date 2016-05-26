@@ -143,4 +143,10 @@ public class LineaComanda {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "LineaComanda [id=" + id + ", numeroLinea=" + numeroLinea + ", nota=" + nota + ", quantita=" + quantita
+				+ ", comanda=" + comanda + ", piatto=" + piatto + "]";
+	}
 }

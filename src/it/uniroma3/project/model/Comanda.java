@@ -38,8 +38,9 @@ public class Comanda {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Tavolo tavolo;
 
-	@OneToMany(mappedBy="comanda", cascade= CascadeType.REMOVE, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="comanda", cascade = CascadeType.MERGE, fetch=FetchType.EAGER)
 	private List<LineaComanda> lineeComanda;
+
 
 	public Comanda() {
 		this.lineeComanda = new ArrayList<>();
@@ -69,15 +70,15 @@ public class Comanda {
 	public void setLineeComanda(List<LineaComanda> lineeComanda) {
 		this.lineeComanda = lineeComanda;
 	}
-
+	
 	public void addLineeComanda(LineaComanda lineaComanda) {
 		lineaComanda = this.updateNumberLine(lineaComanda);
 		this.lineeComanda.add(lineaComanda);
 	}
-
+	
 	public LineaComanda updateNumberLine(LineaComanda lineaComanda) {
 		for(int i = 0; i<this.lineeComanda.size(); i++) {
-			lineaComanda.updateNumeroLinea();
+				lineaComanda.updateNumeroLinea();
 		}
 		return lineaComanda;
 	}
@@ -113,11 +114,11 @@ public class Comanda {
 	public void setTavolo(Tavolo tavolo) {
 		this.tavolo = tavolo;
 	}
-
+	
 	public void updatePrice(double price) {
 		this.setPrezzoTotale(this.getPrezzoTotale() + price);
 	}
-
+	
 	public void setTotal() {
 		double totalPrice = 0;
 		for(LineaComanda linea : this.lineeComanda) {
@@ -132,12 +133,14 @@ public class Comanda {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((dataOraEmissione == null) ? 0 : dataOraEmissione.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((lineeComanda == null) ? 0 : lineeComanda.hashCode());
 		result = prime * result + ((operatore == null) ? 0 : operatore.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(prezzoTotale);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((dataOraEmissione == null) ? 0 : dataOraEmissione.hashCode());
+		result = prime * result + ((tavolo == null) ? 0 : tavolo.hashCode());
 		return result;
 	}
 
@@ -150,7 +153,17 @@ public class Comanda {
 		if (getClass() != obj.getClass())
 			return false;
 		Comanda other = (Comanda) obj;
+		if (dataOraEmissione == null) {
+			if (other.dataOraEmissione != null)
+				return false;
+		} else if (!dataOraEmissione.equals(other.dataOraEmissione))
+			return false;
 		if (id != other.id)
+			return false;
+		if (lineeComanda == null) {
+			if (other.lineeComanda != null)
+				return false;
+		} else if (!lineeComanda.equals(other.lineeComanda))
 			return false;
 		if (operatore == null) {
 			if (other.operatore != null)
@@ -159,11 +172,17 @@ public class Comanda {
 			return false;
 		if (Double.doubleToLongBits(prezzoTotale) != Double.doubleToLongBits(other.prezzoTotale))
 			return false;
-		if (dataOraEmissione == null) {
-			if (other.dataOraEmissione != null)
+		if (tavolo == null) {
+			if (other.tavolo != null)
 				return false;
-		} else if (!dataOraEmissione.equals(other.dataOraEmissione))
+		} else if (!tavolo.equals(other.tavolo))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Comanda [id=" + id + ", dataOraEmissione=" + dataOraEmissione + ", prezzoTotale=" + prezzoTotale
+				+ ", operatore=" + operatore + ", tavolo=" + tavolo + ", lineeComanda=" + lineeComanda + "]";
 	}
 }
