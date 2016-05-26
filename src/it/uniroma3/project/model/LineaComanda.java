@@ -36,6 +36,17 @@ public class LineaComanda {
 		this.quantita = 0;	
 		this.numeroLinea = 0;
 	}
+	
+	
+
+	public LineaComanda(Comanda comanda, Piatto piatto) {
+		this.comanda = comanda;
+		this.piatto = piatto;
+		this.quantita = 0;
+		this.numeroLinea = 0;
+	}
+
+
 
 	public Long getId() {
 		return id;

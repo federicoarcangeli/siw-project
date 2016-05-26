@@ -8,10 +8,9 @@ import javax.persistence.EntityManager;
 import it.uniroma3.project.dao.*;
 import it.uniroma3.project.model.*;
 
-
-
 public class Facade {
 	private EntityManager em;
+
 	public Facade() {
 		this.em = getEntityManager();
 	}
@@ -102,7 +101,7 @@ public class Facade {
 	public Comanda findComandaByTavoloAndDay(Long id, Date data) {
 		ComandaDao dao = new ComandaDao(this.em);
 		this.em.getTransaction().begin();
-		Comanda comanda = dao.findComandaByTavoloAndDay(id,data);
+		Comanda comanda = dao.findComandaByTavoloAndDay(id, data);
 		this.em.getTransaction().commit();
 		return comanda;
 	}
@@ -115,10 +114,10 @@ public class Facade {
 		return tavolo;
 	}
 
-	public LineaComanda findLineaByIdPiattoAndComanda(Long idPiatto , Long idComanda) {
+	public LineaComanda findLineaByIdPiattoAndComanda(Long idPiatto, Long idComanda) {
 		LineaComandaDao dao = new LineaComandaDao(this.em);
 		this.em.getTransaction().begin();
-		LineaComanda linea = dao.findByIdPiattoAndComanda(idPiatto , idComanda);
+		LineaComanda linea = dao.findByIdPiattoAndComanda(idPiatto, idComanda);
 		this.em.getTransaction().commit();
 		return linea;
 	}
@@ -142,7 +141,7 @@ public class Facade {
 	public List<Tavolo> findAllTavolo() {
 		TavoloDao dao = new TavoloDao(this.em);
 		this.em.getTransaction().begin();
-		List<Tavolo> result =  dao.findAll();
+		List<Tavolo> result = dao.findAll();
 		this.em.getTransaction().commit();
 		return result;
 	}
@@ -150,12 +149,12 @@ public class Facade {
 	public List<Tavolo> findAllTavoliToday(Date today) {
 		TavoloDao dao = new TavoloDao(this.em);
 		this.em.getTransaction().begin();
-		List<Tavolo> result =  dao.findAllToday(today);
+		List<Tavolo> result = dao.findAllToday(today);
 		this.em.getTransaction().commit();
 		return result;
 	}
 
-	public List<Prenotazione> findAllPrenotazioniToday(Date today){
+	public List<Prenotazione> findAllPrenotazioniToday(Date today) {
 		PrenotazioneDao dao = new PrenotazioneDao(this.em);
 		this.em.getTransaction().begin();
 		List<Prenotazione> prenotazione = dao.findAllPrenotazioniToday(today);
@@ -175,7 +174,7 @@ public class Facade {
 		tavolo.setOccupato(1);
 		TavoloDao dao = new TavoloDao(this.em);
 		this.em.getTransaction().begin();
-		dao.update(tavolo);	
+		dao.update(tavolo);
 		this.em.getTransaction().commit();
 	}
 
@@ -183,7 +182,7 @@ public class Facade {
 		tavolo.setOccupato(2);
 		TavoloDao dao = new TavoloDao(this.em);
 		this.em.getTransaction().begin();
-		dao.update(tavolo);	
+		dao.update(tavolo);
 		this.em.getTransaction().commit();
 	}
 
@@ -191,7 +190,7 @@ public class Facade {
 		tavolo.setOccupato(0);
 		TavoloDao dao = new TavoloDao(this.em);
 		this.em.getTransaction().begin();
-		dao.update(tavolo);	
+		dao.update(tavolo);
 		this.em.getTransaction().commit();
 
 	}
@@ -225,28 +224,28 @@ public class Facade {
 		dao.update(linea);
 		this.em.getTransaction().commit();
 	}
-	
+
 	public void updateComanda(Comanda comanda) {
 		ComandaDao dao = new ComandaDao(this.em);
 		this.em.getTransaction().begin();
 		dao.update(comanda);
 		this.em.getTransaction().commit();
 	}
-	
+
 	public static EntityManager getEntityManager() {
-		EntityManager em =  EntityManagerFactorySingleton.getInstance().createEntityManager();
+		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 		return em;
 	}
-	
+
 	public void closeEntityManager() {
-		if(this.em != null)
+		if (this.em != null)
 			this.em.close();
 	}
 
 	public List<Comanda> findallComandaToday(Date date) {
 		ComandaDao dao = new ComandaDao(this.em);
 		this.em.getTransaction().begin();
-		List<Comanda> comandeToday= dao.findAllToday(date);
+		List<Comanda> comandeToday = dao.findAllToday(date);
 		this.em.getTransaction().commit();
 		return comandeToday;
 	}
@@ -254,11 +253,11 @@ public class Facade {
 	public List<Comanda> findallComanda() {
 		ComandaDao dao = new ComandaDao(this.em);
 		this.em.getTransaction().begin();
-		List<Comanda> comande= dao.findAll();
+		List<Comanda> comande = dao.findAll();
 		this.em.getTransaction().commit();
 		return comande;
 	}
-	
+
 	public Comanda findComandaById(Long id) {
 		ComandaDao dao = new ComandaDao(this.em);
 		this.em.getTransaction().begin();
@@ -266,7 +265,7 @@ public class Facade {
 		this.em.getTransaction().commit();
 		return comanda;
 	}
-	
+
 	public Piatto findPiattoById(Long id) {
 		PiattoDao dao = new PiattoDao(this.em);
 		this.em.getTransaction().begin();

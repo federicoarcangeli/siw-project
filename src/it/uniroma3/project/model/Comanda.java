@@ -2,7 +2,9 @@ package it.uniroma3.project.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,6 +18,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 @NamedQuery(name="Comanda.findAll", query="select c from Comanda c")
@@ -72,9 +75,44 @@ public class Comanda {
 	}
 	
 	public void addLineeComanda(LineaComanda lineaComanda) {
-		lineaComanda = this.updateNumberLine(lineaComanda);
 		this.lineeComanda.add(lineaComanda);
 	}
+	
+	public Map<LineaComanda, Double> prezzoLinea() {
+		Map<LineaComanda, Double> map = new HashMap<>();
+		for(LineaComanda linea : this.lineeComanda) {
+			
+		}
+		return map;
+	}
+	
+	public Map<LineaComanda, Integer> quantitaLinea() {
+		Map<LineaComanda, Integer> map = new HashMap<>();
+		for(LineaComanda linea : this.lineeComanda) {		
+			if(map.containsKey(linea)) {
+				int quantity = map.get(linea)+1;
+				map.put(linea, quantity);
+			} else {
+				map.put(linea, 1);
+			}
+		}
+		return map;
+	}
+	
+	public List<LineaComanda> toList(Map<LineaComanda, Integer> quantity) {
+		List<LineaComanda> result = new ArrayList<>();
+		for(LineaComanda linea : quantity.keySet()) {
+			linea.setQuantita(quantity.get(linea));
+			result.add(linea);
+		}
+		return result;
+	}
+	
+	public void updateQuantita() {
+		Map<LineaComanda, Integer> map = this.quantitaLinea();
+		this.lineeComanda = this.toList(map);
+	}
+	
 	
 	public LineaComanda updateNumberLine(LineaComanda lineaComanda) {
 		for(int i = 0; i<this.lineeComanda.size(); i++) {
@@ -135,7 +173,6 @@ public class Comanda {
 		int result = 1;
 		result = prime * result + ((dataOraEmissione == null) ? 0 : dataOraEmissione.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((lineeComanda == null) ? 0 : lineeComanda.hashCode());
 		result = prime * result + ((operatore == null) ? 0 : operatore.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(prezzoTotale);

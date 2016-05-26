@@ -32,6 +32,16 @@ public class DescrizionePiatto {
 
 	public DescrizionePiatto(){
 	}
+	
+	
+
+	public DescrizionePiatto(String descrizione, double prezzo) {
+		super();
+		this.descrizione = descrizione;
+		this.prezzo = prezzo;
+	}
+
+
 
 	public String getDescrizione() {
 		return descrizione;
