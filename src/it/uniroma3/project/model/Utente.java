@@ -78,7 +78,7 @@ public class Utente {
 		this.comanda = comanda;
 	}
 	
-	@OneToMany(mappedBy="operatore",cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch =FetchType.LAZY)
+	@OneToMany(mappedBy="operatore",cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch =FetchType.EAGER)
 	private List<Comanda> comanda;
 
 	@OneToMany(mappedBy="utente" , fetch= FetchType.LAZY)

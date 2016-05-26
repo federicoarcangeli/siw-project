@@ -4,6 +4,8 @@ package it.uniroma3.persistence;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,8 +24,8 @@ public class inserimentoLineeComandaTest {
 	@Before
 	public void setUp() throws Exception {
 		this.facade = new Facade();
-		this.comanda = facade.findComandaById(270L);
-		this.piatto = facade.findPiattoById(1L);
+		
+		this.piatto = facade.findPiattoById(3L);
 		this.linea = new LineaComanda();
 	}
 	
@@ -54,16 +56,17 @@ public class inserimentoLineeComandaTest {
 		
 	}
 
-//	@Test
-//	public void testInserisciLinea() {
-//		this.linea.setComanda(comanda);
-//		this.linea.setPiatto(this.piatto);
-//		this.linea.setQuantita(1);
-//		this.comanda.updatePrice(this.piatto.getDescrizionePiatto().getPrezzo());
-//		this.comanda.addLineeComanda(this.linea);
-//		facade.updateComanda(comanda);
-//		
-//	}
+	@Test
+	public void testInserisciLinea() {
+		this.comanda = new Comanda(new Date(), 0.0);
+		this.linea.setComanda(comanda);
+		this.linea.setPiatto(this.piatto);
+		this.linea.setQuantita(1);
+		this.comanda.updatePrice(this.piatto.getDescrizionePiatto().getPrezzo());
+		
+		facade.inserisciLinea(this.linea);
+		
+	}
 
 }
 
