@@ -64,7 +64,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import it.uniroma3.*;
 import it.uniroma3.project.facade.Facade;
 import it.uniroma3.project.model.Comanda;
 import it.uniroma3.project.model.LineaComanda;
@@ -81,7 +80,7 @@ public class UpdateComandaAction implements Action {
 		LineaComanda linea = facade.findLineaByIdPiattoAndComanda(idPiatto, comandaInCorso.getId());
 
 		if (linea != null) {
-			linea.setQuantita(linea.getQuantita() + 1);
+			linea.plusQuantity();
 			comandaInCorso.setPrezzoTotale(
 					comandaInCorso.getPrezzoTotale() + linea.getPiatto().getDescrizionePiatto().getPrezzo());
 			facade.updateLinea(linea);

@@ -98,6 +98,14 @@ public class Facade {
 		return piatto;
 	}
 
+	public LineaComanda findLineaComanda(Long idLineaComanda) {
+		LineaComandaDao dao = new LineaComandaDao(this.em);
+		this.em.getTransaction().begin();
+		LineaComanda linee = dao.findById(idLineaComanda);
+		this.em.getTransaction().commit();
+		return linee;
+	}
+
 	public Comanda findComandaByTavoloAndDay(Long id, Date data) {
 		ComandaDao dao = new ComandaDao(this.em);
 		this.em.getTransaction().begin();
@@ -169,6 +177,8 @@ public class Facade {
 		this.em.getTransaction().commit();
 		return linee;
 	}
+
+
 
 	public void setTavoloPrenotato(Tavolo tavolo) {
 		tavolo.setOccupato(1);
@@ -281,6 +291,15 @@ public class Facade {
 		this.em.getTransaction().commit();
 	}
 
+	public void eliminaRigaComanda(LineaComanda idLineaComanda) {
+		LineaComandaDao dao = new LineaComandaDao(this.em);
+		this.em.getTransaction().begin();
+		dao.delete(idLineaComanda);
+		this.em.getTransaction().commit();
+
+	}
+
+
 	public void concludiComanda(Comanda comanda) {
 		ComandaDao dao = new ComandaDao(this.em);
 		this.em.getTransaction().begin();
@@ -288,5 +307,6 @@ public class Facade {
 		dao.update(comanda);
 		this.em.getTransaction().commit();
 	}
+
 
 }

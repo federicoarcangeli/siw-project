@@ -43,6 +43,7 @@
 		<div class="main-wrapper">
 
 			<%
+				session.removeAttribute("linee");
 				if (session.getAttribute("amministratoreCorrente") == null) {
 					String redirectURL = "./404.html";
 					response.sendRedirect(redirectURL);

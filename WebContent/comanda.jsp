@@ -144,7 +144,7 @@
 
 							<aside class="col-md-3">
 								<div class="side-widget">
-									<form>
+									<form action="processaQuantitaComanda" method="post">
 										<div class="row">
 											<div class="form-group">
 												<div class="shop-grid">
@@ -169,11 +169,11 @@
 																				<td>${linea.piatto.nome}</td>
 																				<td>${linea.quantita}</td>
 																				<td><button class="btn btn-warning"
-																						onclick="$(this).closest('form').submit()">
+																						type="submit" name="plus" value='${linea.id}'>
 																						<i class="fa fa-plus"></i>
 																					</button>
-																					<button class="btn btn-warning"
-																						onclick="$(this).closest('form').submit()">
+																					<button class="btn btn-warning" type="submit"
+																						name="minus" value='${linea.id}'>
 																						<i class="fa fa-minus"></i>
 																					</button></td>
 																			</tr>

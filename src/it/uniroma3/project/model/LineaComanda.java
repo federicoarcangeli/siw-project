@@ -66,11 +66,13 @@ public class LineaComanda {
 		this.numeroLinea++;
 	}
 
-	public void updateQuantity() {
+	public void plusQuantity() {
 		this.quantita++;
 	}
 
-
+	public void minusQuantity() {
+		this.quantita--;
+	}
 
 	public String getNota() {
 		return nota;

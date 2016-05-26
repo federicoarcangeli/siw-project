@@ -3,7 +3,6 @@ package it.uniroma3.project.dao;
 import java.math.BigInteger;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import it.uniroma3.project.model.LineaComanda;
