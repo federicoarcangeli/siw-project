@@ -31,7 +31,7 @@ public class Piatto {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private CategoriaPiatto categoriaPiatto;
 
-	@OneToMany(mappedBy="piatto",cascade = {CascadeType.PERSIST},fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="piatto",cascade = {CascadeType.REMOVE},fetch = FetchType.EAGER ,orphanRemoval = true)
 	private List<LineaComanda> orderLines;
 
 	public Piatto(){

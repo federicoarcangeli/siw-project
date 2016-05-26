@@ -380,15 +380,8 @@
 	<script src="js/vendor/validate.js"></script>
 	<script src="js/reservation.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
-
-	<script src="js/scripts/confermaInserimentoPiatto.js">
-		
-	</script>
-	<script src="js/scripts/confermaInserimentoPiatti.js">
-		
-	</script>
-
-
+	<script src="js/scripts/confermaInserimentoPiatto.js"></script>
+	
 
 </body>
 

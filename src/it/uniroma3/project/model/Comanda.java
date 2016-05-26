@@ -38,7 +38,7 @@ public class Comanda {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Tavolo tavolo;
 
-	@OneToMany(mappedBy="comanda", cascade = CascadeType.MERGE, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="comanda", cascade = {CascadeType.MERGE, CascadeType.REMOVE}, fetch=FetchType.EAGER , orphanRemoval = true)
 	private List<LineaComanda> lineeComanda;
 
 
@@ -70,15 +70,15 @@ public class Comanda {
 	public void setLineeComanda(List<LineaComanda> lineeComanda) {
 		this.lineeComanda = lineeComanda;
 	}
-	
+
 	public void addLineeComanda(LineaComanda lineaComanda) {
 		lineaComanda = this.updateNumberLine(lineaComanda);
 		this.lineeComanda.add(lineaComanda);
 	}
-	
+
 	public LineaComanda updateNumberLine(LineaComanda lineaComanda) {
 		for(int i = 0; i<this.lineeComanda.size(); i++) {
-				lineaComanda.updateNumeroLinea();
+			lineaComanda.updateNumeroLinea();
 		}
 		return lineaComanda;
 	}
@@ -114,11 +114,11 @@ public class Comanda {
 	public void setTavolo(Tavolo tavolo) {
 		this.tavolo = tavolo;
 	}
-	
+
 	public void updatePrice(double price) {
 		this.setPrezzoTotale(this.getPrezzoTotale() + price);
 	}
-	
+
 	public void setTotal() {
 		double totalPrice = 0;
 		for(LineaComanda linea : this.lineeComanda) {

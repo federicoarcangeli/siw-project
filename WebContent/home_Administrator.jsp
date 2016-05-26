@@ -229,7 +229,8 @@
 										<h4 class="modal-title">Tavolo:
 											${comanda.tavolo.getCodiceTavolo()} - Comanda: ${comanda.id}</h4>
 									</div>
-									<form action="processaFineComanda" method="post">
+									<form action="processaFineComanda" method="post" id="formfield">
+										<input type="hidden" name="action" value="add_form" />
 										<div class="modal-body">
 											<table class="table">
 												<thead>
@@ -257,6 +258,8 @@
 										</div>
 										<div class="modal-footer">
 											<button type="submit" class="btn btn-danger" name="elimina"
+												id="submitBtn" data-toggle="modal"
+												data-target="#confirm-submit"
 												onSubmit='setTimeout(function () { window.location.reload(); }, 10)'
 												value="${comanda.id}">
 												<i class="fa fa-trash-o"></i>
@@ -276,6 +279,25 @@
 							</div>
 						</div>
 					</c:forEach>
+
+					<div class="modal fade" id="confirm-submit" tabindex="-1"
+						role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-body">
+									<h4>Confermare eliminazione?</h4>
+									<p>verrà eliminata la comanda e le sue corrispettive righe</p>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Annulla</button>
+									<a href="#" id="submit" class="btn btn-danger">elimina
+										comanda</a>
+								</div>
+							</div>
+
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -307,6 +329,7 @@
 	<script src="js/main.js"></script>
 	<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
+	<script src="js/scripts/confermaEliminazione.js"></script>
 
 </body>
 
