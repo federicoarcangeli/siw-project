@@ -16,11 +16,11 @@ public class FineComandaAction implements Action {
 
 		String elimina = request.getParameter("elimina");
 		System.out.println("Dio porco è qui ---->" + elimina);
-		if(elimina!=null){
-			Comanda comanda = facade.findComandaById(Long.parseLong(elimina));
-			facade.eliminaComanda(comanda);
-		}
 
+		Comanda comanda = facade.findComandaById(Long.parseLong(elimina));
+		System.out.println("Madonna lercia --> "+comanda.getId());
+		facade.eliminaComanda(comanda);
+		System.out.println("fine del cristianesimo");
 		facade.closeEntityManager();
 
 		return "/home_Administrator.jsp";
