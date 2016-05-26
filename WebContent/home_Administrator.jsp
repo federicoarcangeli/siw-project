@@ -205,12 +205,13 @@
 																<td class="text-center">${comanda.id}</td>
 																<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
 																<td class="text-center">${comanda.prezzoTotale}</td>
-																<td class="text-center"><c:if
-																		test="${comanda.completata=='false'}">
-																		<i class="fa fa-spinner"></i>
-																	</c:if> <c:if test="${comanda.completata=='true'}">
-																		<i class="fa fa-check-circle"></i>
-																	</c:if></td>
+																<c:if test="${comanda.completata=='false'}">
+																	<td class="text-center"><i class="fa fa-spinner"></i></td>
+																</c:if>
+																<c:if test="${comanda.completata=='true'}">
+																	<td class="text-center" class="success"><i
+																		class="fa fa-check-circle"></i></td>
+																</c:if>
 																<td class="text-center"><a href="#"
 																	data-toggle="modal" data-target='#${comanda.id}'
 																	class="fa fa-wrench"></a></td>
@@ -238,6 +239,7 @@
 												${comanda.tavolo.getCodiceTavolo()} - Comanda: ${comanda.id}</h4>
 										</div>
 										<div class="modal-body">
+
 											<table class="table">
 												<thead>
 													<tr>
@@ -255,6 +257,18 @@
 															<td class="text-center">${linea.quantita}</td>
 														</tr>
 													</c:forEach>
+													<tr class="warning">
+														<td></td>
+														<td class="text-center"><strong>Totale:</strong></td>
+														<td class="text-center">${comanda.prezzoTotale}&euro;</td>
+													</tr>
+													<tr>
+														<td>Data e ora : ${comanda.dataOraEmissione}<br>
+															Operatore : ${comanda.operatore.getUsername()}
+														</td>
+														<td class="text-center"></td>
+														<td></td>
+													</tr>
 												</tbody>
 											</table>
 										</div>

@@ -35,8 +35,8 @@ public class LineaComanda {
 	public LineaComanda(){
 		this.quantita = 1;	
 	}
-	
-	
+
+
 
 	public LineaComanda(Comanda comanda, Piatto piatto) {
 		this.comanda = comanda;

@@ -90,8 +90,10 @@
 			<!-- Shop Content -->
 			<div class="shop-content">
 				<div class="col-md-12">
-					<h1>Tavolo: ${comanda.tavolo.codiceTavolo} Comanda:
-						${comanda.id}</h1>
+					<h1>
+						Tavolo: ${comanda.tavolo.codiceTavolo} Comanda: ${comanda.id} <span
+							class="badge">${comanda.operatore.getUsername()}</span>
+					</h1>
 				</div>
 				<div class="food-menu wow fadeInUp">
 					<div class="container-fluid">
@@ -118,7 +120,7 @@
 												<div class="row menu-items3">
 													<c:forEach var="piatto" items="${piatti}">
 														<div
-															class="menu-item3 col-sm-4 ${piatto.getPortata().nome}">
+															class="menu-item3 col-md-2 col-sm-3 ${piatto.getPortata().nome}">
 															<div class="product-info">
 																<h4>
 																	<a href="">${piatto.nome}</a>
@@ -157,7 +159,7 @@
 																		<tr>
 																			<th>Piatto</th>
 																			<th>Quantità</th>
-																			<th>Aggiungi</th>
+																			<th>Aggiungi/sottrai</th>
 
 																		</tr>
 																	</thead>
@@ -165,10 +167,15 @@
 																		<c:forEach var="linea" items="${linee}">
 																			<tr>
 																				<td>${linea.piatto.nome}</td>
-																				<td><input type="number" placeholder="qta"
-																					value="${linea.quantita}" style="width: 65px;"></td>
-																				<td><a class="fa fa-plus"
-																					onclick="$(this).closest('form').submit()"></a></td>
+																				<td>${linea.quantita}</td>
+																				<td><button class="btn btn-warning"
+																						onclick="$(this).closest('form').submit()">
+																						<i class="fa fa-plus"></i>
+																					</button>
+																					<button class="btn btn-warning"
+																						onclick="$(this).closest('form').submit()">
+																						<i class="fa fa-minus"></i>
+																					</button></td>
 																			</tr>
 																		</c:forEach>
 																		<tr>

@@ -48,6 +48,8 @@ public class PannelloDiControlloAction implements Action {
 		List<Comanda> comande = facade.findallComandaToday(new Date());
 		request.setAttribute("comandePannello", comande);
 
+
+
 		// gestione prenotazioni di oggi
 		List<Prenotazione> prenotazioni = facade.findAllPrenotazioniToday(new Date());
 		request.setAttribute("prenotazioni", prenotazioni);

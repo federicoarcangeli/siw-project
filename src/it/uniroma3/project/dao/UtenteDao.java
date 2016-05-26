@@ -42,8 +42,6 @@ public class UtenteDao extends AbstractDao<Utente> {
 			return query.setParameter("username", username).getSingleResult();
 		}catch(NoResultException nre){ return null;}
 
-
-
 	}
 
 }
