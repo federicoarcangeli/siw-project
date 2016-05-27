@@ -14,7 +14,7 @@ public class StoricoAction implements Action {
 
 		Facade facade = new Facade();
 
-		List<Comanda> comande = facade.findallComanda();
+		List<Comanda> comande = facade.findallComandaCompletate();
 		request.setAttribute("comandeStorico", comande);
 
 		return "/storicoComande.jsp";

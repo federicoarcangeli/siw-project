@@ -48,4 +48,9 @@ public class ComandaDao extends AbstractDao<Comanda> {
 		return query.getResultList();
 	}
 
+	public List<Comanda> findAllCompletate() {
+		TypedQuery<Comanda> query = getEntityManager().createQuery( "select c from Comanda c where completata = true",Comanda.class);
+		return query.getResultList();
+	}
+
 }

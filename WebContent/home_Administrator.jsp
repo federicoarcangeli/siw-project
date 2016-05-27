@@ -166,7 +166,8 @@
 																<tr>
 																	<td class="text-center">${comanda.id}</td>
 																	<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
-																	<td class="text-center">${comanda.prezzoTotale}</td>
+																	<td class="text-center">${comanda.prezzoTotale}
+																		&euro;</td>
 																	<c:if test="${comanda.completata=='false'}">
 																		<td class="text-center"><i class="fa fa-spinner"></i></td>
 																	</c:if>
@@ -183,9 +184,7 @@
 													</tbody>
 												</table>
 											</form>
-
 										</div>
-
 										<div class="col-md-4 col-sm-6">
 											<h4>Operatori in servizio</h4>
 											<table class="table">
@@ -244,7 +243,8 @@
 																<tr>
 																	<td class="text-center">${comanda.id}</td>
 																	<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
-																	<td class="text-center">${comanda.prezzoTotale}</td>
+																	<td class="text-center">${comanda.prezzoTotale}
+																		&euro;</td>
 																	<c:if test="${comanda.completata=='false'}">
 																		<td class="text-center"><i class="fa fa-spinner"></i></td>
 																	</c:if>

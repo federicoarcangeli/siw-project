@@ -268,6 +268,14 @@ public class Facade {
 		return comande;
 	}
 
+	public List<Comanda> findallComandaCompletate() {
+		ComandaDao dao = new ComandaDao(this.em);
+		this.em.getTransaction().begin();
+		List<Comanda> comande = dao.findAllCompletate();
+		this.em.getTransaction().commit();
+		return comande;
+	}
+
 	public Comanda findComandaById(Long id) {
 		ComandaDao dao = new ComandaDao(this.em);
 		this.em.getTransaction().begin();
@@ -307,8 +315,5 @@ public class Facade {
 		dao.update(comanda);
 		this.em.getTransaction().commit();
 	}
-
-
-
 
 }

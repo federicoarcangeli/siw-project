@@ -61,10 +61,12 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand"
-							href="${pageContext.request.contextPath}/processaPannelloControllo">
-							<img src="img/nav-logo.png" alt="nav-logo">
-						</a>
+						<c:if test="${amministratoreCorrente.role=='amministratore'}">
+							<a class="navbar-brand"
+								href="${pageContext.request.contextPath}/processaPannelloControllo">
+								<img src="img/nav-logo.png" alt="nav-logo">
+							</a>
+						</c:if>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -79,7 +81,7 @@
 									${amministratoreCorrente.role}<span class="caret"></span>
 							</a>
 								<ul class="dropdown-menu">
-									<li><a href="./index_parallax.jsp">Logout</a></li>
+									<li><a href="">Logout</a></li>
 								</ul></li>
 						</ul>
 					</div>
