@@ -94,6 +94,7 @@
 						Tavolo: ${comanda.tavolo.codiceTavolo} Comanda: ${comanda.id} <span
 							class="badge">${comanda.operatore.getUsername()}</span>
 					</h1>
+					<hr>
 				</div>
 				<div class="food-menu wow fadeInUp">
 					<div class="container-fluid">
@@ -101,43 +102,30 @@
 							<aside class="col-md-1">
 								<h4>Categoria</h4>
 								<div class="menu-tags3">
-									<div class="side-widget">
-										<ul class="shop-cat">
-											<c:forEach var="categoria" items="${categorie}">
-												<li><span data-filter=".${categoria.nome}"><i
-														class="fa fa-angle-right"></i>${categoria.nome}</span></li>
-											</c:forEach>
-										</ul>
-									</div>
+									<ul class="shop-cat">
+										<c:forEach var="categoria" items="${categorie}">
+											<li><span data-filter=".${categoria.nome}">${categoria.nome}</span></li>
+										</c:forEach>
+									</ul>
 								</div>
 							</aside>
 							<form action="UpdateComanda" method="post">
 								<div class="col-md-8">
-									<h4>Piatti</h4>
-									<div class="shop-grid">
-										<div class="shop-products">
-											<div class="row">
-												<div class="row menu-items3">
-													<c:forEach var="piatto" items="${piatti}">
-														<div
-															class="menu-item3 col-md-2 col-sm-3 ${piatto.getPortata().nome}">
-															<div class="product-info">
-																<h4>
-																	<a href="">${piatto.nome}</a>
-																</h4>
-																<div class="shop-meta centered">
-																	<button type="submit" name="piatto"
-																		class="btn btn-success center-block"
-																		value='${piatto.id}'>
-																		<i class="fa fa-pencil-square-o"></i> Aggiungi
-																	</button>
-																</div>
-															</div>
-														</div>
-													</c:forEach>
+
+									<div class="row menu-items3">
+										<c:forEach var="piatto" items="${piatti}">
+											<div
+												class="menu-item3 col-md-2 col-sm-3 ${piatto.getPortata().nome}">
+												<div class="pricing">
+													<div class="plan-title">${piatto.nome}</div>
+
+													<button type="submit" name="piatto"
+														class="btn btn-success btn-block" value='${piatto.id}'>
+														<i class="fa fa-pencil-square-o"></i>add
+													</button>
 												</div>
 											</div>
-										</div>
+										</c:forEach>
 									</div>
 								</div>
 							</form>
