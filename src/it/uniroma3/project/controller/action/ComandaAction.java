@@ -27,7 +27,7 @@ public class ComandaAction implements Action {
 		Tavolo tavolo = facade.findTavoloByNumero(numeroTavolo);
 
 		if (tavolo.getOccupato() == 2) {
-			Comanda comanda = facade.findComandaByTavoloAndDay(tavolo.getId(), new Date());
+			Comanda comanda = facade.findComandaByTavolo(tavolo.getId());
 			List<LineaComanda> linee = facade.findallLineeComanda(comanda.getId());
 			session.setAttribute("linee", linee);
 			session.setAttribute("comanda", comanda);

@@ -304,10 +304,12 @@
 														<td class="text-center">${comanda.prezzoTotale}&euro;</td>
 													</tr>
 													<tr>
-														<td>Data e ora : ${comanda.dataOraEmissione}<br>
-															Operatore : ${comanda.operatore.getUsername()}
+														<td class="text-right">Data e ora : <br>
+															Operatore :
 														</td>
-														<td class="text-center"></td>
+														<td class="text-left">${comanda.dataOraEmissione}<br>
+															${comanda.operatore.getUsername()}
+														</td>
 														<td></td>
 													</tr>
 												</tbody>
@@ -324,9 +326,7 @@
 													Elimina <i class="fa fa-trash-o"></i>
 												</button>
 												<button type="submit" class="btn btn-success"
-													name="conferma"
-													onSubmit='function () {location.reload(true);}'
-													value='${comanda.id}'>
+													name="conferma" value='${comanda.id}'>
 													Conferma <i class="fa fa-check"></i>
 												</button>
 											</c:if>

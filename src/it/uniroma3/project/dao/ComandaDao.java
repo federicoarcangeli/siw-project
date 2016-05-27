@@ -29,11 +29,10 @@ public class ComandaDao extends AbstractDao<Comanda> {
 		return getEntityManager().createNamedQuery("Comanda.findAll").getResultList();
 	}
 
-	public Comanda findComandaByTavoloAndDay(Long param , Date data) {
+	public Comanda findComandaByTavolo(Long param) {
 		try{
-			Query q = (Query) getEntityManager().createNativeQuery("select c.id from comanda c where c.tavolo_id = ?1 and date(c.dataoraemissione) = ?2 and c.completata='false'");
+			Query q = (Query) getEntityManager().createNativeQuery("select c.id from comanda c where c.tavolo_id = ?1 and c.completata='false'");
 			q.setParameter(1, param);
-			q.setParameter(2, data);
 			BigInteger id = (BigInteger) q.getSingleResult();
 			return this.findById(id.longValue());
 		} catch (Exception e) {

@@ -106,10 +106,10 @@ public class Facade {
 		return linee;
 	}
 
-	public Comanda findComandaByTavoloAndDay(Long id, Date data) {
+	public Comanda findComandaByTavolo(Long id) {
 		ComandaDao dao = new ComandaDao(this.em);
 		this.em.getTransaction().begin();
-		Comanda comanda = dao.findComandaByTavoloAndDay(id, data);
+		Comanda comanda = dao.findComandaByTavolo(id);
 		this.em.getTransaction().commit();
 		return comanda;
 	}
