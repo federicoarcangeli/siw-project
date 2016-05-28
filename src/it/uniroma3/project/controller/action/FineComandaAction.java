@@ -15,15 +15,21 @@ public class FineComandaAction implements Action {
 		Facade facade = new Facade();
 
 		String elimina = request.getParameter("elimina");
-		System.out.println("Dio porco è qui ---->" + elimina);
+		String conferma = request.getParameter("conferma");
+		System.out.println("----->"+elimina + conferma);
 		if(elimina!=null){
 			Comanda comanda = facade.findComandaById(Long.parseLong(elimina));
 			facade.eliminaComanda(comanda);
 		}
-
+		else
+			if(conferma!=null){
+				Comanda comanda = facade.findComandaById(Long.parseLong(conferma));
+				facade.concludiComanda(comanda);
+				facade.setTavoloLibero(comanda.getTavolo());
+			}
 		facade.closeEntityManager();
 
-		return "/home_Administrator.jsp";
+		return "/processaPannelloControllo";
 
 	}
 

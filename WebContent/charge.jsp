@@ -11,8 +11,14 @@
 	content="Tomato is a Responsive HTML5 Template for Restaurants and food related services.">
 <meta name="keywords"
 	content="tomato, responsive, html5, restaurant, template, food, reservation">
-<meta http-equiv="refresh"
-	content="3;URL=${pageContext.request.contextPath}/processaPannelloControllo">
+<c:if test="${amministratoreCorrente.role=='amministratore'}">
+	<meta http-equiv="refresh"
+		content="3;URL=${pageContext.request.contextPath}/processaPannelloControllo">
+</c:if>
+<c:if test="${amministratoreCorrente.role=='operatore'}">
+	<meta http-equiv="refresh"
+		content="3;URL=${pageContext.request.contextPath}/processaSala">
+</c:if>
 <!-- Favicons -->
 <link rel="shortcut icon" href="img/favicon.ico">
 

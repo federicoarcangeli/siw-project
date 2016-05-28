@@ -43,6 +43,7 @@
 		<div class="main-wrapper">
 
 			<%
+				session.removeAttribute("linee");
 				if (session.getAttribute("amministratoreCorrente") == null) {
 					String redirectURL = "./404.html";
 					response.sendRedirect(redirectURL);
@@ -60,27 +61,27 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand"
-							href="${pageContext.request.contextPath}/processaPannelloControllo">
-							<img src="img/nav-logo.png" alt="nav-logo">
-						</a>
+						<c:if test="${amministratoreCorrente.role=='amministratore'}">
+							<a class="navbar-brand"
+								href="${pageContext.request.contextPath}/processaPannelloControllo">
+								<img src="img/nav-logo.png" alt="nav-logo">
+							</a>
+						</c:if>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
 							<li><a
 								href="${pageContext.request.contextPath}/processaSala"><span
-									style="color: #F9C56A;">SALA</span></a></li>
-							<li><a
-								href="${pageContext.request.contextPath}/processaComanda">Comanda</a></li>
-							<li class="dropdown"><a href="./index.html"
+									style="color: #F9C56A;">sala</span></a></li>
+							<li class="dropdown"><a href="./home_Administrator.html"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Benvenuto
 									${amministratoreCorrente.username} -
 									${amministratoreCorrente.role}<span class="caret"></span>
 							</a>
 								<ul class="dropdown-menu">
-									<li><a href="./index_parallax.jsp">Logout</a></li>
+									<li><a href="">Logout</a></li>
 								</ul></li>
 						</ul>
 					</div>

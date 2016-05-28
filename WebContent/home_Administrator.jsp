@@ -42,7 +42,6 @@
 				if (session.getAttribute("amministratoreCorrente") == null) {
 					String redirectURL = "./404.html";
 					response.sendRedirect(redirectURL);
-
 				} else {
 			%>
 
@@ -68,7 +67,7 @@
 							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
 							<li><a
 								href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
-							<li class="dropdown"><a href="./index.html"
+							<li class="dropdown"><a href="./home_Administrator.jsp"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
 								aria-haspopup="true" aria-expanded="false">Benvenuto
 									${amministratoreCorrente.username} -
@@ -110,15 +109,12 @@
 											Comande <span class="label label-danger">hot</span><i
 											class="fa fa-caret-right"></i>
 									</a></li>
-
 								</ul>
 							</div>
-
 						</aside>
 
 						<div class="col-md-10">
 							<div class="shop-grid">
-								<h2>PANNELLO DI CONTROLLO</h2>
 								<div class="shop-products">
 									<div class="row">
 
@@ -149,8 +145,46 @@
 													</c:forEach>
 												</tbody>
 											</table>
-										</div>
+											<br>
+											<hr>
+											<h4>Comande giornaliere completate</h4>
+											<form action="" method="post">
+												<table class="table">
+													<thead>
+														<tr>
+															<th class="text-center">Codice</th>
+															<th class="text-center">Tavolo</th>
+															<th class="text-center">Totale</th>
+															<th class="text-center">Stato</th>
+															<th class="text-center">Dettagli</th>
 
+														</tr>
+													</thead>
+													<tbody>
+														<c:forEach var="comanda" items="${comandePannello}">
+															<c:if test="${comanda.completata=='true'}">
+																<tr>
+																	<td class="text-center">${comanda.id}</td>
+																	<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
+																	<td class="text-center">${comanda.prezzoTotale}
+																		&euro;</td>
+																	<c:if test="${comanda.completata=='false'}">
+																		<td class="text-center"><i class="fa fa-spinner"></i></td>
+																	</c:if>
+																	<c:if test="${comanda.completata=='true'}">
+																		<td class="text-center" class="success"><i
+																			class="fa fa-check-circle"></i></td>
+																	</c:if>
+																	<td class="text-center"><a href="#"
+																		data-toggle="modal" data-target='#${comanda.id}'
+																		class="fa fa-info-circle"></a></td>
+																</tr>
+															</c:if>
+														</c:forEach>
+													</tbody>
+												</table>
+											</form>
+										</div>
 										<div class="col-md-4 col-sm-6">
 											<h4>Operatori in servizio</h4>
 											<table class="table">
@@ -163,14 +197,18 @@
 												</thead>
 												<tbody>
 													<c:forEach var="comanda" items="${comandePannello}">
-														<tr>
-															<td class="text-center">${comanda.operatore.getId()}</td>
-															<td class="text-center">${comanda.operatore.getUsername()}</td>
-															<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
-														</tr>
+														<c:if test="${comanda.completata=='false'}">
+															<tr>
+																<td class="text-center">${comanda.operatore.getId()}</td>
+																<td class="text-center">${comanda.operatore.getUsername()}</td>
+																<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
+															</tr>
+														</c:if>
 													</c:forEach>
 												</tbody>
 											</table>
+											<br>
+											<hr>
 											<h4>Panoramica tavoli</h4>
 											<div class="progress">
 												<div class="progress-bar progress-bar-success"
@@ -186,7 +224,7 @@
 										</div>
 
 										<div class="col-md-4 col-sm-6">
-											<h4>Comande in corso</h4>
+											<h4>Comande giornaliere in corso</h4>
 											<form action="" method="post">
 												<table class="table">
 													<thead>
@@ -194,26 +232,37 @@
 															<th class="text-center">Codice</th>
 															<th class="text-center">Tavolo</th>
 															<th class="text-center">Totale</th>
+															<th class="text-center">Stato</th>
 															<th class="text-center">Operazioni</th>
 
 														</tr>
 													</thead>
 													<tbody>
-
 														<c:forEach var="comanda" items="${comandePannello}">
-															<tr>
-																<td class="text-center">${comanda.id}</td>
-																<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
-																<td class="text-center">${comanda.prezzoTotale}</td>
-																<td class="text-center"><a href="#"
-																	data-toggle="modal" data-target='#${comanda.id}'
-																	class="fa fa-wrench"></a></td>
-
-															</tr>
+															<c:if test="${comanda.completata=='false'}">
+																<tr>
+																	<td class="text-center">${comanda.id}</td>
+																	<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
+																	<td class="text-center">${comanda.prezzoTotale}
+																		&euro;</td>
+																	<c:if test="${comanda.completata=='false'}">
+																		<td class="text-center"><i class="fa fa-spinner"></i></td>
+																	</c:if>
+																	<c:if test="${comanda.completata=='true'}">
+																		<td class="text-center" class="success"><i
+																			class="fa fa-check-circle"></i></td>
+																	</c:if>
+																	<td class="text-center"><a href="#"
+																		data-toggle="modal" data-target='#${comanda.id}'
+																		class="fa fa-wrench"></a></td>
+																</tr>
+															</c:if>
 														</c:forEach>
 													</tbody>
 												</table>
 											</form>
+											<br>
+											<hr>
 										</div>
 									</div>
 								</div>
@@ -221,29 +270,27 @@
 						</div>
 					</div>
 					<c:forEach var="comanda" items="${comandePannello}">
-						<div id="${comanda.id}" class="modal fade">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h4 class="modal-title">Tavolo:
-											${comanda.tavolo.getCodiceTavolo()} - Comanda: ${comanda.id}</h4>
-									</div>
-									<form action="processaFineComanda" method="post"
-										id='${comanda.id}'>
-										<input type="hidden" name="action" value="add_form" />
+						<form action="processaFineComanda" method="get" id="formfield">
+							<div id="${comanda.id}" class="modal fade"
+								aria-labelledby="myModal">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">&times;</button>
+											<h4 class="modal-title">Tavolo:
+												${comanda.tavolo.getCodiceTavolo()} - Comanda: ${comanda.id}</h4>
+										</div>
 										<div class="modal-body">
+
 											<table class="table">
 												<thead>
 													<tr>
 														<th class="text-center">Linea N°</th>
 														<th class="text-center">Piatto</th>
 														<th class="text-center">Quantità</th>
-
 													</tr>
 												</thead>
 												<tbody>
-
 													<c:forEach var="linea" items="${comanda.getLineeComanda()}">
 														<tr>
 															<td class="text-center">${linea.numeroLinea}</td>
@@ -251,54 +298,46 @@
 															<td class="text-center">${linea.quantita}</td>
 														</tr>
 													</c:forEach>
+													<tr class="warning">
+														<td></td>
+														<td class="text-center"><strong>Totale:</strong></td>
+														<td class="text-center">${comanda.prezzoTotale}&euro;</td>
+													</tr>
+													<tr>
+														<td class="text-right">Data e ora : <br>
+															Operatore :
+														</td>
+														<td class="text-left">${comanda.dataOraEmissione}<br>
+															${comanda.operatore.getUsername()}
+														</td>
+														<td></td>
+													</tr>
 												</tbody>
 											</table>
 										</div>
 										<div class="modal-footer">
-											<button type="button" class="btn btn-danger" name="elimina"
-												value='${comanda.id}' id="submitBtn" data-toggle="modal"
-												data-target="#confirm-submit">
-												<i class="fa fa-trash-o"></i>
-											</button>
 											<button type="button" class="btn btn-warning"
 												data-dismiss="modal">
-												<i class="fa fa-times"></i>
+												Chiudi <i class="fa fa-times"></i>
 											</button>
-											<button type="submit" class="btn btn-success" name="conferma"
-												onSubmit='setTimeout(function () { window.location.reload(); }, 10)'
-												value="${comanda.id}">
-												<i class="fa fa-check"></i>
-											</button>
+											<c:if test="${comanda.completata=='false'}">
+												<button type="submit" class="btn btn-danger" name="elimina"
+													value='${comanda.id}'>
+													Elimina <i class="fa fa-trash-o"></i>
+												</button>
+												<button type="submit" class="btn btn-success"
+													name="conferma" value='${comanda.id}'>
+													Conferma <i class="fa fa-check"></i>
+												</button>
+											</c:if>
 										</div>
-									</form>
+									</div>
 								</div>
 							</div>
-						</div>
+						</form>
 					</c:forEach>
-
-					<div class="modal fade" id="confirm-submit" tabindex="-1"
-						role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-body">
-									<h4>Confermare eliminazione?</h4>
-									<p>verrà eliminata la comanda</p>
-									<span class="elm"></span>
-									<p>e le sue corrispettive righe</p>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default"
-										data-dismiss="modal">Annulla</button>
-									<a href="#" id="submit" class="btn btn-danger"
-										onclick='setTimeout(function () { window.location.reload(); }, 40)'>elimina
-										comanda</a>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
-
 			<%
 				}
 			%>

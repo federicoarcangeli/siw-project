@@ -10,29 +10,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.uniroma3.project.controller.action.FineComandaAction;
+import it.uniroma3.project.controller.action.UpdateQuantitaLineaComandaAction;
 
 /**
- * Servlet implementation class ComandaController
+ * Servlet implementation class UpdateComandaController
  */
-@WebServlet(urlPatterns ={"/processaFineComanda"})
-public class FineComandaController extends HttpServlet {
+@WebServlet("/processaQuantitaComanda")
+public class UpdateQuantitaLineaComandaController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public FineComandaController() {
+	public UpdateQuantitaLineaComandaController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FineComandaAction action = new FineComandaAction();
-		String nextPage = action.execute(request);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		UpdateQuantitaLineaComandaAction updateQuantitaLineaComandaAction = new UpdateQuantitaLineaComandaAction();
+		String nextPage = updateQuantitaLineaComandaAction.execute(request);
 		nextPage = response.encodeURL(nextPage);
 		ServletContext application = getServletContext();
 		RequestDispatcher rd = application.getRequestDispatcher(nextPage);

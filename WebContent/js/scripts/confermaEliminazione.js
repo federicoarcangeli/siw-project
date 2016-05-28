@@ -1,9 +1,9 @@
-//primo modale 
+$('#myModal').modal('hide');
+
 $('#submitBtn').click(function() {
 	$('#elm').text($('#elimina').val());
 });
 
-//secondo modale
 $('#submit').click(function(){
-	$($('#elm').val()).submit();
+	$('#formfield').submit();
 });

@@ -151,7 +151,7 @@
 										<div class="modal-footer">
 											<button type="button" class="btn btn-warning"
 												data-dismiss="modal">
-												<i class="fa fa-times"></i>
+												chiudi <i class="fa fa-times"></i>
 											</button>
 										</div>
 									</div>

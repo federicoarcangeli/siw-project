@@ -18,7 +18,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 @Entity
 @NamedQuery(name="Comanda.findAll", query="select c from Comanda c")
@@ -35,6 +34,9 @@ public class Comanda {
 	@Column(nullable = false)
 	private double prezzoTotale;
 
+	@Column
+	private boolean completata;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Utente operatore;
 
@@ -49,12 +51,14 @@ public class Comanda {
 		this.lineeComanda = new ArrayList<>();
 		this.dataOraEmissione = new Date();
 		this.prezzoTotale=0.0;
+		this.completata=false;
 	}
 
 	public Comanda(Date timestamp, double priceTotal) {
 		super();
 		this.dataOraEmissione = timestamp;
 		this.prezzoTotale = priceTotal;
+		this.completata=false;
 		this.lineeComanda = new ArrayList<>();
 	}
 
@@ -70,22 +74,30 @@ public class Comanda {
 		this.id = id;
 	}
 
+	public boolean isCompletata() {
+		return completata;
+	}
+
+	public void setCompletata(boolean completata) {
+		this.completata = completata;
+	}
+
 	public void setLineeComanda(List<LineaComanda> lineeComanda) {
 		this.lineeComanda = lineeComanda;
 	}
-	
+
 	public void addLineeComanda(LineaComanda lineaComanda) {
 		this.lineeComanda.add(lineaComanda);
 	}
-	
-	public Map<LineaComanda, Double> prezzoLinea() {
-		Map<LineaComanda, Double> map = new HashMap<>();
-		for(LineaComanda linea : this.lineeComanda) {
-			
-		}
-		return map;
-	}
-	
+
+	//	public Map<LineaComanda, Double> prezzoLinea() {
+	//		Map<LineaComanda, Double> map = new HashMap<>();
+	//		for(LineaComanda linea : this.lineeComanda) {
+	//
+	//		}
+	//		return map;
+	//	}
+
 	public Map<LineaComanda, Integer> quantitaLinea() {
 		Map<LineaComanda, Integer> map = new HashMap<>();
 		for(LineaComanda linea : this.lineeComanda) {		
@@ -98,7 +110,7 @@ public class Comanda {
 		}
 		return map;
 	}
-	
+
 	public List<LineaComanda> toList(Map<LineaComanda, Integer> quantity) {
 		List<LineaComanda> result = new ArrayList<>();
 		for(LineaComanda linea : quantity.keySet()) {
@@ -107,17 +119,17 @@ public class Comanda {
 		}
 		return result;
 	}
-	
+
 	public void updateQuantita() {
-//		Map<LineaComanda, Integer> map = this.quantitaLinea();
-//		this.lineeComanda = this.toList(map);
-		
+		//		Map<LineaComanda, Integer> map = this.quantitaLinea();
+		//		this.lineeComanda = this.toList(map);
+
 	}
-	
-	
+
+
 	public LineaComanda updateNumberLine(LineaComanda lineaComanda) {
 		for(int i = 0; i<this.lineeComanda.size(); i++) {
-				lineaComanda.updateNumeroLinea();
+			lineaComanda.updateNumeroLinea();
 		}
 		return lineaComanda;
 	}
@@ -153,11 +165,11 @@ public class Comanda {
 	public void setTavolo(Tavolo tavolo) {
 		this.tavolo = tavolo;
 	}
-	
+
 	public void updatePrice(double price) {
 		this.setPrezzoTotale(this.getPrezzoTotale() + price);
 	}
-	
+
 	public void setTotal() {
 		double totalPrice = 0;
 		for(LineaComanda linea : this.lineeComanda) {
@@ -172,8 +184,10 @@ public class Comanda {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + (completata ? 1231 : 1237);
 		result = prime * result + ((dataOraEmissione == null) ? 0 : dataOraEmissione.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((lineeComanda == null) ? 0 : lineeComanda.hashCode());
 		result = prime * result + ((operatore == null) ? 0 : operatore.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(prezzoTotale);
@@ -191,6 +205,8 @@ public class Comanda {
 		if (getClass() != obj.getClass())
 			return false;
 		Comanda other = (Comanda) obj;
+		if (completata != other.completata)
+			return false;
 		if (dataOraEmissione == null) {
 			if (other.dataOraEmissione != null)
 				return false;

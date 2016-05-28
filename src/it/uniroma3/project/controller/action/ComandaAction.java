@@ -27,18 +27,20 @@ public class ComandaAction implements Action {
 		Tavolo tavolo = facade.findTavoloByNumero(numeroTavolo);
 
 		if (tavolo.getOccupato() == 2) {
-			Comanda comanda = facade.findComandaByTavoloAndDay(tavolo.getId(), new Date());
+			Comanda comanda = facade.findComandaByTavolo(tavolo.getId());
 			List<LineaComanda> linee = facade.findallLineeComanda(comanda.getId());
 			session.setAttribute("linee", linee);
 			session.setAttribute("comanda", comanda);
-		} else if (tavolo.getOccupato() == 0 || tavolo.getOccupato() == 1) {
-			Comanda comanda = new Comanda();
-			facade.setTavoloOccupato(tavolo);
-			comanda.setOperatore(operatore);
-			comanda.setTavolo(tavolo);
-			comanda.setDataOraEmissione(new Date());
-			facade.inserisciComanda(comanda);
-			session.setAttribute("comanda", comanda);
+		} else {
+			if (tavolo.getOccupato() == 0 || tavolo.getOccupato() == 1) {
+				Comanda comanda = new Comanda();
+				facade.setTavoloOccupato(tavolo);
+				comanda.setOperatore(operatore);
+				comanda.setTavolo(tavolo);
+				comanda.setDataOraEmissione(new Date());
+				facade.inserisciComanda(comanda);
+				session.setAttribute("comanda", comanda);
+			}
 		}
 
 		session.setAttribute("categorie", facade.findAllCategorie());

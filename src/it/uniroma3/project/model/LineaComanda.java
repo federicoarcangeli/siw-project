@@ -3,7 +3,6 @@ package it.uniroma3.project.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,16 +34,12 @@ public class LineaComanda {
 	public LineaComanda(){
 		this.quantita = 1;	
 	}
-	
-	
 
 	public LineaComanda(Comanda comanda, Piatto piatto) {
 		this.comanda = comanda;
 		this.piatto = piatto;
 		this.quantita = 1;
 	}
-
-
 
 	public Long getId() {
 		return id;
@@ -66,11 +61,13 @@ public class LineaComanda {
 		this.numeroLinea++;
 	}
 
-	public void updateQuantity() {
+	public void plusQuantity() {
 		this.quantita++;
 	}
 
-
+	public void minusQuantity() {
+		this.quantita--;
+	}
 
 	public String getNota() {
 		return nota;
@@ -153,9 +150,4 @@ public class LineaComanda {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "LineaComanda [id=" + id + ", numeroLinea=" + numeroLinea + ", nota=" + nota + ", quantita=" + quantita
-				+ ", comanda=" + comanda + ", piatto=" + piatto + "]";
-	}
 }

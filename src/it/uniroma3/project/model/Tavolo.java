@@ -103,6 +103,14 @@ public class Tavolo {
 			this.comande.add(comanda);
 	}
 
+	public List<Comanda> getComande() {
+		return comande;
+	}
+
+	public void setComande(List<Comanda> comande) {
+		this.comande = comande;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
