@@ -23,10 +23,10 @@ public class Facade {
 
 	}
 	
-	public void removeComandaById(Long id) {
+	public void removeComandaById(Long idComanda) {
 		this.em.getTransaction().begin();
 		ComandaDao dao = new ComandaDao(this.em);
-		dao.deleteById(id);
+		dao.deleteById(idComanda);
 		this.em.getTransaction().commit();
 	}
 
@@ -74,10 +74,10 @@ public class Facade {
 		return categorie;
 	}
 
-	public CategoriaPiatto findCategoria(String id) {
+	public CategoriaPiatto findCategoria(String idCategoria) {
 		CategoriaPiattoDao categoriaPiattoDao = new CategoriaPiattoDao(this.em);
 		this.em.getTransaction().begin();
-		CategoriaPiatto categoria = categoriaPiattoDao.findById(Long.parseLong(id));
+		CategoriaPiatto categoria = categoriaPiattoDao.findById(Long.parseLong(idCategoria));
 		this.em.getTransaction().commit();
 		return categoria;
 	}
@@ -97,26 +97,42 @@ public class Facade {
 		return utente;
 	}
 
-	public Piatto findPiatto(Long id) {
+	public Piatto findPiatto(Long idPiatto) {
 		PiattoDao piattoDao = new PiattoDao(this.em);
 		this.em.getTransaction().begin();
-		Piatto piatto = piattoDao.findById(id);
+		Piatto piatto = piattoDao.findById(idPiatto);
 		this.em.getTransaction().commit();
 		return piatto;
 	}
-
-	public Comanda findComandaByTavoloAndDay(Long id, Date data) {
+	
+	public List<Comanda> findallComandaCompletate() {
 		ComandaDao dao = new ComandaDao(this.em);
 		this.em.getTransaction().begin();
-		Comanda comanda = dao.findComandaByTavoloAndDay(id, data);
+		List<Comanda> comande = dao.findAllCompletate();
+		this.em.getTransaction().commit();
+		return comande;
+	}
+	
+	public void concludiComanda(Comanda comanda) {
+		ComandaDao dao = new ComandaDao(this.em);
+		this.em.getTransaction().begin();
+		comanda.setCompletata(true);
+		dao.update(comanda);
+		this.em.getTransaction().commit();
+	}
+	
+	public Comanda findComandaByTavolo(Long idTavolo) {
+		ComandaDao dao = new ComandaDao(this.em);
+		this.em.getTransaction().begin();
+		Comanda comanda = dao.findComandaByTavolo(idTavolo);
 		this.em.getTransaction().commit();
 		return comanda;
 	}
 
-	public Tavolo findTavoloByNumero(String parameter) {
+	public Tavolo findTavoloByNumero(String numeroTavolo) {
 		TavoloDao dao = new TavoloDao(this.em);
 		this.em.getTransaction().begin();
-		Tavolo tavolo = dao.findByNumero(parameter);
+		Tavolo tavolo = dao.findByNumero(numeroTavolo);
 		this.em.getTransaction().commit();
 		return tavolo;
 	}
@@ -129,10 +145,10 @@ public class Facade {
 		return linea;
 	}
 
-	public List<Prenotazione> findAllPrenotazioniUtente(Long id_utente) {
+	public List<Prenotazione> findAllPrenotazioniUtente(Long idUser) {
 		PrenotazioneDao prenotazioneDao = new PrenotazioneDao(this.em);
 		this.em.getTransaction().begin();
-		List<Prenotazione> prenotazioni = prenotazioneDao.findAllPrenotazioneUtente(id_utente);
+		List<Prenotazione> prenotazioni = prenotazioneDao.findAllPrenotazioneUtente(idUser);
 		this.em.getTransaction().commit();
 		return prenotazioni;
 	}
@@ -265,18 +281,18 @@ public class Facade {
 		return comande;
 	}
 
-	public Comanda findComandaById(Long id) {
+	public Comanda findComandaById(Long idComanda) {
 		ComandaDao dao = new ComandaDao(this.em);
 		this.em.getTransaction().begin();
-		Comanda comanda = dao.findById(id);
+		Comanda comanda = dao.findById(idComanda);
 		this.em.getTransaction().commit();
 		return comanda;
 	}
 
-	public Piatto findPiattoById(Long id) {
+	public Piatto findPiattoById(Long idTavolo) {
 		PiattoDao dao = new PiattoDao(this.em);
 		this.em.getTransaction().begin();
-		Piatto piatto = dao.findById(id);
+		Piatto piatto = dao.findById(idTavolo);
 		this.em.getTransaction().commit();
 		return piatto;
 	}

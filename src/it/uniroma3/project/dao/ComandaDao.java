@@ -17,6 +17,8 @@ public class ComandaDao extends AbstractDao<Comanda> {
 		super(em);
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
 	@Override
 	public Comanda findById(long id) {

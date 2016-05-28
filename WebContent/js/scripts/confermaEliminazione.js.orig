@@ -1,0 +1,18 @@
+<<<<<<< HEAD
+//primo modale 
+=======
+$('#myModal').modal('hide');
+
+>>>>>>> a037f5c1a214c559c7fc6d99a35976d390e2b7f7
+$('#submitBtn').click(function() {
+	$('#elm').text($('#elimina').val());
+});
+
+//secondo modale
+$('#submit').click(function(){
+<<<<<<< HEAD
+	$($('#elm').val()).submit();
+=======
+	$('#formfield').submit();
+>>>>>>> a037f5c1a214c559c7fc6d99a35976d390e2b7f7
+});
