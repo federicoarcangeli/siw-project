@@ -23,6 +23,14 @@ public class ComandaDao extends AbstractDao<Comanda> {
 	public Comanda findById(long id) {
 		return getEntityManager().find(Comanda.class, id);
 	}
+	
+	public void deleteById(long id) {
+		Comanda comanda = this.findById(id);
+		if(comanda!=null) {
+			Comanda toRemove = getEntityManager().merge(comanda);
+			getEntityManager().remove(toRemove);
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

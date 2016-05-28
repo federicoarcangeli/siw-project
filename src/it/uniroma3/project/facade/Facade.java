@@ -22,6 +22,13 @@ public class Facade {
 		this.em.getTransaction().commit();
 
 	}
+	
+	public void removeComandaById(Long id) {
+		this.em.getTransaction().begin();
+		ComandaDao dao = new ComandaDao(this.em);
+		dao.deleteById(id);
+		this.em.getTransaction().commit();
+	}
 
 	public void inserisciPiatto(Piatto piatto) {
 		this.em.getTransaction().begin();

@@ -1,7 +1,9 @@
+//primo modale 
 $('#submitBtn').click(function() {
 	$('#elm').text($('#elimina').val());
 });
 
+//secondo modale
 $('#submit').click(function(){
-	$($('#elimina').val()).submit();
+	$($('#elm').val()).submit();
 });
