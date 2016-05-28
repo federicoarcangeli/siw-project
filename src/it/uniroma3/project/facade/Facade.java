@@ -29,6 +29,22 @@ public class Facade {
 		dao.deleteById(idComanda);
 		this.em.getTransaction().commit();
 	}
+	
+	public LineaComanda findLineaComanda(Long idLineaComanda) {
+		LineaComandaDao dao = new LineaComandaDao(this.em);
+		this.em.getTransaction().begin();
+		LineaComanda linee = dao.findById(idLineaComanda);
+		this.em.getTransaction().commit();
+		return linee;
+	}
+
+	public void eliminaRigaComanda(LineaComanda idLineaComanda) {
+		LineaComandaDao dao = new LineaComandaDao(this.em);
+		this.em.getTransaction().begin();
+		dao.delete(idLineaComanda);
+		this.em.getTransaction().commit();
+
+	}
 
 	public void inserisciPiatto(Piatto piatto) {
 		this.em.getTransaction().begin();
