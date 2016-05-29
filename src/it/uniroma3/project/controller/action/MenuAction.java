@@ -17,10 +17,6 @@ public class MenuAction implements Action {
 		List<CategoriaPiatto> categorie = facade.findAllCategorie();
 		request.setAttribute("categorie", categorie);
 		List<Piatto> piatti = facade.findAllPiatti();
-		for(Piatto p : piatti) {
-			String image = p.getDescrizionePiatto().getBase64Img();
-			
-		}
 		facade.closeEntityManager();
 		request.setAttribute("piatti", piatti);
 		return "/menu.jsp";
