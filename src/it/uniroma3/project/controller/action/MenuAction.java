@@ -3,8 +3,6 @@ package it.uniroma3.project.controller.action;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import it.uniroma3.project.facade.Facade;
 import it.uniroma3.project.model.CategoriaPiatto;
 import it.uniroma3.project.model.Piatto;

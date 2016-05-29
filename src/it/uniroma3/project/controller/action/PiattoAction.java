@@ -5,12 +5,10 @@ import java.io.InputStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.Part;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.fileupload.servlet.*;
 
@@ -19,7 +17,7 @@ import it.uniroma3.project.model.CategoriaPiatto;
 import it.uniroma3.project.model.DescrizionePiatto;
 import it.uniroma3.project.model.Piatto;
 import it.uniroma3.project.services.validator.DoubleValidator;
-import it.uniroma3.project.services.validator.PathValidator;
+
 import java.util.List;
 
 public class PiattoAction {
@@ -33,6 +31,8 @@ public class PiattoAction {
 		DoubleValidator validator = new DoubleValidator();
 		CategoriaPiatto categoria = null;
 		Piatto piatto = null;
+		String fieldName;
+		String fieldValue;
 		try {
 			List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
 
@@ -40,8 +40,8 @@ public class PiattoAction {
 				if (item.isFormField()) {
 					// Process regular form field (input
 					// type="text|radio|checkbox|etc", select, etc).
-					String fieldName = item.getFieldName();
-					String fieldValue = item.getString();
+					fieldName = item.getFieldName();
+					fieldValue = item.getString();
 					if (fieldName.equals("descrizione"))
 						descrizionePiatto.setDescrizione(fieldValue);
 					if (fieldName.equals("prezzo"))
@@ -53,15 +53,14 @@ public class PiattoAction {
 
 				} else {
 					// Process form file field (input type="file").
-					String fieldName = item.getFieldName();
-					String fileName = FilenameUtils.getName(item.getName());
+
 					InputStream fileContent = item.getInputStream();
 					byte[] img = IOUtils.toByteArray(fileContent);
 					descrizionePiatto.setImg(img);
 				}
 
-				String fieldName = item.getFieldName();
-				String fieldValue = item.getString();
+				fieldName = item.getFieldName();
+				fieldValue = item.getString();
 
 				if (fieldName.equals("categoria")) {
 					categoria = facade.findCategoria(fieldValue);
