@@ -6,7 +6,6 @@
 		transaction-type="RESOURCE_LOCAL">
 		<class>it.uniroma3.db.project.persistence.entity.DescrizionePiatto</class>
 		<class>it.uniroma3.db.project.persistence.entity.LineaComanda</class>
-		<class>it.uniroma3.db.project.persistence.entity.Operatore</class>
 		<class>it.uniroma3.db.project.persistence.entity.Comanda</class>
 		<class>it.uniroma3.db.project.persistence.entity.Piatto</class>
 		<class>it.uniroma3.db.project.persistence.entity.CategoriaPiatto</class>

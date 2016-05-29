@@ -28,13 +28,12 @@ public class PrenotazioneHelper {
 		String data = request.getParameter("data");
 		String ora = request.getParameter("ora");
 		String ospiti = request.getParameter("ospiti");
-		
+
 		List<Tavolo> tavoli = facade.findAllTavolo();
 		facade.closeEntityManager();
 		Ristorante ristorante = new Ristorante();
 		List<Tavolo> tavoliDisponibili = ristorante.setTavoloPrenotazione(tavoli,Integer.parseInt(ospiti));
 		Tavolo tavoloDaPrenotare = ristorante.checkTavoliLiberiForDate(tavoliDisponibili, validator.validate(data));
-
 
 		if (validator.validate(data) == null) {
 			corretto = false;
@@ -51,6 +50,10 @@ public class PrenotazioneHelper {
 		if (ora.equals("")) {
 			corretto = false;
 			request.setAttribute("oraError", "Ora obbligatoria");
+		}
+		if(validatorTime.isCena(ora)==false) {
+			corretto=false;
+			request.setAttribute("orarioError", "E' possibile prenotare solo per l'ora di cena (19:00 - 21:59)");
 		}
 		if (ospiti.equals("0")) {
 			corretto = false;

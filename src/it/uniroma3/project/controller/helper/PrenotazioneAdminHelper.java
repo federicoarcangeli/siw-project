@@ -52,6 +52,10 @@ public class PrenotazioneAdminHelper {
 			corretto = false;
 			request.setAttribute("oraError", "Formato ora non valido");
 		}
+		if(validatorTime.isCena(ora)==false) {
+			corretto=false;
+			request.setAttribute("orarioError", "E' possibile prenotare solo per l'ora di cena (19:00 - 21:59)");
+		}
 		if (ora.equals("")) {
 			corretto = false;
 			request.setAttribute("oraError", "Ora obbligatoria");
