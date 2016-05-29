@@ -16,10 +16,11 @@ public class Time24HoursValidator{
 
 	// gestione orario di lavolo ristorante
 	private static final String TIME24HOURS_PATTERN = "([01]?[0-9]|2[0-3]):[0-5][0-9]";
+	// orario lavorativo dalle 11:00 alle 22:59
+	private static final String ORARIORISTORANTE_PATTERN = "(19|2[01]):[0-5][0-9]";
 
 	public Time24HoursValidator(){
-		pattern = Pattern.compile(TIME24HOURS_PATTERN);
-		formatter= new SimpleDateFormat("hh:mm");
+
 	}
 
 	/**
@@ -28,6 +29,8 @@ public class Time24HoursValidator{
 	 * @return l'ora nel formato 24 ore
 	 */
 	public Date validate(String time){
+		pattern = Pattern.compile(TIME24HOURS_PATTERN);
+		formatter= new SimpleDateFormat("hh:mm");
 		Date hour=null;
 		if(time!=null){
 			matcher = pattern.matcher(time);
@@ -41,8 +44,18 @@ public class Time24HoursValidator{
 		return hour;
 	}
 
+	public boolean isCena(String time){
+		pattern = Pattern.compile(ORARIORISTORANTE_PATTERN);
+		if(time!=null){
+			matcher = pattern.matcher(time);
+			if (matcher.matches())
+				return true;
+		}
+		return false;
+	}
+
 	/**
-	 * Confronta la data passata come parametro con quella di oggi
+	 * Confronta la data passata come parametro con quella corrente
 	 * @param data
 	 * @return true se coincidono, false altrimenti
 	 */

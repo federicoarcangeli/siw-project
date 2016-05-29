@@ -198,6 +198,7 @@
 														</button>
 														<span> ERRORE: </span>${nomeCategoria} ${nomeError}
 														${descrizioneError} ${prezzoError} ${urlError}
+														${orarioError}
 													</div>
 												</div>
 

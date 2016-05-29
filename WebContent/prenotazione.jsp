@@ -100,8 +100,8 @@
 						<div class="col-md-12">
 							<div class="page-header">
 								<h1>
-									Prenotazione<small>Prenota un tavolo online. Ti sarà
-										inviata una email di conferma.</small>
+									Prenotazione<small>Prenota un tavolo dalle 19:00 alle
+										21:59. Ti sarà inviata una email di conferma.</small>
 								</h1>
 							</div>
 						</div>
@@ -176,8 +176,8 @@
 										<button type="button" class="close" data-dismiss="alert">
 											<span class="fa fa-close"></span>
 										</button>
-										<span> ERRORE: </span>${dataError} ${oraError} ${ospitiError}
-										${tavoliError } ${prenotazioniError}
+										<span> ERRORE: </span>${dataError} ${oraError} ${orarioError}
+										${ospitiError} ${tavoliError } ${prenotazioniError}
 									</div>
 
 								</div>
