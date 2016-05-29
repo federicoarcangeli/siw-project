@@ -33,13 +33,13 @@ public class PiattoAction {
 		Piatto piatto = null;
 		String fieldName;
 		String fieldValue;
+		
 		try {
 			List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
 
 			for (FileItem item : items) {
 				if (item.isFormField()) {
-					// Process regular form field (input
-					// type="text|radio|checkbox|etc", select, etc).
+					/*input type = "text", ecc...*/
 					fieldName = item.getFieldName();
 					fieldValue = item.getString();
 					if (fieldName.equals("descrizione"))
@@ -52,8 +52,7 @@ public class PiattoAction {
 						descrizionePiatto.setProdottiSurgelati(Boolean.parseBoolean(fieldValue));
 
 				} else {
-					// Process form file field (input type="file").
-
+					/*input type = "file"*/
 					InputStream fileContent = item.getInputStream();
 					byte[] img = IOUtils.toByteArray(fileContent);
 					descrizionePiatto.setImg(img);
@@ -66,7 +65,7 @@ public class PiattoAction {
 					categoria = facade.findCategoria(fieldValue);
 
 				}
-
+				
 				if (fieldName.equals("nome") && categoria != null)
 					piatto = new Piatto(fieldValue, descrizionePiatto, categoria);
 			}
