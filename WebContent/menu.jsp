@@ -9,7 +9,6 @@
 <head>
 <meta charset="utf-8">
 <title>Il nostro men&ugrave;</title>
-<meta name="author" content="Surjith S M">
 
 <!-- SEO -->
 <meta name="description"
@@ -104,7 +103,7 @@
 							<c:forEach var="piatto" items="${piatti}">
 								<div
 									class="menu-item3 col-sm-6 col-xs-12 ${piatto.getPortata().nome}">
-									<img src="img/menu/2/2.jpg" class="img-responsive" alt="" />
+									<img src="data:image/jpeg;base64,${piatto.getDescrizionePiatto().getBase64Img()}" class="img-responsive" />
 									<div class="menu-wrapper">
 										<h4>${piatto.nome}</h4>
 										&nbsp; <span class="price">

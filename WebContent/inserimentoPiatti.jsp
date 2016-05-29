@@ -97,8 +97,8 @@
 					</div>
 
 					<div class="reservation-form">
-						<form action="processaPiatto" method="post"
-							enctype="multipart/form-data" id="formfield">
+						<form action="processaPiatto" method="post" id="formfield"
+						enctype="multipart/form-data">
 							<input type="hidden" name="action" value="add_form" />
 							<!-- Tabs -->
 							<div class="element-tab">

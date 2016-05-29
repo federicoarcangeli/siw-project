@@ -66,6 +66,8 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
 							<li><a
+								href="${pageContext.request.contextPath}/ProcessaMenu">Men&ugrave;</a></li>
+							<li><a
 								href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
 							<li class="dropdown"><a href="./home_Administrator.jsp"
 								class="dropdown-toggle" data-toggle="dropdown" role="button"
