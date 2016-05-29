@@ -12,7 +12,8 @@ import it.uniroma3.project.model.Piatto;
 public class MenuAction implements Action {
 
 	
-	public String execute(HttpServletRequest request, HttpServletResponse response) {
+	@Override
+	public String execute(HttpServletRequest request) {
 		Facade facade = new Facade();
 		List<CategoriaPiatto> categorie = facade.findAllCategorie();
 		request.setAttribute("categorie", categorie);
@@ -22,10 +23,5 @@ public class MenuAction implements Action {
 		return "/menu.jsp";
 	}
 
-	@Override
-	public String execute(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }
