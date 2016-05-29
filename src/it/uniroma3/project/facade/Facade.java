@@ -22,14 +22,14 @@ public class Facade {
 		this.em.getTransaction().commit();
 
 	}
-	
+
 	public void removeComandaById(Long idComanda) {
 		this.em.getTransaction().begin();
 		ComandaDao dao = new ComandaDao(this.em);
 		dao.deleteById(idComanda);
 		this.em.getTransaction().commit();
 	}
-	
+
 	public LineaComanda findLineaComanda(Long idLineaComanda) {
 		LineaComandaDao dao = new LineaComandaDao(this.em);
 		this.em.getTransaction().begin();
@@ -120,7 +120,7 @@ public class Facade {
 		this.em.getTransaction().commit();
 		return piatto;
 	}
-	
+
 	public List<Comanda> findallComandaCompletate() {
 		ComandaDao dao = new ComandaDao(this.em);
 		this.em.getTransaction().begin();
@@ -128,7 +128,7 @@ public class Facade {
 		this.em.getTransaction().commit();
 		return comande;
 	}
-	
+
 	public void concludiComanda(Comanda comanda) {
 		ComandaDao dao = new ComandaDao(this.em);
 		this.em.getTransaction().begin();
@@ -136,7 +136,7 @@ public class Facade {
 		dao.update(comanda);
 		this.em.getTransaction().commit();
 	}
-	
+
 	public Comanda findComandaByTavolo(Long idTavolo) {
 		ComandaDao dao = new ComandaDao(this.em);
 		this.em.getTransaction().begin();
@@ -319,6 +319,22 @@ public class Facade {
 		dao.delete(comanda);
 		this.em.getTransaction().commit();
 
+	}
+
+	public Prenotazione findPrenotazioneByTavolo(long idComanda) {
+		PrenotazioneDao dao = new PrenotazioneDao(this.em);
+		this.em.getTransaction().begin();
+		Prenotazione prenotazione = dao.findByTavolo(idComanda);
+		this.em.getTransaction().commit();
+		return prenotazione;
+	}
+
+	public void setPrenotazioneCompletata(Prenotazione prenotazione) {
+		prenotazione.setCompletato(true);
+		PrenotazioneDao dao = new PrenotazioneDao(this.em);
+		this.em.getTransaction().begin();
+		dao.update(prenotazione);
+		this.em.getTransaction().commit();
 	}
 
 }

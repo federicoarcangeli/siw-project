@@ -127,6 +127,7 @@
 														<th class="text-center">Data - Ora</th>
 														<th class="text-center">Tavolo</th>
 														<th class="text-center">Ospiti</th>
+														<th class="text-center">Stato</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -141,7 +142,13 @@
 															</td>
 															<td class="text-center">${prenotazione.tavoloPrenotato.getCodiceTavolo()}</td>
 															<td class="text-center">${prenotazione.numeroOspiti}</td>
-														</tr>
+															<c:if test="${prenotazione.completato=='false'}">
+																<td class="text-center"><i class="fa fa-spinner"></i></td>
+															</c:if>
+															<c:if test="${prenotazione.completato=='true'}">
+																<td class="text-center" class="success"><i
+																	class="fa fa-check-circle"></i></td>
+															</c:if>
 													</c:forEach>
 												</tbody>
 											</table>

@@ -17,14 +17,12 @@ public class ComandaDao extends AbstractDao<Comanda> {
 		super(em);
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 
 	@Override
 	public Comanda findById(long id) {
 		return getEntityManager().find(Comanda.class, id);
 	}
-	
+
 	public void deleteById(long id) {
 		Comanda comanda = this.findById(id);
 		if(comanda!=null) {

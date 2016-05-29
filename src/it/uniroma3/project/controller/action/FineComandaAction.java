@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import it.uniroma3.project.facade.Facade;
 import it.uniroma3.project.model.Comanda;
+import it.uniroma3.project.model.Prenotazione;
 
 public class FineComandaAction implements Action {
 
@@ -26,11 +27,12 @@ public class FineComandaAction implements Action {
 				Comanda comanda = facade.findComandaById(Long.parseLong(conferma));
 				facade.concludiComanda(comanda);
 				facade.setTavoloLibero(comanda.getTavolo());
+				Prenotazione prenotazione = facade.findPrenotazioneByTavolo(comanda.getTavolo().getId());
+				facade.setPrenotazioneCompletata(prenotazione);
 			}
 		facade.closeEntityManager();
 
 		return "/processaPannelloControllo";
-
 	}
 
 }
