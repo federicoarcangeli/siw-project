@@ -98,7 +98,7 @@
 
 					<div class="reservation-form">
 						<form action="processaPiatto" method="post" id="formfield"
-						enctype="multipart/form-data">
+							enctype="multipart/form-data">
 							<input type="hidden" name="action" value="add_form" />
 							<!-- Tabs -->
 							<div class="element-tab">
@@ -158,7 +158,7 @@
 												<div class="form-group">
 													<label for="descrizione">Descrizione</label>
 													<textarea class="form-control" id="descrizione"
-														placeholder="Inserisci la descrizione" rows="4" cols="5"
+														placeholder="Inserisci la descrizione" rows="4"
 														name="descrizione">${param["descrizione"]}</textarea>
 													<i class="fa fa-comment-o" aria-hidden="true"></i>
 												</div>
@@ -381,7 +381,7 @@
 	<script src="js/reservation.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
 	<script src="js/scripts/confermaInserimentoPiatto.js"></script>
-	
+
 
 </body>
 

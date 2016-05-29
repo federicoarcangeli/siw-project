@@ -64,7 +64,7 @@
 						<li><a href="${pageContext.request.contextPath}/ProcessaMenu">Men&ugrave;</a></li>
 						<li><a href="./gallery.jsp">Galleria</a></li>
 						<li><a href="./loginSignup.jsp">Login / Signup</a></li>
-						<li><a href="./contact.html">Contact</a></li>
+						<li><a href="./contact.html">Contatti</a></li>
 					</ul>
 				</div>
 
@@ -79,8 +79,8 @@
 					<a href="./index.html"> <img src="img/logo.png" alt="logo">
 					</a>
 				</div>
-				<h1>DELICIOUS Food</h1>
-				<h2>Tomato is a delitious restaurant website template</h2>
+				<h1>Ristorante Tomato</h1>
+				<h2>La qualità è di casa</h2>
 			</div>
 			<div class="scroll-down">
 				<a href="#about"> <img src="img/arrow-down.png" alt="down-arrow">
@@ -155,8 +155,8 @@
 						<div class="col-md-12">
 							<div class="page-header wow fadeInDown">
 								<h1 class="white">
-									today's specials<small>A little about us and a breif
-										history of how we started.</small>
+									I piatti tipici<small>i piatti che ci hanno fatto
+										diventare grandi</small>
 								</h1>
 							</div>
 						</div>
@@ -242,282 +242,6 @@
 									<div class="prev">
 										<a><img src="img/left-arrow.png" alt="" /></a>
 									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- Reservations page-->
-			<section class="reservation">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="page-header wow fadeInDown">
-								<h1>
-									Reservations<small>Book a table online. Leads will
-										reach in your email.</small>
-								</h1>
-							</div>
-						</div>
-					</div>
-					<div class="reservation-form wow fadeInUp">
-						<div class="row">
-							<div class="col-md-4 col-sm-6">
-								<div class="form-group">
-									<label>Date</label> <input type="text" class="form-control"
-										id="datepicker" placeholder="Pick a date"> <i
-										class="fa fa-calendar-o"></i>
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-6">
-								<div class="form-group">
-									<label>Your Name</label> <input type="text"
-										class="form-control" placeholder="Full Name"> <i
-										class="fa fa-pencil-square-o"></i>
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-6">
-								<div class="form-group">
-									<label>Time</label> <input type="text" class="form-control"
-										id="timepicker" placeholder="Pick a time"> <i
-										class="fa fa-clock-o"></i>
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-6">
-								<div class="form-group">
-									<label>Email Address</label> <input type="email"
-										class="form-control" placeholder="Your Email ID"> <i
-										class="fa fa-envelope-o"></i>
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-6">
-								<div class="form-group">
-									<label>Guests</label> <input class="form-control" type="number"
-										placeholder="How many of you?"> <i class="fa fa-user"></i>
-								</div>
-							</div>
-							<div class="col-md-4 col-sm-6">
-								<div class="form-group">
-									<label>Phone Number</label> <input type="text"
-										class="form-control" placeholder="Enter your Phone Number">
-									<i class="fa fa-phone"></i>
-								</div>
-							</div>
-							<div class="col-md-12 col-sm-12">
-								<div class="reservation-btn">
-									<a class="btn btn-default btn-lg" role="button">Make
-										Reservation</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="reservation-footer">
-						<p>
-							You can also call: <strong>+1 224 6787 004</strong> to make a
-							reservation.
-						</p>
-						<span></span>
-					</div>
-				</div>
-			</section>
-
-			<!-- Our features-->
-			<section class="features fixed-bg"
-				data-stellar-background-ratio="0.2">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="page-header wow fadeInDown">
-								<h1 class="white">
-									Our features<small>Little things make us best in town</small>
-								</h1>
-							</div>
-						</div>
-					</div>
-					<div class="row wow fadeInUp">
-						<div class="col-md-4 col-sm-6">
-							<div class="features-tile">
-								<div class="features-img">
-									<img src="img/thumb5.png" alt="" />
-								</div>
-								<div class="features-content">
-									<div class="page-header">
-										<h1>Serving with love</h1>
-									</div>
-									<p>Aenean suscipit vehicula purus quis iaculis. Aliquam nec
-										leo nisi. Nam urna arcu, maximus eget ex nec, consequat
-										pellentesque enim. Aliquam tempor fringilla odio, vel
-										ullamcorper turpis varius eu.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-6">
-							<div class="features-tile">
-								<div class="features-img">
-									<img src="img/thumb6.png" alt="" />
-								</div>
-								<div class="features-content">
-									<div class="page-header">
-										<h1>Serving with love</h1>
-									</div>
-									<p>Aenean suscipit vehicula purus quis iaculis. Aliquam nec
-										leo nisi. Nam urna arcu, maximus eget ex nec, consequat
-										pellentesque enim. Aliquam tempor fringilla odio, vel
-										ullamcorper turpis varius eu.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-6">
-							<div class="features-tile">
-								<div class="features-img">
-									<img src="img/thumb7.png" alt="" />
-								</div>
-								<div class="features-content">
-									<div class="page-header">
-										<h1>Serving with love</h1>
-									</div>
-									<p>Aenean suscipit vehicula purus quis iaculis. Aliquam nec
-										leo nisi. Nam urna arcu, maximus eget ex nec, consequat
-										pellentesque enim. Aliquam tempor fringilla odio, vel
-										ullamcorper turpis varius eu.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 col-sm-6 visible-sm">
-							<div class="features-tile">
-								<div class="features-img">
-									<img src="img/thumb5.png" alt="" />
-								</div>
-								<div class="features-content">
-									<div class="page-header">
-										<h1>Serving with love</h1>
-									</div>
-									<p>Aenean suscipit vehicula purus quis iaculis. Aliquam nec
-										leo nisi. Nam urna arcu, maximus eget ex nec, consequat
-										pellentesque enim. Aliquam tempor fringilla odio, vel
-										ullamcorper turpis varius eu.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- menu-->
-			<section class="menu">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="page-header wow fadeInDown">
-								<h1>
-									Our menu<small>These fine folks trusted the award
-										winning restaurant.</small>
-								</h1>
-							</div>
-						</div>
-					</div>
-					<div class="food-menu wow fadeInUp">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="menu-tags">
-									<span data-filter="*" class="tagsort-active">All</span> <span
-										data-filter=".starter">starters</span> <span
-										data-filter=".breakfast">breakfast</span> <span
-										data-filter=".lunch">lunch</span> <span data-filter=".dinner">dinner</span>
-									<span data-filter=".desserts">desserts</span>
-								</div>
-							</div>
-						</div>
-						<div class="row menu-items">
-							<div class="menu-item col-sm-6 col-xs-12 starter dinner desserts">
-								<div class="clearfix menu-wrapper">
-									<h4>English asparagus</h4>
-									<span class="price">$14.95</span>
-									<div class="dotted-bg"></div>
-								</div>
-								<p>pellentesque enim. Aliquam tempor</p>
-							</div>
-							<div class="menu-item col-sm-6 col-xs-12 starter">
-								<div class="clearfix menu-wrapper">
-									<h4>English asparagus</h4>
-									<span class="price">$14.95</span>
-									<div class="dotted-bg"></div>
-								</div>
-								<p>pellentesque enim. Aliquam tempor</p>
-							</div>
-							<div
-								class="menu-item col-sm-6 col-xs-12 breakfast desserts starter">
-								<div class="clearfix menu-wrapper">
-									<h4>English asparagus</h4>
-									<span class="price">$14.95</span>
-									<div class="dotted-bg"></div>
-								</div>
-								<p>pellentesque enim. Aliquam tempor</p>
-							</div>
-							<div class="menu-item col-sm-6 col-xs-12 breakfast">
-								<div class="clearfix menu-wrapper">
-									<h4>English asparagus</h4>
-									<span class="price">$14.95</span>
-									<div class="dotted-bg"></div>
-								</div>
-								<p>pellentesque enim. Aliquam tempor</p>
-							</div>
-							<div class="menu-item col-sm-6 col-xs-12 lunch starter breakfast">
-								<div class="clearfix menu-wrapper">
-									<h4>English asparagus</h4>
-									<span class="price">$14.95</span>
-									<div class="dotted-bg"></div>
-								</div>
-								<p>pellentesque enim. Aliquam tempor</p>
-							</div>
-							<div class="menu-item col-sm-6 col-xs-12 lunch">
-								<div class="clearfix menu-wrapper">
-									<h4>English asparagus</h4>
-									<span class="price">$14.95</span>
-									<div class="dotted-bg"></div>
-								</div>
-								<p>pellentesque enim. Aliquam tempor</p>
-							</div>
-							<div class="menu-item col-sm-6 col-xs-12 dinner breakfast lunch">
-								<div class="clearfix menu-wrapper">
-									<h4>English asparagus</h4>
-									<span class="price">$14.95</span>
-									<div class="dotted-bg"></div>
-								</div>
-								<p>pellentesque enim. Aliquam tempor</p>
-							</div>
-							<div class="menu-item col-sm-6 col-xs-12 dinner">
-								<div class="clearfix menu-wrapper">
-									<h4>English asparagus</h4>
-									<span class="price">$14.95</span>
-									<div class="dotted-bg"></div>
-								</div>
-								<p>pellentesque enim. Aliquam tempor</p>
-							</div>
-							<div class="menu-item col-sm-6 col-xs-12 desserts lunch dinner">
-								<div class="clearfix menu-wrapper">
-									<h4>English asparagus</h4>
-									<span class="price">$14.95</span>
-									<div class="dotted-bg"></div>
-								</div>
-								<p>pellentesque enim. Aliquam tempor</p>
-							</div>
-							<div class="menu-item col-sm-6 col-xs-12 desserts">
-								<div class="clearfix menu-wrapper">
-									<h4>English asparagus</h4>
-									<span class="price">$14.95</span>
-									<div class="dotted-bg"></div>
-								</div>
-								<p>pellentesque enim. Aliquam tempor</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<div class="menu-btn">
-									<a class="btn btn-default btn-lg" href="./menu_all.html"
-										role="button">Explore our menu</a>
 								</div>
 							</div>
 						</div>
@@ -633,22 +357,6 @@
 				</div>
 			</section>
 
-			<!--             <section class="instagram">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="page-header wow fadeInDown">
-                                <h1>Instagram<small>We love posting photos of our coustomers having a good time</small></h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                instafeed div
-                Change your settings in the data- attributes (See documentation for help)
-                <div id="instafeed" data-username="YOUR_INSTAGRAM_USERNAME_HERE" data-access-token="YOUR_INSTAGRAM_ACCESS_TOKEN_HERE" data-client-id="YOUR_INSTAGRAM_CLIENT_ID_HERE">
-            </section> -->
-
 			<!-- subscribe -->
 			<section class="subscribe">
 				<div class="container">
@@ -723,11 +431,11 @@
 							</div>
 							<div class="footer-address">
 								<p>
-									<i class="fa fa-map-marker"></i>28 Seventh Avenue, Neew York,
-									10014
+									<i class="fa fa-map-marker"></i>Via della vasca navale 70,
+									00146
 								</p>
 								<p>
-									<i class="fa fa-phone"></i>Phone: (415) 124-5678
+									<i class="fa fa-phone"></i>Telefono: +39 123456789
 								</p>
 								<p>
 									<i class="fa fa-envelope-o"></i>support@restaurant.com
@@ -743,9 +451,9 @@
 						<div class="row">
 							<div class="col-md-12">
 								<p>
-									<i class="fa fa-copyright"></i> 2015.Tomato.All rights
+									<i class="fa fa-copyright"></i> 2016.Tomato.All rights
 									reserved. Designed with <i class="fa fa-heart primary-color"></i>
-									by Surjithctly
+									by Federico & Alessandro
 								</p>
 							</div>
 						</div>
@@ -756,71 +464,27 @@
 
 	</div>
 
-	<!-- STYLE SWITCHER 
-============================================= -->
-	<div class="b-settings-panel">
-		<div class="settings-section">
-			<span> Boxed </span>
-			<div class="b-switch">
-				<div class="switch-handle"></div>
-			</div>
-			<span> Wide </span>
-		</div>
-		<hr class="dashed" style="margin: 15px 0px;">
-		<h5>Main Background</h5>
-		<div class="settings-section bg-list">
-			<div class="bg-wood_pattern"></div>
-			<div class="bg-shattered"></div>
-			<div class="bg-vichy"></div>
-			<div class="bg-random-grey-variations"></div>
-			<div class="bg-irongrip"></div>
-			<div class="bg-gplaypattern"></div>
-			<div class="bg-diamond_upholstery"></div>
-			<div class="bg-denim"></div>
-			<div class="bg-crissXcross"></div>
-			<div class="bg-climpek"></div>
-		</div>
-		<hr class="dashed" style="margin: 15px 0px;">
-		<h5>Color Scheme</h5>
-		<div class="settings-section color-list">
-			<div data-src="css/themes/blue.css" style="background: #45b5f5"></div>
-			<div data-src="css/themes/brown.css" style="background: #dc8068"></div>
-			<div data-src="css/themes/cyan.css" style="background: #00becc"></div>
-			<div data-src="css/themes/green.css" style="background: #5bb75b"></div>
-			<div data-src="css/themes/orange.css" style="background: #ff7149"></div>
-			<div data-src="css/themes/pink.css" style="background: #fba1a1"></div>
-			<div data-src="css/themes/red.css" style="background: #dc3522"></div>
-			<div data-src="css/themes/yellow.css" style="background: #fdb813"></div>
-		</div>
-
-		<a data-src="css/style.css" class="reset"><span
-			class="bg-wood_pattern">Reset</span></a>
-
-
-		<!-- END STYLE SWITCHER 
-============================================= -->
-
-		<!-- Javascript -->
-		<script src="js/vendor/jquery-1.11.2.min.js"></script>
-		<script src="js/vendor/bootstrap.min.js"></script>
-		<script src="js/vendor/jquery.flexslider-min.js"></script>
-		<script src="js/vendor/spectragram.js"></script>
-		<script src="js/vendor/owl.carousel.min.js"></script>
-		<script src="js/vendor/velocity.min.js"></script>
-		<script src="js/vendor/velocity.ui.min.js"></script>
-		<script src="js/vendor/bootstrap-datepicker.min.js"></script>
-		<script src="js/vendor/bootstrap-clockpicker.min.js"></script>
-		<script src="js/vendor/jquery.magnific-popup.min.js"></script>
-		<script src="js/vendor/isotope.pkgd.min.js"></script>
-		<script src="js/vendor/slick.min.js"></script>
-		<script src="js/vendor/wow.min.js"></script>
-		<script src="js/animation.js"></script>
-		<script src="js/vendor/vegas/vegas.min.js"></script>
-		<script src="js/vendor/jquery.mb.YTPlayer.js"></script>
-		<script src="js/vendor/jquery.stellar.js"></script>
-		<script src="js/main.js"></script>
-		<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
-		<script src="js/vendor/mc/main.js"></script>
+	<!-- Javascript -->
+	<script src="js/vendor/jquery-1.11.2.min.js"></script>
+	<script src="js/vendor/bootstrap.min.js"></script>
+	<script src="js/vendor/jquery.flexslider-min.js"></script>
+	<script src="js/vendor/spectragram.js"></script>
+	<script src="js/vendor/owl.carousel.min.js"></script>
+	<script src="js/vendor/velocity.min.js"></script>
+	<script src="js/vendor/velocity.ui.min.js"></script>
+	<script src="js/vendor/bootstrap-datepicker.min.js"></script>
+	<script src="js/vendor/bootstrap-clockpicker.min.js"></script>
+	<script src="js/vendor/jquery.magnific-popup.min.js"></script>
+	<script src="js/vendor/isotope.pkgd.min.js"></script>
+	<script src="js/vendor/slick.min.js"></script>
+	<script src="js/vendor/wow.min.js"></script>
+	<script src="js/animation.js"></script>
+	<script src="js/vendor/vegas/vegas.min.js"></script>
+	<script src="js/vendor/jquery.mb.YTPlayer.js"></script>
+	<script src="js/vendor/jquery.stellar.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
+	<script src="js/vendor/mc/main.js"></script>
 </body>
 
 </html>
