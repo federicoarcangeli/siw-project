@@ -86,6 +86,8 @@ public class Comanda {
 		this.lineeComanda = lineeComanda;
 	}
 
+
+
 	public void addLineeComanda(LineaComanda lineaComanda) {
 		this.lineeComanda.add(lineaComanda);
 	}

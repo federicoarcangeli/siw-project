@@ -33,8 +33,11 @@ public class Prenotazione {
 
 	@Column(nullable = false)
 	private int numeroOspiti;
-	
+
 	private String nominativo;
+
+	@Column(nullable = false)
+	private boolean completato;
 
 	@ManyToOne
 	private Utente utente;
@@ -50,12 +53,14 @@ public class Prenotazione {
 		this.Ora=ora;
 		this.numeroOspiti=ospiti;
 		this.nominativo=nominativo;
+		this.completato=false;
 	}
 	public Prenotazione(Date data,Date ora, int ospiti,Utente utente) {
 		this.data=data;
 		this.Ora=ora;
 		this.numeroOspiti=ospiti;
 		this.utente=utente;
+		this.completato=false;
 	}
 
 	public Long getId() {
@@ -106,6 +111,14 @@ public class Prenotazione {
 		return tavoloPrenotato;
 	}
 
+	public boolean isCompletato() {
+		return completato;
+	}
+
+	public void setCompletato(boolean completato) {
+		this.completato = completato;
+	}
+
 	public void setTavoloPrenotato(Tavolo tavoloPrenotato) {
 		this.tavoloPrenotato = tavoloPrenotato;
 		this.tavoloPrenotato.getPrenotazioni().add(this);
@@ -120,6 +133,7 @@ public class Prenotazione {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((Ora == null) ? 0 : Ora.hashCode());
+		result = prime * result + (completato ? 1231 : 1237);
 		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nominativo == null) ? 0 : nominativo.hashCode());
@@ -142,6 +156,8 @@ public class Prenotazione {
 			if (other.Ora != null)
 				return false;
 		} else if (!Ora.equals(other.Ora))
+			return false;
+		if (completato != other.completato)
 			return false;
 		if (data == null) {
 			if (other.data != null)
@@ -172,4 +188,5 @@ public class Prenotazione {
 			return false;
 		return true;
 	}
+
 }

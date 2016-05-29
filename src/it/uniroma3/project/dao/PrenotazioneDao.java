@@ -1,5 +1,6 @@
 package it.uniroma3.project.dao;
 
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
@@ -41,13 +42,13 @@ public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 	@SuppressWarnings("unchecked")
 	public List<Prenotazione> findPrenotazioneTavolo(Tavolo t, Date today) {
 		Query query = getEntityManager().createNativeQuery(
-				"select p.* from Prenotazione p where p.tavoloprenotato_id= ?1 and p.data= ?2", Prenotazione.class);
+				"select p.* from Prenotazione p where p.tavoloprenotato_id= ?1 and p.data= ?2 and p.completato='false'", Prenotazione.class);
 		query.setParameter(1, t.getId());
 		query.setParameter(2, today, TemporalType.DATE);
 		return query.getResultList();
 
 	}
-	
+
 	public List<Prenotazione> findAllPrenotazioniToday(Date today) {
 		EntityManager em = getEntityManager();
 		EntityTransaction tx = em.getTransaction();
@@ -59,5 +60,16 @@ public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 		em.close();
 		return result;
 	}
-	
+
+	public Prenotazione findByTavolo(long idComanda) {
+		try {
+			Query q = (Query) getEntityManager().createNativeQuery("select id from prenotazione where tavoloprenotato_id = ?1 and completato='false'");
+			q.setParameter(1, idComanda);
+			BigInteger id = (BigInteger) q.getSingleResult();
+			return this.findById(id.longValue());
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
 }
