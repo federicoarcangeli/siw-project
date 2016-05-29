@@ -35,7 +35,6 @@ public class PrenotazioneHelper {
 		List<Tavolo> tavoliDisponibili = ristorante.setTavoloPrenotazione(tavoli,Integer.parseInt(ospiti));
 		Tavolo tavoloDaPrenotare = ristorante.checkTavoliLiberiForDate(tavoliDisponibili, validator.validate(data));
 
-
 		if (validator.validate(data) == null) {
 			corretto = false;
 			request.setAttribute("dataError", "Formato data non valido");
