@@ -33,7 +33,7 @@ public class MenuController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MenuAction action = new MenuAction();
-		String nextPage = action.execute(request, response);
+		String nextPage = action.execute(request);
 		ServletContext application = getServletContext();
 		RequestDispatcher rd = application.getRequestDispatcher(nextPage);
 		rd.forward(request, response);
