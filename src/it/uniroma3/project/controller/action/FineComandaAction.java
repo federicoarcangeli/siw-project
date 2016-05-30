@@ -17,7 +17,6 @@ public class FineComandaAction implements Action {
 
 		String elimina = request.getParameter("elimina");
 		String conferma = request.getParameter("conferma");
-		System.out.println("----->"+elimina + conferma);
 		if(elimina!=null){
 			Comanda comanda = facade.findComandaById(Long.parseLong(elimina));
 			facade.eliminaComanda(comanda);
@@ -28,7 +27,8 @@ public class FineComandaAction implements Action {
 				facade.concludiComanda(comanda);
 				facade.setTavoloLibero(comanda.getTavolo());
 				Prenotazione prenotazione = facade.findPrenotazioneByTavolo(comanda.getTavolo().getId());
-				facade.setPrenotazioneCompletata(prenotazione);
+				if(prenotazione!=null)
+					facade.setPrenotazioneCompletata(prenotazione);
 			}
 		facade.closeEntityManager();
 

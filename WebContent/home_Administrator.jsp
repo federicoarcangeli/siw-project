@@ -108,8 +108,7 @@
 									</a></li>
 									<li><a
 										href="${pageContext.request.contextPath}/processaStorico">Storico
-											Comande <span class="label label-danger">hot</span><i
-											class="fa fa-caret-right"></i>
+											Comande <i class="fa fa-caret-right"></i>
 									</a></li>
 								</ul>
 							</div>
@@ -145,10 +144,13 @@
 															<td class="text-center">${prenotazione.tavoloPrenotato.getCodiceTavolo()}</td>
 															<td class="text-center">${prenotazione.numeroOspiti}</td>
 															<c:if test="${prenotazione.completato=='false'}">
-																<td class="text-center"><i class="fa fa-spinner"></i></td>
+																<td class="text-center"><i
+																	class="fa fa-spinner fa-pulse fa-lg fa-fw"></i> <span
+																	class="sr-only">Loading...</span></td>
 															</c:if>
 															<c:if test="${prenotazione.completato=='true'}">
-																<td class="text-center" class="success"><i
+																<td class="text-center" class="success"
+																	style="color: green;"><i
 																	class="fa fa-check-circle"></i></td>
 															</c:if>
 													</c:forEach>
@@ -181,7 +183,8 @@
 																		<td class="text-center"><i class="fa fa-spinner"></i></td>
 																	</c:if>
 																	<c:if test="${comanda.completata=='true'}">
-																		<td class="text-center" class="success"><i
+																		<td class="text-center" class="success"
+																			style="color: green;"><i
 																			class="fa fa-check-circle"></i></td>
 																	</c:if>
 																	<td class="text-center"><a href="#"
@@ -255,11 +258,14 @@
 																	<td class="text-center">${comanda.prezzoTotale}
 																		&euro;</td>
 																	<c:if test="${comanda.completata=='false'}">
-																		<td class="text-center"><i class="fa fa-spinner"></i></td>
+																		<td class="text-center"><i
+																			class="fa fa-spinner fa-pulse fa-lg fa-fw"></i> <span
+																			class="sr-only">Loading...</span></td>
 																	</c:if>
 																	<c:if test="${comanda.completata=='true'}">
 																		<td class="text-center" class="success"><i
-																			class="fa fa-check-circle"></i></td>
+																			class="fa fa-spinner fa-pulse fa-2x fa-fw"></i> <span
+																			class="sr-only">Loading...</span></td>
 																	</c:if>
 																	<td class="text-center"><a href="#"
 																		data-toggle="modal" data-target='#${comanda.id}'

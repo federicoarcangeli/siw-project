@@ -97,7 +97,11 @@
 			<section class="reservation">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-12"></div>
+						<div class="page-header">
+							<h1>
+								<small>Prenotazioni disponibili dalle 19:00 alle 21:59.</small>
+							</h1>
+						</div>
 					</div>
 					<div class="reservation-form">
 						<form action="processaPrenotazioneAdmin" method="post"

@@ -45,13 +45,7 @@
 
 	<div class="body">
 		<div class="main-wrapper">
-			<%-- 			<%
-				if (session.getAttribute("amministratoreCorrente") == null) {
-					String redirectURL = "./404.html";
-					response.sendRedirect(redirectURL);
 
-				} else {
-			%> --%>
 			<section class="reservation">
 				<div class="container">
 					<div class="row">
@@ -59,21 +53,14 @@
 							<div class="alert alert-success">
 								<span> SUCCESS: </span> benvenuto:<strong>
 									${amministratoreCorrente.username}</strong> ruolo:<strong>
-									${amministratoreCorrente.role}</strong>
+									${amministratoreCorrente.role}</strong><i
+									class="fa fa-cog fa-spin fa-2x fa-fw pull-right"></i>
 							</div>
 						</div>
 					</div>
-
 				</div>
-				<div class="clearfix"></div>
-				<div class="clearfix"></div>
-				<img src="img/preloader.svg" alt=""
-					class="img-responsive center-block" />
 			</section>
 		</div>
-		<%-- 			<%
-				}
-			%> --%>
 
 	</div>
 

@@ -112,8 +112,8 @@
 											<td class="text-center">${comanda.prezzoTotale}</td>
 											<td class="text-center">${comanda.operatore.getUsername()}</td>
 											<td class="text-center">${comanda.tavolo.getCodiceTavolo()}</td>
-											<td class="text-center"><a class="fa fa-info" href="#"
-												data-toggle="modal" data-target='#${comanda.id}'></a></td>
+											<td class="text-center"><a class="fa fa-info-circle"
+												href="#" data-toggle="modal" data-target='#${comanda.id}'></a></td>
 										</tr>
 									</c:forEach>
 								</tbody>

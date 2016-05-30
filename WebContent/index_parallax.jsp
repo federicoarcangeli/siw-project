@@ -266,43 +266,43 @@
 						<div class="col-md-12">
 							<div class="trusted-sponsors">
 								<div class="item">
-									<a href="./index.html"> <img
+									<a href="./index_parallax.jsp"> <img
 										src="img/sponsor/foodsquare.png" alt="sponsors">
 									</a>
 								</div>
 								<div class="item">
-									<a href="./index.html"> <img
+									<a href="./index_parallax.jsp"> <img
 										src="img/sponsor/opentable.png" alt="sponsors">
 									</a>
 								</div>
 								<div class="item">
-									<a href="./index.html"> <img
+									<a href="./index_parallax.jsp"> <img
 										src="img/sponsor/tripadvisor.png" alt="sponsors">
 									</a>
 								</div>
 								<div class="item">
-									<a href="./index.html"> <img src="img/sponsor/zomato.png"
-										alt="sponsors">
+									<a href="./index_parallax.jsp"> <img
+										src="img/sponsor/zomato.png" alt="sponsors">
 									</a>
 								</div>
 								<div class="item">
-									<a href="./index.html"> <img
+									<a href="./index_parallax.jsp"> <img
 										src="img/sponsor/foodsquare.png" alt="sponsors">
 									</a>
 								</div>
 								<div class="item">
-									<a href="./index.html"> <img
+									<a href="./index_parallax.jsp"> <img
 										src="img/sponsor/opentable.png" alt="sponsors">
 									</a>
 								</div>
 								<div class="item">
-									<a href="./index.html"> <img
+									<a href="./index_parallax.jsp"> <img
 										src="img/sponsor/tripadvisor.png" alt="sponsors">
 									</a>
 								</div>
 								<div class="item">
-									<a href="./index.html"> <img src="img/sponsor/zomato.png"
-										alt="sponsors">
+									<a href="./index_parallax.jsp"> <img
+										src="img/sponsor/zomato.png" alt="sponsors">
 									</a>
 								</div>
 							</div>
