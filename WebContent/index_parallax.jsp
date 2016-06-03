@@ -5,6 +5,8 @@
 <meta charset="utf-8">
 <title>Ristorante tomato</title>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 
 <!-- SEO -->
 <meta name="description"
@@ -25,14 +27,11 @@
 <link rel="stylesheet" href="js/vendor/vegas/vegas.min.css">
 <link rel="stylesheet" href="css/main.css">
 
-<%
-	session.invalidate();
-%>
 
 </head>
 
 <body id="intro4">
-
+<f:view>
 	<!-- Preloder-->
 	<div class="preloder animated">
 		<div class="scoket">
@@ -65,6 +64,15 @@
 						<li><a href="./gallery.jsp">Galleria</a></li>
 						<li><a href="./loginSignup.jsp">Login / Signup</a></li>
 						<li><a href="./contact.html">Contatti</a></li>
+						<li><h:form>
+							<h:commandLink action="#{piattoControllerBean.getCategorieToPage()}" value="Piatti">		
+							</h:commandLink>
+						</h:form> 
+						<h:form>
+						<li>
+								<h:commandLink action="#{categoriaPiattoManagedBean.getListTest}"
+						value="List all Categorie" />
+				</h:form></li>
 					</ul>
 				</div>
 
@@ -485,6 +493,7 @@
 	<script src="js/main.js"></script>
 	<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
 	<script src="js/vendor/mc/main.js"></script>
+</f:view>
 </body>
 
 </html>

@@ -55,6 +55,10 @@ public abstract class AbstractDao<T> {
 		return em;
 	}
 	
+	public EntityManager getEM() {
+		return this.em;
+	}
+	
 
 
 	/**
