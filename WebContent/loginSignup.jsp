@@ -6,6 +6,9 @@
 <title>Tomato Responsive Restaurant HTML5 Template</title>
 <meta name="author" content="Surjith S M">
 
+<%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
+
 <!-- SEO -->
 <meta name="description"
 	content="Tomato is a Responsive HTML5 Template for Restaurants and food related services.">
@@ -98,7 +101,7 @@
 										<h3 class="text-center">Utente registrato</h3>
 										<br>
 										<div class="reservation-form">
-											<form action="processaUtente" method="post">
+											<h:form>
 												<div class="row">
 													<div class="col-md-12">
 														<div class="form-group">
@@ -127,7 +130,7 @@
 															Login</button>
 													</div>
 												</div>
-											</form>
+											</h:form>
 										</div>
 									</div>
 									<br>

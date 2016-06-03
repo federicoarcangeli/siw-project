@@ -11,9 +11,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQuery(name = "CategoriaPiattoFindAll", query = "select c from CategoriaPiatto c")
+@NamedQuery(name = "CategoriaPiatto.findAll", query = "select c from CategoriaPiatto c")
 public class CategoriaPiatto {
 
+	
 	@Id
 	private Long id;
 
@@ -56,6 +57,11 @@ public class CategoriaPiatto {
 	}
 
 	@Override
+	public String toString() {
+		return "CategoriaPiatto [id=" + id + ", nome=" + nome + "]";
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -91,4 +97,5 @@ public class CategoriaPiatto {
 			return false;
 		return true;
 	}
+
 }

@@ -13,7 +13,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Transient;
 
 import org.apache.commons.codec.binary.Base64;
-import org.hibernate.annotations.Type;
+
 
 @Entity
 @NamedQuery(name = "DescrizionePiattofindAll", query = "select d from DescrizionePiatto d")
@@ -38,7 +38,8 @@ public class DescrizionePiatto {
 	@Column(nullable = false)
 	private double prezzo;
 
-	@Type(type = "org.hibernate.type.BinaryType")
+//	@Type(type = "org.hibernate.type.BinaryType")
+	@Column
 	private byte[] img;
 
 	public byte[] getImg() {
@@ -113,6 +114,13 @@ public class DescrizionePiatto {
 
 	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
+	}
+
+	@Override
+	public String toString() {
+		return "DescrizionePiatto [id=" + id + ", descrizione=" + descrizione + ", prodottiSurgelati="
+				+ prodottiSurgelati + ", prodottiAllergizzanti=" + prodottiAllergizzanti + ", urlImmagine="
+				+ urlImmagine + ", prezzo=" + prezzo + ", img=" + Arrays.toString(img) + "]";
 	}
 
 	@Override
