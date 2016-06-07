@@ -11,7 +11,6 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
 import it.uniroma3.project.facade.CategoriaPiattoFacade;
-import it.uniroma3.project.facade.DescrizionePiattoFacade;
 import it.uniroma3.project.facade.PiattoFacade;
 import it.uniroma3.project.model.CategoriaPiatto;
 import it.uniroma3.project.model.DescrizionePiatto;
@@ -32,7 +31,8 @@ public class PiattoControllerBean {
 	private boolean surgelati;
 	private boolean allergeni;
 	private Piatto piatto;
-
+	private List<String> nomiCategorie;
+	private String nomeCategoria;
 	private CategoriaPiatto categoria;
 
 	@EJB(name = "cpFacade")
@@ -42,7 +42,7 @@ public class PiattoControllerBean {
 	private PiattoFacade pFacade;
 
 	private List<CategoriaPiatto> categorie;
-	
+
 	public List<String> getNomiCategorie() {
 		return nomiCategorie;
 	}
@@ -58,10 +58,6 @@ public class PiattoControllerBean {
 	public void setNomeCategoria(String nomeCategoria) {
 		this.nomeCategoria = nomeCategoria;
 	}
-
-	private List<String> nomiCategorie;
-	
-	private String nomeCategoria;
 
 	public List<CategoriaPiatto> getCategorie() {
 		return this.categorie;
@@ -165,7 +161,7 @@ public class PiattoControllerBean {
 	public void setpFacade(PiattoFacade pFacade) {
 		this.pFacade = pFacade;
 	}
-	
+
 	@PostConstruct
 	public void init() {
 		this.categorie = this.cpFacade.getCategorie();

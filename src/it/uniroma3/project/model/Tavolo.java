@@ -40,7 +40,7 @@ public class Tavolo {
 	private List<Comanda> comande;
 
 	@OneToMany(mappedBy="tavoloPrenotato", fetch=FetchType.EAGER)
-//	@Fetch(value=FetchMode.SELECT)
+	//	@Fetch(value=FetchMode.SELECT)
 	private List<Prenotazione> prenotazioni;
 
 	public Tavolo(){
@@ -52,6 +52,14 @@ public class Tavolo {
 	public Tavolo(int coperti) {
 		this.prenotazioni = new ArrayList<>();
 		this.comande = new ArrayList<>();
+		this.coperti = coperti;
+		this.occupato = 0;
+	}
+
+	public Tavolo(String codiceTavolo,int coperti) {
+		this.prenotazioni = new ArrayList<>();
+		this.comande = new ArrayList<>();
+		this.codiceTavolo=codiceTavolo;
 		this.coperti = coperti;
 		this.occupato = 0;
 	}

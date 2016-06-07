@@ -1,34 +1,37 @@
 package it.uniroma3.project.controller;
-
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 import it.uniroma3.project.facade.TavoloFacade;
 import it.uniroma3.project.model.Tavolo;
 
-@ManagedBean
-public class TavoloController {
 
-	private String codice;
+
+@ManagedBean
+@RequestScoped
+@EJB(name = "tFacade", beanInterface = TavoloFacade.class)
+public class TavoloControllerBean {
+
+	private String codiceTavolo;
 	private int coperti;
 
 	private Tavolo tavolo;
 
-	@EJB
-	private TavoloFacade tavoloFacade;
+	@EJB(name="tFacade")
+	private TavoloFacade tFacade;
 
-	public String createTavolo() {
-		System.out.println(this.getCoperti());
-		this.tavolo = tavoloFacade.create(codice, coperti);
+	public String create() {
+		this.tavolo = tFacade.create(this.getCodiceTavolo(),this.getCoperti());
 		return "registrazioneTavolo";
 	}
 
-	public String getCodice() {
-		return codice;
+	public String getCodiceTavolo() {
+		return codiceTavolo;
 	}
 
-	public void setCodice(String codice) {
-		this.codice = codice;
+	public void setCodiceTavolo(String codice) {
+		this.codiceTavolo = codice;
 	}
 
 	public int getCoperti() {
@@ -48,11 +51,12 @@ public class TavoloController {
 	}
 
 	public TavoloFacade getTavoloFacade() {
-		return tavoloFacade;
+		return tFacade;
 	}
 
 	public void setTavoloFacade(TavoloFacade tavoloFacade) {
-		this.tavoloFacade = tavoloFacade;
+		this.tFacade = tavoloFacade;
 	}
+
 
 }
