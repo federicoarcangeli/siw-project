@@ -1,6 +1,3 @@
-<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
-<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
@@ -11,7 +8,7 @@
 <head>
 <meta charset="utf-8">
 <title>Inserimento personale</title>
-<meta name="author" content="Surjith S M">
+<meta name="author" content="Alessandro&Federico">
 
 <!-- SEO -->
 <meta name="description"
