@@ -91,7 +91,7 @@
 						</a>
 					</div>
 					<h1>Ristorante Tomato</h1>
-					<h2>La qualità è di casa</h2>
+					<h2>La qualitï¿½ ï¿½ di casa</h2>
 				</div>
 				<div class="scroll-down">
 					<a href="#about"> <img src="img/arrow-down.png"

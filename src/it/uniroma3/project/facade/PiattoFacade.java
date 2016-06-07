@@ -1,10 +1,13 @@
 package it.uniroma3.project.facade;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import it.uniroma3.project.dao.CategoriaPiattoDao;
+import it.uniroma3.project.dao.PiattoDao;
 import it.uniroma3.project.model.CategoriaPiatto;
 import it.uniroma3.project.model.DescrizionePiatto;
 import it.uniroma3.project.model.Piatto;
@@ -27,6 +30,11 @@ public class PiattoFacade {
 	
 	public Piatto findById(Long id) {
 		return em.find(Piatto.class, id);
+	}
+	
+	public List<Piatto> findAll() {
+		PiattoDao dao = new PiattoDao(em);
+		return dao.findAll();
 	}
 	
 	public CategoriaPiatto findCategoriaById(Long id) {

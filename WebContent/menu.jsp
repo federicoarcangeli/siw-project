@@ -1,4 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@page import="it.uniroma3.project.facade.*"%>
 <%@page import="it.uniroma3.project.model.CategoriaPiatto"%>
 <%@page import="it.uniroma3.project.model.Piatto"%>
@@ -93,17 +95,17 @@
 							<div class="col-md-12">
 								<div class="menu-tags3">
 									<span data-filter="*" class="tagsort3-active">Tutti</span>
-									<c:forEach var="categoria" items="${categorie}">
-										<span data-filter=".${categoria.nome}">${categoria.nome}</span>
+									<c:forEach var="categoria" items="#{menuControllerBean.nomiCategorie}">
+										<span data-filter=".${categoria}">${categoria}</span>
 									</c:forEach>
 								</div>
 							</div>
 						</div>
 						<div class="row menu-items3">
-							<c:forEach var="piatto" items="${piatti}">
+							<c:forEach var="piatto" items="#{menuControllerBean.piatti }">
 								<div
 									class="menu-item3 col-sm-6 col-xs-12 ${piatto.getPortata().nome}">
-									<img src="data:image/jpeg;base64,${piatto.getDescrizionePiatto().getBase64Img()}" class="img-responsive" />
+									<img src="img/menu/1/1.jpg" class="img-responsive" />
 									<div class="menu-wrapper">
 										<h4>${piatto.nome}</h4>
 										&nbsp; <span class="price">
