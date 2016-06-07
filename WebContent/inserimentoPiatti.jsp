@@ -94,106 +94,91 @@
 						</div>
 
 						<div class="reservation-form">
-							<h:form>
-								<input type="hidden" name="action" value="add_form" />
-								<!-- Tabs -->
-								<div class="element-tab">
-									<!-- Nav tabs -->
-									<ul class="nav nav-tabs" role="tablist">
-										<li class="active"><a href="#categoria" role="tab"
-											data-toggle="tab"> Categoria piatto </a></li>
-										<li><a href="#descrizione" role="tab" data-toggle="tab">
-												Descrizione </a></li>
-									</ul>
-									<!-- Tab panes -->
-									<div class="tab-content">
-										<div class="tab-pane fade active in" id="categoria">
-											<div class="col-md-12">
-												<div id="OT_searchWrapper">
-													<div id="OT_defList" class="">
-														<div id="OT_partySize" class="">
-															<div class="form-group">
+							<h:form id="inserimentoPiatti">
+								<div class="col-md-12">
+									<div id="OT_searchWrapper">
+										<div id="OT_defList" class="">
+											<div id="OT_partySize" class="">
+												<div class="form-group">
+													<label for="name">Categoria</label>
+													<h:selectOneMenu
+														value="#{piattoControllerBean.nomeCategoria}"
+														id="categoria">
 
-																<h:selectOneMenu
-																	value="#{piattoControllerBean.nomeCategoria}"
-																	id = "sel">
-																	
-																	<f:selectItems
-																		value="#{piattoControllerBean.nomiCategorie}" />
-																	
-																</h:selectOneMenu>
-																<h:messages for="sel"/>
-															</div>
-														</div>
-													</div>
+														<f:selectItems
+															value="#{piattoControllerBean.nomiCategorie}" />
+
+													</h:selectOneMenu>
+													<h:messages for="categoria" />
 												</div>
 											</div>
 										</div>
-
-
-										<div class="tab-pane fade" id="descrizione">
-											<div class="row">
-												<div class="col-md-6 col-sm-6">
-													<div class="form-group">
-														<label for="name">Nome</label>
-														<h:inputText value="#{piattoControllerBean.nome}"
-															required="true" requiredMessage="Nome obbligatorio"
-															id="nome" />
-														<h:message for="nome" />
-														<i class="fa fa-cutlery" aria-hidden="true"></i>
-
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-6">
-													<div class="form-group">
-														<label for="immagine">Immagine</label> <input type=file
-															name="fileName" style="length: 100%;"> <i
-															class="fa fa-picture-o" aria-hidden="true"></i>
-													</div>
-												</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6 col-sm-6">
+										<div class="form-group">
+											<label for="name">Nome</label>
+											<h:inputText value="#{piattoControllerBean.nome}"
+												styleClass="form-control" required="true"
+												requiredMessage="Nome obbligatorio" id="nome" />
+											<i class="fa fa-cutlery" aria-hidden="true"></i>
+											<div class="animated fadeInDown">
+												<span class="label label-danger"><h:message
+														for="nome" /></span>
 											</div>
-											<div class="row">
-												<div class="col-md-6 col-sm-6">
-													<div class="form-group">
-														<label for="descrizione">Descrizione</label>
-														<h:inputTextarea
-															value="#{piattoControllerBean.descrizione}"
-															required="true"
-															requiredMessage="La descrizione del piatto è obbligatoria"
-															cols="20" rows="5" id="descrizione" />
-														<h:message for="descrizione" />
-														<i class="fa fa-comment-o" aria-hidden="true"></i>
-													</div>
-												</div>
-												<div class="col-md-6 col-sm-6">
-													<div class="form-group">
-														<label for="prezzo">Prezzo</label>
-														<h:inputText value="#{piattoControllerBean.prezzo}"
-															required="true"
-															requiredMessage="Il prezzo è obbligatorio"
-															converterMessage="Il prezzo deve essere un numero"
-															id="prezzo" />
-														<h:message for="prezzo" />
-														<i class="fa fa-eur" aria-hidden="true"></i>
-													</div>
-												</div>
-												<div id="OT_partySize" class="col-md-6 col-sm-6">
-													<div class="form-group">
-														<label for="surgelati">Contiene prodotti
-															surgelati?</label>
-														<h:selectBooleanCheckbox
-															value="#{piattoControllerBean.surgelati}" />
-													</div>
-												</div>
-												<div id="OT_partySize" class="col-md-6 col-sm-6">
-													<div class="form-group">
-														<label for="allergeni">Contiene allergeni?</label>
-														<h:selectBooleanCheckbox
-															value="#{piattoControllerBean.allergeni}" />
-
-													</div>
-												</div>
+										</div>
+									</div>
+									<div class="col-md-6 col-sm-6">
+										<div class="form-group">
+											<label for="immagine">Immagine</label> <input type=file
+												name="fileName" style="length: 100%;"> <i
+												class="fa fa-picture-o" aria-hidden="true"></i>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6 col-sm-6">
+										<div class="form-group">
+											<label for="descrizione">Descrizione</label>
+											<h:inputTextarea value="#{piattoControllerBean.descrizione}"
+												styleClass="form-control" required="true"
+												requiredMessage="La descrizione del piatto è obbligatoria"
+												cols="20" rows="5" id="descrizione" />
+											<i class="fa fa-sticky-note" aria-hidden="true"></i>
+											<div class="animated fadeInDown">
+												<span class="label label-danger"><h:message
+														for="descrizione" /></span>
 											</div>
+										</div>
+									</div>
+									<div class="col-md-6 col-sm-6">
+										<div class="form-group">
+											<label for="prezzo">Prezzo</label>
+											<h:inputText value="#{piattoControllerBean.prezzo}"
+												styleClass="form-control" required="true"
+												requiredMessage="Il prezzo è obbligatorio"
+												converterMessage="Il prezzo deve essere un numero"
+												id="prezzo" />
+											<i class="fa fa-eur" aria-hidden="true"></i>
+											<div class="animated fadeInDown">
+												<span class="label label-danger"><h:message
+														for="prezzo" /></span>
+											</div>
+										</div>
+									</div>
+									<div id="OT_partySize" class="col-md-6 col-sm-6">
+										<div class="form-group">
+											<label for="surgelati">Contiene prodotti surgelati?</label>
+											<h:selectBooleanCheckbox
+												value="#{piattoControllerBean.surgelati}" />
+										</div>
+									</div>
+									<div id="OT_partySize" class="col-md-6 col-sm-6">
+										<div class="form-group">
+											<label for="allergeni">Contiene allergeni?</label>
+											<h:selectBooleanCheckbox
+												value="#{piattoControllerBean.allergeni}" />
 										</div>
 									</div>
 								</div>
@@ -202,82 +187,54 @@
 									<div id="OT_defList" class="row">
 										<div class="col-md-12 col-sm-12">
 											<div class="reservation-btn">
-												<h:commandButton value="Submit"
-													action="#{piattoControllerBean.create}" />
-												<input type="button" name="btn" value="Inserisci piatto"
-													id="submitBtn" data-toggle="modal"
-													data-target="#confirm-submit" class="btn btn-default" />
+												<input type="button" name="btn" value="Registra piatto"
+													id="conferma" data-toggle="modal" data-target="#myModal"
+													class="btn btn-default center-block" />
 											</div>
-											<%
-												if (request.getAttribute("ERRORE") != null) {
-											%>
-											<div class="animated fadeInDown">
-												<div class="form-group">
-													<div class="alert alert-error alert-dismissable">
-														<button type="button" class="close" data-dismiss="alert">
-															<span class="fa fa-close"></span>
-														</button>
-														<span> ERRORE: </span>${nomeCategoria} ${nomeError}
-														${descrizioneError} ${prezzoError} ${urlError}
-													</div>
-												</div>
-
-											</div>
-											<%
-												}
-											%>
-											<%
-												if (request.getAttribute("OK") != null) {
-											%>
-											<div class="animated fadeInDown">
-												<div class="alert alert-success alert-dismissable">
-													<button type="button" class="close" data-dismiss="alert">
-														<span class="fa fa-close"></span>
-													</button>
-													<span> SUCCESS: </span>${OK}
-												</div>
-
-											</div>
-											<%
-												}
-											%>
 										</div>
-
 									</div>
 								</div>
-
+								<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+									aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-body">
+												<h4>Confermare inserimento?</h4>
+												<table class="table">
+													<tr>
+														<th><span class="fa fa-cutlery" aria-hidden="true"></span>
+															Categoria:</th>
+														<td id="cat"></td>
+													</tr>
+													<tr>
+														<th><span class="fa fa-cutlery" aria-hidden="true"></span>
+															Nome:</th>
+														<td id="nom"></td>
+													</tr>
+													<tr>
+														<th><span class="fa fa-sticky-note"
+															aria-hidden="true"></span> Descrizione:</th>
+														<td id="des"></td>
+													</tr>
+													<tr>
+														<th><span class="fa fa-eur" aria-hidden="true"></span>
+															Prezzo:</th>
+														<td id="pre"></td>
+													</tr>
+												</table>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">Annulla</button>
+												<h:commandLink styleClass="btn btn-success"
+													value="inserisci piatto"
+													action="#{piattoControllerBean.create}">
+												</h:commandLink>
+											</div>
+										</div>
+									</div>
+								</div>
 							</h:form>
-
-							<div class="modal fade" id="confirm-submit" tabindex="-1"
-								role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-body">
-											<h4>Confermare inserimento?</h4>
-											<table class="table">
-												<tr>
-													<th><span class="fa fa-cutlery" aria-hidden="true"></span>
-														Nome:</th>
-													<td id="nom"></td>
-												</tr>
-												<tr>
-													<th><span class="fa fa-eur" aria-hidden="true"></span>
-														Prezzo:</th>
-													<td id="pre"></td>
-												</tr>
-											</table>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-default"
-												data-dismiss="modal">Annulla</button>
-											<a href="#" id="submit" class="btn btn-success success">Inserisci
-												piatto</a>
-										</div>
-									</div>
-
-								</div>
-							</div>
-
 						</div>
 					</div>
 				</section>
@@ -386,7 +343,6 @@
 		<script src="js/reservation.js"></script>
 		<script src="js/vendor/mc/main.js"></script>
 		<script src="js/scripts/confermaInserimentoPiatto.js"></script>
-
 	</f:view>
 </body>
 

@@ -98,9 +98,6 @@ public class PiattoControllerBean {
 		descrizionePiatto.setProdottiAllergizzanti(this.allergeni);
 		descrizionePiatto.setProdottiSurgelati(this.surgelati);
 		this.categoria = this.cpFacade.findByName(this.nomeCategoria);
-		System.out.println("Categoria:" + this.categoria);
-		System.out.println("Descrizione:" + descrizionePiatto);
-		System.out.println("Nome piatto:" + nome);
 		this.piatto = this.pFacade.create(nome, descrizionePiatto, this.categoria);
 		return "inserimentoPiatti";
 	}

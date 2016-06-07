@@ -68,12 +68,13 @@
 							<li><h:form>
 									<h:commandLink
 										action="#{piattoControllerBean.getCategorieToPage()}"
-										value="Piatti">
-									</h:commandLink>
+										styleClass="navbar">Piatti		
+							</h:commandLink>
 								</h:form></li>
 							<li><h:form>
-									<h:commandLink action="#{menuControllerBean.goToMenu()}"
-										value="Menu" />
+									<li><h:commandLink
+											action="#{categoriaPiattoManagedBean.getListTest}"
+											styleClass="navbar" value="List all Categorie" />
 								</h:form></li>
 						</ul>
 					</div>
@@ -90,7 +91,7 @@
 						</a>
 					</div>
 					<h1>Ristorante Tomato</h1>
-					<h2>La qualità è di casa</h2>
+					<h2>La qualitï¿½ ï¿½ di casa</h2>
 				</div>
 				<div class="scroll-down">
 					<a href="#about"> <img src="img/arrow-down.png"
