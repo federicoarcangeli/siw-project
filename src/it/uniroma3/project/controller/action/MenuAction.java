@@ -20,6 +20,4 @@ public class MenuAction implements Action {
 		request.setAttribute("piatti", piatti);
 		return "/menu.jsp";
 	}
-
-
 }

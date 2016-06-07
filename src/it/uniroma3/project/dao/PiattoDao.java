@@ -24,7 +24,7 @@ public class PiattoDao extends AbstractDao<Piatto> {
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Piatto> findAll() {
-		return getEntityManager().createNamedQuery("PiattoFindAll").getResultList();
+		return getEM().createNamedQuery("Piatto.findAll").getResultList();
 
 	}
 

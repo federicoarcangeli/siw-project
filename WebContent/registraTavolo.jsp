@@ -129,7 +129,7 @@
 																<div class="col-md-12">
 																	<div class="space20"></div>
 																	<div class="reservation-btn">
-																	<h:commandButton id="tableBtn" value="Submit" action="#{tavoloController.createTavolo}" style="display: none"></h:commandButton>
+																	<h:commandButton id="tableBtn" value="Submit" action="#{tavoloController.createTavolo}"></h:commandButton>
 																		<input type="button" name="tableForm:tableBtn"
 																			value="Registra tavolo" id="tableForm:tableBtn"
 																			data-toggle="modal" data-target="#confirm-submit"

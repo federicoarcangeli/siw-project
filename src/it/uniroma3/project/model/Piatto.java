@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-@NamedQuery(name = "PiattoFindAll", query = "select p from Piatto p order by categoriapiatto_id")
+@NamedQuery(name = "Piatto.findAll", query = "select p from Piatto p order by p.categoriaPiatto")
 public class Piatto {
 
 	@Id
