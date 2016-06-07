@@ -21,7 +21,7 @@ import it.uniroma3.project.controller.helper.PiattoHelper;
 @WebServlet("/processaPiatto")
 @MultipartConfig
 public class PiattoController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	
 
 	/**
 	 * Default constructor.
