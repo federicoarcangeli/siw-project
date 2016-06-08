@@ -6,6 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@ taglib uri="http://myfaces.apache.org/tomahawk" prefix="t"%>
 <!DOCTYPE html>
 <html lang="it">
 
@@ -94,7 +95,7 @@
 						</div>
 
 						<div class="reservation-form">
-							<h:form id="inserimentoPiatti">
+							<h:form id="inserimentoPiatti" enctype="multipart/form-data">
 								<div class="col-md-12">
 									<div id="OT_searchWrapper">
 										<div id="OT_defList" class="">
@@ -131,9 +132,15 @@
 									</div>
 									<div class="col-md-6 col-sm-6">
 										<div class="form-group">
-											<label for="immagine">Immagine</label> <input type=file
-												name="fileName" style="length: 100%;"> <i
-												class="fa fa-picture-o" aria-hidden="true"></i>
+
+											<label for="immagine">Immagine</label>
+
+											<t:inputFileUpload
+												value="#{piattoControllerBean.uploadedFile}"
+												styleClass="form-control" required="true"
+												requiredMessage="Inserisci un'immagine per il piatto"
+												id="img" />
+											<i class="fa fa-picture-o" aria-hidden="true"></i>
 										</div>
 									</div>
 								</div>

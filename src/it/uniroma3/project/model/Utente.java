@@ -20,7 +20,7 @@ public class Utente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column
 	private String email;
 
@@ -35,17 +35,17 @@ public class Utente {
 
 	@Column
 	private String telefono;
-	
+
 	/*ruoli possibili:
 	 * u:utente
 	 * o:operatore
 	 * a: amministratore*/
 	@Column(nullable = false)
 	private String role;
-	
+
 	@Column
 	private String username;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -77,7 +77,7 @@ public class Utente {
 	public void setComanda(List<Comanda> comanda) {
 		this.comanda = comanda;
 	}
-	
+
 	@OneToMany(mappedBy="operatore",cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch =FetchType.EAGER)
 	private List<Comanda> comanda;
 
@@ -87,12 +87,19 @@ public class Utente {
 	public Utente() {
 		prenotazioni = new ArrayList<>();
 	}
-	
+
 	public Utente(String nome, String cognome, String email, String telefono ){
 		this.nome=nome;
 		this.cognome=cognome;
 		this.email=email;
 		this.telefono=telefono;
+		prenotazioni = new ArrayList<>();
+	}
+
+	public Utente(String username, String password, String ruolo){
+		this.username=username;
+		this.password=password;
+		this.role=ruolo;
 		prenotazioni = new ArrayList<>();
 	}
 

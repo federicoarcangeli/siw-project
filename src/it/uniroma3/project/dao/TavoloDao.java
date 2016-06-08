@@ -26,7 +26,7 @@ public class TavoloDao extends AbstractDao<Tavolo> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Tavolo> findAll() {
-		return getEntityManager().createNamedQuery("Tavolo.findAll").getResultList();
+		return getEM().createNamedQuery("Tavolo.findAll").getResultList();
 	}
 
 	public Tavolo findByNumero(String parameter) {

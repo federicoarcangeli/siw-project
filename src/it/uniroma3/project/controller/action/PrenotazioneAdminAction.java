@@ -32,8 +32,7 @@ public class PrenotazioneAdminAction {
 
 		Tavolo tavolo = (Tavolo) session.getAttribute("tavoloAssegnato");
 
-		Prenotazione prenotazione = new Prenotazione(data, ora, ospiti,	nominativo);
-		prenotazione.setTavoloPrenotato(tavolo);
+		Prenotazione prenotazione = new Prenotazione(data, ora, ospiti,	nominativo,tavolo);
 
 		facade.inserisciPrenotazione(prenotazione);
 

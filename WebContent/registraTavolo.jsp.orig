@@ -1,6 +1,10 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,6 +45,7 @@
 
 		<div class="body">
 			<div class="main-wrapper">
+
 				<!-- Navigation-->
 				<nav class="navbar navbar-fixed-top">
 					<div class="container">
@@ -79,77 +84,83 @@
 					</div>
 				</nav>
 
+
 				<!-- Page Header -->
 				<section class='page_header vertical-padding'></section>
 
 				<!-- Account Content -->
-
 				<section class="reservation">
 					<div class="container">
 						<div class="row">
+
 							<div class="col-md-12">
 								<div class="row shop-login">
 									<div class="box-content">
-										<h3 class="text-center">Registra nuovo personale</h3>
+										<h3 class="text-center">Registra nuovo tavolo</h3>
 										<br>
 										<div class="reservation-form">
-											<h:form id="inserimentoPersonale">
-												<div id="OT_searchWrapper">
-													<div id="OT_defList" class="row">
-														<div class="clearfix space20"></div>
-														<div class="row">
-															<div class="col-md-6 col-sm-6">
-																<div class="form-group">
-																	<label for="username">Username</label>
-																	<h:inputText
-																		value="#{operatoreControllerBean.username}"
-																		styleClass="form-control" required="true"
-																		requiredMessage="Username obbligatorio" id="username" />
-																	<i class="fa fa-user" aria-hidden="true"></i>
-																	<div class="animated fadeInDown">
-																		<span class="label label-danger"><h:message
-																				for="username" /></span>
+											<h:form id="inserimentoTavoli">
+
+												<input type="hidden" name="action" value="add_form" />
+												<div class="clearfix space20"></div>
+												<div class="row">
+
+													<div class="col-md-12">
+
+														<div class="form-group">
+															<label for="codiceTavolo">Numero tavolo</label>
+															<h:inputText value="#{tavoloControllerBean.codiceTavolo}"
+																styleClass="form-control" required="true"
+																requiredMessage="Numero tavolo obbligatorio"
+																id="codiceTavolo" />
+															<i class="fa fa-barcode" aria-hidden="true"></i>
+															<div class="animated fadeInDown">
+																<span class="label label-danger"><h:message
+																		for="codiceTavolo" /></span>
+															</div>
+<<<<<<< HEAD
+														</div>
+
+														<div class="form-group">
+															<label for="coperti">Coperti</label>
+															<h:inputText value="#{tavoloControllerBean.coperti}"
+																styleClass="form-control" required="true"
+																requiredMessage="Numero di coperti obbligatorio"
+																validatorMessage="Tavoli disponibili da 1 a 12 coperti"
+																id="coperti">
+																<f:validateLongRange minimum="1" maximum="12" />
+															</h:inputText>
+															<i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
+															<div class="animated fadeInDown">
+																<span class="label label-danger"><h:message
+																		for="coperti" /></span>
+=======
+															<div class="row">
+																<div class="col-md-12">
+																	<div class="space20"></div>
+																	<div class="reservation-btn">
+																	<h:commandButton id="tableBtn" value="Submit" action="#{tavoloController.createTavolo}"></h:commandButton>
+																		<input type="button" name="tableForm:tableBtn"
+																			value="Registra tavolo" id="tableForm:tableBtn"
+																			data-toggle="modal" data-target="#confirm-submit"
+																			class="btn btn-default" />
+																		
 																	</div>
 																</div>
-															</div>
-															<div class="col-md-6 col-sm-6">
-																<div class="form-group">
-																	<label for="password">Password</label>
-																	<h:inputSecret
-																		value="#{operatoreControllerBean.password}"
-																		styleClass="form-control" required="true"
-																		requiredMessage="Password obbligatoria" id="password" />
-																	<i class="fa fa-lock" aria-hidden="true"></i>
-																	<div class="animated fadeInDown">
-																		<span class="label label-danger"><h:message
-																				for="password" /></span>
-																	</div>
-																</div>
-															</div>
-															<div id="OT_partySize" class="col-md-12 col-sm-12">
-																<div class="form-group">
-																	<label for="role">Ruolo operatore</label>
-																	<h:selectOneMenu id="role"
-																		value="#{operatoreControllerBean.ruolo}">
-																		<f:selectItem id="operatore" itemLabel="Operatore"
-																			itemValue="operatore" />
-																		<f:selectItem id="amministratore"
-																			itemLabel="Amministratore" itemValue="amministratore" />
-																	</h:selectOneMenu>
-																	<i class="fa fa-users" aria-hidden="true"></i>
-																</div>
+>>>>>>> branch 'master' of https://github.com/1federico1/siw-project.git
 															</div>
 														</div>
-														<div class="row">
-															<div class="col-md-12">
-																<div class="space20"></div>
-																<div class="reservation-btn">
-																	<input type="button" name="btn"
-																		value="Registra operatore" id="conferma"
-																		data-toggle="modal" data-target="#confirm-submit"
-																		class="btn btn-default" />
-																</div>
-															</div>
+													</div>
+
+												</div>
+												<div class="row">
+													<div class="col-md-12">
+														<div class="space20"></div>
+														<div class="reservation-btn">
+															<input type="button" name="tableForm:tableBtn"
+																value="Registra tavolo" id="conferma"
+																data-toggle="modal" data-target="#confirm-submit"
+																class="btn btn-default" />
 														</div>
 													</div>
 												</div>
@@ -162,14 +173,14 @@
 																<h4>Confermare inserimento?</h4>
 																<table class="table">
 																	<tr>
-																		<th><span class="fa fa-user" aria-hidden="true"></span>
-																			Username :</th>
-																		<td id="use"></td>
+																		<th><span class="fa fa-barcode"
+																			aria-hidden="true"></span> Codice tavolo:</th>
+																		<td id="cod"></td>
 																	</tr>
 																	<tr>
 																		<th><span class="fa fa-users" aria-hidden="true"></span>
-																			Ruolo account :</th>
-																		<td id="rol"></td>
+																			Numero di coperti:</th>
+																		<td id="cop"></td>
 																	</tr>
 																</table>
 															</div>
@@ -177,8 +188,8 @@
 																<button type="button" class="btn btn-default"
 																	data-dismiss="modal">Annulla</button>
 																<h:commandLink styleClass="btn btn-success"
-																	value="Registra Operatore"
-																	action="#{operatoreControllerBean.create}">
+																	value="Registra tavolo"
+																	action="#{tavoloControllerBean.create}">
 																</h:commandLink>
 															</div>
 														</div>
@@ -187,15 +198,14 @@
 											</h:form>
 										</div>
 									</div>
-									<br>
 								</div>
 							</div>
 						</div>
 					</div>
 				</section>
 			</div>
-
 		</div>
+		<br>
 
 		<!-- Javascript -->
 		<script src="js/vendor/jquery-1.11.2.min.js"></script>
@@ -218,7 +228,7 @@
 		<script src="js/main.js"></script>
 		<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
 		<script src="js/vendor/mc/main.js"></script>
-		<script src="js/scripts/confermaInserimentoOperatore.js"></script>
+		<script src="js/scripts/confermaInserimentoTavoli.js"></script>
 	</f:view>
 </body>
 
