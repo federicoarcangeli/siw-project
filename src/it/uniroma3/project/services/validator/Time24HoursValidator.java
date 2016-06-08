@@ -3,6 +3,7 @@ package it.uniroma3.project.services.validator;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -61,7 +62,15 @@ public class Time24HoursValidator{
 	 */
 
 	public boolean isToday(Date data){
-		return data.compareTo(new Date()) == 0;
+		Calendar date1 = Calendar.getInstance();
+		Calendar date2 = Calendar.getInstance();
+		date1.setTime(data);
+		date2.setTime(new Date());
+		int day1= date1.get(Calendar.DAY_OF_MONTH);
+		int month1= date1.get(Calendar.MONTH);
+		int day2= date2.get(Calendar.DAY_OF_MONTH);
+		int month2= date2.get(Calendar.MONTH);
+		return (day1==day2 && month1==month2);
 	}
 
 	/**
@@ -71,9 +80,14 @@ public class Time24HoursValidator{
 	 * @return true se data1 e data2 coincidono, false altrimenti
 	 */
 	public boolean SameDate(Date data1 , Date data2){
-		if(data1!=null && data2!=null)
-			return data1.compareTo(data2)==0;
-		else 
-			return false;
+		Calendar date1 = Calendar.getInstance();
+		Calendar date2 = Calendar.getInstance();
+		date1.setTime(data1);
+		date2.setTime(data2);
+		int day1= date1.get(Calendar.DAY_OF_MONTH);
+		int month1= date1.get(Calendar.MONTH);
+		int day2= date2.get(Calendar.DAY_OF_MONTH);
+		int month2= date2.get(Calendar.MONTH);
+		return (day1==day2 && month1==month2);
 	}
 }

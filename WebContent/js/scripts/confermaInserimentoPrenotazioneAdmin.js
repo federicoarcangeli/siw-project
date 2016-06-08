@@ -1,10 +1,6 @@
-$('#submitBtn').click(function() {
-	$('#nom').text($('#nominativo').val());
-	$('#date').text($('#datepicker').val());
-	$('#time').text($('#timepicker').val());
-	$('#osp').text($('#ospiti').val());
-});
-
-$('#submit').click(function(){
-	$('#formfield').submit();
+$('#conferma').click(function() {
+	$('#nom').text($('#prenotazioni\\:nominativo').val());
+	$('#date').text($('#prenotazioni\\:datepicker').val());
+	$('#time').text($('#prenotazioni\\:timepicker').val());
+	$('#osp').text($('#prenotazioni\\:coperti').val());
 });

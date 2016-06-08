@@ -6,8 +6,6 @@ import javax.faces.bean.RequestScoped;
 import it.uniroma3.project.facade.TavoloFacade;
 import it.uniroma3.project.model.Tavolo;
 
-
-
 @ManagedBean
 @RequestScoped
 @EJB(name = "tFacade", beanInterface = TavoloFacade.class)

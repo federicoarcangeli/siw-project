@@ -127,7 +127,6 @@ public class Tavolo {
 		result = prime * result + coperti;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + occupato;
-		result = prime * result + ((prenotazioni == null) ? 0 : prenotazioni.hashCode());
 		return result;
 	}
 
@@ -159,11 +158,7 @@ public class Tavolo {
 			return false;
 		if (occupato != other.occupato)
 			return false;
-		if (prenotazioni == null) {
-			if (other.prenotazioni != null)
-				return false;
-		} else if (!prenotazioni.equals(other.prenotazioni))
-			return false;
 		return true;
 	}
+
 }

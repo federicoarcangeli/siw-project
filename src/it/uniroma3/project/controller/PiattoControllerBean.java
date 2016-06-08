@@ -1,14 +1,20 @@
 package it.uniroma3.project.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBs;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+
+import org.apache.commons.io.FilenameUtils;
+import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import it.uniroma3.project.facade.CategoriaPiattoFacade;
 import it.uniroma3.project.facade.PiattoFacade;
@@ -31,8 +37,9 @@ public class PiattoControllerBean {
 	private boolean surgelati;
 	private boolean allergeni;
 	private Piatto piatto;
-	private List<String> nomiCategorie;
-	private String nomeCategoria;
+
+	private UploadedFile uploadedFile;
+
 	private CategoriaPiatto categoria;
 
 	@EJB(name = "cpFacade")
@@ -42,6 +49,39 @@ public class PiattoControllerBean {
 	private PiattoFacade pFacade;
 
 	private List<CategoriaPiatto> categorie;
+
+	public String create() {
+		DescrizionePiatto descrizionePiatto = createDescrizionePiatto();
+		this.categoria = this.cpFacade.findByName(this.nomeCategoria);
+		this.piatto = this.pFacade.create(nome, descrizionePiatto, this.categoria);
+		System.out.println("---->" +this.piatto);
+		return "piattoInserito";
+	}
+
+	private DescrizionePiatto createDescrizionePiatto() {
+		DescrizionePiatto descrizionePiatto = new DescrizionePiatto();
+		descrizionePiatto.setDescrizione(this.descrizione);
+		descrizionePiatto.setPrezzo(this.prezzo);
+		descrizionePiatto.setProdottiAllergizzanti(this.allergeni);
+		descrizionePiatto.setProdottiSurgelati(this.surgelati);
+		descrizionePiatto.setImg(createImage());
+		return descrizionePiatto;
+	}
+
+	private byte[] createImage() {
+		String fileName = FilenameUtils.getName(uploadedFile.getName());
+		String contentType = uploadedFile.getContentType();
+		byte[] img = null;
+		try {
+			img = uploadedFile.getBytes();
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
+					String.format("File '%s' of type '%s' successfully uploaded!", fileName, contentType)));
+		} catch (IOException e) {
+			img = null;
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Error in loading file"));
+		}
+		return img;
+	}
 
 	public List<String> getNomiCategorie() {
 		return nomiCategorie;
@@ -58,6 +98,10 @@ public class PiattoControllerBean {
 	public void setNomeCategoria(String nomeCategoria) {
 		this.nomeCategoria = nomeCategoria;
 	}
+
+	private List<String> nomiCategorie;
+
+	private String nomeCategoria;
 
 	public List<CategoriaPiatto> getCategorie() {
 		return this.categorie;
@@ -85,17 +129,6 @@ public class PiattoControllerBean {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String create() {
-		DescrizionePiatto descrizionePiatto = new DescrizionePiatto();
-		descrizionePiatto.setDescrizione(this.descrizione);
-		descrizionePiatto.setPrezzo(this.prezzo);
-		descrizionePiatto.setProdottiAllergizzanti(this.allergeni);
-		descrizionePiatto.setProdottiSurgelati(this.surgelati);
-		this.categoria = this.cpFacade.findByName(this.nomeCategoria);
-		this.piatto = this.pFacade.create(nome, descrizionePiatto, this.categoria);
-		return "inserimentoPiatti";
 	}
 
 	public String getDescrizione() {
@@ -138,6 +171,14 @@ public class PiattoControllerBean {
 		this.piatto = piatto;
 	}
 
+	public UploadedFile getUploadedFile() {
+		return uploadedFile;
+	}
+
+	public void setUploadedFile(UploadedFile uploadedFile) {
+		this.uploadedFile = uploadedFile;
+	}
+
 	public CategoriaPiatto getCategoria() {
 		return categoria;
 	}
@@ -167,9 +208,7 @@ public class PiattoControllerBean {
 		this.categorie = this.cpFacade.getCategorie();
 		this.nomiCategorie = new ArrayList<>();
 		this.categorie = this.cpFacade.getCategorie();
-		System.out.println(this.categorie);
-		for(CategoriaPiatto c : this.categorie) {
-			System.out.println(c);
+		for (CategoriaPiatto c : this.categorie) {
 			this.nomiCategorie.add(c.getNome());
 		}
 	}

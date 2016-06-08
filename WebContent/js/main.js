@@ -399,8 +399,8 @@ $(function() {
        ================================================ */
 
 	//Datepicker
-	if ($('#datepicker').length) {
-		$("#datepicker").datepicker({
+	if ($('#prenotazioni\\:datepicker').length) {
+		$("#prenotazioni\\:datepicker").datepicker({
 			format: 'dd/mm/yyyy',
 			startDate: '0',
 			autoclose: true,
@@ -410,8 +410,8 @@ $(function() {
 	}
 
 	//timepicker
-	if ($('#timepicker').length) {
-		$('#timepicker').clockpicker({
+	if ($('#prenotazioni\\:timepicker').length) {
+		$('#prenotazioni\\:timepicker').clockpicker({
 			donetext: 'Done'
 		})
 		.find('input').change(function() {

@@ -48,12 +48,13 @@ public class Prenotazione {
 	public Prenotazione(){
 	}
 
-	public Prenotazione(Date data,Date ora, int ospiti,String nominativo) {
+	public Prenotazione(Date data,Date ora, int ospiti,String nominativo,Tavolo tavolo) {
 		this.data=data;
 		this.Ora=ora;
 		this.numeroOspiti=ospiti;
 		this.nominativo=nominativo;
 		this.completato=false;
+		this.tavoloPrenotato=tavolo;
 	}
 	public Prenotazione(Date data,Date ora, int ospiti,Utente utente) {
 		this.data=data;

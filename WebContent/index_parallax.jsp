@@ -1,12 +1,14 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+
 <!DOCTYPE html>
 <html lang="it">
 
 <head>
 <meta charset="utf-8">
 <title>Ristorante tomato</title>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
-<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+
 
 <!-- SEO -->
 <meta name="description"
@@ -65,17 +67,16 @@
 							<li><a href="./gallery.jsp">Galleria</a></li>
 							<li><a href="./loginSignup.jsp">Login / Signup</a></li>
 							<li><a href="./contact.html">Contatti</a></li>
+
 							<li><h:form>
 									<h:commandLink
 										action="#{piattoControllerBean.getCategorieToPage()}"
-										styleClass="navbar">Piatti		
-							</h:commandLink>
+										styleClass="navbar">
+									</h:commandLink>
 								</h:form></li>
-							<li><h:form>
-									<li><h:commandLink
-											action="#{categoriaPiattoManagedBean.getListTest}"
-											styleClass="navbar" value="List all Categorie" />
-								</h:form></li>
+							<li><a href="#"
+								onclick="return myfaces.oam.submitForm('j_id_jsp_577129695_1','j_id_jsp_577129695_1:j_id_jsp_577129695_2');"
+								class="navbar">Piatti </a></li>
 						</ul>
 					</div>
 
@@ -479,6 +480,8 @@
 		</div>
 
 		<!-- Javascript -->
+		<script type="text/javascript"
+			src="/siw-project/faces/javax.faces.resource/oamSubmit.js?ln=org.apache.myfaces"></script>
 		<script src="js/vendor/jquery-1.11.2.min.js"></script>
 		<script src="js/vendor/bootstrap.min.js"></script>
 		<script src="js/vendor/jquery.flexslider-min.js"></script>
