@@ -87,12 +87,25 @@ public class Utente {
 	public Utente() {
 		prenotazioni = new ArrayList<>();
 	}
-
-	public Utente(String nome, String cognome, String email, String telefono ){
+	/**
+	 * 
+	 * @param nome
+	 * @param cognome
+	 * @param username
+	 * @param telefono
+	 * @param email
+	 * @param password
+	 * 
+	 * costruttore per utenti
+	 */
+	public Utente(String nome , String cognome ,String username, String telefono , String email, String password){
 		this.nome=nome;
 		this.cognome=cognome;
 		this.email=email;
+		this.username=username;
 		this.telefono=telefono;
+		this.password=password;
+		this.role="utente";
 		prenotazioni = new ArrayList<>();
 	}
 

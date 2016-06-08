@@ -28,6 +28,7 @@ public class PrenotazioneControllerBean {
 	private int coperti ;
 	private Date timepicker ;
 	private String nominativo ;
+	private boolean corretto;
 
 	private Prenotazione prenotazione;
 	private List<Tavolo> tavoli;
@@ -40,33 +41,38 @@ public class PrenotazioneControllerBean {
 
 	public String createByAdmin(){
 		String page = "prenotazioneAdmin";
+		Time24HoursValidator validatorD = new Time24HoursValidator();
 		try {
-			Tavolo tavolo = this.validate();
-			Time24HoursValidator validatorD = new Time24HoursValidator();
+			Tavolo tavolo = this.validateTable();
+
 			this.prenotazione = paFacade.create(this.getNominativo(),this.getDatepicker(),this.getTimepicker(),this.getCoperti(),tavolo);
+			this.corretto=true;
 			if(validatorD.isToday(this.prenotazione.getData())){
 				tFacade.setTavoloPrenotato(tavolo);
 			}
 		} catch(ValidatorException e) {
+			this.corretto=false;
 			FacesContext.getCurrentInstance().addMessage(null, 
 					new FacesMessage(FacesMessage.SEVERITY_INFO, 
-							"dio porco!", null));
+							"Non ci sono tavoli disponibili per il " +  validatorD.ConvertDateToString(this.datepicker) + " per "+ this.coperti + " persone", null));
 			new FacesMessage(e.getMessage());
 		} 
 		return page;
 	}
 
-	public Tavolo validate() throws ValidatorException {
+	public Tavolo validateTable() throws ValidatorException {
 		this.tavoli = this.tFacade.findAllTavolo();
 		Ristorante ristorante = new Ristorante();
 		List<Tavolo> tavoliDisponibili = ristorante.setTavoloPrenotazione(this.tavoli, this.coperti);
 		Tavolo tavoloDaPrenotare = ristorante.checkTavoliLiberiForDate(tavoliDisponibili, this.datepicker);
 		if(tavoliDisponibili.isEmpty()){
+			this.corretto=false;
 			FacesMessage msg = 
 					new FacesMessage("Non ci sono tavoli disponibili per questo numero di ospiti");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(msg);
 		} else if (tavoloDaPrenotare == null) {
+			this.corretto=false;
 			FacesMessage msg = 
 					new FacesMessage("Non ci sono tavoli disponibili per questo numero di ospiti");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
@@ -142,4 +148,13 @@ public class PrenotazioneControllerBean {
 	public void settFacade(TavoloFacade tFacade) {
 		this.tFacade = tFacade;
 	}
+
+	public boolean isCorretto() {
+		return corretto;
+	}
+
+	public void setCorretto(boolean error) {
+		this.corretto = error;
+	}
+
 }
