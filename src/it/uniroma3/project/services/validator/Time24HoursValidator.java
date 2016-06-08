@@ -21,7 +21,6 @@ public class Time24HoursValidator{
 	private static final String ORARIORISTORANTE_PATTERN = "(19|2[01]):[0-5][0-9]";
 
 	public Time24HoursValidator(){
-
 	}
 
 	/**
@@ -43,6 +42,11 @@ public class Time24HoursValidator{
 				}
 		}
 		return hour;
+	}
+	public String ConvertDateToString(Date data){
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		String format = formatter.format(data);
+		return format;
 	}
 
 	public boolean isCena(String time){

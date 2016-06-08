@@ -171,7 +171,6 @@
 											<div class="animated fadeInDown">
 												<span class="label label-danger"><h:message
 														for="coperti" /></span>
-												<h:messages></h:messages>
 											</div>
 										</div>
 									</div>
@@ -182,7 +181,10 @@
 												data-toggle="modal" data-target="#confirm-submit"
 												class="btn btn-default" />
 										</div>
-										<h:messages globalOnly="true" />
+										<div class="animated fadeInDown">
+											<h:messages globalOnly="true" styleClass="list-group"
+												infoClass="list-group-item list-group-item-danger"></h:messages>
+										</div>
 									</div>
 								</div>
 								<div class="modal fade" id="confirm-submit" tabindex="-1"
