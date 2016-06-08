@@ -1,5 +1,6 @@
 package it.uniroma3.project.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +10,12 @@ import javax.ejb.EJBs;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import org.apache.commons.codec.binary.Base64;
+
 import it.uniroma3.project.facade.CategoriaPiattoFacade;
 import it.uniroma3.project.facade.PiattoFacade;
 import it.uniroma3.project.model.CategoriaPiatto;
+import it.uniroma3.project.model.DescrizionePiatto;
 import it.uniroma3.project.model.Piatto;
 
 @ManagedBean
@@ -32,6 +36,8 @@ public class MenuControllerBean {
 	
 	private List<Piatto> piatti;
 	
+	private byte[] img;
+	
 	@PostConstruct
 	public void init() {
 		this.categorie = this.cpFacade.getCategorie();
@@ -41,6 +47,18 @@ public class MenuControllerBean {
 			this.nomiCategorie.add(c.getNome());
 		}
 		this.piatti = this.pFacade.findAll();
+	}
+	
+	public String getBase64Img(DescrizionePiatto descrizionePiatto) {
+		
+		byte[] encodeBase64 = Base64.encodeBase64(descrizionePiatto.getImg());
+		String base64Encoded = null;
+		try {
+			base64Encoded = new String(encodeBase64, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return base64Encoded;
 	}
 	
 	public String goToMenu() {
@@ -85,6 +103,14 @@ public class MenuControllerBean {
 
 	public void setPiatti(List<Piatto> piatti) {
 		this.piatti = piatti;
+	}
+
+	public byte[] getImg() {
+		return img;
+	}
+
+	public void setImg(byte[] img) {
+		this.img = img;
 	}
 	
 	
