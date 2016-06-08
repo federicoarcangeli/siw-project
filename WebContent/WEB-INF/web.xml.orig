@@ -7,15 +7,27 @@
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 3d8cb16d6f08285fbc040aa259d1f08c4f54ddd6
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 3d8cb16d6f08285fbc040aa259d1f08c4f54ddd6
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>/faces/*</url-pattern>
 	</servlet-mapping>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 3d8cb16d6f08285fbc040aa259d1f08c4f54ddd6
 	<filter>
 		<filter-name>MyFacesExtensionsFilter</filter-name>
 		<filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
@@ -24,4 +36,8 @@
 		<filter-name>MyFacesExtensionsFilter</filter-name>
 		<servlet-name>Faces Servlet</servlet-name>
 	</filter-mapping>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 3d8cb16d6f08285fbc040aa259d1f08c4f54ddd6
 </web-app>

@@ -54,7 +54,6 @@ public class PiattoControllerBean {
 		DescrizionePiatto descrizionePiatto = createDescrizionePiatto();
 		this.categoria = this.cpFacade.findByName(this.nomeCategoria);
 		this.piatto = this.pFacade.create(nome, descrizionePiatto, this.categoria);
-		System.out.println("---->" +this.piatto);
 		return "piattoInserito";
 	}
 

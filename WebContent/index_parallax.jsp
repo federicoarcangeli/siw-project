@@ -73,10 +73,11 @@
 										action="#{piattoControllerBean.getCategorieToPage()}"
 										styleClass="navbar">
 									</h:commandLink>
-								</h:form></li>
-							<li><a href="#"
-								onclick="return myfaces.oam.submitForm('j_id_jsp_577129695_1','j_id_jsp_577129695_1:j_id_jsp_577129695_2');"
-								class="navbar">Piatti </a></li>
+								</h:form>
+<!-- 								</li> -->
+<!-- 							<li><a href="#" -->
+<!-- 								onclick="return myfaces.oam.submitForm('j_id_jsp_577129695_1','j_id_jsp_577129695_1:j_id_jsp_577129695_2');" -->
+<!-- 								class="navbar">Piatti </a></li> -->
 						</ul>
 					</div>
 

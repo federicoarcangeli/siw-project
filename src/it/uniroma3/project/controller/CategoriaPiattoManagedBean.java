@@ -21,6 +21,11 @@ public class CategoriaPiattoManagedBean {
 	private CategoriaPiatto categoria;
 	private String nome;
 	private List<CategoriaPiatto> categorie;
+	
+	public String create() {
+		this.cpFacade.create(this.nome);
+		return "404.html";
+	}
 
 	public String getNome() {
 		return nome;

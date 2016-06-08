@@ -19,7 +19,6 @@ import it.uniroma3.project.controller.helper.PiattoHelper;
  * Servlet implementation class DescrizionePiattoController
  */
 @WebServlet("/processaPiatto")
-@MultipartConfig
 public class PiattoController extends HttpServlet {
 	
 

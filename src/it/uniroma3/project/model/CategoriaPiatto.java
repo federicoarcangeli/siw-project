@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -16,12 +18,13 @@ public class CategoriaPiatto {
 
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	@Column(nullable = false)
 	private String nome;
 
-	@OneToMany(mappedBy="categoriaPiatto",cascade = {CascadeType.PERSIST})
+	@OneToMany(mappedBy="categoriaPiatto")
 	private List<Piatto> piatti;
 
 	public CategoriaPiatto(){
@@ -67,7 +70,6 @@ public class CategoriaPiatto {
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((piatti == null) ? 0 : piatti.hashCode());
 		return result;
 	}
 
@@ -89,11 +91,6 @@ public class CategoriaPiatto {
 			if (other.nome != null)
 				return false;
 		} else if (!nome.equals(other.nome))
-			return false;
-		if (piatti == null) {
-			if (other.piatti != null)
-				return false;
-		} else if (!piatti.equals(other.piatti))
 			return false;
 		return true;
 	}
