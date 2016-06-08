@@ -11,8 +11,6 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
-import org.apache.myfaces.view.facelets.tag.jsf.ValidatorTagHandlerDelegate;
-
 import it.uniroma3.project.facade.PrenotazioneAdminFacade;
 import it.uniroma3.project.facade.TavoloFacade;
 import it.uniroma3.project.model.Prenotazione;
@@ -45,7 +43,7 @@ public class PrenotazioneControllerBean {
 		String page = "prenotazioneAdmin";
 		Time24HoursValidator validatorD = new Time24HoursValidator();
 		try {
-			Tavolo tavolo = this.validate();
+			Tavolo tavolo = this.validateTable();
 
 			this.prenotazione = paFacade.create(this.getNominativo(),this.getDatepicker(),this.getTimepicker(),this.getCoperti(),tavolo);
 			this.corretto=true;
@@ -62,7 +60,7 @@ public class PrenotazioneControllerBean {
 		return page;
 	}
 
-	public Tavolo validate() throws ValidatorException {
+	public Tavolo validateTable() throws ValidatorException {
 		this.tavoli = this.tFacade.findAllTavolo();
 		Ristorante ristorante = new Ristorante();
 		List<Tavolo> tavoliDisponibili = ristorante.setTavoloPrenotazione(this.tavoli, this.coperti);

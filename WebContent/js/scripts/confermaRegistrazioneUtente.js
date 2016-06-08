@@ -1,11 +1,7 @@
-$('#submitBtn').click(function() {
-	$('#nom').text($('#nome').val());
-	$('#cog').text($('#cognome').val());
-	$('#ema').text($('#email').val());
-	$('#use').text($('#username').val());
-	$('#tel').text($('#telefono').val());
-});
-
-$('#submit').click(function(){
-	$('#formfield').submit();
+$('#conferma').click(function() {
+	$('#nom').text($('#registrazioneUtente\\:nome').val());
+	$('#cog').text($('#registrazioneUtente\\:cognome').val());
+	$('#ema').text($('#registrazioneUtente\\:email').val());
+	$('#use').text($('#registrazioneUtente\\:username').val());
+	$('#tel').text($('#registrazioneUtente\\:telefono').val());
 });

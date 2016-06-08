@@ -148,7 +148,6 @@
 												requiredMessage="Orario di arrivo obbligatorio"
 												converterMessage="Formato ora errato hh:mm">
 												<f:convertDateTime pattern="HH:mm" />
-
 											</h:inputText>
 											<i class="fa fa-clock-o" aria-hidden="true"></i>
 											<div class="animated fadeInDown">
