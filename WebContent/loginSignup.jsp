@@ -288,6 +288,8 @@
 															</div>
 														</div>
 													</div>
+													<h:messages globalOnly="true" styleClass="list-group"
+												infoClass="list-group-item list-group-item-danger"></h:messages>
 												</h:form>
 											</div>
 										</div>

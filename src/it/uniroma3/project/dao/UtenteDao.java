@@ -30,18 +30,22 @@ public class UtenteDao extends AbstractDao<Utente> {
 	/* da controllare */
 	public Utente findUtente(String email) {
 		try {
-			return getEntityManager().find(Utente.class, email);
+			return getEM().find(Utente.class, email);
 		} catch (Exception e) {
 			return null;
 		} 
 	}
 
 	public Utente findUtenteByUserName(String username) {
-		TypedQuery<Utente> query = getEntityManager().createQuery("select u from Utente u where u.username = :username", Utente.class);
+		TypedQuery<Utente> query = getEM().createQuery("select u from Utente u where u.username = :username", Utente.class);
 		try{
 			return query.setParameter("username", username).getSingleResult();
 		}catch(NoResultException nre){ return null;}
 
+	}
+	
+	public Utente find(Utente utente)  {
+		return getEM().find(Utente.class, utente);
 	}
 
 }

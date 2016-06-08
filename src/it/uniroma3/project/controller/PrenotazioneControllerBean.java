@@ -20,43 +20,45 @@ import it.uniroma3.project.services.validator.Time24HoursValidator;
 
 @ManagedBean
 @RequestScoped
-@EJBs(value = {@EJB(name = "paFacade", beanInterface = PrenotazioneAdminFacade.class),
+@EJBs(value = { @EJB(name = "paFacade", beanInterface = PrenotazioneAdminFacade.class),
 		@EJB(name = "tFacade", beanInterface = TavoloFacade.class) })
 public class PrenotazioneControllerBean {
 
-	private Date datepicker ;
-	private int coperti ;
-	private Date timepicker ;
-	private String nominativo ;
+	private Date datepicker;
+	private int coperti;
+	private Date timepicker;
+	private String nominativo;
 	private boolean corretto;
 
 	private Prenotazione prenotazione;
 	private List<Tavolo> tavoli;
 
-	@EJB(name="paFacade")
+	@EJB(name = "paFacade")
 	private PrenotazioneAdminFacade paFacade;
 
-	@EJB(name="tFacade")
+	@EJB(name = "tFacade")
 	private TavoloFacade tFacade;
 
-	public String createByAdmin(){
+	public String createByAdmin() {
 		String page = "prenotazioneAdmin";
 		Time24HoursValidator validatorD = new Time24HoursValidator();
 		try {
 			Tavolo tavolo = this.validateTable();
 
-			this.prenotazione = paFacade.create(this.getNominativo(),this.getDatepicker(),this.getTimepicker(),this.getCoperti(),tavolo);
-			this.corretto=true;
-			if(validatorD.isToday(this.prenotazione.getData())){
+			this.prenotazione = paFacade.create(this.getNominativo(), this.getDatepicker(), this.getTimepicker(),
+					this.getCoperti(), tavolo);
+			this.corretto = true;
+			if (validatorD.isToday(this.prenotazione.getData())) {
 				tFacade.setTavoloPrenotato(tavolo);
 			}
-		} catch(ValidatorException e) {
-			this.corretto=false;
-			FacesContext.getCurrentInstance().addMessage(null, 
-					new FacesMessage(FacesMessage.SEVERITY_INFO, 
-							"Non ci sono tavoli disponibili per il " +  validatorD.ConvertDateToString(this.datepicker) + " per "+ this.coperti + " persone", null));
+		} catch (ValidatorException e) {
+			this.corretto = false;
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Non ci sono tavoli disponibili per il "
+							+ validatorD.ConvertDateToString(this.datepicker) + " per " + this.coperti + " persone",
+							null));
 			new FacesMessage(e.getMessage());
-		} 
+		}
 		return page;
 	}
 
@@ -65,25 +67,21 @@ public class PrenotazioneControllerBean {
 		Ristorante ristorante = new Ristorante();
 		List<Tavolo> tavoliDisponibili = ristorante.setTavoloPrenotazione(this.tavoli, this.coperti);
 		Tavolo tavoloDaPrenotare = ristorante.checkTavoliLiberiForDate(tavoliDisponibili, this.datepicker);
-		if(tavoliDisponibili.isEmpty()){
-			this.corretto=false;
-			FacesMessage msg = 
-					new FacesMessage("Non ci sono tavoli disponibili per questo numero di ospiti");
+		if (tavoliDisponibili.isEmpty()) {
+			this.corretto = false;
+			FacesMessage msg = new FacesMessage("Non ci sono tavoli disponibili per questo numero di ospiti");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(msg);
 		} else if (tavoloDaPrenotare == null) {
-			this.corretto=false;
-			FacesMessage msg = 
-					new FacesMessage("Non ci sono tavoli disponibili per questo numero di ospiti");
+			this.corretto = false;
+			FacesMessage msg = new FacesMessage("Non ci sono tavoli disponibili per questo numero di ospiti");
 			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
 			throw new ValidatorException(msg);
-		}
-		else{
+		} else {
 			return tavoloDaPrenotare;
 		}
 
 	}
-
 
 	public Date getDatepicker() {
 		return datepicker;
