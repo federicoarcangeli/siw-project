@@ -33,18 +33,35 @@ public class UtenteDao extends AbstractDao<Utente> {
 			return getEM().find(Utente.class, email);
 		} catch (Exception e) {
 			return null;
-		} 
+		}
 	}
 
 	public Utente findUtenteByUserName(String username) {
-		TypedQuery<Utente> query = getEM().createQuery("select u from Utente u where u.username = :username", Utente.class);
-		try{
+		TypedQuery<Utente> query = getEM().createQuery("select u from Utente u where u.username = :username",
+				Utente.class);
+		try {
 			return query.setParameter("username", username).getSingleResult();
-		}catch(NoResultException nre){ return null;}
+		} catch (NoResultException nre) {
+			return null;
+		}
 
 	}
-	
-	public Utente find(Utente utente)  {
+
+	public Utente findAdmin(String username, String password) {
+		TypedQuery<Utente> query = getEM().createQuery(
+				"select u from Utente u where u.username = :username and u.password = :password and u.role = 'admin'",
+				Utente.class);
+		try {
+			query.setParameter("username", username);
+			query.setParameter("password", password);
+			System.out.println(query.getSingleResult());
+			return query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+
+	public Utente find(Utente utente) {
 		return getEM().find(Utente.class, utente);
 	}
 

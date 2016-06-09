@@ -37,4 +37,11 @@ public class UtenteFacade {
 		this.utenteDao = new UtenteDao(em);
 		return this.utenteDao.findUtenteByUserName(username);
 	}
+	
+	public Utente findAdmin(String username, String password) {
+		this.utenteDao = new UtenteDao(em);
+		return this.utenteDao.findAdmin(username, password);
+	}
+	
+	
  }
