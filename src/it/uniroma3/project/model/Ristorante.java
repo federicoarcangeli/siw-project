@@ -68,7 +68,6 @@ public class Ristorante {
 
 		for (Tavolo t : tavoliDisponibili) {
 			if (t.getPrenotazioni().isEmpty()){
-				System.out.println("non ha prenotazioni");
 				return t;}
 			else if (!this.containsDate(t.getPrenotazioni(), data))
 				return t;

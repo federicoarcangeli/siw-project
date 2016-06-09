@@ -16,6 +16,7 @@ import it.uniroma3.project.facade.TavoloFacade;
 import it.uniroma3.project.model.Prenotazione;
 import it.uniroma3.project.model.Ristorante;
 import it.uniroma3.project.model.Tavolo;
+import it.uniroma3.project.model.Utente;
 import it.uniroma3.project.services.validator.Time24HoursValidator;
 
 @ManagedBean
@@ -47,6 +48,29 @@ public class PrenotazioneControllerBean {
 
 			this.prenotazione = paFacade.create(this.getNominativo(), this.getDatepicker(), this.getTimepicker(),
 					this.getCoperti(), tavolo);
+			this.corretto = true;
+			if (validatorD.isToday(this.prenotazione.getData())) {
+				tFacade.setTavoloPrenotato(tavolo);
+			}
+		} catch (ValidatorException e) {
+			this.corretto = false;
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Non ci sono tavoli disponibili per il "
+							+ validatorD.ConvertDateToString(this.datepicker) + " per " + this.coperti + " persone",
+							null));
+			new FacesMessage(e.getMessage());
+		}
+		return page;
+	}
+
+	public String createByUtente() {
+		Time24HoursValidator validatorD = new Time24HoursValidator();
+		FacesContext context = FacesContext.getCurrentInstance();
+		String page = "prenotazione";
+		try {
+			Tavolo tavolo = this.validateTable();
+			this.prenotazione = paFacade.create(this.getDatepicker(),this.getTimepicker(),
+					this.getCoperti(),(Utente)context.getExternalContext().getSessionMap().get("utenteCorrente"), tavolo);
 			this.corretto = true;
 			if (validatorD.isToday(this.prenotazione.getData())) {
 				tFacade.setTavoloPrenotato(tavolo);

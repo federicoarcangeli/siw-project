@@ -72,17 +72,14 @@
 										value="#{utenteCorrente.username}"></h:outputText> <span
 									class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a
-										href="${pageContext.request.contextPath}/processaProfilo">Profilo</a></li>
+									<li><a href="./profilo.jsp">Profilo</a></li>
 									<li><h:form>
-											<h:commandLink value="Logout"
-												action="#{utenteController.logout}" />
-										</h:form></li>
-
+											<h:commandLink action="#{utenteController.logout}" />
+										</h:form><a href="#"
+										onclick="return myfaces.oam.submitForm('j_id_jsp_192962768_2','j_id_jsp_192962768_2:j_id_jsp_192962768_3');">Logout</a></li>
 								</ul></li>
 						</ul>
 					</div>
-
 					<!--/.navbar-collapse -->
 				</div>
 			</nav>

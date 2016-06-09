@@ -1,47 +1,47 @@
-package it.uniroma3.project.controller.action;
-
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.apache.commons.validator.routines.DateValidator;
-
-import it.uniroma3.project.facade.Facade;
-import it.uniroma3.project.model.Prenotazione;
-import it.uniroma3.project.model.Tavolo;
-import it.uniroma3.project.model.Utente;
-import it.uniroma3.project.services.validator.*;
-
-public class PrenotazioneAction {
-
-	public PrenotazioneAction() {
-	}
-
-	public String execute(HttpServletRequest request) {
-		Facade facade = new Facade();
-		DateValidator validator = new DateValidator();
-		Time24HoursValidator validatorD = new Time24HoursValidator();
-
-		Date data = validator.validate(request.getParameter("data"));
-		int ospiti = Integer.parseInt(request.getParameter("ospiti"));
-		Date ora = validatorD.validate(request.getParameter("ora"));
-
-		HttpSession session = request.getSession();
-
-		Utente utente = (Utente) session.getAttribute("utenteCorrente");
-		Tavolo tavolo = (Tavolo) session.getAttribute("tavoloAssegnato");
-
-		Prenotazione prenotazione = new Prenotazione(data, ora, ospiti,	utente);
-		prenotazione.setTavoloPrenotato(tavolo);
-
-		if(validatorD.isToday(data))
-			facade.setTavoloPrenotato(tavolo);
-
-		facade.inserisciPrenotazione(prenotazione);
-		facade.closeEntityManager();
-
-		return "/prenotazione.jsp";
-	}
-
-}
+//package it.uniroma3.project.controller.action;
+//
+//import java.util.Date;
+//
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpSession;
+//
+//import org.apache.commons.validator.routines.DateValidator;
+//
+//import it.uniroma3.project.facade.Facade;
+//import it.uniroma3.project.model.Prenotazione;
+//import it.uniroma3.project.model.Tavolo;
+//import it.uniroma3.project.model.Utente;
+//import it.uniroma3.project.services.validator.*;
+//
+//public class PrenotazioneAction {
+//
+//	public PrenotazioneAction() {
+//	}
+//
+//	public String execute(HttpServletRequest request) {
+//		Facade facade = new Facade();
+//		DateValidator validator = new DateValidator();
+//		Time24HoursValidator validatorD = new Time24HoursValidator();
+//
+//		Date data = validator.validate(request.getParameter("data"));
+//		int ospiti = Integer.parseInt(request.getParameter("ospiti"));
+//		Date ora = validatorD.validate(request.getParameter("ora"));
+//
+//		HttpSession session = request.getSession();
+//
+//		Utente utente = (Utente) session.getAttribute("utenteCorrente");
+//		Tavolo tavolo = (Tavolo) session.getAttribute("tavoloAssegnato");
+//
+//		//		Prenotazione prenotazione = new Prenotazione(data, ora, ospiti,	utente);
+//		//		prenotazione.setTavoloPrenotato(tavolo);
+//
+//		if(validatorD.isToday(data))
+//			facade.setTavoloPrenotato(tavolo);
+//
+//		//		facade.inserisciPrenotazione(prenotazione);
+//		facade.closeEntityManager();
+//
+//		return "/prenotazione.jsp";
+//	}
+//
+//}

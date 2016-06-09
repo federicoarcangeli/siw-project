@@ -56,11 +56,12 @@ public class Prenotazione {
 		this.completato=false;
 		this.tavoloPrenotato=tavolo;
 	}
-	public Prenotazione(Date data,Date ora, int ospiti,Utente utente) {
+	public Prenotazione(Date data,Date ora, int ospiti,Utente utente, Tavolo tavolo) {
 		this.data=data;
 		this.Ora=ora;
 		this.numeroOspiti=ospiti;
 		this.utente=utente;
+		this.tavoloPrenotato=tavolo;
 		this.completato=false;
 	}
 

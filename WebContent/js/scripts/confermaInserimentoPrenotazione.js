@@ -1,9 +1,5 @@
-$('#submitBtn').click(function() {
-	$('#date').text($('#datepicker').val());
-	$('#time').text($('#timepicker').val());
-	$('#osp').text($('#ospiti').val());
-});
-
-$('#submit').click(function(){
-	$('#formfield').submit();
+$('#conferma').click(function() {
+	$('#date').text($('#prenotazioni\\:datepicker').val());
+	$('#time').text($('#prenotazioni\\:timepicker').val());
+	$('#osp').text($('#prenotazioni\\:coperti').val());
 });
