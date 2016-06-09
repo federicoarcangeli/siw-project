@@ -55,20 +55,38 @@ public class UtenteControllerBean implements Serializable{
 		}
 	}
 	
-	public String createOperatore() {
-		this.utente = new Utente(username, this.getPasswordCriptata());
-		if (this.isAlreadyRegistered(this.utente)) {
-			return "registraPersonale";
-		} else {
-			this.utente = uFacade.signUp(this.utente);
-			return "home_Administrator";
+	public String loginUtente(){
+		this.utente=this.uFacade.findByUsername(this.getUsername());
+		FacesContext context = FacesContext.getCurrentInstance();
+		if (this.isNotAlreadyRegistered(this.utente) || this.wrongPassword()){
+			return "loginSignup";
 		}
-	}
-
+		else{
+			this.utente = this.uFacade.findByUsername(utente.getUsername());
+			context.getExternalContext().getSessionMap().put("utenteCorrente", utente);
+			return "home_Utente";
 	public boolean isAlreadyRegistered(Utente utente) {
 		if (this.uFacade.findByUsername(utente.getUsername()) != null) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, utente.getUsername() + " è già registrato!", null));
+			return true;
+		} else
+			return false;
+	}
+
+	public boolean isNotAlreadyRegistered(Utente utente) {
+		if (this.uFacade.findByUsername(this.getUsername()) == null) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, this.getUsername() + " non è registrato!", null));
+			return true;
+		} else
+			return false;
+	}
+
+	public boolean wrongPassword(){
+		if(!this.utente.getPassword().equals(this.getPasswordCriptata())){
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO,"password errata!", null));
 			return true;
 		} else
 			return false;
