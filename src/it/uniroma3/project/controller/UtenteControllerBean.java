@@ -10,7 +10,7 @@ import it.uniroma3.project.facade.UtenteFacade;
 import it.uniroma3.project.model.Utente;
 import it.uniroma3.project.services.security.MD5Encrypter;
 
-@ManagedBean(name = "registrazione")
+@ManagedBean(name = "utenteController")
 @RequestScoped
 @EJB(name = "uFacade", beanInterface = UtenteFacade.class)
 public class UtenteControllerBean {
@@ -29,14 +29,15 @@ public class UtenteControllerBean {
 	private UtenteFacade uFacade;
 
 	public String create() {
-		this.utente = new Utente(this.nome, this.cognome, this.username, this.telefono, this.email,
-				this.getPasswordCriptata());
+		this.setUtente(new Utente(this.getNome(), this.getCognome(), this.getUsername(), this.getTelefono(), this.getEmail(),
+				this.getPasswordCriptata()));
 		if (this.isAlreadyRegistered(this.utente)) {
-			this.utente = uFacade.signUp(this.utente);
+			this.utente = this.getuFacade().signUp(this.utente);
 			return "home_Utente";
 		} else
 			return "loginSignup";
 	}
+
 
 	public boolean isAlreadyRegistered(Utente utente) {
 		if (this.uFacade.findByUsername(utente.getUsername()) != null) {

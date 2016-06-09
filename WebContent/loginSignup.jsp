@@ -95,14 +95,19 @@
 											<h3 class="text-center">Utente registrato</h3>
 											<br>
 											<div class="reservation-form">
-												<h:form>
+												<h:form id="loginUtente">
 													<div class="row">
 														<div class="col-md-12">
 															<div class="form-group">
-																<label>Username</label> <input type="text"
-																	name="username" placeholder="username"
-																	class="form-control"> <i class="fa fa-user"
-																	aria-hidden="true"></i>
+																<label for="username">Username</label>
+																<h:inputText value="#{utenteController.username}"
+																	styleClass="form-control" required="true"
+																	requiredMessage="Username obbligatorio" id="username" />
+																<i class="fa fa-barcode" aria-hidden="true"></i>
+																<div class="animated fadeInDown">
+																	<span class="label label-danger"><h:message
+																			for="username" /></span>
+																</div>
 															</div>
 														</div>
 													</div>
@@ -110,18 +115,25 @@
 													<div class="row">
 														<div class="col-md-12">
 															<div class="form-group">
-																<label>Password</label> <input type="password"
-																	name="password" placeholder="password"
-																	class="form-control"> <i class="fa fa-lock"
-																	aria-hidden="true"></i>
+																<label for="password">Password</label>
+																<h:inputSecret value="#{utenteController.password}"
+																	styleClass="form-control" required="true"
+																	requiredMessage="Password obbligatoria" id="password" />
+																<i class="fa fa-lock" aria-hidden="true"></i>
+																<div class="animated fadeInDown">
+																	<span class="label label-danger"><h:message
+																			for="password" /></span>
+																</div>
 															</div>
 														</div>
 													</div>
 													<div class="clearfix"></div>
 													<div class="row">
 														<div class="col-md-6">
-															<button type="submit" class="btn btn-default pull-left">
-																Login</button>
+															<h:commandLink styleClass="btn btn-default pull-left"
+																value="Registrati"
+																action="#{utenteController.loginUtente}">
+															</h:commandLink>
 														</div>
 													</div>
 												</h:form>
@@ -140,7 +152,7 @@
 														<div class="col-md-6">
 															<div class="form-group">
 																<label for="nome">Nome</label>
-																<h:inputText value="#{registrazione.nome}"
+																<h:inputText value="#{utenteController.nome}"
 																	styleClass="form-control" required="true"
 																	requiredMessage="Nome obbligatorio" id="nome" />
 																<i class="fa fa-user" aria-hidden="true"></i>
@@ -153,7 +165,7 @@
 														<div class="col-md-6">
 															<div class="form-group">
 																<label for="cognome">Cognome</label>
-																<h:inputText value="#{registrazione.cognome}"
+																<h:inputText value="#{utenteController.cognome}"
 																	styleClass="form-control" required="true"
 																	requiredMessage="Cognome obbligatorio" id="cognome" />
 																<i class="fa fa-user" aria-hidden="true"></i>
@@ -166,7 +178,7 @@
 														<div class="col-md-12">
 															<div class="form-group">
 																<label for="username">Email</label>
-																<h:inputText value="#{registrazione.email}"
+																<h:inputText value="#{utenteController.email}"
 																	styleClass="form-control" required="true"
 																	requiredMessage="Email obbligatoria" id="email"
 																	validatorMessage="inserire un indirizzo email valido">
@@ -183,7 +195,7 @@
 														<div class="col-md-6">
 															<div class="form-group">
 																<label for="username">Username</label>
-																<h:inputText value="#{registrazione.username}"
+																<h:inputText value="#{utenteController.username}"
 																	styleClass="form-control" required="true"
 																	requiredMessage="Username obbligatorio" id="username" />
 																<i class="fa fa-barcode" aria-hidden="true"></i>
@@ -196,7 +208,7 @@
 														<div class="col-md-6">
 															<div class="form-group">
 																<label for="username">Telefono</label>
-																<h:inputText value="#{registrazione.telefono}"
+																<h:inputText value="#{utenteController.telefono}"
 																	styleClass="form-control" required="true"
 																	requiredMessage="Telefono obbligatorio" id="telefono" />
 																<i class="fa fa-phone" aria-hidden="true"></i>
@@ -209,7 +221,7 @@
 														<div class="col-md-6">
 															<div class="form-group">
 																<label for="password">Password</label>
-																<h:inputSecret value="#{registrazione.password}"
+																<h:inputSecret value="#{utenteController.password}"
 																	styleClass="form-control" required="true"
 																	requiredMessage="Password obbligatoria" id="password" />
 																<i class="fa fa-lock" aria-hidden="true"></i>
@@ -222,7 +234,7 @@
 														<div class="col-md-6">
 															<div class="form-group">
 																<label for="password">Conferma password</label>
-																<h:inputSecret value="#{registrazione.confPassword}"
+																<h:inputSecret value="#{utenteController.confPassword}"
 																	styleClass="form-control" required="true"
 																	requiredMessage="Conferma password obbligatoria"
 																	id="confPassword" />
@@ -286,7 +298,7 @@
 																	<button type="button" class="btn btn-default"
 																		data-dismiss="modal">Annulla</button>
 																	<h:commandLink styleClass="btn btn-success"
-																		value="Registrati" action="#{registrazione.create}">
+																		value="Registrati" action="#{utenteController.create}">
 																	</h:commandLink>
 																</div>
 															</div>
