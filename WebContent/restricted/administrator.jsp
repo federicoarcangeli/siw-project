@@ -32,19 +32,14 @@
 		<!-- Preloder-->
 		<div class="preloder animated">
 			<div class="scoket">
-				<img src="img/preloader.svg" alt="" />
+				<img src="../img/preloader.svg" alt="" />
 			</div>
 		</div>
 
 		<div class="body">
 			<div class="main-wrapper">
-				<!-- Navigation-->
 
-
-				<!-- Page Header -->
-
-
-				<!-- Account Content -->
+				<!-- Login Admin Content -->
 				<br> <br> <br> <br> <br>
 				<section class="reservation">
 					<div class="container">
@@ -55,15 +50,14 @@
 										<div class="col-md-12">
 											<div class="form-group">
 												<label>Username</label>
-												<h:inputText id="username" value="#{utenteController.username}"
-													required="true" requiredMessage="Inserisci username"
+												<h:inputText id="username"
+													value="#{utenteController.username}" required="true"
+													requiredMessage="Inserisci username"
 													styleClass="form-control" />
-
 												<div class="animated fadeInDown">
 													<span class="label label-danger"><h:message
-															for="username" /> </span>
+															for="username" /></span>
 												</div>
-
 											</div>
 										</div>
 									</div>
@@ -71,7 +65,6 @@
 									<div class="row">
 										<div class="col-md-12">
 											<div class="form-group">
-
 												<label>Password</label>
 												<h:inputSecret id="password"
 													value="#{utenteController.password}" required="true"
@@ -79,7 +72,7 @@
 													styleClass="form-control" />
 												<div class="animated fadeInDown">
 													<span class="label label-danger"><h:message
-															for="password" /> </span>
+															for="password" /></span>
 												</div>
 											</div>
 										</div>
@@ -91,19 +84,15 @@
 												action="#{utenteController.loginAdmin}"
 												styleClass="btn btn-default btn-block" />
 										</div>
-
 									</div>
-									<h:messages globalOnly="true" styleClass="list-group"
-										infoClass="list-group-item list-group-item-danger"></h:messages>
+									<div class="animated fadeInDown">
+										<h:messages globalOnly="true" styleClass="list-group"
+											infoClass="list-group-item list-group-item-danger"></h:messages>
+									</div>
 								</h:form>
 							</div>
-
-
-
 						</div>
-
 					</div>
-
 				</section>
 			</div>
 		</div>

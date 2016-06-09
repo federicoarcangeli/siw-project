@@ -54,14 +54,14 @@
 									class="icon-bar"></span> <span class="icon-bar"></span> <span
 									class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand" href="./home_Utente.jsp"> <img
+							<a class="navbar-brand" href="./index_parallax.jsp"> <img
 								src="img/nav-logo.png" alt="nav-logo">
 							</a>
 						</div>
 
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="./home_Utente.jsp">Home</a></li>
+								<li><a href="./index_parallax.jsp">Home</a></li>
 								<li><a href="">Men&ugrave;</a></li>
 								<li><a href="./galleria.jsp">Galleria</a></li>
 								<li><a href="./prenotazione.jsp"><span
@@ -74,7 +74,7 @@
 										class="caret"></span>
 								</a>
 									<ul class="dropdown-menu">
-										<li><a href="">Profilo</a></li>
+										<li><a href="./profilo.jsp">Profilo</a></li>
 										<li><h:form>
 												<h:commandLink action="#{utenteController.logout}" />
 											</h:form><a href="#"

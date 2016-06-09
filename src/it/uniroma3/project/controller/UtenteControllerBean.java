@@ -47,11 +47,12 @@ public class UtenteControllerBean implements Serializable {
 		this.utente = new Utente(this.nome, this.cognome, this.username, this.telefono, this.email,
 				this.getPasswordCriptata());
 		if (this.isAlreadyRegistered(this.utente) || this.equalsPassword()) {
-			loggedIn = true;
 			return "loginSignup";
 		} else {
 			this.utente = uFacade.signUp(this.utente);
-			return "home_Utente";
+			loggedIn = true;
+			this.setUtenteInSession("utenteCorrente");
+			return "index_parallax";
 		}
 	}
 
@@ -67,29 +68,27 @@ public class UtenteControllerBean implements Serializable {
 
 	public String loginUtente() {
 		this.utente = this.uFacade.findByUsername(this.getUsername());
-		FacesContext context = FacesContext.getCurrentInstance();
 		if (this.isNotAlreadyRegistered(this.utente) || this.wrongPassword()) {
 			return "loginSignup";
 		} else {
 			this.utente = this.uFacade.findByUsername(utente.getUsername());
-			context.getExternalContext().getSessionMap().put("utenteCorrente", utente);
-			return "home_Utente";
+			this.setUtenteInSession("utenteCorrente");
+			return "index_parallax";
 		}
 	}
 
 	public String loginAdmin() {
 		this.utente = this.uFacade.findByUsername(this.getUsername());
-		FacesContext context = FacesContext.getCurrentInstance();
-		/*L'utente che sta tentando di autenticarsi non è registrato nel sistema*/
+		//		L'utente che sta tentando di autenticarsi non è registrato nel sistema
 		if (this.isNotAlreadyRegistered(this.utente) || this.wrongPassword()) {
 			return "administrator";
 		} else {
-			/*L'utente è registrato*/
+			//			L'utente è registrato
 			if(this.utente.getRole().equals("admin")) {
-			context.getExternalContext().getSessionMap().put("utenteCorrente", this.utente);
-			return "home_Administrator";
+				this.setUtenteInSession("utenteCorrente");
+				return "home_Administrator";
 			} else if(this.utente.getRole().equals("operatore")) {
-				context.getExternalContext().getSessionMap().put("utenteCorrente", this.utente);
+				this.setUtenteInSession("utenteCorrente");
 				return "home_Operatore";
 			} else {
 				return "administrator";
@@ -143,7 +142,6 @@ public class UtenteControllerBean implements Serializable {
 	public void init() {
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		originalURL = (String) externalContext.getRequestMap().get(RequestDispatcher.FORWARD_REQUEST_URI);
-
 		if (originalURL == null) {
 			originalURL = externalContext.getRequestContextPath() + "/home_Administrator.jsp";
 		} else {
@@ -190,6 +188,11 @@ public class UtenteControllerBean implements Serializable {
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		externalContext.invalidateSession();
 		externalContext.redirect(externalContext.getRequestContextPath() + "/index_parallax.jsp");
+	}
+
+	public void setUtenteInSession(String name){
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().getSessionMap().put(name, this.utente);
 	}
 
 	public String getNome() {

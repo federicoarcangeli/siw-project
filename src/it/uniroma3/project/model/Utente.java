@@ -37,9 +37,9 @@ public class Utente {
 	private String telefono;
 
 	/*ruoli possibili:
-	 * u:utente
-	 * o:operatore
-	 * a: amministratore*/
+	 * utente
+	 * operatore
+	 * admin*/
 	@Column(nullable = false)
 	private String role;
 

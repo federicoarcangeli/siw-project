@@ -135,8 +135,7 @@
 													<div class="row">
 														<div class="col-md-6">
 															<h:commandLink styleClass="btn btn-default pull-left"
-																value="Registrati"
-																action="#{utenteController.loginUtente}">
+																value="Accedi" action="#{utenteController.loginUtente}">
 															</h:commandLink>
 														</div>
 													</div>
@@ -255,7 +254,7 @@
 														<div class="col-md-12">
 															<div class="space20"></div>
 															<div class="reservation-btn">
-																<input type="button" name="btn" value="Registrami"
+																<input type="button" name="btn" value="Registrati"
 																	id="conferma" data-toggle="modal"
 																	data-target="#confirm-submit"
 																	class="btn btn-default pull-right" />
