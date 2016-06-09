@@ -66,12 +66,11 @@
 									href="${pageContext.request.contextPath}/ProcessaMenu">Men&ugrave;</a></li>
 								<li><a
 									href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
-								<li class="dropdown"><a href="./home_Administrator.jsp"
+								<li class="dropdown"><a href="./home_Utente.jsp"
 									class="dropdown-toggle" data-toggle="dropdown" role="button"
-									aria-haspopup="true" aria-expanded="false">Benvenuto
-										${amministratoreCorrente.username} -
-										${amministratoreCorrente.role}<span class="caret"></span>
-								</a>
+									aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
+											value="#{utenteCorrente.username}"></h:outputText> <span
+										class="caret"></span></a>
 									<ul class="dropdown-menu">
 										<li><a href="./index_parallax.jsp">Logout</a></li>
 									</ul></li>
