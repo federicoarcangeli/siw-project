@@ -95,7 +95,6 @@ public class Utente {
 	 * @param telefono
 	 * @param email
 	 * @param password
-	 * 
 	 * costruttore per utenti
 	 */
 	public Utente(String nome , String cognome ,String username, String telefono , String email, String password){
@@ -109,6 +108,13 @@ public class Utente {
 		prenotazioni = new ArrayList<>();
 	}
 
+	/**
+	 * 
+	 * @param username
+	 * @param password
+	 * @param ruolo
+	 * costruttore per admin
+	 */
 	public Utente(String username, String password, String ruolo){
 		this.username=username;
 		this.password=password;

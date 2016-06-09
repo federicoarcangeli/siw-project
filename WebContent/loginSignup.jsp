@@ -168,7 +168,11 @@
 																<label for="username">Email</label>
 																<h:inputText value="#{registrazione.email}"
 																	styleClass="form-control" required="true"
-																	requiredMessage="Email obbligatoria" id="email" />
+																	requiredMessage="Email obbligatoria" id="email"
+																	validatorMessage="inserire un indirizzo email valido">
+																	<f:validateRegex
+																		pattern="^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$" />
+																</h:inputText>
 																<i class="fa fa-envelope" aria-hidden="true"></i>
 																<div class="animated fadeInDown">
 																	<span class="label label-danger"><h:message
@@ -289,7 +293,7 @@
 														</div>
 													</div>
 													<h:messages globalOnly="true" styleClass="list-group"
-												infoClass="list-group-item list-group-item-danger"></h:messages>
+														infoClass="list-group-item list-group-item-danger"></h:messages>
 												</h:form>
 											</div>
 										</div>
