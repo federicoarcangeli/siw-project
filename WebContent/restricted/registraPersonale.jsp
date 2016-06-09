@@ -102,7 +102,7 @@
 																<div class="form-group">
 																	<label for="username">Username</label>
 																	<h:inputText
-																		value="#{registrazione.username}"
+																		value="#{utenteController.username}"
 																		styleClass="form-control" required="true"
 																		requiredMessage="Username obbligatorio" id="username" />
 																	<i class="fa fa-user" aria-hidden="true"></i>
@@ -116,7 +116,7 @@
 																<div class="form-group">
 																	<label for="password">Password</label>
 																	<h:inputSecret
-																		value="#{registrazione.password}"
+																		value="#{utenteController.password}"
 																		styleClass="form-control" required="true"
 																		requiredMessage="Password obbligatoria" id="password" />
 																	<i class="fa fa-lock" aria-hidden="true"></i>
@@ -160,7 +160,7 @@
 																	data-dismiss="modal">Annulla</button>
 																<h:commandLink styleClass="btn btn-success"
 																	value="Registra Operatore"
-																	action="#{registrazione.createOperatore}">
+																	action="#{utenteController.createOperatore}">
 																</h:commandLink>
 															</div>
 														</div>

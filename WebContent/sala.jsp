@@ -42,14 +42,6 @@
 
 		<div class="main-wrapper">
 
-			<%
-				session.removeAttribute("linee");
-				if (session.getAttribute("amministratoreCorrente") == null) {
-					String redirectURL = "./404.html";
-					response.sendRedirect(redirectURL);
-
-				} else {
-			%>
 			<!-- Navigation-->
 			<nav class="navbar navbar-fixed-top">
 				<div class="container">
@@ -145,9 +137,6 @@
 					</form>
 				</div>
 			</div>
-			<%
-				}
-			%>
 		</div>
 	</div>
 

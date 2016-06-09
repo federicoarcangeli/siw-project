@@ -23,6 +23,7 @@ public class TavoloControllerBean {
 		this.tavolo = tFacade.create(this.getCodiceTavolo(),this.getCoperti());
 		return "registrazioneTavolo";
 	}
+	
 
 	public String getCodiceTavolo() {
 		return codiceTavolo;

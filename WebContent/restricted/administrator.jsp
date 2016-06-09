@@ -55,7 +55,7 @@
 										<div class="col-md-12">
 											<div class="form-group">
 												<label>Username</label>
-												<h:inputText id="username" value="#{registrazione.username}"
+												<h:inputText id="username" value="#{utenteController.username}"
 													required="true" requiredMessage="Inserisci username"
 													styleClass="form-control" />
 
@@ -74,7 +74,7 @@
 
 												<label>Password</label>
 												<h:inputSecret id="password"
-													value="#{registrazione.password}" required="true"
+													value="#{utenteController.password}" required="true"
 													requiredMessage="Inserisci password"
 													styleClass="form-control" />
 												<div class="animated fadeInDown">
@@ -88,7 +88,7 @@
 									<div class="row">
 										<div class="col-md-12">
 											<h:commandButton value="login"
-												action="#{registrazione.login}"
+												action="#{utenteController.loginAdmin}"
 												styleClass="btn btn-default btn-block" />
 										</div>
 

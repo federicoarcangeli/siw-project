@@ -18,10 +18,10 @@ import it.uniroma3.project.facade.UtenteFacade;
 import it.uniroma3.project.model.Utente;
 import it.uniroma3.project.services.security.MD5Encrypter;
 
-@ManagedBean(name = "registrazione")
+@ManagedBean(name = "utenteController")
 @SessionScoped
 @EJB(name = "uFacade", beanInterface = UtenteFacade.class)
-public class UtenteControllerBean implements Serializable{
+public class UtenteControllerBean implements Serializable {
 
 	/**
 	 * 
@@ -54,17 +54,49 @@ public class UtenteControllerBean implements Serializable{
 			return "home_Utente";
 		}
 	}
-	
-	public String loginUtente(){
-		this.utente=this.uFacade.findByUsername(this.getUsername());
-		FacesContext context = FacesContext.getCurrentInstance();
-		if (this.isNotAlreadyRegistered(this.utente) || this.wrongPassword()){
-			return "loginSignup";
+
+	public String createOperatore() {
+		this.utente = new Utente(username, this.getPasswordCriptata());
+		if (this.isAlreadyRegistered(this.utente))
+			return "registraPersonale";
+		else {
+			this.utente = this.uFacade.signUp(utente);
+			return "home_Administrator";
 		}
-		else{
+	}
+
+	public String loginUtente() {
+		this.utente = this.uFacade.findByUsername(this.getUsername());
+		FacesContext context = FacesContext.getCurrentInstance();
+		if (this.isNotAlreadyRegistered(this.utente) || this.wrongPassword()) {
+			return "loginSignup";
+		} else {
 			this.utente = this.uFacade.findByUsername(utente.getUsername());
 			context.getExternalContext().getSessionMap().put("utenteCorrente", utente);
 			return "home_Utente";
+		}
+	}
+
+	public String loginAdmin() {
+		this.utente = this.uFacade.findByUsername(this.getUsername());
+		FacesContext context = FacesContext.getCurrentInstance();
+		/*L'utente che sta tentando di autenticarsi non è registrato nel sistema*/
+		if (this.isNotAlreadyRegistered(this.utente) || this.wrongPassword()) {
+			return "administrator";
+		} else {
+			/*L'utente è registrato*/
+			if(this.utente.getRole().equals("admin")) {
+			context.getExternalContext().getSessionMap().put("utenteCorrente", this.utente);
+			return "home_Administrator";
+			} else if(this.utente.getRole().equals("operatore")) {
+				context.getExternalContext().getSessionMap().put("utenteCorrente", this.utente);
+				return "home_Operatore";
+			} else {
+				return "administrator";
+			}
+		}
+	}
+
 	public boolean isAlreadyRegistered(Utente utente) {
 		if (this.uFacade.findByUsername(utente.getUsername()) != null) {
 			FacesContext.getCurrentInstance().addMessage(null,
@@ -83,10 +115,10 @@ public class UtenteControllerBean implements Serializable{
 			return false;
 	}
 
-	public boolean wrongPassword(){
-		if(!this.utente.getPassword().equals(this.getPasswordCriptata())){
+	public boolean wrongPassword() {
+		if (!this.utente.getPassword().equals(this.getPasswordCriptata())) {
 			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO,"password errata!", null));
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "password errata!", null));
 			return true;
 		} else
 			return false;
@@ -122,17 +154,17 @@ public class UtenteControllerBean implements Serializable{
 			}
 		}
 	}
-	
+
 	public String doLogin() {
 		Utente admin = this.uFacade.findAdmin(username, this.getPasswordCriptata());
-		if(admin != null) {
+		if (admin != null) {
 			loggedIn = true;
 			return "home_Administrator";
 		} else {
 			return "administrator";
 		}
 	}
-	
+
 	public String doLogout() {
 		loggedIn = false;
 		return "administrator";
