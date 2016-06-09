@@ -108,7 +108,7 @@
 											value='#{tavolo.codiceTavolo}' />
 
 										<h3>
-											<h:outputText value="#{tavolo.codiceTavolo }" />
+											<h:outputText value="#{tavolo.codiceTavolo}" />
 										</h3>
 										<div class="col-md-12" style="height: 25px;"></div>
 
@@ -119,7 +119,7 @@
 											style="width: 100%; height: 150px;"
 											value='#{tavolo.codiceTavolo}' />
 										<h3>
-											<h:outputText value="#{tavolo.codiceTavolo }" />
+											<h:outputText value="#{tavolo.codiceTavolo}" />
 										</h3>
 										<div class="col-md-12" style="height: 25px;"></div>
 
@@ -130,7 +130,7 @@
 											style="width: 100%; height: 150px;"
 											value='#{tavolo.codiceTavolo}' />
 										<h3>
-											<h:outputText value="#{tavolo.codiceTavolo }" />
+											<h:outputText value="#{tavolo.codiceTavolo}" />
 										</h3>
 										<div class="col-md-12" style="height: 25px;"></div>
 									</div>

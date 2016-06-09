@@ -27,11 +27,6 @@ public class TavoloControllerBean {
 		return "registrazioneTavolo";
 	}
 	
-	public String findAllTavoli() {
-		this.tavoli = this.gettFacade().findAllTavolo();
-		return "sala";
-	}
-	
 	@PostConstruct
 	public void init() {
 		this.tavoli = this.gettFacade().findAllTavolo();
