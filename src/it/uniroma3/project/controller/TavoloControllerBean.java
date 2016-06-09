@@ -18,6 +18,7 @@ public class TavoloControllerBean {
 	private int coperti;
 	private List<Tavolo> tavoli;
 	private Tavolo tavolo;
+	private int occupato;
 
 	@EJB(name="tFacade")
 	private TavoloFacade tFacade;
@@ -79,6 +80,14 @@ public class TavoloControllerBean {
 
 	public void settFacade(TavoloFacade tFacade) {
 		this.tFacade = tFacade;
+	}
+
+	public int getOccupato() {
+		return occupato;
+	}
+
+	public void setOccupato(int occupato) {
+		this.occupato = occupato;
 	}
 
 

@@ -7,7 +7,6 @@
 <head>
 <meta charset="utf-8">
 <title>Gestione sala</title>
-<meta name="author" content="Surjith S M">
 
 <!-- SEO -->
 <meta name="description"
@@ -98,40 +97,46 @@
 							<div class="col-sm-12 centered">
 								<c:forEach var="tavolo" items="#{tavoloController.tavoli}">
 									<div class="col-xs-6 col-sm-2">
-									
-										<h:outputText value="#{tavolo.codiceTavolo}"/>
-										<span class="label label-success">COPERTI : <h:outputText
-												value="#{tavolo.coperti}" />
-										</span>
-										<h:commandButton styleClass="btn btn-success" id="libero"
-											style="width: 100%; height: 150px;"
-											value='#{tavolo.codiceTavolo}' />
 
-										<h3>
+										<h:panelGroup rendered="#{tavolo.occupato eq '0'}">
 											<h:outputText value="#{tavolo.codiceTavolo}" />
-										</h3>
+											<span class="label label-success">COPERTI : <h:outputText
+													value="#{tavolo.coperti}" />
+											</span>
+											<h:commandButton styleClass="btn btn-success" id="libero"
+												style="width: 100%; height: 150px;"
+												value='#{tavolo.codiceTavolo}' />
+
+											<h3>
+												<h:outputText value="#{tavolo.codiceTavolo}" />
+											</h3>
+										</h:panelGroup>
+										<div class="col-md-12" style="height: 25px;"></div>
+										<h:panelGroup rendered="#{tavolo.occupato eq '1'}">
+											<span class="label label-warning">COPERTI : <h:outputText
+													value="#{tavolo.coperti}" />
+											</span>
+											<span> </span>
+											<h:commandButton styleClass="btn btn-warning" id="prenotato"
+												style="width: 100%; height: 150px;"
+												value='#{tavolo.codiceTavolo}' />
+											<h3>
+												<h:outputText value="#{tavolo.codiceTavolo}" />
+											</h3>
+										</h:panelGroup>
 										<div class="col-md-12" style="height: 25px;"></div>
 
-										<span class="label label-warning">COPERTI : <h:outputText
-												value="#{tavolo.coperti}" />
-										</span> <span> </span>
-										<h:commandButton styleClass="btn btn-warning" id="prenotato"
-											style="width: 100%; height: 150px;"
-											value='#{tavolo.codiceTavolo}' />
-										<h3>
-											<h:outputText value="#{tavolo.codiceTavolo}" />
-										</h3>
-										<div class="col-md-12" style="height: 25px;"></div>
-
-										<span class="label label-danger">COPERTI : <h:outputText
-												value="#{tavolo.coperti}" />
-										</span>
-										<h:commandButton styleClass="btn btn-danger" id="occupato"
-											style="width: 100%; height: 150px;"
-											value='#{tavolo.codiceTavolo}' />
-										<h3>
-											<h:outputText value="#{tavolo.codiceTavolo}" />
-										</h3>
+										<h:panelGroup rendered="#{tavolo.occupato eq '2'}">
+											<span class="label label-danger">COPERTI : <h:outputText
+													value="#{tavolo.coperti}" />
+											</span>
+											<h:commandButton styleClass="btn btn-danger" id="occupato"
+												style="width: 100%; height: 150px;"
+												value='#{tavolo.codiceTavolo}' />
+											<h3>
+												<h:outputText value="#{tavolo.codiceTavolo}" />
+											</h3>
+										</h:panelGroup>
 										<div class="col-md-12" style="height: 25px;"></div>
 									</div>
 								</c:forEach>

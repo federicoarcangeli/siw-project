@@ -104,7 +104,7 @@
 
 														<div class="form-group">
 															<label for="codiceTavolo">Numero tavolo</label>
-															<h:inputText value="#{tavoloControllerBean.codiceTavolo}"
+															<h:inputText value="#{tavoloController.codiceTavolo}"
 																styleClass="form-control" required="true"
 																requiredMessage="Numero tavolo obbligatorio"
 																id="codiceTavolo" />
@@ -117,7 +117,7 @@
 
 														<div class="form-group">
 															<label for="coperti">Coperti</label>
-															<h:inputText value="#{tavoloControllerBean.coperti}"
+															<h:inputText value="#{tavoloController.coperti}"
 																styleClass="form-control" required="true"
 																requiredMessage="Numero di coperti obbligatorio"
 																validatorMessage="Tavoli disponibili da 1 a 12 coperti"
@@ -169,7 +169,7 @@
 																	data-dismiss="modal">Annulla</button>
 																<h:commandLink styleClass="btn btn-success"
 																	value="Registra tavolo"
-																	action="#{tavoloControllerBean.create}">
+																	action="#{tavoloController.create}">
 																</h:commandLink>
 															</div>
 														</div>
