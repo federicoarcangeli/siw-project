@@ -31,11 +31,13 @@ public class UtenteControllerBean {
 	public String create() {
 		this.utente = new Utente(this.nome, this.cognome, this.username, this.telefono, this.email,
 				this.getPasswordCriptata());
+		FacesContext context = FacesContext.getCurrentInstance();
 		if (this.isAlreadyRegistered(this.utente) || this.equalsPassword()) {
 			return "loginSignup";
 		} else {
 			this.utente = uFacade.signUp(this.utente);
-			return "home_Utente";
+			context.getExternalContext().getSessionMap().put("utenteCorrente", utente);
+			return "index_parallax";
 		}
 	}
 
@@ -48,7 +50,7 @@ public class UtenteControllerBean {
 		else{
 			this.utente = this.uFacade.findByUsername(utente.getUsername());
 			context.getExternalContext().getSessionMap().put("utenteCorrente", utente);
-			return "home_Utente";
+			return "index_parallax";
 		}
 	}
 
