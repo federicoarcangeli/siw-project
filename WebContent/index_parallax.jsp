@@ -65,19 +65,27 @@
 							<li><a
 								href="${pageContext.request.contextPath}/ProcessaMenu">Men&ugrave;</a></li>
 							<li><a href="./gallery.jsp">Galleria</a></li>
-							<li><a href="./loginSignup.jsp">Login / Signup</a></li>
+							<h:panelGroup rendered="#{utenteCorrente.username !=null}">
+								<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
+							</h:panelGroup>
+							<h:panelGroup rendered="#{utenteCorrente.username ==null}">
+								<li><a href="./loginSignup.jsp">Login / Signup</a></li>
+							</h:panelGroup>
 							<li><a href="./contact.html">Contatti</a></li>
-
-							<li><h:form>
-									<h:commandLink
-										action="#{piattoControllerBean.getCategorieToPage()}"
-										styleClass="navbar">
-									</h:commandLink>
-								</h:form>
-<!-- 								</li> -->
-<!-- 							<li><a href="#" -->
-<!-- 								onclick="return myfaces.oam.submitForm('j_id_jsp_577129695_1','j_id_jsp_577129695_1:j_id_jsp_577129695_2');" -->
-<!-- 								class="navbar">Piatti </a></li> -->
+							<h:panelGroup rendered="#{utenteCorrente.username !=null}">
+								<li class="dropdown"><a href="./home_Utente.jsp"
+									class="dropdown-toggle" data-toggle="dropdown" role="button"
+									aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
+											value="#{utenteCorrente.username}"></h:outputText> <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="./profilo.jsp">Profilo</a></li>
+										<li><h:form>
+												<h:commandLink action="#{utenteController.logout}" />
+											</h:form><a href="#"
+											onclick="return myfaces.oam.submitForm('j_id_jsp_192962768_2','j_id_jsp_192962768_2:j_id_jsp_192962768_3');">Logout</a></li>
+									</ul></li>
+							</h:panelGroup>
 						</ul>
 					</div>
 
@@ -93,7 +101,7 @@
 						</a>
 					</div>
 					<h1>Ristorante Tomato</h1>
-					<h2>La qualit� � di casa</h2>
+					<h2>La qualit&aacute; &eacute; di casa</h2>
 				</div>
 				<div class="scroll-down">
 					<a href="#about"> <img src="img/arrow-down.png"
