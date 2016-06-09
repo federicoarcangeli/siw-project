@@ -80,13 +80,12 @@ public class Utente {
 	 * 
 	 * @param username
 	 * @param password
-	 * @param ruolo
-	 * costruttore per admin
+	 * costruttore per utente operatore
 	 */
-	public Utente(String username, String password, String ruolo){
+	public Utente(String username, String password){
 		this.username=username;
 		this.password=password;
-		this.role=ruolo;
+		this.role="operatore";
 		prenotazioni = new ArrayList<>();
 	}
 
