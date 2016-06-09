@@ -37,18 +37,15 @@ public class PiattoControllerBean {
 	private boolean surgelati;
 	private boolean allergeni;
 	private Piatto piatto;
-
-	private UploadedFile uploadedFile;
-
 	private CategoriaPiatto categoria;
+	private UploadedFile uploadedFile;
+	private List<CategoriaPiatto> categorie;
 
 	@EJB(name = "cpFacade")
 	private CategoriaPiattoFacade cpFacade;
 
 	@EJB(name = "pFacade")
 	private PiattoFacade pFacade;
-
-	private List<CategoriaPiatto> categorie;
 
 	public String create() {
 		DescrizionePiatto descrizionePiatto = createDescrizionePiatto();

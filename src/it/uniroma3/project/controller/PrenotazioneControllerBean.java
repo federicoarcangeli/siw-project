@@ -11,7 +11,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 
-import it.uniroma3.project.facade.PrenotazioneAdminFacade;
+import it.uniroma3.project.facade.PrenotazioneFacade;
 import it.uniroma3.project.facade.TavoloFacade;
 import it.uniroma3.project.model.Prenotazione;
 import it.uniroma3.project.model.Ristorante;
@@ -21,7 +21,7 @@ import it.uniroma3.project.services.validator.Time24HoursValidator;
 
 @ManagedBean
 @RequestScoped
-@EJBs(value = { @EJB(name = "paFacade", beanInterface = PrenotazioneAdminFacade.class),
+@EJBs(value = { @EJB(name = "paFacade", beanInterface = PrenotazioneFacade.class),
 		@EJB(name = "tFacade", beanInterface = TavoloFacade.class) })
 public class PrenotazioneControllerBean {
 
@@ -35,7 +35,7 @@ public class PrenotazioneControllerBean {
 	private List<Tavolo> tavoli;
 
 	@EJB(name = "paFacade")
-	private PrenotazioneAdminFacade paFacade;
+	private PrenotazioneFacade paFacade;
 
 	@EJB(name = "tFacade")
 	private TavoloFacade tFacade;
@@ -147,11 +147,11 @@ public class PrenotazioneControllerBean {
 		this.prenotazione = prenotazione;
 	}
 
-	public PrenotazioneAdminFacade getPaFacade() {
+	public PrenotazioneFacade getPaFacade() {
 		return paFacade;
 	}
 
-	public void setPaFacade(PrenotazioneAdminFacade paFacade) {
+	public void setPaFacade(PrenotazioneFacade paFacade) {
 		this.paFacade = paFacade;
 	}
 

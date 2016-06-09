@@ -1,11 +1,9 @@
 package it.uniroma3.project.facade;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import it.uniroma3.project.dao.TavoloDao;
