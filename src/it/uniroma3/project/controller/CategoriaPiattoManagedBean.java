@@ -68,11 +68,6 @@ public class CategoriaPiattoManagedBean {
 		this.categorie = this.cpFacade.getCategorie();
 		return "inserimentoPiatti";
 	}
-	
-	public String getListTest() {
-		this.categorie = this.cpFacade.getCategorie();
-		return "categorieTest";
-	}
 
 	public List<CategoriaPiatto> getCategorie() {
 		return this.categorie;

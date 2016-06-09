@@ -105,7 +105,7 @@
 								</div>
 							</div>
 							<div class="row menu-items3">
-								<c:forEach var="piatto" items="#{menuControllerBean.piatti }">
+								<c:forEach var="piatto" items="#{menuControllerBean.piatti}">
 
 									<t:div
 										styleClass="menu-item3 col-sm-6 col-xs-12 #{piatto.getPortata().getNome()}">

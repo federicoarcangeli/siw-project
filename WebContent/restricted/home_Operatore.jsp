@@ -64,8 +64,9 @@
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
-							<li><a
-								href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
+							<li>
+							<a
+								href="../sala.jsp">Sala</a></li>
 							<li><a
 								href="${pageContext.request.contextPath}/processaComanda">Comanda</a></li>
 							<li class="dropdown"><a href="./index.html"

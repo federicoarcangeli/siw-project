@@ -14,21 +14,20 @@ import it.uniroma3.project.model.Tavolo;
 @Stateless
 public class TavoloFacade {
 
+	private TavoloDao tavoloDao;
+
 	@PersistenceContext(unitName = "restaurant")
 	private EntityManager em;
 
 	public Tavolo create(String codiceTavolo, int coperti) {
-		Tavolo tavolo = new Tavolo(codiceTavolo,coperti);
+		Tavolo tavolo = new Tavolo(codiceTavolo, coperti);
 		em.persist(tavolo);
 		return tavolo;
 	}
 
 	public List<Tavolo> findAllTavolo() {
-		try {
-			return em.createNamedQuery("Tavolo.findAll", Tavolo.class).getResultList();
-		} catch(NoResultException e) {
-			return new ArrayList<>();
-		}
+		this.tavoloDao = new TavoloDao(em);
+		return this.tavoloDao.findAll();
 	}
 
 	public void setTavoloPrenotato(Tavolo tavolo) {
