@@ -32,7 +32,7 @@
 		<!-- Preloder-->
 		<div class="preloder animated">
 			<div class="scoket">
-				<img src="img/preloader.svg" alt="" />
+				<img src="../img/preloader.svg" alt="" />
 			</div>
 		</div>
 
@@ -55,13 +55,14 @@
 										<div class="col-md-12">
 											<div class="form-group">
 												<label>Username</label>
-												<h:inputText id="username" value="#{registrazione.username}"
-													required="true" requiredMessage="Inserisci username"
+												<h:inputText id="username"
+													value="#{utenteController.username}" required="true"
+													requiredMessage="Inserisci username"
 													styleClass="form-control" />
 
 												<div class="animated fadeInDown">
 													<span class="label label-danger"><h:message
-															for="username" /> </span>
+															for="username" /></span>
 												</div>
 
 											</div>
@@ -74,12 +75,12 @@
 
 												<label>Password</label>
 												<h:inputSecret id="password"
-													value="#{registrazione.password}" required="true"
+													value="#{utenteController.password}" required="true"
 													requiredMessage="Inserisci password"
 													styleClass="form-control" />
 												<div class="animated fadeInDown">
 													<span class="label label-danger"><h:message
-															for="password" /> </span>
+															for="password" /></span>
 												</div>
 											</div>
 										</div>
@@ -88,7 +89,7 @@
 									<div class="row">
 										<div class="col-md-12">
 											<h:commandButton value="login"
-												action="#{registrazione.login}"
+												action="#{utenteController.login}"
 												styleClass="btn btn-default btn-block" />
 										</div>
 

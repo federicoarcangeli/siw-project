@@ -52,9 +52,8 @@
 									class="icon-bar"></span> <span class="icon-bar"></span> <span
 									class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand"
-								href="${pageContext.request.contextPath}/processaPannelloControllo">
-								<img src="../img/nav-logo.png" alt="nav-logo">
+							<a class="navbar-brand" href="./home_Administrator.jsp"> <img
+								src="../img/nav-logo.png" alt="nav-logo">
 							</a>
 						</div>
 
@@ -63,12 +62,11 @@
 								<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
 								<li><a
 									href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
-								<li class="dropdown"><a href="./index.html"
+								<li class="dropdown"><a href="./home_Administrator.jsp"
 									class="dropdown-toggle" data-toggle="dropdown" role="button"
-									aria-haspopup="true" aria-expanded="false">Benvenuto
-										${amministratoreCorrente.username} -
-										${amministratoreCorrente.role}<span class="caret"></span>
-								</a>
+									aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
+											value="#{utenteCorrente.username}"></h:outputText> <span
+										class="caret"></span></a>
 									<ul class="dropdown-menu">
 										<li><a href="./index_parallax.jsp">Logout</a></li>
 									</ul></li>
@@ -101,8 +99,7 @@
 															<div class="col-md-6 col-sm-6">
 																<div class="form-group">
 																	<label for="username">Username</label>
-																	<h:inputText
-																		value="#{registrazione.username}"
+																	<h:inputText value="#{registrazione.username}"
 																		styleClass="form-control" required="true"
 																		requiredMessage="Username obbligatorio" id="username" />
 																	<i class="fa fa-user" aria-hidden="true"></i>
@@ -115,8 +112,7 @@
 															<div class="col-md-6 col-sm-6">
 																<div class="form-group">
 																	<label for="password">Password</label>
-																	<h:inputSecret
-																		value="#{registrazione.password}"
+																	<h:inputSecret value="#{registrazione.password}"
 																		styleClass="form-control" required="true"
 																		requiredMessage="Password obbligatoria" id="password" />
 																	<i class="fa fa-lock" aria-hidden="true"></i>
@@ -167,7 +163,7 @@
 													</div>
 												</div>
 												<h:messages globalOnly="true" styleClass="list-group"
-														infoClass="list-group-item list-group-item-danger"/>
+													infoClass="list-group-item list-group-item-danger" />
 											</h:form>
 										</div>
 									</div>

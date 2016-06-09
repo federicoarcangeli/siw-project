@@ -29,7 +29,7 @@ public class Prenotazione {
 
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIME)
-	private Date Ora;
+	private Date ora;
 
 	@Column(nullable = false)
 	private int numeroOspiti;
@@ -50,7 +50,7 @@ public class Prenotazione {
 
 	public Prenotazione(Date data,Date ora, int ospiti,String nominativo,Tavolo tavolo) {
 		this.data=data;
-		this.Ora=ora;
+		this.ora=ora;
 		this.numeroOspiti=ospiti;
 		this.nominativo=nominativo;
 		this.completato=false;
@@ -58,7 +58,7 @@ public class Prenotazione {
 	}
 	public Prenotazione(Date data,Date ora, int ospiti,Utente utente, Tavolo tavolo) {
 		this.data=data;
-		this.Ora=ora;
+		this.ora=ora;
 		this.numeroOspiti=ospiti;
 		this.utente=utente;
 		this.tavoloPrenotato=tavolo;
@@ -78,11 +78,11 @@ public class Prenotazione {
 	}
 
 	public Date getOra() {
-		return Ora;
+		return ora;
 	}
 
 	public void setOra(Date ora) {
-		Ora = ora;
+		this.ora = ora;
 	}
 
 	public int getNumeroOspiti() {
@@ -134,7 +134,7 @@ public class Prenotazione {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Ora == null) ? 0 : Ora.hashCode());
+		result = prime * result + ((ora == null) ? 0 : ora.hashCode());
 		result = prime * result + (completato ? 1231 : 1237);
 		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
@@ -154,10 +154,10 @@ public class Prenotazione {
 		if (getClass() != obj.getClass())
 			return false;
 		Prenotazione other = (Prenotazione) obj;
-		if (Ora == null) {
-			if (other.Ora != null)
+		if (ora == null) {
+			if (other.ora != null)
 				return false;
-		} else if (!Ora.equals(other.Ora))
+		} else if (!ora.equals(other.ora))
 			return false;
 		if (completato != other.completato)
 			return false;

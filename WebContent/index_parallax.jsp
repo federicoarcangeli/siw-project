@@ -83,7 +83,7 @@
 										<li><h:form>
 												<h:commandLink action="#{utenteController.logout}" />
 											</h:form><a href="#"
-											onclick="return myfaces.oam.submitForm('j_id_jsp_192962768_2','j_id_jsp_192962768_2:j_id_jsp_192962768_3');">Logout</a></li>
+											onclick="return myfaces.oam.submitForm('j_id_jsp_577129695_5','j_id_jsp_577129695_5:j_id_jsp_577129695_6');">Logout</a></li>
 									</ul></li>
 							</h:panelGroup>
 						</ul>
@@ -477,7 +477,7 @@
 									<p>
 										<i class="fa fa-copyright"></i> 2016.Tomato.All rights
 										reserved. Designed with <i class="fa fa-heart primary-color"></i>
-										by Federico & Alessandro
+										by Federico &amp; Alessandro
 									</p>
 								</div>
 							</div>

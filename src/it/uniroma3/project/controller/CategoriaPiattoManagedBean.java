@@ -10,7 +10,7 @@ import javax.faces.bean.ManagedProperty;
 import it.uniroma3.project.facade.CategoriaPiattoFacade;
 import it.uniroma3.project.model.CategoriaPiatto;
 
-@ManagedBean
+@ManagedBean(name="categoriaPiatto")
 public class CategoriaPiattoManagedBean {
 
 	@EJB
@@ -21,7 +21,7 @@ public class CategoriaPiattoManagedBean {
 	private CategoriaPiatto categoria;
 	private String nome;
 	private List<CategoriaPiatto> categorie;
-	
+
 	public String create() {
 		this.cpFacade.create(this.nome);
 		return "404.html";
@@ -68,11 +68,6 @@ public class CategoriaPiattoManagedBean {
 		this.categorie = this.cpFacade.getCategorie();
 		return "inserimentoPiatti";
 	}
-	
-	public String getListTest() {
-		this.categorie = this.cpFacade.getCategorie();
-		return "categorieTest";
-	}
 
 	public List<CategoriaPiatto> getCategorie() {
 		return this.categorie;
@@ -87,7 +82,7 @@ public class CategoriaPiattoManagedBean {
 		this.categoria = this.cpFacade.get(id);
 		return "categoria";
 	}
-	
+
 	@PostConstruct
 	public void init() {
 		this.categorie = this.cpFacade.getCategorie();

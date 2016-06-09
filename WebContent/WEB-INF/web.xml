@@ -24,21 +24,10 @@
 		<filter-name>MyFacesExtensionsFilter</filter-name>
 		<filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
 	</filter>
-	
+
 	<filter-mapping>
 		<filter-name>MyFacesExtensionsFilter</filter-name>
 		<servlet-name>Faces Servlet</servlet-name>
 	</filter-mapping>
-
- <!-- Login filter -->
-    <filter>
-        <filter-name>LoginFilter</filter-name>
-        <filter-class>it.uniroma3.project.filter.LoginFilter</filter-class>
-    </filter>
-    <!-- Set the login filter to secure all the pages in the /secured/* path of the application  -->
-    <filter-mapping>
-        <filter-name>LoginFilter</filter-name>
-        <url-pattern>/restricted/*</url-pattern>
-    </filter-mapping>
 
 </web-app>

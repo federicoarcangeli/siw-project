@@ -22,10 +22,10 @@
 <meta name="viewport" content="width=device-width">
 
 <!-- CSS Files -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
-<link rel="stylesheet" href="css/plugin.css">
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" href="../css/plugin.css">
+<link rel="stylesheet" href="../css/main.css">
 
 
 
@@ -36,7 +36,7 @@
 		<!-- Preloder-->
 		<div class="preloder animated">
 			<div class="scoket">
-				<img src="img/preloader.svg" alt="" />
+				<img src="../img/preloader.svg" alt="" />
 			</div>
 		</div>
 
@@ -53,9 +53,8 @@
 									class="icon-bar"></span> <span class="icon-bar"></span> <span
 									class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand"
-								href="${pageContext.request.contextPath}/processaPannelloControllo">
-								<img src="img/nav-logo.png" alt="nav-logo">
+							<a class="navbar-brand" href="./home_Administrator.jsp"> <img
+								src="../img/nav-logo.png" alt="nav-logo">
 							</a>
 						</div>
 
@@ -64,12 +63,11 @@
 								<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
 								<li><a
 									href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
-								<li class="dropdown"><a href="./index.html"
+								<li class="dropdown"><a href="./home_Administrator.jsp"
 									class="dropdown-toggle" data-toggle="dropdown" role="button"
-									aria-haspopup="true" aria-expanded="false">Benvenuto
-										${amministratoreCorrente.username} -
-										${amministratoreCorrente.role}<span class="caret"></span>
-								</a>
+									aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
+											value="#{utenteCorrente.username}"></h:outputText> <span
+										class="caret"></span></a>
 									<ul class="dropdown-menu">
 										<li><a href="./index_parallax.jsp">Logout</a></li>
 									</ul></li>
@@ -327,29 +325,29 @@
 		</div>
 
 		<!-- Javascript -->
-		<script src="js/vendor/jquery-1.11.2.min.js"></script>
-		<script src="js/vendor/bootstrap.min.js"></script>
-		<script src="js/vendor/jquery.flexslider-min.js"></script>
-		<script src="js/vendor/spectragram.js"></script>
-		<script src="js/vendor/owl.carousel.min.js"></script>
-		<script src="js/vendor/velocity.min.js"></script>
-		<script src="js/vendor/velocity.ui.min.js"></script>
-		<script src="js/vendor/bootstrap-datepicker.min.js"></script>
-		<script src="js/vendor/bootstrap-clockpicker.min.js"></script>
-		<script src="js/vendor/jquery.magnific-popup.min.js"></script>
-		<script src="js/vendor/isotope.pkgd.min.js"></script>
-		<script src="js/vendor/slick.min.js"></script>
-		<script src="js/vendor/wow.min.js"></script>
-		<script src="js/animation.js"></script>
-		<script src="js/vendor/vegas/vegas.min.js"></script>
-		<script src="js/vendor/jquery.mb.YTPlayer.js"></script>
-		<script src="js/vendor/jquery.stellar.js"></script>
-		<script src="js/main.js"></script>
-		<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
-		<script src="js/vendor/validate.js"></script>
-		<script src="js/reservation.js"></script>
-		<script src="js/vendor/mc/main.js"></script>
-		<script src="js/scripts/confermaInserimentoPiatto.js"></script>
+		<script src="../js/vendor/jquery-1.11.2.min.js"></script>
+		<script src="../js/vendor/bootstrap.min.js"></script>
+		<script src="../js/vendor/jquery.flexslider-min.js"></script>
+		<script src="../js/vendor/spectragram.js"></script>
+		<script src="../js/vendor/owl.carousel.min.js"></script>
+		<script src="../js/vendor/velocity.min.js"></script>
+		<script src="../js/vendor/velocity.ui.min.js"></script>
+		<script src="../js/vendor/bootstrap-datepicker.min.js"></script>
+		<script src="../js/vendor/bootstrap-clockpicker.min.js"></script>
+		<script src="../js/vendor/jquery.magnific-popup.min.js"></script>
+		<script src="../js/vendor/isotope.pkgd.min.js"></script>
+		<script src="../js/vendor/slick.min.js"></script>
+		<script src="../js/vendor/wow.min.js"></script>
+		<script src="../js/animation.js"></script>
+		<script src="../js/vendor/vegas/vegas.min.js"></script>
+		<script src="../js/vendor/jquery.mb.YTPlayer.js"></script>
+		<script src="../js/vendor/jquery.stellar.js"></script>
+		<script src="../js/main.js"></script>
+		<script src="../js/vendor/mc/jquery.ketchup.all.min.js"></script>
+		<script src="../js/vendor/validate.js"></script>
+		<script src="../js/reservation.js"></script>
+		<script src="../js/vendor/mc/main.js"></script>
+		<script src="../js/scripts/confermaInserimentoPiatto.js"></script>
 	</f:view>
 </body>
 
