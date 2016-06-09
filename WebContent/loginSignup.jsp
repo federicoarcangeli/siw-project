@@ -85,6 +85,10 @@
 											prenotare un tavolo</small>
 									</h1>
 								</div>
+								<div class="animated fadeInDown">
+									<h:messages globalOnly="true" styleClass="list-group"
+										infoClass="list-group-item list-group-item-danger"></h:messages>
+								</div>
 							</div>
 						</div>
 						<div class="row">
@@ -304,8 +308,6 @@
 															</div>
 														</div>
 													</div>
-													<h:messages globalOnly="true" styleClass="list-group"
-														infoClass="list-group-item list-group-item-danger"></h:messages>
 												</h:form>
 											</div>
 										</div>

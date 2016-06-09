@@ -29,32 +29,21 @@ public class UtenteControllerBean {
 	private UtenteFacade uFacade;
 
 	public String create() {
+<<<<<<< HEAD
+		this.setUtente(new Utente(this.getNome(), this.getCognome(), this.getUsername(), this.getTelefono(), this.getEmail(),
+				this.getPasswordCriptata()));
+		if (this.isAlreadyRegistered(this.utente)) {
+			this.utente = this.getuFacade().signUp(this.utente);
+=======
 		this.utente = new Utente(this.nome, this.cognome, this.username, this.telefono, this.email,
 				this.getPasswordCriptata());
 		if (this.isAlreadyRegistered(this.utente) || this.equalsPassword()) {
 			return "loginSignup";
 		} else {
 			this.utente = uFacade.signUp(this.utente);
+>>>>>>> origin/master
 			return "home_Utente";
 		}
-	}
-
-	public String loginUtente(){
-		this.utente=this.uFacade.findByUsername(this.getUsername());
-		FacesContext context = FacesContext.getCurrentInstance();
-		if (this.isNotAlreadyRegistered(this.utente) || this.wrongPassword()){
-			return "loginSignup";
-		}
-		else{
-			this.utente = this.uFacade.findByUsername(utente.getUsername());
-			context.getExternalContext().getSessionMap().put("utenteCorrente", utente);
-			return "home_Utente";
-		}
-	}
-
-	public String logout() {
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "index_parallax";
 	}
 
 
@@ -66,25 +55,7 @@ public class UtenteControllerBean {
 		} else
 			return false;
 	}
-
-	public boolean isNotAlreadyRegistered(Utente utente) {
-		if (this.uFacade.findByUsername(this.getUsername()) == null) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO, this.getUsername() + " non è registrato!", null));
-			return true;
-		} else
-			return false;
-	}
-
-	public boolean wrongPassword(){
-		if(!this.utente.getPassword().equals(this.getPasswordCriptata())){
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO,"password errata!", null));
-			return true;
-		} else
-			return false;
-	}
-
+	
 	public boolean equalsPassword() {
 		if(!this.password.equals(this.confPassword)) {
 			FacesContext.getCurrentInstance().addMessage(null,
