@@ -10,7 +10,7 @@ import it.uniroma3.project.facade.UtenteFacade;
 import it.uniroma3.project.model.Utente;
 import it.uniroma3.project.services.security.MD5Encrypter;
 
-@ManagedBean(name = "utenteController")
+@ManagedBean(name = "registrazione")
 @RequestScoped
 @EJB(name = "uFacade", beanInterface = UtenteFacade.class)
 public class UtenteControllerBean {
@@ -29,28 +29,38 @@ public class UtenteControllerBean {
 	private UtenteFacade uFacade;
 
 	public String create() {
-		this.setUtente(new Utente(this.getNome(), this.getCognome(), this.getUsername(), this.getTelefono(), this.getEmail(),
-				this.getPasswordCriptata()));
-		if (this.isAlreadyRegistered(this.utente)) {
-			this.utente = this.getuFacade().signUp(this.utente);
-			return "home_Utente";
-		} else
+		this.utente = new Utente(this.nome, this.cognome, this.username, this.telefono, this.email,
+				this.getPasswordCriptata());
+		if (this.isAlreadyRegistered(this.utente) || this.equalsPassword()) {
 			return "loginSignup";
+		} else {
+			this.utente = uFacade.signUp(this.utente);
+			return "home_Utente";
+		}
 	}
-
 
 	public boolean isAlreadyRegistered(Utente utente) {
 		if (this.uFacade.findByUsername(utente.getUsername()) != null) {
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, utente.getUsername() + " è già registrato!", null));
-			return false;
-		} else
 			return true;
+		} else
+			return false;
+	}
+	
+	public boolean equalsPassword() {
+		if(!this.password.equals(this.confPassword)) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Le password devono coincidere", null));
+			return true;
+		} else
+			return false;
 	}
 
 	public String getPasswordCriptata() {
+		String toCrypt = this.password;
 		MD5Encrypter crypter = new MD5Encrypter();
-		return crypter.cryptWithMD5(this.getPassword());
+		return crypter.cryptWithMD5(toCrypt);
 	}
 
 	public String getNome() {
