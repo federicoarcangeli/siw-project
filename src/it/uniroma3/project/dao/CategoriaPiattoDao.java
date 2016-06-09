@@ -32,7 +32,7 @@ public class CategoriaPiattoDao extends AbstractDao<CategoriaPiatto> {
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<CategoriaPiatto> findAll() {
-		return getEntityManager().createNamedQuery("CategoriaPiattoFindAll").getResultList();
+		return getEM().createNamedQuery("CategoriaPiattoFindAll").getResultList();
 	}
 
 }
