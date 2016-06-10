@@ -82,8 +82,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12 text-center">
-								<h2 class="text-uppercase">Menu</h2>
-								<p>Tomato is a delicious restaurant website template</p>
+								<h2 class="text-uppercase">Il nostro Menù</h2>
 							</div>
 						</div>
 					</div>

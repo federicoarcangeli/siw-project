@@ -23,7 +23,7 @@ import it.uniroma3.project.model.DescrizionePiatto;
 import it.uniroma3.project.model.Piatto;
 
 @ManagedBean
-@RequestScoped
+	@RequestScoped
 @EJBs(value = { @EJB(name = "pFacade", beanInterface = PiattoFacade.class),
 		@EJB(name = "cpFacade", beanInterface = CategoriaPiattoFacade.class) })
 public class PiattoControllerBean {
@@ -64,10 +64,11 @@ public class PiattoControllerBean {
 		return descrizionePiatto;
 	}
 
-	private byte[] createImage() {
+	public byte[] createImage() {
 		String fileName = FilenameUtils.getName(uploadedFile.getName());
 		String contentType = uploadedFile.getContentType();
-		byte[] img = null;
+		System.out.println(fileName);
+		byte[] img;
 		try {
 			img = uploadedFile.getBytes();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(

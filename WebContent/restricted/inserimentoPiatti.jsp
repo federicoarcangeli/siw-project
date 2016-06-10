@@ -15,7 +15,7 @@
 
 
 <!-- Favicons -->
-<link rel="shortcut icon" href="img/favicon.ico">
+<link rel="shortcut icon" href="../img/favicon.ico">
 
 <!-- Responsive Tag -->
 <meta name="viewport" content="width=device-width">
@@ -138,6 +138,10 @@
 												requiredMessage="Inserisci un'immagine per il piatto"
 												id="img" />
 											<i class="fa fa-picture-o" aria-hidden="true"></i>
+											<div class="animated fadeInDown">
+												<span class="label label-danger"><h:message
+														for="img" /></span>
+											</div>
 										</div>
 									</div>
 								</div>
