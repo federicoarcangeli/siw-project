@@ -90,7 +90,7 @@
 				</div>
 				<div class="container-fluid">
 					<div class="row">
-						<h:form>
+						<h:form id="sala">
 							<div class="col-sm-12 centered">
 								<c:forEach var="tavolo" items="#{salaController.tavoliSala}">
 									<div class="col-xs-6 col-sm-2">
@@ -101,31 +101,37 @@
 											</span>
 											<h:commandButton styleClass="btn btn-success" id="libero"
 												style="width: 100%; height: 150px; font-size:25px;"
-												action="salaController.openComanda"
-												value='#{tavolo.codiceTavolo}'></h:commandButton>
+												action="#{salaController.openComanda}"
+												value='#{tavolo.codiceTavolo}'>
+												<f:param name="codiceTavolo" value="#{tavolo.codiceTavolo}"></f:param>
+											</h:commandButton>
+											<div class="col-md-12" style="height: 25px;"></div>
 										</h:panelGroup>
-										<div class="col-md-12" style="height: 25px;"></div>
 										<h:panelGroup rendered="#{tavolo.occupato eq '1'}">
 											<span class="label label-warning">COPERTI : <h:outputText
 													value="#{tavolo.coperti}" />
 											</span>
 											<h:commandButton styleClass="btn btn-warning" id="prenotato"
 												style="width: 100%; height: 150px; font-size:25px;"
-												action="salaController.openComanda"
-												value='#{tavolo.codiceTavolo}' />
+												action="#{salaController.openComanda}"
+												value='#{tavolo.codiceTavolo}'>
+												<f:param name="codiceTavolo" value="#{tavolo.codiceTavolo}"></f:param>
+											</h:commandButton>
+											<div class="col-md-12" style="height: 25px;"></div>
 										</h:panelGroup>
-										<div class="col-md-12" style="height: 25px;"></div>
-
 										<h:panelGroup rendered="#{tavolo.occupato eq '2'}">
 											<span class="label label-danger">COPERTI : <h:outputText
 													value="#{tavolo.coperti}" />
 											</span>
 											<h:commandButton styleClass="btn btn-danger" id="occupato"
 												style="width: 100%; height: 150px; font-size:25px;"
-												action="salaController.openComanda"
-												value='#{tavolo.codiceTavolo}' />
+												action="#{salaController.openComanda}"
+												value='#{tavolo.codiceTavolo}'>
+												<f:param name="codiceTavolo" value="#{tavolo.codiceTavolo}"></f:param>
+											</h:commandButton>
+											<div class="col-md-12" style="height: 25px;"></div>
 										</h:panelGroup>
-										<div class="col-md-12" style="height: 25px;"></div>
+
 									</div>
 								</c:forEach>
 							</div>

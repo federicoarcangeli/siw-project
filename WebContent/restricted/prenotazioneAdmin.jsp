@@ -64,8 +64,7 @@
 							<ul class="nav navbar-nav navbar-right">
 								<li><a href="./prenotazioneAdmin.jsp"><span
 										style="color: #F9C56A;">Riserva un tavolo</span></a></li>
-								<li><a
-									href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
+								<li><a href="./sala.jsp">Sala</a></li>
 								<li class="dropdown"><a href="./home_Utente.jsp"
 									class="dropdown-toggle" data-toggle="dropdown" role="button"
 									aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText

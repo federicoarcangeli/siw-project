@@ -123,7 +123,6 @@ public class Tavolo {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((codiceTavolo == null) ? 0 : codiceTavolo.hashCode());
-		result = prime * result + ((comande == null) ? 0 : comande.hashCode());
 		result = prime * result + coperti;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + occupato;
@@ -143,11 +142,6 @@ public class Tavolo {
 			if (other.codiceTavolo != null)
 				return false;
 		} else if (!codiceTavolo.equals(other.codiceTavolo))
-			return false;
-		if (comande == null) {
-			if (other.comande != null)
-				return false;
-		} else if (!comande.equals(other.comande))
 			return false;
 		if (coperti != other.coperti)
 			return false;

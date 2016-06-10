@@ -19,7 +19,7 @@ public class LineaComandaDao extends AbstractDao<LineaComanda> {
 
 	@Override
 	public LineaComanda findById(long id) {
-		return getEntityManager().find(LineaComanda.class, id);
+		return getEM().find(LineaComanda.class, id);
 
 	}
 
@@ -31,14 +31,14 @@ public class LineaComandaDao extends AbstractDao<LineaComanda> {
 
 	@SuppressWarnings("unchecked")
 	public List<LineaComanda> findAllLineaComandaOfComanda(Long idComanda) {
-		Query query = getEntityManager().createNativeQuery("select l.* from lineacomanda l where l.comanda_id= ?1",LineaComanda.class);
+		Query query = getEM().createNativeQuery("select l.* from lineacomanda l where l.comanda_id= ?1",LineaComanda.class);
 		query.setParameter(1,idComanda);
 		return query.getResultList();
 	}
 
 	public LineaComanda findByIdPiattoAndComanda(Long idPiatto , Long idComanda) {
 		try{
-			Query q = (Query) getEntityManager().createNativeQuery("select l.id from lineacomanda l where l.piatto_id = ?1 and l.comanda_id= ?2 ");
+			Query q = (Query) getEM().createNativeQuery("select l.id from lineacomanda l where l.piatto_id = ?1 and l.comanda_id= ?2 ");
 			q.setParameter(1, idPiatto);
 			q.setParameter(2, idComanda);
 			BigInteger id = (BigInteger) q.getSingleResult();

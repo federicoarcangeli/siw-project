@@ -1,11 +1,9 @@
 package it.uniroma3.project.dao;
 
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
 
@@ -20,7 +18,7 @@ public class TavoloDao extends AbstractDao<Tavolo> {
 
 	@Override
 	public Tavolo findById(long id) {
-		return getEntityManager().find(Tavolo.class, id);
+		return getEM().find(Tavolo.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -30,12 +28,12 @@ public class TavoloDao extends AbstractDao<Tavolo> {
 	}
 
 	public Tavolo findByNumero(String parameter) {
+		TypedQuery<Tavolo> q =  getEM().createQuery("select t from Tavolo t where t.codiceTavolo = ?1",Tavolo.class);
 		try {
-			Query q = (Query) getEM().createNativeQuery("select id from tavolo where codicetavolo = ?1");
 			q.setParameter(1, parameter);
-			BigInteger id = (BigInteger) q.getSingleResult();
-			return this.findById(id.longValue());
+			return q.getSingleResult();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -47,7 +45,7 @@ public class TavoloDao extends AbstractDao<Tavolo> {
 	 * @return
 	 */
 	public List<Tavolo> findAllToday(Date today) {
-		TypedQuery<Tavolo> query = getEntityManager()
+		TypedQuery<Tavolo> query = getEM()
 				.createQuery("select t " + "from Tavolo t left join Prenotazione on tavoloprenotato_id = t.id "
 						+ "and data = :today " + "order by t.id", Tavolo.class);
 		query.setParameter("today", today, TemporalType.DATE);
