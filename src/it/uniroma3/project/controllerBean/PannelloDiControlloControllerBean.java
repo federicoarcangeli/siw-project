@@ -1,9 +1,8 @@
-package it.uniroma3.project.controller;
+package it.uniroma3.project.controllerBean;
 
 import it.uniroma3.project.model.Comanda;
 import it.uniroma3.project.model.Prenotazione;
 import it.uniroma3.project.model.Tavolo;
-import it.uniroma3.project.services.validator.Time24HoursValidator;
 
 import java.util.Date;
 import java.util.List;
@@ -79,7 +78,7 @@ public class PannelloDiControlloControllerBean {
 		// gestione prenotazioni di oggi
 		this.prenotazioni = pFacade.findAllPrenotazioniToday(new Date());
 	}
-	
+
 	public float getTavoliLiberi() {
 		return tavoliLiberi;
 	}

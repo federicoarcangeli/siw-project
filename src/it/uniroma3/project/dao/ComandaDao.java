@@ -20,21 +20,21 @@ public class ComandaDao extends AbstractDao<Comanda> {
 
 	@Override
 	public Comanda findById(long id) {
-		return getEntityManager().find(Comanda.class, id);
+		return getEM().find(Comanda.class, id);
 	}
 
 	public void deleteById(long id) {
 		Comanda comanda = this.findById(id);
 		if(comanda!=null) {
-			Comanda toRemove = getEntityManager().merge(comanda);
-			getEntityManager().remove(toRemove);
+			Comanda toRemove = getEM().merge(comanda);
+			getEM().remove(toRemove);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Comanda> findAll() {
-		return getEntityManager().createNamedQuery("Comanda.findAll").getResultList();
+		return getEM().createNamedQuery("Comanda.findAll").getResultList();
 	}
 
 	public Comanda findComandaByTavolo(Long param) {

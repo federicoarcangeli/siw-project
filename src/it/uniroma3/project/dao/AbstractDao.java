@@ -3,11 +3,6 @@ package it.uniroma3.project.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-
-import org.apache.log4j.Logger;
 
 /**
  * classe astratta per DAO
@@ -18,7 +13,7 @@ import org.apache.log4j.Logger;
  */
 public abstract class AbstractDao<T> {
 	private EntityManager em;
-	
+
 	public AbstractDao(EntityManager em) {
 		this.em = em;
 	}
@@ -50,15 +45,10 @@ public abstract class AbstractDao<T> {
 		em.merge(entity);
 	}
 
-	public static EntityManager getEntityManager() {
-		EntityManager em =  EntityManagerFactorySingleton.getInstance().createEntityManager();
-		return em;
-	}
-	
 	public EntityManager getEM() {
 		return this.em;
 	}
-	
+
 
 
 	/**

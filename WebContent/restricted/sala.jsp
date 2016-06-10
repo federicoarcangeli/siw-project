@@ -90,7 +90,7 @@
 				</div>
 				<div class="container-fluid">
 					<div class="row">
-						<h:form>
+						<h:form id="sala" >
 							<div class="col-sm-12 centered">
 								<c:forEach var="tavolo" items="#{salaController.tavoliSala}">
 									<div class="col-xs-6 col-sm-2">
@@ -101,7 +101,7 @@
 											</span>
 											<h:commandButton styleClass="btn btn-success" id="libero"
 												style="width: 100%; height: 150px; font-size:25px;"
-												action="salaController.openComanda"
+												action="#{salaController.openComanda}"
 												value='#{tavolo.codiceTavolo}'></h:commandButton>
 										</h:panelGroup>
 										<div class="col-md-12" style="height: 25px;"></div>
@@ -111,7 +111,7 @@
 											</span>
 											<h:commandButton styleClass="btn btn-warning" id="prenotato"
 												style="width: 100%; height: 150px; font-size:25px;"
-												action="salaController.openComanda"
+												action="#{salaController.openComanda}"
 												value='#{tavolo.codiceTavolo}' />
 										</h:panelGroup>
 										<div class="col-md-12" style="height: 25px;"></div>
@@ -122,7 +122,7 @@
 											</span>
 											<h:commandButton styleClass="btn btn-danger" id="occupato"
 												style="width: 100%; height: 150px; font-size:25px;"
-												action="salaController.openComanda"
+												action="#{salaController.openComanda}"
 												value='#{tavolo.codiceTavolo}' />
 										</h:panelGroup>
 										<div class="col-md-12" style="height: 25px;"></div>

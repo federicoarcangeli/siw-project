@@ -1,4 +1,4 @@
-package it.uniroma3.project.controller;
+package it.uniroma3.project.controllerBean;
 
 import java.io.IOException;
 import java.io.Serializable;

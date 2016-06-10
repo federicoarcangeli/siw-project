@@ -3,7 +3,6 @@ package it.uniroma3.project.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 
 import it.uniroma3.project.model.Piatto;
 
@@ -18,7 +17,7 @@ public class PiattoDao extends AbstractDao<Piatto> {
 
 	@Override
 	public Piatto findById(long id) {
-		return getEntityManager().find(Piatto.class, id);
+		return getEM().find(Piatto.class, id);
 	}
 
 	@Override

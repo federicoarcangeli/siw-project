@@ -132,8 +132,9 @@
 																	<h:outputText
 																		value="#{prenotazione.getUtente().getCognome()}" /></td>
 																<td class="text-center"><h:outputText
-																		value="#{prenotazione.data}" /><br> <h:outputText
-																		value="#{prenotazione.ora}">
+																		value="#{prenotazione.data}">
+																		<f:convertDateTime pattern="dd/MM/yyyy" />
+																	</h:outputText><br> <h:outputText value="#{prenotazione.ora}">
 																		<f:convertDateTime pattern="HH:mm" />
 																	</h:outputText></td>
 																<td class="text-center"><h:outputText

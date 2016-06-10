@@ -20,7 +20,7 @@ public class TavoloDao extends AbstractDao<Tavolo> {
 
 	@Override
 	public Tavolo findById(long id) {
-		return getEntityManager().find(Tavolo.class, id);
+		return getEM().find(Tavolo.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -47,7 +47,7 @@ public class TavoloDao extends AbstractDao<Tavolo> {
 	 * @return
 	 */
 	public List<Tavolo> findAllToday(Date today) {
-		TypedQuery<Tavolo> query = getEntityManager()
+		TypedQuery<Tavolo> query = getEM()
 				.createQuery("select t " + "from Tavolo t left join Prenotazione on tavoloprenotato_id = t.id "
 						+ "and data = :today " + "order by t.id", Tavolo.class);
 		query.setParameter("today", today, TemporalType.DATE);

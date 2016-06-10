@@ -28,6 +28,18 @@ public class TavoloFacade {
 		return this.tavoloDao.findAll();
 	}
 
+	public Tavolo findTavoloByNumero(String numeroTavolo) {
+		TavoloDao dao = new TavoloDao(this.em);
+		Tavolo tavolo = dao.findByNumero(numeroTavolo);
+		return tavolo;
+	}
+
+	public Tavolo findTavoloByID(String idTavolo) {
+		TavoloDao dao = new TavoloDao(this.em);
+		Tavolo tavolo = dao.findById(Long.parseLong(idTavolo));
+		return tavolo;
+	}
+
 	public void setTavoloPrenotato(Tavolo tavolo) {
 		tavolo.setOccupato(1);
 		TavoloDao dao = new TavoloDao(this.em);
