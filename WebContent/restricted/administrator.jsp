@@ -84,10 +84,6 @@
 												action="#{utenteController.loginAdmin}"
 												styleClass="btn btn-default btn-block" />
 
-											<h:commandLink styleClass="btn btn-success" value="Conferma"
-												action="#{pannelloController.confermaComanda}">
-											</h:commandLink>
-
 										</div>
 									</div>
 									<div class="animated fadeInDown">
