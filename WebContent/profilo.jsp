@@ -140,7 +140,9 @@
 															<tr>
 																<td><h:outputText value="#{prenotazione.id}" /></td>
 																<td><h:outputText value="#{prenotazione.data}" /></td>
-																<td><h:outputText value="#{prenotazione.ora}" /></td>
+																<td><h:outputText value="#{prenotazione.ora}">
+																		<f:convertDateTime pattern="HH:mm" />
+																	</h:outputText></td>
 																<td><h:outputText
 																		value="#{prenotazione.numeroOspiti}" /></td>
 																<td><h:outputText

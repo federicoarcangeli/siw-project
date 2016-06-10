@@ -2,7 +2,6 @@
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 
-
 <!DOCTYPE html>
 <html lang="it">
 
@@ -64,9 +63,8 @@
 								<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
 								<li><a
 									href="${pageContext.request.contextPath}/ProcessaMenu">Men&ugrave;</a></li>
-								<li><a
-									href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
-								<li class="dropdown"><a href="./home_Utente.jsp"
+								<li><a href="./sala.jsp">Sala</a></li>
+								<li class="dropdown"><a href="./home_Administrator.jsp"
 									class="dropdown-toggle" data-toggle="dropdown" role="button"
 									aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
 											value="#{utenteCorrente.username}"></h:outputText> <span
@@ -112,7 +110,6 @@
 								<div class="shop-grid">
 									<div class="shop-products">
 										<div class="row">
-
 											<div class="col-md-4 col-sm-6">
 												<h4>Prenotazioni</h4>
 												<table class="table">
@@ -127,7 +124,7 @@
 													</thead>
 													<tbody>
 														<c:forEach var="prenotazione"
-															items="#{pannelloControllo.prenotazioni}">
+															items="#{pannelloController.prenotazioni}">
 															<tr>
 																<td class="text-center"><h:outputText
 																		value="#{prenotazione.nominativo}" /> <h:outputText
@@ -136,19 +133,19 @@
 																		value="#{prenotazione.getUtente().getCognome()}" /></td>
 																<td class="text-center"><h:outputText
 																		value="#{prenotazione.data}" /><br> <h:outputText
-																		value="#{prenotazione.ora}" /></td>
+																		value="#{prenotazione.ora}">
+																		<f:convertDateTime pattern="HH:mm" />
+																	</h:outputText></td>
 																<td class="text-center"><h:outputText
 																		value="#{prenotazione.tavoloPrenotato.getCodiceTavolo()}" /></td>
 																<td class="text-center"><h:outputText
 																		value="#{prenotazione.numeroOspiti}" /></td>
-																<h:panelGroup
-																	rendered="#{prenotazione.completato ==false}">
+																<h:panelGroup rendered="#{!prenotazione.completato}">
 																	<td class="text-center"><i
 																		class="fa fa-spinner fa-pulse fa-lg fa-fw"></i> <span
 																		class="sr-only">Loading...</span></td>
 																</h:panelGroup>
-																<h:panelGroup
-																	rendered="#{prenotazione.completato ==true}">
+																<h:panelGroup rendered="#{prenotazione.completato}">
 																	<td class="text-center" class="success"
 																		style="color: green;"><i
 																		class="fa fa-check-circle"></i></td>
@@ -173,8 +170,8 @@
 														</thead>
 														<tbody>
 															<c:forEach var="comanda"
-																items="#{pannelloControllo.comande}">
-																<h:panelGroup rendered="#{comanda.completata ==true}">
+																items="#{pannelloController.comande}">
+																<h:panelGroup rendered="#{comanda.completata}">
 																	<tr>
 																		<td class="text-center"><h:outputText
 																				value="#{comanda.id}" /></td>
@@ -182,18 +179,20 @@
 																				value="#{comanda.tavolo.getCodiceTavolo()}" /></td>
 																		<td class="text-center"><h:outputText
 																				value="#{comanda.prezzoTotale}" /> &euro;</td>
-																		<h:panelGroup rendered="#{comanda.completata ==false}">
+																		<h:panelGroup rendered="#{!comanda.completata}">
 																			<td class="text-center"><i
 																				class="fa fa-spinner fa-pulse fa-lg fa-fw"></i> <span
 																				class="sr-only">Loading...</span></td>
 																		</h:panelGroup>
-																		<h:panelGroup rendered="#{comanda.completata ==true}">
+																		<h:panelGroup rendered="#{comanda.completata}">
 																			<td class="text-center" class="success"
 																				style="color: green;"><i
 																				class="fa fa-check-circle"></i></td>
 																		</h:panelGroup>
 																		<td class="text-center"><a href="#"
-																			data-toggle="modal" data-target='#${comanda.id}'
+																			data-toggle="modal"
+																			data-target='#<h:outputText
+																				value="#{comanda.id}" />'
 																			class="fa fa-info-circle"></a></td>
 																	</tr>
 																</h:panelGroup>
@@ -214,8 +213,8 @@
 													</thead>
 													<tbody>
 														<c:forEach var="comanda"
-															items="#{pannelloControllo.comande}">
-															<h:panelGroup rendered="#{comanda.completata ==false}">
+															items="#{pannelloController.comande}">
+															<h:panelGroup rendered="#{!comanda.completata}">
 																<tr>
 																	<td class="text-center"><h:outputText
 																			value="#{comanda.operatore.getId()}" /></td>
@@ -234,76 +233,77 @@
 												<div class="progress">
 													<div class="progress-bar progress-bar-success"
 														role="progressbar"
-														style="width: <h:outputText value="#{pannelloControllo.tavoliLiberiP}" />%">
-														<h:outputText value="#{pannelloControllo.tavoliLiberi}" />
+														style="width: <h:outputText value="#{pannelloController.tavoliLiberiP}" />%">
+														<h:outputText value="#{pannelloController.tavoliLiberi}" />
 													</div>
 													<div class="progress-bar progress-bar-warning"
 														role="progressbar"
-														style="width: <h:outputText value="#{pannelloControllo.tavoliPrenotatiP}" />%">
-														<h:outputText value="#{pannelloControllo.tavoliPrenotati}" />
+														style="width: <h:outputText value="#{pannelloController.tavoliPrenotatiP}" />%">
+														<h:outputText
+															value="#{pannelloController.tavoliPrenotati}" />
 													</div>
 													<div class="progress-bar progress-bar-danger"
 														role="progressbar"
-														style="width: <h:outputText value="#{pannelloControllo.tavoliOccupatiP}" />%">
-														<h:outputText value="#{pannelloControllo.tavoliOccupati}" />
+														style="width: <h:outputText value="#{pannelloController.tavoliOccupatiP}" />%">
+														<h:outputText value="#{pannelloController.tavoliOccupati}" />
 													</div>
 												</div>
+											</div>
+											<div class="col-md-4 col-sm-6">
+												<h4>Comande giornaliere in corso</h4>
+												<h:form>
+													<table class="table">
+														<thead>
+															<tr>
+																<th class="text-center">Codice</th>
+																<th class="text-center">Tavolo</th>
+																<th class="text-center">Totale</th>
+																<th class="text-center">Stato</th>
+																<th class="text-center">Operazioni</th>
 
-												<div class="col-md-4 col-sm-6">
-													<h4>Comande giornaliere in corso</h4>
-													<form action="" method="post">
-														<table class="table">
-															<thead>
-																<tr>
-																	<th class="text-center">Codice</th>
-																	<th class="text-center">Tavolo</th>
-																	<th class="text-center">Totale</th>
-																	<th class="text-center">Stato</th>
-																	<th class="text-center">Operazioni</th>
-
-																</tr>
-															</thead>
-															<tbody>
-																<c:forEach var="comanda"
-																	items="#{pannelloControllo.comande}">
-																	<h:panelGroup rendered="#{comanda.completata ==false}">
-																		<tr>
-																			<td class="text-center"><h:outputText
-																					value="#{comanda.id}" /></td>
-																			<td class="text-center"><h:outputText
-																					value="#{comanda.tavolo.getCodiceTavolo()}" /></td>
-																			<td class="text-center"><h:outputText
-																					value="#{comanda.prezzoTotale}" /> &euro;</td>
-																			<h:panelGroup
-																				rendered="#{comanda.completata ==false}">
-																				<td class="text-center"><i
-																					class="fa fa-spinner fa-pulse fa-lg fa-fw"></i> <span
-																					class="sr-only">Loading...</span></td>
-																			</h:panelGroup>
-																			<h:panelGroup rendered="#{comanda.completata ==true}">
-																				<td class="text-center" class="success"><i
-																					class="fa fa-spinner fa-pulse fa-2x fa-fw"></i> <span
-																					class="sr-only">Loading...</span></td>
-																			</h:panelGroup>
-																			<td class="text-center"><a href="#"
-																				data-toggle="modal" data-target='#${comanda.id}'
-																				class="fa fa-wrench"></a></td>
-																		</tr>
-																	</h:panelGroup>
-																</c:forEach>
-															</tbody>
-														</table>
-													</form>
-													<br>
-													<hr>
-												</div>
+															</tr>
+														</thead>
+														<tbody>
+															<c:forEach var="comanda"
+																items="#{pannelloController.comande}">
+																<h:panelGroup rendered="#{!comanda.completata}">
+																	<tr>
+																		<td class="text-center"><h:outputText
+																				value="#{comanda.id}" /></td>
+																		<td class="text-center"><h:outputText
+																				value="#{comanda.tavolo.getCodiceTavolo()}" /></td>
+																		<td class="text-center"><h:outputText
+																				value="#{comanda.prezzoTotale}" /> &euro;</td>
+																		<h:panelGroup rendered="#{!comanda.completata}">
+																			<td class="text-center"><i
+																				class="fa fa-spinner fa-pulse fa-lg fa-fw"></i> <span
+																				class="sr-only">Loading...</span></td>
+																		</h:panelGroup>
+																		<h:panelGroup rendered="#{comanda.completata}">
+																			<td class="text-center" class="success"><i
+																				class="fa fa-spinner fa-pulse fa-2x fa-fw"></i> <span
+																				class="sr-only">Loading...</span></td>
+																		</h:panelGroup>
+																		<td class="text-center"><a href="#"
+																			data-toggle="modal"
+																			data-target='#<h:outputText
+																					value="#{comanda.id}" />'
+																			class="fa fa-wrench"></a></td>
+																	</tr>
+																</h:panelGroup>
+															</c:forEach>
+														</tbody>
+													</table>
+												</h:form>
+												<br>
+												<hr>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-							<c:forEach var="comanda" items="#{pannelloControllo.comande}">
-								<form action="processaFineComanda" method="get" id="formfield">
+							<c:forEach var="comanda" items="#{pannelloController.comande}">
+								<h:form>
 									<div id="<h:outputText value="#{comanda.id}" />"
 										class="modal fade" aria-labelledby="myModal">
 										<div class="modal-dialog">
@@ -362,7 +362,7 @@
 														data-dismiss="modal">
 														Chiudi <i class="fa fa-times"></i>
 													</button>
-													<h:panelGroup rendered="#{comanda.completata ==false}">
+													<h:panelGroup rendered="#{!comanda.completata}">
 														<button type="submit" class="btn btn-danger"
 															name="elimina"
 															value='<h:outputText value="#{comanda.id}" />'>
@@ -373,12 +373,16 @@
 															value='<h:outputText value="#{comanda.id}" />'>
 															Conferma <i class="fa fa-check"></i>
 														</button>
+														<h:commandLink styleClass="btn btn-success"
+															value="Conferma"
+															action="#{pannelloController.confermaComanda}">
+														</h:commandLink>
 													</h:panelGroup>
 												</div>
 											</div>
 										</div>
 									</div>
-								</form>
+								</h:form>
 							</c:forEach>
 						</div>
 					</div>

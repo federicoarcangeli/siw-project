@@ -31,7 +31,7 @@ public class TavoloDao extends AbstractDao<Tavolo> {
 
 	public Tavolo findByNumero(String parameter) {
 		try {
-			Query q = (Query) getEntityManager().createNativeQuery("select id from tavolo where codicetavolo = ?1");
+			Query q = (Query) getEM().createNativeQuery("select id from tavolo where codicetavolo = ?1");
 			q.setParameter(1, parameter);
 			BigInteger id = (BigInteger) q.getSingleResult();
 			return this.findById(id.longValue());

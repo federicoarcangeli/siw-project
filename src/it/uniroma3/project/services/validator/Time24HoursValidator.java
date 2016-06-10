@@ -49,6 +49,12 @@ public class Time24HoursValidator{
 		return format;
 	}
 
+	public String ConvertTimeToString(Date data){
+		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+		String format = formatter.format(data);
+		return format;
+	}
+
 	public boolean isCena(String time){
 		pattern = Pattern.compile(ORARIORISTORANTE_PATTERN);
 		if(time!=null){

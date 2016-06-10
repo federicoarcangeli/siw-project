@@ -36,4 +36,16 @@ public class PrenotazioneFacade {
 		return prenotazione;
 	}
 
+	public List<Prenotazione> findAllPrenotazioni() {
+		PrenotazioneDao prenotazioneDao = new PrenotazioneDao(this.em);
+		List<Prenotazione> prenotazioni = prenotazioneDao.findAll();
+		return prenotazioni;
+	}
+
+	public List<Prenotazione> findPrenotazione(Tavolo t, Date today) {
+		PrenotazioneDao prenotazioneDao = new PrenotazioneDao(this.em);
+		List<Prenotazione> prenotazione = prenotazioneDao.findPrenotazioneTavolo(t, today);
+		return prenotazione;
+	}
+
 }

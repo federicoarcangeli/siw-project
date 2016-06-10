@@ -1,4 +1,3 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page import="it.uniroma3.project.facade.*"%>
 <%@page import="it.uniroma3.project.model.CategoriaPiatto"%>
 <%@ page import="java.util.List"%>

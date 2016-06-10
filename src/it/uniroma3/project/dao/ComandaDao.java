@@ -39,7 +39,7 @@ public class ComandaDao extends AbstractDao<Comanda> {
 
 	public Comanda findComandaByTavolo(Long param) {
 		try{
-			Query q = (Query) getEntityManager().createNativeQuery("select c.id from comanda c where c.tavolo_id = ?1 and c.completata='false'");
+			Query q = (Query) getEM().createNativeQuery("select c.id from comanda c where c.tavolo_id = ?1 and c.completata='false'");
 			q.setParameter(1, param);
 			BigInteger id = (BigInteger) q.getSingleResult();
 			return this.findById(id.longValue());
@@ -49,13 +49,13 @@ public class ComandaDao extends AbstractDao<Comanda> {
 	}
 
 	public List<Comanda> findAllToday(Date today) {
-		TypedQuery<Comanda> query = getEntityManager().createQuery( "select c from Comanda c where date(c.dataOraEmissione) = :today",Comanda.class);
+		TypedQuery<Comanda> query = this.getEM().createQuery( "select c from Comanda c where c.dataOraEmissione = :today",Comanda.class);
 		query.setParameter("today", today);
 		return query.getResultList();
 	}
 
 	public List<Comanda> findAllCompletate() {
-		TypedQuery<Comanda> query = getEntityManager().createQuery( "select c from Comanda c where completata = true",Comanda.class);
+		TypedQuery<Comanda> query = getEM().createQuery( "select c from Comanda c where completata = true",Comanda.class);
 		return query.getResultList();
 	}
 

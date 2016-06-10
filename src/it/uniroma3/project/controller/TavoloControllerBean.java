@@ -1,4 +1,5 @@
 package it.uniroma3.project.controller;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -6,33 +7,62 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import it.uniroma3.project.facade.PrenotazioneFacade;
 import it.uniroma3.project.facade.TavoloFacade;
+import it.uniroma3.project.model.Prenotazione;
+import it.uniroma3.project.model.Ristorante;
 import it.uniroma3.project.model.Tavolo;
 
-@ManagedBean(name = "tavoloController")
+@ManagedBean(name ="salaController")
 @RequestScoped
 @EJB(name = "tFacade", beanInterface = TavoloFacade.class)
 public class TavoloControllerBean {
 
 	private String codiceTavolo;
 	private int coperti;
-	private List<Tavolo> tavoli;
+	private List<Tavolo> tavoliSala;
 	private Tavolo tavolo;
 	private int occupato;
 
-	@EJB(name="tFacade")
+	@EJB
 	private TavoloFacade tFacade;
+
+	@EJB
+	private PrenotazioneFacade pFacade;
 
 	public String create() {
 		this.tavolo = tFacade.create(this.getCodiceTavolo(),this.getCoperti());
 		return "registrazioneTavolo";
 	}
-	
+
+	public String openComanda(){
+		if(this.tavolo.getOccupato()==0 || this.tavolo.getOccupato()==1)
+			tFacade.setTavoloOccupato(tavolo);
+		return "comanda.jsp";
+	}
+
+	//	SECONDO ME IN QUESTO CASO DOBBIAMO GESTIRE UN COTROLLER PER IL SOLO CASO D'USO	
 	@PostConstruct
 	public void init() {
-		this.tavoli = this.gettFacade().findAllTavolo();
+		Date today = new Date();
+		this.tavoliSala = this.gettFacade().findAllTavolo();
+
+		Ristorante ristorante = new Ristorante();
+		for(Tavolo t : tavoliSala){
+			List<Prenotazione> prenotazioni = pFacade.findPrenotazione(t, today);
+
+			if(ristorante.comandaInCorso(t)==true )
+				tFacade.setTavoloOccupato(t);
+
+			if(!prenotazioni.isEmpty() && ristorante.comandaInCorso(t)==false)
+				tFacade.setTavoloPrenotato(t);
+
+			if(prenotazioni.isEmpty() && ristorante.comandaInCorso(t)==false)
+				tFacade.setTavoloLibero(t);
+			// dobbiamo gestire il caso in cui la prenotazione per quel tavolo è stata completata
+		}
 	}
-	
+
 
 	public String getCodiceTavolo() {
 		return codiceTavolo;
@@ -62,16 +92,16 @@ public class TavoloControllerBean {
 		return tFacade;
 	}
 
-	public void setTavoloFacade(TavoloFacade tavoloFacade) {
-		this.tFacade = tavoloFacade;
+	public List<Tavolo> getTavoliSala() {
+		return tavoliSala;
 	}
 
-	public List<Tavolo> getTavoli() {
-		return tavoli;
+	public void setTavoliSala(List<Tavolo> tavoliSala) {
+		this.tavoliSala = tavoliSala;
 	}
 
 	public void setTavoli(List<Tavolo> tavoli) {
-		this.tavoli = tavoli;
+		this.tavoliSala = tavoli;
 	}
 
 	public TavoloFacade gettFacade() {

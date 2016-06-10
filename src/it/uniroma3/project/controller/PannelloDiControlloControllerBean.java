@@ -3,6 +3,7 @@ package it.uniroma3.project.controller;
 import it.uniroma3.project.model.Comanda;
 import it.uniroma3.project.model.Prenotazione;
 import it.uniroma3.project.model.Tavolo;
+import it.uniroma3.project.services.validator.Time24HoursValidator;
 
 import java.util.Date;
 import java.util.List;
@@ -37,13 +38,48 @@ public class PannelloDiControlloControllerBean {
 	private List<Comanda> comande;
 	private List<Prenotazione> prenotazioni;
 
-	@EJB(name = "pFacade")
+	@EJB
 	private PrenotazioneFacade pFacade;
-	@EJB(name = "cFacade")
+
+	@EJB
 	private ComandaFacade cFacade;
-	@EJB(name = "tFacade")
+
+	@EJB
 	private TavoloFacade tFacade;
 
+	public String eliminaComanda(){
+		return "home_Administrator";
+	}
+
+	public String confermaComanda(){
+
+		return "home_Administrator";
+	}
+
+	@PostConstruct
+	public void init(){
+		//		calcolo numero tavoli liberi occupati, prenotati e totali
+		this.tavoli = tFacade.findAllTavolo();
+		for(Tavolo t : this.tavoli){
+			if(t.getOccupato()==0)
+				this.tavoliLiberi++;
+			if(t.getOccupato()==1)
+				this.tavoliPrenotati++;
+			if(t.getOccupato()==2)
+				this.tavoliOccupati++;
+		}
+		this.tavoliTotali=this.tavoli.size();
+		this.tavoliLiberiP= (this.tavoliLiberi/this.tavoliTotali)*100;
+		this.tavoliPrenotatiP= (this.tavoliPrenotati/this.tavoliTotali)*100;
+		this.tavoliOccupatiP= (this.tavoliOccupati/this.tavoliTotali)*100;
+
+		//		 gestione comande di oggi
+		this.comande = cFacade.findallComandaToday(new Date());
+
+		// gestione prenotazioni di oggi
+		this.prenotazioni = pFacade.findAllPrenotazioniToday(new Date());
+	}
+	
 	public float getTavoliLiberi() {
 		return tavoliLiberi;
 	}
@@ -146,30 +182,6 @@ public class PannelloDiControlloControllerBean {
 
 	public void setTavoliOccupatiP(float tavoliOccupatiP) {
 		this.tavoliOccupatiP = tavoliOccupatiP;
-	}
-
-	@PostConstruct
-	public void init(){
-		//		calcolo numero tavoli liberi occupati, prenotati e totali
-		this.tavoli = tFacade.findAllTavolo();
-		for(Tavolo t : tavoli){
-			if(t.getOccupato()==0)
-				this.tavoliLiberi++;
-			if(t.getOccupato()==1)
-				this.tavoliPrenotati++;
-			if(t.getOccupato()==2)
-				this.tavoliOccupati++;
-		}
-		this.tavoliTotali=this.tavoli.size();
-		this.tavoliLiberiP= (this.tavoliLiberi/this.tavoliTotali)*100;
-		this.tavoliPrenotatiP= (this.tavoliPrenotati/this.tavoliTotali)*100;
-		this.tavoliOccupatiP= (this.tavoliOccupati/this.tavoliTotali)*100;
-
-		//		 gestione comande di oggi
-		this.comande = cFacade.findallComandaToday(new Date());
-
-		// gestione prenotazioni di oggi
-		this.prenotazioni = pFacade.findAllPrenotazioniToday(new Date());
 	}
 
 }
