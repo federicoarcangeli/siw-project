@@ -2,22 +2,26 @@ package it.uniroma3.project.controllerBean;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBs;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import it.uniroma3.project.facade.ComandaFacade;
 import it.uniroma3.project.facade.PrenotazioneFacade;
 import it.uniroma3.project.facade.TavoloFacade;
+import it.uniroma3.project.model.Comanda;
 import it.uniroma3.project.model.Prenotazione;
 import it.uniroma3.project.model.Ristorante;
 import it.uniroma3.project.model.Tavolo;
+import it.uniroma3.project.model.Utente;
 
 @ManagedBean(name ="salaController")
-@SessionScoped
+@RequestScoped
 @EJBs(value = { @EJB(name = "pFacade", beanInterface = PrenotazioneFacade.class),
 		@EJB(name = "tFacade", beanInterface = TavoloFacade.class) })
 public class SalaControllerBean {
@@ -34,12 +38,20 @@ public class SalaControllerBean {
 	@EJB
 	private PrenotazioneFacade pFacade;
 
+	@EJB
+	private ComandaFacade cFacade;
+
 	public String openComanda(){
-		this.tavolo = this.tFacade.findTavoloByNumero(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("codiceTavolo"));
-		System.out.println("sono entrato"+ tavolo);
-		if(this.tavolo.getOccupato()==0 || this.tavolo.getOccupato()==1)
+		this.tavolo = this.tFacade.findTavoloByNumero(this.getByRequest("codiceTavolo"));
+		if(this.tavolo.getOccupato()==0 || this.tavolo.getOccupato()==1){
+			Comanda comanda = new Comanda();
 			tFacade.setTavoloOccupato(tavolo);
-		return "home_administrator";
+			comanda.setOperatore((Utente) this.getBySession("utenteCorrente"));
+			comanda.setTavolo(tavolo);
+			comanda.setDataOraEmissione(new Date());
+			cFacade.inserisciComanda(comanda);
+		}
+		return "comanda";
 	}
 
 	@PostConstruct
@@ -61,6 +73,21 @@ public class SalaControllerBean {
 				tFacade.setTavoloLibero(t);
 			// dobbiamo gestire il caso in cui la prenotazione per quel tavolo è stata completata
 		}
+	}
+
+	public void setInSession(String name , Object oggetto){
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().getSessionMap().put(name,oggetto);
+	}
+
+	public Object getBySession(String name ){
+		FacesContext context = FacesContext.getCurrentInstance();
+		return context.getExternalContext().getSessionMap().get(name);
+	}
+
+	public String getByRequest(String name){
+		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		return params.get(name);
 	}
 
 	public String getCodiceTavolo() {

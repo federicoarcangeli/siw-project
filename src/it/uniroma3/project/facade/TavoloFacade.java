@@ -34,9 +34,9 @@ public class TavoloFacade {
 		return tavolo;
 	}
 
-	public Tavolo findTavoloByID(String idTavolo) {
+	public Tavolo findTavoloByID(Long idTavolo) {
 		TavoloDao dao = new TavoloDao(this.em);
-		Tavolo tavolo = dao.findById(Long.parseLong(idTavolo));
+		Tavolo tavolo = dao.findById(idTavolo);
 		return tavolo;
 	}
 

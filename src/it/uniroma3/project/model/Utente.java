@@ -180,13 +180,11 @@ public class Utente {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((prenotazioni == null) ? 0 : prenotazioni.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		result = prime * result + ((telefono == null) ? 0 : telefono.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -226,11 +224,6 @@ public class Utente {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (prenotazioni == null) {
-			if (other.prenotazioni != null)
-				return false;
-		} else if (!prenotazioni.equals(other.prenotazioni))
-			return false;
 		if (role == null) {
 			if (other.role != null)
 				return false;
@@ -248,7 +241,6 @@ public class Utente {
 			return false;
 		return true;
 	}
-
 	@Override
 	public String toString() {
 		return "Utente [id=" + id + ", email=" + email + ", nome=" + nome + ", cognome=" + cognome + ", password="

@@ -22,5 +22,10 @@ public class ComandaFacade {
 		return comandeToday;
 	}
 
+	public void inserisciComanda(Comanda comanda) {
+		ComandaDao dao = new ComandaDao(this.em);
+		dao.save(comanda);
+	}
+
 
 }
