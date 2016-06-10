@@ -318,7 +318,6 @@ public class Facade {
 		this.em.getTransaction().begin();
 		dao.delete(comanda);
 		this.em.getTransaction().commit();
-
 	}
 
 	public Prenotazione findPrenotazioneByTavolo(long idComanda) {

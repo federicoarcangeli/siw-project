@@ -49,8 +49,7 @@ public class ComandaDao extends AbstractDao<Comanda> {
 	}
 
 	public List<Comanda> findAllToday(Date today) {
-		TypedQuery<Comanda> query = this.getEM().createQuery( "select c from Comanda c where c.dataOraEmissione = :today",Comanda.class);
-		query.setParameter("today", today);
+		TypedQuery<Comanda> query = this.getEM().createQuery("select c from Comanda c where c.dataOraEmissione > CURRENT_DATE",Comanda.class);
 		return query.getResultList();
 	}
 

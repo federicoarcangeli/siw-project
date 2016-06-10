@@ -364,19 +364,17 @@
 														Chiudi <i class="fa fa-times"></i>
 													</button>
 													<h:panelGroup rendered="#{!comanda.completata}">
-														<button type="submit" class="btn btn-danger"
-															name="elimina"
-															value='<h:outputText value="#{comanda.id}" />'>
-															Elimina <i class="fa fa-trash-o"></i>
-														</button>
-														<button type="submit" class="btn btn-success"
-															name="conferma"
-															value='<h:outputText value="#{comanda.id}" />'>
-															Conferma <i class="fa fa-check"></i>
-														</button>
+														<h:commandLink styleClass="btn btn-danger"
+															value="Conferma"
+															action="#{pannelloController.eliminaComanda}">
+															<i class="fa fa-trash-o"></i>
+															<f:param name="idComanda" value="#{comanda.id}"></f:param>
+														</h:commandLink>
 														<h:commandLink styleClass="btn btn-success"
 															value="Conferma"
 															action="#{pannelloController.confermaComanda}">
+															<f:param name="idComanda" value="#{comanda.id}"></f:param>
+															<i class="fa fa-check"></i>
 														</h:commandLink>
 													</h:panelGroup>
 												</div>

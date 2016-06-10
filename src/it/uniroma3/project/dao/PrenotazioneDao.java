@@ -50,7 +50,7 @@ public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 
 	public List<Prenotazione> findAllPrenotazioniToday(Date today) {
 		TypedQuery<Prenotazione> query = getEM().createQuery( "select p from Prenotazione p where p.data = :today",Prenotazione.class);
-		query.setParameter("today", today);
+		query.setParameter("today", today, TemporalType.DATE);
 		List<Prenotazione> result = query.getResultList();
 		return result;
 	}

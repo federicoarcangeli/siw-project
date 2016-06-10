@@ -6,12 +6,14 @@ import it.uniroma3.project.model.Tavolo;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBs;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import it.uniroma3.project.facade.ComandaFacade;
 import it.uniroma3.project.facade.PrenotazioneFacade;
@@ -36,6 +38,7 @@ public class PannelloDiControlloControllerBean {
 	private List<Tavolo> tavoli;
 	private List<Comanda> comande;
 	private List<Prenotazione> prenotazioni;
+	private Comanda comanda;
 
 	@EJB
 	private PrenotazioneFacade pFacade;
@@ -47,11 +50,16 @@ public class PannelloDiControlloControllerBean {
 	private TavoloFacade tFacade;
 
 	public String eliminaComanda(){
+		this.cFacade.eliminaComandaByID(Long.parseLong(this.getByRequest("idComanda")));
 		return "home_Administrator";
 	}
 
 	public String confermaComanda(){
-
+		cFacade.concludiComanda(Long.parseLong(this.getByRequest("idComanda")));
+		tFacade.setTavoloLibero(this.comanda.getTavolo().getId());
+		Prenotazione prenotazione = pFacade.findPrenotazioneByTavolo(Long.parseLong(this.getByRequest("idComanda")));
+		if(prenotazione!=null)
+			pFacade.setPrenotazioneCompletata(Long.parseLong(this.getByRequest("idComanda")));
 		return "home_Administrator";
 	}
 
@@ -77,6 +85,11 @@ public class PannelloDiControlloControllerBean {
 
 		// gestione prenotazioni di oggi
 		this.prenotazioni = pFacade.findAllPrenotazioniToday(new Date());
+	}
+
+	public String getByRequest(String name){
+		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		return params.get(name);
 	}
 
 	public float getTavoliLiberi() {
@@ -181,6 +194,14 @@ public class PannelloDiControlloControllerBean {
 
 	public void setTavoliOccupatiP(float tavoliOccupatiP) {
 		this.tavoliOccupatiP = tavoliOccupatiP;
+	}
+
+	public Comanda getComanda() {
+		return comanda;
+	}
+
+	public void setComanda(Comanda comanda) {
+		this.comanda = comanda;
 	}
 
 }
