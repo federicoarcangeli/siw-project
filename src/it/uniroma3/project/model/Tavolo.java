@@ -155,4 +155,9 @@ public class Tavolo {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "[codiceTavolo=" + codiceTavolo + ", coperti=" + coperti + "]";
+	}
+
 }
