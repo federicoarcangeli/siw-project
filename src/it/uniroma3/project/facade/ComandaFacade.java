@@ -1,5 +1,6 @@
 package it.uniroma3.project.facade;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import javax.persistence.PersistenceContext;
 
 import it.uniroma3.project.dao.ComandaDao;
 import it.uniroma3.project.model.Comanda;
+import it.uniroma3.project.services.validator.Time24HoursValidator;
 
 @Stateless
 public class ComandaFacade {
@@ -61,6 +63,19 @@ public class ComandaFacade {
 		Comanda comanda = dao.findComandaByTavolo(idTavolo);
 		comanda = this.findComandaById(comanda.getId());
 		return comanda;
+	}
+
+	public List<Comanda> findallComandaCompletate() {
+		ComandaDao dao = new ComandaDao(this.em);
+		List<Comanda> comande = dao.findAllCompletate();
+		return comande;
+	}
+
+	public List<Comanda> findComandeCompletateInThisDay(Date date) throws ParseException {
+		Time24HoursValidator validator = new Time24HoursValidator();
+		ComandaDao dao = new ComandaDao(this.em);
+		List<Comanda> comande = dao.findAllCompletateInThisDay(validator.simpleFormatDate(date));
+		return comande;
 	}
 
 }

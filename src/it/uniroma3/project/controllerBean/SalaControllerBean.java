@@ -69,18 +69,18 @@ public class SalaControllerBean {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		if(!this.getUtenteCorrente().getRole().equals("admin"))
-			try {
-				this.redirectPage("./404.jsp");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		Date today = new Date();
-		this.tavoliSala = this.gettFacade().findAllTavolo();
+		else
+			if(!this.getUtenteCorrente().getRole().equals("admin"))
+				try {
+					this.redirectPage("./404.jsp");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 
+		this.tavoliSala = this.gettFacade().findAllTavolo();
 		Ristorante ristorante = new Ristorante();
 		for(Tavolo t : tavoliSala){
-			List<Prenotazione> prenotazioni = pFacade.findPrenotazione(t, today);
+			List<Prenotazione> prenotazioni = pFacade.findPrenotazione(t);
 
 			if(ristorante.comandaInCorso(t)==true )
 				tFacade.setTavoloOccupato(t);

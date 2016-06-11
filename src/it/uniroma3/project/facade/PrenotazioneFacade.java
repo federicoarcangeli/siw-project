@@ -42,9 +42,9 @@ public class PrenotazioneFacade {
 		return prenotazioni;
 	}
 
-	public List<Prenotazione> findPrenotazione(Tavolo t, Date today) {
+	public List<Prenotazione> findPrenotazione(Tavolo t) {
 		PrenotazioneDao prenotazioneDao = new PrenotazioneDao(this.em);
-		List<Prenotazione> prenotazione = prenotazioneDao.findPrenotazioneTavolo(t, today);
+		List<Prenotazione> prenotazione = prenotazioneDao.findPrenotazioneTavolo(t);
 		return prenotazione;
 	}
 

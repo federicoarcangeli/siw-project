@@ -1,9 +1,11 @@
 package it.uniroma3.project.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
 
 import it.uniroma3.project.model.Comanda;
@@ -52,8 +54,15 @@ public class ComandaDao extends AbstractDao<Comanda> {
 	}
 
 	public List<Comanda> findAllCompletate() {
-		TypedQuery<Comanda> query = getEM().createQuery("select c from Comanda c where completata = true",
+		TypedQuery<Comanda> query = getEM().createQuery("select c from Comanda c where c.completata = true",
 				Comanda.class);
+		return query.getResultList();
+	}
+
+	public List<Comanda> findAllCompletateInThisDay(Date date) {
+		TypedQuery<Comanda> query = getEM().createQuery("select c from Comanda c where c.completata = true and c.dataOraEmissione = :date",
+				Comanda.class);
+		query.setParameter("date", date,TemporalType.DATE);
 		return query.getResultList();
 	}
 

@@ -43,6 +43,13 @@ public class Time24HoursValidator{
 		}
 		return hour;
 	}
+
+	public Date simpleFormatDate(Date date) throws ParseException{
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		Date todayWithZeroTime = formatter.parse(formatter.format(date));
+		return todayWithZeroTime;
+	}
+
 	public String ConvertDateToString(Date data){
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		String format = formatter.format(data);

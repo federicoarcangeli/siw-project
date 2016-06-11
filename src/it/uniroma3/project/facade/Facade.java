@@ -244,7 +244,7 @@ public class Facade {
 	public List<Prenotazione> findPrenotazione(Tavolo t, Date today) {
 		PrenotazioneDao prenotazioneDao = new PrenotazioneDao(this.em);
 		this.em.getTransaction().begin();
-		List<Prenotazione> prenotazione = prenotazioneDao.findPrenotazioneTavolo(t, today);
+		List<Prenotazione> prenotazione = prenotazioneDao.findPrenotazioneTavolo(t);
 		this.em.getTransaction().commit();
 		return prenotazione;
 	}

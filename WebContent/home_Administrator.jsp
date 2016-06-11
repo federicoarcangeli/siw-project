@@ -103,7 +103,7 @@
 										<li><a href="./inserimentoPiatti.jsp">Registra nuovo
 												piatto<i class="fa fa-caret-right"></i>
 										</a></li>
-										<li><a href="/storicoComande.jsp">Storico Comande <i
+										<li><a href="./storicoComande.jsp">Storico Comande <i
 												class="fa fa-caret-right"></i>
 										</a></li>
 									</ul>

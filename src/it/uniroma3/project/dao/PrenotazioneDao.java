@@ -1,11 +1,9 @@
 package it.uniroma3.project.dao;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
 
 import it.uniroma3.project.model.Prenotazione;
@@ -43,12 +41,11 @@ public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Prenotazione> findPrenotazioneTavolo(Tavolo t, Date today) {
+	public List<Prenotazione> findPrenotazioneTavolo(Tavolo t) {
 		try{
 			Query query = getEM().createNativeQuery(
-					"select p.* from Prenotazione p where p.tavoloprenotato_id= ?1 and p.data= ?2 and p.completato='false'", Prenotazione.class);
+					"select p.* from Prenotazione p where p.tavoloprenotato_id= ?1 and p.data = CURRENT_DATE and p.completato='false'", Prenotazione.class);
 			query.setParameter(1, t.getId());
-			query.setParameter(2, today, TemporalType.DATE);
 			return query.getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();

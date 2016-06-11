@@ -83,12 +83,13 @@ public class PannelloDiControlloControllerBean {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		if(!this.getUtenteCorrente().getRole().equals("admin"))
-			try {
-				this.redirectPage("./404.jsp");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		else
+			if(!this.getUtenteCorrente().getRole().equals("admin"))
+				try {
+					this.redirectPage("./404.jsp");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 		//		calcolo numero tavoli liberi occupati, prenotati e totali
 		this.tavoli = tFacade.findAllTavolo();
 		for(Tavolo t : this.tavoli){
