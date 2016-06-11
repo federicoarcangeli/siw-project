@@ -51,7 +51,7 @@ public class UtenteControllerBean implements Serializable {
 		} else {
 			this.utente = uFacade.signUp(this.utente);
 			loggedIn = true;
-			this.setUtenteInSession("utenteCorrente");
+			this.setUtenteCorrenteInSession("utenteCorrente");
 			return "index_parallax";
 		}
 	}
@@ -72,7 +72,7 @@ public class UtenteControllerBean implements Serializable {
 			return "loginSignup?faces-redirect=true";
 		} else {
 			this.utente = this.uFacade.findByUsername(utente.getUsername());
-			this.setUtenteInSession("utenteCorrente");
+			this.setUtenteCorrenteInSession("utenteCorrente");
 			return "index_parallax?faces-redirect=true";
 		}
 	}
@@ -85,10 +85,10 @@ public class UtenteControllerBean implements Serializable {
 		} else {
 			//			L'utente è registrato
 			if(this.utente.getRole().equals("admin")) {
-				this.setUtenteInSession("utenteCorrente");
+				this.setUtenteCorrenteInSession("utenteCorrente");
 				return "home_Administrator?faces-redirect=true";
 			} else if(this.utente.getRole().equals("operatore")) {
-				this.setUtenteInSession("utenteCorrente");
+				this.setUtenteCorrenteInSession("utenteCorrente");
 				return "home_Operatore?faces-redirect=true";
 			} else {
 				return "administrator";
@@ -185,14 +185,20 @@ public class UtenteControllerBean implements Serializable {
 	}
 
 	public void logout() throws IOException {
+		FacesContext context = FacesContext.getCurrentInstance();
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		externalContext.invalidateSession();
-		externalContext.redirect(externalContext.getRequestContextPath() + "/index_parallax.jsp");
+		context.getExternalContext().redirect("index_parallax.jsp");
 	}
 
-	public void setUtenteInSession(String name){
+	public void setUtenteCorrenteInSession(String name){
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.getExternalContext().getSessionMap().put(name, this.utente);
+	}
+
+	public Utente getUtenteCorrenteInSession(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		return (Utente) context.getExternalContext().getSessionMap().get("utenteCorrente");
 	}
 
 	public String getNome() {

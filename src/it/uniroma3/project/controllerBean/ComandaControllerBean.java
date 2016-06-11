@@ -19,6 +19,7 @@ import it.uniroma3.project.model.CategoriaPiatto;
 import it.uniroma3.project.model.Comanda;
 import it.uniroma3.project.model.LineaComanda;
 import it.uniroma3.project.model.Piatto;
+import it.uniroma3.project.model.Utente;
 
 @ManagedBean(name = "comandaController")
 @RequestScoped
@@ -103,10 +104,32 @@ public class ComandaControllerBean {
 
 	@PostConstruct
 	public void init() {
+		if(this.getUtenteCorrente()==null)
+			try {
+				this.redirectPage("./sessioneScaduta.jsp");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		if(!this.getUtenteCorrente().getRole().equals("admin"))
+			try {
+				this.redirectPage("./404.jsp");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		Comanda comandaInCorso = (Comanda) this.getBySession("comandaCorrente");
 		this.categorie = cpFacade.findAll();
 		this.piatti = pFacade.findAll();
 		this.linee = lFacade.findallLineeComanda(comandaInCorso.getId());
+	}
+
+	private Utente getUtenteCorrente(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		return (Utente) context.getExternalContext().getSessionMap().get("utenteCorrente");
+	}
+
+	private void redirectPage(String page) throws IOException{
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().redirect(page);
 	}
 
 	public String getByRequest(String name){

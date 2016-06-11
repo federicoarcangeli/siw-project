@@ -1,8 +1,10 @@
 package it.uniroma3.project.controllerBean;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBs;
 import javax.faces.application.FacesMessage;
@@ -104,7 +106,26 @@ public class PrenotazioneControllerBean {
 		} else {
 			return tavoloDaPrenotare;
 		}
+	}
 
+	@PostConstruct
+	public void init() {
+		if(this.getUtenteCorrente()==null)
+			try {
+				this.redirectPage("./sessioneScaduta.jsp");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	}
+
+	private Utente getUtenteCorrente(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		return (Utente) context.getExternalContext().getSessionMap().get("utenteCorrente");
+	}
+
+	private void redirectPage(String page) throws IOException{
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().redirect(page);
 	}
 
 	public Date getDatepicker() {

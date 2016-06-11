@@ -1,20 +1,20 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="it">
 
 <head>
 <meta charset="utf-8">
-<title>Profilo</title>
+<title>Qualcosa &eacute; andato storto :(</title>
+<meta name="author" content="Alessandro e Federico">
 
 <!-- SEO -->
 <meta name="description"
 	content="Tomato is a Responsive HTML5 Template for Restaurants and food related services.">
 <meta name="keywords"
 	content="tomato, responsive, html5, restaurant, template, food, reservation">
-
 <!-- Favicons -->
 <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -25,12 +25,11 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
 <link rel="stylesheet" href="css/plugin.css">
-<link rel="stylesheet" href="js/vendor/vegas/vegas.min.css">
 <link rel="stylesheet" href="css/main.css">
 
 </head>
 
-<body id="intro4">
+<body>
 	<f:view>
 		<!-- Preloder-->
 		<div class="preloder animated">
@@ -40,8 +39,8 @@
 		</div>
 
 		<div class="body">
-			<div class="main-wrapper">
 
+			<div class="main-wrapper">
 				<!-- Navigation-->
 				<nav class="navbar navbar-fixed-top">
 					<div class="container">
@@ -57,108 +56,52 @@
 								src="img/nav-logo.png" alt="nav-logo">
 							</a>
 						</div>
-
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
 								<li><a href="./index_parallax.jsp">Home</a></li>
 								<li><a href="./menu.jsp">Men&ugrave;</a></li>
-								<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
-								<li><a href="./contact.html">Contact</a></li>
-								<li class="dropdown"><a href="./index_parallax.jsp"
-									class="dropdown-toggle" data-toggle="dropdown" role="button"
-									aria-haspopup="true" aria-expanded="false"><span
-										style="color: #F9C56A;">Benvenuto <h:outputText
+								<h:panelGroup rendered="#{utenteCorrente.username !=null}">
+									<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{utenteCorrente.username ==null}">
+									<li><a href="./loginSignup.jsp">Login / Signup</a></li>
+								</h:panelGroup>
+								<li><a href="./contact.html">Contatti</a></li>
+								<h:panelGroup rendered="#{utenteCorrente.username !=null}">
+									<li class="dropdown"><a href="./index_parallax.jsp"
+										class="dropdown-toggle" data-toggle="dropdown" role="button"
+										aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
 												value="#{utenteCorrente.username}"></h:outputText> <span
-											class="caret"></span></span></a>
-									<ul class="dropdown-menu">
-										<li class="text-center"><a href="./profilo.jsp">Profilo</a></li>
-										<li>
-										<li><h:form>
-												<h:commandButton action="#{utenteController.logout}"
-													styleClass="btn btn-default btn-xs btn-block"
-													value="Logout" />
-											</h:form></li>
-									</ul></li>
+											class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li class="text-center"><a href="./profilo.jsp">Profilo</a></li>
+											<li><h:form>
+													<h:commandButton action="#{utenteController.logout}"
+														styleClass="btn btn-default btn-xs btn-block"
+														value="Logout" />
+												</h:form></li>
+										</ul></li>
+								</h:panelGroup>
 							</ul>
 						</div>
-
 						<!--/.navbar-collapse -->
 					</div>
 				</nav>
 
 				<!-- Page Header -->
-				<section class='page_header vertical-padding'></section>
-				<!-- Account Content -->
+				<section class="page_header vertical-padding"></section>
 
-				<!-- Profile Content -->
 				<div class="container">
-					<div class="shop-content">
-						<div class="row">
-							<aside class="col-md-3">
-								<div class="side-widget">
-									<h3 class="text-left no-margin-top">Riepilogo dati utente</h3>
-									<div class="footer-address contact-info">
-										<p>
-											<i class="fa fa-user"></i> <span><i
-												class="fa fa-angle-right"></i> <h:outputText
-													value="#{utenteCorrente.nome}" /></span>
-											${utenteCorrente.cognome}
-										</p>
-										<p>
-											<i class="fa fa-phone"></i> <span><i
-												class="fa fa-angle-right"></i> <h:outputText
-													value="#{utenteCorrente.telefono}" /></span>
-										</p>
-										<p>
-											<i class="fa fa-envelope-o"></i> <span><i
-												class="fa fa-angle-right"></i> <h:outputText
-													value="#{utenteCorrente.email}" /></span>
-										</p>
-									</div>
-								</div>
-							</aside>
-							<div class="col-md-9">
-								<div class="shop-grid">
-									<div class="shop-products">
-										<div class="row">
-											<div class="col-md-12">
-												<h3>Prenotazione effettuate</h3>
-												<br>
-												<table class="cart-table account-table table table-bordered">
-													<thead>
-														<tr>
-															<th>Codice Prenotazione</th>
-															<th>Data</th>
-															<th>Ora</th>
-															<th>Numero ospiti</th>
-															<th>Tavolo</th>
-														</tr>
-													</thead>
-													<tbody>
-														<c:forEach var="prenotazione"
-															items="#{utenteCorrente.prenotazioni}">
-															<tr>
-																<td><h:outputText value="#{prenotazione.id}" /></td>
-																<td><h:outputText value="#{prenotazione.data}" /></td>
-																<td><h:outputText value="#{prenotazione.ora}">
-																		<f:convertDateTime pattern="HH:mm" />
-																	</h:outputText></td>
-																<td><h:outputText
-																		value="#{prenotazione.numeroOspiti}" /></td>
-																<td><h:outputText
-																		value="#{prenotazione.tavoloPrenotato.codiceTavolo}" /></td>
-															</tr>
-														</c:forEach>
-													</tbody>
-												</table>
-											</div>
-										</div>
-									</div>
-								</div>
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<div class="giant-space">
+								<h2 class="text-giant">404</h2>
+								<p class="wow fadeInUp">Ops... questa pagina non esiste!</p>
 							</div>
 						</div>
 					</div>
 				</div>
+
 				<!-- subscribe -->
 				<section class="subscribe">
 					<div class="container">
@@ -255,7 +198,7 @@
 									<p>
 										<i class="fa fa-copyright"></i> 2015.Tomato.All rights
 										reserved. Designed with <i class="fa fa-heart primary-color"></i>
-										by Alessandro &amp; Federico
+										by Surjithctly
 									</p>
 								</div>
 							</div>
@@ -286,9 +229,8 @@
 		<script src="js/vendor/jquery.stellar.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
-		<script src="js/vendor/validate.js"></script>
-		<script src="js/reservation.js"></script>
 		<script src="js/vendor/mc/main.js"></script>
 	</f:view>
 </body>
+
 </html>

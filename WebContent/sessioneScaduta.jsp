@@ -10,7 +10,7 @@
 	content="Tomato is a Responsive HTML5 Template for Restaurants and food related services.">
 <meta name="keywords"
 	content="tomato, responsive, html5, restaurant, template, food, reservation">
-<meta http-equiv="refresh" content="3;URL=./loginSignup.jsp">
+<meta http-equiv="refresh" content="3;URL=./index_parallax.jsp">
 <!-- Favicons -->
 <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -49,11 +49,7 @@
 
 
 			<!-- Session error -->
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
+			<br> <br> <br> <br> <br>
 			<section class="reservation">
 				<div class="container">
 					<div class="col-md-12">
