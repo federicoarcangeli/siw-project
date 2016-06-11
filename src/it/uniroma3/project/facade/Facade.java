@@ -43,7 +43,6 @@ public class Facade {
 		this.em.getTransaction().begin();
 		dao.delete(idLineaComanda);
 		this.em.getTransaction().commit();
-
 	}
 
 	public void inserisciPiatto(Piatto piatto) {

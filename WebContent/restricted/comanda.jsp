@@ -63,7 +63,7 @@
 									class="dropdown-toggle" data-toggle="dropdown" role="button"
 									aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
 											value="#{utenteCorrente.username}"></h:outputText> <span
-										class="caret"></span></a>
+										class="caret"> </span></a>
 									<ul class="dropdown-menu">
 										<li><a href="./index_parallax.jsp">Logout</a></li>
 									</ul></li>
@@ -82,8 +82,12 @@
 				<div class="shop-content">
 					<div class="col-md-12">
 						<h1>
-							Tavolo: ${comanda.tavolo.codiceTavolo} Comanda: ${comanda.id} <span
-								class="badge">${comanda.operatore.getUsername()}</span>
+							Tavolo:
+							<h:outputText value="#{comandaCorrente.tavolo.codiceTavolo}" />
+							Comanda:
+							<h:outputText value="#{comandaCorrente.id}" />
+							<span class="badge"><h:outputText
+									value="#{comandaCorrente.operatore.username}" /></span>
 						</h1>
 						<hr>
 					</div>
@@ -94,36 +98,43 @@
 									<h4>Categoria</h4>
 									<div class="menu-tags3">
 										<ul class="shop-cat">
-											<c:forEach var="categoria" items="${categorie}">
-												<li><span data-filter=".${categoria.nome}">${categoria.nome}</span></li>
+											<c:forEach var="categoria"
+												items="#{comandaController.categorie}">
+												<li><span
+													data-filter=".<h:outputText
+													value="#{categoria.nome}" />"><h:outputText
+															value="#{categoria.nome}" /></span></li>
 											</c:forEach>
 										</ul>
 									</div>
 								</aside>
-								<form action="UpdateComanda" method="post">
+								<h:form>
 									<div class="col-md-8">
 
 										<div class="row menu-items3">
-											<c:forEach var="piatto" items="${piatti}">
+											<c:forEach var="piatto" items="#{comandaController.piatti}">
 												<div
-													class="menu-item3 col-md-2 col-sm-3 ${piatto.getPortata().nome}">
+													class="menu-item3 col-md-2 col-sm-3 <h:outputText
+													value="#{piatto.getPortata().nome}" />">
 													<div class="pricing">
-														<div class="plan-title">${piatto.nome}</div>
-
-														<button type="submit" name="piatto"
-															class="btn btn-success btn-block" value='${piatto.id}'>
-															<i class="fa fa-pencil-square-o"></i>add
-														</button>
+														<div class="plan-title">
+															<h:outputText value="#{piatto.nome}" />
+														</div>
+														<h:commandLink styleClass="btn btn-success btn-block"
+															action="#{comandaController.addLineaComanda}">
+															add <i class="fa fa-pencil-square-o"></i>
+															<f:param name="piatto" value="#{piatto.id}"></f:param>
+														</h:commandLink>
 													</div>
 												</div>
 											</c:forEach>
 										</div>
 									</div>
-								</form>
+								</h:form>
 
 								<aside class="col-md-3">
 									<div class="side-widget">
-										<form action="processaQuantitaComanda" method="post">
+										<h:form>
 											<div class="row">
 												<div class="form-group">
 													<div class="shop-grid">
@@ -138,29 +149,42 @@
 																			<tr>
 																				<th>Piatto</th>
 																				<th>Quantità</th>
-																				<th>Aggiungi/sottrai</th>
+																				<th></th>
+																				<th></th>
+																				<th></th>
 
 																			</tr>
 																		</thead>
 																		<tbody>
-																			<c:forEach var="linea" items="${linee}">
+																			<c:forEach var="linea"
+																				items="#{comandaController.linee}">
 																				<tr>
-																					<td>${linea.piatto.nome}</td>
-																					<td>${linea.quantita}</td>
-																					<td><button class="btn btn-warning"
-																							type="submit" name="plus" value='${linea.id}'>
-																							<i class="fa fa-plus"></i>
-																						</button>
-																						<button class="btn btn-warning" type="submit"
-																							name="minus" value='${linea.id}'>
-																							<i class="fa fa-minus"></i>
-																						</button></td>
+																					<td><h:outputText value="#{linea.piatto.nome}" /></td>
+																					<td><h:outputText value="#{linea.quantita}" /></td>
+																					<td><h:commandLink
+																							action="#{comandaController.aggiungiQuantita}">
+																							<i class="fa fa-plus fa-lg"></i>
+																							<f:param name="idLineaComanda"
+																								value="#{linea.id}"></f:param>
+																						</h:commandLink></td>
+																					<td><h:commandLink
+																							action="#{comandaController.sottraiQuantita}">
+																							<i class="fa fa-minus fa-lg"></i>
+																							<f:param name="idLineaComanda"
+																								value="#{linea.id}"></f:param>
+																						</h:commandLink></td>
+																					<td><h:commandLink
+																							action="#{comandaController.eliminaLineaComanda}">
+																							<i class="fa fa-trash-o fa-lg"></i>
+																							<f:param name="idLineaComanda"
+																								value="#{linea.id}"></f:param>
+																						</h:commandLink></td>
 																				</tr>
 																			</c:forEach>
 																			<tr>
-																				<td></td>
-																				<td><strong>Totale:</strong></td>
-																				<td>${comanda.prezzoTotale}&euro;</td>
+																				<td colspan="2"><strong>Totale:</strong></td>
+																				<td colspan="3"><h:outputText
+																						value="#{comandaCorrente.prezzoTotale}" />&euro;</td>
 																			</tr>
 																		</tbody>
 																	</table>
@@ -170,7 +194,7 @@
 													</div>
 												</div>
 											</div>
-										</form>
+										</h:form>
 									</div>
 								</aside>
 							</div>

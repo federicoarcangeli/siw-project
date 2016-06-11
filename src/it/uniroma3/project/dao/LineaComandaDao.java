@@ -1,9 +1,8 @@
 package it.uniroma3.project.dao;
 
-import java.math.BigInteger;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import it.uniroma3.project.model.LineaComanda;
 
@@ -29,25 +28,26 @@ public class LineaComandaDao extends AbstractDao<LineaComanda> {
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<LineaComanda> findAllLineaComandaOfComanda(Long idComanda) {
-		Query query = getEM().createNativeQuery("select l.* from lineacomanda l where l.comanda_id= ?1",LineaComanda.class);
-		query.setParameter(1,idComanda);
-		return query.getResultList();
+		try{
+			TypedQuery<LineaComanda> query = this.getEM().createQuery("select l from LineaComanda l where l.comanda.id= :idComanda",LineaComanda.class);
+			query.setParameter("idComanda",idComanda);
+			return query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public LineaComanda findByIdPiattoAndComanda(Long idPiatto , Long idComanda) {
 		try{
-			Query q = (Query) getEM().createNativeQuery("select l.id from lineacomanda l where l.piatto_id = ?1 and l.comanda_id= ?2 ");
-			q.setParameter(1, idPiatto);
-			q.setParameter(2, idComanda);
-			BigInteger id = (BigInteger) q.getSingleResult();
-			LineaComanda l = this.findById(id.longValue());
-			return l;
+			TypedQuery<LineaComanda> query = this.getEM().createQuery("select l from LineaComanda l where l.piatto.id = :idPiatto and l.comanda.id= :idComanda ",LineaComanda.class);
+			query.setParameter("idPiatto", idPiatto);
+			query.setParameter("idComanda", idComanda);
+			return query.getSingleResult();
 		} catch (Exception e) {
 			return null;
 		}
-
 	}
 
 }

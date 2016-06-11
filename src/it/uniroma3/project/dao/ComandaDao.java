@@ -4,12 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import it.uniroma3.project.model.Comanda;
 
 public class ComandaDao extends AbstractDao<Comanda> {
-
 
 	public ComandaDao(EntityManager em) {
 		super(em);
@@ -37,9 +37,9 @@ public class ComandaDao extends AbstractDao<Comanda> {
 
 	public Comanda findComandaByTavolo(Long param) {
 		try{
-			TypedQuery<Comanda> q =  getEM().createQuery("select c from Comanda c where c.tavolo_id = ?1 and c.completata='false'",Comanda.class);
-			q.setParameter(1, param);
-			return q.getSingleResult();
+			Query query = getEM().createNativeQuery("select c.* from comanda c where c.tavolo_id = ?1 and c.completata='false'",Comanda.class);
+			query.setParameter(1, param);
+			return (Comanda) query.getSingleResult();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

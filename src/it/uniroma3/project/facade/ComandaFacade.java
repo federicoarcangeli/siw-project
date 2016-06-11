@@ -51,4 +51,16 @@ public class ComandaFacade {
 		dao.delete(comanda);
 	}
 
+	public void updateComanda(Comanda comanda) {
+		ComandaDao dao = new ComandaDao(this.em);
+		dao.update(comanda);
+	}
+
+	public Comanda findComandaByTavolo(Long idTavolo) {
+		ComandaDao dao = new ComandaDao(this.em);
+		Comanda comanda = dao.findComandaByTavolo(idTavolo);
+		comanda = this.findComandaById(comanda.getId());
+		return comanda;
+	}
+
 }

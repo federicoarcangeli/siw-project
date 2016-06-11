@@ -26,6 +26,7 @@ import it.uniroma3.project.model.Utente;
 		@EJB(name = "tFacade", beanInterface = TavoloFacade.class) })
 public class SalaControllerBean {
 
+	private Comanda comanda;
 	private String codiceTavolo;
 	private int coperti;
 	private List<Tavolo> tavoliSala;
@@ -44,13 +45,18 @@ public class SalaControllerBean {
 	public String openComanda(){
 		this.tavolo = this.tFacade.findTavoloByNumero(this.getByRequest("codiceTavolo"));
 		if(this.tavolo.getOccupato()==0 || this.tavolo.getOccupato()==1){
-			Comanda comanda = new Comanda();
+			this.comanda = new Comanda();
 			tFacade.setTavoloOccupato(tavolo);
 			comanda.setOperatore((Utente) this.getBySession("utenteCorrente"));
 			comanda.setTavolo(tavolo);
 			comanda.setDataOraEmissione(new Date());
 			cFacade.inserisciComanda(comanda);
 		}
+		else
+			if(this.tavolo.getOccupato()==2){
+				this.comanda = cFacade.findComandaByTavolo(this.tavolo.getId());
+			}
+		this.setComandaInSession("comandaCorrente");
 		return "comanda";
 	}
 
@@ -74,12 +80,12 @@ public class SalaControllerBean {
 		}
 	}
 
-	public void setInSession(String name , Object oggetto){
+	public void setComandaInSession(String name){
 		FacesContext context = FacesContext.getCurrentInstance();
-		context.getExternalContext().getSessionMap().put(name,oggetto);
+		context.getExternalContext().getSessionMap().put(name,this.comanda);
 	}
 
-	public Object getBySession(String name ){
+	public Object getBySession(String name){
 		FacesContext context = FacesContext.getCurrentInstance();
 		return context.getExternalContext().getSessionMap().get(name);
 	}
@@ -143,6 +149,22 @@ public class SalaControllerBean {
 
 	public void setpFacade(PrenotazioneFacade pFacade) {
 		this.pFacade = pFacade;
+	}
+
+	public Comanda getComanda() {
+		return comanda;
+	}
+
+	public void setComanda(Comanda comanda) {
+		this.comanda = comanda;
+	}
+
+	public ComandaFacade getcFacade() {
+		return cFacade;
+	}
+
+	public void setcFacade(ComandaFacade cFacade) {
+		this.cFacade = cFacade;
 	}
 
 }

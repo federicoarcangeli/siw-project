@@ -68,7 +68,6 @@ public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 		}
 	}
 
-	//QUESTA QUERY RESTITUISCE NULL SENZA UN MOTIVO 
 	public Prenotazione findByTavolo(long idTavolo) {
 		try{
 			Query q = getEM().createNativeQuery("select p.* from Prenotazione p where p.tavoloprenotato_id = ?1 and p.completato='false'",Prenotazione.class);

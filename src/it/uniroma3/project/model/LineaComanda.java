@@ -25,7 +25,7 @@ public class LineaComanda {
 	@Column(nullable = false)
 	private int quantita;
 
-	@ManyToOne(cascade = CascadeType.REMOVE)
+	@ManyToOne
 	private Comanda comanda;
 
 	@ManyToOne

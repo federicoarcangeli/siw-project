@@ -189,12 +189,9 @@ public class Comanda {
 		result = prime * result + (completata ? 1231 : 1237);
 		result = prime * result + ((dataOraEmissione == null) ? 0 : dataOraEmissione.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((lineeComanda == null) ? 0 : lineeComanda.hashCode());
-		result = prime * result + ((operatore == null) ? 0 : operatore.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(prezzoTotale);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((tavolo == null) ? 0 : tavolo.hashCode());
 		return result;
 	}
 
@@ -216,29 +213,9 @@ public class Comanda {
 			return false;
 		if (id != other.id)
 			return false;
-		if (lineeComanda == null) {
-			if (other.lineeComanda != null)
-				return false;
-		} else if (!lineeComanda.equals(other.lineeComanda))
-			return false;
-		if (operatore == null) {
-			if (other.operatore != null)
-				return false;
-		} else if (!operatore.equals(other.operatore))
-			return false;
 		if (Double.doubleToLongBits(prezzoTotale) != Double.doubleToLongBits(other.prezzoTotale))
-			return false;
-		if (tavolo == null) {
-			if (other.tavolo != null)
-				return false;
-		} else if (!tavolo.equals(other.tavolo))
 			return false;
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Comanda [id=" + id + ", dataOraEmissione=" + dataOraEmissione + ", prezzoTotale=" + prezzoTotale
-				+ ", operatore=" + operatore + ", tavolo=" + tavolo + ", lineeComanda=" + lineeComanda + "]";
-	}
 }
