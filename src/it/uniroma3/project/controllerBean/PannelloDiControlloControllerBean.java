@@ -3,9 +3,9 @@ package it.uniroma3.project.controllerBean;
 import it.uniroma3.project.model.Comanda;
 import it.uniroma3.project.model.Prenotazione;
 import it.uniroma3.project.model.Tavolo;
+import it.uniroma3.project.model.Utente;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -77,6 +77,12 @@ public class PannelloDiControlloControllerBean {
 
 	@PostConstruct
 	public void init(){
+		if(this.getUtenteCorrente()==null)
+			try {
+				this.redirectPage("./sessioneScaduta.jsp");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		//		calcolo numero tavoli liberi occupati, prenotati e totali
 		this.tavoli = tFacade.findAllTavolo();
 		for(Tavolo t : this.tavoli){
@@ -95,16 +101,24 @@ public class PannelloDiControlloControllerBean {
 		//		 gestione comande di oggi
 		this.comande = cFacade.findallComandaToday();
 
-		// gestione prenotazioni di oggi
+		//		 gestione prenotazioni di oggi
 		this.prenotazioni = pFacade.findAllPrenotazioniToday();
 	}
 
+	private Utente getUtenteCorrente(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		return (Utente) context.getExternalContext().getSessionMap().get("utenteCorrente");
+	}
+
+	private void redirectPage(String page) throws IOException{
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().redirect(page);
+	}
 
 	public String getByRequest(String name){
 		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		return params.get(name);
 	}
-
 
 	public int getTavoliLiberi() {
 		return tavoliLiberi;

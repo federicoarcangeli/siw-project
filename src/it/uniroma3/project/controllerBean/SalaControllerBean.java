@@ -1,5 +1,6 @@
 package it.uniroma3.project.controllerBean;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -62,6 +63,12 @@ public class SalaControllerBean {
 
 	@PostConstruct
 	public void init() {
+		if(this.getUtenteCorrente()==null)
+			try {
+				this.redirectPage("./sessioneScaduta.jsp");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		Date today = new Date();
 		this.tavoliSala = this.gettFacade().findAllTavolo();
 
@@ -78,6 +85,16 @@ public class SalaControllerBean {
 			if(prenotazioni.isEmpty() && ristorante.comandaInCorso(t)==false)
 				tFacade.setTavoloLibero(t);
 		}
+	}
+
+	private Utente getUtenteCorrente(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		return (Utente) context.getExternalContext().getSessionMap().get("utenteCorrente");
+	}
+
+	private void redirectPage(String page) throws IOException{
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().redirect(page);
 	}
 
 	public void setComandaInSession(String name){

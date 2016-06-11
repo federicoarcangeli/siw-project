@@ -1,24 +1,20 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
-<%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@ taglib uri="http://myfaces.apache.org/tomahawk" prefix="t"%>
-<%@page import="it.uniroma3.project.facade.*"%>
-<%@page import="it.uniroma3.project.model.CategoriaPiatto"%>
-<%@page import="it.uniroma3.project.model.Piatto"%>
-<%@ page import="java.util.List"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+
 <!DOCTYPE html>
 <html lang="it">
 
 <head>
 <meta charset="utf-8">
-<title>Il nostro men&ugrave;</title>
+<title>Qualcosa &eacute; andato storto :(</title>
+<meta name="author" content="Alessandro e Federico">
 
 <!-- SEO -->
 <meta name="description"
 	content="Tomato is a Responsive HTML5 Template for Restaurants and food related services.">
 <meta name="keywords"
 	content="tomato, responsive, html5, restaurant, template, food, reservation">
-
 <!-- Favicons -->
 <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -35,7 +31,6 @@
 
 <body>
 	<f:view>
-
 		<!-- Preloder-->
 		<div class="preloder animated">
 			<div class="scoket">
@@ -64,7 +59,7 @@
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
 								<li><a href="./index_parallax.jsp">Home</a></li>
-								<li><a href="./menu.jsp"><span style="color: #F9C56A;">Men&ugrave;</span></a></li>
+								<li><a href="./menu.jsp">Men&ugrave;</a></li>
 								<h:panelGroup rendered="#{utenteCorrente.username !=null}">
 									<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
 								</h:panelGroup>
@@ -94,83 +89,18 @@
 				</nav>
 
 				<!-- Page Header -->
-				<section class="page_header">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12 text-center">
-								<h2 class="text-uppercase">Il nostro Men&ugrave;</h2>
+				<section class="page_header vertical-padding"></section>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<div class="giant-space">
+								<h2 class="text-giant">404</h2>
+								<p class="wow fadeInUp">Ops... questa pagina non esiste!</p>
 							</div>
 						</div>
 					</div>
-				</section>
-
-				<!-- menu-->
-				<section class="menu space60">
-					<div class="container">
-						<div class="food-menu wow fadeInUp">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="menu-tags3">
-										<span data-filter="*" class="tagsort3-active">Tutti</span>
-										<c:forEach var="categoria"
-											items="#{menuControllerBean.nomiCategorie}">
-											<span data-filter=".${categoria}">${categoria}</span>
-										</c:forEach>
-									</div>
-								</div>
-							</div>
-							<div class="row menu-items3">
-								<c:forEach var="piatto" items="#{menuControllerBean.piatti}">
-
-									<t:div
-										styleClass="menu-item3 col-sm-6 col-xs-12 #{piatto.getPortata().getNome()}">
-
-										<h:graphicImage
-											value="#{piatto.getDescrizionePiatto().getUrlImmagine()}" />
-
-										<div class="menu-wrapper">
-											<h4>
-												<h:outputText value="#{piatto.nome}" />
-											</h4>
-											&nbsp; <span class="price"> <h:outputText
-													value="#{piatto.getDescrizionePiatto().getPrezzo()}" />0
-												&euro; <h:graphicImage url="img/snow.png"
-													style="height: 16px; width: 16px;"
-													rendered="#{piatto.getDescrizionePiatto().prodottiSurgelati}" />
-
-												<h:graphicImage url="img/grano.png"
-													style="height: 22px; width: 16px;"
-													rendered="#{piatto.getDescrizionePiatto().prodottiAllergizzanti}" />
-
-
-											</span>
-											<div class="dotted-bg"></div>
-											<p>
-												<h:outputText
-													value="#{piatto.getDescrizionePiatto().getDescrizione() }" />
-											</p>
-										</div>
-									</t:div>
-								</c:forEach>
-
-							</div>
-							<h4>
-								<small> <img src="img/snow.png"
-									style="height: 16px; width: 16px;" />: Pu&ograve; contenere
-									prodotti surgelati.
-								</small>
-							</h4>
-							<h4>
-								<small> <img src="img/grano.png"
-									style="height: 22px; width: 16px;" />: Pu&ograve; contenere
-									allergeni.
-								</small>
-							</h4>
-
-						</div>
-					</div>
-
-				</section>
+				</div>
 
 				<!-- subscribe -->
 				<section class="subscribe">
@@ -275,7 +205,6 @@
 						</div>
 					</div>
 				</section>
-
 			</div>
 
 		</div>
