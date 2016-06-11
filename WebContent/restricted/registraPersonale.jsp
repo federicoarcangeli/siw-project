@@ -60,6 +60,8 @@
 
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
+								<li><a href="./home_Administrator.jsp">Pannello di
+										controllo</a></li>
 								<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
 								<li><a
 									href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
@@ -101,8 +103,7 @@
 															<div class="col-md-6 col-sm-6">
 																<div class="form-group">
 																	<label for="username">Username</label>
-																	<h:inputText
-																		value="#{utenteController.username}"
+																	<h:inputText value="#{utenteController.username}"
 																		styleClass="form-control" required="true"
 																		requiredMessage="Username obbligatorio" id="username" />
 																	<i class="fa fa-user" aria-hidden="true"></i>
@@ -115,8 +116,7 @@
 															<div class="col-md-6 col-sm-6">
 																<div class="form-group">
 																	<label for="password">Password</label>
-																	<h:inputSecret
-																		value="#{utenteController.password}"
+																	<h:inputSecret value="#{utenteController.password}"
 																		styleClass="form-control" required="true"
 																		requiredMessage="Password obbligatoria" id="password" />
 																	<i class="fa fa-lock" aria-hidden="true"></i>
@@ -167,7 +167,7 @@
 													</div>
 												</div>
 												<h:messages globalOnly="true" styleClass="list-group"
-														infoClass="list-group-item list-group-item-danger"/>
+													infoClass="list-group-item list-group-item-danger" />
 											</h:form>
 										</div>
 									</div>

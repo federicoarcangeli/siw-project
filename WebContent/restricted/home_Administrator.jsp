@@ -60,6 +60,8 @@
 
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
+								<li><a href="./home_Administrator.jsp"><span
+										style="color: #F9C56A;">Pannello di controllo</span></a></li>
 								<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
 								<li><a
 									href="${pageContext.request.contextPath}/ProcessaMenu">Men&ugrave;</a></li>
@@ -114,7 +116,7 @@
 												<h4>Prenotazioni</h4>
 												<table class="table">
 													<thead>
-														<tr>
+														<tr class="warning">
 															<th class="text-center">Nominativo</th>
 															<th class="text-center">Data - Ora</th>
 															<th class="text-center">Tavolo</th>
@@ -143,7 +145,7 @@
 																		value="#{prenotazione.numeroOspiti}" /></td>
 																<h:panelGroup rendered="#{!prenotazione.completato}">
 																	<td class="text-center"><i
-																		class="fa fa-spinner fa-pulse fa-lg fa-fw"></i> <span
+																		class="fa fa-refresh fa-spin fa-lg fa-fw"></i><span
 																		class="sr-only">Loading...</span></td>
 																</h:panelGroup>
 																<h:panelGroup rendered="#{prenotazione.completato}">
@@ -159,7 +161,7 @@
 												<h4>Comande giornaliere completate</h4>
 												<table class="table">
 													<thead>
-														<tr>
+														<tr class="warning">
 															<th class="text-center">Codice</th>
 															<th class="text-center">Tavolo</th>
 															<th class="text-center">Totale</th>
@@ -181,7 +183,7 @@
 																			value="#{comanda.prezzoTotale}" /> &euro;</td>
 																	<h:panelGroup rendered="#{!comanda.completata}">
 																		<td class="text-center"><i
-																			class="fa fa-spinner fa-pulse fa-lg fa-fw"></i> <span
+																			class="fa fa-spinner fa-pulse fa-2x fa-fw"></i> <span
 																			class="sr-only">Loading...</span></td>
 																	</h:panelGroup>
 																	<h:panelGroup rendered="#{comanda.completata}">
@@ -204,7 +206,7 @@
 												<h4>Operatori in servizio</h4>
 												<table class="table">
 													<thead>
-														<tr>
+														<tr class="warning">
 															<th class="text-center">Codice operatore</th>
 															<th class="text-center">Username</th>
 															<th class="text-center">Tavolo servito</th>
@@ -253,7 +255,7 @@
 												<h:form>
 													<table class="table">
 														<thead>
-															<tr>
+															<tr class="warning">
 																<th class="text-center">Codice</th>
 																<th class="text-center">Tavolo</th>
 																<th class="text-center">Totale</th>
@@ -275,7 +277,7 @@
 																				value="#{comanda.prezzoTotale}" /> &euro;</td>
 																		<h:panelGroup rendered="#{!comanda.completata}">
 																			<td class="text-center"><i
-																				class="fa fa-spinner fa-pulse fa-lg fa-fw"></i> <span
+																				class="fa fa-refresh fa-spin fa-lg fa-fw"></i> <span
 																				class="sr-only">Loading...</span></td>
 																		</h:panelGroup>
 																		<h:panelGroup rendered="#{comanda.completata}">
@@ -320,7 +322,7 @@
 
 													<table class="table">
 														<thead>
-															<tr>
+															<tr class="warning">
 																<th class="text-center">Linea N°</th>
 																<th class="text-center">Piatto</th>
 																<th class="text-center">Quantità</th>
@@ -339,23 +341,17 @@
 																</tr>
 															</c:forEach>
 															<tr class="warning">
-																<td></td>
-																<td class="text-center"><strong>Totale:</strong></td>
+																<td class="text-center" colspan="2"><strong>Totale:</strong></td>
 																<td class="text-center"><h:outputText
 																		value="#{comanda.prezzoTotale}" />&euro;</td>
 															</tr>
-															<tr>
-																<td class="text-right">Data e ora : <br>
-																	Operatore :
-																</td>
-																<td class="text-left"><h:outputText
-																		value="#{comanda.dataOraEmissione}" /><br> <h:outputText
-																		value="#{comanda.operatore.getUsername()}" /></td>
-																<td></td>
-															</tr>
 														</tbody>
 													</table>
-
+													<span><strong>Data e ora : </strong> <h:outputText
+															value="#{comanda.dataOraEmissione}">
+															<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+														</h:outputText> <br> <strong> Operatore : </strong> <h:outputText
+															value="#{comanda.operatore.getUsername()}" /> </span>
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-warning"

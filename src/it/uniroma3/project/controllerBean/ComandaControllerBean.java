@@ -96,6 +96,7 @@ public class ComandaControllerBean {
 		comandaInCorso.setPrezzoTotale(
 				comandaInCorso.getPrezzoTotale() - (linea.getPiatto().getDescrizionePiatto().getPrezzo())*linea.getQuantita());
 		lFacade.eliminaRigaComanda(linea.getId());
+		cFacade.updateComanda(comandaInCorso);
 		this.refreshPage();
 		return "comanda";
 	}

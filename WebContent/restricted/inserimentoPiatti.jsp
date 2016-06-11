@@ -59,6 +59,8 @@
 
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
+								<li><a href="./home_Administrator.jsp">Pannello di
+										controllo</a></li>
 								<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
 								<li><a
 									href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
@@ -139,8 +141,7 @@
 												id="img" />
 											<i class="fa fa-picture-o" aria-hidden="true"></i>
 											<div class="animated fadeInDown">
-												<span class="label label-danger"><h:message
-														for="img" /></span>
+												<span class="label label-danger"><h:message for="img" /></span>
 											</div>
 										</div>
 									</div>

@@ -62,6 +62,8 @@
 
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
+								<li><a href="./home_Administrator.jsp">Pannello di
+										controllo</a></li>
 								<li><a href="./prenotazioneAdmin.jsp"><span
 										style="color: #F9C56A;">Riserva un tavolo</span></a></li>
 								<li><a href="./sala.jsp">Sala</a></li>
