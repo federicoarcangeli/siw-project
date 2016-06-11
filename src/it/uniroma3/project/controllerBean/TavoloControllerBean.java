@@ -1,8 +1,11 @@
 package it.uniroma3.project.controllerBean;
 
+import java.io.IOException;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import it.uniroma3.project.facade.PrenotazioneFacade;
 import it.uniroma3.project.facade.TavoloFacade;
@@ -13,7 +16,7 @@ import it.uniroma3.project.model.Tavolo;
 @EJB(name = "tFacade", beanInterface = TavoloFacade.class)
 public class TavoloControllerBean {
 
-	private String codiceTavolo;
+	private String codice;
 	private int coperti;
 	private Tavolo tavolo;
 	private int occupato;
@@ -25,16 +28,18 @@ public class TavoloControllerBean {
 	private PrenotazioneFacade pFacade;
 
 	public String create() {
-		this.tavolo = tFacade.create(this.getCodiceTavolo(),this.getCoperti());
-		return "registrazioneTavolo?faces-redirect=true";
+		this.tavolo = tFacade.create(this.getCodice(),this.getCoperti());
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().getSessionMap().put("tavoloCorrente", this.tavolo);
+		return "registraTavolo?faces-redirect=true";
 	}
 
-	public String getCodiceTavolo() {
-		return codiceTavolo;
+	public String getCodice() {
+		return codice;
 	}
 
-	public void setCodiceTavolo(String codice) {
-		this.codiceTavolo = codice;
+	public void setCodice(String codice) {
+		this.codice = codice;
 	}
 
 	public int getCoperti() {

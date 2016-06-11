@@ -7,7 +7,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Inserimento personale</title>
+<title>Inserimento nuovo tavolo</title>
 <meta name="author" content="Alessandro&Federico">
 
 <!-- SEO -->
@@ -109,7 +109,7 @@
 
 														<div class="form-group">
 															<label for="codiceTavolo">Numero tavolo</label>
-															<h:inputText value="#{tavoloController.codiceTavolo}"
+															<h:inputText value="#{tavoloController.codice}"
 																styleClass="form-control" required="true"
 																requiredMessage="Numero tavolo obbligatorio"
 																id="codiceTavolo" />
@@ -180,7 +180,17 @@
 														</div>
 													</div>
 												</div>
+												<h:panelGroup rendered = "#{not empty tavoloCorrente}">
+												<div class="animated fadeInDown">
+													<span class="label label-success"> <h:outputText
+															value="#{tavoloCorrente.toString()}" />
+													</span>
+												</div>
+												</h:panelGroup>
 											</h:form>
+
+
+
 										</div>
 									</div>
 								</div>

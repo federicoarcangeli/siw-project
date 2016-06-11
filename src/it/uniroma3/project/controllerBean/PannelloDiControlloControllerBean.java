@@ -15,6 +15,7 @@ import javax.ejb.EJBs;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import it.uniroma3.project.facade.ComandaFacade;
 import it.uniroma3.project.facade.PrenotazioneFacade;
@@ -110,6 +111,12 @@ public class PannelloDiControlloControllerBean {
 
 		//		 gestione prenotazioni di oggi
 		this.prenotazioni = pFacade.findAllPrenotazioniToday();
+		this.removeFromSession("tavoloCorrente");
+	}
+	
+	private void removeFromSession(String param) {
+		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		sessionMap.remove(param);
 	}
 
 	private Utente getUtenteCorrente(){
