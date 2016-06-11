@@ -59,21 +59,21 @@ public class UtenteControllerBean implements Serializable {
 	public String createOperatore() {
 		this.utente = new Utente(username, this.getPasswordCriptata());
 		if (this.isAlreadyRegistered(this.utente))
-			return "registraPersonale";
+			return "registraPersonale?faces-redirect=true";
 		else {
 			this.utente = this.uFacade.signUp(utente);
-			return "home_Administrator";
+			return "home_Administrator?faces-redirect=true";
 		}
 	}
 
 	public String loginUtente() {
 		this.utente = this.uFacade.findByUsername(this.getUsername());
 		if (this.isNotAlreadyRegistered(this.utente) || this.wrongPassword()) {
-			return "loginSignup";
+			return "loginSignup?faces-redirect=true";
 		} else {
 			this.utente = this.uFacade.findByUsername(utente.getUsername());
 			this.setUtenteInSession("utenteCorrente");
-			return "index_parallax";
+			return "index_parallax?faces-redirect=true";
 		}
 	}
 
@@ -86,10 +86,10 @@ public class UtenteControllerBean implements Serializable {
 			//			L'utente è registrato
 			if(this.utente.getRole().equals("admin")) {
 				this.setUtenteInSession("utenteCorrente");
-				return "home_Administrator";
+				return "home_Administrator?faces-redirect=true";
 			} else if(this.utente.getRole().equals("operatore")) {
 				this.setUtenteInSession("utenteCorrente");
-				return "home_Operatore";
+				return "home_Operatore?faces-redirect=true";
 			} else {
 				return "administrator";
 			}

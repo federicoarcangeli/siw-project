@@ -57,7 +57,7 @@ public class SalaControllerBean {
 				this.comanda = cFacade.findComandaByTavolo(this.tavolo.getId());
 			}
 		this.setComandaInSession("comandaCorrente");
-		return "comanda";
+		return "comanda?faces-redirect=true";
 	}
 
 	@PostConstruct

@@ -1,6 +1,5 @@
 package it.uniroma3.project.dao;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,7 +12,6 @@ public class ComandaDao extends AbstractDao<Comanda> {
 
 	public ComandaDao(EntityManager em) {
 		super(em);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -23,7 +21,7 @@ public class ComandaDao extends AbstractDao<Comanda> {
 
 	public void deleteById(long id) {
 		Comanda comanda = this.findById(id);
-		if(comanda!=null) {
+		if (comanda != null) {
 			Comanda toRemove = getEM().merge(comanda);
 			getEM().remove(toRemove);
 		}
@@ -36,8 +34,9 @@ public class ComandaDao extends AbstractDao<Comanda> {
 	}
 
 	public Comanda findComandaByTavolo(Long param) {
-		try{
-			Query query = getEM().createNativeQuery("select c.* from comanda c where c.tavolo_id = ?1 and c.completata='false'",Comanda.class);
+		try {
+			Query query = getEM().createNativeQuery(
+					"select c.* from comanda c where c.tavolo_id = ?1 and c.completata='false'", Comanda.class);
 			query.setParameter(1, param);
 			return (Comanda) query.getSingleResult();
 		} catch (Exception e) {
@@ -46,13 +45,15 @@ public class ComandaDao extends AbstractDao<Comanda> {
 		}
 	}
 
-	public List<Comanda> findAllToday(Date today) {
-		TypedQuery<Comanda> query = this.getEM().createQuery("select c from Comanda c where c.dataOraEmissione > CURRENT_DATE",Comanda.class);
+	public List<Comanda> findAllToday() {
+		TypedQuery<Comanda> query = getEM()
+				.createQuery("select c from Comanda c where c.dataOraEmissione > CURRENT_DATE", Comanda.class);
 		return query.getResultList();
 	}
 
 	public List<Comanda> findAllCompletate() {
-		TypedQuery<Comanda> query = getEM().createQuery( "select c from Comanda c where completata = true",Comanda.class);
+		TypedQuery<Comanda> query = getEM().createQuery("select c from Comanda c where completata = true",
+				Comanda.class);
 		return query.getResultList();
 	}
 

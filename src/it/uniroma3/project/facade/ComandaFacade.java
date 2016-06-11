@@ -22,9 +22,9 @@ public class ComandaFacade {
 		return comanda;
 	}
 
-	public List<Comanda> findallComandaToday(Date date) {
+	public List<Comanda> findallComandaToday() {
 		ComandaDao dao = new ComandaDao(this.em);
-		List<Comanda> comandeToday = dao.findAllToday(date);
+		List<Comanda> comandeToday = dao.findAllToday();
 		return comandeToday;
 	}
 

@@ -30,9 +30,9 @@ public class PrenotazioneFacade {
 		return prenotazione;
 	}
 
-	public List<Prenotazione> findAllPrenotazioniToday(Date today) {
+	public List<Prenotazione> findAllPrenotazioniToday() {
 		PrenotazioneDao dao = new PrenotazioneDao(this.em);
-		List<Prenotazione> prenotazione = dao.findAllPrenotazioniToday(today);
+		List<Prenotazione> prenotazione = dao.findAllPrenotazioniToday();
 		return prenotazione;
 	}
 
