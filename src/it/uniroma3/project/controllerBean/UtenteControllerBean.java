@@ -187,7 +187,8 @@ public class UtenteControllerBean implements Serializable {
 	public void logout() throws IOException {
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		externalContext.invalidateSession();
-		externalContext.redirect(externalContext.getRequestContextPath() + "/index_parallax.jsp");
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().redirect("./index_parallax.jsp");
 	}
 
 	public void setUtenteInSession(String name){

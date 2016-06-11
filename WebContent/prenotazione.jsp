@@ -62,23 +62,22 @@
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
 								<li><a href="./index_parallax.jsp">Home</a></li>
-								<li><a href="">Men&ugrave;</a></li>
-								<li><a href="./galleria.jsp">Galleria</a></li>
+								<li><a href="./menu.jsp">Men&ugrave;</a></li>
 								<li><a href="./prenotazione.jsp"><span
 										style="color: #F9C56A;">Riserva un tavolo</span></a></li>
 								<li><a href="./contact.html">Contact</a></li>
-								<li class="dropdown"><a href="./home_Utente"
+								<li class="dropdown"><a href="./index_parallax.jsp"
 									class="dropdown-toggle" data-toggle="dropdown" role="button"
 									aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
 											value="#{utenteCorrente.username}"></h:outputText> <span
-										class="caret"></span>
-								</a>
+										class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="./profilo.jsp">Profilo</a></li>
+										<li class="text-center"><a href="./profilo.jsp">Profilo</a></li>
 										<li><h:form>
-												<h:commandLink action="#{utenteController.logout}" />
-											</h:form><a href="#"
-											onclick="return myfaces.oam.submitForm('j_id_jsp_192962768_2','j_id_jsp_192962768_2:j_id_jsp_192962768_3');">Logout</a></li>
+												<h:commandButton action="#{utenteController.logout}"
+													styleClass="btn btn-default btn-xs btn-block"
+													value="Logout" />
+											</h:form></li>
 									</ul></li>
 							</ul>
 						</div>

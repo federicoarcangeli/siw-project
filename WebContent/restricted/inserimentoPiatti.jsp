@@ -1,7 +1,3 @@
-<%@page import="it.uniroma3.project.facade.*"%>
-<%@page import="it.uniroma3.project.model.CategoriaPiatto"%>
-<%@ page import="java.util.List"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
@@ -62,15 +58,18 @@
 								<li><a href="./home_Administrator.jsp">Pannello di
 										controllo</a></li>
 								<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
-								<li><a
-									href="${pageContext.request.contextPath}/processaSala">Sala</a></li>
+								<li><a href="./sala.jsp">Sala</a></li>
 								<li class="dropdown"><a href="./home_Administrator.jsp"
 									class="dropdown-toggle" data-toggle="dropdown" role="button"
 									aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
 											value="#{utenteCorrente.username}"></h:outputText> <span
 										class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="./index_parallax.jsp">Logout</a></li>
+										<li><h:form>
+												<h:commandButton action="#{utenteController.logout}"
+													styleClass="btn btn-default btn-xs btn-block"
+													value="Logout" />
+											</h:form></li>
 									</ul></li>
 							</ul>
 						</div>

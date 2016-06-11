@@ -61,18 +61,34 @@
 								src="img/nav-logo.png" alt="nav-logo">
 							</a>
 						</div>
-
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
 								<li><a href="./index_parallax.jsp">Home</a></li>
-								<li><a
-									href="${pageContext.request.contextPath}/ProcessaMenu">Men&ugrave;</a></li>
-								<li><a href="./gallery.jsp">Galleria</a></li>
-								<li><a href="./loginSignup.jsp">Login / Signup</a></li>
-								<li><a href="./contact.html">Contact</a></li>
+								<li><a href="./menu.jsp"><span style="color: #F9C56A;">Men&ugrave;</span></a></li>
+								<h:panelGroup rendered="#{utenteCorrente.username !=null}">
+									<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{utenteCorrente.username ==null}">
+									<li><a href="./loginSignup.jsp">Login / Signup</a></li>
+								</h:panelGroup>
+								<li><a href="./contact.html">Contatti</a></li>
+								<h:panelGroup rendered="#{utenteCorrente.username !=null}">
+									<li class="dropdown"><a href="./index_parallax.jsp"
+										class="dropdown-toggle" data-toggle="dropdown" role="button"
+										aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
+												value="#{utenteCorrente.username}"></h:outputText> <span
+											class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li class="text-center"><a href="./profilo.jsp">Profilo</a></li>
+											<li><h:form>
+													<h:commandButton action="#{utenteController.logout}"
+														styleClass="btn btn-default btn-xs btn-block"
+														value="Logout" />
+												</h:form></li>
+										</ul></li>
+								</h:panelGroup>
 							</ul>
 						</div>
-
 						<!--/.navbar-collapse -->
 					</div>
 				</nav>
@@ -82,7 +98,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12 text-center">
-								<h2 class="text-uppercase">Il nostro Menù</h2>
+								<h2 class="text-uppercase">Il nostro Men&ugrave;</h2>
 							</div>
 						</div>
 					</div>
@@ -108,36 +124,35 @@
 
 									<t:div
 										styleClass="menu-item3 col-sm-6 col-xs-12 #{piatto.getPortata().getNome()}">
-									
-									<h:graphicImage value="#{piatto.getDescrizionePiatto().getUrlImmagine()}"/>
-									
-									<div class="menu-wrapper">
-										<h4>
-											<h:outputText value="#{piatto.nome}" />  
-										</h4>
-										&nbsp; <span class="price"> <h:outputText
-												value="#{piatto.getDescrizionePiatto().getPrezzo()}" /> 0
-											&euro; 
-											
-											<h:graphicImage url="img/snow.png"
-												style="height: 16px; width: 16px;"
-												rendered="#{piatto.getDescrizionePiatto().prodottiSurgelati}" />
 
-											<h:graphicImage url="img/grano.png"
-												style="height: 22px; width: 16px;"
-												rendered="#{piatto.getDescrizionePiatto().prodottiAllergizzanti}" />
+										<h:graphicImage
+											value="#{piatto.getDescrizionePiatto().getUrlImmagine()}" />
+
+										<div class="menu-wrapper">
+											<h4>
+												<h:outputText value="#{piatto.nome}" />
+											</h4>
+											&nbsp; <span class="price"> <h:outputText
+													value="#{piatto.getDescrizionePiatto().getPrezzo()}" /> 0
+												&euro; <h:graphicImage url="img/snow.png"
+													style="height: 16px; width: 16px;"
+													rendered="#{piatto.getDescrizionePiatto().prodottiSurgelati}" />
+
+												<h:graphicImage url="img/grano.png"
+													style="height: 22px; width: 16px;"
+													rendered="#{piatto.getDescrizionePiatto().prodottiAllergizzanti}" />
 
 
-										</span>
-										<div class="dotted-bg"></div>
-										<p>
-											<h:outputText
-												value="#{piatto.getDescrizionePiatto().getDescrizione() }" />
-										</p>
-									</div>
-</t:div>
+											</span>
+											<div class="dotted-bg"></div>
+											<p>
+												<h:outputText
+													value="#{piatto.getDescrizionePiatto().getDescrizione() }" />
+											</p>
+										</div>
+									</t:div>
 								</c:forEach>
-								
+
 							</div>
 							<h4>
 								<small> <img src="img/snow.png"

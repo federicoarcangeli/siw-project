@@ -58,13 +58,11 @@
 							src="img/nav-logo.png" alt="nav-logo">
 						</a>
 					</div>
-
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="./index_parallax.jsp">Home</a></li>
-							<li><a
-								href="${pageContext.request.contextPath}/ProcessaMenu">Men&ugrave;</a></li>
-							<li><a href="./gallery.jsp">Galleria</a></li>
+							<li><a href="./index_parallax.jsp"><span
+									style="color: #F9C56A;">Home</span></a></li>
+							<li><a href="./menu.jsp">Men&ugrave;</a></li>
 							<h:panelGroup rendered="#{utenteCorrente.username !=null}">
 								<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
 							</h:panelGroup>
@@ -73,22 +71,22 @@
 							</h:panelGroup>
 							<li><a href="./contact.html">Contatti</a></li>
 							<h:panelGroup rendered="#{utenteCorrente.username !=null}">
-								<li class="dropdown"><a href="./home_Utente.jsp"
+								<li class="dropdown"><a href="./index_parallax.jsp"
 									class="dropdown-toggle" data-toggle="dropdown" role="button"
 									aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
 											value="#{utenteCorrente.username}"></h:outputText> <span
 										class="caret"></span></a>
 									<ul class="dropdown-menu">
-										<li><a href="./profilo.jsp">Profilo</a></li>
+										<li class="text-center"><a href="./profilo.jsp">Profilo</a></li>
 										<li><h:form>
-												<h:commandLink action="#{utenteController.logout}" />
-											</h:form><a href="#"
-											onclick="return myfaces.oam.submitForm('j_id_jsp_577129695_5','j_id_jsp_577129695_5:j_id_jsp_577129695_6');">Logout</a></li>
+												<h:commandButton action="#{utenteController.logout}"
+													styleClass="btn btn-default btn-xs btn-block"
+													value="Logout" />
+											</h:form></li>
 									</ul></li>
 							</h:panelGroup>
 						</ul>
 					</div>
-
 					<!--/.navbar-collapse -->
 				</div>
 			</nav>

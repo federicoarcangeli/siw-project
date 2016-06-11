@@ -73,7 +73,11 @@
 											value="#{utenteCorrente.username}"></h:outputText> <span
 										class="caret"> </span></a>
 									<ul class="dropdown-menu">
-										<li><a href="">Logout</a></li>
+										<li><h:form>
+												<h:commandButton action="#{utenteController.logout}"
+													styleClass="btn btn-default btn-xs btn-block"
+													value="Logout" />
+											</h:form></li>
 									</ul></li>
 							</ul>
 						</div>

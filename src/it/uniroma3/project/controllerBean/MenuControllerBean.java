@@ -24,20 +24,20 @@ import it.uniroma3.project.model.Piatto;
 		@EJB(name = "cpFacade", beanInterface = CategoriaPiattoFacade.class) })
 public class MenuControllerBean {
 
-	@EJB(name = "pFacade")
+	@EJB
 	private PiattoFacade pFacade;
 
-	@EJB(name = "cpFacade")
+	@EJB
 	private CategoriaPiattoFacade cpFacade;
-	
+
 	private List<CategoriaPiatto> categorie;
-	
+
 	private List<String> nomiCategorie;
-	
+
 	private List<Piatto> piatti;
-	
+
 	private byte[] img;
-	
+
 	@PostConstruct
 	public void init() {
 		this.categorie = this.cpFacade.findAll();
@@ -48,9 +48,9 @@ public class MenuControllerBean {
 		}
 		this.piatti = this.pFacade.findAll();
 	}
-	
+
 	public String getBase64Img(DescrizionePiatto descrizionePiatto) {
-		
+
 		byte[] encodeBase64 = Base64.encodeBase64(descrizionePiatto.getImg());
 		String base64Encoded = null;
 		try {
@@ -60,7 +60,7 @@ public class MenuControllerBean {
 		}
 		return base64Encoded;
 	}
-	
+
 	public String goToMenu() {
 		return "menu";
 	}
@@ -112,8 +112,8 @@ public class MenuControllerBean {
 	public void setImg(byte[] img) {
 		this.img = img;
 	}
-	
-	
-	
+
+
+
 
 }
