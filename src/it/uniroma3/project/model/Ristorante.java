@@ -22,7 +22,7 @@ public class Ristorante {
 	public boolean containsDate(List<Prenotazione> prenotazioni, Date data) {
 		Time24HoursValidator validatorD = new Time24HoursValidator();
 		for (Prenotazione p : prenotazioni) 
-			if (validatorD.SameDate(data, p.getData()))
+			if (validatorD.SameDate(data, p.getData()) && p.isCompletato()==false)
 				return true;
 		return false;
 	}
@@ -53,7 +53,7 @@ public class Ristorante {
 	 */
 	public boolean comandaInCorso(Tavolo t){
 		for(Comanda c : t.getComande()){
-			if(c.isCompletata()==false)
+			if(c.isCompletata()== false)
 				return true;
 		}
 		return false;
@@ -69,7 +69,7 @@ public class Ristorante {
 		for (Tavolo t : tavoliDisponibili) {
 			if (t.getPrenotazioni().isEmpty()){
 				return t;}
-			else if (!this.containsDate(t.getPrenotazioni(), data))
+			else if (!this.containsDate(t.getPrenotazioni(), data) && this.comandaInCorso(t)==false)
 				return t;
 		}
 		return null;

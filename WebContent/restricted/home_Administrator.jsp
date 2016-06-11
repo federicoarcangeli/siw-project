@@ -157,50 +157,48 @@
 												<br>
 												<hr>
 												<h4>Comande giornaliere completate</h4>
-												<form action="" method="post">
-													<table class="table">
-														<thead>
-															<tr>
-																<th class="text-center">Codice</th>
-																<th class="text-center">Tavolo</th>
-																<th class="text-center">Totale</th>
-																<th class="text-center">Stato</th>
-																<th class="text-center">Dettagli</th>
+												<table class="table">
+													<thead>
+														<tr>
+															<th class="text-center">Codice</th>
+															<th class="text-center">Tavolo</th>
+															<th class="text-center">Totale</th>
+															<th class="text-center">Stato</th>
+															<th class="text-center">Dettagli</th>
 
-															</tr>
-														</thead>
-														<tbody>
-															<c:forEach var="comanda"
-																items="#{pannelloController.comande}">
-																<h:panelGroup rendered="#{comanda.completata}">
-																	<tr>
-																		<td class="text-center"><h:outputText
-																				value="#{comanda.id}" /></td>
-																		<td class="text-center"><h:outputText
-																				value="#{comanda.tavolo.getCodiceTavolo()}" /></td>
-																		<td class="text-center"><h:outputText
-																				value="#{comanda.prezzoTotale}" /> &euro;</td>
-																		<h:panelGroup rendered="#{!comanda.completata}">
-																			<td class="text-center"><i
-																				class="fa fa-spinner fa-pulse fa-lg fa-fw"></i> <span
-																				class="sr-only">Loading...</span></td>
-																		</h:panelGroup>
-																		<h:panelGroup rendered="#{comanda.completata}">
-																			<td class="text-center" class="success"
-																				style="color: green;"><i
-																				class="fa fa-check-circle"></i></td>
-																		</h:panelGroup>
-																		<td class="text-center"><a href="#"
-																			data-toggle="modal"
-																			data-target='#<h:outputText
+														</tr>
+													</thead>
+													<tbody>
+														<c:forEach var="comanda"
+															items="#{pannelloController.comande}">
+															<h:panelGroup rendered="#{comanda.completata}">
+																<tr>
+																	<td class="text-center"><h:outputText
+																			value="#{comanda.id}" /></td>
+																	<td class="text-center"><h:outputText
+																			value="#{comanda.tavolo.getCodiceTavolo()}" /></td>
+																	<td class="text-center"><h:outputText
+																			value="#{comanda.prezzoTotale}" /> &euro;</td>
+																	<h:panelGroup rendered="#{!comanda.completata}">
+																		<td class="text-center"><i
+																			class="fa fa-spinner fa-pulse fa-lg fa-fw"></i> <span
+																			class="sr-only">Loading...</span></td>
+																	</h:panelGroup>
+																	<h:panelGroup rendered="#{comanda.completata}">
+																		<td class="text-center" class="success"
+																			style="color: green;"><i
+																			class="fa fa-check-circle"></i></td>
+																	</h:panelGroup>
+																	<td class="text-center"><a href="#"
+																		data-toggle="modal"
+																		data-target='#<h:outputText
 																				value="#{comanda.id}" />'
-																			class="fa fa-info-circle"></a></td>
-																	</tr>
-																</h:panelGroup>
-															</c:forEach>
-														</tbody>
-													</table>
-												</form>
+																		class="fa fa-info-circle"></a></td>
+																</tr>
+															</h:panelGroup>
+														</c:forEach>
+													</tbody>
+												</table>
 											</div>
 											<div class="col-md-4 col-sm-6">
 												<h4>Operatori in servizio</h4>
@@ -357,6 +355,7 @@
 															</tr>
 														</tbody>
 													</table>
+
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-warning"
@@ -364,19 +363,16 @@
 														Chiudi <i class="fa fa-times"></i>
 													</button>
 													<h:panelGroup rendered="#{!comanda.completata}">
-														<button type="submit" class="btn btn-danger"
-															name="elimina"
-															value='<h:outputText value="#{comanda.id}" />'>
-															Elimina <i class="fa fa-trash-o"></i>
-														</button>
-														<button type="submit" class="btn btn-success"
-															name="conferma"
-															value='<h:outputText value="#{comanda.id}" />'>
-															Conferma <i class="fa fa-check"></i>
-														</button>
+														<h:commandLink styleClass="btn btn-danger" value="Elimina"
+															action="#{pannelloController.eliminaComanda}">
+															<i class="fa fa-trash-o"></i>
+															<f:param name="idComanda" value="#{comanda.id}"></f:param>
+														</h:commandLink>
 														<h:commandLink styleClass="btn btn-success"
 															value="Conferma"
 															action="#{pannelloController.confermaComanda}">
+															<f:param name="idComanda" value="#{comanda.id}"></f:param>
+															<i class="fa fa-check"></i>
 														</h:commandLink>
 													</h:panelGroup>
 												</div>

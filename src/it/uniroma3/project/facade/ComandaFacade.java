@@ -16,6 +16,12 @@ public class ComandaFacade {
 	@PersistenceContext(unitName = "restaurant")
 	private EntityManager em;
 
+	public Comanda findComandaById(Long idComanda) {
+		ComandaDao dao = new ComandaDao(this.em);
+		Comanda comanda = dao.findById(idComanda);
+		return comanda;
+	}
+
 	public List<Comanda> findallComandaToday(Date date) {
 		ComandaDao dao = new ComandaDao(this.em);
 		List<Comanda> comandeToday = dao.findAllToday(date);
@@ -27,5 +33,22 @@ public class ComandaFacade {
 		dao.save(comanda);
 	}
 
+	public void concludiComanda(Long idComanda) {
+		ComandaDao dao = new ComandaDao(this.em);
+		Comanda comanda = dao.findById(idComanda);
+		this.setCompletata(comanda);
+	}
+
+	public void setCompletata(Comanda comanda){
+		ComandaDao dao = new ComandaDao(this.em);
+		comanda.setCompletata(true);
+		dao.update(comanda);
+	}
+
+	public void eliminaComandaByID(Long idComanda) {
+		ComandaDao dao = new ComandaDao(this.em);
+		Comanda comanda = dao.findById(idComanda);
+		dao.delete(comanda);
+	}
 
 }

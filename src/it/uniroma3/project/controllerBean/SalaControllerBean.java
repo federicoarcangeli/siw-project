@@ -71,7 +71,6 @@ public class SalaControllerBean {
 
 			if(prenotazioni.isEmpty() && ristorante.comandaInCorso(t)==false)
 				tFacade.setTavoloLibero(t);
-			// dobbiamo gestire il caso in cui la prenotazione per quel tavolo è stata completata
 		}
 	}
 

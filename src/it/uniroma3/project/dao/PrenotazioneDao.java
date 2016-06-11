@@ -1,6 +1,5 @@
 package it.uniroma3.project.dao;
 
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
@@ -32,36 +31,51 @@ public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 
 	@SuppressWarnings("unchecked")
 	public List<Prenotazione> findAllPrenotazioneUtente(Long id_utente) {
-		Query query = getEM().createNativeQuery("select p.* from Prenotazione p where p.utente_id= ?1",
-				Prenotazione.class);
-		query.setParameter(1, id_utente);
-		return query.getResultList();
+		try{
+			Query query = getEM().createNativeQuery("select p.* from Prenotazione p where p.utente_id= ?1",
+					Prenotazione.class);
+			query.setParameter(1, id_utente);
+			return query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Prenotazione> findPrenotazioneTavolo(Tavolo t, Date today) {
-		Query query = getEM().createNativeQuery(
-				"select p.* from Prenotazione p where p.tavoloprenotato_id= ?1 and p.data= ?2 and p.completato='false'", Prenotazione.class);
-		query.setParameter(1, t.getId());
-		query.setParameter(2, today, TemporalType.DATE);
-		return query.getResultList();
-
+		try{
+			Query query = getEM().createNativeQuery(
+					"select p.* from Prenotazione p where p.tavoloprenotato_id= ?1 and p.data= ?2 and p.completato='false'", Prenotazione.class);
+			query.setParameter(1, t.getId());
+			query.setParameter(2, today, TemporalType.DATE);
+			return query.getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	public List<Prenotazione> findAllPrenotazioniToday(Date today) {
-		TypedQuery<Prenotazione> query = getEM().createQuery( "select p from Prenotazione p where p.data = :today",Prenotazione.class);
-		query.setParameter("today", today);
-		List<Prenotazione> result = query.getResultList();
-		return result;
+		try{
+			TypedQuery<Prenotazione> query = getEM().createQuery( "select p from Prenotazione p where p.data = :today",Prenotazione.class);
+			query.setParameter("today", today, TemporalType.DATE);
+			List<Prenotazione> result = query.getResultList();
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
-	public Prenotazione findByTavolo(long idComanda) {
-		try {
-			Query q = (Query) getEM().createNativeQuery("select id from prenotazione where tavoloprenotato_id = ?1 and completato='false'");
-			q.setParameter(1, idComanda);
-			BigInteger id = (BigInteger) q.getSingleResult();
-			return this.findById(id.longValue());
+	//QUESTA QUERY RESTITUISCE NULL SENZA UN MOTIVO 
+	public Prenotazione findByTavolo(long idTavolo) {
+		try{
+			Query q = getEM().createNativeQuery("select p.* from Prenotazione p where p.tavoloprenotato_id = ?1 and p.completato='false'",Prenotazione.class);
+			q.setParameter(1, idTavolo);
+			return (Prenotazione) q.getSingleResult();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
