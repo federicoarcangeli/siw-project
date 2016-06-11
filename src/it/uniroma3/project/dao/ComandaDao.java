@@ -1,11 +1,9 @@
 package it.uniroma3.project.dao;
 
-import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import it.uniroma3.project.model.Comanda;
@@ -39,11 +37,11 @@ public class ComandaDao extends AbstractDao<Comanda> {
 
 	public Comanda findComandaByTavolo(Long param) {
 		try{
-			Query q = (Query) getEM().createNativeQuery("select c.id from comanda c where c.tavolo_id = ?1 and c.completata='false'");
+			TypedQuery<Comanda> q =  getEM().createQuery("select c from Comanda c where c.tavolo_id = ?1 and c.completata='false'",Comanda.class);
 			q.setParameter(1, param);
-			BigInteger id = (BigInteger) q.getSingleResult();
-			return this.findById(id.longValue());
+			return q.getSingleResult();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}

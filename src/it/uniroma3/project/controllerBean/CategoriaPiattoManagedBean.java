@@ -65,7 +65,7 @@ public class CategoriaPiattoManagedBean {
 	}
 
 	public String getList() {
-		this.categorie = this.cpFacade.getCategorie();
+		this.categorie = this.cpFacade.findAll();
 		return "inserimentoPiatti";
 	}
 
@@ -85,7 +85,7 @@ public class CategoriaPiattoManagedBean {
 
 	@PostConstruct
 	public void init() {
-		this.categorie = this.cpFacade.getCategorie();
+		this.categorie = this.cpFacade.findAll();
 	}
 
 }

@@ -32,6 +32,8 @@ public class ComandaControllerBean {
 
 	@PostConstruct
 	public void init() {
+		this.categorie = cpFacade.findAll();
+		this.piatti = pFacade.findAll();
 	}
 
 	public List<CategoriaPiatto> getCategorie() {

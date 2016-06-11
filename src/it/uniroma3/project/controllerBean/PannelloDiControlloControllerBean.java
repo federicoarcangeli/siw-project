@@ -4,6 +4,7 @@ import it.uniroma3.project.model.Comanda;
 import it.uniroma3.project.model.Prenotazione;
 import it.uniroma3.project.model.Tavolo;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -28,9 +29,9 @@ import it.uniroma3.project.facade.TavoloFacade;
 
 public class PannelloDiControlloControllerBean {
 
-	private float tavoliLiberi = 0;
-	private float tavoliPrenotati = 0;
-	private float tavoliOccupati = 0;
+	private int tavoliLiberi = 0;
+	private int tavoliPrenotati = 0;
+	private int tavoliOccupati = 0;
 	private float tavoliTotali = 0;
 	private float tavoliLiberiP = 0;
 	private float tavoliPrenotatiP = 0;
@@ -49,17 +50,30 @@ public class PannelloDiControlloControllerBean {
 	@EJB
 	private TavoloFacade tFacade;
 
-	public String eliminaComanda(){
-		this.cFacade.eliminaComandaByID(Long.parseLong(this.getByRequest("idComanda")));
+	public Long getIDComandaByRequest(){
+		return Long.parseLong(this.getByRequest("idComanda"));
+	}
+
+	public Comanda getComandaByRequest(){
+		return cFacade.findComandaById(this.getIDComandaByRequest());
+	}
+
+	public String eliminaComanda() throws IOException{
+		Comanda comanda = this.getComandaByRequest();
+		this.cFacade.eliminaComandaByID(comanda.getId());
+		this.tFacade.setTavoloLibero(comanda.getTavolo().getId());
+		this.refreshPage();
 		return "home_Administrator";
 	}
 
-	public String confermaComanda(){
-		cFacade.concludiComanda(Long.parseLong(this.getByRequest("idComanda")));
-		tFacade.setTavoloLibero(this.comanda.getTavolo().getId());
-		Prenotazione prenotazione = pFacade.findPrenotazioneByTavolo(Long.parseLong(this.getByRequest("idComanda")));
+	public String confermaComanda() throws IOException{
+		Long idComanda = this.getIDComandaByRequest();
+		cFacade.concludiComanda(idComanda);	
+		tFacade.setTavoloLibero(this.getComandaByRequest().getTavolo().getId());
+		Prenotazione prenotazione = pFacade.findPrenotazioneByTavolo(this.getComandaByRequest().getTavolo().getId());
 		if(prenotazione!=null)
-			pFacade.setPrenotazioneCompletata(Long.parseLong(this.getByRequest("idComanda")));
+			pFacade.setPrenotazioneCompletata(prenotazione);
+		this.refreshPage();
 		return "home_Administrator";
 	}
 
@@ -87,32 +101,38 @@ public class PannelloDiControlloControllerBean {
 		this.prenotazioni = pFacade.findAllPrenotazioniToday(new Date());
 	}
 
+	public void refreshPage() throws IOException{
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().redirect("./home_Administrator.jsp");
+	}
+
 	public String getByRequest(String name){
 		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		return params.get(name);
 	}
 
-	public float getTavoliLiberi() {
+
+	public int getTavoliLiberi() {
 		return tavoliLiberi;
 	}
 
-	public void setTavoliLiberi(float tavoliLiberi) {
+	public void setTavoliLiberi(int tavoliLiberi) {
 		this.tavoliLiberi = tavoliLiberi;
 	}
 
-	public float getTavoliPrenotati() {
+	public int getTavoliPrenotati() {
 		return tavoliPrenotati;
 	}
 
-	public void setTavoliPrenotati(float tavoliPrenotati) {
+	public void setTavoliPrenotati(int tavoliPrenotati) {
 		this.tavoliPrenotati = tavoliPrenotati;
 	}
 
-	public float getTavoliOccupati() {
+	public int getTavoliOccupati() {
 		return tavoliOccupati;
 	}
 
-	public void setTavoliOccupati(float tavoliOccupati) {
+	public void setTavoliOccupati(int tavoliOccupati) {
 		this.tavoliOccupati = tavoliOccupati;
 	}
 

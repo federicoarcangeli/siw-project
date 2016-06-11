@@ -36,6 +36,11 @@ public class ComandaFacade {
 	public void concludiComanda(Long idComanda) {
 		ComandaDao dao = new ComandaDao(this.em);
 		Comanda comanda = dao.findById(idComanda);
+		this.setCompletata(comanda);
+	}
+
+	public void setCompletata(Comanda comanda){
+		ComandaDao dao = new ComandaDao(this.em);
 		comanda.setCompletata(true);
 		dao.update(comanda);
 	}

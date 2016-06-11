@@ -18,31 +18,31 @@ public class CategoriaPiattoFacade {
 
 	@PersistenceContext(unitName = "restaurant")
 	private EntityManager em;
-	
+
 	public CategoriaPiatto create(String nome) {
 		CategoriaPiatto categoria = new CategoriaPiatto();
 		categoria.setNome(nome);
 		em.persist(categoria);
 		return categoria;
 	}
-	
+
 	public CategoriaPiatto get(Long id) {
 		CategoriaPiatto categoria = em.find(CategoriaPiatto.class, id);
 		return categoria;
 	}
-	
+
 	public CategoriaPiatto findByName(String name) {
 		CategoriaPiattoDao dao = new CategoriaPiattoDao(em);
 		return dao.findByName(name);
 	}
-	
-	public List<CategoriaPiatto> getCategorie() {
+
+	public List<CategoriaPiatto> findAll() {
 		try {
 			return em.createNamedQuery("CategoriaPiatto.findAll", CategoriaPiatto.class).getResultList();
 		} catch(NoResultException e) {
 			return new ArrayList<>();
 		}
-		
+
 	}
-	
+
 }

@@ -40,9 +40,9 @@ public class MenuControllerBean {
 	
 	@PostConstruct
 	public void init() {
-		this.categorie = this.cpFacade.getCategorie();
+		this.categorie = this.cpFacade.findAll();
 		this.nomiCategorie = new ArrayList<>();
-		this.categorie = this.cpFacade.getCategorie();
+		this.categorie = this.cpFacade.findAll();
 		for (CategoriaPiatto c : this.categorie) {
 			this.nomiCategorie.add(c.getNome());
 		}

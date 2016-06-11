@@ -48,15 +48,14 @@ public class PrenotazioneFacade {
 		return prenotazione;
 	}
 
-	public Prenotazione findPrenotazioneByTavolo(long idComanda) {
+	public Prenotazione findPrenotazioneByTavolo(long idTavolo) {
 		PrenotazioneDao dao = new PrenotazioneDao(this.em);
-		Prenotazione prenotazione = dao.findByTavolo(idComanda);
+		Prenotazione prenotazione = dao.findByTavolo(idTavolo);
 		return prenotazione;
 	}
 
-	public void setPrenotazioneCompletata(Long idComanda) {
+	public void setPrenotazioneCompletata(Prenotazione prenotazione) {
 		PrenotazioneDao dao = new PrenotazioneDao(this.em);
-		Prenotazione prenotazione = dao.findByTavolo(idComanda);
 		prenotazione.setCompletato(true);
 		dao.update(prenotazione);
 	}
