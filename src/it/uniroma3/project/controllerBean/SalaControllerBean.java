@@ -69,6 +69,12 @@ public class SalaControllerBean {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		if(!this.getUtenteCorrente().getRole().equals("admin"))
+			try {
+				this.redirectPage("./404.jsp");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		Date today = new Date();
 		this.tavoliSala = this.gettFacade().findAllTavolo();
 

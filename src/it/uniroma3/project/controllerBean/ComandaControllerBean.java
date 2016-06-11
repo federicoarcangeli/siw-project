@@ -110,6 +110,12 @@ public class ComandaControllerBean {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		if(!this.getUtenteCorrente().getRole().equals("admin"))
+			try {
+				this.redirectPage("./404.jsp");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		Comanda comandaInCorso = (Comanda) this.getBySession("comandaCorrente");
 		this.categorie = cpFacade.findAll();
 		this.piatti = pFacade.findAll();
