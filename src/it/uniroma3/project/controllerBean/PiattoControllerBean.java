@@ -1,6 +1,12 @@
 package it.uniroma3.project.controllerBean;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,23 +66,27 @@ public class PiattoControllerBean {
 		descrizionePiatto.setPrezzo(this.prezzo);
 		descrizionePiatto.setProdottiAllergizzanti(this.allergeni);
 		descrizionePiatto.setProdottiSurgelati(this.surgelati);
-		descrizionePiatto.setImg(createImage());
+		descrizionePiatto.setUrlImmagine(createImage());
 		return descrizionePiatto;
 	}
 
-	private byte[] createImage() {
-		String fileName = FilenameUtils.getName(uploadedFile.getName());
-		String contentType = uploadedFile.getContentType();
-		byte[] img = null;
+	public String createImage() {
+		Path file = null;
 		try {
-			img = uploadedFile.getBytes();
+			String separator = File.separator;
+			Path folder = Paths.get("C:"+separator+"Users"+separator+"Federico"+separator+"test");
+			String filename = FilenameUtils.getBaseName(uploadedFile.getName());
+			String extension = FilenameUtils.getExtension(uploadedFile.getName());
+			file = Files.createTempFile(folder, filename + "-", "." + extension);
+			InputStream input = uploadedFile.getInputStream();
+			Files.copy(input, file, StandardCopyOption.REPLACE_EXISTING);
+
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-					String.format("File '%s' of type '%s' successfully uploaded!", fileName, contentType)));
+					String.format("File '%s' of type '%s' successfully uploaded!", filename, extension)));
 		} catch (IOException e) {
-			img = null;
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Error in loading file"));
 		}
-		return img;
+		return file.toString();
 	}
 
 	public List<String> getNomiCategorie() {

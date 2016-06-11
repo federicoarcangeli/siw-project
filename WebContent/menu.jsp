@@ -82,8 +82,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12 text-center">
-								<h2 class="text-uppercase">Menu</h2>
-								<p>Tomato is a delicious restaurant website template</p>
+								<h2 class="text-uppercase">Il nostro Menù</h2>
 							</div>
 						</div>
 					</div>
@@ -110,11 +109,11 @@
 									<t:div
 										styleClass="menu-item3 col-sm-6 col-xs-12 #{piatto.getPortata().getNome()}">
 									
-									<t:graphicImage value="#{menuControllerBean.getBase64Img(piatto.getDescrizionePiatto())}"/>
+									<h:graphicImage value="#{piatto.getDescrizionePiatto().getUrlImmagine()}"/>
 									
 									<div class="menu-wrapper">
 										<h4>
-											<h:outputText value="#{piatto.nome}" />
+											<h:outputText value="#{piatto.nome}" />  
 										</h4>
 										&nbsp; <span class="price"> <h:outputText
 												value="#{piatto.getDescrizionePiatto().getPrezzo()}" /> 0

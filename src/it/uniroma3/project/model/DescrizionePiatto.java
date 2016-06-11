@@ -1,5 +1,6 @@
 package it.uniroma3.project.model;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
@@ -104,6 +105,7 @@ public class DescrizionePiatto {
 	}
 
 	public void setUrlImmagine(String urlImmagine) {
+		
 		this.urlImmagine = urlImmagine;
 	}
 
