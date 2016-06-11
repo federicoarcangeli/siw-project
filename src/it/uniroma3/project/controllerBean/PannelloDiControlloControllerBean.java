@@ -62,8 +62,7 @@ public class PannelloDiControlloControllerBean {
 		Comanda comanda = this.getComandaByRequest();
 		this.cFacade.eliminaComandaByID(comanda.getId());
 		this.tFacade.setTavoloLibero(comanda.getTavolo().getId());
-		this.refreshPage();
-		return "home_Administrator";
+		return "home_Administrator?faces-redirect=true";
 	}
 
 	public String confermaComanda() throws IOException{
@@ -73,8 +72,7 @@ public class PannelloDiControlloControllerBean {
 		Prenotazione prenotazione = pFacade.findPrenotazioneByTavolo(this.getComandaByRequest().getTavolo().getId());
 		if(prenotazione!=null)
 			pFacade.setPrenotazioneCompletata(prenotazione);
-		this.refreshPage();
-		return "home_Administrator";
+		return "home_Administrator?faces-redirect=true";
 	}
 
 	@PostConstruct
@@ -101,10 +99,6 @@ public class PannelloDiControlloControllerBean {
 		this.prenotazioni = pFacade.findAllPrenotazioniToday();
 	}
 
-	public void refreshPage() throws IOException{
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.getExternalContext().redirect("./home_Administrator.jsp");
-	}
 
 	public String getByRequest(String name){
 		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();

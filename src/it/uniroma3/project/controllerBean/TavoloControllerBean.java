@@ -26,7 +26,7 @@ public class TavoloControllerBean {
 
 	public String create() {
 		this.tavolo = tFacade.create(this.getCodiceTavolo(),this.getCoperti());
-		return "registrazioneTavolo";
+		return "registrazioneTavolo?faces-redirect=true";
 	}
 
 	public String getCodiceTavolo() {
