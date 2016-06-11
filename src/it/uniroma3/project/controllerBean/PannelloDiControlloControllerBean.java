@@ -95,10 +95,10 @@ public class PannelloDiControlloControllerBean {
 		this.tavoliOccupatiP= (this.tavoliOccupati/this.tavoliTotali)*100;
 
 		//		 gestione comande di oggi
-		this.comande = cFacade.findallComandaToday(new Date());
+		this.comande = cFacade.findallComandaToday();
 
 		// gestione prenotazioni di oggi
-		this.prenotazioni = pFacade.findAllPrenotazioniToday(new Date());
+		this.prenotazioni = pFacade.findAllPrenotazioniToday();
 	}
 
 	public void refreshPage() throws IOException{
