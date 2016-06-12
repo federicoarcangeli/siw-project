@@ -47,10 +47,10 @@ public class PiattoController {
 	private UploadedFile uploadedFile;
 	private List<CategoriaPiatto> categorie;
 
-	@EJB(name = "cpFacade")
+	@EJB
 	private CategoriaPiattoFacade cpFacade;
 
-	@EJB(name = "pFacade")
+	@EJB
 	private PiattoFacade pFacade;
 
 	public String create() {
@@ -76,7 +76,7 @@ public class PiattoController {
 		Path file = null ;
 		try {
 			String separator = File.separator;
-			Path folder = Paths.get("C:"+separator+"Users"+separator+"Federico"+separator+"test");
+			Path folder = Paths.get("C:"+separator+"Users"+separator+"Alegi"+separator+"Documents");
 			String filename = FilenameUtils.getBaseName(uploadedFile.getName());
 			String extension = FilenameUtils.getExtension(uploadedFile.getName());
 			file = Files.createTempFile(folder, filename + "-", "." + extension);

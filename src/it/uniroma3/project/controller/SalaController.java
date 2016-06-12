@@ -1,6 +1,7 @@
 package it.uniroma3.project.controller;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +12,6 @@ import javax.ejb.EJBs;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-
 import it.uniroma3.project.facade.ComandaFacade;
 import it.uniroma3.project.facade.PrenotazioneFacade;
 import it.uniroma3.project.facade.TavoloFacade;
@@ -107,17 +107,17 @@ public class SalaController {
 		context.getExternalContext().redirect(page);
 	}
 
-	public void setComandaInSession(String name){
+	private void setComandaInSession(String name){
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.getExternalContext().getSessionMap().put(name,this.comanda);
 	}
 
-	public Object getBySession(String name){
+	private Object getBySession(String name){
 		FacesContext context = FacesContext.getCurrentInstance();
 		return context.getExternalContext().getSessionMap().get(name);
 	}
 
-	public String getByRequest(String name){
+	private String getByRequest(String name){
 		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		return params.get(name);
 	}

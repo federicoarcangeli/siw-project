@@ -53,16 +53,18 @@ public class ComandaController {
 					comandaInCorso.getPrezzoTotale() + this.piatto.getDescrizionePiatto().getPrezzo());
 			lFacade.updateLinea(linea);
 		} else if(linea==null){
+
 			linea = new LineaComanda();
 			linea.setComanda(comandaInCorso);
 			linea.setPiatto(this.piatto);
 			linea.setQuantita(1);
+			System.out.println(lFacade.findNumeroLineaMassimo(comandaInCorso.getId()));
+			linea.setNumeroLinea(lFacade.findNumeroLineaMassimo(comandaInCorso.getId())+1);
 			comandaInCorso.setPrezzoTotale(comandaInCorso.getPrezzoTotale() + this.piatto.getDescrizionePiatto().getPrezzo());
 			lFacade.inserisciLinea(linea);
 		}
 		cFacade.updateComanda(comandaInCorso);
-		this.refreshPage();
-		return "comanda";
+		return "comanda?faces-redirect=true";
 	}
 
 	public String aggiungiQuantita() throws IOException{
@@ -73,8 +75,7 @@ public class ComandaController {
 				comandaInCorso.getPrezzoTotale() + linea.getPiatto().getDescrizionePiatto().getPrezzo());
 		lFacade.updateLinea(linea);
 		cFacade.updateComanda(comandaInCorso);
-		this.refreshPage();
-		return "comanda";
+		return "comanda?faces-redirect=true";
 	}
 
 	public String sottraiQuantita() throws IOException{
@@ -87,8 +88,7 @@ public class ComandaController {
 			lFacade.updateLinea(linea);
 			cFacade.updateComanda(comandaInCorso);
 		}
-		this.refreshPage();
-		return "comanda";
+		return "comanda?faces-redirect=true";
 	}
 
 	public String eliminaLineaComanda() throws IOException{
@@ -98,8 +98,7 @@ public class ComandaController {
 				comandaInCorso.getPrezzoTotale() - (linea.getPiatto().getDescrizionePiatto().getPrezzo())*linea.getQuantita());
 		lFacade.eliminaRigaComanda(linea.getId());
 		cFacade.updateComanda(comandaInCorso);
-		this.refreshPage();
-		return "comanda";
+		return "comanda?faces-redirect=true";
 	}
 
 	@PostConstruct
@@ -137,17 +136,12 @@ public class ComandaController {
 		context.getExternalContext().redirect(page);
 	}
 
-	public String getByRequest(String name){
+	private String getByRequest(String name){
 		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		return params.get(name);
 	}
 
-	public void refreshPage() throws IOException{
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.getExternalContext().redirect("./comanda.jsp");
-	}
-
-	public Object getBySession(String name){
+	private Object getBySession(String name){
 		FacesContext context = FacesContext.getCurrentInstance();
 		return context.getExternalContext().getSessionMap().get(name);
 	}

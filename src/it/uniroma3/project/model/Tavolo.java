@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-@NamedQuery(name = "Tavolo.findAll", query = "select t from Tavolo t")
+@NamedQuery(name = "Tavolo.findAll", query = "select t from Tavolo t order by t.codiceTavolo")
 public class Tavolo {
 
 	@Id

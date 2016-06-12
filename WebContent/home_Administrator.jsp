@@ -458,9 +458,9 @@
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal">&times;</button>
 													<h4 class="modal-title">
-														Tavolo:
+														Tavolo N°
 														<h:outputText value="#{comanda.tavolo.getCodiceTavolo()}" />
-														- Comanda:
+														- Comanda N°
 														<h:outputText value="#{comanda.id}" />
 													</h4>
 												</div>
@@ -471,6 +471,8 @@
 																<th class="text-center">Linea N°</th>
 																<th class="text-center">Piatto</th>
 																<th class="text-center">Quantità</th>
+																<th class="text-center"></th>
+																<th class="text-center">Prezzo</th>
 															</tr>
 														</thead>
 														<tbody>
@@ -483,20 +485,29 @@
 																			value="#{linea.piatto.nome}" /></td>
 																	<td class="text-center"><h:outputText
 																			value="#{linea.quantita}" /></td>
+																	<td class="text-center">x</td>
+																	<td class="text-center"><h:outputText
+																			value="#{linea.piatto.descrizionePiatto.prezzo}" />&euro;</td>
 																</tr>
 															</c:forEach>
 															<tr class="warning">
-																<td class="text-center" colspan="2"><strong>Totale:</strong></td>
+																<td class="text-center" colspan="4"><strong>Totale:</strong></td>
 																<td class="text-center"><h:outputText
 																		value="#{comanda.prezzoTotale}" />&euro;</td>
 															</tr>
 														</tbody>
 													</table>
-													<span><strong>Data e ora : </strong> <h:outputText
-															value="#{comanda.dataOraEmissione}">
-															<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+													<hr>
+
+													<span class="text-left"><strong>Coperti N°
+															: <h:outputText value="#{comanda.tavolo.coperti}" />
+													</strong></span><br> <span> <strong>Data e ora : </strong>
+													<h:outputText value="#{comanda.dataOraEmissione}">
+															<f:convertDateTime pattern="dd/MM/yyyy    HH:mm" />
 														</h:outputText> <br> <strong> Operatore : </strong> <h:outputText
-															value="#{comanda.operatore.getUsername()}" /> </span>
+															value="#{comanda.operatore.getUsername()}" />
+													</span>
+
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-warning"

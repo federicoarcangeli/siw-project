@@ -55,7 +55,7 @@ public class PannelloDiControlloController {
 		Prenotazione prenotazione = pFacade.findPrenotazioneByTavolo(comanda.getTavolo().getId());
 		if(prenotazione!=null)
 			pFacade.setPrenotazioneCompletata(prenotazione);
-		this.tFacade.setTavoloLibero(comanda.getTavolo().getId());
+		this.tFacade.setTavoloLibero(comanda.getTavolo());
 		this.cFacade.eliminaComandaByID(comanda.getId());
 		return "home_Administrator?faces-redirect=true";
 	}
@@ -68,7 +68,7 @@ public class PannelloDiControlloController {
 	public String confermaComanda(){
 		Comanda comanda = this.getComandaByRequest();
 		cFacade.concludiComanda(comanda.getId());	
-		tFacade.setTavoloLibero(comanda.getTavolo().getId());
+		tFacade.setTavoloLibero(comanda.getTavolo());
 		Prenotazione prenotazione = pFacade.findPrenotazioneByTavolo(comanda.getTavolo().getId());
 		if(prenotazione!=null)
 			pFacade.setPrenotazioneCompletata(prenotazione);

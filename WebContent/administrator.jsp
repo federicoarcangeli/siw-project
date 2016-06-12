@@ -50,7 +50,7 @@
 										<div class="col-md-12">
 											<div class="form-group">
 												<label>Username</label>
-												<h:inputText id="username"
+												<h:inputText id="username" autocomplete="off" 
 													value="#{utenteController.username}" required="true"
 													requiredMessage="Inserisci username"
 													styleClass="form-control" />
@@ -66,7 +66,7 @@
 										<div class="col-md-12">
 											<div class="form-group">
 												<label>Password</label>
-												<h:inputSecret id="password"
+												<h:inputSecret id="password" autocomplete="off"
 													value="#{utenteController.password}" required="true"
 													requiredMessage="Inserisci password"
 													styleClass="form-control" />
