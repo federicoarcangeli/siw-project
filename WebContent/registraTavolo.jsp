@@ -187,8 +187,19 @@
 														<button type="button" class="close" data-dismiss="alert">
 															<span class="fa fa-close"></span>
 														</button>
-														<span> SUCCESS: </span>
-														<h:outputText value="#{tavoloCorrente.toString()}" />
+														<span> SUCCESSO: </span>
+														<h:outputText value="#{tavoloCorrente}" />
+													</div>
+												</div>
+											</h:panelGroup>
+											<h:panelGroup rendered="#{not empty tavoloError}">
+												<div class="animated fadeInDown">
+													<div class="alert alert-danger alert-dismissable">
+														<button type="button" class="close" data-dismiss="alert">
+															<span class="fa fa-close"></span>
+														</button>
+														<span> ERRORE: </span>
+														<h:outputText value="#{tavoloError}" />
 													</div>
 												</div>
 											</h:panelGroup>
