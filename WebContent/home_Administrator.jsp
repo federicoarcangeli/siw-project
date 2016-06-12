@@ -124,6 +124,7 @@
 															<th class="text-center">Tavolo</th>
 															<th class="text-center">Ospiti</th>
 															<th class="text-center">Stato</th>
+															<th class="text-center">Elimina</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -155,6 +156,49 @@
 																		style="color: green;"><i
 																		class="fa fa-check-circle"></i></td>
 																</h:panelGroup>
+																<td class="text-center"><a href="#"
+																	style="color: red;" data-toggle="modal"
+																	data-target='#<h:outputText
+																					value="#{prenotazione.id}" />'
+																	class="fa fa-trash-o fa-lg"></a></td>
+
+																<!--  Modal conferma eliminazione prenotazione -->
+																<h:form>
+																	<div id="<h:outputText value="#{prenotazione.id}" />"
+																		class="modal fade" aria-labelledby="myModal">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<button type="button" class="close"
+																						data-dismiss="modal">&times;</button>
+																					<h4 class="modal-title">Sei sicuro di voler
+																						procedere all'eliminazione?</h4>
+																				</div>
+																				<div class="modal-body">
+
+																					<h5>
+																						<i class="fa fa-exclamation-circle"
+																							style="color: #F9C56A;" aria-hidden="true"></i>
+																						L'eliminazione sarà irreversibile!
+																					</h5>
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-warning"
+																						data-dismiss="modal">
+																						Chiudi <i class="fa fa-times"></i>
+																					</button>
+																					<h:commandLink styleClass="btn btn-danger"
+																						value="Elimina"
+																						action="#{pannelloController.eliminaPrenotazione}">
+																						<i class="fa fa-trash-o"></i>
+																						<f:param name="idPrenotazione"
+																							value="#{prenotazione.id}"></f:param>
+																					</h:commandLink>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</h:form>
 														</c:forEach>
 													</tbody>
 												</table>
@@ -262,7 +306,8 @@
 																<th class="text-center">Tavolo</th>
 																<th class="text-center">Totale</th>
 																<th class="text-center">Stato</th>
-																<th class="text-center">Operazioni</th>
+																<th class="text-center">Elimina</th>
+																<th class="text-center">Scontrino</th>
 
 															</tr>
 														</thead>
@@ -277,23 +322,60 @@
 																				value="#{comanda.tavolo.getCodiceTavolo()}" /></td>
 																		<td class="text-center"><h:outputText
 																				value="#{comanda.prezzoTotale}" /> &euro;</td>
-																		<h:panelGroup rendered="#{!comanda.completata}">
-																			<td class="text-center"><i
-																				class="fa fa-refresh fa-spin fa-lg fa-fw"></i> <span
-																				class="sr-only">Loading...</span></td>
-																		</h:panelGroup>
-																		<h:panelGroup rendered="#{comanda.completata}">
-																			<td class="text-center" class="success"><i
-																				class="fa fa-spinner fa-pulse fa-2x fa-fw"></i> <span
-																				class="sr-only">Loading...</span></td>
-																		</h:panelGroup>
+																		<td class="text-center"><i
+																			class="fa fa-refresh fa-spin fa-lg fa-fw"></i> <span
+																			class="sr-only">Loading...</span></td>
+																		<td class="text-center"><a href="#"
+																			style="color: red;" data-toggle="modal"
+																			data-target='#<h:outputText
+																					value="#{comanda.id}Eliminazione" />'
+																			class="fa fa-trash-o fa-lg"></a></td>
 																		<td class="text-center"><a href="#"
 																			data-toggle="modal"
 																			data-target='#<h:outputText
 																					value="#{comanda.id}" />'
-																			class="fa fa-wrench"></a></td>
+																			class="fa fa-shopping-cart"></a></td>
 																	</tr>
 																</h:panelGroup>
+
+																<!--  Modal conferma eliminazione comanda -->
+																<h:form>
+																	<div
+																		id="<h:outputText value="#{comanda.id}Eliminazione" />"
+																		class="modal fade" aria-labelledby="myModal">
+																		<div class="modal-dialog">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<button type="button" class="close"
+																						data-dismiss="modal">&times;</button>
+																					<h4 class="modal-title">Sei sicuro di voler
+																						procedere all'eliminazione?</h4>
+																				</div>
+																				<div class="modal-body">
+
+																					<h5>
+																						<i class="fa fa-exclamation-circle"
+																							style="color: #F9C56A;" aria-hidden="true"></i>
+																						L'eliminazione sarà irreversibile!
+																					</h5>
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-warning"
+																						data-dismiss="modal">
+																						Chiudi <i class="fa fa-times"></i>
+																					</button>
+																					<h:commandLink styleClass="btn btn-danger"
+																						value="Elimina"
+																						action="#{pannelloController.eliminaComanda}">
+																						<i class="fa fa-trash-o"></i>
+																						<f:param name="iComanda" value="#{comanda.id}"></f:param>
+																					</h:commandLink>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</h:form>
+
 															</c:forEach>
 														</tbody>
 													</table>
@@ -305,6 +387,8 @@
 									</div>
 								</div>
 							</div>
+
+							<!-- Modal visione comanda e scontrino  -->
 							<c:forEach var="comanda" items="#{pannelloController.comande}">
 								<h:form>
 									<div id="<h:outputText value="#{comanda.id}" />"
@@ -321,7 +405,6 @@
 													</h4>
 												</div>
 												<div class="modal-body">
-
 													<table class="table">
 														<thead>
 															<tr class="warning">
@@ -361,13 +444,8 @@
 														Chiudi <i class="fa fa-times"></i>
 													</button>
 													<h:panelGroup rendered="#{!comanda.completata}">
-														<h:commandLink styleClass="btn btn-danger" value="Elimina"
-															action="#{pannelloController.eliminaComanda}">
-															<i class="fa fa-trash-o"></i>
-															<f:param name="idComanda" value="#{comanda.id}"></f:param>
-														</h:commandLink>
 														<h:commandLink styleClass="btn btn-success"
-															value="Conferma"
+															value="Concludi comanda"
 															action="#{pannelloController.confermaComanda}">
 															<f:param name="idComanda" value="#{comanda.id}"></f:param>
 															<i class="fa fa-check"></i>

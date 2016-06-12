@@ -62,10 +62,11 @@ public class Time24HoursValidator{
 		return format;
 	}
 
-	public boolean isCena(String time){
+	public boolean isCena(Date time){
+		String ora = this.ConvertTimeToString(time);
 		pattern = Pattern.compile(ORARIORISTORANTE_PATTERN);
-		if(time!=null){
-			matcher = pattern.matcher(time);
+		if(ora!=null){
+			matcher = pattern.matcher(ora);
 			if (matcher.matches())
 				return true;
 		}
