@@ -48,6 +48,7 @@ public class SalaController {
 		if(this.tavolo.getOccupato()==0 || this.tavolo.getOccupato()==1){
 			this.comanda = new Comanda();
 			tFacade.setTavoloOccupato(tavolo);
+			pFacade.setPrenotazioneUtenteAlTavolo(this.tavolo.getId());
 			comanda.setOperatore((Utente) this.getBySession("utenteCorrente"));
 			comanda.setTavolo(tavolo);
 			comanda.setDataOraEmissione(new Date());

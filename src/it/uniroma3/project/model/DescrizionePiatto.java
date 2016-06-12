@@ -1,6 +1,5 @@
 package it.uniroma3.project.model;
 
-import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
