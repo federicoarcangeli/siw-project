@@ -6,7 +6,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 import it.uniroma3.project.dao.PrenotazioneDao;
 import it.uniroma3.project.model.Prenotazione;
 import it.uniroma3.project.model.Tavolo;
@@ -58,6 +57,18 @@ public class PrenotazioneFacade {
 		PrenotazioneDao dao = new PrenotazioneDao(this.em);
 		prenotazione.setCompletato(true);
 		dao.update(prenotazione);
+	}
+
+	public Prenotazione findPrenotazioneByID(long idPrenotazione){
+		PrenotazioneDao dao = new PrenotazioneDao(this.em);
+		Prenotazione prenotazione = dao.findById(idPrenotazione);
+		return prenotazione;
+	}
+
+	public void eliminaPrenotazioneByID(long idPrenotazione) {
+		PrenotazioneDao dao = new PrenotazioneDao(this.em);
+		Prenotazione prenotazione = dao.findById(idPrenotazione);
+		dao.delete(prenotazione);
 	}
 
 }

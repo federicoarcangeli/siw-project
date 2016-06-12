@@ -7,11 +7,9 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBs;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.validator.ValidatorException;
 
 import it.uniroma3.project.facade.PrenotazioneFacade;
 import it.uniroma3.project.facade.TavoloFacade;
@@ -43,73 +41,60 @@ public class PrenotazioneControllerBean {
 	private TavoloFacade tFacade;
 
 	public String createByAdmin() {
-		String page = "prenotazioneAdmin";
 		Time24HoursValidator validatorD = new Time24HoursValidator();
-		try {
+		FacesContext context = FacesContext.getCurrentInstance();
+		if(validatorD.isCena(this.timepicker))
+		{
 			Tavolo tavolo = this.validateTable();
-
+			if(tavolo ==null)
+				return "prenotazioneAdmin";
 			this.prenotazione = paFacade.create(this.getNominativo(), this.getDatepicker(), this.getTimepicker(),
 					this.getCoperti(), tavolo);
 			this.corretto = true;
 			if (validatorD.isToday(this.prenotazione.getData())) {
 				tFacade.setTavoloPrenotato(tavolo);
 			}
-			FacesContext context = FacesContext.getCurrentInstance();
-			context.getExternalContext().getRequestMap().put("prenotazioneCorrente", "la prenotazione a nome di  " + this.nominativo + " per " + this.coperti + " il giorno" +validatorD.ConvertDateToString(datepicker) + " alle ora " + this.timepicker + " è stata inserita correttamente");
-		} catch (ValidatorException e) {
-			this.corretto = false;
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "Non ci sono tavoli disponibili per il "
-							+ validatorD.ConvertDateToString(this.datepicker) + " per " + this.coperti + " persone",
-							null));
-			new FacesMessage(e.getMessage());
-		}
-		return page;
+			context.getExternalContext().getRequestMap().put("prenotazioneCorrente", "La prenotazione a nome di  " + this.nominativo + " per " + this.coperti + " persone per il giorno " +validatorD.ConvertDateToString(datepicker) + " alle ore " + validatorD.ConvertTimeToString(this.getTimepicker()) + " è stata inserita correttamente");
+		}else
+			context.getExternalContext().getRequestMap().put("prenotazioneError", "è possibile prenotare solo per l'ora di cena (19:00 - 21:59)" );
+		return "prenotazioneAdmin";
 	}
 
 	public String createByUtente() {
 		Time24HoursValidator validatorD = new Time24HoursValidator();
 		FacesContext context = FacesContext.getCurrentInstance();
-		Utente utenteCorrente = (Utente)context.getExternalContext().getSessionMap().get("utenteCorrente");
-		String page = "prenotazione";
-		try {
+		if(validatorD.isCena(this.timepicker))
+		{
 			Tavolo tavolo = this.validateTable();
+			if(tavolo ==null)
+				return "prenotazione";
+			Utente utenteCorrente = (Utente)context.getExternalContext().getSessionMap().get("utenteCorrente");
 			this.prenotazione = paFacade.create(this.getDatepicker(),this.getTimepicker(),
 					this.getCoperti(),utenteCorrente, tavolo);
 			this.corretto = true;
 			if (validatorD.isToday(this.prenotazione.getData())) {
 				tFacade.setTavoloPrenotato(tavolo);
 			}
-			context.getExternalContext().getRequestMap().put("prenotazioneCorrente", "la prenotazione è stata registrata correttamente a nome di  " + utenteCorrente.getCognome() + " per " + this.coperti + " persone il giorno " +validatorD.ConvertDateToString(datepicker) + " alle ore" +this.getTimepicker() );
-		} catch (ValidatorException e) {
-			this.corretto = false;
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "Non ci sono tavoli disponibili per il "
-							+ validatorD.ConvertDateToString(this.datepicker) + " per " + this.coperti + " persone",
-							null));
-			new FacesMessage(e.getMessage());
-		}
-		return page;
+			context.getExternalContext().getRequestMap().put("prenotazioneCorrente", "La prenotazione è stata registrata correttamente a nome di  " + utenteCorrente.getCognome() + " per " + this.coperti + " persone il giorno " + validatorD.ConvertDateToString(datepicker) + " alle ore" + validatorD.ConvertTimeToString(this.getTimepicker()) );
+		} else
+			context.getExternalContext().getRequestMap().put("prenotazioneError", "è possibile prenotare solo per l'ora di cena (19:00 - 21:59)" );
+		return "prenotazione";
 	}
 
-	public Tavolo validateTable() throws ValidatorException {
+	public Tavolo validateTable(){
+		Time24HoursValidator validatorD = new Time24HoursValidator();
+		FacesContext context = FacesContext.getCurrentInstance();
 		this.tavoli = this.tFacade.findAllTavolo();
 		Ristorante ristorante = new Ristorante();
 		List<Tavolo> tavoliDisponibili = ristorante.setTavoloPrenotazione(this.tavoli, this.coperti);
 		Tavolo tavoloDaPrenotare = ristorante.checkTavoliLiberiForDate(tavoliDisponibili, this.datepicker);
 		if (tavoliDisponibili.isEmpty()) {
-			this.corretto = false;
-			FacesMessage msg = new FacesMessage("Non ci sono tavoli disponibili per questo numero di ospiti");
-			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-			throw new ValidatorException(msg);
+			context.getExternalContext().getRequestMap().put("prenotazioneError", "Non ci sono tavoli disponibili per questo numero di ospiti");
 		} else if (tavoloDaPrenotare == null) {
-			this.corretto = false;
-			FacesMessage msg = new FacesMessage("Non ci sono tavoli disponibili per questo numero di ospiti");
-			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-			throw new ValidatorException(msg);
-		} else {
-			return tavoloDaPrenotare;
-		}
+			context.getExternalContext().getRequestMap().put("prenotazioneError", "Non ci sono tavoli disponibili per il "
+					+ validatorD.ConvertDateToString(this.datepicker) + " per " + this.coperti + " persone");
+		} 
+		return tavoloDaPrenotare;
 	}
 
 	@PostConstruct

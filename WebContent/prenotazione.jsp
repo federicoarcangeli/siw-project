@@ -211,6 +211,17 @@
 										</button>
 										<span> SUCCESS: </span>
 										<h:outputText value="#{prenotazioneCorrente}" />
+										<h:panelGroup rendered="#{not empty prenotazioneError}">
+											<div class="animated fadeInDown">
+												<div class="alert alert-danger alert-dismissable">
+													<button type="button" class="close" data-dismiss="alert">
+														<span class="fa fa-close"></span>
+													</button>
+													<span> ERRORE: </span>
+													<h:outputText value="#{prenotazioneError}" />
+												</div>
+											</div>
+										</h:panelGroup>
 									</div>
 								</div>
 							</h:panelGroup>

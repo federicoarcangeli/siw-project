@@ -15,7 +15,6 @@ import javax.ejb.EJBs;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 
 import it.uniroma3.project.facade.ComandaFacade;
 import it.uniroma3.project.facade.PrenotazioneFacade;
@@ -66,6 +65,11 @@ public class PannelloDiControlloControllerBean {
 		return "home_Administrator?faces-redirect=true";
 	}
 
+	public String eliminaPrenotazione (){
+		this.pFacade.eliminaPrenotazioneByID(Long.parseLong(this.getByRequest("idPrenotazione")));
+		return "home_Administrator?faces-redirect=true";
+	}
+
 	public String confermaComanda() throws IOException{
 		Long idComanda = this.getIDComandaByRequest();
 		cFacade.concludiComanda(idComanda);	
@@ -91,6 +95,7 @@ public class PannelloDiControlloControllerBean {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+
 		//		calcolo numero tavoli liberi occupati, prenotati e totali
 		this.tavoli = tFacade.findAllTavolo();
 		for(Tavolo t : this.tavoli){
@@ -113,7 +118,7 @@ public class PannelloDiControlloControllerBean {
 		this.prenotazioni = pFacade.findAllPrenotazioniToday();
 		this.removeFromSession("tavoloCorrente");
 	}
-	
+
 	private void removeFromSession(String param) {
 		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		sessionMap.remove(param);

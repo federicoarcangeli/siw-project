@@ -65,10 +65,9 @@ public class Ristorante {
 	 * @return
 	 */
 	public Tavolo checkTavoliLiberiForDate(List<Tavolo> tavoliDisponibili, Date data) {
-
 		for (Tavolo t : tavoliDisponibili) {
-			if (t.getPrenotazioni().isEmpty()){
-				return t;}
+			if (t.getPrenotazioni().isEmpty() && this.comandaInCorso(t)==false )
+				return t;
 			else if (!this.containsDate(t.getPrenotazioni(), data) && this.comandaInCorso(t)==false)
 				return t;
 		}
