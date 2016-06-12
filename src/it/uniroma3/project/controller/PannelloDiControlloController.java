@@ -20,11 +20,10 @@ import it.uniroma3.project.facade.ComandaFacade;
 import it.uniroma3.project.facade.PrenotazioneFacade;
 import it.uniroma3.project.facade.TavoloFacade;
 
-
 @ManagedBean(name = "pannelloController")
 @RequestScoped
 @EJBs(value = { @EJB(name = "pFacade", beanInterface = PrenotazioneFacade.class),
-		@EJB(name = "cFacade", beanInterface = ComandaFacade.class) ,
+		@EJB(name = "cFacade", beanInterface = ComandaFacade.class),
 		@EJB(name = "tFacade", beanInterface = TavoloFacade.class) })
 
 public class PannelloDiControlloController {
@@ -50,92 +49,85 @@ public class PannelloDiControlloController {
 	@EJB
 	private TavoloFacade tFacade;
 
-	public Long getIDComandaByRequest(){
+	public Long getIDComandaByRequest() {
 		return Long.parseLong(this.getByRequest("idComanda"));
 	}
 
-	public Comanda getComandaByRequest(){
+	public Comanda getComandaByRequest() {
 		return cFacade.findComandaById(this.getIDComandaByRequest());
 	}
 
-	public String eliminaComanda() throws IOException{
+	public String eliminaComanda() throws IOException {
 		Comanda comanda = this.getComandaByRequest();
 		this.cFacade.eliminaComandaByID(comanda.getId());
 		this.tFacade.setTavoloLibero(comanda.getTavolo().getId());
 		return "home_Administrator?faces-redirect=true";
 	}
 
-	public String eliminaPrenotazione (){
+	public String eliminaPrenotazione() {
 		this.pFacade.eliminaPrenotazioneByID(Long.parseLong(this.getByRequest("idPrenotazione")));
 		return "home_Administrator?faces-redirect=true";
 	}
 
-	public String confermaComanda() throws IOException{
+	public String confermaComanda() throws IOException {
 		Long idComanda = this.getIDComandaByRequest();
-		cFacade.concludiComanda(idComanda);	
+		cFacade.concludiComanda(idComanda);
 		tFacade.setTavoloLibero(this.getComandaByRequest().getTavolo().getId());
 		Prenotazione prenotazione = pFacade.findPrenotazioneByTavolo(this.getComandaByRequest().getTavolo().getId());
-		if(prenotazione!=null)
+		if (prenotazione != null)
 			pFacade.setPrenotazioneCompletata(prenotazione);
 		return "home_Administrator?faces-redirect=true";
 	}
 
 	@PostConstruct
-	public void init(){
-		if(this.getUtenteCorrente()==null)
+	public void init() {
+		if (this.getUtenteCorrente() == null)
 			try {
 				this.redirectPage("./sessioneScaduta.jsp");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		else
-			if(!this.getUtenteCorrente().getRole().equals("admin"))
-				try {
-					this.redirectPage("./404.jsp");
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+		else if (!this.getUtenteCorrente().getRole().equals("admin"))
+			try {
+				this.redirectPage("./404.jsp");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 
-		//		calcolo numero tavoli liberi occupati, prenotati e totali
+		// calcolo numero tavoli liberi occupati, prenotati e totali
 		this.tavoli = tFacade.findAllTavolo();
-		for(Tavolo t : this.tavoli){
-			if(t.getOccupato()==0)
+		for (Tavolo t : this.tavoli) {
+			if (t.getOccupato() == 0)
 				this.tavoliLiberi++;
-			if(t.getOccupato()==1)
+			if (t.getOccupato() == 1)
 				this.tavoliPrenotati++;
-			if(t.getOccupato()==2)
+			if (t.getOccupato() == 2)
 				this.tavoliOccupati++;
 		}
-		this.tavoliTotali=this.tavoli.size();
-		this.tavoliLiberiP= (this.tavoliLiberi/this.tavoliTotali)*100;
-		this.tavoliPrenotatiP= (this.tavoliPrenotati/this.tavoliTotali)*100;
-		this.tavoliOccupatiP= (this.tavoliOccupati/this.tavoliTotali)*100;
+		this.tavoliTotali = this.tavoli.size();
+		this.tavoliLiberiP = (this.tavoliLiberi / this.tavoliTotali) * 100;
+		this.tavoliPrenotatiP = (this.tavoliPrenotati / this.tavoliTotali) * 100;
+		this.tavoliOccupatiP = (this.tavoliOccupati / this.tavoliTotali) * 100;
 
-		//		 gestione comande di oggi
+		// gestione comande di oggi
 		this.comande = cFacade.findallComandaToday();
 
-		//		 gestione prenotazioni di oggi
+		// gestione prenotazioni di oggi
 		this.prenotazioni = pFacade.findAllPrenotazioniToday();
-		this.removeFromSession("tavoloCorrente");
 	}
 
-	private void removeFromSession(String param) {
-		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-		sessionMap.remove(param);
-	}
-
-	private Utente getUtenteCorrente(){
+	private Utente getUtenteCorrente() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		return (Utente) context.getExternalContext().getSessionMap().get("utenteCorrente");
 	}
 
-	private void redirectPage(String page) throws IOException{
+	private void redirectPage(String page) throws IOException {
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.getExternalContext().redirect(page);
 	}
 
-	public String getByRequest(String name){
-		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+	public String getByRequest(String name) {
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		return params.get(name);
 	}
 

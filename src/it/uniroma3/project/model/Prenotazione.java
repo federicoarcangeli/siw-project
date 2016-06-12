@@ -13,8 +13,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
-
 @Entity
 @NamedQuery(name = "Prenotazione.findAll", query = "select p from Prenotazione p")
 public class Prenotazione {
@@ -37,11 +35,10 @@ public class Prenotazione {
 	@Column
 	private String nominativo;
 
-
-	/**
-	 *  0: cliente non arrivato
-	 *  1: cliente seduto al tavolo
-	 *  2: cliente ha usufruito della prenotazione
+	/*
+	 * 0: cliente non arrivato 
+	 * 1: cliente seduto al tavolo 
+	 * 2: cliente ha usufruito della prenotazione
 	 */
 	@Column(nullable = false)
 	private int stato;
@@ -52,24 +49,25 @@ public class Prenotazione {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Tavolo tavoloPrenotato;
 
-	public Prenotazione(){
+	public Prenotazione() {
 	}
 
-	public Prenotazione(Date data,Date ora, int ospiti,String nominativo,Tavolo tavolo) {
-		this.data=data;
-		this.ora=ora;
-		this.numeroOspiti=ospiti;
-		this.nominativo=nominativo;
-		this.stato=0;
-		this.tavoloPrenotato=tavolo;
+	public Prenotazione(Date data, Date ora, int ospiti, String nominativo, Tavolo tavolo) {
+		this.data = data;
+		this.ora = ora;
+		this.numeroOspiti = ospiti;
+		this.nominativo = nominativo;
+		this.stato = 0;
+		this.tavoloPrenotato = tavolo;
 	}
-	public Prenotazione(Date data,Date ora, int ospiti,Utente utente, Tavolo tavolo) {
-		this.data=data;
-		this.ora=ora;
-		this.numeroOspiti=ospiti;
-		this.utente=utente;
-		this.tavoloPrenotato=tavolo;
-		this.stato=0;
+
+	public Prenotazione(Date data, Date ora, int ospiti, Utente utente, Tavolo tavolo) {
+		this.data = data;
+		this.ora = ora;
+		this.numeroOspiti = ospiti;
+		this.utente = utente;
+		this.tavoloPrenotato = tavolo;
+		this.stato = 0;
 	}
 
 	public Long getId() {

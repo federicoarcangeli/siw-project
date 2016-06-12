@@ -14,9 +14,9 @@ public class Time24HoursValidator {
 	private Matcher matcher;
 	private DateFormat formatter;
 
-	// gestione orario di lavolo ristorante
+	// gestione orario di lavoro ristorante
 	private static final String TIME24HOURS_PATTERN = "([01]?[0-9]|2[0-3]):[0-5][0-9]";
-	// orario lavorativo dalle 11:00 alle 22:59
+
 	private static final String ORARIO_CENA_PATTERN = "(19|2[01]):[0-5][0-9]";
 	private static final String ORARIO_PRANZO_PATTERN = "(12|1[34]):[0-5][0-9]";
 
@@ -69,6 +69,7 @@ public class Time24HoursValidator {
 		pattern = Pattern.compile(ORARIO_CENA_PATTERN);
 		if (ora != null) {
 			matcher = pattern.matcher(ora);
+			System.out.println(matcher.matches());
 			if (matcher.matches())
 				return true;
 		}
@@ -79,9 +80,12 @@ public class Time24HoursValidator {
 		String hour = this.ConvertDateToString(time);
 		this.pattern = Pattern.compile(ORARIO_PRANZO_PATTERN);
 		if (hour != null) {
-			this.matcher = this.pattern.matcher(hour);
+			matcher = pattern.matcher(hour);
+			System.out.println(matcher.matches());
+			if(matcher.matches())
+				return true;
 		}
-		return this.matcher.matches();
+			return false;
 	}
 
 	/**
