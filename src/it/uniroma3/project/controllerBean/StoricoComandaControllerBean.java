@@ -28,8 +28,7 @@ public class StoricoComandaControllerBean {
 
 	public String getComandeEffettuate() throws IOException, ParseException{
 		this.comande = this.cFacade.findComandeCompletateInThisDay(this.datepicker);
-		this.refreshPage();
-		return "storicoComande";
+		return "storicoComande?faces-redirect=true";
 	}
 
 	@PostConstruct
@@ -48,11 +47,6 @@ public class StoricoComandaControllerBean {
 					e.printStackTrace();
 				}
 		this.comande = cFacade.findallComandaCompletate();
-	}
-
-	public void refreshPage() throws IOException{
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.getExternalContext().redirect("./storicoComande.jsp");
 	}
 
 	private Utente getUtenteCorrente(){
