@@ -21,7 +21,7 @@ public class Ristorante {
 	public boolean containsDate(List<Prenotazione> prenotazioni, Date data) {
 		Time24HoursValidator validatorD = new Time24HoursValidator();
 		for (Prenotazione p : prenotazioni) 
-			if (validatorD.SameDate(data, p.getData()) && p.isCompletato()==false)
+			if (validatorD.SameDate(data, p.getData()) && p.getStato()!=2)
 				return true;
 		return false;
 	}

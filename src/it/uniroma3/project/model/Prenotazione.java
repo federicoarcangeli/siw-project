@@ -34,10 +34,17 @@ public class Prenotazione {
 	@Column(nullable = false)
 	private int numeroOspiti;
 
+	@Column
 	private String nominativo;
 
+
+	/**
+	 *  0: cliente non arrivato
+	 *  1: cliente seduto al tavolo
+	 *  2: cliente ha usufruito della prenotazione
+	 */
 	@Column(nullable = false)
-	private boolean completato;
+	private int stato;
 
 	@ManyToOne
 	private Utente utente;
@@ -53,7 +60,7 @@ public class Prenotazione {
 		this.ora=ora;
 		this.numeroOspiti=ospiti;
 		this.nominativo=nominativo;
-		this.completato=false;
+		this.stato=0;
 		this.tavoloPrenotato=tavolo;
 	}
 	public Prenotazione(Date data,Date ora, int ospiti,Utente utente, Tavolo tavolo) {
@@ -62,7 +69,7 @@ public class Prenotazione {
 		this.numeroOspiti=ospiti;
 		this.utente=utente;
 		this.tavoloPrenotato=tavolo;
-		this.completato=false;
+		this.stato=0;
 	}
 
 	public Long getId() {
@@ -113,12 +120,12 @@ public class Prenotazione {
 		return tavoloPrenotato;
 	}
 
-	public boolean isCompletato() {
-		return completato;
+	public int getStato() {
+		return stato;
 	}
 
-	public void setCompletato(boolean completato) {
-		this.completato = completato;
+	public void setStato(int stato) {
+		this.stato = stato;
 	}
 
 	public void setTavoloPrenotato(Tavolo tavoloPrenotato) {
@@ -134,12 +141,12 @@ public class Prenotazione {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((ora == null) ? 0 : ora.hashCode());
-		result = prime * result + (completato ? 1231 : 1237);
 		result = prime * result + ((data == null) ? 0 : data.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nominativo == null) ? 0 : nominativo.hashCode());
 		result = prime * result + numeroOspiti;
+		result = prime * result + ((ora == null) ? 0 : ora.hashCode());
+		result = prime * result + stato;
 		result = prime * result + ((tavoloPrenotato == null) ? 0 : tavoloPrenotato.hashCode());
 		result = prime * result + ((utente == null) ? 0 : utente.hashCode());
 		return result;
@@ -154,13 +161,6 @@ public class Prenotazione {
 		if (getClass() != obj.getClass())
 			return false;
 		Prenotazione other = (Prenotazione) obj;
-		if (ora == null) {
-			if (other.ora != null)
-				return false;
-		} else if (!ora.equals(other.ora))
-			return false;
-		if (completato != other.completato)
-			return false;
 		if (data == null) {
 			if (other.data != null)
 				return false;
@@ -177,6 +177,13 @@ public class Prenotazione {
 		} else if (!nominativo.equals(other.nominativo))
 			return false;
 		if (numeroOspiti != other.numeroOspiti)
+			return false;
+		if (ora == null) {
+			if (other.ora != null)
+				return false;
+		} else if (!ora.equals(other.ora))
+			return false;
+		if (stato != other.stato)
 			return false;
 		if (tavoloPrenotato == null) {
 			if (other.tavoloPrenotato != null)

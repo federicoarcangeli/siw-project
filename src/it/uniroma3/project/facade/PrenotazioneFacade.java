@@ -17,13 +17,13 @@ public class PrenotazioneFacade {
 	@PersistenceContext(unitName = "restaurant")
 	private EntityManager em;
 
-	public Prenotazione create(String nominativo, Date data, Date ora, int ospiti, Tavolo tavolo) {
+	public Prenotazione createByPersonale(String nominativo, Date data, Date ora, int ospiti, Tavolo tavolo) {
 		Prenotazione prenotazione= new Prenotazione(data,ora,ospiti,nominativo,tavolo);
 		em.persist(prenotazione);
 		return prenotazione;
 	}
 
-	public Prenotazione create(Date data, Date ora, int ospiti,Utente utente ,Tavolo tavolo) {
+	public Prenotazione createByUtente(Date data, Date ora, int ospiti,Utente utente ,Tavolo tavolo) {
 		Prenotazione prenotazione= new Prenotazione(data,ora,ospiti,utente,tavolo);
 		em.persist(prenotazione);
 		return prenotazione;
@@ -55,7 +55,14 @@ public class PrenotazioneFacade {
 
 	public void setPrenotazioneCompletata(Prenotazione prenotazione) {
 		PrenotazioneDao dao = new PrenotazioneDao(this.em);
-		prenotazione.setCompletato(true);
+		prenotazione.setStato(2);
+		dao.update(prenotazione);
+	}
+
+	public void setPrenotazioneUtenteAlTavolo(long idPrenotazione) {
+		PrenotazioneDao dao = new PrenotazioneDao(this.em);
+		Prenotazione prenotazione = dao.findByTavolo(idPrenotazione);
+		prenotazione.setStato(1);
 		dao.update(prenotazione);
 	}
 

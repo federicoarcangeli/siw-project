@@ -29,7 +29,6 @@ public class PrenotazioneControllerBean {
 	private int coperti;
 	private Date timepicker;
 	private String nominativo;
-	private boolean corretto;
 
 	private Prenotazione prenotazione;
 	private List<Tavolo> tavoli;
@@ -48,9 +47,8 @@ public class PrenotazioneControllerBean {
 			Tavolo tavolo = this.validateTable();
 			if(tavolo ==null)
 				return "prenotazioneAdmin";
-			this.prenotazione = paFacade.create(this.getNominativo(), this.getDatepicker(), this.getTimepicker(),
+			this.prenotazione = paFacade.createByPersonale(this.getNominativo(),this.getDatepicker(), this.getTimepicker(),
 					this.getCoperti(), tavolo);
-			this.corretto = true;
 			if (validatorD.isToday(this.prenotazione.getData())) {
 				tFacade.setTavoloPrenotato(tavolo);
 			}
@@ -69,9 +67,8 @@ public class PrenotazioneControllerBean {
 			if(tavolo ==null)
 				return "prenotazione";
 			Utente utenteCorrente = (Utente)context.getExternalContext().getSessionMap().get("utenteCorrente");
-			this.prenotazione = paFacade.create(this.getDatepicker(),this.getTimepicker(),
+			this.prenotazione = paFacade.createByUtente(this.getDatepicker(),this.getTimepicker(),
 					this.getCoperti(),utenteCorrente, tavolo);
-			this.corretto = true;
 			if (validatorD.isToday(this.prenotazione.getData())) {
 				tFacade.setTavoloPrenotato(tavolo);
 			}
@@ -179,14 +176,6 @@ public class PrenotazioneControllerBean {
 
 	public void settFacade(TavoloFacade tFacade) {
 		this.tFacade = tFacade;
-	}
-
-	public boolean isCorretto() {
-		return corretto;
-	}
-
-	public void setCorretto(boolean error) {
-		this.corretto = error;
 	}
 
 }

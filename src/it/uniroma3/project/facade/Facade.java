@@ -328,7 +328,7 @@ public class Facade {
 	}
 
 	public void setPrenotazioneCompletata(Prenotazione prenotazione) {
-		prenotazione.setCompletato(true);
+		prenotazione.setStato(2);
 		PrenotazioneDao dao = new PrenotazioneDao(this.em);
 		this.em.getTransaction().begin();
 		dao.update(prenotazione);
