@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import it.uniroma3.project.facade.Facade;
-import it.uniroma3.project.services.validator.*;
+import it.uniroma3.project.services.validator.Time24HoursValidator;
 
 public class Ristorante {
 	private static int MAX = 15;
@@ -72,19 +71,6 @@ public class Ristorante {
 				return t;
 		}
 		return null;
-	}
-
-	public void setUpGiornaliero(){
-		Facade facade = new Facade();
-		Date today = new Date();
-		List<Tavolo> tavoli = facade.findAllTavoliToday(today);
-		for(Tavolo t : tavoli){
-			if(!facade.findPrenotazione(t, today).isEmpty())
-				facade.setTavoloPrenotato(t);
-			else
-				facade.setTavoloLibero(t);
-		}
-		facade.closeEntityManager();
 	}
 
 }

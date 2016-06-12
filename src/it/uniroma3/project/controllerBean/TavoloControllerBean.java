@@ -28,11 +28,11 @@ public class TavoloControllerBean {
 	public String create() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		if(this.tFacade.findTavoloByNumero(this.codice)!=null){
-			context.getExternalContext().getRequestMap().put("tavoloError", "il tavolo con codice " + this.codice + " è gia presente nella sala");
+			context.getExternalContext().getRequestMap().put("tavoloError", "il tavolo numero " + this.codice + " è gia presente nella sala");
 			return "registraTavolo";
 		}
 		this.tavolo = tFacade.create(this.codice,this.coperti);
-		context.getExternalContext().getRequestMap().put("tavoloCorrente", "il tavolo con codice " + this.codice + " e numero di coperti " + this.coperti + " è stato inserito correttamente");
+		context.getExternalContext().getRequestMap().put("tavoloCorrente", "il tavolo numero " + this.codice + " con " + this.coperti + " coperti è stato inserito correttamente");
 		return "registraTavolo";
 	}
 

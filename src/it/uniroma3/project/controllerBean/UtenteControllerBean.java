@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import it.uniroma3.project.facade.UtenteFacade;
 import it.uniroma3.project.model.Utente;
+import it.uniroma3.project.services.mail.EmailManager;
 import it.uniroma3.project.services.security.MD5Encrypter;
 
 @ManagedBean(name = "utenteController")
@@ -34,11 +35,8 @@ public class UtenteControllerBean implements Serializable {
 	private String telefono;
 	private String password;
 	private String confPassword;
-	private boolean loggedIn;
 
 	private Utente utente;
-
-	private String originalURL;
 
 	@EJB(name = "uFacade")
 	private UtenteFacade uFacade;
@@ -50,7 +48,6 @@ public class UtenteControllerBean implements Serializable {
 			return "loginSignup";
 		} else {
 			this.utente = uFacade.signUp(this.utente);
-			loggedIn = true;
 			this.setUtenteCorrenteInSession("utenteCorrente");
 			return "index_parallax";
 		}
@@ -62,7 +59,8 @@ public class UtenteControllerBean implements Serializable {
 		if (this.isAlreadyRegistered(this.utente))
 			return "registraPersonale";
 		this.uFacade.signUp(utente);
-		context.getExternalContext().getRequestMap().put("operatoreCorrente", "L' operatore " + this.username + " è stato inserito correttamente");
+		context.getExternalContext().getRequestMap().put("operatoreCorrente",
+				"L' operatore " + this.username + " è stato inserito correttamente");
 		return "registraPersonale";
 
 	}
@@ -80,18 +78,22 @@ public class UtenteControllerBean implements Serializable {
 
 	public String loginAdmin() {
 		this.utente = this.uFacade.findByUsername(this.getUsername());
-		//		L'utente che sta tentando di autenticarsi non è registrato nel sistema
+		// L'utente che sta tentando di autenticarsi non è registrato nel
+		// sistema
 		if (this.isNotAlreadyRegistered(this.utente) || this.wrongPassword()) {
 			return "administrator";
 		} else {
-			//			L'utente è registrato
-			if(this.utente.getRole().equals("admin")) {
+			// L'utente è registrato con ruolo admin o operatore
+			if (this.utente.getRole().equals("admin")) {
 				this.setUtenteCorrenteInSession("utenteCorrente");
 				return "home_Administrator?faces-redirect=true";
-			} else if(this.utente.getRole().equals("operatore")) {
+			} else if (this.utente.getRole().equals("operatore")) {
 				this.setUtenteCorrenteInSession("utenteCorrente");
 				return "home_Operatore?faces-redirect=true";
+				// il ruolo è utente
 			} else {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+						this.utente.getUsername() + " non ha i permessi per entrare in questa sezione", null));
 				return "administrator";
 			}
 		}
@@ -139,52 +141,6 @@ public class UtenteControllerBean implements Serializable {
 		return crypter.cryptWithMD5(toCrypt);
 	}
 
-	@PostConstruct
-	public void init() {
-		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-		originalURL = (String) externalContext.getRequestMap().get(RequestDispatcher.FORWARD_REQUEST_URI);
-		if (originalURL == null) {
-			originalURL = externalContext.getRequestContextPath() + "/home_Administrator.jsp";
-		} else {
-			String originalQuery = (String) externalContext.getRequestMap().get(RequestDispatcher.FORWARD_QUERY_STRING);
-
-			if (originalQuery != null) {
-				originalURL += "?" + originalQuery;
-			}
-		}
-	}
-
-	public String doLogin() {
-		Utente admin = this.uFacade.findAdmin(username, this.getPasswordCriptata());
-		if (admin != null) {
-			loggedIn = true;
-			return "home_Administrator";
-		} else {
-			return "administrator";
-		}
-	}
-
-	public String doLogout() {
-		loggedIn = false;
-		return "administrator";
-	}
-
-	public void login() throws IOException {
-		FacesContext context = FacesContext.getCurrentInstance();
-		ExternalContext externalContext = context.getExternalContext();
-		HttpServletRequest request = (HttpServletRequest) externalContext.getRequest();
-
-		try {
-			request.login(username, password);
-			Utente user = this.uFacade.findAdmin(username, password);
-			externalContext.getSessionMap().put("admin", user);
-			externalContext.redirect(originalURL);
-		} catch (ServletException e) {
-			// Handle unknown username/password in request.login().
-			context.addMessage(null, new FacesMessage("Utente sconosciuto"));
-		}
-	}
-
 	public void logout() throws IOException {
 		FacesContext context = FacesContext.getCurrentInstance();
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
@@ -192,12 +148,12 @@ public class UtenteControllerBean implements Serializable {
 		context.getExternalContext().redirect("index_parallax.jsp");
 	}
 
-	public void setUtenteCorrenteInSession(String name){
+	public void setUtenteCorrenteInSession(String name) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.getExternalContext().getSessionMap().put(name, this.utente);
 	}
 
-	public Utente getUtenteCorrenteInSession(){
+	public Utente getUtenteCorrenteInSession() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		return (Utente) context.getExternalContext().getSessionMap().get("utenteCorrente");
 	}
@@ -272,22 +228,6 @@ public class UtenteControllerBean implements Serializable {
 
 	public void setuFacade(UtenteFacade uFacade) {
 		this.uFacade = uFacade;
-	}
-
-	public String getOriginalURL() {
-		return originalURL;
-	}
-
-	public void setOriginalURL(String originalURL) {
-		this.originalURL = originalURL;
-	}
-
-	public boolean isLoggedIn() {
-		return loggedIn;
-	}
-
-	public void setLoggedIn(boolean loggedIn) {
-		this.loggedIn = loggedIn;
 	}
 
 }

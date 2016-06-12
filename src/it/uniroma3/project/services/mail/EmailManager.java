@@ -33,7 +33,7 @@ public class EmailManager {
 	 * @throws AddressException
 	 */
 
-	public void sendMail(String receiver) {
+	public static void sendMail(String receiver, String username, String password) {
 		mailServerProperties = System.getProperties();
 		mailServerProperties.put("mail.smtp.port", 587);
 		mailServerProperties.put("mail.smtp.auth", "true");
@@ -46,13 +46,15 @@ public class EmailManager {
 		try {
 			generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
 			generateMailMessage.setSubject("Conferma di iscrizione");
-			String emailBody = "Grazie per esserti registrato! <br><br> Lo Staff";
+			String emailBody = "Grazie per esserti registrato! <br><br> "
+					+ "Il tuo nome utente è username, e la password è password. <br>"
+					+ "Lo Staff";
 			generateMailMessage.setContent(emailBody, "text/html");
 
 			Transport transport;
 			transport = getMailSession.getTransport("smtp");
 
-			InputStream input = EmailManager.class.getResourceAsStream("./accountProperties.prop");
+			InputStream input = EmailManager.class.getResourceAsStream("./resources/accountProperties.prop");
 			senderAccountProp.load(input);
 
 			transport.connect("smtp.gmail.com", senderAccountProp.getProperty("mail"),
@@ -61,17 +63,13 @@ public class EmailManager {
 			transport.close();
 
 		} catch (NoSuchProviderException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.exit(1);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
