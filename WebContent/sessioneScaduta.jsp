@@ -3,8 +3,8 @@
 
 <head>
 <meta charset="utf-8">
-<title>Ristorante tomato</title>
-
+<title>Ops!</title>
+<meta name="author" content="Alessandro&Federico">
 <!-- SEO -->
 <meta name="description"
 	content="Tomato is a Responsive HTML5 Template for Restaurants and food related services.">
@@ -23,16 +23,9 @@
 <link rel="stylesheet" href="css/plugin.css">
 <link rel="stylesheet" href="css/main.css">
 
-<!--[if lt IE 9]>
-            <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
-        <![endif]-->
 </head>
 
 <body>
-	<!--[if lt IE 8]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
-
 	<!-- Preloder-->
 	<div class="preloder animated">
 		<div class="scoket">

@@ -1,4 +1,4 @@
-package it.uniroma3.project.controllerBean;
+package it.uniroma3.project.controller;
 
 import it.uniroma3.project.model.Comanda;
 import it.uniroma3.project.model.Prenotazione;
@@ -27,7 +27,7 @@ import it.uniroma3.project.facade.TavoloFacade;
 		@EJB(name = "cFacade", beanInterface = ComandaFacade.class) ,
 		@EJB(name = "tFacade", beanInterface = TavoloFacade.class) })
 
-public class PannelloDiControlloControllerBean {
+public class PannelloDiControlloController {
 
 	private int tavoliLiberi = 0;
 	private int tavoliPrenotati = 0;

@@ -8,7 +8,7 @@
 <head>
 <meta charset="utf-8">
 <title>Inserimento nuovo piatto</title>
-
+<meta name="author" content="Alessandro&Federico">
 
 <!-- Favicons -->
 <link rel="shortcut icon" href="img/favicon.ico">
@@ -101,11 +101,11 @@
 												<div class="form-group">
 													<label for="name">Categoria</label>
 													<h:selectOneMenu
-														value="#{piattoControllerBean.nomeCategoria}"
+														value="#{piattoController.nomeCategoria}"
 														id="categoria">
 
 														<f:selectItems
-															value="#{piattoControllerBean.nomiCategorie}" />
+															value="#{piattoController.nomiCategorie}" />
 
 													</h:selectOneMenu>
 													<h:messages for="categoria" />
@@ -118,7 +118,7 @@
 									<div class="col-md-6 col-sm-6">
 										<div class="form-group">
 											<label for="name">Nome</label>
-											<h:inputText value="#{piattoControllerBean.nome}"
+											<h:inputText value="#{piattoController.nome}"
 												styleClass="form-control" required="true"
 												requiredMessage="Nome obbligatorio" id="nome" />
 											<i class="fa fa-cutlery" aria-hidden="true"></i>
@@ -134,7 +134,7 @@
 											<label for="immagine">Immagine</label>
 
 											<t:inputFileUpload
-												value="#{piattoControllerBean.uploadedFile}"
+												value="#{piattoController.uploadedFile}"
 												styleClass="form-control" required="true"
 												requiredMessage="Inserisci un'immagine per il piatto"
 												id="img" />
@@ -149,7 +149,7 @@
 									<div class="col-md-6 col-sm-6">
 										<div class="form-group">
 											<label for="descrizione">Descrizione</label>
-											<h:inputTextarea value="#{piattoControllerBean.descrizione}"
+											<h:inputTextarea value="#{piattoController.descrizione}"
 												styleClass="form-control" required="true"
 												requiredMessage="La descrizione del piatto è obbligatoria"
 												cols="20" rows="5" id="descrizione" />
@@ -163,7 +163,7 @@
 									<div class="col-md-6 col-sm-6">
 										<div class="form-group">
 											<label for="prezzo">Prezzo</label>
-											<h:inputText value="#{piattoControllerBean.prezzo}"
+											<h:inputText value="#{piattoController.prezzo}"
 												styleClass="form-control" required="true"
 												requiredMessage="Il prezzo è obbligatorio"
 												converterMessage="Il prezzo deve essere un numero"
@@ -179,14 +179,14 @@
 										<div class="form-group">
 											<label for="surgelati">Contiene prodotti surgelati?</label>
 											<h:selectBooleanCheckbox
-												value="#{piattoControllerBean.surgelati}" />
+												value="#{piattoController.surgelati}" />
 										</div>
 									</div>
 									<div id="OT_partySize" class="col-md-6 col-sm-6">
 										<div class="form-group">
 											<label for="allergeni">Contiene allergeni?</label>
 											<h:selectBooleanCheckbox
-												value="#{piattoControllerBean.allergeni}" />
+												value="#{piattoController.allergeni}" />
 										</div>
 									</div>
 								</div>
@@ -236,7 +236,7 @@
 													data-dismiss="modal">Annulla</button>
 												<h:commandLink styleClass="btn btn-success"
 													value="inserisci piatto"
-													action="#{piattoControllerBean.create}">
+													action="#{piattoController.create}">
 												</h:commandLink>
 											</div>
 										</div>
@@ -249,7 +249,7 @@
 										<button type="button" class="close" data-dismiss="alert">
 											<span class="fa fa-close"></span>
 										</button>
-										<span> SUCCESS: </span>
+										<span></span>
 										<h:outputText value="#{piattoCorrente}" />
 									</div>
 								</div>

@@ -1,4 +1,4 @@
-package it.uniroma3.project.controllerBean;
+package it.uniroma3.project.controller;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -22,7 +22,7 @@ import it.uniroma3.project.services.security.MD5Encrypter;
 @ManagedBean(name = "utenteController")
 @SessionScoped
 @EJB(name = "uFacade", beanInterface = UtenteFacade.class)
-public class UtenteControllerBean implements Serializable {
+public class UtenteController implements Serializable {
 
 	/**
 	 * 

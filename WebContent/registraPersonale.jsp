@@ -6,8 +6,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Inserimento personale</title>
-<meta name="author" content="Surjith S M">
+<title>Registrazione nuovo personale</title>
 
 <!-- SEO -->
 <meta name="description"
@@ -176,7 +175,7 @@
 														<button type="button" class="close" data-dismiss="alert">
 															<span class="fa fa-close"></span>
 														</button>
-														<span> SUCCESS: </span>
+														<span>Nuovo operatore:</span>
 														<h:outputText value="#{operatoreCorrente}" />
 													</div>
 												</div>
@@ -214,6 +213,7 @@
 		<script src="js/main.js"></script>
 		<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
 		<script src="js/vendor/mc/main.js"></script>
+<!-- 		scripts -->
 		<script src="js/scripts/confermaInserimentoOperatore.js"></script>
 	</f:view>
 </body>

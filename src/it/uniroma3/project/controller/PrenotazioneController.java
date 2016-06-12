@@ -1,4 +1,4 @@
-package it.uniroma3.project.controllerBean;
+package it.uniroma3.project.controller;
 
 import java.io.IOException;
 import java.util.Date;
@@ -19,11 +19,11 @@ import it.uniroma3.project.model.Tavolo;
 import it.uniroma3.project.model.Utente;
 import it.uniroma3.project.services.validator.Time24HoursValidator;
 
-@ManagedBean
+@ManagedBean(name="prenotazioneController")
 @RequestScoped
 @EJBs(value = { @EJB(name = "paFacade", beanInterface = PrenotazioneFacade.class),
 		@EJB(name = "tFacade", beanInterface = TavoloFacade.class) })
-public class PrenotazioneControllerBean {
+public class PrenotazioneController {
 
 	private Date datepicker;
 	private int coperti;
@@ -54,7 +54,7 @@ public class PrenotazioneControllerBean {
 			if (validatorD.isToday(this.prenotazione.getData())) {
 				tFacade.setTavoloPrenotato(tavolo);
 			}
-			context.getExternalContext().getRequestMap().put("prenotazioneCorrente", "La prenotazione a nome di  " + this.nominativo + " per " + this.coperti + " persone per il giorno " +validatorD.ConvertDateToString(datepicker) + " alle ore " + validatorD.ConvertTimeToString(this.getTimepicker()) + " è stata inserita correttamente");
+			context.getExternalContext().getRequestMap().put("prenotazioneCorrente", "Hai prenotato a nome di " + this.nominativo + " per " + this.coperti + " persone per il giorno " +validatorD.ConvertDateToString(datepicker) + " alle ore " + validatorD.ConvertTimeToString(this.getTimepicker()));
 		}else
 			context.getExternalContext().getRequestMap().put("prenotazioneError", "è possibile prenotare solo per l'ora di cena (19:00 - 21:59)" );
 		return "prenotazioneAdmin";

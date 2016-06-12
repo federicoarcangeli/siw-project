@@ -1,4 +1,4 @@
-package it.uniroma3.project.controllerBean;
+package it.uniroma3.project.controller;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -18,7 +18,7 @@ import it.uniroma3.project.model.Utente;
 
 @ManagedBean(name = "storicoController")
 @RequestScoped
-public class StoricoComandaControllerBean {
+public class StoricoComandaController {
 
 	private Date datepicker;
 	private List<Comanda> comande = new ArrayList<>();

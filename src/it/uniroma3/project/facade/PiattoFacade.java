@@ -22,7 +22,6 @@ public class PiattoFacade {
 		Piatto piatto = new Piatto();
 		piatto.setNome(nome);
 		piatto.setPortata(categoria);
-		em.persist(descrizionePiatto);
 		piatto.setDescrizionePiatto(descrizionePiatto);
 		em.persist(piatto);
 		return piatto;

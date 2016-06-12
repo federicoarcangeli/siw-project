@@ -1,4 +1,4 @@
-package it.uniroma3.project.controllerBean;
+package it.uniroma3.project.controller;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -26,7 +26,7 @@ import it.uniroma3.project.model.Utente;
 @EJBs(value = { @EJB(name = "cFacade", beanInterface = ComandaFacade.class),
 		@EJB(name = "pFacade", beanInterface = PiattoFacade.class),
 		@EJB(name = "cpFacade", beanInterface = CategoriaPiattoFacade.class) })
-public class ComandaControllerBean {
+public class ComandaController {
 
 	private Long idPiatto;
 	private Piatto piatto;

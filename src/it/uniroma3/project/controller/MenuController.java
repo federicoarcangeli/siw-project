@@ -1,4 +1,4 @@
-package it.uniroma3.project.controllerBean;
+package it.uniroma3.project.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -18,11 +18,11 @@ import it.uniroma3.project.model.CategoriaPiatto;
 import it.uniroma3.project.model.DescrizionePiatto;
 import it.uniroma3.project.model.Piatto;
 
-@ManagedBean
+@ManagedBean(name="menuController")
 @RequestScoped
 @EJBs(value = { @EJB(name = "pFacade", beanInterface = PiattoFacade.class),
 		@EJB(name = "cpFacade", beanInterface = CategoriaPiattoFacade.class) })
-public class MenuControllerBean {
+public class MenuController {
 
 	@EJB
 	private PiattoFacade pFacade;

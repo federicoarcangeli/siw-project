@@ -5,15 +5,15 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import it.uniroma3.project.controllerBean.CategoriaPiattoManagedBean;
+import it.uniroma3.project.controller.CategoriaPiattoController;
 
 public class CategoriaPiattoControllerTest {
 	
-	private CategoriaPiattoManagedBean controllertest;
+	private CategoriaPiattoController controllertest;
 
 	@Before
 	public void setUp() throws Exception {
-		this.controllertest = new CategoriaPiattoManagedBean();
+		this.controllertest = new CategoriaPiattoController();
 	}
 
 	@Test
