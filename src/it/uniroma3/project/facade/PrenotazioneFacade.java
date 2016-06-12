@@ -84,4 +84,9 @@ public class PrenotazioneFacade {
 		return prenotazioni;
 	}
 
+	public void update(Prenotazione prenotazione){
+		PrenotazioneDao dao = new PrenotazioneDao(this.em);
+		dao.update(prenotazione);
+	}
+
 }

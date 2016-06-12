@@ -1,6 +1,7 @@
 package it.uniroma3.project.controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +20,9 @@ import it.uniroma3.project.model.Utente;
 @EJB(name = "pFacade", beanInterface = PrenotazioneFacade.class)
 public class ProfiloController {
 
+	private Date datepicker;
+	private int coperti;
+	private Date timepicker;
 	private List<Prenotazione> prenotazioniUtente;
 
 	@EJB
@@ -26,8 +30,7 @@ public class ProfiloController {
 
 	public String eliminaPrenotazioneDaProfilo(){
 		this.pFacade.eliminaPrenotazioneByID(Long.parseLong(this.getByRequest("idPrenotazione")));
-		this.init();
-		return "profilo";
+		return "profilo?faces-redirect=true";
 	}
 
 	@PostConstruct
@@ -70,6 +73,30 @@ public class ProfiloController {
 
 	public void setPrenotazioniUtente(List<Prenotazione> prenotazioniUtente) {
 		this.prenotazioniUtente = prenotazioniUtente;
+	}
+
+	public Date getDatepicker() {
+		return datepicker;
+	}
+
+	public void setDatepicker(Date datepicker) {
+		this.datepicker = datepicker;
+	}
+
+	public int getCoperti() {
+		return coperti;
+	}
+
+	public void setCoperti(int coperti) {
+		this.coperti = coperti;
+	}
+
+	public Date getTimepicker() {
+		return timepicker;
+	}
+
+	public void setTimepicker(Date timepicker) {
+		this.timepicker = timepicker;
 	}
 
 }

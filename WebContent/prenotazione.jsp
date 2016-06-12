@@ -193,7 +193,7 @@
 												<button type="button" class="btn btn-default"
 													data-dismiss="modal">Annulla</button>
 												<h:commandLink styleClass="btn btn-success"
-													value="Effettua prenotazioni"
+													value="Effettua prenotazione"
 													action="#{prenotazioneController.createByUtente}">
 												</h:commandLink>
 
