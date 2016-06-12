@@ -160,11 +160,17 @@
 																		style="color: green;"><i
 																		class="fa fa-check-circle"></i></td>
 																</h:panelGroup>
-																<td class="text-center"><a href="#"
-																	style="color: red;" data-toggle="modal"
-																	data-target='#<h:outputText
+																<h:panelGroup rendered="#{prenotazione.stato != 2}">
+																	<td class="text-center"><a href="#"
+																		style="color: red;" data-toggle="modal"
+																		data-target='#<h:outputText
 																					value="#{prenotazione.id}" />'
-																	class="fa fa-trash-o fa-lg"></a></td>
+																		class="fa fa-trash-o fa-lg"></a></td>
+																</h:panelGroup>
+																<h:panelGroup rendered="#{prenotazione.stato == 2}">
+																	<td class="text-center"><i class="fa fa-minus"
+																		aria-hidden="true"></i></td>
+																</h:panelGroup>
 
 																<!--  Modal conferma eliminazione prenotazione -->
 																<h:form>
