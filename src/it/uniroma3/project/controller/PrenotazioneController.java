@@ -43,8 +43,9 @@ public class PrenotazioneController {
 	public String createByAdmin() {
 		Time24HoursValidator validatorD = new Time24HoursValidator();
 		FacesContext context = FacesContext.getCurrentInstance();
-		if(validatorD.isCena(this.timepicker))
-		{
+		boolean cena = validatorD.isCena(this.timepicker);
+		boolean pranzo = validatorD.isPranzo(this.timepicker);
+		if(pranzo || cena) {
 			Tavolo tavolo = this.validateTable();
 			if(tavolo ==null)
 				return "prenotazioneAdmin";
@@ -55,7 +56,7 @@ public class PrenotazioneController {
 			}
 			context.getExternalContext().getRequestMap().put("prenotazioneCorrente", "Hai prenotato a nome di " + this.nominativo + " per " + this.coperti + " persone per il giorno " +validatorD.ConvertDateToString(datepicker) + " alle ore " + validatorD.ConvertTimeToString(this.getTimepicker()));
 		}else
-			context.getExternalContext().getRequestMap().put("prenotazioneError", "è possibile prenotare solo per l'ora di cena (19:00 - 21:59)" );
+			context.getExternalContext().getRequestMap().put("prenotazioneError", "è possibile prenotare solo negli orari di eserczio del locale (12:00 - 14:00 e 19:00-22:00) " );
 		return "prenotazioneAdmin";
 	}
 
