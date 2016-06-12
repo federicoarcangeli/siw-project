@@ -113,7 +113,7 @@
 									style="color: #F9C56A;" aria-hidden="true"></i> <span>Tavolo
 										preso in carico da<strong> : <h:outputText
 												value="#{comandaCorrente.operatore.username}" />
-									</strong> rivolgersi ad esso per eventuali ordini.
+									</strong>. rivolgersi ad esso per eventuali ordini.
 								</span>
 								</small>
 							</h:panelGroup>
