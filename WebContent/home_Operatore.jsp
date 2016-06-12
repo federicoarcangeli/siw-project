@@ -63,11 +63,10 @@
 
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="./home_Administrator.jsp">Pannello di
-										controllo</a></li>
+								<li><a href="./home_Operatore.jsp"><span
+										style="color: #F9C56A;">Sala</span></a></li>
 								<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
-								<li><a href="../sala.jsp">Sala</a></li>
-								<li class="dropdown"><a href="./home_Administrator.jsp"
+								<li class="dropdown"><a href="./home_Operatore.jsp"
 									class="dropdown-toggle" data-toggle="dropdown" role="button"
 									aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
 											value="#{utenteCorrente.username}"></h:outputText> <span
@@ -89,14 +88,59 @@
 				<!-- Page Header -->
 				<section class='page_header vertical-padding'></section>
 
-				<!-- Shop Content -->
-				<div class="shop-content">
-					<div class="container-fluid">
-						<div class="row"></div>
+				<!-- sala -->
+				<div class="col-md-12">
+					<br> <br> <br>
+				</div>
+				<div class="container-fluid">
+					<div class="row">
+						<h:form id="sala">
+							<div class="col-sm-12 centered">
+								<c:forEach var="tavolo" items="#{salaController.tavoliSala}">
+									<div class="col-xs-6 col-sm-2">
 
+										<h:panelGroup rendered="#{tavolo.occupato eq '0'}">
+											<span class="label label-success">COPERTI : <h:outputText
+													value="#{tavolo.coperti}" />
+											</span>
+											<h:commandButton styleClass="btn btn-success" id="libero"
+												style="width: 100%; height: 150px; font-size:25px;"
+												action="#{salaController.openComanda}"
+												value='#{tavolo.codiceTavolo}'>
+												<f:param name="codiceTavolo" value="#{tavolo.codiceTavolo}"></f:param>
+											</h:commandButton>
+											<div class="col-md-12" style="height: 25px;"></div>
+										</h:panelGroup>
+										<h:panelGroup rendered="#{tavolo.occupato eq '1'}">
+											<span class="label label-warning">COPERTI : <h:outputText
+													value="#{tavolo.coperti}" />
+											</span>
+											<h:commandButton styleClass="btn btn-warning" id="prenotato"
+												style="width: 100%; height: 150px; font-size:25px;"
+												action="#{salaController.openComanda}"
+												value='#{tavolo.codiceTavolo}'>
+												<f:param name="codiceTavolo" value="#{tavolo.codiceTavolo}"></f:param>
+											</h:commandButton>
+											<div class="col-md-12" style="height: 25px;"></div>
+										</h:panelGroup>
+										<h:panelGroup rendered="#{tavolo.occupato eq '2'}">
+											<span class="label label-danger">COPERTI : <h:outputText
+													value="#{tavolo.coperti}" />
+											</span>
+											<h:commandButton styleClass="btn btn-danger" id="occupato"
+												style="width: 100%; height: 150px; font-size:25px;"
+												action="#{salaController.openComanda}"
+												value='#{tavolo.codiceTavolo}'>
+												<f:param name="codiceTavolo" value="#{tavolo.codiceTavolo}"></f:param>
+											</h:commandButton>
+											<div class="col-md-12" style="height: 25px;"></div>
+										</h:panelGroup>
 
+									</div>
+								</c:forEach>
+							</div>
+						</h:form>
 					</div>
-
 				</div>
 			</div>
 		</div>

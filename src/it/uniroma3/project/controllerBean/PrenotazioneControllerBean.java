@@ -54,6 +54,8 @@ public class PrenotazioneControllerBean {
 			if (validatorD.isToday(this.prenotazione.getData())) {
 				tFacade.setTavoloPrenotato(tavolo);
 			}
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.getExternalContext().getRequestMap().put("prenotazioneCorrente", "la prenotazione a nome di  " + this.nominativo + " per " + this.coperti + " il giorno" +validatorD.ConvertDateToString(datepicker) + " alle ora " + this.timepicker + " è stata inserita correttamente");
 		} catch (ValidatorException e) {
 			this.corretto = false;
 			FacesContext.getCurrentInstance().addMessage(null,
@@ -68,15 +70,17 @@ public class PrenotazioneControllerBean {
 	public String createByUtente() {
 		Time24HoursValidator validatorD = new Time24HoursValidator();
 		FacesContext context = FacesContext.getCurrentInstance();
+		Utente utenteCorrente = (Utente)context.getExternalContext().getSessionMap().get("utenteCorrente");
 		String page = "prenotazione";
 		try {
 			Tavolo tavolo = this.validateTable();
 			this.prenotazione = paFacade.create(this.getDatepicker(),this.getTimepicker(),
-					this.getCoperti(),(Utente)context.getExternalContext().getSessionMap().get("utenteCorrente"), tavolo);
+					this.getCoperti(),utenteCorrente, tavolo);
 			this.corretto = true;
 			if (validatorD.isToday(this.prenotazione.getData())) {
 				tFacade.setTavoloPrenotato(tavolo);
 			}
+			context.getExternalContext().getRequestMap().put("prenotazioneCorrente", "la prenotazione è stata registrata correttamente a nome di  " + utenteCorrente.getCognome() + " per " + this.coperti + " persone il giorno " +validatorD.ConvertDateToString(datepicker) + " alle ore" +this.getTimepicker() );
 		} catch (ValidatorException e) {
 			this.corretto = false;
 			FacesContext.getCurrentInstance().addMessage(null,

@@ -90,7 +90,7 @@
 				<!-- Page Header -->
 				<section class='page_header vertical-padding'></section>
 
-				<!-- menu-->
+				<!-- sala -->
 				<div class="col-md-12">
 					<br> <br> <br>
 				</div>

@@ -243,6 +243,17 @@
 									</div>
 								</div>
 							</h:form>
+							<h:panelGroup rendered="#{not empty piattoCorrente}">
+								<div class="animated fadeInDown">
+									<div class="alert alert-success alert-dismissable">
+										<button type="button" class="close" data-dismiss="alert">
+											<span class="fa fa-close"></span>
+										</button>
+										<span> SUCCESS: </span>
+										<h:outputText value="#{piattoCorrente}" />
+									</div>
+								</div>
+							</h:panelGroup>
 						</div>
 					</div>
 				</section>

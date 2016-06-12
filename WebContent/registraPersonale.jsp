@@ -170,6 +170,17 @@
 												<h:messages globalOnly="true" styleClass="list-group"
 													infoClass="list-group-item list-group-item-danger" />
 											</h:form>
+											<h:panelGroup rendered="#{not empty operatoreCorrente}">
+												<div class="animated fadeInDown">
+													<div class="alert alert-success alert-dismissable">
+														<button type="button" class="close" data-dismiss="alert">
+															<span class="fa fa-close"></span>
+														</button>
+														<span> SUCCESS: </span>
+														<h:outputText value="#{operatoreCorrente}" />
+													</div>
+												</div>
+											</h:panelGroup>
 										</div>
 									</div>
 									<br>

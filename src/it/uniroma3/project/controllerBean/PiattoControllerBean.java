@@ -54,9 +54,11 @@ public class PiattoControllerBean {
 	private PiattoFacade pFacade;
 
 	public String create() {
+		FacesContext context = FacesContext.getCurrentInstance();
 		DescrizionePiatto descrizionePiatto = createDescrizionePiatto();
 		this.categoria = this.cpFacade.findByName(this.nomeCategoria);
 		this.piatto = this.pFacade.create(nome, descrizionePiatto, this.categoria);
+		context.getExternalContext().getRequestMap().put("piattoCorrente", "il piatto " + this.nome + " è stato inserito correttamente");
 		return "piattoInserito";
 	}
 
@@ -71,7 +73,7 @@ public class PiattoControllerBean {
 	}
 
 	public String createImage() {
-		Path file = null;
+		Path file = null ;
 		try {
 			String separator = File.separator;
 			Path folder = Paths.get("C:"+separator+"Users"+separator+"Federico"+separator+"test");

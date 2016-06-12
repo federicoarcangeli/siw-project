@@ -1,7 +1,5 @@
 package it.uniroma3.project.controllerBean;
 
-import java.io.IOException;
-
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -30,8 +28,8 @@ public class TavoloControllerBean {
 	public String create() {
 		this.tavolo = tFacade.create(this.getCodice(),this.getCoperti());
 		FacesContext context = FacesContext.getCurrentInstance();
-		context.getExternalContext().getSessionMap().put("tavoloCorrente", this.tavolo);
-		return "registraTavolo?faces-redirect=true";
+		context.getExternalContext().getRequestMap().put("tavoloCorrente", "il tavolo con codice " + this.codice + " e numero di coperti " + this.coperti + " è stato inserito correttamente");
+		return "registraTavolo";
 	}
 
 	public String getCodice() {

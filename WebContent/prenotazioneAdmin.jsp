@@ -55,21 +55,35 @@
 									class="icon-bar"></span> <span class="icon-bar"></span> <span
 									class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand" href="./home_Administrator.jsp"> <img
-								src="img/nav-logo.png" alt="nav-logo">
-							</a>
+							<h:panelGroup rendered="#{utenteCorrente.role == 'admin'}">
+								<a class="navbar-brand" href="./home_Administrator.jsp"> <img
+									src="img/nav-logo.png" alt="nav-logo">
+								</a>
+							</h:panelGroup>
+							<h:panelGroup rendered="#{utenteCorrente.role == 'operatore'}">
+								<a class="navbar-brand" href="./home_Operatore.jsp"> <img
+									src="img/nav-logo.png" alt="nav-logo">
+								</a>
+							</h:panelGroup>
 						</div>
 
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="./home_Administrator.jsp">Pannello di
-										controllo</a></li>
+								<h:panelGroup rendered="#{utenteCorrente.role == 'operatore'}">
+									<li><a href="./home_Operatore.jsp">Sala</a></li>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{utenteCorrente.role == 'admin'}">
+									<li><a href="./home_Administrator.jsp">Pannello di
+											controllo</a></li>
+								</h:panelGroup>
 								<li><a href="./prenotazioneAdmin.jsp"><span
 										style="color: #F9C56A;">Riserva un tavolo</span></a></li>
-								<li><a href="./sala.jsp">Sala</a></li>
-								<li class="dropdown"><a href="./home_Administrator.jsp"
-									class="dropdown-toggle" data-toggle="dropdown" role="button"
-									aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
+								<h:panelGroup rendered="#{utenteCorrente.role == 'admin'}">
+									<li><a href="./sala.jsp">Sala</a></li>
+								</h:panelGroup>
+								<li class="dropdown"><a href="" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">Benvenuto <h:outputText
 											value="#{utenteCorrente.username}"></h:outputText> <span
 										class="caret"></span></a>
 									<ul class="dropdown-menu">
@@ -222,6 +236,17 @@
 									</div>
 								</div>
 							</h:form>
+							<h:panelGroup rendered="#{not empty prenotazioneCorrente}">
+								<div class="animated fadeInDown">
+									<div class="alert alert-success alert-dismissable">
+										<button type="button" class="close" data-dismiss="alert">
+											<span class="fa fa-close"></span>
+										</button>
+										<span> SUCCESS: </span>
+										<h:outputText value="#{prenotazioneCorrente}" />
+									</div>
+								</div>
+							</h:panelGroup>
 						</div>
 					</div>
 				</section>

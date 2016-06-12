@@ -70,27 +70,29 @@ public class SalaControllerBean {
 				e.printStackTrace();
 			}
 		else
-			if(!this.getUtenteCorrente().getRole().equals("admin"))
+			if(!(this.getUtenteCorrente().getRole().equals("admin") || this.getUtenteCorrente().getRole().equals("operatore") )){
 				try {
 					this.redirectPage("./404.jsp");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+			}
+			else{
+				this.tavoliSala = this.gettFacade().findAllTavolo();
+				Ristorante ristorante = new Ristorante();
+				for(Tavolo t : tavoliSala){
+					List<Prenotazione> prenotazioni = pFacade.findPrenotazione(t);
 
-		this.tavoliSala = this.gettFacade().findAllTavolo();
-		Ristorante ristorante = new Ristorante();
-		for(Tavolo t : tavoliSala){
-			List<Prenotazione> prenotazioni = pFacade.findPrenotazione(t);
+					if(ristorante.comandaInCorso(t)==true )
+						tFacade.setTavoloOccupato(t);
 
-			if(ristorante.comandaInCorso(t)==true )
-				tFacade.setTavoloOccupato(t);
+					if(!prenotazioni.isEmpty() && ristorante.comandaInCorso(t)==false)
+						tFacade.setTavoloPrenotato(t);
 
-			if(!prenotazioni.isEmpty() && ristorante.comandaInCorso(t)==false)
-				tFacade.setTavoloPrenotato(t);
-
-			if(prenotazioni.isEmpty() && ristorante.comandaInCorso(t)==false)
-				tFacade.setTavoloLibero(t);
-		}
+					if(prenotazioni.isEmpty() && ristorante.comandaInCorso(t)==false)
+						tFacade.setTavoloLibero(t);
+				}
+			}
 	}
 
 	private Utente getUtenteCorrente(){

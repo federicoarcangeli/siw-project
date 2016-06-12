@@ -57,13 +57,14 @@ public class UtenteControllerBean implements Serializable {
 	}
 
 	public String createOperatore() {
-		this.utente = new Utente(username, this.getPasswordCriptata());
+		FacesContext context = FacesContext.getCurrentInstance();
+		this.utente = new Utente(this.username, this.getPasswordCriptata());
 		if (this.isAlreadyRegistered(this.utente))
-			return "registraPersonale?faces-redirect=true";
-		else {
-			this.utente = this.uFacade.signUp(utente);
-			return "home_Administrator?faces-redirect=true";
-		}
+			return "registraPersonale";
+		this.uFacade.signUp(utente);
+		context.getExternalContext().getRequestMap().put("operatoreCorrente", "L' operatore " + this.username + " è stato inserito correttamente");
+		return "registraPersonale";
+
 	}
 
 	public String loginUtente() {

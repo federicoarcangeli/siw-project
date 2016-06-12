@@ -51,21 +51,36 @@
 									class="icon-bar"></span> <span class="icon-bar"></span> <span
 									class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand" href="./home_Administrator.jsp"> <img
-								src="../img/nav-logo.png" alt="nav-logo">
-							</a>
+							<h:panelGroup rendered="#{utenteCorrente.role == 'admin'}">
+								<a class="navbar-brand" href="./home_Administrator.jsp"> <img
+									src="img/nav-logo.png" alt="nav-logo">
+								</a>
+							</h:panelGroup>
+							<h:panelGroup rendered="#{utenteCorrente.role == 'operatore'}">
+								<a class="navbar-brand" href="./home_Operatore.jsp"> <img
+									src="img/nav-logo.png" alt="nav-logo">
+								</a>
+							</h:panelGroup>
 						</div>
+
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="./home_Administrator.jsp">Pannello di
-										controllo</a></li>
+								<h:panelGroup rendered="#{utenteCorrente.role == 'operatore'}">
+									<li><a href="./home_Operatore.jsp">Sala</a></li>
+								</h:panelGroup>
+								<h:panelGroup rendered="#{utenteCorrente.role == 'admin'}">
+									<li><a href="./home_Administrator.jsp">Pannello di
+											controllo</a></li>
+								</h:panelGroup>
 								<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
-								<li><a href="./sala.jsp">Sala</a></li>
-								<li class="dropdown"><a href="./home_Administrator.jsp"
-									class="dropdown-toggle" data-toggle="dropdown" role="button"
-									aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
+								<h:panelGroup rendered="#{utenteCorrente.role == 'admin'}">
+									<li><a href="./sala.jsp">Sala</a></li>
+								</h:panelGroup>
+								<li class="dropdown"><a href="" class="dropdown-toggle"
+									data-toggle="dropdown" role="button" aria-haspopup="true"
+									aria-expanded="false">Benvenuto <h:outputText
 											value="#{utenteCorrente.username}"></h:outputText> <span
-										class="caret"> </span></a>
+										class="caret"></span></a>
 									<ul class="dropdown-menu">
 										<li><h:form>
 												<h:commandButton action="#{utenteController.logout}"
@@ -92,31 +107,43 @@
 							<h:outputText value="#{comandaCorrente.tavolo.codiceTavolo}" />
 							Comanda:
 							<h:outputText value="#{comandaCorrente.id}" />
-							<span class="badge"><h:outputText
-									value="#{comandaCorrente.operatore.username}" /></span>
+							<h:panelGroup
+								rendered="#{utenteCorrente.username != comandaCorrente.operatore.username}">
+								<small> <i class="fa fa-exclamation-circle"
+									style="color: #F9C56A;" aria-hidden="true"></i> <span>Tavolo
+										preso in carico da<strong> : <h:outputText
+												value="#{comandaCorrente.operatore.username}" />
+									</strong> rivolgersi ad esso per eventuali ordini.
+								</span>
+								</small>
+							</h:panelGroup>
+							<h:panelGroup
+								rendered="#{utenteCorrente.username == comandaCorrente.operatore.username}">
+								<small> <i class="fa fa-check-circle"
+									style="color: green;" aria-hidden="true"></i> <span>Tavolo
+										preso in carico da te :<strong> <h:outputText
+												value="#{comandaCorrente.operatore.username}" />
+									</strong>.
+								</span>
+								</small>
+							</h:panelGroup>
 						</h1>
 						<hr>
 					</div>
-					<div class="food-menu wow fadeInUp">
+					<section class="menu space60">
 						<div class="container-fluid">
 							<div class="row">
-								<aside class="col-md-1">
-									<h4>Categoria</h4>
+								<div class="col-md-9 col-sm-12">
 									<div class="menu-tags3">
-										<ul class="shop-cat">
-											<c:forEach var="categoria"
-												items="#{comandaController.categorie}">
-												<li><span
-													data-filter=".<h:outputText
-													value="#{categoria.nome}" />"><h:outputText
-															value="#{categoria.nome}" /></span></li>
-											</c:forEach>
-										</ul>
+										<span data-filter="*" class="tagsort3-active">Tutti</span>
+										<c:forEach var="categoria"
+											items="#{comandaController.categorie}">
+											<span
+												data-filter=".<h:outputText value="#{categoria.nome}" />"><h:outputText
+													value="#{categoria.nome}" /></span>
+										</c:forEach>
 									</div>
-								</aside>
-								<h:form>
-									<div class="col-md-8">
-
+									<h:form>
 										<div class="row menu-items3">
 											<c:forEach var="piatto" items="#{comandaController.piatti}">
 												<div
@@ -135,81 +162,67 @@
 												</div>
 											</c:forEach>
 										</div>
-									</div>
-								</h:form>
+									</h:form>
+								</div>
 
-								<aside class="col-md-3">
-									<div class="side-widget">
-										<h:form>
-											<div class="row">
-												<div class="form-group">
-													<div class="shop-grid">
-														<div class="shop-products">
-															<div class="row">
-																<div class="col-md-12">
-																	<h4>Ordine in corso</h4>
-																	<br>
-																	<table
-																		class="cart-table account-table table table-bordered">
-																		<thead>
-																			<tr>
-																				<th>Piatto</th>
-																				<th>Quantità</th>
-																				<th></th>
-																				<th></th>
-																				<th></th>
-
-																			</tr>
-																		</thead>
-																		<tbody>
-																			<c:forEach var="linea"
-																				items="#{comandaController.linee}">
-																				<tr>
-																					<td><h:outputText value="#{linea.piatto.nome}" /></td>
-																					<td><h:outputText value="#{linea.quantita}" /></td>
-																					<td><h:commandLink
-																							action="#{comandaController.aggiungiQuantita}">
-																							<i class="fa fa-plus fa-lg"></i>
-																							<f:param name="idLineaComanda"
-																								value="#{linea.id}"></f:param>
-																						</h:commandLink></td>
-																					<td><h:commandLink
-																							action="#{comandaController.sottraiQuantita}">
-																							<i class="fa fa-minus fa-lg"></i>
-																							<f:param name="idLineaComanda"
-																								value="#{linea.id}"></f:param>
-																						</h:commandLink></td>
-																					<td><h:commandLink
-																							action="#{comandaController.eliminaLineaComanda}">
-																							<i class="fa fa-trash-o fa-lg"></i>
-																							<f:param name="idLineaComanda"
-																								value="#{linea.id}"></f:param>
-																						</h:commandLink></td>
-																				</tr>
-																			</c:forEach>
-																			<tr>
-																				<td colspan="2"><strong>Totale:</strong></td>
-																				<td colspan="3"><h:outputText
-																						value="#{comandaCorrente.prezzoTotale}" />&euro;</td>
-																			</tr>
-																		</tbody>
-																	</table>
-																</div>
-															</div>
-														</div>
+								<div class="col-md-3 col-sm-12">
+									<h:form>
+										<div class="form-group">
+											<div class="shop-grid">
+												<div class="shop-products">
+													<div class="row">
+														<br>
+														<table
+															class="cart-table account-table table table-bordered table-hover">
+															<thead>
+																<tr>
+																	<th>Piatto</th>
+																	<th>Quantità</th>
+																	<th colspan="3">Operazioni <i class="fa fa-wrench"></i></th>
+																</tr>
+															</thead>
+															<tbody>
+																<c:forEach var="linea"
+																	items="#{comandaController.linee}">
+																	<tr>
+																		<td><h:outputText value="#{linea.piatto.nome}" /></td>
+																		<td><h:outputText value="#{linea.quantita}" /></td>
+																		<td><h:commandLink
+																				action="#{comandaController.aggiungiQuantita}">
+																				<i class="fa fa-plus fa-lg"></i>
+																				<f:param name="idLineaComanda" value="#{linea.id}"></f:param>
+																			</h:commandLink></td>
+																		<td><h:commandLink
+																				action="#{comandaController.sottraiQuantita}">
+																				<i class="fa fa-minus fa-lg"></i>
+																				<f:param name="idLineaComanda" value="#{linea.id}"></f:param>
+																			</h:commandLink></td>
+																		<td><h:commandLink
+																				action="#{comandaController.eliminaLineaComanda}">
+																				<i class="fa fa-trash-o fa-lg"></i>
+																				<f:param name="idLineaComanda" value="#{linea.id}"></f:param>
+																			</h:commandLink></td>
+																	</tr>
+																</c:forEach>
+																<tr>
+																	<td colspan="2"><strong>Totale:</strong></td>
+																	<td colspan="3"><h:outputText
+																			value="#{comandaCorrente.prezzoTotale}" />&euro;</td>
+																</tr>
+															</tbody>
+														</table>
 													</div>
 												</div>
 											</div>
-										</h:form>
-									</div>
-								</aside>
+										</div>
+									</h:form>
+								</div>
 							</div>
 						</div>
-					</div>
+					</section>
 				</div>
 			</div>
 		</div>
-
 
 		<!-- Javascript -->
 		<script src="js/vendor/jquery-1.11.2.min.js"></script>

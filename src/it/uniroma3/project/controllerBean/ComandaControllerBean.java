@@ -111,16 +111,20 @@ public class ComandaControllerBean {
 				e.printStackTrace();
 			}
 		else
-			if(!this.getUtenteCorrente().getRole().equals("admin"))
+			if(!(this.getUtenteCorrente().getRole().equals("admin") || this.getUtenteCorrente().getRole().equals("operatore"))){
 				try {
 					this.redirectPage("./404.jsp");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-		Comanda comandaInCorso = (Comanda) this.getBySession("comandaCorrente");
-		this.categorie = cpFacade.findAll();
-		this.piatti = pFacade.findAll();
-		this.linee = lFacade.findallLineeComanda(comandaInCorso.getId());
+			}
+			else{
+				Comanda comandaInCorso = (Comanda) this.getBySession("comandaCorrente");
+				this.categorie = cpFacade.findAll();
+				this.piatti = pFacade.findAll();
+				this.linee = lFacade.findallLineeComanda(comandaInCorso.getId());
+			}
+
 	}
 
 	private Utente getUtenteCorrente(){
