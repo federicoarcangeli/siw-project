@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import it.uniroma3.project.facade.UtenteFacade;
 import it.uniroma3.project.model.Utente;
+import it.uniroma3.project.services.mail.EmailManager;
 import it.uniroma3.project.services.security.MD5Encrypter;
 
 @ManagedBean(name = "utenteController")
