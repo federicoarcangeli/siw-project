@@ -180,6 +180,17 @@
 													</div>
 												</div>
 											</h:panelGroup>
+											<h:panelGroup rendered="#{not empty operatoreError}">
+												<div class="animated fadeInDown">
+													<div class="alert alert-danger alert-dismissable">
+														<button type="button" class="close" data-dismiss="alert">
+															<span class="fa fa-close"></span>
+														</button>
+														<span> Errore: </span>
+														<h:outputText value="#{operatoreError}" />
+													</div>
+												</div>
+											</h:panelGroup>
 										</div>
 									</div>
 									<br>
@@ -213,7 +224,7 @@
 		<script src="js/main.js"></script>
 		<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
 		<script src="js/vendor/mc/main.js"></script>
-<!-- 		scripts -->
+		<!-- 		scripts -->
 		<script src="js/scripts/confermaInserimentoOperatore.js"></script>
 	</f:view>
 </body>

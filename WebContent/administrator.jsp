@@ -83,13 +83,20 @@
 											<h:commandButton value="login"
 												action="#{utenteController.loginAdmin}"
 												styleClass="btn btn-default btn-block" />
-
 										</div>
 									</div>
-									<div class="animated fadeInDown">
-										<h:messages globalOnly="true" styleClass="list-group"
-											infoClass="list-group-item list-group-item-danger"></h:messages>
-									</div>
+									<br>
+									<h:panelGroup rendered="#{not empty utenteError}">
+										<div class="animated fadeInDown">
+											<div class="alert alert-danger alert-dismissable">
+												<button type="button" class="close" data-dismiss="alert">
+													<span class="fa fa-close"></span>
+												</button>
+												<span> Errore: </span>
+												<h:outputText value="#{utenteError}" />
+											</div>
+										</div>
+									</h:panelGroup>
 								</h:form>
 							</div>
 						</div>

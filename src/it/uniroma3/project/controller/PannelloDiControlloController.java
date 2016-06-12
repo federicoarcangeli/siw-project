@@ -50,18 +50,13 @@ public class PannelloDiControlloController {
 	@EJB
 	private TavoloFacade tFacade;
 
-	public Long getIDComandaByRequest(){
-		return Long.parseLong(this.getByRequest("idComanda"));
-	}
-
-	public Comanda getComandaByRequest(){
-		return cFacade.findComandaById(this.getIDComandaByRequest());
-	}
-
-	public String eliminaComanda() throws IOException{
+	public String eliminaComanda(){
 		Comanda comanda = this.getComandaByRequest();
-		this.cFacade.eliminaComandaByID(comanda.getId());
+		Prenotazione prenotazione = pFacade.findPrenotazioneByTavolo(comanda.getTavolo().getId());
+		if(prenotazione!=null)
+			pFacade.setPrenotazioneCompletata(prenotazione);
 		this.tFacade.setTavoloLibero(comanda.getTavolo().getId());
+		this.cFacade.eliminaComandaByID(comanda.getId());
 		return "home_Administrator?faces-redirect=true";
 	}
 
@@ -70,11 +65,11 @@ public class PannelloDiControlloController {
 		return "home_Administrator?faces-redirect=true";
 	}
 
-	public String confermaComanda() throws IOException{
-		Long idComanda = this.getIDComandaByRequest();
-		cFacade.concludiComanda(idComanda);	
-		tFacade.setTavoloLibero(this.getComandaByRequest().getTavolo().getId());
-		Prenotazione prenotazione = pFacade.findPrenotazioneByTavolo(this.getComandaByRequest().getTavolo().getId());
+	public String confermaComanda(){
+		Comanda comanda = this.getComandaByRequest();
+		cFacade.concludiComanda(comanda.getId());	
+		tFacade.setTavoloLibero(comanda.getTavolo().getId());
+		Prenotazione prenotazione = pFacade.findPrenotazioneByTavolo(comanda.getTavolo().getId());
 		if(prenotazione!=null)
 			pFacade.setPrenotazioneCompletata(prenotazione);
 		return "home_Administrator?faces-redirect=true";
@@ -134,7 +129,16 @@ public class PannelloDiControlloController {
 		context.getExternalContext().redirect(page);
 	}
 
-	public String getByRequest(String name){
+	private Comanda getComandaByRequest(){
+		return cFacade.findComandaById(this.getIDComandaByRequest());
+	}
+
+	private Long getIDComandaByRequest(){
+		return Long.parseLong(this.getByRequest("idComanda"));
+	}
+
+
+	private String getByRequest(String name){
 		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		return params.get(name);
 	}

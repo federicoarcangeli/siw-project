@@ -241,13 +241,13 @@ public class Facade {
 		return prenotazioni;
 	}
 
-	public List<Prenotazione> findPrenotazione(Tavolo t, Date today) {
-		PrenotazioneDao prenotazioneDao = new PrenotazioneDao(this.em);
-		this.em.getTransaction().begin();
-		List<Prenotazione> prenotazione = prenotazioneDao.findPrenotazioneTavolo(t);
-		this.em.getTransaction().commit();
-		return prenotazione;
-	}
+	//	public List<Prenotazione> findPrenotazione(Tavolo t, Date today) {
+	//		PrenotazioneDao prenotazioneDao = new PrenotazioneDao(this.em);
+	//		this.em.getTransaction().begin();
+	//		List<Prenotazione> prenotazione = prenotazioneDao.findPrenotazioneByTavolo(t);
+	//		this.em.getTransaction().commit();
+	//		return prenotazione;
+	//	}
 
 	public void inserisciTavolo(Tavolo tavolo) {
 		TavoloDao dao = new TavoloDao(this.em);
@@ -319,13 +319,13 @@ public class Facade {
 		this.em.getTransaction().commit();
 	}
 
-	public Prenotazione findPrenotazioneByTavolo(long idComanda) {
-		PrenotazioneDao dao = new PrenotazioneDao(this.em);
-		this.em.getTransaction().begin();
-		Prenotazione prenotazione = dao.findByTavolo(idComanda);
-		this.em.getTransaction().commit();
-		return prenotazione;
-	}
+	//	public Prenotazione findPrenotazioneByTavolo(long idComanda) {
+	//		PrenotazioneDao dao = new PrenotazioneDao(this.em);
+	//		this.em.getTransaction().begin();
+	//		Prenotazione prenotazione = dao.findByTavolo(idComanda);
+	//		this.em.getTransaction().commit();
+	//		return prenotazione;
+	//	}
 
 	public void setPrenotazioneCompletata(Prenotazione prenotazione) {
 		prenotazione.setStato(2);

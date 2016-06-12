@@ -46,9 +46,10 @@ public class SalaController {
 	public String openComanda(){
 		this.tavolo = this.tFacade.findTavoloByNumero(this.getByRequest("codiceTavolo"));
 		if(this.tavolo.getOccupato()==0 || this.tavolo.getOccupato()==1){
+			if(this.tavolo.getOccupato()==1)
+				pFacade.setPrenotazioneUtenteAlTavolo(this.tavolo.getId());
 			this.comanda = new Comanda();
 			tFacade.setTavoloOccupato(tavolo);
-			pFacade.setPrenotazioneUtenteAlTavolo(this.tavolo.getId());
 			comanda.setOperatore((Utente) this.getBySession("utenteCorrente"));
 			comanda.setTavolo(tavolo);
 			comanda.setDataOraEmissione(new Date());
@@ -59,7 +60,7 @@ public class SalaController {
 				this.comanda = cFacade.findComandaByTavolo(this.tavolo.getId());
 			}
 		this.setComandaInSession("comandaCorrente");
-		return "comanda?faces-redirect=true";
+		return "comanda";
 	}
 
 	@PostConstruct

@@ -128,6 +128,21 @@
 														</tr>
 													</thead>
 													<tbody>
+														<h:panelGroup
+															rendered="#{empty pannelloController.prenotazioni}">
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+														</h:panelGroup>
 														<c:forEach var="prenotazione"
 															items="#{pannelloController.prenotazioni}">
 															<tr>
@@ -162,14 +177,14 @@
 																</h:panelGroup>
 																<h:panelGroup rendered="#{prenotazione.stato != 2}">
 																	<td class="text-center"><a href="#"
-																		style="color: red;" data-toggle="modal"
+																		data-toggle="modal" style="color: red;"
 																		data-target='#<h:outputText
 																					value="#{prenotazione.id}" />'
-																		class="fa fa-trash-o fa-lg"></a></td>
+																		class="fa fa-trash-o fa-lg "></a></td>
 																</h:panelGroup>
 																<h:panelGroup rendered="#{prenotazione.stato == 2}">
-																	<td class="text-center"><i class="fa fa-minus"
-																		aria-hidden="true"></i></td>
+																	<td class="text-center"><i style="color: red;"
+																		class="fa fa-ban fa-lg" aria-hidden="true"></i></td>
 																</h:panelGroup>
 
 																<!--  Modal conferma eliminazione prenotazione -->
@@ -227,6 +242,19 @@
 														</tr>
 													</thead>
 													<tbody>
+														<h:panelGroup
+															rendered="#{empty pannelloController.comande}">
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+														</h:panelGroup>
 														<c:forEach var="comanda"
 															items="#{pannelloController.comande}">
 															<h:panelGroup rendered="#{comanda.completata}">
@@ -269,6 +297,15 @@
 														</tr>
 													</thead>
 													<tbody>
+														<h:panelGroup
+															rendered="#{empty pannelloController.comande}">
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+														</h:panelGroup>
 														<c:forEach var="comanda"
 															items="#{pannelloController.comande}">
 															<h:panelGroup rendered="#{!comanda.completata}">
@@ -322,6 +359,21 @@
 															</tr>
 														</thead>
 														<tbody>
+															<h:panelGroup
+																rendered="#{empty pannelloController.comande}">
+																<td class="text-center"><i class="fa fa-minus"
+																	aria-hidden="true"></i></td>
+																<td class="text-center"><i class="fa fa-minus"
+																	aria-hidden="true"></i></td>
+																<td class="text-center"><i class="fa fa-minus"
+																	aria-hidden="true"></i></td>
+																<td class="text-center"><i class="fa fa-minus"
+																	aria-hidden="true"></i></td>
+																<td class="text-center"><i class="fa fa-minus"
+																	aria-hidden="true"></i></td>
+																<td class="text-center"><i class="fa fa-minus"
+																	aria-hidden="true"></i></td>
+															</h:panelGroup>
 															<c:forEach var="comanda"
 																items="#{pannelloController.comande}">
 																<h:panelGroup rendered="#{!comanda.completata}">
@@ -389,7 +441,7 @@
 													<h:commandLink styleClass="btn btn-danger" value="Elimina"
 														action="#{pannelloController.eliminaComanda}">
 														<i class="fa fa-trash-o"></i>
-														<f:param name="iComanda" value="#{comanda.id}"></f:param>
+														<f:param name="idComanda" value="#{comanda.id}"></f:param>
 													</h:commandLink>
 												</div>
 											</div>

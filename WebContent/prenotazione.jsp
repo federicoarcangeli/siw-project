@@ -210,17 +210,17 @@
 										</button>
 										<span></span>
 										<h:outputText value="#{prenotazioneCorrente}" />
-										<h:panelGroup rendered="#{not empty prenotazioneError}">
-											<div class="animated fadeInDown">
-												<div class="alert alert-danger alert-dismissable">
-													<button type="button" class="close" data-dismiss="alert">
-														<span class="fa fa-close"></span>
-													</button>
-													<span> Attenzione: </span>
-													<h:outputText value="#{prenotazioneError}" />
-												</div>
-											</div>
-										</h:panelGroup>
+									</div>
+								</div>
+							</h:panelGroup>
+							<h:panelGroup rendered="#{not empty prenotazioneError}">
+								<div class="animated fadeInDown">
+									<div class="alert alert-danger alert-dismissable">
+										<button type="button" class="close" data-dismiss="alert">
+											<span class="fa fa-close"></span>
+										</button>
+										<span> Errore: </span>
+										<h:outputText value="#{prenotazioneError}" />
 									</div>
 								</div>
 							</h:panelGroup>

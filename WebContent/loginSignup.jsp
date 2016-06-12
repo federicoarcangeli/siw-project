@@ -6,7 +6,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Accedi</title>
+<title>Login - Signup</title>
 
 <!-- SEO -->
 <meta name="description"
@@ -83,10 +83,6 @@
 											prenotare un tavolo</small>
 									</h1>
 								</div>
-								<div class="animated fadeInDown">
-									<h:messages globalOnly="true" styleClass="list-group"
-										infoClass="list-group-item list-group-item-danger"></h:messages>
-								</div>
 							</div>
 						</div>
 						<div class="row">
@@ -141,6 +137,18 @@
 											</div>
 										</div>
 										<br>
+										<h:panelGroup rendered="#{not empty utenteError}">
+											<div class="animated fadeInDown">
+												<div class="alert alert-danger alert-dismissable">
+													<button type="button" class="close" data-dismiss="alert">
+														<span class="fa fa-close"></span>
+													</button>
+													<span> Errore: </span>
+													<h:outputText value="#{utenteError}" />
+												</div>
+											</div>
+										</h:panelGroup>
+
 									</div>
 									<div class="col-md-6">
 										<div class="box-content">
@@ -445,7 +453,7 @@
 		<script src="js/main.js"></script>
 		<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
 		<script src="js/vendor/mc/main.js"></script>
-<!-- 		scripts -->
+		<!-- 		scripts -->
 		<script src="js/scripts/confermaRegistrazioneUtente.js"></script>
 	</f:view>
 </body>

@@ -43,13 +43,13 @@ public class PrenotazioneFacade {
 
 	public List<Prenotazione> findPrenotazione(Tavolo t) {
 		PrenotazioneDao prenotazioneDao = new PrenotazioneDao(this.em);
-		List<Prenotazione> prenotazione = prenotazioneDao.findPrenotazioneTavolo(t);
+		List<Prenotazione> prenotazione = prenotazioneDao.findPrenotazioniTavolo(t);
 		return prenotazione;
 	}
 
-	public Prenotazione findPrenotazioneByTavolo(long idTavolo) {
+	public Prenotazione findPrenotazioneByTavolo(Long idTavolo) {
 		PrenotazioneDao dao = new PrenotazioneDao(this.em);
-		Prenotazione prenotazione = dao.findByTavolo(idTavolo);
+		Prenotazione prenotazione = dao.findPrenotazioneByTavolo(idTavolo);
 		return prenotazione;
 	}
 
@@ -59,23 +59,29 @@ public class PrenotazioneFacade {
 		dao.update(prenotazione);
 	}
 
-	public void setPrenotazioneUtenteAlTavolo(long idPrenotazione) {
+	public void setPrenotazioneUtenteAlTavolo(Long idTavolo) {
 		PrenotazioneDao dao = new PrenotazioneDao(this.em);
-		Prenotazione prenotazione = dao.findByTavolo(idPrenotazione);
+		Prenotazione prenotazione = dao.findPrenotazioneByTavolo(idTavolo);
 		prenotazione.setStato(1);
 		dao.update(prenotazione);
 	}
 
-	public Prenotazione findPrenotazioneByID(long idPrenotazione){
+	public Prenotazione findPrenotazioneByID(Long idPrenotazione){
 		PrenotazioneDao dao = new PrenotazioneDao(this.em);
 		Prenotazione prenotazione = dao.findById(idPrenotazione);
 		return prenotazione;
 	}
 
-	public void eliminaPrenotazioneByID(long idPrenotazione) {
+	public void eliminaPrenotazioneByID(Long idPrenotazione) {
 		PrenotazioneDao dao = new PrenotazioneDao(this.em);
 		Prenotazione prenotazione = dao.findById(idPrenotazione);
 		dao.delete(prenotazione);
+	}
+
+	public List<Prenotazione> findAllPrenotazioniUtente(Long idPrenotazione) {
+		PrenotazioneDao dao = new PrenotazioneDao(this.em);
+		List<Prenotazione> prenotazioni = dao.findAllPrenotazioneUtente(idPrenotazione);
+		return prenotazioni;
 	}
 
 }

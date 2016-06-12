@@ -24,9 +24,7 @@ import it.uniroma3.project.services.security.MD5Encrypter;
 @EJB(name = "uFacade", beanInterface = UtenteFacade.class)
 public class UtenteController implements Serializable {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private String nome;
 	private String cognome;
@@ -42,22 +40,34 @@ public class UtenteController implements Serializable {
 	private UtenteFacade uFacade;
 
 	public String create() {
+		FacesContext context = FacesContext.getCurrentInstance();
 		this.utente = new Utente(this.nome, this.cognome, this.username, this.telefono, this.email,
 				this.getPasswordCriptata());
-		if (this.isAlreadyRegistered(this.utente) || this.equalsPassword()) {
+		// L'utente che sta tentando di creare un account ha inserito una username già utilizzata
+		if (this.isAlreadyRegistered(this.utente) ){
+			context.getExternalContext().getRequestMap().put("utenteError", "Utente con username " + this.username + " già esistente" );
 			return "loginSignup";
-		} else {
-			this.utente = uFacade.signUp(this.utente);
-			this.setUtenteCorrenteInSession("utenteCorrente");
-			return "index_parallax";
 		}
+		else
+			// le passdword inserite non corrispondo
+			if(this.equalsPassword()) {
+				context.getExternalContext().getRequestMap().put("utenteError", "Le password non corrispondo" );
+				return "loginSignup";
+			} else {
+				this.utente = uFacade.signUp(this.utente);
+				this.setUtenteCorrenteInSession("utenteCorrente");
+				return "index_parallax";
+			}
 	}
 
 	public String createOperatore() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		this.utente = new Utente(this.username, this.getPasswordCriptata());
-		if (this.isAlreadyRegistered(this.utente))
+		// L'admin che ha tentato di creare l'operatore ha inserito una username già utilizzata nel sistema
+		if (this.isAlreadyRegistered(this.utente)){
+			context.getExternalContext().getRequestMap().put("operatoreError", "Operatore con username " + this.username + " già esistente" );
 			return "registraPersonale";
+		}
 		this.uFacade.signUp(utente);
 		context.getExternalContext().getRequestMap().put("operatoreCorrente",
 				"L' operatore " + this.username + " è stato inserito correttamente");
@@ -66,43 +76,56 @@ public class UtenteController implements Serializable {
 	}
 
 	public String loginUtente() {
+		FacesContext context = FacesContext.getCurrentInstance();
 		this.utente = this.uFacade.findByUsername(this.getUsername());
-		if (this.isNotAlreadyRegistered(this.utente) || this.wrongPassword()) {
-			return "loginSignup?faces-redirect=true";
-		} else {
-			this.utente = this.uFacade.findByUsername(utente.getUsername());
-			this.setUtenteCorrenteInSession("utenteCorrente");
-			return "index_parallax?faces-redirect=true";
+		// L'utente che sta tentando di autenticarsi non è registrato nel  sistema
+		if (this.isNotAlreadyRegistered(this.utente)) {
+			context.getExternalContext().getRequestMap().put("utenteError", "Utente non esistente" );
+			return "loginSignup";
 		}
+		else
+			// la password inserita non è corretta per l'account con tale username
+			if(this.wrongPassword()){
+				context.getExternalContext().getRequestMap().put("utenteError", "Username e/o password errata" );
+				return "loginSignup";
+			} else {
+				this.utente = this.uFacade.findByUsername(utente.getUsername());
+				this.setUtenteCorrenteInSession("utenteCorrente");
+				return "index_parallax";
+			}
 	}
 
 	public String loginAdmin() {
+		FacesContext context = FacesContext.getCurrentInstance();
 		this.utente = this.uFacade.findByUsername(this.getUsername());
-		// L'utente che sta tentando di autenticarsi non è registrato nel
-		// sistema
-		if (this.isNotAlreadyRegistered(this.utente) || this.wrongPassword()) {
+		// L'utente che sta tentando di autenticarsi non è registrato nel sistema
+		if (this.isNotAlreadyRegistered(this.utente)) {
+			context.getExternalContext().getRequestMap().put("utenteError", "Utente non esistente" );
 			return "administrator";
-		} else {
-			// L'utente è registrato con ruolo admin o operatore
-			if (this.utente.getRole().equals("admin")) {
-				this.setUtenteCorrenteInSession("utenteCorrente");
-				return "home_Administrator?faces-redirect=true";
-			} else if (this.utente.getRole().equals("operatore")) {
-				this.setUtenteCorrenteInSession("utenteCorrente");
-				return "home_Operatore?faces-redirect=true";
-				// il ruolo è utente
-			} else {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-						this.utente.getUsername() + " non ha i permessi per entrare in questa sezione", null));
-				return "administrator";
-			}
 		}
+		else
+			// la password inserita non è corretta per l'account con tale username
+			if(this.wrongPassword()){
+				context.getExternalContext().getRequestMap().put("utenteError", "Username e/o password errata" );
+				return "administrator";
+			} else {
+				// L'utente è registrato con ruolo admin o operatore
+				if (this.utente.getRole().equals("admin")) {
+					this.setUtenteCorrenteInSession("utenteCorrente");
+					return "home_Administrator?faces-redirect=true";
+				} else if (this.utente.getRole().equals("operatore")) {
+					this.setUtenteCorrenteInSession("utenteCorrente");
+					return "home_Operatore?faces-redirect=true";
+					// il ruolo è utente
+				} else {
+					context.getExternalContext().getRequestMap().put("utenteError", this.username + " Cosa ci fai qui? non è un posto per utenti" );
+					return "administrator";
+				}
+			}
 	}
 
 	public boolean isAlreadyRegistered(Utente utente) {
 		if (this.uFacade.findByUsername(utente.getUsername()) != null) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO, utente.getUsername() + " è già registrato!", null));
 			return true;
 		} else
 			return false;
@@ -110,8 +133,6 @@ public class UtenteController implements Serializable {
 
 	public boolean isNotAlreadyRegistered(Utente utente) {
 		if (this.uFacade.findByUsername(this.getUsername()) == null) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO, this.getUsername() + " non è registrato!", null));
 			return true;
 		} else
 			return false;
@@ -119,8 +140,6 @@ public class UtenteController implements Serializable {
 
 	public boolean wrongPassword() {
 		if (!this.utente.getPassword().equals(this.getPasswordCriptata())) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "password errata!", null));
 			return true;
 		} else
 			return false;
@@ -128,8 +147,6 @@ public class UtenteController implements Serializable {
 
 	public boolean equalsPassword() {
 		if (!this.password.equals(this.confPassword)) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "Le password devono coincidere", null));
 			return true;
 		} else
 			return false;
