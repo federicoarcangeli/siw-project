@@ -8,35 +8,37 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Time24HoursValidator{
+public class Time24HoursValidator {
 
 	private Pattern pattern;
 	private Matcher matcher;
-	private  DateFormat formatter;
-
+	private DateFormat formatter;
 
 	// gestione orario di lavolo ristorante
 	private static final String TIME24HOURS_PATTERN = "([01]?[0-9]|2[0-3]):[0-5][0-9]";
 	// orario lavorativo dalle 11:00 alle 22:59
-	private static final String ORARIORISTORANTE_PATTERN = "(19|2[01]):[0-5][0-9]";
+	private static final String ORARIO_CENA_PATTERN = "(19|2[01]):[0-5][0-9]";
+	private static final String ORARIO_PRANZO_PATTERN = "(12|1[34]):[0-5][0-9]";
 
-	public Time24HoursValidator(){
+	public Time24HoursValidator() {
 	}
 
 	/**
 	 * Convalida dell'orario in formato 24 ore
-	 * @param l'orario da convalidare
+	 * 
+	 * @param l'orario
+	 *            da convalidare
 	 * @return l'ora nel formato 24 ore
 	 */
-	public Date validate(String time){
+	public Date validate(String time) {
 		pattern = Pattern.compile(TIME24HOURS_PATTERN);
-		formatter= new SimpleDateFormat("hh:mm");
-		Date hour=null;
-		if(time!=null){
+		formatter = new SimpleDateFormat("hh:mm");
+		Date hour = null;
+		if (time != null) {
 			matcher = pattern.matcher(time);
 			if (matcher.matches())
 				try {
-					hour= formatter.parse(time);
+					hour = formatter.parse(time);
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
@@ -44,28 +46,28 @@ public class Time24HoursValidator{
 		return hour;
 	}
 
-	public Date simpleFormatDate(Date date) throws ParseException{
+	public Date simpleFormatDate(Date date) throws ParseException {
 		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		Date todayWithZeroTime = formatter.parse(formatter.format(date));
 		return todayWithZeroTime;
 	}
 
-	public String ConvertDateToString(Date data){
+	public String ConvertDateToString(Date data) {
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		String format = formatter.format(data);
 		return format;
 	}
 
-	public String ConvertTimeToString(Date data){
+	public String ConvertTimeToString(Date data) {
 		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
 		String format = formatter.format(data);
 		return format;
 	}
 
-	public boolean isCena(Date time){
+	public boolean isCena(Date time) {
 		String ora = this.ConvertTimeToString(time);
-		pattern = Pattern.compile(ORARIORISTORANTE_PATTERN);
-		if(ora!=null){
+		pattern = Pattern.compile(ORARIO_CENA_PATTERN);
+		if (ora != null) {
 			matcher = pattern.matcher(ora);
 			if (matcher.matches())
 				return true;
@@ -73,39 +75,50 @@ public class Time24HoursValidator{
 		return false;
 	}
 
+	public boolean isPranzo(Date time) {
+		String hour = this.ConvertDateToString(time);
+		this.pattern = Pattern.compile(ORARIO_PRANZO_PATTERN);
+		if (hour != null) {
+			this.matcher = this.pattern.matcher(hour);
+		}
+		return this.matcher.matches();
+	}
+
 	/**
 	 * Confronta la data passata come parametro con quella corrente
+	 * 
 	 * @param data
 	 * @return true se coincidono, false altrimenti
 	 */
 
-	public boolean isToday(Date data){
+	public boolean isToday(Date data) {
 		Calendar date1 = Calendar.getInstance();
 		Calendar date2 = Calendar.getInstance();
 		date1.setTime(data);
 		date2.setTime(new Date());
-		int day1= date1.get(Calendar.DAY_OF_MONTH);
-		int month1= date1.get(Calendar.MONTH);
-		int day2= date2.get(Calendar.DAY_OF_MONTH);
-		int month2= date2.get(Calendar.MONTH);
-		return (day1==day2 && month1==month2);
+		int day1 = date1.get(Calendar.DAY_OF_MONTH);
+		int month1 = date1.get(Calendar.MONTH);
+		int day2 = date2.get(Calendar.DAY_OF_MONTH);
+		int month2 = date2.get(Calendar.MONTH);
+		return (day1 == day2 && month1 == month2);
 	}
 
 	/**
 	 * Confronta tra loro due date
+	 * 
 	 * @param data1
 	 * @param data2
 	 * @return true se data1 e data2 coincidono, false altrimenti
 	 */
-	public boolean SameDate(Date data1 , Date data2){
+	public boolean SameDate(Date data1, Date data2) {
 		Calendar date1 = Calendar.getInstance();
 		Calendar date2 = Calendar.getInstance();
 		date1.setTime(data1);
 		date2.setTime(data2);
-		int day1= date1.get(Calendar.DAY_OF_MONTH);
-		int month1= date1.get(Calendar.MONTH);
-		int day2= date2.get(Calendar.DAY_OF_MONTH);
-		int month2= date2.get(Calendar.MONTH);
-		return (day1==day2 && month1==month2);
+		int day1 = date1.get(Calendar.DAY_OF_MONTH);
+		int month1 = date1.get(Calendar.MONTH);
+		int day2 = date2.get(Calendar.DAY_OF_MONTH);
+		int month2 = date2.get(Calendar.MONTH);
+		return (day1 == day2 && month1 == month2);
 	}
 }
