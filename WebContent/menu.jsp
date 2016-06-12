@@ -2,10 +2,6 @@
 <%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib uri="http://myfaces.apache.org/tomahawk" prefix="t"%>
-<%@page import="it.uniroma3.project.facade.*"%>
-<%@page import="it.uniroma3.project.model.CategoriaPiatto"%>
-<%@page import="it.uniroma3.project.model.Piatto"%>
-<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="it">
 
@@ -113,14 +109,14 @@
 									<div class="menu-tags3">
 										<span data-filter="*" class="tagsort3-active">Tutti</span>
 										<c:forEach var="categoria"
-											items="#{menuControllerBean.nomiCategorie}">
+											items="#{menuController.nomiCategorie}">
 											<span data-filter=".${categoria}">${categoria}</span>
 										</c:forEach>
 									</div>
 								</div>
 							</div>
 							<div class="row menu-items3">
-								<c:forEach var="piatto" items="#{menuControllerBean.piatti}">
+								<c:forEach var="piatto" items="#{menuController.piatti}">
 
 									<t:div
 										styleClass="menu-item3 col-sm-6 col-xs-12 #{piatto.getPortata().getNome()}">

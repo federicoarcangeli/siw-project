@@ -6,8 +6,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Tomato Responsive Restaurant HTML5 Template</title>
-<meta name="author" content="Surjith S M">
+<title>Accedi</title>
 
 <!-- SEO -->
 <meta name="description"
@@ -446,6 +445,7 @@
 		<script src="js/main.js"></script>
 		<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
 		<script src="js/vendor/mc/main.js"></script>
+<!-- 		scripts -->
 		<script src="js/scripts/confermaRegistrazioneUtente.js"></script>
 	</f:view>
 </body>

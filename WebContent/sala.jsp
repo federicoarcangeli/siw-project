@@ -7,6 +7,7 @@
 <head>
 <meta charset="utf-8">
 <title>Gestione sala</title>
+<meta name="author" content="Alessandro&Federico">
 
 <!-- SEO -->
 <meta name="description"
@@ -66,7 +67,7 @@
 								<li><a href="./home_Administrator.jsp">Pannello di
 										controllo</a></li>
 								<li><a href="./prenotazioneAdmin.jsp">Riserva un tavolo</a></li>
-								<li><a href="./sala.jsp"><span style="color: #F9C56A;">sala</span></a></li>
+								<li><a href="./sala.jsp"><span style="color: #F9C56A;">Sala</span></a></li>
 								<li class="dropdown"><a href="./home_Administrator.jsp"
 									class="dropdown-toggle" data-toggle="dropdown" role="button"
 									aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText

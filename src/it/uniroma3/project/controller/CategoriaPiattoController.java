@@ -1,4 +1,4 @@
-package it.uniroma3.project.controllerBean;
+package it.uniroma3.project.controller;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import it.uniroma3.project.facade.CategoriaPiattoFacade;
 import it.uniroma3.project.model.CategoriaPiatto;
 
 @ManagedBean(name="categoriaPiatto")
-public class CategoriaPiattoManagedBean {
+public class CategoriaPiattoController {
 
 	@EJB
 	private CategoriaPiattoFacade cpFacade;

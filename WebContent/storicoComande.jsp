@@ -7,8 +7,8 @@
 
 <head>
 <meta charset="utf-8">
-<title>Pannello di controllo</title>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<title>Storico comande</title>
+<meta name="author" content="Alessandro&Federico">
 
 <!-- SEO -->
 <meta name="description"

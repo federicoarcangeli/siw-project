@@ -1,4 +1,4 @@
-package it.uniroma3.project.controllerBean;
+package it.uniroma3.project.controller;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -12,7 +12,7 @@ import it.uniroma3.project.model.Tavolo;
 @ManagedBean(name ="tavoloController")
 @RequestScoped
 @EJB(name = "tFacade", beanInterface = TavoloFacade.class)
-public class TavoloControllerBean {
+public class TavoloController {
 
 	private String codice;
 	private int coperti;

@@ -63,14 +63,14 @@
 							<li><a href="./index_parallax.jsp"><span
 									style="color: #F9C56A;">Home</span></a></li>
 							<li><a href="./menu.jsp">Men&ugrave;</a></li>
-							<h:panelGroup rendered="#{utenteCorrente.username !=null}">
+							<h:panelGroup rendered="#{utenteCorrente.username != null}">
 								<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
 							</h:panelGroup>
-							<h:panelGroup rendered="#{utenteCorrente.username ==null}">
+							<h:panelGroup rendered="#{utenteCorrente.username == null}">
 								<li><a href="./loginSignup.jsp">Login / Signup</a></li>
 							</h:panelGroup>
 							<li><a href="./contact.html">Contatti</a></li>
-							<h:panelGroup rendered="#{utenteCorrente.username !=null}">
+							<h:panelGroup rendered="#{utenteCorrente.username != null}">
 								<li class="dropdown"><a href="./index_parallax.jsp"
 									class="dropdown-toggle" data-toggle="dropdown" role="button"
 									aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
@@ -99,7 +99,7 @@
 						</a>
 					</div>
 					<h1>Ristorante Tomato</h1>
-					<h2>La qualit&aacute; &eacute; di casa</h2>
+					<h2>La qualit&aacute; &egrave; di casa</h2>
 				</div>
 				<div class="scroll-down">
 					<a href="#about"> <img src="img/arrow-down.png"

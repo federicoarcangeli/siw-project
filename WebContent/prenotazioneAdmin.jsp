@@ -8,7 +8,6 @@
 <head>
 <meta charset="utf-8">
 <title>Prenotazioni</title>
-<meta name="author" content="Surjith S M">
 
 <!-- SEO -->
 <meta name="description"
@@ -121,7 +120,7 @@
 									<div class="col-md-3">
 										<div class="form-group">
 											<label for="nominativo">Nominativo</label>
-											<h:inputText value="#{prenotazioneControllerBean.nominativo}"
+											<h:inputText value="#{prenotazioneController.nominativo}"
 												styleClass="form-control" required="true" id="nominativo"
 												requiredMessage="Nominativo obbligatorio">
 											</h:inputText>
@@ -135,7 +134,7 @@
 									<div class="col-md-3">
 										<div class="form-group">
 											<label for="datepicker">Data</label>
-											<h:inputText value="#{prenotazioneControllerBean.datepicker}"
+											<h:inputText value="#{prenotazioneController.datepicker}"
 												styleClass="form-control" required="true" id="datepicker"
 												requiredMessage="Data prenotazione obbligatoria"
 												converterMessage="Formato data errato dd/mm/yyyy">
@@ -151,7 +150,7 @@
 									<div class="col-md-3">
 										<div class="form-group">
 											<label for="timepicker">Orario di arrivo</label>
-											<h:inputText value="#{prenotazioneControllerBean.timepicker}"
+											<h:inputText value="#{prenotazioneController.timepicker}"
 												styleClass="form-control" required="true" id="timepicker"
 												requiredMessage="Orario di arrivo obbligatorio"
 												converterMessage="Formato ora errato hh:mm">
@@ -167,7 +166,7 @@
 									<div class="col-md-3">
 										<div class="form-group">
 											<label for="coperti">Coperti</label>
-											<h:inputText value="#{prenotazioneControllerBean.coperti}"
+											<h:inputText value="#{prenotazioneController.coperti}"
 												styleClass="form-control" required="true"
 												requiredMessage="Numero di coperti obbligatorio"
 												validatorMessage="Tavoli non disponibili per questo numero di coperti"
@@ -228,7 +227,7 @@
 													data-dismiss="modal">Annulla</button>
 												<h:commandLink styleClass="btn btn-success"
 													value="Effettua prenotazioni"
-													action="#{prenotazioneControllerBean.createByAdmin}">
+													action="#{prenotazioneController.createByAdmin}">
 												</h:commandLink>
 
 											</div>
@@ -242,7 +241,7 @@
 										<button type="button" class="close" data-dismiss="alert">
 											<span class="fa fa-close"></span>
 										</button>
-										<span> SUCCESS: </span>
+										<span></span>
 										<h:outputText value="#{prenotazioneCorrente}" />
 									</div>
 								</div>
@@ -253,7 +252,7 @@
 										<button type="button" class="close" data-dismiss="alert">
 											<span class="fa fa-close"></span>
 										</button>
-										<span> ERRORE: </span>
+										<span> Attenzione: </span>
 										<h:outputText value="#{prenotazioneError}" />
 									</div>
 								</div>
@@ -287,6 +286,7 @@
 		<script src="js/vendor/validate.js"></script>
 		<script src="js/reservation.js"></script>
 		<script src="js/vendor/mc/main.js"></script>
+<!-- 		scripts -->
 		<script src="js/scripts/confermaInserimentoPrenotazioneAdmin.js"></script>
 
 	</f:view>

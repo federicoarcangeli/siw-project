@@ -8,7 +8,6 @@
 <head>
 <meta charset="utf-8">
 <title>Prenotazioni</title>
-<meta name="author" content="Surjith S M">
 
 <!-- SEO -->
 <meta name="description"
@@ -107,7 +106,7 @@
 									<div class="col-md-4">
 										<div class="form-group">
 											<label for="datepicker">Data</label>
-											<h:inputText value="#{prenotazioneControllerBean.datepicker}"
+											<h:inputText value="#{prenotazioneController.datepicker}"
 												styleClass="form-control" required="true" id="datepicker"
 												requiredMessage="Data prenotazione obbligatoria"
 												converterMessage="Formato data errato dd/mm/yyyy">
@@ -123,7 +122,7 @@
 									<div class="col-md-4">
 										<div class="form-group">
 											<label for="timepicker">Orario di arrivo</label>
-											<h:inputText value="#{prenotazioneControllerBean.timepicker}"
+											<h:inputText value="#{prenotazioneController.timepicker}"
 												styleClass="form-control" required="true" id="timepicker"
 												requiredMessage="Orario di arrivo obbligatorio"
 												converterMessage="Formato ora errato hh:mm">
@@ -139,7 +138,7 @@
 									<div class="col-md-4">
 										<div class="form-group">
 											<label for="coperti">Coperti</label>
-											<h:inputText value="#{prenotazioneControllerBean.coperti}"
+											<h:inputText value="#{prenotazioneController.coperti}"
 												styleClass="form-control" required="true"
 												requiredMessage="Numero di coperti obbligatorio"
 												validatorMessage="Tavoli non disponibili per questo numero di coperti"
@@ -195,7 +194,7 @@
 													data-dismiss="modal">Annulla</button>
 												<h:commandLink styleClass="btn btn-success"
 													value="Effettua prenotazioni"
-													action="#{prenotazioneControllerBean.createByUtente}">
+													action="#{prenotazioneController.createByUtente}">
 												</h:commandLink>
 
 											</div>
@@ -209,7 +208,7 @@
 										<button type="button" class="close" data-dismiss="alert">
 											<span class="fa fa-close"></span>
 										</button>
-										<span> SUCCESS: </span>
+										<span></span>
 										<h:outputText value="#{prenotazioneCorrente}" />
 										<h:panelGroup rendered="#{not empty prenotazioneError}">
 											<div class="animated fadeInDown">
@@ -217,7 +216,7 @@
 													<button type="button" class="close" data-dismiss="alert">
 														<span class="fa fa-close"></span>
 													</button>
-													<span> ERRORE: </span>
+													<span> Attenzione: </span>
 													<h:outputText value="#{prenotazioneError}" />
 												</div>
 											</div>

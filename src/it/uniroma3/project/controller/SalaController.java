@@ -1,4 +1,4 @@
-package it.uniroma3.project.controllerBean;
+package it.uniroma3.project.controller;
 
 import java.io.IOException;
 import java.util.Date;
@@ -25,7 +25,7 @@ import it.uniroma3.project.model.Utente;
 @RequestScoped
 @EJBs(value = { @EJB(name = "pFacade", beanInterface = PrenotazioneFacade.class),
 		@EJB(name = "tFacade", beanInterface = TavoloFacade.class) })
-public class SalaControllerBean {
+public class SalaController {
 
 	private Comanda comanda;
 	private String codiceTavolo;

@@ -187,7 +187,7 @@
 														<button type="button" class="close" data-dismiss="alert">
 															<span class="fa fa-close"></span>
 														</button>
-														<span> SUCCESSO: </span>
+														<span> Nuovo tavolo: </span>
 														<h:outputText value="#{tavoloCorrente}" />
 													</div>
 												</div>

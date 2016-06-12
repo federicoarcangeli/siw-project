@@ -1,4 +1,4 @@
-package it.uniroma3.project.controllerBean;
+package it.uniroma3.project.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,11 +28,11 @@ import it.uniroma3.project.model.CategoriaPiatto;
 import it.uniroma3.project.model.DescrizionePiatto;
 import it.uniroma3.project.model.Piatto;
 
-@ManagedBean
+@ManagedBean(name="piattoController")
 @RequestScoped
 @EJBs(value = { @EJB(name = "pFacade", beanInterface = PiattoFacade.class),
 		@EJB(name = "cpFacade", beanInterface = CategoriaPiattoFacade.class) })
-public class PiattoControllerBean {
+public class PiattoController {
 
 	@ManagedProperty(value = "#{param.id}")
 	private Long id;
@@ -58,8 +58,8 @@ public class PiattoControllerBean {
 		DescrizionePiatto descrizionePiatto = createDescrizionePiatto();
 		this.categoria = this.cpFacade.findByName(this.nomeCategoria);
 		this.piatto = this.pFacade.create(nome, descrizionePiatto, this.categoria);
-		context.getExternalContext().getRequestMap().put("piattoCorrente", "il piatto " + this.nome + " è stato inserito correttamente");
-		return "piattoInserito";
+		context.getExternalContext().getRequestMap().put("piattoCorrente", "Il piatto " + this.nome + " è stato inserito");
+		return "inserimentoPiatti";
 	}
 
 	private DescrizionePiatto createDescrizionePiatto() {
