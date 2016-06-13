@@ -20,7 +20,6 @@
 		<url-pattern>/faces/*</url-pattern>
 	</servlet-mapping>
 
-
 	<context-param>
 		<param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>
 		<param-value>true</param-value>
