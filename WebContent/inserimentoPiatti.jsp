@@ -8,7 +8,7 @@
 <head>
 <meta charset="utf-8">
 <title>Inserimento nuovo piatto</title>
-<meta name="author" content="Alessandro&Federico">
+<meta name="author" content="Alessandro e Federico">
 
 <!-- Favicons -->
 <link rel="shortcut icon" href="img/favicon.ico">

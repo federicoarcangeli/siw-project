@@ -11,7 +11,6 @@ import javax.persistence.PersistenceContext;
 
 import it.uniroma3.project.dao.ComandaDao;
 import it.uniroma3.project.model.Comanda;
-import it.uniroma3.project.model.Utente;
 import it.uniroma3.project.services.validator.Time24HoursValidator;
 
 @Stateless

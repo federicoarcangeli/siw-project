@@ -1,8 +1,8 @@
 package it.uniroma3.project.dao;
 
 import java.util.List;
+
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import it.uniroma3.project.model.LineaComanda;

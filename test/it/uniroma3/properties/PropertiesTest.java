@@ -1,7 +1,8 @@
 package it.uniroma3.properties;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -22,11 +23,12 @@ public class PropertiesTest {
 
 	@Test
 	public void testFindPathAndMail() throws IOException {
-		String path = "/resources/accountProperties.prop";
+		String path = "resources/accountProperties.prop";
 		System.out.println(path);
-		InputStream input = PropertiesTest.class.getResourceAsStream(path);
+		InputStream input = new FileInputStream(path);
 		this.senderAccountProp.load(input);
-		assertNotNull(senderAccountProp.getProperty("mail"));
+		System.out.println(this.senderAccountProp.toString());
+		assertNotNull(input);
 	}
 
 }

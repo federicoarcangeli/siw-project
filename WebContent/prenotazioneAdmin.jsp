@@ -8,12 +8,7 @@
 <head>
 <meta charset="utf-8">
 <title>Prenotazioni</title>
-
-<!-- SEO -->
-<meta name="description"
-	content="Tomato is a Responsive HTML5 Template for Restaurants and food related services.">
-<meta name="keywords"
-	content="tomato, responsive, html5, restaurant, template, food, reservation">
+<meta name="author" content="Alessandro e Federico">, html5, restaurant, template, food, reservation">
 
 <!-- Favicons -->
 <link rel="shortcut icon" href="img/favicon.ico">

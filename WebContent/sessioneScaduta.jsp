@@ -4,13 +4,8 @@
 <head>
 <meta charset="utf-8">
 <title>Ops!</title>
-<meta name="author" content="Alessandro&Federico">
-<!-- SEO -->
-<meta name="description"
-	content="Tomato is a Responsive HTML5 Template for Restaurants and food related services.">
-<meta name="keywords"
-	content="tomato, responsive, html5, restaurant, template, food, reservation">
-<meta http-equiv="refresh" content="3;URL=./index_parallax.jsp">
+<meta name="author" content="Alessandro e Federico">
+
 <!-- Favicons -->
 <link rel="shortcut icon" href="img/favicon.ico">
 
