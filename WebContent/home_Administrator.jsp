@@ -291,33 +291,28 @@
 												<table class="table">
 													<thead>
 														<tr class="warning">
-															<th class="text-center">Codice operatore</th>
+															<th class="text-center">Id</th>
 															<th class="text-center">Username</th>
 															<th class="text-center">Tavolo servito</th>
 														</tr>
 													</thead>
 													<tbody>
-														<h:panelGroup
-															rendered="#{empty pannelloController.comande}">
-															<td class="text-center"><i class="fa fa-minus"
-																aria-hidden="true"></i></td>
-															<td class="text-center"><i class="fa fa-minus"
-																aria-hidden="true"></i></td>
-															<td class="text-center"><i class="fa fa-minus"
-																aria-hidden="true"></i></td>
-														</h:panelGroup>
-														<c:forEach var="comanda"
-															items="#{pannelloController.comande}">
-															<h:panelGroup rendered="#{!comanda.completata}">
-																<tr>
-																	<td class="text-center"><h:outputText
-																			value="#{comanda.operatore.getId()}" /></td>
-																	<td class="text-center"><h:outputText
-																			value="#{comanda.operatore.getUsername()}" /></td>
-																	<td class="text-center"><h:outputText
-																			value="#{comanda.tavolo.getCodiceTavolo()}" /></td>
-																</tr>
-															</h:panelGroup>
+														<c:forEach var="utente"
+															items="#{pannelloController.operatoriInServizio}">
+
+															<tr>
+																<td class="text-center"><h:outputText
+																		value="#{utente.id}" /></td>
+																<td class="text-center"><h:outputText
+																		value="#{utente.username}" /></td>
+																<td class="text-center"><c:forEach var="comanda"
+																		items="#{utente.comanda}">
+																		<h:panelGroup rendered="#{!comanda.completata}">
+																			<h:outputText value="#{comanda.tavolo.codiceTavolo}" /> &nbsp;
+																			</h:panelGroup>
+																	</c:forEach></td>
+															</tr>
+
 														</c:forEach>
 													</tbody>
 												</table>
@@ -501,8 +496,8 @@
 
 													<span class="text-left"><strong>Coperti N°
 															: <h:outputText value="#{comanda.tavolo.coperti}" />
-													</strong></span><br> <span> <strong>Data e ora : </strong>
-													<h:outputText value="#{comanda.dataOraEmissione}">
+													</strong></span><br> <span> <strong>Data e ora : </strong> <h:outputText
+															value="#{comanda.dataOraEmissione}">
 															<f:convertDateTime pattern="dd/MM/yyyy    HH:mm" />
 														</h:outputText> <br> <strong> Operatore : </strong> <h:outputText
 															value="#{comanda.operatore.getUsername()}" />

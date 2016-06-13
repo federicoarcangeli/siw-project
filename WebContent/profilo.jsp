@@ -63,7 +63,8 @@
 								<li><a href="./index_parallax.jsp">Home</a></li>
 								<li><a href="./menu.jsp">Men&ugrave;</a></li>
 								<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
-								<li><a href="./contact.html">Contact</a></li>
+								<li><a href="./about.jsp">Chi siamo</a></li>
+								<li><a href="./contact.jsp">Contatti</a></li>
 								<li class="dropdown"><a href="./index_parallax.jsp"
 									class="dropdown-toggle" data-toggle="dropdown" role="button"
 									aria-haspopup="true" aria-expanded="false"><span

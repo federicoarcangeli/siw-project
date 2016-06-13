@@ -1,7 +1,10 @@
 package it.uniroma3.project.dao;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -9,6 +12,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
 
 import it.uniroma3.project.model.Comanda;
+import it.uniroma3.project.model.Utente;
 
 public class ComandaDao extends AbstractDao<Comanda> {
 
@@ -64,6 +68,23 @@ public class ComandaDao extends AbstractDao<Comanda> {
 				Comanda.class);
 		query.setParameter("date", date,TemporalType.DATE);
 		return query.getResultList();
+	}
+
+	public Map<String, List<String>> findAllOperatoriInServizio() {
+		TypedQuery<Comanda> query = getEM()
+				.createQuery("select c from Comanda c where c.dataOraEmissione > CURRENT_DATE and c.completata=false", Comanda.class);
+		List<Comanda> comande = query.getResultList();
+		HashMap<String,List<String>> OperatoriInServizio = new HashMap<>();
+		for(Comanda c : comande){
+			if(OperatoriInServizio.containsKey(c.getOperatore().getUsername())){
+				OperatoriInServizio.get(c.getOperatore().getUsername()).add(c.getTavolo().getCodiceTavolo());
+			}
+			else{
+				OperatoriInServizio.put(c.getOperatore().getUsername(), new ArrayList<String>());
+				OperatoriInServizio.get(c.getOperatore().getUsername()).add(c.getTavolo().getCodiceTavolo());
+			}
+		}
+		return OperatoriInServizio;
 	}
 
 }

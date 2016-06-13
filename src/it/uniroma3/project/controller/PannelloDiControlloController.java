@@ -13,19 +13,21 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBs;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import it.uniroma3.project.facade.ComandaFacade;
 import it.uniroma3.project.facade.PrenotazioneFacade;
 import it.uniroma3.project.facade.TavoloFacade;
+import it.uniroma3.project.facade.UtenteFacade;
 
 
 @ManagedBean(name = "pannelloController")
-@RequestScoped
+@SessionScoped
 @EJBs(value = { @EJB(name = "pFacade", beanInterface = PrenotazioneFacade.class),
 		@EJB(name = "cFacade", beanInterface = ComandaFacade.class) ,
-		@EJB(name = "tFacade", beanInterface = TavoloFacade.class) })
+		@EJB(name = "tFacade", beanInterface = TavoloFacade.class), 
+		@EJB(name = "uFacade", beanInterface = UtenteFacade.class) })
 
 public class PannelloDiControlloController {
 
@@ -39,6 +41,7 @@ public class PannelloDiControlloController {
 	private List<Tavolo> tavoli;
 	private List<Comanda> comande;
 	private List<Prenotazione> prenotazioni;
+	private List<Utente> operatoriInServizio;
 	private Comanda comanda;
 
 	@EJB
@@ -49,6 +52,9 @@ public class PannelloDiControlloController {
 
 	@EJB
 	private TavoloFacade tFacade;
+
+	@EJB
+	private UtenteFacade uFacade;
 
 	public String eliminaComanda(){
 		Comanda comanda = this.getComandaByRequest();
@@ -108,6 +114,9 @@ public class PannelloDiControlloController {
 
 		//		 gestione comande di oggi
 		this.comande = cFacade.findallComandaToday();
+
+		//		gestione operatori in servizio
+		this.operatoriInServizio =  uFacade.findOperatori();
 
 		//		 gestione prenotazioni di oggi
 		this.prenotazioni = pFacade.findAllPrenotazioniToday();
@@ -253,6 +262,22 @@ public class PannelloDiControlloController {
 
 	public void setComanda(Comanda comanda) {
 		this.comanda = comanda;
+	}
+
+	public List<Utente> getOperatoriInServizio() {
+		return operatoriInServizio;
+	}
+
+	public void setOperatoriInServizio(List<Utente> operatoriInServizio) {
+		this.operatoriInServizio = operatoriInServizio;
+	}
+
+	public UtenteFacade getuFacade() {
+		return uFacade;
+	}
+
+	public void setuFacade(UtenteFacade uFacade) {
+		this.uFacade = uFacade;
 	}
 
 }

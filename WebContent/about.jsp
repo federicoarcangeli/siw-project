@@ -1,13 +1,14 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
-<%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@ taglib uri="http://myfaces.apache.org/tomahawk" prefix="t"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+
 <!DOCTYPE html>
 <html lang="it">
 
 <head>
 <meta charset="utf-8">
-<title>Il nostro men&ugrave;</title>
+<title>Chi siamo</title>
+<meta name="author" content="Surjith S M">
 
 <!-- SEO -->
 <meta name="description"
@@ -22,16 +23,17 @@
 <meta name="viewport" content="width=device-width">
 
 <!-- CSS Files -->
+
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
 <link rel="stylesheet" href="css/plugin.css">
 <link rel="stylesheet" href="css/main.css">
 
+
 </head>
 
 <body>
 	<f:view>
-
 		<!-- Preloder-->
 		<div class="preloder animated">
 			<div class="scoket">
@@ -59,17 +61,18 @@
 						</div>
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="./index_parallax.jsp">Home</a></li>
-								<li><a href="./menu.jsp"><span style="color: #F9C56A;">Men&ugrave;</span></a></li>
-								<h:panelGroup rendered="#{utenteCorrente.username !=null}">
+								<li><a href="./index_parallax.jsp"><span>Home</span></a></li>
+								<li><a href="./menu.jsp">Men&ugrave;</a></li>
+								<h:panelGroup rendered="#{utenteCorrente.username != null}">
 									<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
 								</h:panelGroup>
-								<li><a href="./about.jsp">Chi siamo</a></li>
+								<li><a href="./about.jsp"><span style="color: #F9C56A;">Chi
+											siamo</span></a></li>
 								<li><a href="./contact.jsp">Contatti</a></li>
-								<h:panelGroup rendered="#{utenteCorrente.username ==null}">
+								<h:panelGroup rendered="#{utenteCorrente.username == null}">
 									<li><a href="./loginSignup.jsp">Login / Signup</a></li>
 								</h:panelGroup>
-								<h:panelGroup rendered="#{utenteCorrente.username !=null}">
+								<h:panelGroup rendered="#{utenteCorrente.username != null}">
 									<li class="dropdown"><a href="./index_parallax.jsp"
 										class="dropdown-toggle" data-toggle="dropdown" role="button"
 										aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
@@ -89,84 +92,128 @@
 						<!--/.navbar-collapse -->
 					</div>
 				</nav>
-
 				<!-- Page Header -->
 				<section class="page_header">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12 text-center">
-								<h2 class="text-uppercase">Il nostro Men&ugrave;</h2>
+								<h2 class="text-uppercase wow fadeInDown">Un po' di noi</h2>
+								<p class="wow fadeInUp">Leggi la nostra storia, Come abbiamo
+									iniziato ed il nostro team</p>
 							</div>
 						</div>
 					</div>
 				</section>
 
-				<!-- menu-->
-				<section class="menu space60">
+
+				<!-- About -->
+				<section class="about2">
 					<div class="container">
-						<div class="food-menu wow fadeInUp">
-							<div class="row">
-								<div class="col-md-12">
-									<div class="menu-tags3">
-										<span data-filter="*" class="tagsort3-active">Tutti</span>
-										<c:forEach var="categoria"
-											items="#{menuController.nomiCategorie}">
-											<span data-filter=".${categoria}">${categoria}</span>
-										</c:forEach>
+						<div class="row wow fadeInUp">
+							<div class="col-md-5">
+								<img src="img/about.png" class="img-responsive" alt="" />
+							</div>
+							<div class="col-md-7 text-left">
+								<h2 class="text-left">Our Story</h2>
+								<p>Lorem Ipsum is simply dummy text of the printing and
+									typesetting industry. Lorem Ipsum has been the industry's
+									standard dummy text ever since the 1500s, when an unknown
+									printer took a galley of type and scrambled it to make a type
+									specimen book. It has survived not only five centuries, but
+									also the leap into electronic typesetting, remaining
+									essentially unchanged. It was popularised in the 1960s with the
+									release of Letraset sheets containing Lorem Ipsum passage</p>
+								<a class="btn btn-default" role="button" href="#menu">See
+									Our Menu</a>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Services -->
+				<section class="services">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="page-header wow fadeInDown">
+									<h1 class="white">
+										Servizi Speciali<small>Festegia un evento importante
+											da noi!</small>
+									</h1>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="services-slider wow fadeIn">
+									<div class="service-content text-center">
+										<img src="img/ico1.png" class="center-block" alt="" />
+										<h4 class="text-uppercase">Birthday Party</h4>
+										<p>Lorem Ipsum is simply dummy text of the printing and
+											typesetting industry. Lorem Ipsum has been the industry's
+											standard dummy text ever since the 1500s.</p>
+									</div>
+									<div class="service-content text-center">
+										<img src="img/ico2.png" class="center-block" alt="" />
+										<h4 class="text-uppercase">Wedding Party</h4>
+										<p>Lorem Ipsum is simply dummy text of the printing. Lorem
+											Ipsum has been the industry's standard dummy text ever since
+											the 1500s, when an unknown printer.</p>
 									</div>
 								</div>
 							</div>
-							<div class="row menu-items3">
-								<c:forEach var="piatto" items="#{menuController.piatti}">
-
-									<t:div
-										styleClass="menu-item3 col-sm-6 col-xs-12 #{piatto.getPortata().getNome()}">
-
-										<h:graphicImage
-											value="#{piatto.getDescrizionePiatto().getUrlImmagine()}" />
-
-										<div class="menu-wrapper">
-											<h4>
-												<h:outputText value="#{piatto.nome}" />
-											</h4>
-											&nbsp; <span class="price"> <h:outputText
-													value="#{piatto.getDescrizionePiatto().getPrezzo()}" />0
-												&euro; <h:graphicImage url="img/snow.png"
-													style="height: 16px; width: 16px;"
-													rendered="#{piatto.getDescrizionePiatto().prodottiSurgelati}" />
-
-												<h:graphicImage url="img/grano.png"
-													style="height: 22px; width: 16px;"
-													rendered="#{piatto.getDescrizionePiatto().prodottiAllergizzanti}" />
-
-
-											</span>
-											<div class="dotted-bg"></div>
-											<p>
-												<h:outputText
-													value="#{piatto.getDescrizionePiatto().getDescrizione() }" />
-											</p>
-										</div>
-									</t:div>
-								</c:forEach>
-
-							</div>
-							<h4>
-								<small> <img src="img/snow.png"
-									style="height: 16px; width: 16px;" />: Pu&ograve; contenere
-									prodotti surgelati.
-								</small>
-							</h4>
-							<h4>
-								<small> <img src="img/grano.png"
-									style="height: 22px; width: 16px;" />: Pu&ograve; contenere
-									allergeni.
-								</small>
-							</h4>
-
 						</div>
 					</div>
+				</section>
 
+				<!-- Team -->
+				<section class="team">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="page-header wow fadeInDown">
+									<h1>
+										Il nostro team<small>Il duro lavoro dietro al nostro
+											ristorante</small>
+									</h1>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 col-sm-6 text-center">
+								<div class="team-staff wow fadeInUp" data-wow-delay="0.2s">
+									<img src="img/team/1.png" class="img-responsive center-block"
+										alt="" />
+									<h4>Alessandro Giannetti</h4>
+									<p>Designation here</p>
+									<ul class="team-social">
+										<li><a href="http://www.facebook.com"><i
+												class="fa fa-facebook"></i></a></li>
+										<li><a href="http://www.twitter.com"><i
+												class="fa fa-twitter"></i></a></li>
+										<li><a href="http://plus.google.com"><i
+												class="fa fa-google-plus"></i></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-6 col-sm-6 text-center">
+								<div class="team-staff wow fadeInUp" data-wow-delay="0.4s">
+									<img src="img/team/2.png" class="img-responsive center-block"
+										alt="" />
+									<h4>Federico Arcangeli</h4>
+									<p>Designation here</p>
+									<ul class="team-social">
+										<li><a href="http://www.facebook.com"><i
+												class="fa fa-facebook"></i></a></li>
+										<li><a href="http://www.twitter.com"><i
+												class="fa fa-twitter"></i></a></li>
+										<li><a href="http://plus.google.com"><i
+												class="fa fa-google-plus"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
 				</section>
 
 				<!-- subscribe -->
@@ -265,14 +312,13 @@
 									<p>
 										<i class="fa fa-copyright"></i> 2015.Tomato.All rights
 										reserved. Designed with <i class="fa fa-heart primary-color"></i>
-										by Federico &amp; Alessandro
+										by Federico & Alessandro
 									</p>
 								</div>
 							</div>
 						</div>
 					</div>
 				</section>
-
 			</div>
 
 		</div>

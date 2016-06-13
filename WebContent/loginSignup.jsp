@@ -59,9 +59,10 @@
 							<ul class="nav navbar-nav navbar-right">
 								<li><a href="./index_parallax.jsp">Home</a></li>
 								<li><a href="./menu.jsp">Men&ugrave;</a></li>
+								<li><a href="./about.jsp">Chi siamo</a></li>
+								<li><a href="./contact.jsp">Contatti</a></li>
 								<li><a href="./loginSignup.jsp"><span
 										style="color: #F9C56A;">Login / Signup</span></a></li>
-								<li><a href="./contact.html">Contact</a></li>
 							</ul>
 						</div>
 

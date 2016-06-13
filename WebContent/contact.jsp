@@ -1,13 +1,15 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
-<%@taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@ taglib uri="http://myfaces.apache.org/tomahawk" prefix="t"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+
+
 <!DOCTYPE html>
 <html lang="it">
 
 <head>
 <meta charset="utf-8">
-<title>Il nostro men&ugrave;</title>
+<title>Contatti</title>
+<meta name="author" content="Surjith S M">
 
 <!-- SEO -->
 <meta name="description"
@@ -27,11 +29,11 @@
 <link rel="stylesheet" href="css/plugin.css">
 <link rel="stylesheet" href="css/main.css">
 
+
 </head>
 
 <body>
 	<f:view>
-
 		<!-- Preloder-->
 		<div class="preloder animated">
 			<div class="scoket">
@@ -60,16 +62,17 @@
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav navbar-right">
 								<li><a href="./index_parallax.jsp">Home</a></li>
-								<li><a href="./menu.jsp"><span style="color: #F9C56A;">Men&ugrave;</span></a></li>
-								<h:panelGroup rendered="#{utenteCorrente.username !=null}">
+								<li><a href="./menu.jsp">Men&ugrave;</a></li>
+								<h:panelGroup rendered="#{utenteCorrente.username != null}">
 									<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
 								</h:panelGroup>
 								<li><a href="./about.jsp">Chi siamo</a></li>
-								<li><a href="./contact.jsp">Contatti</a></li>
-								<h:panelGroup rendered="#{utenteCorrente.username ==null}">
+								<li><a href="./contact.html"><span
+										style="color: #F9C56A;">Contatti</span></a></li>
+								<h:panelGroup rendered="#{utenteCorrente.username == null}">
 									<li><a href="./loginSignup.jsp">Login / Signup</a></li>
 								</h:panelGroup>
-								<h:panelGroup rendered="#{utenteCorrente.username !=null}">
+								<h:panelGroup rendered="#{utenteCorrente.username != null}">
 									<li class="dropdown"><a href="./index_parallax.jsp"
 										class="dropdown-toggle" data-toggle="dropdown" role="button"
 										aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
@@ -95,86 +98,93 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12 text-center">
-								<h2 class="text-uppercase">Il nostro Men&ugrave;</h2>
+								<h2 class="text-uppercase">Contatti</h2>
+								<p>Come trovare il nostro ristorante e raggiungerci</p>
 							</div>
 						</div>
 					</div>
 				</section>
 
-				<!-- menu-->
-				<section class="menu space60">
+				<!-- Contact Form / Info -->
+				<section class="main-content contact-content">
 					<div class="container">
-						<div class="food-menu wow fadeInUp">
+						<div class="col-md-10 col-md-offset-1">
 							<div class="row">
-								<div class="col-md-12">
-									<div class="menu-tags3">
-										<span data-filter="*" class="tagsort3-active">Tutti</span>
-										<c:forEach var="categoria"
-											items="#{menuController.nomiCategorie}">
-											<span data-filter=".${categoria}">${categoria}</span>
-										</c:forEach>
+								<div class="col-md-6">
+									<h3 class="text-left no-margin-top">Indirizzo</h3>
+									<div class="footer-address contact-info">
+										<p>
+											<i class="fa fa-map-marker"></i>Via della vasca navale 70,
+											00146
+										</p>
+										<p>
+											<i class="fa fa-phone"></i>Telefono: +39 123456789
+										</p>
+										<p>
+											<i class="fa fa-envelope-o"></i>support@restaurant.com
+										</p>
+									</div>
+									<br>
+
+									<h3 class="text-left no-margin-top">Orario lavorativo</h3>
+									<div class="contact-info text-muted">
+										<p>10:00 - 23:00 Lun. Mar. Mer. Gio. Ven.</p>
+										<p>11:00 - 23:30 Sab. Dom.</p>
+									</div>
+									<br>
+
+									<h3 class="text-left no-margin-top">Seguici</h3>
+									<div class="contact-social">
+										<a href="http://www.facebook.com"><i
+											class="fa fa-facebook"></i></a> <a href="http://www.twitter.com"><i
+											class="fa fa-twitter"></i></a> <a href="http://www.dribbble.com"><i
+											class="fa fa-dribbble"></i></a> <a
+											href="http://www.instagram.com"><i
+											class="fa fa-instagram"></i></a>
 									</div>
 								</div>
-							</div>
-							<div class="row menu-items3">
-								<c:forEach var="piatto" items="#{menuController.piatti}">
-
-									<t:div
-										styleClass="menu-item3 col-sm-6 col-xs-12 #{piatto.getPortata().getNome()}">
-
-										<h:graphicImage
-											value="#{piatto.getDescrizionePiatto().getUrlImmagine()}" />
-
-										<div class="menu-wrapper">
-											<h4>
-												<h:outputText value="#{piatto.nome}" />
-											</h4>
-											&nbsp; <span class="price"> <h:outputText
-													value="#{piatto.getDescrizionePiatto().getPrezzo()}" />0
-												&euro; <h:graphicImage url="img/snow.png"
-													style="height: 16px; width: 16px;"
-													rendered="#{piatto.getDescrizionePiatto().prodottiSurgelati}" />
-
-												<h:graphicImage url="img/grano.png"
-													style="height: 22px; width: 16px;"
-													rendered="#{piatto.getDescrizionePiatto().prodottiAllergizzanti}" />
-
-
-											</span>
-											<div class="dotted-bg"></div>
-											<p>
-												<h:outputText
-													value="#{piatto.getDescrizionePiatto().getDescrizione() }" />
-											</p>
+								<div class="col-md-6">
+									<form class="contact-form" id="contactForm"
+										action="php/contact.php" method="post">
+										<div class="form-group">
+											<input class="form-control" name="name" id="name"
+												placeholder="Full Name" type="text" required="required" />
 										</div>
-									</t:div>
-								</c:forEach>
+										<div class="form-group">
+											<input class="form-control" type="email" name="email"
+												id="email" placeholder="Email Address" required="required" />
+										</div>
+										<div class="form-group">
+											<input class="form-control" placeholder="Subject" type="text"
+												id="subject" name="subject">
+										</div>
+										<div class="form-group">
+											<textarea class="form-control" name="message" id="message"
+												placeholder="Message" rows="5"></textarea>
+										</div>
+										<button class="btn btn-default btn-lg btn-block"
+											id="js-contact-btn">Contattaci</button>
+									</form>
+									<div id="js-contact-result"
+										data-success-msg="Form submitted successfully."
+										data-error-msg="Oops. Something went wrong."></div>
 
+								</div>
 							</div>
-							<h4>
-								<small> <img src="img/snow.png"
-									style="height: 16px; width: 16px;" />: Pu&ograve; contenere
-									prodotti surgelati.
-								</small>
-							</h4>
-							<h4>
-								<small> <img src="img/grano.png"
-									style="height: 22px; width: 16px;" />: Pu&ograve; contenere
-									allergeni.
-								</small>
-							</h4>
-
 						</div>
 					</div>
-
 				</section>
+
+				<!-- Google Map -->
+				<!-- Set latitude and Longitude (Get it from http://google.com/maps) -->
+				<div id="map" data-latitude="41.889545" data-longitude="12.542194"></div>
 
 				<!-- subscribe -->
 				<section class="subscribe">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12">
-								<h1>Subscribe</h1>
+								<h1>Newsletter</h1>
 								<p>Get updates about new dishes and upcoming events</p>
 								<form class="form-inline" action="php/subscribe.php" id="invite"
 									method="POST">
@@ -272,7 +282,6 @@
 						</div>
 					</div>
 				</section>
-
 			</div>
 
 		</div>
@@ -295,9 +304,15 @@
 		<script src="js/vendor/vegas/vegas.min.js"></script>
 		<script src="js/vendor/jquery.mb.YTPlayer.js"></script>
 		<script src="js/vendor/jquery.stellar.js"></script>
-		<script src="js/main.js"></script>
 		<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
 		<script src="js/vendor/mc/main.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script src="js/vendor/map.js"></script>
+		<!-- Contact JS -->
+		<script src="js/vendor/validate.js"></script>
+		<script src="js/contact.js"></script>
+		<!-- Main JS -->
+		<script src="js/main.js"></script>
 	</f:view>
 </body>
 

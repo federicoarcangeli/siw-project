@@ -37,7 +37,7 @@ public class Comanda {
 	@Column
 	private boolean completata;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Utente operatore;
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -92,14 +92,6 @@ public class Comanda {
 		this.lineeComanda.add(lineaComanda);
 	}
 
-	//	public Map<LineaComanda, Double> prezzoLinea() {
-	//		Map<LineaComanda, Double> map = new HashMap<>();
-	//		for(LineaComanda linea : this.lineeComanda) {
-	//
-	//		}
-	//		return map;
-	//	}
-
 	public Map<LineaComanda, Integer> quantitaLinea() {
 		Map<LineaComanda, Integer> map = new HashMap<>();
 		for(LineaComanda linea : this.lineeComanda) {		
@@ -121,13 +113,6 @@ public class Comanda {
 		}
 		return result;
 	}
-
-	public void updateQuantita() {
-		//		Map<LineaComanda, Integer> map = this.quantitaLinea();
-		//		this.lineeComanda = this.toList(map);
-
-	}
-
 
 	public LineaComanda updateNumberLine(LineaComanda lineaComanda) {
 		for(int i = 0; i<this.lineeComanda.size(); i++) {

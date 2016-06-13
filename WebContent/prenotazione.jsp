@@ -62,9 +62,11 @@
 							<ul class="nav navbar-nav navbar-right">
 								<li><a href="./index_parallax.jsp">Home</a></li>
 								<li><a href="./menu.jsp">Men&ugrave;</a></li>
+
 								<li><a href="./prenotazione.jsp"><span
 										style="color: #F9C56A;">Riserva un tavolo</span></a></li>
-								<li><a href="./contact.html">Contact</a></li>
+								<li><a href="./about.jsp">Chi siamo</a></li>
+								<li><a href="./contact.jsp">Contatti</a></li>
 								<li class="dropdown"><a href="./index_parallax.jsp"
 									class="dropdown-toggle" data-toggle="dropdown" role="button"
 									aria-haspopup="true" aria-expanded="false">Benvenuto <h:outputText
@@ -303,7 +305,8 @@
 								<div class="col-md-12">
 									<p>
 										<i class="fa fa-copyright"></i> 2016. Copyright. Designed with
-										<i class="fa fa-heart primary-color"></i>
+										<i class="fa fa-heart primary-color"></i> by Federico &amp;
+										Alessandro
 									</p>
 								</div>
 							</div>
