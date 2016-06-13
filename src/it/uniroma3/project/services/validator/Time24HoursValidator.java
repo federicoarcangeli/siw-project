@@ -82,7 +82,6 @@ public class Time24HoursValidator {
 		pattern = Pattern.compile(ORARIO_CENA_PATTERN);
 		if (ora != null) {
 			matcher = pattern.matcher(ora);
-			System.out.println(matcher.matches());
 			if (matcher.matches())
 				return true;
 		}

@@ -64,11 +64,10 @@
 								<h:panelGroup rendered="#{utenteCorrente.username !=null}">
 									<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
 								</h:panelGroup>
-								<li><a href="./about.jsp">Chi siamo</a></li>
-								<li><a href="./contact.jsp">Contatti</a></li>
 								<h:panelGroup rendered="#{utenteCorrente.username ==null}">
 									<li><a href="./loginSignup.jsp">Login / Signup</a></li>
 								</h:panelGroup>
+								<li><a href="./contact.html">Contatti</a></li>
 								<h:panelGroup rendered="#{utenteCorrente.username !=null}">
 									<li class="dropdown"><a href="./index_parallax.jsp"
 										class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -121,9 +120,6 @@
 
 									<t:div
 										styleClass="menu-item3 col-sm-6 col-xs-12 #{piatto.getPortata().getNome()}">
-
-										<h:graphicImage
-											value="#{piatto.getDescrizionePiatto().getUrlImmagine()}" />
 
 										<div class="menu-wrapper">
 											<h4>
@@ -265,7 +261,7 @@
 									<p>
 										<i class="fa fa-copyright"></i> 2015.Tomato.All rights
 										reserved. Designed with <i class="fa fa-heart primary-color"></i>
-										by Federico &amp; Alessandro
+										by Surjithctly
 									</p>
 								</div>
 							</div>

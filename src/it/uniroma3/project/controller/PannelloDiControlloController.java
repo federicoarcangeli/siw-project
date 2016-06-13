@@ -120,12 +120,6 @@ public class PannelloDiControlloController {
 
 		//		 gestione prenotazioni di oggi
 		this.prenotazioni = pFacade.findAllPrenotazioniToday();
-		this.removeFromSession("tavoloCorrente");
-	}
-
-	private void removeFromSession(String param) {
-		Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-		sessionMap.remove(param);
 	}
 
 	private Utente getUtenteCorrente(){

@@ -1,26 +1,15 @@
 package it.uniroma3.project.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBs;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-
-import org.apache.commons.io.FilenameUtils;
-import org.apache.myfaces.custom.fileupload.UploadedFile;
 
 import it.uniroma3.project.facade.CategoriaPiattoFacade;
 import it.uniroma3.project.facade.PiattoFacade;
@@ -28,7 +17,7 @@ import it.uniroma3.project.model.CategoriaPiatto;
 import it.uniroma3.project.model.DescrizionePiatto;
 import it.uniroma3.project.model.Piatto;
 
-@ManagedBean(name="piattoController")
+@ManagedBean(name = "piattoController")
 @RequestScoped
 @EJBs(value = { @EJB(name = "pFacade", beanInterface = PiattoFacade.class),
 		@EJB(name = "cpFacade", beanInterface = CategoriaPiattoFacade.class) })
@@ -44,21 +33,32 @@ public class PiattoController {
 	private boolean allergeni;
 	private Piatto piatto;
 	private CategoriaPiatto categoria;
-	private UploadedFile uploadedFile;
+
 	private List<CategoriaPiatto> categorie;
 
-	@EJB
+	@EJB(name = "cpFacade")
 	private CategoriaPiattoFacade cpFacade;
 
-	@EJB
+	@EJB(name = "pFacade")
 	private PiattoFacade pFacade;
+
+	@PostConstruct
+	public void init() {
+		this.categorie = this.cpFacade.findAll();
+		this.nomiCategorie = new ArrayList<>();
+		this.categorie = this.cpFacade.findAll();
+		for (CategoriaPiatto c : this.categorie) {
+			this.nomiCategorie.add(c.getNome());
+		}
+	}
 
 	public String create() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		DescrizionePiatto descrizionePiatto = createDescrizionePiatto();
 		this.categoria = this.cpFacade.findByName(this.nomeCategoria);
 		this.piatto = this.pFacade.create(nome, descrizionePiatto, this.categoria);
-		context.getExternalContext().getRequestMap().put("piattoCorrente", "Il piatto " + this.nome + " è stato inserito");
+		context.getExternalContext().getRequestMap().put("piattoCorrente",
+				"Il piatto " + this.nome + " è stato inserito");
 		return "inserimentoPiatti";
 	}
 
@@ -68,27 +68,7 @@ public class PiattoController {
 		descrizionePiatto.setPrezzo(this.prezzo);
 		descrizionePiatto.setProdottiAllergizzanti(this.allergeni);
 		descrizionePiatto.setProdottiSurgelati(this.surgelati);
-		descrizionePiatto.setUrlImmagine(createImage());
 		return descrizionePiatto;
-	}
-
-	public String createImage() {
-		Path file = null ;
-		try {
-			String separator = File.separator;
-			Path folder = Paths.get("C:"+separator+"Users"+separator+"Alegi"+separator+"Documents");
-			String filename = FilenameUtils.getBaseName(uploadedFile.getName());
-			String extension = FilenameUtils.getExtension(uploadedFile.getName());
-			file = Files.createTempFile(folder, filename + "-", "." + extension);
-			InputStream input = uploadedFile.getInputStream();
-			Files.copy(input, file, StandardCopyOption.REPLACE_EXISTING);
-
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(
-					String.format("File '%s' of type '%s' successfully uploaded!", filename, extension)));
-		} catch (IOException e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Error in loading file"));
-		}
-		return file.toString();
 	}
 
 	public List<String> getNomiCategorie() {
@@ -113,10 +93,6 @@ public class PiattoController {
 
 	public List<CategoriaPiatto> getCategorie() {
 		return this.categorie;
-	}
-
-	public String getCategorieToPage() {
-		return "inserimentoPiatti";
 	}
 
 	public void setCategorie(List<CategoriaPiatto> categorie) {
@@ -179,14 +155,6 @@ public class PiattoController {
 		this.piatto = piatto;
 	}
 
-	public UploadedFile getUploadedFile() {
-		return uploadedFile;
-	}
-
-	public void setUploadedFile(UploadedFile uploadedFile) {
-		this.uploadedFile = uploadedFile;
-	}
-
 	public CategoriaPiatto getCategoria() {
 		return categoria;
 	}
@@ -209,16 +177,6 @@ public class PiattoController {
 
 	public void setpFacade(PiattoFacade pFacade) {
 		this.pFacade = pFacade;
-	}
-
-	@PostConstruct
-	public void init() {
-		this.categorie = this.cpFacade.findAll();
-		this.nomiCategorie = new ArrayList<>();
-		this.categorie = this.cpFacade.findAll();
-		for (CategoriaPiatto c : this.categorie) {
-			this.nomiCategorie.add(c.getNome());
-		}
 	}
 
 }
