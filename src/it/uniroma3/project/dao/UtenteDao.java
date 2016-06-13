@@ -1,7 +1,6 @@
 package it.uniroma3.project.dao;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
@@ -54,7 +53,6 @@ public class UtenteDao extends AbstractDao<Utente> {
 		try {
 			query.setParameter("username", username);
 			query.setParameter("password", password);
-			System.out.println(query.getSingleResult());
 			return query.getSingleResult();
 		} catch (NoResultException e) {
 			return null;
@@ -64,5 +62,18 @@ public class UtenteDao extends AbstractDao<Utente> {
 	public Utente find(Utente utente) {
 		return getEM().find(Utente.class, utente);
 	}
+
+	public List<Utente> findOperatori() {
+		TypedQuery<Utente> query = getEM().createQuery(
+				"select u from Utente u where u.role = 'operatore' or u.role = 'admin'",
+				Utente.class);
+		try {
+			return query.getResultList();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+
+
 
 }

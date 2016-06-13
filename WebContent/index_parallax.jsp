@@ -66,10 +66,11 @@
 							<h:panelGroup rendered="#{utenteCorrente.username != null}">
 								<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
 							</h:panelGroup>
+							<li><a href="./about.jsp">Chi siamo</a></li>
+							<li><a href="./contact.jsp">Contatti</a></li>
 							<h:panelGroup rendered="#{utenteCorrente.username == null}">
 								<li><a href="./loginSignup.jsp">Login / Signup</a></li>
 							</h:panelGroup>
-							<li><a href="./contact.html">Contatti</a></li>
 							<h:panelGroup rendered="#{utenteCorrente.username != null}">
 								<li class="dropdown"><a href="./index_parallax.jsp"
 									class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -98,7 +99,7 @@
 						<a href="./index.html"> <img src="img/logo.png" alt="logo">
 						</a>
 					</div>
-					<h1>Ristorante Tomato</h1>
+					<h1>Ristorante Da peppe</h1>
 					<h2>La qualit&aacute; &egrave; di casa</h2>
 				</div>
 				<div class="scroll-down">
@@ -487,8 +488,6 @@
 		</div>
 
 		<!-- Javascript -->
-		<script type="text/javascript"
-			src="/siw-project/faces/javax.faces.resource/oamSubmit.js?ln=org.apache.myfaces"></script>
 		<script src="js/vendor/jquery-1.11.2.min.js"></script>
 		<script src="js/vendor/bootstrap.min.js"></script>
 		<script src="js/vendor/jquery.flexslider-min.js"></script>
@@ -496,9 +495,6 @@
 		<script src="js/vendor/owl.carousel.min.js"></script>
 		<script src="js/vendor/velocity.min.js"></script>
 		<script src="js/vendor/velocity.ui.min.js"></script>
-		<script src="js/vendor/bootstrap-datepicker.min.js"></script>
-		<script src="js/vendor/bootstrap-clockpicker.min.js"></script>
-		<script src="js/vendor/jquery.magnific-popup.min.js"></script>
 		<script src="js/vendor/isotope.pkgd.min.js"></script>
 		<script src="js/vendor/slick.min.js"></script>
 		<script src="js/vendor/wow.min.js"></script>

@@ -15,7 +15,6 @@ public class LineaComanda {
 	private Long id;
 
 	@Column
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int numeroLinea;
 
 	@Column
@@ -38,6 +37,7 @@ public class LineaComanda {
 		this.comanda = comanda;
 		this.piatto = piatto;
 		this.quantita = 1;
+		this.numeroLinea=0;
 	}
 
 	public Long getId() {

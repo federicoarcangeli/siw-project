@@ -48,4 +48,9 @@ public class LineaComandaFacade {
 		dao.delete(linea);
 	}
 
+	public int findNumeroLineaMassimo(Long idLineaComanda){
+		LineaComandaDao dao = new LineaComandaDao(this.em);
+		return dao.findMaxNumeroLinea(idLineaComanda);
+	}
+
 }

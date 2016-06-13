@@ -30,7 +30,7 @@ public class Time24HoursValidator {
 	 *            da convalidare
 	 * @return l'ora nel formato 24 ore
 	 */
-	public Date validate(String time) {
+	public Date validateOra(String time) {
 		pattern = Pattern.compile(TIME24HOURS_PATTERN);
 		formatter = new SimpleDateFormat("hh:mm");
 		Date hour = null;
@@ -44,6 +44,19 @@ public class Time24HoursValidator {
 				}
 		}
 		return hour;
+	}
+
+	public Date validateData(String date) {
+		formatter = new SimpleDateFormat("dd/MM/yyyy");
+		Date data = null;
+		if (date != null) {
+			try {
+				data = formatter.parse(date);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+		return data;
 	}
 
 	public Date simpleFormatDate(Date date) throws ParseException {
@@ -84,7 +97,7 @@ public class Time24HoursValidator {
 			if(matcher.matches())
 				return true;
 		}
-			return false;
+		return false;
 	}
 
 	/**

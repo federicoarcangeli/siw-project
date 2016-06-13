@@ -3,7 +3,6 @@ package it.uniroma3.project.controller;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBs;
@@ -21,7 +20,7 @@ import it.uniroma3.project.services.validator.Time24HoursValidator;
 
 @ManagedBean(name="prenotazioneController")
 @RequestScoped
-@EJBs(value = { @EJB(name = "paFacade", beanInterface = PrenotazioneFacade.class),
+@EJBs(value = { @EJB(name = "pFacade", beanInterface = PrenotazioneFacade.class),
 		@EJB(name = "tFacade", beanInterface = TavoloFacade.class) })
 public class PrenotazioneController {
 
@@ -33,10 +32,10 @@ public class PrenotazioneController {
 	private Prenotazione prenotazione;
 	private List<Tavolo> tavoli;
 
-	@EJB(name = "paFacade")
-	private PrenotazioneFacade paFacade;
+	@EJB
+	private PrenotazioneFacade pFacade;
 
-	@EJB(name = "tFacade")
+	@EJB
 	private TavoloFacade tFacade;
 
 	public String createByAdmin() {
@@ -48,7 +47,7 @@ public class PrenotazioneController {
 			Tavolo tavolo = this.validateTable();
 			if(tavolo ==null)
 				return "prenotazioneAdmin";
-			this.prenotazione = paFacade.createByPersonale(this.getNominativo(),this.getDatepicker(), this.getTimepicker(),
+			this.prenotazione = pFacade.createByPersonale(this.getNominativo(),this.getDatepicker(), this.getTimepicker(),
 					this.getCoperti(), tavolo);
 			if (validatorD.isToday(this.prenotazione.getData())) {
 				tFacade.setTavoloPrenotato(tavolo);
@@ -68,12 +67,12 @@ public class PrenotazioneController {
 			if(tavolo ==null)
 				return "prenotazione";
 			Utente utenteCorrente = (Utente)context.getExternalContext().getSessionMap().get("utenteCorrente");
-			this.prenotazione = paFacade.createByUtente(this.getDatepicker(),this.getTimepicker(),
+			this.prenotazione = pFacade.createByUtente(this.getDatepicker(),this.getTimepicker(),
 					this.getCoperti(),utenteCorrente, tavolo);
 			if (validatorD.isToday(this.prenotazione.getData())) {
 				tFacade.setTavoloPrenotato(tavolo);
 			}
-			context.getExternalContext().getRequestMap().put("prenotazioneCorrente", "La prenotazione è stata registrata correttamente a nome di  " + utenteCorrente.getCognome() + " per " + this.coperti + " persone il giorno " + validatorD.ConvertDateToString(datepicker) + " alle ore" + validatorD.ConvertTimeToString(this.getTimepicker()) );
+			context.getExternalContext().getRequestMap().put("prenotazioneCorrente", "La prenotazione è stata registrata correttamente a nome di  " + utenteCorrente.getCognome() + " per " + this.coperti + " persone il giorno " + validatorD.ConvertDateToString(datepicker) + " alle ore " + validatorD.ConvertTimeToString(this.getTimepicker()) );
 		} else
 			context.getExternalContext().getRequestMap().put("prenotazioneError", "è possibile prenotare solo per l'ora di cena (19:00 - 21:59)" );
 		return "prenotazione";
@@ -156,11 +155,11 @@ public class PrenotazioneController {
 	}
 
 	public PrenotazioneFacade getPaFacade() {
-		return paFacade;
+		return pFacade;
 	}
 
 	public void setPaFacade(PrenotazioneFacade paFacade) {
-		this.paFacade = paFacade;
+		this.pFacade = paFacade;
 	}
 
 	public List<Tavolo> getTavoli() {

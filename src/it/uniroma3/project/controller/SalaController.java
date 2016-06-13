@@ -1,6 +1,7 @@
 package it.uniroma3.project.controller;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +12,6 @@ import javax.ejb.EJBs;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-
 import it.uniroma3.project.facade.ComandaFacade;
 import it.uniroma3.project.facade.PrenotazioneFacade;
 import it.uniroma3.project.facade.TavoloFacade;
@@ -46,9 +46,10 @@ public class SalaController {
 	public String openComanda(){
 		this.tavolo = this.tFacade.findTavoloByNumero(this.getByRequest("codiceTavolo"));
 		if(this.tavolo.getOccupato()==0 || this.tavolo.getOccupato()==1){
+			if(this.tavolo.getOccupato()==1)
+				pFacade.setPrenotazioneUtenteAlTavolo(this.tavolo.getId());
 			this.comanda = new Comanda();
 			tFacade.setTavoloOccupato(tavolo);
-			pFacade.setPrenotazioneUtenteAlTavolo(this.tavolo.getId());
 			comanda.setOperatore((Utente) this.getBySession("utenteCorrente"));
 			comanda.setTavolo(tavolo);
 			comanda.setDataOraEmissione(new Date());
@@ -59,7 +60,7 @@ public class SalaController {
 				this.comanda = cFacade.findComandaByTavolo(this.tavolo.getId());
 			}
 		this.setComandaInSession("comandaCorrente");
-		return "comanda?faces-redirect=true";
+		return "comanda";
 	}
 
 	@PostConstruct
@@ -106,17 +107,17 @@ public class SalaController {
 		context.getExternalContext().redirect(page);
 	}
 
-	public void setComandaInSession(String name){
+	private void setComandaInSession(String name){
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.getExternalContext().getSessionMap().put(name,this.comanda);
 	}
 
-	public Object getBySession(String name){
+	private Object getBySession(String name){
 		FacesContext context = FacesContext.getCurrentInstance();
 		return context.getExternalContext().getSessionMap().get(name);
 	}
 
-	public String getByRequest(String name){
+	private String getByRequest(String name){
 		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		return params.get(name);
 	}

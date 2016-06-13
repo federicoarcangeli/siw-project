@@ -128,6 +128,21 @@
 														</tr>
 													</thead>
 													<tbody>
+														<h:panelGroup
+															rendered="#{empty pannelloController.prenotazioni}">
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+														</h:panelGroup>
 														<c:forEach var="prenotazione"
 															items="#{pannelloController.prenotazioni}">
 															<tr>
@@ -162,14 +177,14 @@
 																</h:panelGroup>
 																<h:panelGroup rendered="#{prenotazione.stato != 2}">
 																	<td class="text-center"><a href="#"
-																		style="color: red;" data-toggle="modal"
+																		data-toggle="modal" style="color: red;"
 																		data-target='#<h:outputText
 																					value="#{prenotazione.id}" />'
-																		class="fa fa-trash-o fa-lg"></a></td>
+																		class="fa fa-trash-o fa-lg "></a></td>
 																</h:panelGroup>
 																<h:panelGroup rendered="#{prenotazione.stato == 2}">
-																	<td class="text-center"><i class="fa fa-minus"
-																		aria-hidden="true"></i></td>
+																	<td class="text-center"><i style="color: red;"
+																		class="fa fa-ban fa-lg" aria-hidden="true"></i></td>
 																</h:panelGroup>
 
 																<!--  Modal conferma eliminazione prenotazione -->
@@ -227,6 +242,19 @@
 														</tr>
 													</thead>
 													<tbody>
+														<h:panelGroup
+															rendered="#{empty pannelloController.comande}">
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+														</h:panelGroup>
 														<c:forEach var="comanda"
 															items="#{pannelloController.comande}">
 															<h:panelGroup rendered="#{comanda.completata}">
@@ -263,24 +291,28 @@
 												<table class="table">
 													<thead>
 														<tr class="warning">
-															<th class="text-center">Codice operatore</th>
+															<th class="text-center">Id</th>
 															<th class="text-center">Username</th>
 															<th class="text-center">Tavolo servito</th>
 														</tr>
 													</thead>
 													<tbody>
-														<c:forEach var="comanda"
-															items="#{pannelloController.comande}">
-															<h:panelGroup rendered="#{!comanda.completata}">
-																<tr>
-																	<td class="text-center"><h:outputText
-																			value="#{comanda.operatore.getId()}" /></td>
-																	<td class="text-center"><h:outputText
-																			value="#{comanda.operatore.getUsername()}" /></td>
-																	<td class="text-center"><h:outputText
-																			value="#{comanda.tavolo.getCodiceTavolo()}" /></td>
-																</tr>
-															</h:panelGroup>
+														<c:forEach var="utente"
+															items="#{pannelloController.operatoriInServizio}">
+
+															<tr>
+																<td class="text-center"><h:outputText
+																		value="#{utente.id}" /></td>
+																<td class="text-center"><h:outputText
+																		value="#{utente.username}" /></td>
+																<td class="text-center"><c:forEach var="comanda"
+																		items="#{utente.comanda}">
+																		<h:panelGroup rendered="#{!comanda.completata}">
+																			<h:outputText value="#{comanda.tavolo.codiceTavolo}" /> &nbsp;
+																			</h:panelGroup>
+																	</c:forEach></td>
+															</tr>
+
 														</c:forEach>
 													</tbody>
 												</table>
@@ -322,6 +354,21 @@
 															</tr>
 														</thead>
 														<tbody>
+															<h:panelGroup
+																rendered="#{empty pannelloController.comande}">
+																<td class="text-center"><i class="fa fa-minus"
+																	aria-hidden="true"></i></td>
+																<td class="text-center"><i class="fa fa-minus"
+																	aria-hidden="true"></i></td>
+																<td class="text-center"><i class="fa fa-minus"
+																	aria-hidden="true"></i></td>
+																<td class="text-center"><i class="fa fa-minus"
+																	aria-hidden="true"></i></td>
+																<td class="text-center"><i class="fa fa-minus"
+																	aria-hidden="true"></i></td>
+																<td class="text-center"><i class="fa fa-minus"
+																	aria-hidden="true"></i></td>
+															</h:panelGroup>
 															<c:forEach var="comanda"
 																items="#{pannelloController.comande}">
 																<h:panelGroup rendered="#{!comanda.completata}">
@@ -389,7 +436,7 @@
 													<h:commandLink styleClass="btn btn-danger" value="Elimina"
 														action="#{pannelloController.eliminaComanda}">
 														<i class="fa fa-trash-o"></i>
-														<f:param name="iComanda" value="#{comanda.id}"></f:param>
+														<f:param name="idComanda" value="#{comanda.id}"></f:param>
 													</h:commandLink>
 												</div>
 											</div>
@@ -406,9 +453,9 @@
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal">&times;</button>
 													<h4 class="modal-title">
-														Tavolo:
+														Tavolo N°
 														<h:outputText value="#{comanda.tavolo.getCodiceTavolo()}" />
-														- Comanda:
+														- Comanda N°
 														<h:outputText value="#{comanda.id}" />
 													</h4>
 												</div>
@@ -419,6 +466,8 @@
 																<th class="text-center">Linea N°</th>
 																<th class="text-center">Piatto</th>
 																<th class="text-center">Quantità</th>
+																<th class="text-center"></th>
+																<th class="text-center">Prezzo</th>
 															</tr>
 														</thead>
 														<tbody>
@@ -431,20 +480,29 @@
 																			value="#{linea.piatto.nome}" /></td>
 																	<td class="text-center"><h:outputText
 																			value="#{linea.quantita}" /></td>
+																	<td class="text-center">x</td>
+																	<td class="text-center"><h:outputText
+																			value="#{linea.piatto.descrizionePiatto.prezzo}" />&euro;</td>
 																</tr>
 															</c:forEach>
 															<tr class="warning">
-																<td class="text-center" colspan="2"><strong>Totale:</strong></td>
+																<td class="text-center" colspan="4"><strong>Totale:</strong></td>
 																<td class="text-center"><h:outputText
 																		value="#{comanda.prezzoTotale}" />&euro;</td>
 															</tr>
 														</tbody>
 													</table>
-													<span><strong>Data e ora : </strong> <h:outputText
+													<hr>
+
+													<span class="text-left"><strong>Coperti N°
+															: <h:outputText value="#{comanda.tavolo.coperti}" />
+													</strong></span><br> <span> <strong>Data e ora : </strong> <h:outputText
 															value="#{comanda.dataOraEmissione}">
-															<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+															<f:convertDateTime pattern="dd/MM/yyyy    HH:mm" />
 														</h:outputText> <br> <strong> Operatore : </strong> <h:outputText
-															value="#{comanda.operatore.getUsername()}" /> </span>
+															value="#{comanda.operatore.getUsername()}" />
+													</span>
+
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-warning"

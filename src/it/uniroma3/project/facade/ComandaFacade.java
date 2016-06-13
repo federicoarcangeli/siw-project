@@ -3,6 +3,7 @@ package it.uniroma3.project.facade;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -10,6 +11,7 @@ import javax.persistence.PersistenceContext;
 
 import it.uniroma3.project.dao.ComandaDao;
 import it.uniroma3.project.model.Comanda;
+import it.uniroma3.project.model.Utente;
 import it.uniroma3.project.services.validator.Time24HoursValidator;
 
 @Stateless
@@ -76,6 +78,12 @@ public class ComandaFacade {
 		ComandaDao dao = new ComandaDao(this.em);
 		List<Comanda> comande = dao.findAllCompletateInThisDay(validator.simpleFormatDate(date));
 		return comande;
+	}
+
+	public Map<String, List<String>> findAllOperatoriInServizio() {
+		ComandaDao dao = new ComandaDao(this.em);
+		return dao.findAllOperatoriInServizio();
+
 	}
 
 }

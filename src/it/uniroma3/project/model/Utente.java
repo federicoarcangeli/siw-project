@@ -175,7 +175,6 @@ public class Utente {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cognome == null) ? 0 : cognome.hashCode());
-		result = prime * result + ((comanda == null) ? 0 : comanda.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
@@ -198,11 +197,6 @@ public class Utente {
 			if (other.cognome != null)
 				return false;
 		} else if (!cognome.equals(other.cognome))
-			return false;
-		if (comanda == null) {
-			if (other.comanda != null)
-				return false;
-		} else if (!comanda.equals(other.comanda))
 			return false;
 		if (email == null) {
 			if (other.email != null)

@@ -27,10 +27,9 @@ public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 
 	}
 
-	@SuppressWarnings("unchecked")
 	public List<Prenotazione> findAllPrenotazioneUtente(Long id_utente) {
 		try{
-			Query query = getEM().createNativeQuery("select p.* from Prenotazione p where p.utente_id= ?1",
+			TypedQuery<Prenotazione> query = getEM().createQuery("select p from Prenotazione p where p.utente.id= ?1",
 					Prenotazione.class);
 			query.setParameter(1, id_utente);
 			return query.getResultList();
@@ -41,10 +40,10 @@ public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Prenotazione> findPrenotazioneTavolo(Tavolo t) {
+	public List<Prenotazione> findPrenotazioniTavolo(Tavolo t) {
 		try{
 			Query query = getEM().createNativeQuery(
-					"select p.* from Prenotazione p where p.tavoloprenotato_id= ?1 and p.data = CURRENT_DATE and p.stato != '2'", Prenotazione.class);
+					"select p.* from Prenotazione p where p.tavoloprenotato_id= ?1 and p.data = CURRENT_DATE and p.stato != 2", Prenotazione.class);
 			query.setParameter(1, t.getId());
 			return query.getResultList();
 		} catch (Exception e) {
@@ -64,11 +63,13 @@ public class PrenotazioneDao extends AbstractDao<Prenotazione> {
 		}
 	}
 
-	public Prenotazione findByTavolo(long idTavolo) {
+
+	public Prenotazione findPrenotazioneByTavolo(Long idTavolo) {
 		try{
-			Query q = getEM().createNativeQuery("select p.* from Prenotazione p where p.tavoloprenotato_id = ?1 and p.stato !='2'",Prenotazione.class);
-			q.setParameter(1, idTavolo);
-			return (Prenotazione) q.getSingleResult();
+			Query query = getEM().createNativeQuery(
+					"select p.* from Prenotazione p where p.tavoloprenotato_id= ?1 and p.data = CURRENT_DATE and p.stato != 2", Prenotazione.class);
+			query.setParameter(1, idTavolo);
+			return (Prenotazione) query.getSingleResult();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

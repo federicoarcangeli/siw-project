@@ -63,7 +63,8 @@
 								<li><a href="./index_parallax.jsp">Home</a></li>
 								<li><a href="./menu.jsp">Men&ugrave;</a></li>
 								<li><a href="./prenotazione.jsp">Riserva un tavolo</a></li>
-								<li><a href="./contact.html">Contact</a></li>
+								<li><a href="./about.jsp">Chi siamo</a></li>
+								<li><a href="./contact.jsp">Contatti</a></li>
 								<li class="dropdown"><a href="./index_parallax.jsp"
 									class="dropdown-toggle" data-toggle="dropdown" role="button"
 									aria-haspopup="true" aria-expanded="false"><span
@@ -132,14 +133,35 @@
 															<th>Ora</th>
 															<th>Numero ospiti</th>
 															<th>Tavolo</th>
+															<th>Stato</th>
+															<th>Elimina</th>
 														</tr>
 													</thead>
 													<tbody>
+														<h:panelGroup
+															rendered="#{empty profiloController.prenotazioniUtente}">
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
+														</h:panelGroup>
 														<c:forEach var="prenotazione"
-															items="#{utenteCorrente.prenotazioni}">
+															items="#{profiloController.prenotazioniUtente}">
 															<tr>
 																<td><h:outputText value="#{prenotazione.id}" /></td>
-																<td><h:outputText value="#{prenotazione.data}" /></td>
+																<td><h:outputText value="#{prenotazione.data}">
+																		<f:convertDateTime pattern="dd/MM/yyyy" />
+																	</h:outputText></td>
 																<td><h:outputText value="#{prenotazione.ora}">
 																		<f:convertDateTime pattern="HH:mm" />
 																	</h:outputText></td>
@@ -147,7 +169,70 @@
 																		value="#{prenotazione.numeroOspiti}" /></td>
 																<td><h:outputText
 																		value="#{prenotazione.tavoloPrenotato.codiceTavolo}" /></td>
+																<h:panelGroup rendered="#{prenotazione.stato == 0}">
+																	<td class="text-center"><i
+																		class="fa fa-refresh fa-spin fa-lg fa-fw"></i><span
+																		class="sr-only">Loading...</span></td>
+																</h:panelGroup>
+																<h:panelGroup rendered="#{prenotazione.stato == 1}">
+																	<td class="text-center" class="success"><i
+																		class="fa fa-cutlery"></i></td>
+																</h:panelGroup>
+																<h:panelGroup rendered="#{prenotazione.stato == 2}">
+																	<td class="text-center" class="success"
+																		style="color: green;"><i
+																		class="fa fa-check-circle"></i></td>
+																</h:panelGroup>
+																<h:panelGroup rendered="#{prenotazione.stato == 2}">
+																	<td class="text-center "><i style="color: red;"
+																		class="fa fa-ban fa-lg" aria-hidden="true"></i></td>
+																</h:panelGroup>
+																<h:panelGroup rendered="#{prenotazione.stato != 2}">
+																	<td class="text-center"><a href="#"
+																		style="color: red;" data-toggle="modal"
+																		data-target='#<h:outputText
+																					value="#{prenotazione.id}" />'
+																		class="fa fa-trash-o fa-lg"></a></td>
+																</h:panelGroup>
 															</tr>
+
+															<!--  Modal conferma eliminazione prenotazione -->
+															<h:form>
+																<div id="<h:outputText value="#{prenotazione.id}" />"
+																	class="modal fade" aria-labelledby="myModal">
+																	<div class="modal-dialog">
+																		<div class="modal-content">
+																			<div class="modal-header">
+																				<button type="button" class="close"
+																					data-dismiss="modal">&times;</button>
+																				<h4 class="modal-title">Sei sicuro di voler
+																					procedere all'eliminazione?</h4>
+																			</div>
+																			<div class="modal-body">
+
+																				<h5>
+																					<i class="fa fa-exclamation-circle"
+																						style="color: #F9C56A;" aria-hidden="true"></i>
+																					L'eliminazione sarà irreversibile!
+																				</h5>
+																			</div>
+																			<div class="modal-footer">
+																				<button type="button" class="btn btn-warning"
+																					data-dismiss="modal">
+																					Chiudi <i class="fa fa-times"></i>
+																				</button>
+																				<h:commandLink styleClass="btn btn-danger"
+																					value="Elimina"
+																					action="#{profiloController.eliminaPrenotazioneDaProfilo}">
+																					<i class="fa fa-trash-o"></i>
+																					<f:param name="idPrenotazione"
+																						value="#{prenotazione.id}"></f:param>
+																				</h:commandLink>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</h:form>
 														</c:forEach>
 													</tbody>
 												</table>

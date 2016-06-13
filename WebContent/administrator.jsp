@@ -50,7 +50,7 @@
 										<div class="col-md-12">
 											<div class="form-group">
 												<label>Username</label>
-												<h:inputText id="username"
+												<h:inputText id="username" autocomplete="off" 
 													value="#{utenteController.username}" required="true"
 													requiredMessage="Inserisci username"
 													styleClass="form-control" />
@@ -66,7 +66,7 @@
 										<div class="col-md-12">
 											<div class="form-group">
 												<label>Password</label>
-												<h:inputSecret id="password"
+												<h:inputSecret id="password" autocomplete="off"
 													value="#{utenteController.password}" required="true"
 													requiredMessage="Inserisci password"
 													styleClass="form-control" />
@@ -83,13 +83,20 @@
 											<h:commandButton value="login"
 												action="#{utenteController.loginAdmin}"
 												styleClass="btn btn-default btn-block" />
-
 										</div>
 									</div>
-									<div class="animated fadeInDown">
-										<h:messages globalOnly="true" styleClass="list-group"
-											infoClass="list-group-item list-group-item-danger"></h:messages>
-									</div>
+									<br>
+									<h:panelGroup rendered="#{not empty utenteError}">
+										<div class="animated fadeInDown">
+											<div class="alert alert-danger alert-dismissable">
+												<button type="button" class="close" data-dismiss="alert">
+													<span class="fa fa-close"></span>
+												</button>
+												<span> Errore: </span>
+												<h:outputText value="#{utenteError}" />
+											</div>
+										</div>
+									</h:panelGroup>
 								</h:form>
 							</div>
 						</div>

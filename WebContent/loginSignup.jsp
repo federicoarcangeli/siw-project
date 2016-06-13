@@ -6,7 +6,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Accedi</title>
+<title>Login - Signup</title>
 
 <!-- SEO -->
 <meta name="description"
@@ -59,9 +59,10 @@
 							<ul class="nav navbar-nav navbar-right">
 								<li><a href="./index_parallax.jsp">Home</a></li>
 								<li><a href="./menu.jsp">Men&ugrave;</a></li>
+								<li><a href="./about.jsp">Chi siamo</a></li>
+								<li><a href="./contact.jsp">Contatti</a></li>
 								<li><a href="./loginSignup.jsp"><span
 										style="color: #F9C56A;">Login / Signup</span></a></li>
-								<li><a href="./contact.html">Contact</a></li>
 							</ul>
 						</div>
 
@@ -82,10 +83,6 @@
 										Login / Signup<small>Registrati o accedi per poter
 											prenotare un tavolo</small>
 									</h1>
-								</div>
-								<div class="animated fadeInDown">
-									<h:messages globalOnly="true" styleClass="list-group"
-										infoClass="list-group-item list-group-item-danger"></h:messages>
 								</div>
 							</div>
 						</div>
@@ -141,6 +138,18 @@
 											</div>
 										</div>
 										<br>
+										<h:panelGroup rendered="#{not empty utenteError}">
+											<div class="animated fadeInDown">
+												<div class="alert alert-danger alert-dismissable">
+													<button type="button" class="close" data-dismiss="alert">
+														<span class="fa fa-close"></span>
+													</button>
+													<span> Errore: </span>
+													<h:outputText value="#{utenteError}" />
+												</div>
+											</div>
+										</h:panelGroup>
+
 									</div>
 									<div class="col-md-6">
 										<div class="box-content">
@@ -445,7 +454,7 @@
 		<script src="js/main.js"></script>
 		<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
 		<script src="js/vendor/mc/main.js"></script>
-<!-- 		scripts -->
+		<!-- 		scripts -->
 		<script src="js/scripts/confermaRegistrazioneUtente.js"></script>
 	</f:view>
 </body>

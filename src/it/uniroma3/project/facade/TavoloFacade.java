@@ -52,12 +52,6 @@ public class TavoloFacade {
 		dao.update(tavolo);
 	}
 
-	public void setTavoloLibero(Long idTavolo) {
-		TavoloDao dao = new TavoloDao(this.em);
-		Tavolo tavolo = dao.findById(idTavolo);
-		tavolo.setOccupato(0);
-		dao.update(tavolo);
-	}
 
 	public void setTavoloLibero(Tavolo tavolo) {
 		TavoloDao dao = new TavoloDao(this.em);

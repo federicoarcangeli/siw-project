@@ -15,14 +15,14 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-@NamedQuery(name = "Tavolo.findAll", query = "select t from Tavolo t")
+@NamedQuery(name = "Tavolo.findAll", query = "select t from Tavolo t order by t.codiceTavolo")
 public class Tavolo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(nullable = false)
+	@Column(nullable = false,unique=true)
 	private String codiceTavolo;
 
 	@Column(nullable = false)
