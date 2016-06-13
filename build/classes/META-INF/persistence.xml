@@ -27,7 +27,6 @@
 			<property name="openjpa.jdbc.DBDictionary" value="postgres" />
 			<property name="openjpa.Log"
 				value="DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE" />
-
 		</properties>
 	</persistence-unit>
 </persistence>
