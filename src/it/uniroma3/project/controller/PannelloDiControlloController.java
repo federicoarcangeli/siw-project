@@ -14,7 +14,6 @@ import javax.ejb.EJB;
 import javax.ejb.EJBs;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import it.uniroma3.project.facade.ComandaFacade;

@@ -11,6 +11,7 @@
 
 <!-- Responsive Tag -->
 <meta name="viewport" content="width=device-width">
+<meta http-equiv="refresh" content="3;URL=./index_parallax.jsp">
 
 <!-- CSS Files -->
 <link rel="stylesheet" href="css/bootstrap.min.css">

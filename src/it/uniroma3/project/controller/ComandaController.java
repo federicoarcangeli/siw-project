@@ -36,10 +36,13 @@ public class ComandaController {
 
 	@EJB
 	private ComandaFacade cFacade;
+
 	@EJB
 	private PiattoFacade pFacade;
+
 	@EJB
 	private CategoriaPiattoFacade cpFacade;
+
 	@EJB
 	private LineaComandaFacade lFacade;
 
@@ -126,22 +129,22 @@ public class ComandaController {
 
 	}
 
-	private Utente getUtenteCorrente(){
+	public Utente getUtenteCorrente(){
 		FacesContext context = FacesContext.getCurrentInstance();
 		return (Utente) context.getExternalContext().getSessionMap().get("utenteCorrente");
 	}
 
-	private void redirectPage(String page) throws IOException{
+	public void redirectPage(String page) throws IOException{
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.getExternalContext().redirect(page);
 	}
 
-	private String getByRequest(String name){
+	public String getByRequest(String name){
 		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
 		return params.get(name);
 	}
 
-	private Object getBySession(String name){
+	public Object getBySession(String name){
 		FacesContext context = FacesContext.getCurrentInstance();
 		return context.getExternalContext().getSessionMap().get(name);
 	}

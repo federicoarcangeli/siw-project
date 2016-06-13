@@ -321,64 +321,22 @@
 					</div>
 				</section>
 
-				<!-- subscribe -->
-				<section class="subscribe">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-								<h1>Subscribe</h1>
-								<p>Get updates about new dishes and upcoming events</p>
-								<form class="form-inline" action="php/subscribe.php" id="invite"
-									method="POST">
-									<div class="form-group">
-										<input class="e-mail form-control" name="email" id="address"
-											type="email" placeholder="Your Email Address" required>
-									</div>
-									<button type="submit" class="btn btn-default">
-										<i class="fa fa-angle-right"></i>
-									</button>
-								</form>
-
-							</div>
-						</div>
-					</div>
-				</section>
-
 				<!-- Footer-->
-				<section class="footer">
+				<section class="footer fixed-bg" data-stellar-background-ratio="0.2">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-4 col-sm-12">
-								<h1>About us</h1>
+								<h1>Chi siamo</h1>
 								<p>Duis leo justo, condimentum at purus eu,Aenean sed dolor
 									sem. Etiam massa libero, auctor vitae egestas et, accumsan quis
 									nunc.Duis leo justo, condimentum at purus eu, posuere pretium
 									tellus.</p>
-								<a href="./about.html">Read more &rarr;</a>
+								<a href="./about.html">Leggi ancora &rarr;</a>
 							</div>
+							<div class="col-md-4  col-sm-6"></div>
+
 							<div class="col-md-4  col-sm-6">
-								<h1>Recent post</h1>
-								<div class="footer-blog clearfix">
-									<a href="./blog_right_sidebar.html"> <img
-										src="img/thumb8.png" class="img-responsive footer-photo"
-										alt="blog photos">
-										<p class="footer-blog-text">Hand picked ingredients for
-											our best customers</p>
-										<p class="footer-blog-date">29 may 2015</p>
-									</a>
-								</div>
-								<div class="footer-blog clearfix last">
-									<a href="./blog_right_sidebar.html"> <img
-										src="img/thumb9.png" class="img-responsive footer-photo"
-										alt="blog photos">
-										<p class="footer-blog-text">Daily special foods that you
-											will going to love</p>
-										<p class="footer-blog-date">29 may 2015</p>
-									</a>
-								</div>
-							</div>
-							<div class="col-md-4  col-sm-6">
-								<h1>Reach us</h1>
+								<h1>Contattaci</h1>
 								<div class="footer-social-icons">
 									<a href="http://www.facebook.com"> <i
 										class="fa fa-facebook-square"></i>
@@ -395,19 +353,20 @@
 								</div>
 								<div class="footer-address">
 									<p>
-										<i class="fa fa-map-marker"></i>28 Seventh Avenue, Neew York,
-										10014
+										<i class="fa fa-map-marker"></i>Via della vasca navale 70,
+										00146
 									</p>
 									<p>
-										<i class="fa fa-phone"></i>Phone: (415) 124-5678
+										<i class="fa fa-phone"></i>Telefono: +39 123456789
 									</p>
 									<p>
-										<i class="fa fa-envelope-o"></i>support@restaurant.com
+										<i class="fa fa-envelope-o"></i>dapepperestaurant@gmail.com
 									</p>
 								</div>
 							</div>
 						</div>
 					</div>
+
 
 					<!-- Footer - Copyright -->
 					<div class="footer-copyrights">
@@ -415,7 +374,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<p>
-										<i class="fa fa-copyright"></i> 2015.Tomato.All rights
+										<i class="fa fa-copyright"></i> 2015.Da Peppe.All rights
 										reserved. Designed with <i class="fa fa-heart primary-color"></i>
 										by Federico e Alessandro
 									</p>
