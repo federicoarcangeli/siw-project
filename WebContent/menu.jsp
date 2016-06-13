@@ -121,9 +121,6 @@
 									<t:div
 										styleClass="menu-item3 col-sm-6 col-xs-12 #{piatto.getPortata().getNome()}">
 
-										<h:graphicImage
-											value="#{piatto.getDescrizionePiatto().getUrlImmagine()}" />
-
 										<div class="menu-wrapper">
 											<h4>
 												<h:outputText value="#{piatto.nome}" />
