@@ -16,9 +16,10 @@ import it.uniroma3.project.model.Prenotazione;
 import it.uniroma3.project.model.Ristorante;
 import it.uniroma3.project.model.Tavolo;
 import it.uniroma3.project.model.Utente;
+import it.uniroma3.project.services.mail.EmailManager;
 import it.uniroma3.project.services.validator.Time24HoursValidator;
 
-@ManagedBean(name="prenotazioneController")
+@ManagedBean(name = "prenotazioneController")
 @RequestScoped
 @EJBs(value = { @EJB(name = "pFacade", beanInterface = PrenotazioneFacade.class),
 		@EJB(name = "tFacade", beanInterface = TavoloFacade.class) })
@@ -43,42 +44,53 @@ public class PrenotazioneController {
 		FacesContext context = FacesContext.getCurrentInstance();
 		boolean cena = validatorD.isCena(this.timepicker);
 		boolean pranzo = validatorD.isPranzo(this.timepicker);
-		if(pranzo || cena) {
+		if (pranzo || cena) {
 			Tavolo tavolo = this.validateTable();
-			if(tavolo ==null)
+			if (tavolo == null)
 				return "prenotazioneAdmin";
-			this.prenotazione = pFacade.createByPersonale(this.getNominativo(),this.getDatepicker(), this.getTimepicker(),
-					this.getCoperti(), tavolo);
+			this.prenotazione = pFacade.createByPersonale(this.getNominativo(), this.getDatepicker(),
+					this.getTimepicker(), this.getCoperti(), tavolo);
 			if (validatorD.isToday(this.prenotazione.getData())) {
 				tFacade.setTavoloPrenotato(tavolo);
 			}
-			context.getExternalContext().getRequestMap().put("prenotazioneCorrente", "Hai prenotato a nome di " + this.nominativo + " per " + this.coperti + " persone per il giorno " +validatorD.ConvertDateToString(datepicker) + " alle ore " + validatorD.ConvertTimeToString(this.getTimepicker()));
-		}else
-			context.getExternalContext().getRequestMap().put("prenotazioneError", "è possibile prenotare solo negli orari di eserczio del locale (12:00 - 14:00 e 19:00-22:00) " );
+			context.getExternalContext().getRequestMap().put("prenotazioneCorrente",
+					"Hai prenotato a nome di " + this.nominativo + " per " + this.coperti + " persone per il giorno "
+							+ validatorD.ConvertDateToString(datepicker) + " alle ore "
+							+ validatorD.ConvertTimeToString(this.getTimepicker()));
+		} else
+			context.getExternalContext().getRequestMap().put("prenotazioneError",
+					"è possibile prenotare solo negli orari di eserczio del locale (12:00 - 14:00 e 19:00-22:00) ");
 		return "prenotazioneAdmin";
 	}
 
 	public String createByUtente() {
 		Time24HoursValidator validatorD = new Time24HoursValidator();
 		FacesContext context = FacesContext.getCurrentInstance();
-		if(validatorD.isCena(this.timepicker))
-		{
+		if (validatorD.isCena(this.timepicker)) {
 			Tavolo tavolo = this.validateTable();
-			if(tavolo ==null)
+			if (tavolo == null)
 				return "prenotazione";
-			Utente utenteCorrente = (Utente)context.getExternalContext().getSessionMap().get("utenteCorrente");
-			this.prenotazione = pFacade.createByUtente(this.getDatepicker(),this.getTimepicker(),
-					this.getCoperti(),utenteCorrente, tavolo);
+			Utente utenteCorrente = (Utente) context.getExternalContext().getSessionMap().get("utenteCorrente");
+			this.prenotazione = pFacade.createByUtente(this.getDatepicker(), this.getTimepicker(), this.getCoperti(),
+					utenteCorrente, tavolo);
+			EmailManager.sendMailReservation(this.getUtenteCorrente().getEmail(),
+					this.getUtenteCorrente().getUsername(), validatorD.ConvertDateToString(this.datepicker),
+					validatorD.ConvertTimeToString(this.timepicker), this.coperti);
 			if (validatorD.isToday(this.prenotazione.getData())) {
 				tFacade.setTavoloPrenotato(tavolo);
 			}
-			context.getExternalContext().getRequestMap().put("prenotazioneCorrente", "La prenotazione è stata registrata correttamente a nome di  " + utenteCorrente.getCognome() + " per " + this.coperti + " persone il giorno " + validatorD.ConvertDateToString(datepicker) + " alle ore " + validatorD.ConvertTimeToString(this.getTimepicker()) );
+			context.getExternalContext().getRequestMap().put("prenotazioneCorrente",
+					"La prenotazione è stata registrata correttamente a nome di  " + utenteCorrente.getCognome()
+							+ " per " + this.coperti + " persone il giorno "
+							+ validatorD.ConvertDateToString(datepicker) + " alle ore "
+							+ validatorD.ConvertTimeToString(this.getTimepicker()));
 		} else
-			context.getExternalContext().getRequestMap().put("prenotazioneError", "è possibile prenotare solo per l'ora di cena (19:00 - 21:59)" );
+			context.getExternalContext().getRequestMap().put("prenotazioneError",
+					"è possibile prenotare solo per l'ora di cena (19:00 - 21:59)");
 		return "prenotazione";
 	}
 
-	public Tavolo validateTable(){
+	public Tavolo validateTable() {
 		Time24HoursValidator validatorD = new Time24HoursValidator();
 		FacesContext context = FacesContext.getCurrentInstance();
 		this.tavoli = this.tFacade.findAllTavolo();
@@ -86,17 +98,19 @@ public class PrenotazioneController {
 		List<Tavolo> tavoliDisponibili = ristorante.setTavoloPrenotazione(this.tavoli, this.coperti);
 		Tavolo tavoloDaPrenotare = ristorante.checkTavoliLiberiForDate(tavoliDisponibili, this.datepicker);
 		if (tavoliDisponibili.isEmpty()) {
-			context.getExternalContext().getRequestMap().put("prenotazioneError", "Non ci sono tavoli disponibili per questo numero di ospiti");
+			context.getExternalContext().getRequestMap().put("prenotazioneError",
+					"Non ci sono tavoli disponibili per questo numero di ospiti");
 		} else if (tavoloDaPrenotare == null) {
-			context.getExternalContext().getRequestMap().put("prenotazioneError", "Non ci sono tavoli disponibili per il "
-					+ validatorD.ConvertDateToString(this.datepicker) + " per " + this.coperti + " persone");
-		} 
+			context.getExternalContext().getRequestMap().put("prenotazioneError",
+					"Non ci sono tavoli disponibili per il " + validatorD.ConvertDateToString(this.datepicker) + " per "
+							+ this.coperti + " persone");
+		}
 		return tavoloDaPrenotare;
 	}
 
 	@PostConstruct
 	public void init() {
-		if(this.getUtenteCorrente()==null)
+		if (this.getUtenteCorrente() == null)
 			try {
 				this.redirectPage("./sessioneScaduta.jsp");
 			} catch (IOException e) {
@@ -104,12 +118,12 @@ public class PrenotazioneController {
 			}
 	}
 
-	private Utente getUtenteCorrente(){
+	private Utente getUtenteCorrente() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		return (Utente) context.getExternalContext().getSessionMap().get("utenteCorrente");
 	}
 
-	private void redirectPage(String page) throws IOException{
+	private void redirectPage(String page) throws IOException {
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.getExternalContext().redirect(page);
 	}

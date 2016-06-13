@@ -1,7 +1,6 @@
 package it.uniroma3.project.controller;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +11,7 @@ import javax.ejb.EJBs;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+
 import it.uniroma3.project.facade.ComandaFacade;
 import it.uniroma3.project.facade.PrenotazioneFacade;
 import it.uniroma3.project.facade.TavoloFacade;

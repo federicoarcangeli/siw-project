@@ -12,7 +12,6 @@ import javax.persistence.TemporalType;
 import javax.persistence.TypedQuery;
 
 import it.uniroma3.project.model.Comanda;
-import it.uniroma3.project.model.Utente;
 
 public class ComandaDao extends AbstractDao<Comanda> {
 
