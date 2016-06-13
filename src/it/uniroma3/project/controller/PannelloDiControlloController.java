@@ -13,7 +13,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBs;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import it.uniroma3.project.facade.ComandaFacade;
@@ -23,7 +23,7 @@ import it.uniroma3.project.facade.UtenteFacade;
 
 
 @ManagedBean(name = "pannelloController")
-@SessionScoped
+@RequestScoped
 @EJBs(value = { @EJB(name = "pFacade", beanInterface = PrenotazioneFacade.class),
 		@EJB(name = "cFacade", beanInterface = ComandaFacade.class) ,
 		@EJB(name = "tFacade", beanInterface = TavoloFacade.class), 
