@@ -18,14 +18,14 @@ public class DescrizionePiatto {
 	@Column
 	private String descrizione;
 
+	@Column(nullable = false)
+	private double prezzo;
+
 	@Column
 	private boolean prodottiSurgelati;
 
 	@Column
 	private boolean prodottiAllergizzanti;
-
-	@Column(nullable = false)
-	private double prezzo;
 
 	public DescrizionePiatto() {
 	}

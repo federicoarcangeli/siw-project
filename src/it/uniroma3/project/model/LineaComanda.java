@@ -17,9 +17,6 @@ public class LineaComanda {
 	@Column
 	private int numeroLinea;
 
-	@Column
-	private String nota;
-
 	@Column(nullable = false)
 	private int quantita;
 
@@ -68,14 +65,6 @@ public class LineaComanda {
 		this.quantita--;
 	}
 
-	public String getNota() {
-		return nota;
-	}
-
-	public void setNota(String nota) {
-		this.nota = nota;
-	}
-
 	public int getQuantita() {
 		return quantita;
 	}
@@ -106,7 +95,6 @@ public class LineaComanda {
 		int result = 1;
 		result = prime * result + ((comanda == null) ? 0 : comanda.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nota == null) ? 0 : nota.hashCode());
 		result = prime * result + numeroLinea;
 		result = prime * result + ((piatto == null) ? 0 : piatto.hashCode());
 		result = prime * result + quantita;
@@ -132,11 +120,6 @@ public class LineaComanda {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (nota == null) {
-			if (other.nota != null)
-				return false;
-		} else if (!nota.equals(other.nota))
-			return false;
 		if (numeroLinea != other.numeroLinea)
 			return false;
 		if (piatto == null) {
@@ -148,5 +131,5 @@ public class LineaComanda {
 			return false;
 		return true;
 	}
-
+	
 }

@@ -57,7 +57,7 @@ public class PannelloDiControlloController {
 		Comanda comanda = this.getComandaByRequest();
 		Prenotazione prenotazione = pFacade.findPrenotazioneByTavolo(comanda.getTavolo().getId());
 		if(prenotazione!=null)
-			pFacade.setPrenotazioneCompletata(prenotazione);
+			pFacade.setPrenotazioneError(prenotazione);
 		this.tFacade.setTavoloLibero(comanda.getTavolo());
 		this.cFacade.eliminaComandaByID(comanda.getId());
 		return "home_Administrator?faces-redirect=true";
@@ -97,11 +97,11 @@ public class PannelloDiControlloController {
 		//		calcolo numero tavoli liberi occupati, prenotati e totali
 		this.tavoli = tFacade.findAllTavolo();
 		for(Tavolo t : this.tavoli){
-			if(t.getOccupato()==0)
+			if(t.getStato()==0)
 				this.tavoliLiberi++;
-			if(t.getOccupato()==1)
+			if(t.getStato()==1)
 				this.tavoliPrenotati++;
-			if(t.getOccupato()==2)
+			if(t.getStato()==2)
 				this.tavoliOccupati++;
 		}
 		this.tavoliTotali=this.tavoli.size();

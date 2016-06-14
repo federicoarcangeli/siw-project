@@ -34,9 +34,6 @@ public class Comanda {
 	@Column(nullable = false)
 	private double prezzoTotale;
 
-	@Column
-	private boolean completata;
-
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Utente operatore;
 
@@ -45,6 +42,9 @@ public class Comanda {
 
 	@OneToMany(mappedBy="comanda", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<LineaComanda> lineeComanda;
+	
+	@Column
+	private boolean completata;
 
 
 	public Comanda() {

@@ -21,6 +21,9 @@ public class Prenotazione {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@Column
+	private String nominativo;
+
 	@Column(nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date data;
@@ -32,22 +35,20 @@ public class Prenotazione {
 	@Column(nullable = false)
 	private int numeroOspiti;
 
-	@Column
-	private String nominativo;
-
-	/*
-	 * 0: cliente non arrivato 
-	 * 1: cliente seduto al tavolo 
-	 * 2: cliente ha usufruito della prenotazione
-	 */
-	@Column(nullable = false)
-	private int stato;
-
 	@ManyToOne
 	private Utente utente;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Tavolo tavoloPrenotato;
+
+	/*
+	 * 0: cliente non arrivato 
+	 * 1: cliente seduto al tavolo 
+	 * 2: cliente ha usufruito della prenotazione
+	 * 3: comanda relativa all'ordine eliminata
+	 */
+	@Column(nullable = false)
+	private int stato;
 
 	public Prenotazione() {
 	}

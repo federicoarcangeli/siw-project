@@ -100,12 +100,10 @@
 											<div id="OT_partySize" class="">
 												<div class="form-group">
 													<label for="name">Categoria</label>
-													<h:selectOneMenu
-														value="#{piattoController.nomeCategoria}"
+													<h:selectOneMenu value="#{piattoController.nomeCategoria}"
 														id="categoria">
 
-														<f:selectItems
-															value="#{piattoController.nomiCategorie}" />
+														<f:selectItems value="#{piattoController.nomiCategorie}" />
 
 													</h:selectOneMenu>
 													<h:messages for="categoria" />
@@ -115,7 +113,7 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-md-6 col-sm-6">
+									<div class="col-md-6 col-sm-12">
 										<div class="form-group">
 											<label for="name">Nome</label>
 											<h:inputText value="#{piattoController.nome}"

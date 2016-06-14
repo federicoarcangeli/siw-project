@@ -224,7 +224,7 @@
 						</div>
 						<div class="reservation-footer">
 							<p>
-								Puoi contattarci anche al: <strong>+1 224 6787 004</strong> per
+								Puoi contattarci anche al: <strong>+1 23456789</strong> per
 								effettuare una prenotazione.
 							</p>
 							<span></span>

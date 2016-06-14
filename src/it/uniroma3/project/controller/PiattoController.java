@@ -2,7 +2,6 @@ package it.uniroma3.project.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBs;
@@ -33,7 +32,8 @@ public class PiattoController {
 	private boolean allergeni;
 	private Piatto piatto;
 	private CategoriaPiatto categoria;
-
+	private List<String> nomiCategorie;
+	private String nomeCategoria;
 	private List<CategoriaPiatto> categorie;
 
 	@EJB(name = "cpFacade")
@@ -44,8 +44,8 @@ public class PiattoController {
 
 	@PostConstruct
 	public void init() {
-		this.categorie = this.cpFacade.findAll();
 		this.nomiCategorie = new ArrayList<>();
+		this.categorie = this.cpFacade.findAll();
 		this.categorie = this.cpFacade.findAll();
 		for (CategoriaPiatto c : this.categorie) {
 			this.nomiCategorie.add(c.getNome());
@@ -58,7 +58,7 @@ public class PiattoController {
 		this.categoria = this.cpFacade.findByName(this.nomeCategoria);
 		this.piatto = this.pFacade.create(nome, descrizionePiatto, this.categoria);
 		context.getExternalContext().getRequestMap().put("piattoCorrente",
-				"Il piatto " + this.nome + " è stato inserito");
+				"Il piatto " + this.nome + " è stato inserito correttamente");
 		return "inserimentoPiatti";
 	}
 
@@ -86,10 +86,6 @@ public class PiattoController {
 	public void setNomeCategoria(String nomeCategoria) {
 		this.nomeCategoria = nomeCategoria;
 	}
-
-	private List<String> nomiCategorie;
-
-	private String nomeCategoria;
 
 	public List<CategoriaPiatto> getCategorie() {
 		return this.categorie;

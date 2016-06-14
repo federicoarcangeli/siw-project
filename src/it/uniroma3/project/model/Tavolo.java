@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-@NamedQuery(name = "Tavolo.findAll", query = "select t from Tavolo t order by t.codiceTavolo")
+@NamedQuery(name = "Tavolo.findAll", query = "select t from Tavolo t order by t.id")
 public class Tavolo {
 
 	@Id
@@ -34,7 +34,7 @@ public class Tavolo {
 	 * tavolo occupato = 2; (rosso)
 	 * inizialmente un tavolo è libero;
 	 */
-	private int occupato;
+	private int stato;
 
 	@OneToMany(mappedBy="tavolo",fetch = FetchType.EAGER)
 	private List<Comanda> comande;
@@ -46,14 +46,14 @@ public class Tavolo {
 	public Tavolo(){
 		this.prenotazioni = new ArrayList<>();
 		this.comande = new ArrayList<>();
-		this.occupato = 0;
+		this.stato = 0;
 	}
 
 	public Tavolo(int coperti) {
 		this.prenotazioni = new ArrayList<>();
 		this.comande = new ArrayList<>();
 		this.coperti = coperti;
-		this.occupato = 0;
+		this.stato = 0;
 	}
 
 	public Tavolo(String codiceTavolo,int coperti) {
@@ -61,7 +61,7 @@ public class Tavolo {
 		this.comande = new ArrayList<>();
 		this.codiceTavolo=codiceTavolo;
 		this.coperti = coperti;
-		this.occupato = 0;
+		this.stato = 0;
 	}
 
 	public Long getId() {
@@ -88,12 +88,12 @@ public class Tavolo {
 		this.coperti = coperti;
 	}
 
-	public int getOccupato() {
-		return this.occupato;
+	public int getStato() {
+		return this.stato;
 	}
 
-	public void setOccupato(int occupato) {
-		this.occupato = occupato;
+	public void setStato(int occupato) {
+		this.stato = occupato;
 	}
 
 	public List<Prenotazione> getPrenotazioni() {
@@ -125,7 +125,7 @@ public class Tavolo {
 		result = prime * result + ((codiceTavolo == null) ? 0 : codiceTavolo.hashCode());
 		result = prime * result + coperti;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + occupato;
+		result = prime * result + stato;
 		return result;
 	}
 
@@ -150,7 +150,7 @@ public class Tavolo {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (occupato != other.occupato)
+		if (stato != other.stato)
 			return false;
 		return true;
 	}
