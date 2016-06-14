@@ -7,7 +7,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Inserimento comanda</title>
+<title>Gestione comanda</title>
 <!-- SEO -->
 <meta name="description"
 	content="Tomato is a Responsive HTML5 Template for Restaurants and food related services.">
