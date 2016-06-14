@@ -1,5 +1,6 @@
 package it.uniroma3.project.controller;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -34,6 +35,11 @@ public class TavoloController {
 		this.tavolo = tFacade.create(this.codice,this.coperti);
 		context.getExternalContext().getRequestMap().put("tavoloCorrente", "il tavolo numero " + this.codice + " con " + this.coperti + " coperti è stato inserito correttamente");
 		return "registraTavolo";
+	}
+
+	@PostConstruct
+	public void init(){
+		SessionAndRequestManager.sessionCheckerUtenteOperatori();
 	}
 
 	public String getCodice() {

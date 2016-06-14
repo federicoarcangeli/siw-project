@@ -55,6 +55,8 @@ public class UtenteController implements Serializable {
 	}
 
 	public String createOperatore() {
+		SessionAndRequestManager.sessionCheckerUtenteOperatori();
+
 		FacesContext context = FacesContext.getCurrentInstance();
 		this.utente = new Utente(this.username, this.getPasswordCriptata());
 		// L'admin che ha tentato di creare l'operatore ha inserito una username

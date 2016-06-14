@@ -79,7 +79,8 @@ public class PannelloDiControlloController {
 
 	@PostConstruct
 	public void init(){
-		SessionAndRequestManager.sessionChecker();
+
+		SessionAndRequestManager.sessionCheckerUtenteOperatori();
 
 		//		calcolo numero tavoli liberi occupati, prenotati e totali
 		this.tavoli = tFacade.findAllTavolo();

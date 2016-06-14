@@ -60,7 +60,8 @@ public class SalaController {
 
 	@PostConstruct
 	public void init() {
-		SessionAndRequestManager.sessionChecker();
+		SessionAndRequestManager.sessionCheckerUtenteOperatori();
+		
 		this.tavoliSala = this.gettFacade().findAllTavolo();
 		Ristorante ristorante = new Ristorante();
 		for(Tavolo t : tavoliSala){

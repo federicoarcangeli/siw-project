@@ -42,7 +42,16 @@ public class SessionAndRequestManager {
 		context.getExternalContext().redirect("index_parallax.jsp");
 	}
 
-	public static void sessionChecker() {
+	public static void sessionCheckerUtente() {
+		if(getUtenteCorrente()==null)
+			try {
+				redirectPage("./sessioneScaduta.jsp");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+	}
+	public static void sessionCheckerUtenteOperatori(){
 		if(getUtenteCorrente()==null)
 			try {
 				redirectPage("./sessioneScaduta.jsp");
