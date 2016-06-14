@@ -249,11 +249,8 @@
 						<div class="row">
 							<div class="col-md-4 col-sm-12">
 								<h1>Chi siamo</h1>
-								<p>Duis leo justo, condimentum at purus eu,Aenean sed dolor
-									sem. Etiam massa libero, auctor vitae egestas et, accumsan quis
-									nunc.Duis leo justo, condimentum at purus eu, posuere pretium
-									tellus.</p>
-								<a href="./about.html">Leggi ancora &rarr;</a>
+								<p>Due studenti di Roma Tre</p>
+								<a href="./about.jsp">Leggi ancora &rarr;</a>
 							</div>
 							<div class="col-md-4  col-sm-6"></div>
 

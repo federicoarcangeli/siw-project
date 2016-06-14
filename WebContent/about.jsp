@@ -99,67 +99,6 @@
 					</div>
 				</section>
 
-
-				<!-- About -->
-				<section class="about2">
-					<div class="container">
-						<div class="row wow fadeInUp">
-							<div class="col-md-5">
-								<img src="img/about.png" class="img-responsive" alt="" />
-							</div>
-							<div class="col-md-7 text-left">
-								<h2 class="text-left">Our Story</h2>
-								<p>Lorem Ipsum is simply dummy text of the printing and
-									typesetting industry. Lorem Ipsum has been the industry's
-									standard dummy text ever since the 1500s, when an unknown
-									printer took a galley of type and scrambled it to make a type
-									specimen book. It has survived not only five centuries, but
-									also the leap into electronic typesetting, remaining
-									essentially unchanged. It was popularised in the 1960s with the
-									release of Letraset sheets containing Lorem Ipsum passage</p>
-								<a class="btn btn-default" role="button" href="#menu">See
-									Our Menu</a>
-							</div>
-						</div>
-					</div>
-				</section>
-
-				<!-- Services -->
-				<section class="services">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="page-header wow fadeInDown">
-									<h1 class="white">
-										Servizi Speciali<small>Festegia un evento importante
-											da noi!</small>
-									</h1>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<div class="services-slider wow fadeIn">
-									<div class="service-content text-center">
-										<img src="img/ico1.png" class="center-block" alt="" />
-										<h4 class="text-uppercase">Birthday Party</h4>
-										<p>Lorem Ipsum is simply dummy text of the printing and
-											typesetting industry. Lorem Ipsum has been the industry's
-											standard dummy text ever since the 1500s.</p>
-									</div>
-									<div class="service-content text-center">
-										<img src="img/ico2.png" class="center-block" alt="" />
-										<h4 class="text-uppercase">Wedding Party</h4>
-										<p>Lorem Ipsum is simply dummy text of the printing. Lorem
-											Ipsum has been the industry's standard dummy text ever since
-											the 1500s, when an unknown printer.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
-
 				<!-- Team -->
 				<section class="team">
 					<div class="container">
@@ -216,11 +155,8 @@
 						<div class="row">
 							<div class="col-md-4 col-sm-12">
 								<h1>Chi siamo</h1>
-								<p>Duis leo justo, condimentum at purus eu,Aenean sed dolor
-									sem. Etiam massa libero, auctor vitae egestas et, accumsan quis
-									nunc.Duis leo justo, condimentum at purus eu, posuere pretium
-									tellus.</p>
-								<a href="./about.html">Leggi ancora &rarr;</a>
+								<p>Due studenti di Roma Tre</p>
+								<a href="./about.jsp">Leggi ancora &rarr;</a>
 							</div>
 							<div class="col-md-4  col-sm-6"></div>
 

@@ -214,6 +214,7 @@
 		<script src="js/vendor/velocity.min.js"></script>
 		<script src="js/vendor/velocity.ui.min.js"></script>
 		<script src="js/animation.js"></script>
+		<!-- 		scripts -->
 		<script src="js/scripts/confermaInserimentoTavoli.js"></script>
 	</f:view>
 </body>
