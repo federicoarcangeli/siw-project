@@ -18,7 +18,6 @@ public class Time24HoursValidator {
 	private static final String TIME24HOURS_PATTERN = "([01]?[0-9]|2[0-3]):[0-5][0-9]";
 
 	private static final String ORARIO_CENA_PATTERN = "(19|2[01]):[0-5][0-9]";
-	private static final String ORARIO_PRANZO_PATTERN = "(12|1[34]):[0-5][0-9]";
 
 	public Time24HoursValidator() {
 	}
@@ -83,18 +82,6 @@ public class Time24HoursValidator {
 		if (ora != null) {
 			matcher = pattern.matcher(ora);
 			if (matcher.matches())
-				return true;
-		}
-		return false;
-	}
-
-	public boolean isPranzo(Date time) {
-		String hour = this.ConvertDateToString(time);
-		this.pattern = Pattern.compile(ORARIO_PRANZO_PATTERN);
-		if (hour != null) {
-			matcher = pattern.matcher(hour);
-			System.out.println(matcher.matches());
-			if(matcher.matches())
 				return true;
 		}
 		return false;

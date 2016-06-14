@@ -42,9 +42,7 @@ public class PrenotazioneController {
 	public String createByAdmin() {
 		Time24HoursValidator validatorD = new Time24HoursValidator();
 		FacesContext context = FacesContext.getCurrentInstance();
-		boolean cena = validatorD.isCena(this.timepicker);
-		boolean pranzo = validatorD.isPranzo(this.timepicker);
-		if (pranzo || cena) {
+		if (validatorD.isCena(this.timepicker)) {
 			Tavolo tavolo = this.validateTable();
 			if (tavolo == null)
 				return "prenotazioneAdmin";
@@ -70,11 +68,11 @@ public class PrenotazioneController {
 			Tavolo tavolo = this.validateTable();
 			if (tavolo == null)
 				return "prenotazione";
-			Utente utenteCorrente = (Utente) context.getExternalContext().getSessionMap().get("utenteCorrente");
+			Utente utenteCorrente = SessionAndRequestManager.getUtenteCorrente();
 			this.prenotazione = pFacade.createByUtente(this.getDatepicker(), this.getTimepicker(), this.getCoperti(),
 					utenteCorrente, tavolo);
-			EmailManager.sendMailReservation(this.getUtenteCorrente().getEmail(),
-					this.getUtenteCorrente().getUsername(), validatorD.ConvertDateToString(this.datepicker),
+			EmailManager.sendMailReservation(utenteCorrente.getEmail(),
+					utenteCorrente.getUsername(), validatorD.ConvertDateToString(this.datepicker),
 					validatorD.ConvertTimeToString(this.timepicker), this.coperti);
 			if (validatorD.isToday(this.prenotazione.getData())) {
 				tFacade.setTavoloPrenotato(tavolo);
@@ -110,22 +108,12 @@ public class PrenotazioneController {
 
 	@PostConstruct
 	public void init() {
-		if (this.getUtenteCorrente() == null)
+		if (SessionAndRequestManager.getUtenteCorrente() == null)
 			try {
-				this.redirectPage("./sessioneScaduta.jsp");
+				SessionAndRequestManager.redirectPage("./sessioneScaduta.jsp");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-	}
-
-	private Utente getUtenteCorrente() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		return (Utente) context.getExternalContext().getSessionMap().get("utenteCorrente");
-	}
-
-	private void redirectPage(String page) throws IOException {
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.getExternalContext().redirect(page);
 	}
 
 	public Date getDatepicker() {

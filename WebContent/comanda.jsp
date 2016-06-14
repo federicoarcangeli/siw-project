@@ -107,26 +107,6 @@
 							<h:outputText value="#{comandaCorrente.tavolo.codiceTavolo}" />
 							Comanda:
 							<h:outputText value="#{comandaCorrente.id}" />
-							<h:panelGroup
-								rendered="#{utenteCorrente.username != comandaCorrente.operatore.username}">
-								<small> <i class="fa fa-exclamation-circle"
-									style="color: #F9C56A;" aria-hidden="true"></i> <span>Tavolo
-										preso in carico da<strong> : <h:outputText
-												value="#{comandaCorrente.operatore.username}" />
-									</strong>
-								</span>
-								</small>
-							</h:panelGroup>
-							<h:panelGroup
-								rendered="#{utenteCorrente.username == comandaCorrente.operatore.username}">
-								<small> <i class="fa fa-check-circle"
-									style="color: green;" aria-hidden="true"></i> <span>Tavolo
-										preso in carico da te :<strong> <h:outputText
-												value="#{comandaCorrente.operatore.username}" />
-									</strong>.
-								</span>
-								</small>
-							</h:panelGroup>
 						</h1>
 						<hr>
 					</div>
