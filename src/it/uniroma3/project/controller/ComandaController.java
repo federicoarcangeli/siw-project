@@ -5,11 +5,9 @@ import javax.ejb.EJB;
 import javax.ejb.EJBs;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import it.uniroma3.project.facade.CategoriaPiattoFacade;
 import it.uniroma3.project.facade.ComandaFacade;
@@ -19,7 +17,6 @@ import it.uniroma3.project.model.CategoriaPiatto;
 import it.uniroma3.project.model.Comanda;
 import it.uniroma3.project.model.LineaComanda;
 import it.uniroma3.project.model.Piatto;
-import it.uniroma3.project.model.Utente;
 
 @ManagedBean(name = "comandaController")
 @RequestScoped
@@ -46,33 +43,34 @@ public class ComandaController {
 	@EJB
 	private LineaComandaFacade lFacade;
 
-	public String addLineaComanda() throws IOException{
-		this.piatto = this.pFacade.findById(Long.parseLong(this.getByRequest("piatto")));
-		Comanda comandaInCorso = (Comanda) this.getBySession("comandaCorrente");
+	public String addLineaComanda() throws IOException {
+		this.piatto = this.pFacade.findById(Long.parseLong(SessionAndRequestManager.getByRequest("piatto")));
+		Comanda comandaInCorso = (Comanda) SessionAndRequestManager.getBySession("comandaCorrente");
 		LineaComanda linea = lFacade.findLineaByIdPiattoAndComanda(this.piatto.getId(), comandaInCorso.getId());
 		if (linea != null) {
 			linea.plusQuantity();
-			comandaInCorso.setPrezzoTotale(
-					comandaInCorso.getPrezzoTotale() + this.piatto.getDescrizionePiatto().getPrezzo());
+			comandaInCorso
+					.setPrezzoTotale(comandaInCorso.getPrezzoTotale() + this.piatto.getDescrizionePiatto().getPrezzo());
 			lFacade.updateLinea(linea);
-		} else if(linea==null){
+		} else if (linea == null) {
 
 			linea = new LineaComanda();
 			linea.setComanda(comandaInCorso);
 			linea.setPiatto(this.piatto);
 			linea.setQuantita(1);
 			System.out.println(lFacade.findNumeroLineaMassimo(comandaInCorso.getId()));
-			linea.setNumeroLinea(lFacade.findNumeroLineaMassimo(comandaInCorso.getId())+1);
-			comandaInCorso.setPrezzoTotale(comandaInCorso.getPrezzoTotale() + this.piatto.getDescrizionePiatto().getPrezzo());
+			linea.setNumeroLinea(lFacade.findNumeroLineaMassimo(comandaInCorso.getId()) + 1);
+			comandaInCorso
+					.setPrezzoTotale(comandaInCorso.getPrezzoTotale() + this.piatto.getDescrizionePiatto().getPrezzo());
 			lFacade.inserisciLinea(linea);
 		}
 		cFacade.updateComanda(comandaInCorso);
 		return "comanda?faces-redirect=true";
 	}
 
-	public String aggiungiQuantita() throws IOException{
-		Comanda comandaInCorso = (Comanda) this.getBySession("comandaCorrente");
-		LineaComanda linea = lFacade.findLineaComanda(Long.parseLong(this.getByRequest("idLineaComanda")));
+	public String aggiungiQuantita() throws IOException {
+		Comanda comandaInCorso = (Comanda) SessionAndRequestManager.getBySession("comandaCorrente");
+		LineaComanda linea = lFacade.findLineaComanda(Long.parseLong(SessionAndRequestManager.getByRequest("idLineaComanda")));
 		linea.plusQuantity();
 		comandaInCorso.setPrezzoTotale(
 				comandaInCorso.getPrezzoTotale() + linea.getPiatto().getDescrizionePiatto().getPrezzo());
@@ -81,10 +79,10 @@ public class ComandaController {
 		return "comanda?faces-redirect=true";
 	}
 
-	public String sottraiQuantita() throws IOException{
-		Comanda comandaInCorso = (Comanda) this.getBySession("comandaCorrente");
-		LineaComanda linea = lFacade.findLineaComanda(Long.parseLong(this.getByRequest("idLineaComanda")));
-		if(linea.getQuantita()>=2){
+	public String sottraiQuantita() throws IOException {
+		Comanda comandaInCorso = (Comanda) SessionAndRequestManager.getBySession("comandaCorrente");
+		LineaComanda linea = lFacade.findLineaComanda(Long.parseLong(SessionAndRequestManager.getByRequest("idLineaComanda")));
+		if (linea.getQuantita() >= 2) {
 			linea.minusQuantity();
 			comandaInCorso.setPrezzoTotale(
 					comandaInCorso.getPrezzoTotale() - linea.getPiatto().getDescrizionePiatto().getPrezzo());
@@ -94,11 +92,11 @@ public class ComandaController {
 		return "comanda?faces-redirect=true";
 	}
 
-	public String eliminaLineaComanda() throws IOException{
-		Comanda comandaInCorso = (Comanda) this.getBySession("comandaCorrente");
-		LineaComanda linea = lFacade.findLineaComanda(Long.parseLong(this.getByRequest("idLineaComanda")));
-		comandaInCorso.setPrezzoTotale(
-				comandaInCorso.getPrezzoTotale() - (linea.getPiatto().getDescrizionePiatto().getPrezzo())*linea.getQuantita());
+	public String eliminaLineaComanda() throws IOException {
+		Comanda comandaInCorso = (Comanda) SessionAndRequestManager.getBySession("comandaCorrente");
+		LineaComanda linea = lFacade.findLineaComanda(Long.parseLong(SessionAndRequestManager.getByRequest("idLineaComanda")));
+		comandaInCorso.setPrezzoTotale(comandaInCorso.getPrezzoTotale()
+				- (linea.getPiatto().getDescrizionePiatto().getPrezzo()) * linea.getQuantita());
 		lFacade.eliminaRigaComanda(linea.getId());
 		cFacade.updateComanda(comandaInCorso);
 		return "comanda?faces-redirect=true";
@@ -106,47 +104,26 @@ public class ComandaController {
 
 	@PostConstruct
 	public void init() {
-		if(this.getUtenteCorrente()==null)
+		if (SessionAndRequestManager.getUtenteCorrente() == null)
 			try {
-				this.redirectPage("./sessioneScaduta.jsp");
+				SessionAndRequestManager.redirectPage("./sessioneScaduta.jsp");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		else
-			if(!(this.getUtenteCorrente().getRole().equals("admin") || this.getUtenteCorrente().getRole().equals("operatore"))){
-				try {
-					this.redirectPage("./404.jsp");
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+		else if (!(SessionAndRequestManager.getUtenteCorrente().getRole().equals("admin")
+				|| SessionAndRequestManager.getUtenteCorrente().getRole().equals("operatore"))) {
+			try {
+				SessionAndRequestManager.redirectPage("./404.jsp");
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
-			else{
-				Comanda comandaInCorso = (Comanda) this.getBySession("comandaCorrente");
-				this.categorie = cpFacade.findAll();
-				this.piatti = pFacade.findAll();
-				this.linee = lFacade.findallLineeComanda(comandaInCorso.getId());
-			}
+		} else {
+			Comanda comandaInCorso = (Comanda) SessionAndRequestManager.getBySession("comandaCorrente");
+			this.categorie = cpFacade.findAll();
+			this.piatti = pFacade.findAll();
+			this.linee = lFacade.findallLineeComanda(comandaInCorso.getId());
+		}
 
-	}
-
-	public Utente getUtenteCorrente(){
-		FacesContext context = FacesContext.getCurrentInstance();
-		return (Utente) context.getExternalContext().getSessionMap().get("utenteCorrente");
-	}
-
-	public void redirectPage(String page) throws IOException{
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.getExternalContext().redirect(page);
-	}
-
-	public String getByRequest(String name){
-		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		return params.get(name);
-	}
-
-	public Object getBySession(String name){
-		FacesContext context = FacesContext.getCurrentInstance();
-		return context.getExternalContext().getSessionMap().get(name);
 	}
 
 	public List<CategoriaPiatto> getCategorie() {

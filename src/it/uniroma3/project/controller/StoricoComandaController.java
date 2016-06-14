@@ -33,31 +33,22 @@ public class StoricoComandaController {
 
 	@PostConstruct
 	public void init() {
-		if(this.getUtenteCorrente()==null)
+		if(SessionAndRequestManager.getUtenteCorrente()==null)
 			try {
-				this.redirectPage("./sessioneScaduta.jsp");
+				SessionAndRequestManager.redirectPage("./sessioneScaduta.jsp");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		else
-			if(!this.getUtenteCorrente().getRole().equals("admin"))
+			if(!SessionAndRequestManager.getUtenteCorrente().getRole().equals("admin"))
 				try {
-					this.redirectPage("./404.jsp");
+					SessionAndRequestManager.redirectPage("./404.jsp");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 		this.comande = cFacade.findallComandaCompletate();
 	}
 
-	private Utente getUtenteCorrente(){
-		FacesContext context = FacesContext.getCurrentInstance();
-		return (Utente) context.getExternalContext().getSessionMap().get("utenteCorrente");
-	}
-
-	private void redirectPage(String page) throws IOException{
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.getExternalContext().redirect(page);
-	}
 
 	public List<Comanda> getComande() {
 		return comande;

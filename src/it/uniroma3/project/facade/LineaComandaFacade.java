@@ -11,6 +11,7 @@ import it.uniroma3.project.model.LineaComanda;
 
 @Stateless
 public class LineaComandaFacade {
+	
 	@PersistenceContext(unitName = "restaurant")
 	private EntityManager em;
 

@@ -1,25 +1,22 @@
 package it.uniroma3.project.controller;
 
-import it.uniroma3.project.model.Comanda;
-import it.uniroma3.project.model.Prenotazione;
-import it.uniroma3.project.model.Tavolo;
-import it.uniroma3.project.model.Utente;
-
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBs;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;
 
 import it.uniroma3.project.facade.ComandaFacade;
 import it.uniroma3.project.facade.PrenotazioneFacade;
 import it.uniroma3.project.facade.TavoloFacade;
 import it.uniroma3.project.facade.UtenteFacade;
+import it.uniroma3.project.model.Comanda;
+import it.uniroma3.project.model.Prenotazione;
+import it.uniroma3.project.model.Tavolo;
+import it.uniroma3.project.model.Utente;
 
 
 @ManagedBean(name = "pannelloController")
@@ -67,7 +64,7 @@ public class PannelloDiControlloController {
 	}
 
 	public String eliminaPrenotazione (){
-		this.pFacade.eliminaPrenotazioneByID(Long.parseLong(this.getByRequest("idPrenotazione")));
+		this.pFacade.eliminaPrenotazioneByID(Long.parseLong(SessionAndRequestManager.getByRequest("idPrenotazione")));
 		return "home_Administrator?faces-redirect=true";
 	}
 
@@ -83,16 +80,16 @@ public class PannelloDiControlloController {
 
 	@PostConstruct
 	public void init(){
-		if(this.getUtenteCorrente()==null)
+		if(SessionAndRequestManager.getUtenteCorrente()==null)
 			try {
-				this.redirectPage("./sessioneScaduta.jsp");
+				SessionAndRequestManager.redirectPage("./sessioneScaduta.jsp");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		else
-			if(!this.getUtenteCorrente().getRole().equals("admin"))
+			if(!SessionAndRequestManager.getUtenteCorrente().getRole().equals("admin"))
 				try {
-					this.redirectPage("./404.jsp");
+					SessionAndRequestManager.redirectPage("./404.jsp");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -122,28 +119,12 @@ public class PannelloDiControlloController {
 		this.prenotazioni = pFacade.findAllPrenotazioniToday();
 	}
 
-	private Utente getUtenteCorrente(){
-		FacesContext context = FacesContext.getCurrentInstance();
-		return (Utente) context.getExternalContext().getSessionMap().get("utenteCorrente");
-	}
-
-	private void redirectPage(String page) throws IOException{
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.getExternalContext().redirect(page);
-	}
-
 	private Comanda getComandaByRequest(){
 		return cFacade.findComandaById(this.getIDComandaByRequest());
 	}
 
 	private Long getIDComandaByRequest(){
-		return Long.parseLong(this.getByRequest("idComanda"));
-	}
-
-
-	private String getByRequest(String name){
-		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		return params.get(name);
+		return Long.parseLong(SessionAndRequestManager.getByRequest("idComanda"));
 	}
 
 	public int getTavoliLiberi() {

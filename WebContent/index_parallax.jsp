@@ -7,7 +7,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Ristorante tomato</title>
+<title>Ristorante Da Peppe</title>
 <meta name="author" content="Alessandro e Federico">
 
 <!-- Favicons -->
