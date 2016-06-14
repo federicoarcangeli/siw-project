@@ -58,7 +58,6 @@ public class ComandaController {
 			linea.setComanda(comandaInCorso);
 			linea.setPiatto(this.piatto);
 			linea.setQuantita(1);
-			System.out.println(lFacade.findNumeroLineaMassimo(comandaInCorso.getId()));
 			linea.setNumeroLinea(lFacade.findNumeroLineaMassimo(comandaInCorso.getId()) + 1);
 			comandaInCorso
 					.setPrezzoTotale(comandaInCorso.getPrezzoTotale() + this.piatto.getDescrizionePiatto().getPrezzo());

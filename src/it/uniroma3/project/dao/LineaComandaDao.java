@@ -35,7 +35,6 @@ public class LineaComandaDao extends AbstractDao<LineaComanda> {
 			query.setParameter("idComanda",idComanda);
 			return query.getResultList();
 		} catch (Exception e) {
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -46,7 +45,6 @@ public class LineaComandaDao extends AbstractDao<LineaComanda> {
 			query.setParameter("comandaId",idComanda);
 			return (int) query.getSingleResult();
 		} catch (Exception e) {
-			e.printStackTrace();
 			return 0;
 		}
 	}
