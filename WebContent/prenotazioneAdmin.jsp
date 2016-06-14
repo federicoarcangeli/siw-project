@@ -8,8 +8,7 @@
 <head>
 <meta charset="utf-8">
 <title>Prenotazioni</title>
-<meta name="author" content="Alessandro e Federico">, html5, restaurant, template, food, reservation">
-
+<meta name="author" content="Alessandro e Federico">
 <!-- Favicons -->
 <link rel="shortcut icon" href="img/favicon.ico">
 

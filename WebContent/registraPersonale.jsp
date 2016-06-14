@@ -7,7 +7,7 @@
 <head>
 <meta charset="utf-8">
 <title>Registrazione nuovo personale</title>
-<meta name="author" content="Alessandro e Federico">, restaurant, template, food, reservation">
+<meta name="author" content="Alessandro e Federico">
 
 <!-- Favicons -->
 <link rel="shortcut icon" href="img/favicon.ico">
