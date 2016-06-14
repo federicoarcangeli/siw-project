@@ -40,7 +40,6 @@ public class Tavolo {
 	private List<Comanda> comande;
 
 	@OneToMany(mappedBy="tavoloPrenotato", fetch=FetchType.EAGER)
-	//	@Fetch(value=FetchMode.SELECT)
 	private List<Prenotazione> prenotazioni;
 
 	public Tavolo(){

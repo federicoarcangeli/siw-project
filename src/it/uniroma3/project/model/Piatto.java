@@ -25,13 +25,13 @@ public class Piatto {
 	@Column(nullable = false)
 	private String nome;
 
-	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, fetch = FetchType.EAGER)
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
 	private DescrizionePiatto descrizionePiatto;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	private CategoriaPiatto categoriaPiatto;
 
-	@OneToMany(mappedBy="piatto",cascade = {CascadeType.REMOVE},fetch = FetchType.EAGER ,orphanRemoval = true)
+	@OneToMany(mappedBy="piatto",cascade = {CascadeType.REMOVE} ,orphanRemoval = true)
 	private List<LineaComanda> orderLines;
 
 	public Piatto(){
