@@ -100,11 +100,11 @@ public class PannelloDiControlloController {
 		//		calcolo numero tavoli liberi occupati, prenotati e totali
 		this.tavoli = tFacade.findAllTavolo();
 		for(Tavolo t : this.tavoli){
-			if(t.getOccupato()==0)
+			if(t.getStato()==0)
 				this.tavoliLiberi++;
-			if(t.getOccupato()==1)
+			if(t.getStato()==1)
 				this.tavoliPrenotati++;
-			if(t.getOccupato()==2)
+			if(t.getStato()==2)
 				this.tavoliOccupati++;
 		}
 		this.tavoliTotali=this.tavoli.size();

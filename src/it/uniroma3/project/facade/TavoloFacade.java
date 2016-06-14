@@ -41,13 +41,13 @@ public class TavoloFacade {
 	}
 
 	public void setTavoloPrenotato(Tavolo tavolo) {
-		tavolo.setOccupato(1);
+		tavolo.setStato(1);
 		TavoloDao dao = new TavoloDao(this.em);
 		dao.update(tavolo);
 	}
 
 	public void setTavoloOccupato(Tavolo tavolo) {
-		tavolo.setOccupato(2);
+		tavolo.setStato(2);
 		TavoloDao dao = new TavoloDao(this.em);
 		dao.update(tavolo);
 	}
@@ -55,7 +55,7 @@ public class TavoloFacade {
 
 	public void setTavoloLibero(Tavolo tavolo) {
 		TavoloDao dao = new TavoloDao(this.em);
-		tavolo.setOccupato(0);
+		tavolo.setStato(0);
 		dao.update(tavolo);
 	}
 

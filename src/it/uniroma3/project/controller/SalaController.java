@@ -45,8 +45,8 @@ public class SalaController {
 
 	public String openComanda(){
 		this.tavolo = this.tFacade.findTavoloByNumero(this.getByRequest("codiceTavolo"));
-		if(this.tavolo.getOccupato()==0 || this.tavolo.getOccupato()==1){
-			if(this.tavolo.getOccupato()==1)
+		if(this.tavolo.getStato()==0 || this.tavolo.getStato()==1){
+			if(this.tavolo.getStato()==1)
 				pFacade.setPrenotazioneUtenteAlTavolo(this.tavolo.getId());
 			this.comanda = new Comanda();
 			tFacade.setTavoloOccupato(tavolo);
@@ -56,7 +56,7 @@ public class SalaController {
 			cFacade.inserisciComanda(comanda);
 		}
 		else
-			if(this.tavolo.getOccupato()==2){
+			if(this.tavolo.getStato()==2){
 				this.comanda = cFacade.findComandaByTavolo(this.tavolo.getId());
 			}
 		this.setComandaInSession("comandaCorrente");

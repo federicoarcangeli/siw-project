@@ -22,19 +22,7 @@ public class Utente {
 	private Long id;
 
 	@Column
-	private String email;
-
-	@Column
-	private String nome;
-
-	@Column
-	private String cognome;
-
-	@Column(nullable = false)
-	private String password;
-
-	@Column
-	private String telefono;
+	private String username;
 
 	/*ruoli possibili:
 	 * utente
@@ -44,7 +32,19 @@ public class Utente {
 	private String role;
 
 	@Column
-	private String username;
+	private String nome;
+
+	@Column
+	private String cognome;
+
+	@Column
+	private String email;
+
+	@Column
+	private String telefono;
+
+	@Column(nullable = false)
+	private String password;
 
 	@OneToMany(mappedBy="operatore",cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch =FetchType.EAGER)
 	private List<Comanda> comanda;

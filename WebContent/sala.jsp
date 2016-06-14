@@ -96,7 +96,7 @@
 								<c:forEach var="tavolo" items="#{salaController.tavoliSala}">
 									<div class="col-xs-6 col-sm-2">
 
-										<h:panelGroup rendered="#{tavolo.occupato eq '0'}">
+										<h:panelGroup rendered="#{tavolo.stato eq '0'}">
 											<span class="label label-success">COPERTI : <h:outputText
 													value="#{tavolo.coperti}" />
 											</span>
@@ -108,7 +108,7 @@
 											</h:commandButton>
 											<div class="col-md-12" style="height: 25px;"></div>
 										</h:panelGroup>
-										<h:panelGroup rendered="#{tavolo.occupato eq '1'}">
+										<h:panelGroup rendered="#{tavolo.stato eq '1'}">
 											<span class="label label-warning">COPERTI : <h:outputText
 													value="#{tavolo.coperti}" />
 											</span>
@@ -120,7 +120,7 @@
 											</h:commandButton>
 											<div class="col-md-12" style="height: 25px;"></div>
 										</h:panelGroup>
-										<h:panelGroup rendered="#{tavolo.occupato eq '2'}">
+										<h:panelGroup rendered="#{tavolo.stato eq '2'}">
 											<span class="label label-danger">COPERTI : <h:outputText
 													value="#{tavolo.coperti}" />
 											</span>
