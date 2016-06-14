@@ -139,40 +139,57 @@
 									</div>
 								</div>
 								<div class="col-md-6">
-									<form class="contact-form" id="contactForm"
-										action="php/contact.php" method="post">
+									<h:form>
 										<div class="form-group">
-											<input class="form-control" name="name" id="name"
-												placeholder="Full Name" type="text" required="required" />
+											<label>Nome</label>
+											<h:inputText value="#{contactController.nome}"
+												styleClass="form-control" id="name" required="true"
+												requiredMessage="Inserisci il tuo nome" />
+											<div class="animated fadeInDown">
+												<span class="label label-danger"><h:message
+														for="name" /></span>
+											</div>
 										</div>
 										<div class="form-group">
-											<input class="form-control" type="email" name="email"
-												id="email" placeholder="Email Address" required="required" />
+											<label>Indirizzo email</label>
+											<h:inputText value="#{contactController.email}"
+												styleClass="form-control" id="email" required="true"
+												requiredMessage="Email necessaria" />
+											<div class="animated fadeInDown">
+												<span class="label label-danger"><h:message
+														for="email" /></span>
+											</div>
 										</div>
 										<div class="form-group">
-											<input class="form-control" placeholder="Subject" type="text"
-												id="subject" name="subject">
+											<label>Oggetto</label>
+											<h:inputText value="#{contactController.subject}"
+												styleClass="form-control" id="subject" required="true"
+												requiredMessage="Oggetto del messaggio obbligatorio" />
+											<div class="animated fadeInDown">
+												<span class="label label-danger"><h:message
+														for="subject" /></span>
+											</div>
 										</div>
 										<div class="form-group">
-											<textarea class="form-control" name="message" id="message"
-												placeholder="Message" rows="5"></textarea>
+											<label>Messaggio</label>
+											<h:inputTextarea value="#{contactController.body}"
+												styleClass="form-control" id="body" required="true"
+												requiredMessage="Scrivi qualcosa nel corpo del messaggio" />
+											<div class="animated fadeInDown">
+												<span class="label label-danger"><h:message
+														for="body" /></span>
+											</div>
 										</div>
-										<button class="btn btn-default btn-lg btn-block"
-											id="js-contact-btn">Contattaci</button>
-									</form>
-									<div id="js-contact-result"
-										data-success-msg="Form submitted successfully."
-										data-error-msg="Oops. Something went wrong."></div>
+										<h:commandLink styleClass="btn btn-default btn-block"
+											value="Contattaci" action="#{contactController.sendMessage}">
+										</h:commandLink>
+									</h:form>
 
 								</div>
 							</div>
 						</div>
 					</div>
 				</section>
-
-				<!-- Google Map -->
-				<!-- Set latitude and Longitude (Get it from http://google.com/maps) -->
-				<div id="map" data-latitude="41.889545" data-longitude="12.542194"></div>
 
 				<!-- Footer-->
 				<section class="footer fixed-bg" data-stellar-background-ratio="0.2">

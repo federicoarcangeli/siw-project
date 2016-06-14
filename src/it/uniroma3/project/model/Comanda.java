@@ -37,7 +37,7 @@ public class Comanda {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Utente operatore;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	private Tavolo tavolo;
 
 	@OneToMany(mappedBy="comanda", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
