@@ -21,7 +21,7 @@
     - Attore primario: utente registrato
     - Scenario principale di successo:
         + l'utente riserva un tavolo presso il ristorante, inserendo la data, l'ora ed il numero di coperti. Se esiste un tavolo libero che soddisfa le condizioni, il tavolo viene riservato all'utente.
-    - Estensioni:
+    - Estensioni dello scenario princiaple:
         + Il sistema mostra un messaggio di errore se l'utente intende prenotare in un orario in cui non è possibile riservare tavoli, oppure se effettivamente non ci sono posti disponibili
         + 
 
