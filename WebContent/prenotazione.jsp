@@ -231,38 +231,23 @@
 						</div>
 					</div>
 				</section>
+
 				<!-- Footer-->
-				<section class="footer">
+				<section class="footer fixed-bg" data-stellar-background-ratio="0.2">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-4 col-sm-12">
-								<h1>Dicono di noi</h1>
-								<p></p>
-								<a href="./about.html">Read more &rarr;</a>
+								<h1>Chi siamo</h1>
+								<p>Duis leo justo, condimentum at purus eu,Aenean sed dolor
+									sem. Etiam massa libero, auctor vitae egestas et, accumsan quis
+									nunc.Duis leo justo, condimentum at purus eu, posuere pretium
+									tellus.</p>
+								<a href="./about.html">Leggi ancora &rarr;</a>
 							</div>
+							<div class="col-md-4  col-sm-6"></div>
+
 							<div class="col-md-4  col-sm-6">
-								<h1>Recent post</h1>
-								<div class="footer-blog clearfix">
-									<a href="./blog_right_sidebar.html"> <img
-										src="img/thumb8.png" class="img-responsive footer-photo"
-										alt="blog photos">
-										<p class="footer-blog-text">Hand picked ingredients for
-											our best customers</p>
-										<p class="footer-blog-date">29 may 2015</p>
-									</a>
-								</div>
-								<div class="footer-blog clearfix last">
-									<a href="./blog_right_sidebar.html"> <img
-										src="img/thumb9.png" class="img-responsive footer-photo"
-										alt="blog photos">
-										<p class="footer-blog-text">Daily special foods that you
-											will going to love</p>
-										<p class="footer-blog-date">29 may 2015</p>
-									</a>
-								</div>
-							</div>
-							<div class="col-md-4  col-sm-6">
-								<h1>Reach us</h1>
+								<h1>Contattaci</h1>
 								<div class="footer-social-icons">
 									<a href="http://www.facebook.com"> <i
 										class="fa fa-facebook-square"></i>
@@ -279,14 +264,14 @@
 								</div>
 								<div class="footer-address">
 									<p>
-										<i class="fa fa-map-marker"></i>28 Seventh Avenue, Neew York,
-										10014
+										<i class="fa fa-map-marker"></i>Via della vasca navale 70,
+										00146
 									</p>
 									<p>
-										<i class="fa fa-phone"></i>Phone: (415) 124-5678
+										<i class="fa fa-phone"></i>Telefono: +39 123456789
 									</p>
 									<p>
-										<i class="fa fa-envelope-o"></i>support@restaurant.com
+										<i class="fa fa-envelope-o"></i>dapepperestaurant@gmail.com
 									</p>
 								</div>
 							</div>
@@ -299,25 +284,21 @@
 							<div class="row">
 								<div class="col-md-12">
 									<p>
-										<i class="fa fa-copyright"></i> 2016. Copyright. Designed with
-										<i class="fa fa-heart primary-color"></i> by Federico &amp;
-										Alessandro
+										<i class="fa fa-copyright"></i> 2016.Da Peppe. All rights
+										reserved. Designed with <i class="fa fa-heart primary-color"></i>
+										by Federico &amp; Alessandro
 									</p>
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</section>
 			</div>
-
 		</div>
 
 		<!-- Javascript -->
 		<script src="js/vendor/jquery-1.11.2.min.js"></script>
 		<script src="js/vendor/bootstrap.min.js"></script>
-		<script src="js/vendor/jquery.flexslider-min.js"></script>
-		<script src="js/vendor/spectragram.js"></script>
 		<script src="js/vendor/owl.carousel.min.js"></script>
 		<script src="js/vendor/velocity.min.js"></script>
 		<script src="js/vendor/velocity.ui.min.js"></script>
@@ -328,14 +309,10 @@
 		<script src="js/vendor/slick.min.js"></script>
 		<script src="js/vendor/wow.min.js"></script>
 		<script src="js/animation.js"></script>
-		<script src="js/vendor/vegas/vegas.min.js"></script>
-		<script src="js/vendor/jquery.mb.YTPlayer.js"></script>
-		<script src="js/vendor/jquery.stellar.js"></script>
 		<script src="js/main.js"></script>
-		<script src="js/vendor/mc/jquery.ketchup.all.min.js"></script>
-		<script src="js/vendor/validate.js"></script>
 		<script src="js/reservation.js"></script>
 		<script src="js/vendor/mc/main.js"></script>
+		<!-- script -->
 		<script src="js/scripts/confermaInserimentoPrenotazione.js"></script>
 	</f:view>
 </body>

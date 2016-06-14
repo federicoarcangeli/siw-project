@@ -66,7 +66,7 @@ public class PrenotazioneFacade {
 
 	}
 
-	public void setPrenotazioneUtenteAlTavolo(Long idTavolo) {
+	public void setPrenotazioneInCorso(Long idTavolo) {
 		PrenotazioneDao dao = new PrenotazioneDao(this.em);
 		Prenotazione prenotazione = dao.findPrenotazioneByTavolo(idTavolo);
 		prenotazione.setStato(1);

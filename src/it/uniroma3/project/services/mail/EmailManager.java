@@ -1,6 +1,5 @@
 package it.uniroma3.project.services.mail;
 
-import java.io.InputStream;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -11,10 +10,6 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 public class EmailManager {
 	private static Properties mailServerProperties;
@@ -55,8 +50,8 @@ public class EmailManager {
 			Transport transport;
 			transport = getMailSession.getTransport("smtp");
 
-//			InputStream input = new FileInputStream("/resources/accountProperties.prop");
-//			senderAccountProp.load(input);
+			//			InputStream input = new FileInputStream("/resources/accountProperties.prop");
+			//			senderAccountProp.load(input);
 
 			transport.connect("smtp.gmail.com", "dapepperestaurant@gmail.com",
 					"DaPeppeRestaurant123");
@@ -67,15 +62,15 @@ public class EmailManager {
 			e.printStackTrace();
 		} catch (MessagingException e) {
 			e.printStackTrace();
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//			System.exit(1);
-//		} catch (IOException e) {
+			//		} catch (FileNotFoundException e) {
+			//			e.printStackTrace();
+			//			System.exit(1);
+			//		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 	}
-	
+
 	public static void sendMailReservation(String receiver, String username, String data, String ora, int coperti) {
 		mailServerProperties = System.getProperties();
 		mailServerProperties.put("mail.smtp.port", 587);
@@ -98,8 +93,8 @@ public class EmailManager {
 			Transport transport;
 			transport = getMailSession.getTransport("smtp");
 
-//			InputStream input = new FileInputStream("/resources/accountProperties.prop");
-//			senderAccountProp.load(input);
+			//			InputStream input = new FileInputStream("/resources/accountProperties.prop");
+			//			senderAccountProp.load(input);
 
 			transport.connect("smtp.gmail.com", "dapepperestaurant@gmail.com",
 					"DaPeppeRestaurant123");
@@ -110,10 +105,10 @@ public class EmailManager {
 			e.printStackTrace();
 		} catch (MessagingException e) {
 			e.printStackTrace();
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//			System.exit(1);
-//		} catch (IOException e) {
+			//		} catch (FileNotFoundException e) {
+			//			e.printStackTrace();
+			//			System.exit(1);
+			//		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

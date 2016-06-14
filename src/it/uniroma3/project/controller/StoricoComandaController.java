@@ -10,11 +10,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
-
 import it.uniroma3.project.facade.ComandaFacade;
 import it.uniroma3.project.model.Comanda;
-import it.uniroma3.project.model.Utente;
 
 @ManagedBean(name = "storicoController")
 @RequestScoped
@@ -49,7 +46,6 @@ public class StoricoComandaController {
 		this.comande = cFacade.findallComandaCompletate();
 	}
 
-
 	public List<Comanda> getComande() {
 		return comande;
 	}
@@ -73,6 +69,5 @@ public class StoricoComandaController {
 	public void setDatepicker(Date datepicker) {
 		this.datepicker = datepicker;
 	}
-
 
 }

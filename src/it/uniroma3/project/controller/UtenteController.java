@@ -3,17 +3,10 @@ package it.uniroma3.project.controller;
 import java.io.IOException;
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-
 import it.uniroma3.project.facade.UtenteFacade;
 import it.uniroma3.project.model.Utente;
 import it.uniroma3.project.services.mail.EmailManager;
@@ -38,27 +31,27 @@ public class UtenteController implements Serializable {
 	@EJB(name = "uFacade")
 	private UtenteFacade uFacade;
 
+	// creazione utente
 	public String create() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		this.utente = new Utente(this.nome, this.cognome, this.username, this.telefono, this.email,
 				this.getPasswordCriptata());
 		EmailManager.sendMail(this.email, username);
-		// L'utente che sta tentando di creare un account ha inserito una
-		// username già utilizzata
+		// L'utente che sta tentando di creare un account ha inserito una username già utilizzata
 		if (this.isAlreadyRegistered(this.utente)) {
 			context.getExternalContext().getRequestMap().put("utenteError",
 					"Utente con username " + this.username + " già esistente");
 			return "loginSignup";
 		} else
-		// le passdword inserite non corrispondo
-		if (this.equalsPassword()) {
-			context.getExternalContext().getRequestMap().put("utenteError", "Le password non corrispondo");
-			return "loginSignup";
-		} else {
-			this.utente = uFacade.signUp(this.utente);
-			this.setUtenteCorrenteInSession("utenteCorrente");
-			return "index_parallax";
-		}
+			// le passdword inserite non corrispondo
+			if (this.equalsPassword()) {
+				context.getExternalContext().getRequestMap().put("utenteError", "Le password non corrispondo");
+				return "loginSignup";
+			} else {
+				this.utente = uFacade.signUp(this.utente);
+				SessionAndRequestManager.setInSession("utenteCorrente", this.utente);
+				return "index_parallax";
+			}
 	}
 
 	public String createOperatore() {
@@ -81,21 +74,20 @@ public class UtenteController implements Serializable {
 	public String loginUtente() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		this.utente = this.uFacade.findByUsername(this.getUsername());
-		// L'utente che sta tentando di autenticarsi non è registrato nel
-		// sistema
+		// L'utente che sta tentando di autenticarsi non è registrato nel sistema
 		if (this.isNotAlreadyRegistered(this.utente)) {
 			context.getExternalContext().getRequestMap().put("utenteError", "Utente non esistente");
 			return "loginSignup";
 		} else
-		// la password inserita non è corretta per l'account con tale username
-		if (this.wrongPassword()) {
-			context.getExternalContext().getRequestMap().put("utenteError", "Username e/o password errata");
-			return "loginSignup";
-		} else {
-			this.utente = this.uFacade.findByUsername(utente.getUsername());
-			this.setUtenteCorrenteInSession("utenteCorrente");
-			return "index_parallax";
-		}
+			// la password inserita non è corretta per l'account con tale username
+			if (this.wrongPassword()) {
+				context.getExternalContext().getRequestMap().put("utenteError", "Username e/o password errata");
+				return "loginSignup";
+			} else {
+				this.utente = this.uFacade.findByUsername(utente.getUsername());
+				SessionAndRequestManager.setInSession("utenteCorrente", this.utente);
+				return "index_parallax";
+			}
 	}
 
 	public String loginAdmin() {
@@ -107,25 +99,25 @@ public class UtenteController implements Serializable {
 			context.getExternalContext().getRequestMap().put("utenteError", "Utente non esistente");
 			return "administrator";
 		} else
-		// la password inserita non è corretta per l'account con tale username
-		if (this.wrongPassword()) {
-			context.getExternalContext().getRequestMap().put("utenteError", "Username e/o password errata");
-			return "administrator";
-		} else {
-			// L'utente è registrato con ruolo admin o operatore
-			if (this.utente.getRole().equals("admin")) {
-				this.setUtenteCorrenteInSession("utenteCorrente");
-				return "home_Administrator?faces-redirect=true";
-			} else if (this.utente.getRole().equals("operatore")) {
-				this.setUtenteCorrenteInSession("utenteCorrente");
-				return "home_Operatore?faces-redirect=true";
-				// il ruolo è utente
-			} else {
-				context.getExternalContext().getRequestMap().put("utenteError",
-						this.username + " Cosa ci fai qui? non è un posto per utenti");
+			// la password inserita non è corretta per l'account con tale username
+			if (this.wrongPassword()) {
+				context.getExternalContext().getRequestMap().put("utenteError", "Username e/o password errata");
 				return "administrator";
+			} else {
+				// L'utente è registrato con ruolo admin o operatore
+				if (this.utente.getRole().equals("admin")) {
+					SessionAndRequestManager.setInSession("utenteCorrente", this.utente);
+					return "home_Administrator?faces-redirect=true";
+				} else if (this.utente.getRole().equals("operatore")) {
+					SessionAndRequestManager.setInSession("utenteCorrente", this.utente);
+					return "home_Operatore?faces-redirect=true";
+					// il ruolo è utente
+				} else {
+					context.getExternalContext().getRequestMap().put("utenteError",
+							this.username + " Cosa ci fai qui? non è un posto per utenti");
+					return "administrator";
+				}
 			}
-		}
 	}
 
 	public boolean isAlreadyRegistered(Utente utente) {
@@ -156,27 +148,14 @@ public class UtenteController implements Serializable {
 			return false;
 	}
 
+	public void logout() throws IOException {
+		SessionAndRequestManager.logout();
+	}
+
 	public String getPasswordCriptata() {
 		String toCrypt = this.password;
 		MD5Encrypter crypter = new MD5Encrypter();
 		return crypter.cryptWithMD5(toCrypt);
-	}
-
-	public void logout() throws IOException {
-		FacesContext context = FacesContext.getCurrentInstance();
-		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-		externalContext.invalidateSession();
-		context.getExternalContext().redirect("index_parallax.jsp");
-	}
-
-	public void setUtenteCorrenteInSession(String name) {
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.getExternalContext().getSessionMap().put(name, this.utente);
-	}
-
-	public Utente getUtenteCorrenteInSession() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		return (Utente) context.getExternalContext().getSessionMap().get("utenteCorrente");
 	}
 
 	public String getNome() {

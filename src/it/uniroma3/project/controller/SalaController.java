@@ -1,17 +1,13 @@
 package it.uniroma3.project.controller;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.EJBs;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
-
 import it.uniroma3.project.facade.ComandaFacade;
 import it.uniroma3.project.facade.PrenotazioneFacade;
 import it.uniroma3.project.facade.TavoloFacade;
@@ -19,7 +15,6 @@ import it.uniroma3.project.model.Comanda;
 import it.uniroma3.project.model.Prenotazione;
 import it.uniroma3.project.model.Ristorante;
 import it.uniroma3.project.model.Tavolo;
-import it.uniroma3.project.model.Utente;
 
 @ManagedBean(name ="salaController")
 @RequestScoped
@@ -44,13 +39,13 @@ public class SalaController {
 	private ComandaFacade cFacade;
 
 	public String openComanda(){
-		this.tavolo = this.tFacade.findTavoloByNumero(this.getByRequest("codiceTavolo"));
+		this.tavolo = this.tFacade.findTavoloByNumero(SessionAndRequestManager.getByRequest("codiceTavolo"));
 		if(this.tavolo.getStato()==0 || this.tavolo.getStato()==1){
 			if(this.tavolo.getStato()==1)
-				pFacade.setPrenotazioneUtenteAlTavolo(this.tavolo.getId());
+				pFacade.setPrenotazioneInCorso(this.tavolo.getId());
 			this.comanda = new Comanda();
 			tFacade.setTavoloOccupato(tavolo);
-			comanda.setOperatore((Utente) this.getBySession("utenteCorrente"));
+			comanda.setOperatore(SessionAndRequestManager.getUtenteCorrente());
 			comanda.setTavolo(tavolo);
 			comanda.setDataOraEmissione(new Date());
 			cFacade.inserisciComanda(comanda);
@@ -59,67 +54,27 @@ public class SalaController {
 			if(this.tavolo.getStato()==2){
 				this.comanda = cFacade.findComandaByTavolo(this.tavolo.getId());
 			}
-		this.setComandaInSession("comandaCorrente");
+		SessionAndRequestManager.setInSession("comandaCorrente",comanda); 
 		return "comanda";
 	}
 
 	@PostConstruct
 	public void init() {
-		if(this.getUtenteCorrente()==null)
-			try {
-				this.redirectPage("./sessioneScaduta.jsp");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		else
-			if(!(this.getUtenteCorrente().getRole().equals("admin") || this.getUtenteCorrente().getRole().equals("operatore") )){
-				try {
-					this.redirectPage("./404.jsp");
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			else{
-				this.tavoliSala = this.gettFacade().findAllTavolo();
-				Ristorante ristorante = new Ristorante();
-				for(Tavolo t : tavoliSala){
-					List<Prenotazione> prenotazioni = pFacade.findPrenotazione(t);
+		SessionAndRequestManager.sessionChecker();
+		this.tavoliSala = this.gettFacade().findAllTavolo();
+		Ristorante ristorante = new Ristorante();
+		for(Tavolo t : tavoliSala){
+			List<Prenotazione> prenotazioni = pFacade.findPrenotazione(t);
 
-					if(ristorante.comandaInCorso(t)==true )
-						tFacade.setTavoloOccupato(t);
+			if(ristorante.comandaInCorso(t)==true )
+				tFacade.setTavoloOccupato(t);
 
-					if(!prenotazioni.isEmpty() && ristorante.comandaInCorso(t)==false)
-						tFacade.setTavoloPrenotato(t);
+			if(!prenotazioni.isEmpty() && ristorante.comandaInCorso(t)==false)
+				tFacade.setTavoloPrenotato(t);
 
-					if(prenotazioni.isEmpty() && ristorante.comandaInCorso(t)==false)
-						tFacade.setTavoloLibero(t);
-				}
-			}
-	}
-
-	private Utente getUtenteCorrente(){
-		FacesContext context = FacesContext.getCurrentInstance();
-		return (Utente) context.getExternalContext().getSessionMap().get("utenteCorrente");
-	}
-
-	private void redirectPage(String page) throws IOException{
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.getExternalContext().redirect(page);
-	}
-
-	private void setComandaInSession(String name){
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.getExternalContext().getSessionMap().put(name,this.comanda);
-	}
-
-	private Object getBySession(String name){
-		FacesContext context = FacesContext.getCurrentInstance();
-		return context.getExternalContext().getSessionMap().get(name);
-	}
-
-	private String getByRequest(String name){
-		Map<String,String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		return params.get(name);
+			if(prenotazioni.isEmpty() && ristorante.comandaInCorso(t)==false)
+				tFacade.setTavoloLibero(t);
+		}
 	}
 
 	public String getCodiceTavolo() {

@@ -3,6 +3,7 @@ package it.uniroma3.project.controller;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import it.uniroma3.project.model.Utente;
@@ -28,7 +29,19 @@ public class SessionAndRequestManager {
 		FacesContext context = FacesContext.getCurrentInstance();
 		return context.getExternalContext().getSessionMap().get(name);
 	}
-	
+
+	public static void setInSession(String name, Object oggetto) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().getSessionMap().put(name, oggetto);
+	}
+
+	public static void logout() throws IOException {
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		externalContext.invalidateSession();
+		context.getExternalContext().redirect("index_parallax.jsp");
+	}
+
 	public static void sessionChecker() {
 		if(getUtenteCorrente()==null)
 			try {

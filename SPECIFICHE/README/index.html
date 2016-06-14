@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description"
+	content="Gather Responsive Event Template Documentation">
+<meta name="author" content="Alessandro e Federico">
+
+<title>Documentazione Sistema informativo — Da Peppe restaurant
+	by Alessandro Giannetti e Federico Arcangeli</title>
+
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+<link rel="stylesheet" type="text/css"
+	href="fonts/font-awesome-4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/stroke.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/animate.css">
+<link rel="stylesheet" type="text/css" href="css/prettyPhoto.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/plugin.css">
+<link rel="stylesheet" href="css/main.css">
+
+<link rel="stylesheet" type="text/css"
+	href="js/syntax-highlighter/styles/shCore.css" media="all">
+<link rel="stylesheet" type="text/css"
+	href="js/syntax-highlighter/styles/shThemeRDark.css" media="all">
+
+<!-- COLORS -->
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+
+</head>
+
+<body data-spy="scroll" data-target="#sidebar" data-offset="100">
+
+	<div id="wrapper">
+		<div class="container">
+			<section id="top" class="section docs-heading">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="big-title text-center">
+							<h1>Da Peppe Restaurant</h1>
+							<p class="lead">
+								Documentazione Sito internet — Da Peppe restaurant - <br> <a
+									href="http://themeforest.net/user/surjithctly" target="_blank">Alessandro
+									Giannetti e Federico Arcangeli</a>
+							</p>
+						</div>
+						<!-- end title -->
+					</div>
+					<!-- end 12 -->
+				</div>
+				<!-- end row -->
+
+				<hr>
+
+			</section>
+			<!-- end section -->
+
+			<div class="row">
+				<div class="col-md-3">
+					<div class="docs-sidebar" data-spy="affix" data-offset-top="300"
+						data-offset-bottom="0" id="sidebar">
+						<ol class="intro nav">
+							<li><a href="#line1">Registrazione Utente</a>
+								<ul>
+									<li><a href="#line1_1">Gestione errore utente già
+											esistente</a></li>
+									<li><a href="#line1_2">Gestione errore password non
+											corrispondenti</a></li>
+								</ul></li>
+
+							<li><a href="#line2">Login utente</a>
+								<ul>
+									<li><a href="#line2_1">Gestione errore utente non
+											esistente</a></li>
+									<li><a href="#line2_2">Gestione errore
+											username/password errata</a></li>
+
+								</ul></li>
+
+							<li><a href="#line3">Operazioni Utente</a>
+								<ul>
+									<li><a href="#line3_1">Prenotazione tavolo</a></li>
+									<li><a href="#line3_2">Consultazione profilo</a></li>
+									<li><a href="#line3_3">Lo stato della prenotazione</a></li>
+									<li><a href="#line3_4">Eliminazione Prenotazione</a></li>
+								</ul></li>
+
+							<li><a href="#line4">Login Amministratore ed Operatore</a>
+								<ul>
+									<li><a href="#line4_1">Gestione errore utente non
+											esistente</a></li>
+									<li><a href="#line4_2">Gestione errore
+											username/password</a></li>
+									<li><a href="#line4_3">Gestione errore accesso utente
+											non autorizzato</a></li>
+								</ul></li>
+
+							<li><a href="#line5">Pannello di controllo</a>
+								<ul>
+									<li><a href="#line5_1">Registra nuovo personale</a></li>
+									<li><a href="#line5_2">Registra nuovo tavolo </a></li>
+									<li><a href="#line5_3">Registra nuovo piatto</a></li>
+									<li><a href="#line5_4">Storico comande</a></li>
+									<li><a href="#line5_5">Utilizzo pannello di controllo</a></li>
+									<li><a href="#line5_6">Prenotazione di un tavolo</a></li>
+								</ul></li>
+
+							<li><a href="#line6">Sala</a>
+								<ul>
+									<li><a href="#line6_1">Gli stati di un tavolo</a></li>
+									<li><a href="#line6_2">Apertura di una nuova comanda</a></li>
+									<li><a href="#line6_3">Apertura comanda "in corso"</a></li>
+								</ul></li>
+							<li><a href="#line7">Comanda</a>
+								<ul>
+									<li><a href="#line7_1">Inserimento piatto/i</a></li>
+									<li><a href="#line7_2">Modifica della quantità dei
+											piatti</a></li>
+									<li><a href="#line7_3">Rimozione piatto dalla comanda</a></li>
+								</ul></li>
+							<li><a href="#line8">Operatore</a></li>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<section class="welcome">
+
+						<div class="row">
+							<div class="col-md-12 left-align">
+								<h2 class="dark-text">
+									Versione e Autori
+									<hr>
+								</h2>
+								<div class="row">
+
+									<div class="col-md-12 full">
+										<div class="intro1">
+											<ul>
+												<li><strong>Nome sito: </strong>Da Peppe Restaurant
+													Template</li>
+												<li><strong>Versione : </strong> v 1.0</li>
+												<li><strong>Autori : </strong> Alessandro Giannetti e
+													Federico Arcangeli</li>
+											</ul>
+										</div>
+
+										<hr>
+										<div>
+											<p>In questo manuale vedremo passo dopo passo le varie
+												funzionalità del sito mostrandovi in che modo questo portale
+												multimediale possa facilizzare la gestione di un ristorante.
+											</p>
+											<h2 class="dark-text">
+												Introduzione alla navbar
+												<hr>
+											</h2>
+											<p>
+												<strong>Benvenuti nella Home Page di Peppe
+													restaurant</strong> <br>arrivati nella Home Page (
+												<code>index_parallax.jsp</code>
+												) del sito vi si presenterà una nav bar nella parte
+												superiore con la quale si potrà navigare tra le varie pagine
+												del sito internet.
+											</p>
+											<div class="text-center">
+												<img src="images/navbarHOME.PNG" class="img-responsive"
+													alt="navbar home">
+											</div>
+											<br>
+
+										</div>
+									</div>
+
+								</div>
+								<!-- end row -->
+							</div>
+						</div>
+					</section>
+
+					<section id="line1" class="section">
+
+						<div class="row">
+							<div class="col-md-12 left-align">
+								<h2 class="dark-text">
+									Registrazione utente <a href="#top"># Torna all'indice</a>
+									<hr>
+								</h2>
+							</div>
+							<!-- end col -->
+						</div>
+						<!-- end row -->
+
+						<div class="row">
+							<div class="col-md-12">
+								<p>
+									Un utente per poter usufruire dei servizi che mette a
+									disposizione la piattaforma "Da Peppe restaurant" dovrà
+									registrarsi nella apposita form situata nella pagina
+									<code>loginSignup.jsp</code>
+									. <br>Cliccando la voce della navbar Login/Signup si potrà
+									accedere a tale pagina.
+								</p>
+
+								<img src="images/Registrazione Utente/navbarHOME.PNG"
+									class="img-responsive" alt="navbar home selezione login/signup">
+
+								<br>
+								<p>Una volta cliccata la voce Login/Signup si aprirà la
+									seguente form nella quale sarà possibile effettuare la
+									registrazione di un nuovo account inserendo i propri dati.</p>
+
+
+								<img src="images/Registrazione Utente/formregistrazione.PNG"
+									class="img-responsive" alt="navbar home selezione login/signup">
+
+
+								<p>
+									una volta cliccato il pulsante <strong>Registrati</strong> si
+									aprirà una finestra nella quale sarà esposto un sunto dei dati
+									inseriti e chiederà la conferma di tale registrazione.
+								</p>
+
+								<div class="text-center">
+									<img src="images/Registrazione Utente/modal.PNG"
+										class="img-responsive"
+										alt="navbar home selezione login/signup">
+								</div>
+								<br>
+								<p>Se tutto andrà a buon fine alll'utente verrà recapitata
+									una mail di avvenuta registrazione e sarà reindirizzato nella
+									Home Page con privilegi da "Utente registrato", e potrà quindi
+									accedere ad aree riservate del sito. nella Home Page saranno
+									mostrate due voci aggiuntive:</p>
+								<ol>
+									<li>Riserva Tavolo</li>
+									<li>Benvenuto <italic> nome utente loggato </italic> dalla
+										quale sarà possibile accedere al profilo.
+									</li>
+								</ol>
+								<br>
+								<div class="text-center">
+									<img src="images/Registrazione Utente/navbarHOMEUTENTE.PNG"
+										class="img-responsive"
+										alt="navbar home utente voci aggiuntive">
+								</div>
+								<br>
+								<p>Nel momento dell'iscrizione vengono effettuati vari
+									controlli sui campi della form, tra cui la verifica dei campi
+									obbligatori, ma in particolare vengono gestiti i seguenti
+									errori:</p>
+
+								<h4 id="line1_1" class="sub-title">
+									Gestione errore utente già esistente <a href="#top">#Torna
+										all'indice</a>
+								</h4>
+
+								<p>Se l'utente inserisce una username già presente
+									all'interno del database il sistema visualizza il seguente
+									messaggio di errore:</p>
+
+								<div class="alert alert-danger alert-dismissable">
+									<button type="button" class="close" data-dismiss="alert">
+										<span class="fa fa-close"></span>
+									</button>
+									<span> Errore: </span> Utente con username ale.giannetti già
+									esistente
+								</div>
+
+								<h4 id="line1_2" class="sub-title">
+									Gestione errore password non corrispondenti <a href="#top">#Torna
+										all'indice</a>
+								</h4>
+
+								<p>
+									Il sistema per poter aiutare l'utente a non sbagliare
+									l'inserimento della password introduce un campo <strong>Conferma
+										password</strong>. Nel momento in cui le due password non corrispondono
+									il sistema visualizza il seguente messaggio di errore:
+								</p>
+
+								<div class="alert alert-danger alert-dismissable">
+									<button type="button" class="close" data-dismiss="alert">
+										<span class="fa fa-close"></span>
+									</button>
+									<span> Errore: </span> Le password non corrispondono
+								</div>
+							</div>
+							<!-- end col -->
+						</div>
+						<!-- end row -->
+
+					</section>
+					<!-- end section -->
+
+					<section id="line2" class="section">
+
+						<div class="row">
+							<div class="col-md-12 left-align">
+								<h2 class="dark-text">
+									Login utente<a href="#top">#Torna all'indice</a>
+									<hr>
+								</h2>
+							</div>
+							<!-- end col -->
+						</div>
+						<!-- end row -->
+						<div class="col-md-12">
+							<p>
+								Un utente per poter usufruire dei servizi che mette a
+								disposizione la piattaforma "Da Peppe restaurant" dovrà
+								registrarsi e quindi a questo punto Loggarsi nella apposita form
+								situata nella pagina
+								<code>loginSignup.jsp</code>
+								. <br>Cliccando la voce della navbar Login/Signup si potrà
+								accedere a tale pagina.
+							</p>
+							<br> <img src="images/Registrazione Utente/navbarHOME.PNG"
+								class="img-responsive" alt="navbar home selezione login/signup">
+						</div>
+						<br>
+						<h4 class="sub-title" id="line2_1">
+							Gestione errore utente non esistente <a href="#top">#Torna
+								all'indice</a>
+						</h4>
+
+						<p>Se un utente inserisce una username non presente
+							all'interno del database viene mostrato il seguente errore:</p>
+
+						<div class="alert alert-danger alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert">
+								<span class="fa fa-close"></span>
+							</button>
+							<span> Errore: </span> Utente non esistente
+						</div>
+
+						<h4 class="sub-title" id="line2_2">
+							Gestione errore username/password errata <a href="#top">#Torna
+								all'indice</a>
+						</h4>
+
+						<p>Se un utente inserisce una username valida ma una password
+							non corretta allora il sistema mostra il seguente messaggio di
+							errore:</p>
+
+						<div class="alert alert-danger alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert">
+								<span class="fa fa-close"></span>
+							</button>
+							<span> Errore: </span> Username e/o password errata
+						</div>
+					</section>
+					<!-- end section -->
+
+					<section id="line3" class="section">
+
+						<div class="row">
+							<div class="col-md-12 left-align">
+								<h2 class="dark-text">
+									Operazioni utente<a href="#top">#Torna all'indice</a>
+									<hr>
+								</h2>
+							</div>
+							<!-- end col -->
+						</div>
+						<!-- end row -->
+
+						<h4 class="sub-title" id="line3_1">
+							Prenotazione tavolo <a href="#top">#Torna all'indice</a>
+						</h4>
+
+						<p>
+							Il prerequisito per prenotare un tavolo è essere loggati nel
+							sistema.<br> la pagina denominata
+							<code>prenotazione.jsp</code>
+							sarà quindi raggiungibile tramite l'apposito bottone nella
+							navbar.
+						</p>
+
+						<div class="text-center">
+							<img src="images/Prenotazione tavolo/navbarHOMEUTENTE.PNG"
+								class="img-responsive" alt="navbar home selezione prenotazione">
+						</div>
+						<br>
+						<p>Una volta aperta la pagina si presenterà la seguente form:
+						</p>
+
+						<div class="text-center">
+							<img src="images/Prenotazione tavolo/formprenotazione.PNG"
+								class="img-responsive" alt="form prenotazione">
+						</div>
+						<br>
+						<p>
+							nel momento in cui i dati vengono inseriti e viene cliccato il
+							pulsante <strong>Effettua prenotazione</strong> viene
+							visualizzata una finestra riepilogativa che chiede la conferma
+							dell'inserimento dei dati. <br>
+						<div class="text-center">
+							<img src="images/Prenotazione tavolo/modaleprenotazione.PNG"
+								class="img-responsive" alt="modale prenotazione">
+						</div>
+						<br>
+						<p>se nel ristorante sono presenti tavoli liberi allora
+							all'utente loggato sarà associata una prenotazione e sarà
+							recapitata una mail di riepilogo. a schermo sarà mostrato il
+							seguente messaggio di successo:</p>
+
+						<div class="alert alert-success alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert">
+								<span class="fa fa-close"></span>
+							</button>
+							<span>Successo</span> La prenotazione è stata registrata
+							correttamente a nome di Giannetti per 1 persona il giorno
+							13/06/2016 alle ore 21:00
+						</div>
+						<br>
+						<p>Altrimenti se nella sala non è presente un tavolo con il
+							numero di ospiti indicato nella form allora verrà visualizzato il
+							seguente messaggio di errore:</p>
+						<br>
+						<div class="alert alert-danger alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert">
+								<span class="fa fa-close"></span>
+							</button>
+							<span>Errore</span> Non ci sono tavoli disponibili per questo
+							numero di ospiti
+						</div>
+						<br>
+						<p>&Eacute; anche possibile che nella sala sono presenti
+							tavoli con abbastanza coperti per gli ospiti della prenotazione
+							ma sono tutti occcupati, allora in questo caso sarà visualizzato
+							il seguente messaggio di errore:</p>
+						<br>
+						<div class="alert alert-danger alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert">
+								<span class="fa fa-close"></span>
+							</button>
+							<span>Errore</span> Non ci sono tavoli disponibili per il "data
+							selezionata" per "ospiti" persone
+						</div>
+						<br>
+						<hr>
+
+						<h4 class="sub-title" id="line3_2">
+							Consultazione profilo <a href="#top">#Torna all'indice</a>
+						</h4>
+						<p>
+							Il prerequisito per poter accedere al proprio profilo è essere
+							loggati nel sistema.<br> la pagina denominata
+							<code>profilo.jsp</code>
+							sarà quindi raggiungibile tramite l'apposito bottone nella
+							navbar.
+						</p>
+						<br> <img
+							src="images/Consultazione Profilo/navbarprofilo.png"
+							class="img-responsive" alt="navbar apertura profilo"> <br>
+						<p>una volta che si è acceduti alla pagina di profilo sulla
+							sinistra avremo un riepilogo dei nostri dati, mentre nella parte
+							centrale sarà presentata la lista delle prenotazioni effettuate
+							dall'utente.</p>
+						<br> <img src="images/Consultazione Profilo/profilo.png"
+							class="img-responsive" alt="modale prenotazione"> <br>
+
+
+						<h4 class="sub-title" id="line3_3">
+							Lo stato della prenotazione <a href="#top">#Torna all'indice</a>
+						</h4>
+
+						<p>Le prenotazioni effettuate dall'utente possono trovarsi in
+							3 diversi stati:</p>
+						<ol>
+							<li><i class="fa fa-refresh fa-spin fa-2x fa-fw"></i>
+								L'utente ha effettuato la prenotazione ma non è ancora arrivato
+								nel ristoranre</li>
+							<li><i class="fa fa-cutlery fa-2x"></i> L'utente è arrivato
+								nel ristorante ed ha iniziato ad ordinare</li>
+							<li><span style="color: green;"><i
+									class="fa fa-check-circle fa-2x"></i></span> L'utente ha pagato ed ha
+								concluso la prenotazione con successo</li>
+							<li><span style="color: orange;"><i
+									class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i></span>
+								l'amministratore ha cancellato la comanda associata alla
+								prenotazione</li>
+						</ol>
+						<br>
+
+						<h4 class="sub-title" id="line3_4">
+							Eliminazione prenotazioni <a href="#top">#Torna all'indice</a>
+						</h4>
+
+						<p>
+							L'utente ha la possibilità di poter eliminare una prenotazioni
+							finchè non è stata presa in incarico, ovvero che sia nello stato
+							<span class="fa fa-refresh fa-spin fa-2x fa-fw"></span>. Premendo
+							quindi l'icona <i style="color: red;" class="fa fa-trash-o fa-2x"></i>
+							la prenotazione sarà eliminata.
+						</p>
+
+						<p>
+							Nel momento in cui lo stato è diverso da quello consentito per
+							l'eliminazione l'icona del cestino sarà sostituita con <i
+								style="color: red;" class="fa fa-ban fa-2x" aria-hidden="true"></i>.
+						</p>
+						<br> <img src="images/Consultazione Profilo/prenotazioni.png"
+							class="img-responsive" alt="modale prenotazione"> <br>
+
+					</section>
+					<!-- end section -->
+
+					<section id="line4" class="section">
+
+						<div class="row">
+							<div class="col-md-12 left-align">
+								<h2 class="dark-text">
+									Login Amministratore ed Operatore<a href="#top">#Torna
+										all'indice</a>
+									<hr>
+								</h2>
+							</div>
+							<!-- end col -->
+						</div>
+						<!-- end row -->
+						<div class="col-md-12">
+							<p>
+								per poter usufruire delle funzionalità del sistema, bisognerà
+								accedere alla pagina di Login degli Operatore denominata
+								<code>administrator.jsp</code>
+								. <br> A differenza dell'utente l'accesso è nascosto, e
+								quindi non accessibile dalla navbar, bensì si dovrà scrivere il
+								percorso nell'URL:
+							</p>
+							<br> <img src="images/Login Operatori e admin/percorso.png"
+								class="img-responsive" alt="percorso accesso admin e operatore">
+							<br>
+							<p>effettuato l'accesso il sistema aprirà una pagina diversa
+								asseconda del ruolo assegnato al dipendente del ristorante.</p>
+							<p>
+								<strong>Pagina AMMINISTRATORE </strong>
+								<code>home_Administrator.jsp</code>
+							</p>
+							<img src="images/Login Operatori e admin/homeadmin.png"
+								class="img-responsive" alt="percorso accesso admin e operatore">
+							<p>
+								<strong>Pagina OPERATORE </strong>
+								<code>home_Operatore</code>
+							</p>
+							<img src="images/Login Operatori e admin/homeoperatore.png"
+								class="img-responsive" alt="percorso accesso admin e operatore">
+						</div>
+						<br>
+						<h4 class="sub-title" id="line4_1">
+							Gestione errore utente non esistente <a href="#top">#Torna
+								all'indice</a>
+						</h4>
+
+						<p>Se un utente inserisce una username non presente
+							all'interno del database viene mostrato il seguente errore:</p>
+
+						<div class="alert alert-danger alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert">
+								<span class="fa fa-close"></span>
+							</button>
+							<span> Errore: </span> Utente non esistente
+						</div>
+
+						<h4 class="sub-title" id="line4_2">
+							Gestione errore username/password errata <a href="#top">#Torna
+								all'indice</a>
+						</h4>
+
+						<p>Se un utente inserisce una username valida ma una password
+							non corretta allora il sistema mostra il seguente messaggio di
+							errore:</p>
+
+						<div class="alert alert-danger alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert">
+								<span class="fa fa-close"></span>
+							</button>
+							<span> Errore: </span> Username e/o password errata
+						</div>
+
+						<h4 class="sub-title" id="line4_3">
+							Gestione errore accesso utente non autorizzato <a href="#top">#Torna
+								all'indice</a>
+						</h4>
+
+						<p>Se un utente inserisce una username valida ma non ha i
+							permessi per accedere allora il sistema mostra il seguente
+							messaggio di errore:</p>
+
+						<div class="alert alert-danger alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert">
+								<span class="fa fa-close"></span>
+							</button>
+							<span> Errore: </span> "username con cui si è tentato di
+							accedere" Cosa ci fai qui? non è un posto per utenti
+						</div>
+					</section>
+					<!-- end section -->
+
+
+					<section id="line5" class="section">
+
+						<div class="row">
+							<div class="col-md-12 left-align">
+								<h2 class="dark-text">
+									Pannello di controllo<a href="#top">#Torna all'indice</a>
+									<hr>
+								</h2>
+							</div>
+							<!-- end col -->
+						</div>
+						<!-- end row -->
+						<div class="col-md-12">
+							<p>
+								una volta effettuato l'accesso con un account con privilegi di
+								amministratore sarà possibile accedere alla pagina
+								<code>home_Administrator.jsp</code>
+								. L'amministratore a differenza dell'operatore ha una visione
+								d'insieme della sala, può effettuare operazioni contabili (
+								scontrino <i class="fa fa-shopping-cart"></i> ). vedremo in ogni
+								sottovoce del Pannello di controllo tutte le funzionalità
+								disponibili in questa versione V1.0
+							</p>
+							<br> <img
+								src="images/PannelloControlloAdmin/navbarpannellocontrollo.PNG"
+								class="img-responsive" alt="operazioni amministratore"><br>
+							<img
+								src="images/PannelloControlloAdmin/operazioneinserimentoadmin.PNG"
+								class="img-responsive" alt="operazioni amministratore"> <br>
+
+						</div>
+						<br>
+						<h4 class="sub-title" id="line5_1">
+							Registra nuovo personale <a href="#top">#Torna all'indice</a>
+						</h4>
+
+						<p>
+							L'amministratore selezionando la voce <strong>Registra
+								nuovo personale</strong> ha la possibilità di inserire nuovi operatori di
+							sala compilando la seguente form:
+						</p>
+						<br> <img
+							src="images/PannelloControlloAdmin/inserimentooperatori/formoperatori.PNG"
+							class="img-responsive" alt="form operatori"> <br>
+						<p>Se l'inserimento va a buon fine il sistema mostra il
+							seguente messaggio di successo</p>
+						<div class="alert alert-success alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert">
+								<span class="fa fa-close"></span>
+							</button>
+							<span> Successo: </span> L' operatore " username operatore
+							inserito " è stato inserito correttamente
+						</div>
+
+						<p>in caso contrario se viene inserito un'operatore con una
+							username già presente nel database viene mostrato il seguente
+							messaggio di errore</p>
+
+						<div class="alert alert-danger alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert">
+								<span class="fa fa-close"></span>
+							</button>
+							<span> Errore: </span> Operatore con username " username
+							operatore inserito " già esistente
+						</div>
+
+
+						<h4 class="sub-title" id="line5_2">
+							Registra nuovo tavolo <a href="#top">#Torna all'indice</a>
+						</h4>
+
+						<p>
+							L'amministratore selezionando la voce <strong>registra
+								nuovo tavolo</strong> ha la possibilità di inserire nuovi tavoli nella
+							sala compilando la seguente form:
+						</p>
+						<br> <img
+							src="images/PannelloControlloAdmin/inserimentotavoli/formtavoli.PNG"
+							class="img-responsive" alt="form operatori"> <br>
+						<p>Se l'inserimento va a buon fine il sistema mostra il
+							seguente messaggio di successo</p>
+						<div class="alert alert-success alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert">
+								<span class="fa fa-close"></span>
+							</button>
+							<span> Successo: </span> Il tavolo numero " codice tavolo
+							inserito " con " coperti inseriti " è stato inserito
+							correttamente
+						</div>
+
+						<p>in caso contrario se viene inserito un tavolo con codice
+							già presente nel database viene mostrato il seguente messaggio di
+							errore</p>
+
+						<div class="alert alert-danger alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert">
+								<span class="fa fa-close"></span>
+							</button>
+							<span> Errore: </span> il tavolo numero " codice tavolo inserito
+							" è gia presente nella sala
+						</div>
+
+
+						<h4 class="sub-title" id="line5_3">
+							Registra nuovo piatto <a href="#top">#Torna all'indice</a>
+						</h4>
+						<p>
+							L'amministratore selezionando la voce <strong>registra
+								nuovo piatto</strong> ha la possibilità di inserire nuovi piatti nel
+							sistema compilando la seguente form:
+						</p>
+
+						<br> <img
+							src="images/PannelloControlloAdmin/inserimentopiatti/formpiatti.PNG"
+							class="img-responsive" alt="form piatti"> <br>
+
+						<p>
+							L'amministratore seleziona da una delle seguenti voci la
+							categoria del piatto associandola quindi al piatto stesso. Le
+							categorie vengono inserite dinamicamente all'interno del tag
+							<code>select</code>
+							tramite il seguente metodo del controller:
+						</p>
+
+						<pre class="brush:php; highlight: [2]">
+                        @PostConstruct
+						public void init() {
+							this.categorie = this.cpFacade.findAll();
+                                ...
+                                }
+                        </pre>
+						<p>in questo modo ad ogni richiesta della pagina il controller
+							esegue la query.</p>
+						<img
+							src="images/PannelloControlloAdmin/inserimentopiatti/categorie.PNG"
+							class="img-responsive" alt="select categorie"> <br>
+
+						<p>Se l'inserimento va a buon fine il sistema mostra il
+							seguente messaggio di successo</p>
+
+						<div class="alert alert-success alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert">
+								<span class="fa fa-close"></span>
+							</button>
+							<span> Successo: </span> Il piatto " nome piatto inserito " è
+							stato inserito correttamente
+						</div>
+						</button>
+
+						<h4 class="sub-title" id="line5_4">
+							Storico comande <a href="#top">#Torna all'indice</a>
+						</h4>
+
+						<p>
+							L'amministratore selezionando la voce <strong>Storico
+								comande</strong> ha la possibilità di visionare tutte le comande del
+							ristorante
+						</p>
+
+						<br> <img
+							src="images/PannelloControlloAdmin/storicocomande/storico.PNG"
+							class="img-responsive" alt="select categorie"> <br>
+
+						<p>
+							cliccando sull'icona <i class="fa fa-info-circle"></i> si ha la
+							possibilità di vedere lo scontrino associato alla comanda
+						</p>
+						<br> <img
+							src="images/PannelloControlloAdmin/storicocomande/scontrino.PNG"
+							class="img-responsive" alt="select categorie"> <br>
+
+						<h4 class="sub-title" id="line5_5">
+							Utilizzo pannello di controllo <a href="#top">#Torna
+								all'indice</a>
+						</h4>
+						<p>il pannello è composto da un insieme di tabelle, le quali
+							offrono una buona visibilià sulla situazione della sala</p>
+						<br> <img src="images/PannelloControlloAdmin/pannello.PNG"
+							class="img-responsive" alt="select categorie"> <br>
+
+						<p>Iniziamo con l'analizzare le tabelle da sinistra verso
+							destra quindi:</p>
+						<br>
+						<div class="col-md-12">
+							<div class="col-md-7">
+								<img src="images/PannelloControlloAdmin/prenotazioni.PNG"
+									class="img-responsive" alt="select categorie"> <br>
+							</div>
+							<div class="col-md-5">
+								<p>Ricapitolando i 3 possibili stati in cui può trovarsi una
+									prenotazione:</p>
+								<ol>
+									<li><i class="fa fa-refresh fa-spin fa-lg fa-fw"></i>
+										L'utente ha effettuato la prenotazione ma non è ancora
+										arrivato nel ristorante</li>
+									<li><i class="fa fa-cutlery fa-lg"></i> L'utente è
+										arrivato nel ristorante ed ha iniziato ad ordinare</li>
+									<li><span style="color: green;"><i
+											class="fa fa-check-circle fa-lg"></i></span> L'utente ha pagato ed
+										ha concluso la prenotazione con successo</li>
+									<li><span style="color: orange;"><i
+											class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i></span>
+										l'amministratore ha cancellato la comanda associata alla
+										prenotazione</li>
+								</ol>
+							</div>
+						</div>
+						<p>
+							La tabella delle prenotazioni è fortemente collegata alla tabella
+							delle comande, infatti nel momento in cui una comanda viene
+							conclusa ( stampando lo scontrino ) la prenotazione viene
+							contrassegnata con <span style="color: green;"><i
+								class="fa fa-check-circle fa-lg"></i></span> o con <span
+								style="color: orange;"><i
+								class="fa fa-exclamation-triangle fa-lg" aria-hidden="true"></i></span>
+							in caso di eliminazione della comanda.
+						</p>
+						<p>Ripercussione nelle tabelle nella conclusione di una
+							comanda associata ad una prenotazione</p>
+						<p>proviamo a concludere la comanda numero 2151</p>
+						<br> <img
+							src="images/PannelloControlloAdmin/comandeconferma.png"
+							class="img-responsive" alt="comande in corso">
+						<p></p>
+						<img src="images/PannelloControlloAdmin/cambiotabcomanda.png"
+							class="img-responsive" alt="comande in corso"> <br>
+						<p>
+							Come si evince dalle immagini nel momento in cui una comanda
+							viene conclusa viene spostata dalla tabella <strong>comande
+								giornaliere in corso</strong> alla tabella <strong>comande
+								giornaliere completate</strong>. Nel caso in cui alla comanda è associata
+							una prenotazione lo stato della prenotazione viene settato a <span
+								style="color: green;"><i class="fa fa-check-circle fa-lg"></i></span>
+						</p>
+
+						<p>
+							la conferma della comanda ( o eliminazione ) non ha ripercussioni
+							solo sulle prenotazioni, infatti una volta che la comanda si
+							sposta nella tabella <strong>comande giornaliere
+								completate</strong> il tavolo a cui erano seduti i clienti torna libero.
+							Prima di continuare vediamo i possibli stati in cui un tavolo può
+							trovarsi:
+						</p>
+
+						<p class="bold">possibili stati del tavolo</p>
+						<img src="images/Sala/statotavoli.PNG" class="img-responsive"
+							alt="stato tavoli"> <br>
+						<p>
+							Rispettivamente un tavolo può essere <strong><span
+								style="color: green;">LIBERO</span> <span style="color: orange">PRENOTATO</span>
+								<span style="color: red;">OCCUPATO</span></strong>
+						</p>
+						<p>
+							Quindi nel momento in cui la comanda viene confermata o
+							eliminata, il tavolo passa dalla stato <strong><span
+								style="color: red;">OCCUPATO</span></strong> &#8594; <strong><span
+								style="color: green;">LIBERO</span></strong><br>Parleremo più
+							approfonditamente delle altre variazione di stato nella sezione
+							della sala. Per ora ci basti sapere che il tavolo diventa libero.
+						</p>
+
+						<p>
+							Fino ad ora abbiamo visto come la tabella <strong>prenotazioni</strong>
+							interagisce con la tabella <strong> comande in corso</strong>. a
+							questo punto vediamo la tabella <strong>Operatori in
+								Servizio</strong>.
+						</p>
+						<img src="images/PannelloControlloAdmin/operatoriinservizio.PNG"
+							class="img-responsive" alt="operatori in servizio"> <br>
+						<p>Ad ogni operatore è associata una lista di tavoli che sta
+							servendo in quel determinato momento. Nel momento in cui una
+							comanda presa in incarico da un operatore viene confermata o
+							eliminata la tabella viene aggiornata</p>
+						<br> <img
+							src="images/PannelloControlloAdmin/modificaoperatoriinservizio.png"
+							class="img-responsive"
+							alt="modifica tabella operatori in servizio"> <br>
+						<p>ovviamente viceversa nel momento in cui un operatore inizia
+							a compilare una comanda viene associato a quell'operatore
+							(indirettamente) il tavolo.
+						<p>Panoramica tavoli</p>
+						<p>Permette di capire a colpo d'occhio la situazione della
+							sala colorando come in precedenza i tavoli in base allo stato.</p>
+						<br> <img
+							src="images/PannelloControlloAdmin/panoramicatavoli.PNG"
+							class="img-responsive" alt="panoramica tavoli"> <br>
+
+						<h4 class="sub-title" id="line5_6">
+							Prenotazione di una tavolo <a href="#top">#Torna all'indice</a>
+						</h4>
+
+						<p>
+							Il prerequisito per prenotare un tavolo è essere loggati nel
+							sistema. la pagina denominata
+							<code>prenotazioneAdmin.jsp</code>
+							sarà quindi raggiungibile tramite l'apposito bottone nella
+							navbar.
+						</p>
+
+						<br> <img
+							src="images/prenotazione tavolo Operatori/navbarpannellocontrollo.png"
+							class="img-responsive" alt="prenotazione Operatori"> <br>
+
+						<p>L'amministratore del sistema può prenotare a nome di un
+							cliente (anche non iscritto al sistema) che chiama al ristorante
+							e desidera riservare un tavolo.</p>
+						<br> <img
+							src="images/prenotazione tavolo Operatori/formprenotazione.PNG"
+							class="img-responsive" alt="prenotazione Operatori"> <br>
+
+
+						<p>se nel ristorante sono presenti tavoli liberi allora al
+							nominativo rilasciato telefonicamente sarà associata una
+							prenotazione. a schermo sarà mostrato il seguente messaggio di
+							successo:</p>
+
+						<div class="alert alert-success alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert">
+								<span class="fa fa-close"></span>
+							</button>
+							Hai prenotato a nome di Arcangeli per 3 persone per il giorno
+							14/06/2016 alle ore 21:00
+						</div>
+
+						<br>
+						<p>Altrimenti se nella sala non è presente un tavolo con il
+							numero di ospiti indicato nella form allora verrà visualizzato il
+							seguente messaggio di errore:</p>
+						<br>
+						<div class="alert alert-danger alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert">
+								<span class="fa fa-close"></span>
+							</button>
+							<span>Errore</span> Non ci sono tavoli disponibili per questo
+							numero di ospiti
+						</div>
+						<br>
+						<p>&Eacute; anche possibile che nella sala sono presenti
+							tavoli con abbastanza coperti per gli ospiti della prenotazione
+							ma sono tutti occcupati, allora in questo caso sarà visualizzato
+							il seguente messaggio di errore:</p>
+						<br>
+						<div class="alert alert-danger alert-dismissable">
+							<button type="button" class="close" data-dismiss="alert">
+								<span class="fa fa-close"></span>
+							</button>
+							<span>Errore</span> Non ci sono tavoli disponibili per il "data
+							selezionata" per "ospiti" persone
+						</div>
+					</section>
+					<!-- end section -->
+
+					<section id="line6" class="section">
+
+						<div class="row">
+							<div class="col-md-12 left-align">
+								<h2 class="dark-text">
+									Sala <a href="#top">#Torna all'indice</a>
+									<hr>
+								</h2>
+							</div>
+							<!-- end col -->
+						</div>
+						<!-- end row -->
+						<p>La sala è un elemento chiave per il funzionamento del
+							sistema, in quanto permette l'apertura delle comande e la loro
+							modifica.</p>
+
+						<p>La sala può essere acceduta sia da Operatori di sala che
+							dall'amministratore di sistema tramite l'apposito bottone nella
+							nav bar</p>
+
+						<img src="images/Sala/navbarpannellocontrollo.PNG"
+							class="img-responsive" alt="nav bar sala">
+
+						<p>Una volta entrati nella "Sala" avremo una visione di
+							insieme dei tavoli</p>
+
+						<img src="images/Sala/sala2.PNG" class="img-responsive" alt="sala">
+
+						<h4 class="sub-title" id="line6_1">
+							Gli stati di un tavolo <a href="#top">#Torna all'indice</a>
+
+							<p>Riprendiamo la trattazione degli stati dei tavoli,
+								ricapitolando quanto detto nella sezione del pannello di
+								controllo specificando questa volta tutte le varie transazioni
+								di stato che un tavolo può subire.</p>
+
+							<img src="images/Sala/statotavoli.PNG" class="img-responsive"
+								alt="stato tavoli">
+							<p>Rispettivamente un tavolo può essere :</p>
+
+							<ol>
+
+								<li><strong><span style="color: green;">LIBERO</span></strong>
+								</li>
+								<li><strong> <span style="color: orange">PRENOTATO</span></strong>
+								</li>
+								<li><strong><span style="color: red;">OCCUPATO</span></strong>
+								</li>
+							</ol>
+
+							<p>
+								nel momento in cui un cliente si presenta al ristorante senza
+								aver prenotato all'apertura della comanda il tavolo passa da <strong><span
+									style="color: orange">PRENOTATO</span></strong>&#8594;<strong><span
+									style="color: red;">OCCUPATO</span></strong>
+							</p>
+							<p>
+								nel momento in cui un cliente si presenta al ristorante avendo
+								prenotato all'apertura della comanda il tavolo passa da <strong><span
+									style="color: green;">LIBERO</span></strong>&#8594;<strong><span
+									style="color: red;">OCCUPATO</span></strong>
+							</p>
+							<p>
+								nel momento in cui la comanda viene conclusa o eliminata, il
+								tavolo passa dalla stato<br> <strong><span
+									style="color: red;">OCCUPATO</span></strong> &#8594; <strong><span
+									style="color: green;">LIBERO</span></strong>
+							</p>
+						</h4>
+						<h4 class="sub-title" id="line6_2">
+							Apertura di una nuova comanda <a href="#top">#Torna
+								all'indice</a>
+
+							<p>
+								cliccando su un tavolo <strong><span
+									style="color: green;">LIBERO</span></strong> o <strong><span
+									style="color: orange">PRENOTATO</span></strong> si aprirà una nuova
+								comanda e verremo reinderizzati nella pagina
+								<code>comanda.jsp</code>
+								e potremo iniziare a prendere il nostro ordine
+							</p>
+							<img src="images/Sala/selezionelibero.png" class="img-responsive"
+								alt="stato tavoli">
+							<p>Notare il cambiamento di stato del tavolo una volta aperta
+								una comanda associata ad esso.</p>
+							<img src="images/Sala/10rosso.png" class="img-responsive"
+								alt="stato tavoli">
+						</h4>
+						<h4 class="sub-title" id="line6_3">
+							Apertura comanda "in corso" <a href="#top">#Torna all'indice</a>
+						</h4>
+
+						<p>
+							cliccando invece su un tavolo <strong><span
+								style="color: red;">OCCUPATO</span></strong> saremo reindirizzati alla
+							pagina
+							<code>comanda.jsp</code>
+							e avremo la possibilità di recuperare la comanda relativa al
+							tavolo e di poter aggiungere e/o eliminare piatti dalla comanda
+						</p>
+
+						<img src="images/Sala/selezioneoccupato.png"
+							class="img-responsive" alt="stato tavoli">
+
+					</section>
+					<!-- end section -->
+
+					<section id="line7" class="section">
+
+						<div class="row">
+							<div class="col-md-12 left-align">
+								<h2 class="dark-text">
+									Comanda <a href="#top">#Torna all'indice</a>
+									<hr>
+								</h2>
+							</div>
+							<!-- end col -->
+						</div>
+						<!-- end row -->
+						<p>
+							Una volta arrivati attraverso la pagina della sala
+							<code>sala.jsp</code>
+							nella pagina della comanda
+							<code>comanda.jsp</code>
+							, avremo la possibilità di inserire dei piatti all'interno della
+							comanda.
+						</p>
+						<p>Quindi selezionando il tavolo numero 10</p>
+						<img src="images/Sala/selezionelibero.png" class="img-responsive"
+							alt="selezione libero"><br>
+						<p>Verrà aperta una nuova Comanda relativa al tavolo</p>
+						<img src="images/Comanda/nuovacomanda.png" class="img-responsive"
+							alt="nuova comanda">
+						<p>
+							La pagina della comanda è divisa in due parti:<br> La parte
+							sinistra dove gli operatori di sala potranno scorrere i piatti
+							presenti nel menù e filtrarli tramite le apposite voci poste
+							superiormente.<br> La parte destra invece presenta una
+							comanda parziale, che verrà popolata durante la permanenza dei
+							clienti.
+						</p>
+						<h4 class="sub-title" id="line7_1">
+							Inserimento piatto/i <a href="#top">#Torna all'indice</a>
+						</h4>
+						<p>Una volta aperta la comanda non resta che inserire i piatti
+							scelti dai clienti</p>
+						<p>
+							Per poter aggiungere una comanda basta premere il pulsante <strong>ADD
+								<i class="fa fa-pencil-square-o"></i>
+							</strong>, e la comanda parziale verrà aggiornata, mostrando una nuova
+							linea di comanda contenente il piatto e la quantità desiderata,
+							aggiornando poi il prezzo totale della comanda.
+						</p>
+
+						<img src="images/Comanda/aggiuntarigacomanda.PNG"
+							class="img-responsive" alt="nuova linea comanda">
+
+						<h4 class="sub-title" id="line7_2">
+							Modifica della quantità dei piatti <a href="#top">#Torna
+								all'indice</a>
+						</h4>
+
+						<p>Una volta aggiunto il piatto alla comanda abbiamo la
+							possibilità di modificare la quantità di tale piatto.</p>
+						<p>
+							per incrementare la quantità abbiamo 2 possibili soluzioni:
+							Rimpremere il pulsante <strong>ADD <i
+								class="fa fa-pencil-square-o"></i>
+							</strong>del piatto.<br> Premere il pulsante <strong><i
+								class="fa fa-plus fa-lg"></i></strong> sulla riga della comanda la quale
+							si vuole incrementare la quantità.
+						</p>
+
+						<img src="images/Comanda/upgradequantita.PNG"
+							class="img-responsive" alt="nuova linea comanda"> <br>
+						<p>
+							Mentra per ridurre la quantità possiamo solamente premere il
+							pulsante <strong><i class="fa fa-minus fa-lg"></i></strong> dalla
+							corrispettiva linea di comanda
+						</p>
+						<img src="images/Comanda/upgradequantitameno.PNG"
+							class="img-responsive" alt="nuova linea comanda">
+						<h4 class="sub-title" id="line7_3">
+							Rimozione piatto dalla comanda <a href="#top">#Torna
+								all'indice</a>
+						</h4>
+
+						<p>
+							Per rimuovere un linea della camanda basterà premere il pulsante
+							<strong><i class="fa fa-trash-o fa-lg"></i></strong>
+						</p>
+
+					</section>
+					<!-- end section -->
+
+					<section id="line8" class="section">
+
+						<div class="row">
+							<div class="col-md-12 left-align">
+								<h2 class="dark-text">
+									Operatore<a href="#top">#Torna all'indice</a>
+									<hr>
+								</h2>
+							</div>
+							<!-- end col -->
+						</div>
+						<!-- end row -->
+
+						<p>
+							L'operatore a differenza dell'amministratore potrà consultare
+							solamente la sala, creare comande e popolarle.<br> inoltre
+							ha la possibilità di effettuare prenotazioni per gli utenti.
+
+						</p>
+					</section>
+					<!-- end section -->
+
+
+
+					</section>
+					<!-- end section -->
+
+
+
+
+
+					</section>
+					<!-- end section -->
+				</div>
+				<!-- // end .col -->
+
+			</div>
+			<!-- // end .row -->
+
+			<footer>
+				<p class="text-center">Copyright © Alessandro Giannetti &
+					Federico Arcangeli All rights reserved.</p>
+			</footer>
+
+		</div>
+		<!-- // end container -->
+
+	</div>
+	<!-- end wrapper -->
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/retina.js"></script>
+	<script src="js/jquery.fitvids.js"></script>
+	<script src="js/wow.js"></script>
+	<script src="js/jquery.prettyPhoto.js"></script>
+
+	<!-- CUSTOM PLUGINS -->
+	<script src="js/custom.js"></script>
+	<script src="js/main.js"></script>
+
+	<script src="js/syntax-highlighter/scripts/shCore.js"></script>
+	<script src="js/syntax-highlighter/scripts/shBrushXml.js"></script>
+	<script src="js/syntax-highlighter/scripts/shBrushCss.js"></script>
+	<script src="js/syntax-highlighter/scripts/shBrushJScript.js"></script>
+	<script src="js/syntax-highlighter/scripts/shBrushPhp.js"></script>
+
+</body>
+
+</html>
