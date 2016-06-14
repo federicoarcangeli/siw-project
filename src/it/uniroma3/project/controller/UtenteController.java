@@ -36,7 +36,8 @@ public class UtenteController implements Serializable {
 		FacesContext context = FacesContext.getCurrentInstance();
 		this.utente = new Utente(this.nome, this.cognome, this.username, this.telefono, this.email,
 				this.getPasswordCriptata());
-		EmailManager.sendMail(this.email, username);
+		EmailManager emailManager = new EmailManager();
+		emailManager.sendMail(this.email, username);
 		// L'utente che sta tentando di creare un account ha inserito una username già utilizzata
 		if (this.isAlreadyRegistered(this.utente)) {
 			context.getExternalContext().getRequestMap().put("utenteError",

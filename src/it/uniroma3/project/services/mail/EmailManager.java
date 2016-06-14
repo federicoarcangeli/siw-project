@@ -30,7 +30,7 @@ public class EmailManager {
 	 * @throws AddressException
 	 */
 
-	public static void sendMail(String receiver, String username) {
+	public void sendMail(String receiver, String username) {
 		mailServerProperties = System.getProperties();
 		mailServerProperties.put("mail.smtp.port", 587);
 		mailServerProperties.put("mail.smtp.auth", "true");
@@ -60,7 +60,7 @@ public class EmailManager {
 
 	}
 
-	public static void sendMailReservation(String receiver, String username, String data, String ora, int coperti) {
+	public void sendMailReservation(String receiver, String username, String data, String ora, int coperti) {
 		mailServerProperties = System.getProperties();
 		mailServerProperties.put("mail.smtp.port", 587);
 		mailServerProperties.put("mail.smtp.auth", "true");

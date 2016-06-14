@@ -70,7 +70,8 @@ public class PrenotazioneController {
 			Utente utenteCorrente = SessionAndRequestManager.getUtenteCorrente();
 			this.prenotazione = pFacade.createByUtente(this.getDatepicker(), this.getTimepicker(), this.getCoperti(),
 					utenteCorrente, tavolo);
-			EmailManager.sendMailReservation(utenteCorrente.getEmail(),
+			EmailManager emailManager = new EmailManager();
+			emailManager.sendMailReservation(utenteCorrente.getEmail(),
 					utenteCorrente.getUsername(), validatorD.ConvertDateToString(this.datepicker),
 					validatorD.ConvertTimeToString(this.timepicker), this.coperti);
 			if (validatorD.isToday(this.prenotazione.getData())) {
