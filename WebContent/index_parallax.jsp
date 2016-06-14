@@ -144,20 +144,8 @@
 								</div>
 							</div>
 							<div class="col-md-8">
-								<p>Cras ut viverra eros. Phasellus sollicitudin sapien id
-									luctus tempor. Sed hendrerit interdum sagittis. Donec nunc
-									lacus, dapibus nec interdum eget, ultrices eget justo. Nam
-									purus lacus, efficitur eget laoreet sed, finibus nec neque.
-									Cras eget enim in diam dapibus sagittis. In massa est,
-									dignissim in libero ac, fringilla ornare mi. Etiam interdum
-									ligula purus, placerat aliquam odio faucibus a. Pellentesque et
-									pulvinar lectus. Fusce scelerisque nisi id nisl gravida
-									ultricies.</p>
+								<p>In attività dal 2016</p>
 								<br>
-								<p>Ultrices eget justo. Nam purus lacus, efficitur eget
-									laoreet sed, finibus nec neque. Cras eget enim in diam dapibus
-									sagittis. In massa est, dignissim in libero ac, fringilla
-									ornare mi.</p>
 								<img src="img/signature.png" alt="signature">
 							</div>
 						</div>
@@ -232,11 +220,8 @@
 						<div class="row">
 							<div class="col-md-4 col-sm-12">
 								<h1>Chi siamo</h1>
-								<p>Duis leo justo, condimentum at purus eu,Aenean sed dolor
-									sem. Etiam massa libero, auctor vitae egestas et, accumsan quis
-									nunc.Duis leo justo, condimentum at purus eu, posuere pretium
-									tellus.</p>
-								<a href="./about.html">Leggi ancora &rarr;</a>
+								<p>Due studenti di Roma Tre</p>
+								<a href="./about.jsp">Leggi ancora &rarr;</a>
 							</div>
 							<div class="col-md-4  col-sm-6"></div>
 
