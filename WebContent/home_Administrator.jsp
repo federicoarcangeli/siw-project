@@ -114,6 +114,7 @@
 												<table class="table">
 													<thead>
 														<tr class="warning">
+															<th class="text-center">Id</th>
 															<th class="text-center">Nominativo</th>
 															<th class="text-center">Data - Ora</th>
 															<th class="text-center">Tavolo</th>
@@ -137,10 +138,14 @@
 																aria-hidden="true"></i></td>
 															<td class="text-center"><i class="fa fa-minus"
 																aria-hidden="true"></i></td>
+															<td class="text-center"><i class="fa fa-minus"
+																aria-hidden="true"></i></td>
 														</h:panelGroup>
 														<c:forEach var="prenotazione"
 															items="#{pannelloController.prenotazioni}">
 															<tr>
+																<td class="text-center"><h:outputText
+																		value="#{prenotazione.id}" /></td>
 																<td class="text-center"><h:outputText
 																		value="#{prenotazione.nominativo}" /> <h:outputText
 																		value="#{prenotazione.getUtente().getNome()}" /><br>
