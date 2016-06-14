@@ -1,6 +1,5 @@
 package it.uniroma3.project.controller;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -79,9 +78,9 @@ public class PrenotazioneController {
 			}
 			context.getExternalContext().getRequestMap().put("prenotazioneCorrente",
 					"La prenotazione è stata registrata correttamente a nome di  " + utenteCorrente.getCognome()
-							+ " per " + this.coperti + " persone il giorno "
-							+ validatorD.ConvertDateToString(datepicker) + " alle ore "
-							+ validatorD.ConvertTimeToString(this.getTimepicker()));
+					+ " per " + this.coperti + " persone il giorno "
+					+ validatorD.ConvertDateToString(datepicker) + " alle ore "
+					+ validatorD.ConvertTimeToString(this.getTimepicker()));
 		} else
 			context.getExternalContext().getRequestMap().put("prenotazioneError",
 					"è possibile prenotare solo per l'ora di cena (19:00 - 21:59)");
@@ -108,12 +107,7 @@ public class PrenotazioneController {
 
 	@PostConstruct
 	public void init() {
-		if (SessionAndRequestManager.getUtenteCorrente() == null)
-			try {
-				SessionAndRequestManager.redirectPage("./sessioneScaduta.jsp");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		SessionAndRequestManager.sessionCheckerUtente();
 	}
 
 	public Date getDatepicker() {

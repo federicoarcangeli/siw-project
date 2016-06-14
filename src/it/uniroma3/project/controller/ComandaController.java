@@ -50,7 +50,7 @@ public class ComandaController {
 		if (linea != null) {
 			linea.plusQuantity();
 			comandaInCorso
-					.setPrezzoTotale(comandaInCorso.getPrezzoTotale() + this.piatto.getDescrizionePiatto().getPrezzo());
+			.setPrezzoTotale(comandaInCorso.getPrezzoTotale() + this.piatto.getDescrizionePiatto().getPrezzo());
 			lFacade.updateLinea(linea);
 		} else if (linea == null) {
 
@@ -61,7 +61,7 @@ public class ComandaController {
 			System.out.println(lFacade.findNumeroLineaMassimo(comandaInCorso.getId()));
 			linea.setNumeroLinea(lFacade.findNumeroLineaMassimo(comandaInCorso.getId()) + 1);
 			comandaInCorso
-					.setPrezzoTotale(comandaInCorso.getPrezzoTotale() + this.piatto.getDescrizionePiatto().getPrezzo());
+			.setPrezzoTotale(comandaInCorso.getPrezzoTotale() + this.piatto.getDescrizionePiatto().getPrezzo());
 			lFacade.inserisciLinea(linea);
 		}
 		cFacade.updateComanda(comandaInCorso);
@@ -104,26 +104,13 @@ public class ComandaController {
 
 	@PostConstruct
 	public void init() {
-		if (SessionAndRequestManager.getUtenteCorrente() == null)
-			try {
-				SessionAndRequestManager.redirectPage("./sessioneScaduta.jsp");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		else if (!(SessionAndRequestManager.getUtenteCorrente().getRole().equals("admin")
-				|| SessionAndRequestManager.getUtenteCorrente().getRole().equals("operatore"))) {
-			try {
-				SessionAndRequestManager.redirectPage("./404.jsp");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		} else {
-			Comanda comandaInCorso = (Comanda) SessionAndRequestManager.getBySession("comandaCorrente");
-			this.categorie = cpFacade.findAll();
-			this.piatti = pFacade.findAll();
-			this.linee = lFacade.findallLineeComanda(comandaInCorso.getId());
-		}
 
+		SessionAndRequestManager.sessionCheckerUtenteOperatori();
+
+		Comanda comandaInCorso = (Comanda) SessionAndRequestManager.getBySession("comandaCorrente");
+		this.categorie = cpFacade.findAll();
+		this.piatti = pFacade.findAll();
+		this.linee = lFacade.findallLineeComanda(comandaInCorso.getId());
 	}
 
 	public List<CategoriaPiatto> getCategorie() {

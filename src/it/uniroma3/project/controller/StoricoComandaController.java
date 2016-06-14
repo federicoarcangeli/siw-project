@@ -30,19 +30,8 @@ public class StoricoComandaController {
 
 	@PostConstruct
 	public void init() {
-		if(SessionAndRequestManager.getUtenteCorrente()==null)
-			try {
-				SessionAndRequestManager.redirectPage("./sessioneScaduta.jsp");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		else
-			if(!SessionAndRequestManager.getUtenteCorrente().getRole().equals("admin"))
-				try {
-					SessionAndRequestManager.redirectPage("./404.jsp");
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+		SessionAndRequestManager.sessionCheckerUtenteOperatori();
+		
 		this.comande = cFacade.findallComandaCompletate();
 	}
 

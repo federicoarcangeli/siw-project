@@ -30,7 +30,8 @@ public class ProfiloController {
 
 	@PostConstruct
 	public void init() {
-		SessionAndRequestManager.sessionChecker();
+		SessionAndRequestManager.sessionCheckerUtente();
+		
 		this.prenotazioniUtente = pFacade.findAllPrenotazioniUtente(SessionAndRequestManager.getUtenteCorrente().getId());
 	}
 

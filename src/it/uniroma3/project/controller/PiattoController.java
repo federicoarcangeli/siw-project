@@ -44,6 +44,8 @@ public class PiattoController {
 
 	@PostConstruct
 	public void init() {
+		SessionAndRequestManager.sessionCheckerUtenteOperatori();
+		
 		this.nomiCategorie = new ArrayList<>();
 		this.categorie = this.cpFacade.findAll();
 		this.categorie = this.cpFacade.findAll();

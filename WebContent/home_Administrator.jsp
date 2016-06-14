@@ -505,7 +505,7 @@
 															value="#{comanda.dataOraEmissione}">
 															<f:convertDateTime pattern="dd/MM/yyyy    HH:mm" />
 														</h:outputText> <br> <strong> Operatore : </strong> <h:outputText
-															value="#{comanda.operatore.getUsername()}" />
+															value="#{comanda.operatore.username}" />
 													</span>
 												</div>
 												<div class="modal-footer">

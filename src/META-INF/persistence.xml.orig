@@ -16,20 +16,19 @@
 		<class>it.uniroma3.project.model.Utente</class>
 		<properties>
 <<<<<<< HEAD
-			<property name="openjpa.jdbc.SynchronizeMappings"
-				value="buildSchema(foreignKeys=true,schemaAction='dropDB,add')" />
-			<property name="openjpa.jdbc.SchemaFactory" value="native(foreignKeys=true)" />
-			<property name="openjpa.jdbc.MappingDefaults"
-				value="ForeignKeyDeleteAction=restrict, JoinForeignKeyDeleteAction=restrict" />
-=======
 			<!-- <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(foreignKeys=true,schemaAction='dropDB,add')" 
 				/> <property name="openjpa.jdbc.SchemaFactory" value="native(foreignKeys=true)" 
 				/> <property name="openjpa.jdbc.MappingDefaults" value="ForeignKeyDeleteAction=restrict, 
-				JoinForeignKeyDeleteAction=restrict" /> <property name="openjpa.jdbc.SynchronizeMappings" 
-				value="buildSchema(ForeignKeys=true)" /> <property name="openjpa.jdbc.SynchronizeMappings" 
-				value="schemaAction='add,deleteTableContents'" /> -->
->>>>>>> c2f2c587a15b26931e2e3313fea6ec6f0740e7b8
+				JoinForeignKeyDeleteAction=restrict" /> <property name="openjpa.jdbc.DBDictionary" 
+				value="postgres" /> -->
+=======
+<!-- 			<property name="openjpa.jdbc.SynchronizeMappings" -->
+<!-- 				value="buildSchema(foreignKeys=true,schemaAction='dropDB,add')" /> -->
+<!-- 			<property name="openjpa.jdbc.SchemaFactory" value="native(foreignKeys=true)" /> -->
+<!-- 			<property name="openjpa.jdbc.MappingDefaults" -->
+<!-- 				value="ForeignKeyDeleteAction=restrict, JoinForeignKeyDeleteAction=restrict" /> -->
 			<property name="openjpa.jdbc.DBDictionary" value="postgres" />
+>>>>>>> e41527bbd72115c6ce6c93d0893adc0b8e0d4b73
 			<property name="openjpa.Log"
 				value="DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE" />
 		</properties>
