@@ -39,6 +39,7 @@ public class Prenotazione {
 	 * 0: cliente non arrivato 
 	 * 1: cliente seduto al tavolo 
 	 * 2: cliente ha usufruito della prenotazione
+	 * 3: comanda relativa all'ordine eliminata
 	 */
 	@Column(nullable = false)
 	private int stato;

@@ -104,7 +104,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="menu-tags">
-										<span data-filter="*" class="tagsort3-active">Tutti</span>
+										<span data-filter="*" class="tagsort-active">Tutti</span>
 										<c:forEach var="categoria"
 											items="#{menuController.nomiCategorie}">
 											<span data-filter=".${categoria}">${categoria}</span>

@@ -5,7 +5,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Autenticazione admin</title>
+<title>Login Operatore</title>
 <meta name="author" content="Alessandro e Federico">
 
 <!-- Favicons -->

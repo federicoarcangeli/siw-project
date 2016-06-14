@@ -177,11 +177,16 @@
 																		style="color: green;"><i
 																		class="fa fa-check-circle"></i></td>
 																</h:panelGroup>
-																<h:panelGroup rendered="#{prenotazione.stato == 2}">
+																<h:panelGroup rendered="#{prenotazione.stato == 3}">
+																	<td class="text-center" class="success"
+																		style="color: orange;"><i
+																		class="fa fa-exclamation-triangle"></i></td>
+																</h:panelGroup>
+																<h:panelGroup rendered="#{prenotazione.stato !=0 }">
 																	<td class="text-center "><i style="color: red;"
 																		class="fa fa-ban fa-lg" aria-hidden="true"></i></td>
 																</h:panelGroup>
-																<h:panelGroup rendered="#{prenotazione.stato != 2}">
+																<h:panelGroup rendered="#{prenotazione.stato == 0}">
 																	<td class="text-center"><a href="#"
 																		style="color: red;" data-toggle="modal"
 																		data-target='#<h:outputText
