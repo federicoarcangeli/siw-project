@@ -1,1 +1,538 @@
 
+-- Per rigenerare il db in locale -> owner modificato da progettosiw a postgres
+-- PostgreSQL database dump
+-- 
+
+-- Dumped from database version 9.4.7
+-- Dumped by pg_dump version 9.4.0
+-- Started on 2016-06-14 23:21:47
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 181 (class 3079 OID 12776)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2984 (class 0 OID 0)
+-- Dependencies: 181
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 173 (class 1259 OID 22141)
+-- Name: categoriapiatto; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE categoriapiatto (
+    id bigint NOT NULL,
+    nome character varying(255) NOT NULL
+);
+
+
+ALTER TABLE categoriapiatto OWNER TO postgres;
+
+--
+-- TOC entry 174 (class 1259 OID 22146)
+-- Name: comanda; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE comanda (
+    id bigint NOT NULL,
+    completata boolean,
+    dataoraemissione timestamp without time zone NOT NULL,
+    prezzototale double precision NOT NULL,
+    operatore_id bigint,
+    tavolo_id bigint
+);
+
+
+ALTER TABLE comanda OWNER TO postgres;
+
+--
+-- TOC entry 175 (class 1259 OID 22151)
+-- Name: descrizionepiatto; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE descrizionepiatto (
+    id bigint NOT NULL,
+    descrizione character varying(255),
+    prezzo double precision NOT NULL,
+    prodottiallergizzanti boolean,
+    prodottisurgelati boolean
+);
+
+
+ALTER TABLE descrizionepiatto OWNER TO postgres;
+
+--
+-- TOC entry 176 (class 1259 OID 22156)
+-- Name: lineacomanda; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE lineacomanda (
+    id bigint NOT NULL,
+    numerolinea integer,
+    quantita integer NOT NULL,
+    comanda_id bigint,
+    piatto_id bigint
+);
+
+
+ALTER TABLE lineacomanda OWNER TO postgres;
+
+--
+-- TOC entry 172 (class 1259 OID 21752)
+-- Name: openjpa_sequence_table; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE openjpa_sequence_table (
+    id smallint NOT NULL,
+    sequence_value bigint
+);
+
+
+ALTER TABLE openjpa_sequence_table OWNER TO postgres;
+
+--
+-- TOC entry 177 (class 1259 OID 22161)
+-- Name: piatto; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE piatto (
+    id bigint NOT NULL,
+    nome character varying(255) NOT NULL,
+    categoriapiatto_id bigint,
+    descrizionepiatto_id bigint
+);
+
+
+ALTER TABLE piatto OWNER TO postgres;
+
+--
+-- TOC entry 178 (class 1259 OID 22166)
+-- Name: prenotazione; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE prenotazione (
+    id bigint NOT NULL,
+    data date NOT NULL,
+    nominativo character varying(255),
+    numeroospiti integer NOT NULL,
+    ora time without time zone NOT NULL,
+    stato integer NOT NULL,
+    utente_id bigint,
+    tavoloprenotato_id bigint
+);
+
+
+ALTER TABLE prenotazione OWNER TO postgres;
+
+--
+-- TOC entry 179 (class 1259 OID 22171)
+-- Name: tavolo; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE tavolo (
+    id bigint NOT NULL,
+    codicetavolo character varying(255) NOT NULL,
+    coperti integer NOT NULL,
+    stato integer
+);
+
+
+ALTER TABLE tavolo OWNER TO postgres;
+
+--
+-- TOC entry 180 (class 1259 OID 22178)
+-- Name: utente; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE utente (
+    id bigint NOT NULL,
+    cognome character varying(255),
+    email character varying(255),
+    nome character varying(255),
+    password character varying(255) NOT NULL,
+    role character varying(255) NOT NULL,
+    telefono character varying(255),
+    username character varying(255)
+);
+
+
+ALTER TABLE utente OWNER TO postgres;
+
+--
+-- TOC entry 2969 (class 0 OID 22141)
+-- Dependencies: 173
+-- Data for Name: categoriapiatto; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO categoriapiatto VALUES (5, 'Frutta');
+INSERT INTO categoriapiatto VALUES (6, 'Bevande');
+INSERT INTO categoriapiatto VALUES (0, 'Antipasti');
+INSERT INTO categoriapiatto VALUES (1, 'Primi');
+INSERT INTO categoriapiatto VALUES (2, 'Secondi');
+INSERT INTO categoriapiatto VALUES (3, 'Contorni');
+INSERT INTO categoriapiatto VALUES (4, 'Dolci');
+
+
+--
+-- TOC entry 2970 (class 0 OID 22146)
+-- Dependencies: 174
+-- Data for Name: comanda; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO comanda VALUES (3201, true, '2016-06-14 20:50:10.231', 128, 1, 1655);
+INSERT INTO comanda VALUES (3352, false, '2016-06-14 22:56:12.419', 10, 1, 1651);
+INSERT INTO comanda VALUES (3451, false, '2016-06-14 23:00:49.157', 10, 1, 1652);
+
+
+--
+-- TOC entry 2971 (class 0 OID 22151)
+-- Dependencies: 175
+-- Data for Name: descrizionepiatto; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO descrizionepiatto VALUES (151, 'fettuccine al sugo di cinghiale', 15, false, false);
+INSERT INTO descrizionepiatto VALUES (152, 'fettuccine ai porcini di non so dove', 17, false, false);
+INSERT INTO descrizionepiatto VALUES (153, 'semplice cocacola di rubinetto', 2, false, false);
+INSERT INTO descrizionepiatto VALUES (154, 'acqua miracolosa', 2, false, false);
+INSERT INTO descrizionepiatto VALUES (2401, 'Lardo nostrano con pane nero  di crodo, noci e miele', 5, false, false);
+INSERT INTO descrizionepiatto VALUES (2402, 'Filetto affumicato al ciliegio con rucola e olio ai mirtilli', 9, false, false);
+INSERT INTO descrizionepiatto VALUES (2403, 'polenta Beura con fonduta di Bettlemat e guanciale di Beura', 9, false, false);
+INSERT INTO descrizionepiatto VALUES (2404, 'Carpaccio di scottona Piemontese con scaglie di Grana Piemonte', 9, true, false);
+INSERT INTO descrizionepiatto VALUES (2405, 'Involtini di sfoglia al Maccagno', 10, false, false);
+INSERT INTO descrizionepiatto VALUES (2406, 'Timballo di carciofi e crema di soia', 10, false, false);
+INSERT INTO descrizionepiatto VALUES (2407, 'Risotto agli asparagi  e Berlucchi mantecato in forma di grana', 20, true, false);
+INSERT INTO descrizionepiatto VALUES (2408, 'Risotto mantecato con Barolo e grana', 20, true, false);
+INSERT INTO descrizionepiatto VALUES (2409, 'Bavette di spinaci con pomodoro confi, carciofi, olive nere e champignon', 25, false, false);
+INSERT INTO descrizionepiatto VALUES (2410, 'Lasagna bolognese al ragu e grana', 20, true, false);
+INSERT INTO descrizionepiatto VALUES (2411, 'Tortellini al tartufo mantecati con burro e grana', 20, true, false);
+INSERT INTO descrizionepiatto VALUES (2412, 'Gnocchetti di patate con scampi, rucola e pomodorini', 20, true, false);
+INSERT INTO descrizionepiatto VALUES (2413, 'braciola di maiale al barolo', 25, false, false);
+INSERT INTO descrizionepiatto VALUES (2414, 'scaloppina al limone con vino e funghi porcini', 17, false, false);
+INSERT INTO descrizionepiatto VALUES (2415, 'straccetti con rucola pachino funghi porcini e radicchio', 12, false, false);
+INSERT INTO descrizionepiatto VALUES (2416, 'manzo di prima scelta alla brace', 19, false, false);
+INSERT INTO descrizionepiatto VALUES (2417, 'Ravioli al sugo di cinghiale', 20, false, false);
+INSERT INTO descrizionepiatto VALUES (2418, 'Insalata cappuccina mista', 7, false, false);
+INSERT INTO descrizionepiatto VALUES (2419, 'Bonet all''amaretto e ananas ', 7, true, true);
+INSERT INTO descrizionepiatto VALUES (2420, 'pannacotta con cocco e granella di nocciola', 10, true, false);
+INSERT INTO descrizionepiatto VALUES (2421, 'classica NewYork cheescake', 8, false, false);
+INSERT INTO descrizionepiatto VALUES (2422, 'acqua sanBenedetto', 3, false, false);
+INSERT INTO descrizionepiatto VALUES (2423, 'Peroni gran riserva', 4, false, false);
+INSERT INTO descrizionepiatto VALUES (2424, 'vino toscano ', 4, false, false);
+INSERT INTO descrizionepiatto VALUES (2425, 'caffe corto', 2, false, false);
+INSERT INTO descrizionepiatto VALUES (2426, 'macedonia mela, ananas, pesca, banana', 5, false, false);
+
+
+--
+-- TOC entry 2972 (class 0 OID 22156)
+-- Dependencies: 176
+-- Data for Name: lineacomanda; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO lineacomanda VALUES (3251, 1, 1, 3201, 2355);
+INSERT INTO lineacomanda VALUES (3253, 3, 1, 3201, 2361);
+INSERT INTO lineacomanda VALUES (3252, 2, 2, 3201, 2357);
+INSERT INTO lineacomanda VALUES (3254, 4, 1, 3201, 2364);
+INSERT INTO lineacomanda VALUES (3255, 5, 1, 3201, 2363);
+INSERT INTO lineacomanda VALUES (3256, 6, 1, 3201, 2365);
+INSERT INTO lineacomanda VALUES (3257, 7, 2, 3201, 104);
+INSERT INTO lineacomanda VALUES (3403, 1, 1, 3352, 2355);
+INSERT INTO lineacomanda VALUES (3501, 1, 1, 3451, 2356);
+
+
+--
+-- TOC entry 2968 (class 0 OID 21752)
+-- Dependencies: 172
+-- Data for Name: openjpa_sequence_table; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO openjpa_sequence_table VALUES (0, 3551);
+
+
+--
+-- TOC entry 2973 (class 0 OID 22161)
+-- Dependencies: 177
+-- Data for Name: piatto; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO piatto VALUES (101, 'Fettuccine al sugo', 0, 151);
+INSERT INTO piatto VALUES (102, 'Fettuccine ai funghi porcini', 1, 152);
+INSERT INTO piatto VALUES (103, 'Cocacola', 6, 153);
+INSERT INTO piatto VALUES (104, 'Acqua minerale', 6, 154);
+INSERT INTO piatto VALUES (2351, 'Bruschetta con lardo', 0, 2401);
+INSERT INTO piatto VALUES (2352, 'Filetto di cervo', 0, 2402);
+INSERT INTO piatto VALUES (2353, 'Crostino di polenta', 0, 2403);
+INSERT INTO piatto VALUES (2354, 'Carpacco di scottona', 0, 2404);
+INSERT INTO piatto VALUES (2355, 'Involitini al Maccagno', 0, 2405);
+INSERT INTO piatto VALUES (2356, 'Timballo di carciofi', 0, 2406);
+INSERT INTO piatto VALUES (2357, 'Risotto agli asparagi', 1, 2407);
+INSERT INTO piatto VALUES (2358, 'Risotto al Barolo', 1, 2408);
+INSERT INTO piatto VALUES (2359, 'Bavette di spinaci', 1, 2409);
+INSERT INTO piatto VALUES (2360, 'Lasagna bolognese', 1, 2410);
+INSERT INTO piatto VALUES (2361, 'Tortellini al tartufo', 1, 2411);
+INSERT INTO piatto VALUES (2362, 'Gnocchetti e scampi', 1, 2412);
+INSERT INTO piatto VALUES (2363, 'Filetto al barolo', 2, 2413);
+INSERT INTO piatto VALUES (2364, 'Scaloppina al limone', 2, 2414);
+INSERT INTO piatto VALUES (2365, 'Straccetti', 2, 2415);
+INSERT INTO piatto VALUES (2366, 'Tagliata di manzo', 2, 2416);
+INSERT INTO piatto VALUES (2367, 'Ravioli al cinghiale', 1, 2417);
+INSERT INTO piatto VALUES (2368, 'Insalata mista', 3, 2418);
+INSERT INTO piatto VALUES (2369, 'Bonet all''amaretto', 4, 2419);
+INSERT INTO piatto VALUES (2370, 'Pannacotta ', 4, 2420);
+INSERT INTO piatto VALUES (2371, 'Cheescake', 4, 2421);
+INSERT INTO piatto VALUES (2372, 'Acqua liscia', 6, 2422);
+INSERT INTO piatto VALUES (2373, 'Peroni', 6, 2423);
+INSERT INTO piatto VALUES (2374, 'Vino della casa', 6, 2424);
+INSERT INTO piatto VALUES (2375, 'caffe', 6, 2425);
+INSERT INTO piatto VALUES (2376, 'Macedonia ', 5, 2426);
+
+
+--
+-- TOC entry 2974 (class 0 OID 22166)
+-- Dependencies: 178
+-- Data for Name: prenotazione; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO prenotazione VALUES (3151, '2016-06-14', 'Filippis', 5, '21:00:00', 2, NULL, 1655);
+INSERT INTO prenotazione VALUES (3301, '2016-06-14', NULL, 3, '21:00:00', 0, 951, 51);
+
+
+--
+-- TOC entry 2975 (class 0 OID 22171)
+-- Dependencies: 179
+-- Data for Name: tavolo; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO tavolo VALUES (1654, '6', 10, 0);
+INSERT INTO tavolo VALUES (1653, '5', 2, 0);
+INSERT INTO tavolo VALUES (1656, '8', 4, 0);
+INSERT INTO tavolo VALUES (1657, '9', 12, 0);
+INSERT INTO tavolo VALUES (1658, '10', 4, 0);
+INSERT INTO tavolo VALUES (1659, '11', 2, 0);
+INSERT INTO tavolo VALUES (1660, '12', 2, 0);
+INSERT INTO tavolo VALUES (1655, '7', 6, 0);
+INSERT INTO tavolo VALUES (51, '1', 4, 1);
+INSERT INTO tavolo VALUES (801, '2', 4, 0);
+INSERT INTO tavolo VALUES (1651, '3', 4, 2);
+INSERT INTO tavolo VALUES (1652, '4', 8, 2);
+
+
+--
+-- TOC entry 2976 (class 0 OID 22178)
+-- Dependencies: 180
+-- Data for Name: utente; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO utente VALUES (1, NULL, NULL, NULL, '21232f297a57a5a743894ae4a801fc3', 'admin', NULL, 'admin');
+INSERT INTO utente VALUES (951, 'Marcozzi', 'ale.giannetti@hotmail.it', 'Francesco', '76d8224611fc919a5d54fff9fba446', 'utente', '234', 'ale.giannetti');
+INSERT INTO utente VALUES (1051, 'Casti', 'ale.giannetti@hotmail.it', 'Mary', '76d8224611fc919a5d54fff9fba446', 'utente', 'asdasd', 'asdasda');
+INSERT INTO utente VALUES (1501, 'Giannetti', 'prova@prova.it', 'Alessandro', '21232f297a57a5a743894ae4a801fc3', 'utente', '123456789', 'provaprova');
+INSERT INTO utente VALUES (1601, NULL, NULL, NULL, '21232f297a57a5a743894ae4a801fc3', 'operatore', NULL, 'Francesco');
+INSERT INTO utente VALUES (1602, NULL, NULL, NULL, '21232f297a57a5a743894ae4a801fc3', 'operatore', NULL, 'Mario');
+INSERT INTO utente VALUES (1603, NULL, NULL, NULL, '663aa01e825823e54414cf41311271', 'operatore', NULL, 'Federica');
+INSERT INTO utente VALUES (1951, NULL, NULL, NULL, '21232f297a57a5a743894ae4a801fc3', 'operatore', NULL, 'Paolo');
+INSERT INTO utente VALUES (2051, 'De pippo', 'ale.giannetti@hotmail.it', 'Roberto', '21232f297a57a5a743894ae4a801fc3', 'utente', '564546245', 'Roberto.DePippo');
+INSERT INTO utente VALUES (2052, 'De Peppa', 'ale.giannetti@hotmail.it', 'Ermenegilda', '21232f297a57a5a743894ae4a801fc3', 'utente', '234234234', 'Ermenegilda.Piergilda');
+
+
+--
+-- TOC entry 2834 (class 2606 OID 22145)
+-- Name: categoriapiatto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY categoriapiatto
+    ADD CONSTRAINT categoriapiatto_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2836 (class 2606 OID 22150)
+-- Name: comanda_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY comanda
+    ADD CONSTRAINT comanda_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2838 (class 2606 OID 22155)
+-- Name: descrizionepiatto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY descrizionepiatto
+    ADD CONSTRAINT descrizionepiatto_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2840 (class 2606 OID 22160)
+-- Name: lineacomanda_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY lineacomanda
+    ADD CONSTRAINT lineacomanda_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2832 (class 2606 OID 21756)
+-- Name: openjpa_sequence_table_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY openjpa_sequence_table
+    ADD CONSTRAINT openjpa_sequence_table_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2842 (class 2606 OID 22165)
+-- Name: piatto_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY piatto
+    ADD CONSTRAINT piatto_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2844 (class 2606 OID 22170)
+-- Name: prenotazione_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY prenotazione
+    ADD CONSTRAINT prenotazione_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2846 (class 2606 OID 22175)
+-- Name: tavolo_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tavolo
+    ADD CONSTRAINT tavolo_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2848 (class 2606 OID 22177)
+-- Name: u_tavolo_codicetavolo; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY tavolo
+    ADD CONSTRAINT u_tavolo_codicetavolo UNIQUE (codicetavolo);
+
+
+--
+-- TOC entry 2850 (class 2606 OID 22185)
+-- Name: utente_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY utente
+    ADD CONSTRAINT utente_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2851 (class 2606 OID 22186)
+-- Name: comanda_operatore_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY comanda
+    ADD CONSTRAINT comanda_operatore_id_fkey FOREIGN KEY (operatore_id) REFERENCES utente(id) DEFERRABLE;
+
+
+--
+-- TOC entry 2852 (class 2606 OID 22191)
+-- Name: comanda_tavolo_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY comanda
+    ADD CONSTRAINT comanda_tavolo_id_fkey FOREIGN KEY (tavolo_id) REFERENCES tavolo(id) DEFERRABLE;
+
+
+--
+-- TOC entry 2853 (class 2606 OID 22196)
+-- Name: lineacomanda_comanda_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY lineacomanda
+    ADD CONSTRAINT lineacomanda_comanda_id_fkey FOREIGN KEY (comanda_id) REFERENCES comanda(id) DEFERRABLE;
+
+
+--
+-- TOC entry 2854 (class 2606 OID 22201)
+-- Name: lineacomanda_piatto_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY lineacomanda
+    ADD CONSTRAINT lineacomanda_piatto_id_fkey FOREIGN KEY (piatto_id) REFERENCES piatto(id) DEFERRABLE;
+
+
+--
+-- TOC entry 2855 (class 2606 OID 22206)
+-- Name: piatto_categoriapiatto_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY piatto
+    ADD CONSTRAINT piatto_categoriapiatto_id_fkey FOREIGN KEY (categoriapiatto_id) REFERENCES categoriapiatto(id) DEFERRABLE;
+
+
+--
+-- TOC entry 2856 (class 2606 OID 22211)
+-- Name: piatto_descrizionepiatto_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY piatto
+    ADD CONSTRAINT piatto_descrizionepiatto_id_fkey FOREIGN KEY (descrizionepiatto_id) REFERENCES descrizionepiatto(id) DEFERRABLE;
+
+
+--
+-- TOC entry 2858 (class 2606 OID 22221)
+-- Name: prenotazione_tavoloprenotato_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY prenotazione
+    ADD CONSTRAINT prenotazione_tavoloprenotato_id_fkey FOREIGN KEY (tavoloprenotato_id) REFERENCES tavolo(id) DEFERRABLE;
+
+
+--
+-- TOC entry 2857 (class 2606 OID 22216)
+-- Name: prenotazione_utente_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY prenotazione
+    ADD CONSTRAINT prenotazione_utente_id_fkey FOREIGN KEY (utente_id) REFERENCES utente(id) DEFERRABLE;
+
+
+--
+-- TOC entry 2983 (class 0 OID 0)
+-- Dependencies: 6
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2016-06-14 23:22:44
+
+--
+-- PostgreSQL database dump complete
+--
+
