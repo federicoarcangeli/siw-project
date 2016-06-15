@@ -1,4 +1,5 @@
 # Da Peppe Restaurant
+Il manuale del sito dove viene illustrato il funzionamento si trova in <code>SPECIFICHE/index.html</code>
 #CASI D'USO
 
 * Caso d'uso UC1: consultazione menu 
