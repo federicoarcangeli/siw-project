@@ -3,7 +3,6 @@
 Il <strong>manuale del sito</strong> dove viene illustrato il funzionamento si trova in <code>ManualeSitoDaPeppe/index.html</code>.<br>
 Per la <strong>struttura e il popolamento del database</strong> consultare <code>database.txt</code><br>
 I <strong>Casi D'uso</strong> è possibile visionarli oltre che qui di seguito anche all'interno del file <code>Casi d'uso.txt</code><br>
-Il file di <strong>configurazione di tomee</strong> per accedere al server di amazon si trova all'interno del file <code>tomee.xml</code><br>
 
 #CASI D'USO
 
