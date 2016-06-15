@@ -79,15 +79,23 @@
 				</nav>
 
 				<!-- Page Header -->
-				<section class='page_header vertical-padding'></section>
+				<section class='page_header vertical-padding fixed-bg'></section>
 
 				<!-- Page Storico  -->
-				<div class="shop-grid">
-					<h2>Storico comande</h2>
-					<div class="shop-products">
+				<div class="shop-content">
+					<div class="container-fluid">
 						<div class="row">
 							<div class="col-md-12">
-								<table class="table">
+								<div class="page-header wow fadeInDown">
+									<h1>
+										Storico Comande<small></small>
+									</h1>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<table class="table table-hover">
 									<thead>
 										<tr class="warning">
 											<th class="text-center">ID</th>

@@ -83,7 +83,7 @@
 				</nav>
 
 				<!-- Page Header -->
-				<section class='page_header vertical-padding'></section>
+				<section class='page_header vertical-padding fixed-bg'></section>
 
 				<!-- Profile Content -->
 				<div class="container">

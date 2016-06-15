@@ -110,7 +110,7 @@
 										<div class="row">
 											<div class="col-md-4 col-sm-6">
 												<h4>Prenotazioni</h4>
-												<table class="table">
+												<table class="table table-hover">
 													<thead>
 														<tr class="warning">
 															<th class="text-center">Id</th>
@@ -234,7 +234,7 @@
 												<br>
 												<hr>
 												<h4>Comande giornaliere completate</h4>
-												<table class="table">
+												<table class="table table-hover">
 													<thead>
 														<tr class="warning">
 															<th class="text-center">Codice</th>
@@ -247,7 +247,7 @@
 													</thead>
 													<tbody>
 														<h:panelGroup
-															rendered="#{empty pannelloController.comande}">
+															rendered="#{empty pannelloController.comandeCompletateToday}">
 															<td class="text-center"><i class="fa fa-minus"
 																aria-hidden="true"></i></td>
 															<td class="text-center"><i class="fa fa-minus"
@@ -260,7 +260,7 @@
 																aria-hidden="true"></i></td>
 														</h:panelGroup>
 														<c:forEach var="comanda"
-															items="#{pannelloController.comande}">
+															items="#{pannelloController.comandeCompletateToday}">
 															<h:panelGroup rendered="#{comanda.completata}">
 																<tr>
 																	<td class="text-center"><h:outputText
@@ -292,7 +292,7 @@
 											</div>
 											<div class="col-md-4 col-sm-6">
 												<h4>Operatori in servizio</h4>
-												<table class="table">
+												<table class="table table-hover">
 													<thead>
 														<tr class="warning">
 															<th class="text-center">Id</th>
@@ -343,9 +343,9 @@
 												</div>
 											</div>
 											<div class="col-md-4 col-sm-6">
-												<h4>Comande giornaliere in corso</h4>
+												<h4>Comande in corso</h4>
 												<h:form>
-													<table class="table">
+													<table class="table table-hover">
 														<thead>
 															<tr class="warning">
 																<th class="text-center">Codice</th>
@@ -410,7 +410,80 @@
 								</div>
 							</div>
 
-							<!-- GENERAZIONE MODALI PER OGNI COMANDA -->
+							<!-- GENERAZIONE MODALI PER OGNI COMANDA COMPLETATA -->
+							<c:forEach var="comanda"
+								items="#{pannelloController.comandeCompletateToday}">
+								<h:form>
+									<div id="<h:outputText value="#{comanda.id}" />"
+										class="modal fade" aria-labelledby="myModal">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<button type="button" class="close" data-dismiss="modal">&times;</button>
+													<h4 class="modal-title">
+														Tavolo N°
+														<h:outputText value="#{comanda.tavolo.getCodiceTavolo()}" />
+														- Comanda N°
+														<h:outputText value="#{comanda.id}" />
+													</h4>
+												</div>
+												<div class="modal-body">
+													<table class="table">
+														<thead>
+															<tr class="warning">
+																<th class="text-center">Linea N°</th>
+																<th class="text-center">Piatto</th>
+																<th class="text-center">Quantità</th>
+																<th class="text-center"></th>
+																<th class="text-center">Prezzo</th>
+															</tr>
+														</thead>
+														<tbody>
+															<c:forEach var="linea"
+																items="#{comanda.getLineeComanda()}">
+																<tr>
+																	<td class="text-center"><h:outputText
+																			value="#{linea.numeroLinea}" /></td>
+																	<td class="text-center"><h:outputText
+																			value="#{linea.piatto.nome}" /></td>
+																	<td class="text-center"><h:outputText
+																			value="#{linea.quantita}" /></td>
+																	<td class="text-center">x</td>
+																	<td class="text-center"><h:outputText
+																			value="#{linea.piatto.descrizionePiatto.prezzo}" />&euro;</td>
+																</tr>
+															</c:forEach>
+															<tr class="warning">
+																<td class="text-center" colspan="4"><strong>Totale:</strong></td>
+																<td class="text-center"><h:outputText
+																		value="#{comanda.prezzoTotale}" />&euro;</td>
+															</tr>
+														</tbody>
+													</table>
+													<hr>
+
+													<span class="text-left"><strong>Coperti N°
+															: <h:outputText value="#{comanda.tavolo.coperti}" />
+													</strong></span><br> <span> <strong>Data e ora : </strong> <h:outputText
+															value="#{comanda.dataOraEmissione}">
+															<f:convertDateTime pattern="dd/MM/yyyy    HH:mm" />
+														</h:outputText> <br> <strong> Operatore : </strong> <h:outputText
+															value="#{comanda.operatore.username}" />
+													</span>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-warning"
+														data-dismiss="modal">
+														Chiudi <i class="fa fa-times"></i>
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</h:form>
+							</c:forEach>
+
+							<!-- GENERAZIONE MODALI PER OGNI COMANDA IN CORSO -->
 							<c:forEach var="comanda" items="#{pannelloController.comande}">
 
 								<!--  Modal conferma eliminazione comanda -->
@@ -512,14 +585,12 @@
 														data-dismiss="modal">
 														Chiudi <i class="fa fa-times"></i>
 													</button>
-													<h:panelGroup rendered="#{!comanda.completata}">
-														<h:commandLink styleClass="btn btn-success"
-															value="Concludi comanda"
-															action="#{pannelloController.confermaComanda}">
-															<f:param name="idComanda" value="#{comanda.id}"></f:param>
-															<i class="fa fa-check"></i>
-														</h:commandLink>
-													</h:panelGroup>
+													<h:commandLink styleClass="btn btn-success"
+														value="Concludi comanda"
+														action="#{pannelloController.confermaComanda}">
+														<f:param name="idComanda" value="#{comanda.id}"></f:param>
+														<i class="fa fa-check"></i>
+													</h:commandLink>
 												</div>
 											</div>
 										</div>

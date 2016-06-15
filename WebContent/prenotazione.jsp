@@ -82,7 +82,7 @@
 					</div>
 				</nav>
 
-				<section class='page_header vertical-padding'></section>
+				<section class='page_header vertical-padding fixed-bg'></section>
 
 				<!-- Reservations page-->
 				<section class="reservation">

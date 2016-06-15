@@ -86,7 +86,7 @@
 				</nav>
 
 				<!-- Page Header -->
-				<section class='page_header vertical-padding'></section>
+				<section class='page_header vertical-padding fixed-bg'></section>
 
 				<!-- menu-->
 				<section class="menu space60">

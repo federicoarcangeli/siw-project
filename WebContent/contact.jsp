@@ -9,7 +9,6 @@
 <head>
 <meta charset="utf-8">
 <title>Contatti</title>
-<meta name="author" content="Surjith S M">
 <meta name="author" content="Alessandro e Federico">
 
 <!-- Favicons -->
@@ -89,7 +88,7 @@
 				</nav>
 
 				<!-- Page Header -->
-				<section class="page_header">
+				<section class="page_header fixed-bg">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12 text-center">

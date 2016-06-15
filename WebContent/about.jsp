@@ -35,7 +35,7 @@
 			</div>
 		</div>
 
-		<div class="body">
+		<div class="body" data-scroll-animation="true">
 
 			<div class="main-wrapper">
 				<!-- Navigation-->
@@ -87,7 +87,8 @@
 					</div>
 				</nav>
 				<!-- Page Header -->
-				<section class="page_header">
+				<section class="page_header fixed-bg"
+					data-stellar-background-ratio="0.2">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-12 text-center">

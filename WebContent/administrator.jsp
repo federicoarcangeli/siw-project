@@ -43,6 +43,9 @@
 								<h:form styleClass="logregform">
 									<div class="row">
 										<div class="col-md-12">
+											<img src="./img/biglogo.png" class="img-responsive"
+												alt="Logo Da Peppe restaurant">
+
 											<div class="form-group">
 												<label>Username</label>
 												<h:inputText id="username" autocomplete="off"

@@ -50,14 +50,20 @@ public class ComandaDao extends AbstractDao<Comanda> {
 		}
 	}
 
-	public List<Comanda> findAllToday() {
+	public List<Comanda> findAllInCorso() {
 		TypedQuery<Comanda> query = getEM()
-				.createQuery("select c from Comanda c where c.dataOraEmissione > CURRENT_DATE", Comanda.class);
+				.createQuery("select c from Comanda c where c.completata= false ", Comanda.class);
 		return query.getResultList();
 	}
 
 	public List<Comanda> findAllCompletate() {
-		TypedQuery<Comanda> query = getEM().createQuery("select c from Comanda c where c.completata = true",
+		TypedQuery<Comanda> query = getEM().createQuery("select c from Comanda c where c.completata = true order by c.dataOraEmissione",
+				Comanda.class);
+		return query.getResultList();
+	}
+
+	public List<Comanda> findAllCompletateToday() {
+		TypedQuery<Comanda> query = getEM().createQuery("select c from Comanda c where c.completata = true and  c.dataOraEmissione > CURRENT_DATE",
 				Comanda.class);
 		return query.getResultList();
 	}
@@ -85,5 +91,4 @@ public class ComandaDao extends AbstractDao<Comanda> {
 		}
 		return OperatoriInServizio;
 	}
-
 }

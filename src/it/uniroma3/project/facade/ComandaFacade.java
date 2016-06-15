@@ -25,10 +25,10 @@ public class ComandaFacade {
 		return comanda;
 	}
 
-	public List<Comanda> findallComandaToday() {
+	public List<Comanda> findallComandeInCorso() {
 		ComandaDao dao = new ComandaDao(this.em);
-		List<Comanda> comandeToday = dao.findAllToday();
-		return comandeToday;
+		List<Comanda> comandeInCorso = dao.findAllInCorso();
+		return comandeInCorso;
 	}
 
 	public void inserisciComanda(Comanda comanda) {
@@ -64,6 +64,12 @@ public class ComandaFacade {
 		Comanda comanda = dao.findComandaByTavolo(idTavolo);
 		comanda = this.findComandaById(comanda.getId());
 		return comanda;
+	}
+
+	public List<Comanda>findAllComandeCompletateToday(){
+		ComandaDao dao = new ComandaDao(this.em);
+		List<Comanda> comande = dao.findAllCompletateToday();
+		return comande;
 	}
 
 	public List<Comanda> findallComandaCompletate() {

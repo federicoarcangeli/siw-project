@@ -17,7 +17,6 @@ import it.uniroma3.project.model.Prenotazione;
 import it.uniroma3.project.model.Tavolo;
 import it.uniroma3.project.model.Utente;
 
-
 @ManagedBean(name = "pannelloController")
 @RequestScoped
 @EJBs(value = { @EJB(name = "pFacade", beanInterface = PrenotazioneFacade.class),
@@ -36,6 +35,7 @@ public class PannelloDiControlloController {
 	private float tavoliOccupatiP = 0;
 	private List<Tavolo> tavoli;
 	private List<Comanda> comande;
+	private List<Comanda> comandeCompletateToday;
 	private List<Prenotazione> prenotazioni;
 	private List<Utente> operatoriInServizio;
 	private Comanda comanda;
@@ -98,13 +98,16 @@ public class PannelloDiControlloController {
 		this.tavoliOccupatiP= (this.tavoliOccupati/this.tavoliTotali)*100;
 
 		//		 gestione comande di oggi
-		this.comande = cFacade.findallComandaToday();
+		this.comande = cFacade.findallComandeInCorso();
 
 		//		gestione operatori in servizio
 		this.operatoriInServizio =  uFacade.findOperatori();
 
 		//		 gestione prenotazioni di oggi
 		this.prenotazioni = pFacade.findAllPrenotazioniToday();
+
+		//		gestione comande completate oggi
+		this.comandeCompletateToday = cFacade.findAllComandeCompletateToday();
 	}
 
 	private Comanda getComandaByRequest(){
@@ -241,6 +244,14 @@ public class PannelloDiControlloController {
 
 	public void setuFacade(UtenteFacade uFacade) {
 		this.uFacade = uFacade;
+	}
+
+	public List<Comanda> getComandeCompletateToday() {
+		return comandeCompletateToday;
+	}
+
+	public void setComandeCompletateToday(List<Comanda> comandeCompletateToday) {
+		this.comandeCompletateToday = comandeCompletateToday;
 	}
 
 }
