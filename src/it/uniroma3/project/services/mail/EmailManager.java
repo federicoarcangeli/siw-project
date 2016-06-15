@@ -101,7 +101,7 @@ public class EmailManager {
 		try {
 			generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
 			generateMailMessage.setSubject(subject);
-			generateMailMessage.setContent(body, "text/html");
+			generateMailMessage.setContent("Conferma inoltro del messaggio:<br>"+body, "text/html");
 
 			Transport transport;
 			transport = getMailSession.getTransport("smtp");
