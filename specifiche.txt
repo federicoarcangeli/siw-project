@@ -13,9 +13,9 @@
 		+ l'utente non immette correttamente i dati come richiesto, e viene mostrato un messaggio di errore specifico
 
 * Caso d'uso UC3: login utente
-	- Attore primario: utente registrato
+	- Attore primario: utente registrato, di qualsiasi ruolo
 	- Scenario principale di successo:
-		+ l'utente immette le proprie credenziali ed effettua l'accesso al sito
+		+ l'utente immette le proprie credenziali ed effettua l'accesso al sito; a seconda del ruolo accederà ad un'area riservata diversa. Amministratori ed operatori accedono alle proprie aree attraverso una form di login diversa, raggiungibile solo conoscendo l'url.
 
 * Caso d'uso UC4: prenotazione utente
     - Attore primario: utente registrato
