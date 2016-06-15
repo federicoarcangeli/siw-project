@@ -24,14 +24,14 @@ public class ProfiloController {
 	private PrenotazioneFacade pFacade;
 
 	public String eliminaPrenotazioneDaProfilo(){
-		this.pFacade.eliminaPrenotazioneByID(SessionAndRequestManager.getUtenteCorrente().getId());
+		this.pFacade.eliminaPrenotazioneByID(Long.parseLong(SessionAndRequestManager.getByRequest("idPrenotazione")));
 		return "profilo?faces-redirect=true";
 	}
 
 	@PostConstruct
 	public void init() {
 		SessionAndRequestManager.sessionCheckerUtente();
-		
+
 		this.prenotazioniUtente = pFacade.findAllPrenotazioniUtente(SessionAndRequestManager.getUtenteCorrente().getId());
 	}
 
