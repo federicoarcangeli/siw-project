@@ -21,7 +21,7 @@ public class Utente {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column
+	@Column(unique=true)
 	private String username;
 
 	/*ruoli possibili:

@@ -64,7 +64,7 @@ public class SessionAndRequestManager {
 				e.printStackTrace();
 			}
 		else
-			if(!getUtenteCorrente().getRole().equals("admin"))
+			if(getUtenteCorrente().getRole().equals("utente"))
 				try {
 					redirectPage("./404.jsp");
 				} catch (IOException e) {
