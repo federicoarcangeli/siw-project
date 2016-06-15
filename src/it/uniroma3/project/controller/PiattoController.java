@@ -8,7 +8,6 @@ import javax.ejb.EJBs;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 
 import it.uniroma3.project.facade.CategoriaPiattoFacade;
 import it.uniroma3.project.facade.PiattoFacade;
@@ -45,7 +44,7 @@ public class PiattoController {
 	@PostConstruct
 	public void init() {
 		SessionAndRequestManager.sessionCheckerUtenteOperatori();
-		
+
 		this.nomiCategorie = new ArrayList<>();
 		this.categorie = this.cpFacade.findAll();
 		this.categorie = this.cpFacade.findAll();
@@ -55,11 +54,10 @@ public class PiattoController {
 	}
 
 	public String create() {
-		FacesContext context = FacesContext.getCurrentInstance();
 		DescrizionePiatto descrizionePiatto = createDescrizionePiatto();
 		this.categoria = this.cpFacade.findByName(this.nomeCategoria);
 		this.piatto = this.pFacade.create(nome, descrizionePiatto, this.categoria);
-		context.getExternalContext().getRequestMap().put("piattoCorrente",
+		SessionAndRequestManager.setInRequest("piattoCorrente",
 				"Il piatto " + this.nome + " è stato inserito correttamente");
 		return "inserimentoPiatti";
 	}

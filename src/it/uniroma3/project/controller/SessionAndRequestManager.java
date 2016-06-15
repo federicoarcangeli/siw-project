@@ -25,6 +25,11 @@ public class SessionAndRequestManager {
 		return params.get(name);
 	}
 
+	public static void setInRequest(String name , String messagge){
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().getRequestMap().put(name,messagge);
+	}
+
 	public static Object getBySession(String name) {
 		FacesContext context = FacesContext.getCurrentInstance();
 		return context.getExternalContext().getSessionMap().get(name);
