@@ -1,5 +1,6 @@
 # Da Peppe Restaurant
 Il manuale del sito dove viene illustrato il funzionamento si trova in <code>SPECIFICHE/index.html</code>
+per la struttura e il popolamento del database consultare <code>database.txt</code>
 #CASI D'USO
 
 * Caso d'uso UC1: consultazione menu 
@@ -25,7 +26,6 @@ Il manuale del sito dove viene illustrato il funzionamento si trova in <code>SPE
         + l'utente riserva un tavolo presso il ristorante, inserendo la data, l'ora ed il numero di coperti. Se esiste un tavolo libero che soddisfa le condizioni, il tavolo viene riservato all'utente.
     - Estensioni dello scenario princiaple:
         + Il sistema mostra un messaggio di errore se l'utente intende prenotare in un orario in cui non è possibile riservare tavoli, oppure se effettivamente non ci sono posti disponibili
-        + 
 
 * Caso d'uso UC5: visualizzazione prenotazioni
 	- Attore primario: utente registrato
