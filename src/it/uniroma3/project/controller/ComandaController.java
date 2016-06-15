@@ -111,6 +111,7 @@ public class ComandaController {
 		this.piatti = pFacade.findAll();
 		this.linee = lFacade.findallLineeComanda(comandaInCorso.getId());
 	}
+	
 
 	public List<CategoriaPiatto> getCategorie() {
 		return categorie;

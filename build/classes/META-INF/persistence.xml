@@ -15,13 +15,11 @@
 		<class>it.uniroma3.project.model.Tavolo</class>
 		<class>it.uniroma3.project.model.Utente</class>
 		<properties>
-			<!-- <property name="openjpa.jdbc.SynchronizeMappings" -->
-			<!-- value="buildSchema(foreignKeys=true,schemaAction='dropDB,add')" /> -->
-			<!-- <property name="openjpa.jdbc.SchemaFactory" value="native(foreignKeys=true)" 
-				/> -->
-			<!-- <property name="openjpa.jdbc.MappingDefaults" -->
-			<!-- value="ForeignKeyDeleteAction=restrict, JoinForeignKeyDeleteAction=restrict" 
-				/> -->
+<!-- 			<property name="openjpa.jdbc.SynchronizeMappings" -->
+<!-- 				value="buildSchema(foreignKeys=true,schemaAction='dropDB,add')" /> -->
+<!-- 			<property name="openjpa.jdbc.SchemaFactory" value="native(foreignKeys=true)" /> -->
+<!-- 			<property name="openjpa.jdbc.MappingDefaults" -->
+<!-- 				value="ForeignKeyDeleteAction=restrict, JoinForeignKeyDeleteAction=restrict" /> -->
 			<property name="openjpa.jdbc.DBDictionary" value="postgres" />
 			<property name="openjpa.Log"
 				value="DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE" />

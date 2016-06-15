@@ -15,9 +15,6 @@ import it.uniroma3.project.model.Prenotazione;
 @EJB(name = "pFacade", beanInterface = PrenotazioneFacade.class)
 public class ProfiloController {
 
-	private Date datepicker;
-	private int coperti;
-	private Date timepicker;
 	private List<Prenotazione> prenotazioniUtente;
 
 	@EJB
@@ -49,30 +46,6 @@ public class ProfiloController {
 
 	public void setPrenotazioniUtente(List<Prenotazione> prenotazioniUtente) {
 		this.prenotazioniUtente = prenotazioniUtente;
-	}
-
-	public Date getDatepicker() {
-		return datepicker;
-	}
-
-	public void setDatepicker(Date datepicker) {
-		this.datepicker = datepicker;
-	}
-
-	public int getCoperti() {
-		return coperti;
-	}
-
-	public void setCoperti(int coperti) {
-		this.coperti = coperti;
-	}
-
-	public Date getTimepicker() {
-		return timepicker;
-	}
-
-	public void setTimepicker(Date timepicker) {
-		this.timepicker = timepicker;
 	}
 
 }
