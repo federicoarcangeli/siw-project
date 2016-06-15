@@ -12,7 +12,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
-@NamedQuery(name = "CategoriaPiatto.findAll", query = "select c from CategoriaPiatto c")
+@NamedQuery(name = "CategoriaPiatto.findAll", query = "select c from CategoriaPiatto c order by c.id")
 public class CategoriaPiatto {
 
 	
