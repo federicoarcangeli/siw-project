@@ -444,6 +444,7 @@ ALTER TABLE ONLY tavolo
 
 ALTER TABLE ONLY utente
     ADD CONSTRAINT utente_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT u_utente_username UNIQUE (username);
 
 
 --
