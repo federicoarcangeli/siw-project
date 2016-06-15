@@ -6,7 +6,6 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import it.uniroma3.project.facade.UtenteFacade;
 import it.uniroma3.project.model.Utente;
 import it.uniroma3.project.services.mail.EmailManager;
@@ -33,20 +32,19 @@ public class UtenteController implements Serializable {
 
 	// creazione utente
 	public String create() {
-		FacesContext context = FacesContext.getCurrentInstance();
 		this.utente = new Utente(this.nome, this.cognome, this.username, this.telefono, this.email,
 				this.getPasswordCriptata());
 		EmailManager emailManager = new EmailManager();
 		emailManager.sendMail(this.email, username);
 		// L'utente che sta tentando di creare un account ha inserito una username già utilizzata
 		if (this.isAlreadyRegistered(this.utente)) {
-			context.getExternalContext().getRequestMap().put("utenteError",
+			SessionAndRequestManager.setInRequest("utenteError",
 					"Utente con username " + this.username + " già esistente");
 			return "loginSignup";
 		} else
 			// le passdword inserite non corrispondo
 			if (this.equalsPassword()) {
-				context.getExternalContext().getRequestMap().put("utenteError", "Le password non corrispondo");
+				SessionAndRequestManager.setInRequest("utenteError", "Le password non corrispondo");
 				return "loginSignup";
 			} else {
 				this.utente = uFacade.signUp(this.utente);
@@ -58,33 +56,31 @@ public class UtenteController implements Serializable {
 	public String createOperatore() {
 		SessionAndRequestManager.sessionCheckerUtenteOperatori();
 
-		FacesContext context = FacesContext.getCurrentInstance();
 		this.utente = new Utente(this.username, this.getPasswordCriptata());
 		// L'admin che ha tentato di creare l'operatore ha inserito una username
 		// già utilizzata nel sistema
 		if (this.isAlreadyRegistered(this.utente)) {
-			context.getExternalContext().getRequestMap().put("operatoreError",
+			SessionAndRequestManager.setInRequest("operatoreError",
 					"Operatore con username " + this.username + " già esistente");
 			return "registraPersonale";
 		}
 		this.uFacade.signUp(utente);
-		context.getExternalContext().getRequestMap().put("operatoreCorrente",
+		SessionAndRequestManager.setInRequest("operatoreCorrente",
 				"L' operatore " + this.username + " è stato inserito correttamente");
 		return "registraPersonale";
 
 	}
 
 	public String loginUtente() {
-		FacesContext context = FacesContext.getCurrentInstance();
 		this.utente = this.uFacade.findByUsername(this.getUsername());
 		// L'utente che sta tentando di autenticarsi non è registrato nel sistema
 		if (this.isNotAlreadyRegistered(this.utente)) {
-			context.getExternalContext().getRequestMap().put("utenteError", "Utente non esistente");
+			SessionAndRequestManager.setInRequest("utenteError", "Utente non esistente");
 			return "loginSignup";
 		} else
 			// la password inserita non è corretta per l'account con tale username
 			if (this.wrongPassword()) {
-				context.getExternalContext().getRequestMap().put("utenteError", "Username e/o password errata");
+				SessionAndRequestManager.setInRequest("utenteError", "Username e/o password errata");
 				return "loginSignup";
 			} else {
 				this.utente = this.uFacade.findByUsername(utente.getUsername());
@@ -94,17 +90,16 @@ public class UtenteController implements Serializable {
 	}
 
 	public String loginAdmin() {
-		FacesContext context = FacesContext.getCurrentInstance();
 		this.utente = this.uFacade.findByUsername(this.getUsername());
 		// L'utente che sta tentando di autenticarsi non è registrato nel
 		// sistema
 		if (this.isNotAlreadyRegistered(this.utente)) {
-			context.getExternalContext().getRequestMap().put("utenteError", "Utente non esistente");
+			SessionAndRequestManager.setInRequest("utenteError", "Utente non esistente");
 			return "administrator";
 		} else
 			// la password inserita non è corretta per l'account con tale username
 			if (this.wrongPassword()) {
-				context.getExternalContext().getRequestMap().put("utenteError", "Username e/o password errata");
+				SessionAndRequestManager.setInRequest("utenteError", "Username e/o password errata");
 				return "administrator";
 			} else {
 				// L'utente è registrato con ruolo admin o operatore
@@ -116,7 +111,7 @@ public class UtenteController implements Serializable {
 					return "home_Operatore?faces-redirect=true";
 					// il ruolo è utente
 				} else {
-					context.getExternalContext().getRequestMap().put("utenteError",
+					SessionAndRequestManager.setInRequest("utenteError",
 							this.username + " Cosa ci fai qui? non è un posto per utenti");
 					return "administrator";
 				}

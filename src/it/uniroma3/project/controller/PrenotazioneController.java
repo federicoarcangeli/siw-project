@@ -7,7 +7,6 @@ import javax.ejb.EJB;
 import javax.ejb.EJBs;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 
 import it.uniroma3.project.facade.PrenotazioneFacade;
 import it.uniroma3.project.facade.TavoloFacade;
@@ -40,7 +39,6 @@ public class PrenotazioneController {
 
 	public String createByAdmin() {
 		Time24HoursValidator validatorD = new Time24HoursValidator();
-		FacesContext context = FacesContext.getCurrentInstance();
 		if (validatorD.isCena(this.timepicker)) {
 			Tavolo tavolo = this.validateTable();
 			if (tavolo == null)
@@ -50,19 +48,18 @@ public class PrenotazioneController {
 			if (validatorD.isToday(this.prenotazione.getData())) {
 				tFacade.setTavoloPrenotato(tavolo);
 			}
-			context.getExternalContext().getRequestMap().put("prenotazioneCorrente",
+			SessionAndRequestManager.setInRequest("prenotazioneCorrente",
 					"Hai prenotato a nome di " + this.nominativo + " per " + this.coperti + " persone per il giorno "
 							+ validatorD.ConvertDateToString(datepicker) + " alle ore "
 							+ validatorD.ConvertTimeToString(this.getTimepicker()));
 		} else
-			context.getExternalContext().getRequestMap().put("prenotazioneError",
+			SessionAndRequestManager.setInRequest("prenotazioneError",
 					"è possibile prenotare solo negli orari di eserczio del locale (12:00 - 14:00 e 19:00-22:00) ");
 		return "prenotazioneAdmin";
 	}
 
 	public String createByUtente() {
 		Time24HoursValidator validatorD = new Time24HoursValidator();
-		FacesContext context = FacesContext.getCurrentInstance();
 		if (validatorD.isCena(this.timepicker)) {
 			Tavolo tavolo = this.validateTable();
 			if (tavolo == null)
@@ -77,29 +74,28 @@ public class PrenotazioneController {
 			if (validatorD.isToday(this.prenotazione.getData())) {
 				tFacade.setTavoloPrenotato(tavolo);
 			}
-			context.getExternalContext().getRequestMap().put("prenotazioneCorrente",
+			SessionAndRequestManager.setInRequest("prenotazioneCorrente",
 					"La prenotazione è stata registrata correttamente a nome di  " + utenteCorrente.getCognome()
 					+ " per " + this.coperti + " persone il giorno "
 					+ validatorD.ConvertDateToString(datepicker) + " alle ore "
 					+ validatorD.ConvertTimeToString(this.getTimepicker()));
 		} else
-			context.getExternalContext().getRequestMap().put("prenotazioneError",
+			SessionAndRequestManager.setInRequest("prenotazioneError",
 					"è possibile prenotare solo per l'ora di cena (19:00 - 21:59)");
 		return "prenotazione";
 	}
 
 	public Tavolo validateTable() {
 		Time24HoursValidator validatorD = new Time24HoursValidator();
-		FacesContext context = FacesContext.getCurrentInstance();
 		this.tavoli = this.tFacade.findAllTavolo();
 		Ristorante ristorante = new Ristorante();
 		List<Tavolo> tavoliDisponibili = ristorante.setTavoloPrenotazione(this.tavoli, this.coperti);
 		Tavolo tavoloDaPrenotare = ristorante.checkTavoliLiberiForDate(tavoliDisponibili, this.datepicker);
 		if (tavoliDisponibili.isEmpty()) {
-			context.getExternalContext().getRequestMap().put("prenotazioneError",
+			SessionAndRequestManager.setInRequest("prenotazioneError",
 					"Non ci sono tavoli disponibili per questo numero di ospiti");
 		} else if (tavoloDaPrenotare == null) {
-			context.getExternalContext().getRequestMap().put("prenotazioneError",
+			SessionAndRequestManager.setInRequest("prenotazioneError",
 					"Non ci sono tavoli disponibili per il " + validatorD.ConvertDateToString(this.datepicker) + " per "
 							+ this.coperti + " persone");
 		}

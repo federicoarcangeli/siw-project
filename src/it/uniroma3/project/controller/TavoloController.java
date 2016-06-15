@@ -4,7 +4,6 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 
 import it.uniroma3.project.facade.PrenotazioneFacade;
 import it.uniroma3.project.facade.TavoloFacade;
@@ -26,14 +25,13 @@ public class TavoloController {
 	@EJB
 	private PrenotazioneFacade pFacade;
 
-	public String create() {
-		FacesContext context = FacesContext.getCurrentInstance();
+	public String create(){
 		if(this.tFacade.findTavoloByNumero(this.codice)!=null){
-			context.getExternalContext().getRequestMap().put("tavoloError", "il tavolo numero " + this.codice + " è gia presente nella sala");
+			SessionAndRequestManager.setInRequest("tavoloError", "il tavolo numero " + this.codice + " è gia presente nella sala");
 			return "registraTavolo";
 		}
 		this.tavolo = tFacade.create(this.codice,this.coperti);
-		context.getExternalContext().getRequestMap().put("tavoloCorrente", "il tavolo numero " + this.codice + " con " + this.coperti + " coperti è stato inserito correttamente");
+		SessionAndRequestManager.setInRequest("tavoloCorrente", "il tavolo numero " + this.codice + " con " + this.coperti + " coperti è stato inserito correttamente");
 		return "registraTavolo";
 	}
 

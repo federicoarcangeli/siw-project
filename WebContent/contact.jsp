@@ -100,6 +100,19 @@
 				</section>
 
 				<!-- Contact Form / Info -->
+				<div class="col-md-12">
+					<h:panelGroup rendered="#{not empty emailConfirm}">
+						<div class="animated fadeInDown">
+							<div class="alert alert-success alert-dismissable">
+								<button type="button" class="close" data-dismiss="alert">
+									<span class="fa fa-close"></span>
+								</button>
+								<span></span>
+								<h:outputText value="#{emailConfirm}" />
+							</div>
+						</div>
+					</h:panelGroup>
+				</div>
 				<section class="main-content contact-content">
 					<div class="container">
 						<div class="col-md-10 col-md-offset-1">
@@ -183,7 +196,6 @@
 											value="Contattaci" action="#{contactController.sendMessage}">
 										</h:commandLink>
 									</h:form>
-
 								</div>
 							</div>
 						</div>
