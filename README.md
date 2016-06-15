@@ -3,6 +3,8 @@
 <strong>CAUSA IMPREVISTI il Database aws è ora reperibile all'indirizzo ://amazon.cfzltjvqdbxy.us-west-2.rds.amazonaws.com:5432/restaurant</strong>.
 username e password sono state inviate per mail.
 
+Il sito è online ed è reperibile all'indirizzo http://52.41.2.131:8080/siw-project/faces/
+
 Il <strong>manuale del sito</strong> dove viene illustrato il funzionamento si trova in <code>ManualeSitoDaPeppe/index.html</code>.<br>
 Per la <strong>struttura e il popolamento del database</strong> consultare <code>database.txt</code><br>
 I <strong>Casi D'uso</strong> è possibile visionarli oltre che qui di seguito anche all'interno del file <code>Casi d'uso.txt</code><br>
