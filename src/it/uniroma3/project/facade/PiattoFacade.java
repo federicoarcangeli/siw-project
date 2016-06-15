@@ -23,6 +23,7 @@ public class PiattoFacade {
 		piatto.setNome(nome);
 		piatto.setPortata(categoria);
 		piatto.setDescrizionePiatto(descrizionePiatto);
+		em.persist(descrizionePiatto);
 		em.persist(piatto);
 		return piatto;
 	}
