@@ -1,6 +1,8 @@
 # Da Peppe Restaurant
-Il manuale del sito dove viene illustrato il funzionamento si trova in <code>SPECIFICHE/index.html</code>
-per la struttura e il popolamento del database consultare <code>database.txt</code>
+
+Il manuale del sito dove viene illustrato il funzionamento si trova in <code>SPECIFICHE/index.html</code>.<br>
+Per la struttura e il popolamento del database consultare <code>database.txt</code>
+
 #CASI D'USO
 
 * Caso d'uso UC1: consultazione menu 
